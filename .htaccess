@@ -1,7 +1,0 @@
-RewriteEngine on
-
-#redirection permanente https => http
-RewriteCond %{HTTPS} ^on$ [NC]
-RewriteRule ^(.*)$ http://%{HTTP_HOST}/$1  [R=301,L]
-RewriteCond %{HTTP_HOST} ^www\.club.vtt\.bzh [NC]
-RewriteRule ^(.*)$ http://club.vtt.bzh/$1 [L,R=301]
