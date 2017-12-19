@@ -24,15 +24,13 @@ a:hover {
  * Base structure
  */
 
-html,
-body {
+html, body {
   height: 100%;
   background-color: #FFF;
 }
 body {
   color: #333;
   text-align: center;
-  text-shadow: 0 .05rem .1rem rgba(0,0,0,.5);
 }
 
 footer li{
@@ -43,7 +41,7 @@ footer ul, footer li{
   display: inline;
 }
 
-#main h1, #main p{
+header h3, #main h1, #main p{
   color: #FFF;
 }
 
