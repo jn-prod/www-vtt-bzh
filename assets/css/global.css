@@ -112,10 +112,6 @@ ul{
  * Header
  */
 
-.masthead {
-  margin-bottom: 2rem;
-}
-
 .masthead-brand {
   margin-bottom: 0;
 }
@@ -151,6 +147,13 @@ ul{
   }
 }
 
+@media (max-width: 415px) {
+  #header-wrapper{
+    padding: 20px 0 0 0;
+  }
+  .nav-masthead .nav-link {
+    margin: auto;
+}
 
 /*
  * Cover
