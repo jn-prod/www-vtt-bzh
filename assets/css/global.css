@@ -25,6 +25,9 @@ a:hover {
   border: .05rem solid #fff;
 }
 
+.jumbotron{
+  background-color: none !important;
+}
 
 /*
  * Base structure
