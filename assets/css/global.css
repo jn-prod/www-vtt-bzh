@@ -25,6 +25,10 @@ a:hover {
   border: .05rem solid #fff;
 }
 
+.nav{
+  padding: 15px;
+}
+
 .jumbotron{
   background-color: none !important;
 }
