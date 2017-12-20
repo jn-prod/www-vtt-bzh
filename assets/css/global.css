@@ -192,9 +192,6 @@ ul{
 }
 
 @media (max-width: 415px) {
-  #header-wrapper {
-    padding: 20px 0 0 0;
-  }
   .nav-masthead .nav-link {
     margin: auto;
   }
