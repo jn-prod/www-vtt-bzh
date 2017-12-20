@@ -55,12 +55,14 @@ h1, h2, h3, h4, h5{
   font-family: "font-awesome", sans-serif;
 }
 
-header h3, #main h1, #main p{
+header h3{
+  color: #333;
+}
+#main h1, #main p{
   color: #FFF;
 }
 
-/* Extra markup and styles for table-esque vertical and horizontal centering */
-.site-wrapper {
+#header-wrapper{
     display: table;
     width: 100%;
     height: 100%;
@@ -70,6 +72,8 @@ header h3, #main h1, #main p{
     background-size: cover;
     background-position: center;
 }
+
+/* Extra markup and styles for table-esque vertical and horizontal centering */
 .site-wrapper-inner {
   display: table-cell;
   vertical-align: top;
@@ -83,7 +87,6 @@ header h3, #main h1, #main p{
 .inner {
   padding: 2rem;
 }
-
 
 /*
  * Header
@@ -104,7 +107,7 @@ header h3, #main h1, #main p{
 .nav-masthead .nav-link {
   padding: .25rem 0;
   font-weight: 700;
-  color: #FFF;
+  color: #333;
   background-color: transparent;
   border-bottom: .25rem solid transparent;
 }
@@ -119,7 +122,7 @@ header h3, #main h1, #main p{
 }
 
 .nav-masthead .active {
-  color: #FFF;
+  color: #333;
   border-bottom-color: #f39c12;
 }
 
