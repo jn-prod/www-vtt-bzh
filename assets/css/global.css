@@ -164,3 +164,34 @@ header h3, #main h1, #main p{
   }
 }
 
+/*
+ * Spacer
+ */
+
+.spacer-xs-top{
+  margin-top: 5px;
+}
+.spacer-sm-top{
+  margin-top: 10px;
+}
+.spacer-md-top{
+  margin-top: 15px;
+}
+.spacer-lg-top{
+  margin-top: 20px;
+}
+
+.spacer-xs-bottom{
+  margin-bottom: 5px;
+}
+.spacer-sm-bottom{
+  margin-bottom: 10px;
+}
+.spacer-md-bottom{
+  margin-bottom: 15px;
+}
+.spacer-lg-bottom{
+  margin-bottom: 20px;
+}
+
+
