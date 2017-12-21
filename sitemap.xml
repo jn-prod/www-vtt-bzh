@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
+
+<url>
+  <loc>http://www.vtt.bzh/</loc>
+  <lastmod>2017-12-21T07:34:15+00:00</lastmod>
+  <priority>1.00</priority>
+</url>
+<url>
+  <loc>http://www.vtt.bzh/le-code-vtt-bzh.html</loc>
+  <lastmod>2017-12-21T07:34:15+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>http://www.vtt.bzh/qui-sommes-nous.html</loc>
+  <lastmod>2017-12-21T07:34:15+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>http://www.vtt.bzh/avis-utilisateurs.html</loc>
+  <lastmod>2017-12-21T07:34:15+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>http://www.vtt.bzh/contact.html</loc>
+  <lastmod>2017-12-21T07:34:15+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>http://www.vtt.bzh/mentions-legales.html</loc>
+  <lastmod>2017-12-21T07:34:15+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>http://www.vtt.bzh/espace-annonceurs.html</loc>
+  <lastmod>2017-12-21T07:34:15+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>http://www.vtt.bzh/index.html</loc>
+  <lastmod>2017-12-21T07:34:15+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+</urlset>
