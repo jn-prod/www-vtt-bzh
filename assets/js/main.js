@@ -44,11 +44,11 @@ $(function(){
 	------*/
 
 	/*Event init*/
-	$.getJSON( "https://jn-prod.github.io/node_scrapper/exports_files/vtt_details.json", ( data ) => {
+	$.getJSON( "https://jn-prod.github.io/node_scrapper/exports_files/details/vtt_details.json", ( data ) => {
 		$('#waiting').remove()
 		console.log(data[0])
 		$.each( data, ( key, val ) => {
-			$(eventConstructor(val.date, val.horaire, val.lieu, val.nomRando, val.departement, val.contact, val.description, val.lieuRdv, val.organisateur, val.prixClub, val.prixPublic)).appendTo("#calendar-ajax")
+			$(eventConstructor(val.date, val.horaire, val.lieu, val.eventName, val.departement, val.contact, val.description, val.lieuRdv, val.organisateur, val.prixClub, val.prixPublic)).appendTo("#calendar-ajax")
 		});
 	});
 
