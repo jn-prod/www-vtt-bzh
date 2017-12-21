@@ -157,6 +157,7 @@ button, .event{
   height: auto;
   width : 100%;
   padding: 5px 0 10px 0 !important;
+  text-align: center;
 }
 #newsletter p {
     margin: 15px 0 0 0;
