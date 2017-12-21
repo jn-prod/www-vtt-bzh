@@ -82,6 +82,10 @@ ul{
   padding: 0 0 0 0 !important;
 }
 
+button, .event{
+  cursor: pointer;
+}
+
 #main h1, #main p{
   color: #FFF;
 }
