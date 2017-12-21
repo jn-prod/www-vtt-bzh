@@ -12,7 +12,7 @@ $(function(){
               '<span class="d-block"><i class="fa fa-map-marker-alt" aria-hidden="true"></i> ' + lieu + '</span>'+
             '</div>'+
             '<div class="col-sm-7">'+
-              '<p class="text-primary spacer-sm-top text-uppercase">' + departement + ' - ' + nomRando + '</p>'+
+              '<p class="event-name text-primary spacer-sm-top text-uppercase">' + departement + ' - ' + nomRando + '</p>'+
             '</div>'+
             '<div class="col-sm-1 read-more">'+
               '<i class="fas fa-chevron-circle-right"></i>'+
@@ -56,10 +56,13 @@ $(function(){
 		var selector = $(this.children[0].children[0].children[3].children[0])
 		var readMore = $(this.children[0].children[1])
 		var event = $(this)
+    var eventName = $($(this).find('.event-name'))
 
 		selector.toggleClass('fa-chevron-circle-right')
 		selector.toggleClass('fa-chevron-circle-down')
 		readMore.toggleClass('hidde')
 		event.toggleClass('bg-light')
+    eventName.toggleClass('text-primary-active')
+    eventName.toggleClass('text-primary')
 	})
 })

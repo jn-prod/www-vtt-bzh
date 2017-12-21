@@ -1,5 +1,9 @@
 /*
- * COULEURS => https://flatuicolors.com
+ * COULEURS PALETTE (https://flatuicolors.com)
+ * #f39c12 => Orange primary
+ * #27ae60 => Green secondary
+ * #ecf0f1 => Grey light
+ * #333    => Grey Dark
  */
 
 @import url("font-awesome.min.css");
@@ -134,6 +138,14 @@ ul{
   border-bottom-color: #f39c12;
 }
 
+.event:hover{
+  background: #ecf0f1;
+}
+
+.read-more{
+  padding: 15px 0 0 0;
+}
+
 @media (min-width: 48em) {
   .masthead-brand {
     float: left;
@@ -240,6 +252,12 @@ ul{
 
 .text-primary{
   color: #f39c12 !important;
+  border-bottom: transparent .25rem solid;
+}
+
+.text-primary:hover, .text-primary-active{
+  color: #27ae60 !important;
+  border-bottom: #27ae60 .25rem solid;
 }
 
 .text-bold{
