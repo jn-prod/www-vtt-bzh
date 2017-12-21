@@ -146,6 +146,17 @@ ul{
   padding: 15px 0 0 0;
 }
 
+#newsletter {
+  position: fixed;
+  bottom: 0;
+  background: #27ae60;
+  height: auto;
+  padding: 5px 0 10px 0 !important;
+}
+#newsletter p {
+    margin: 15px 0 0 0;
+}
+
 @media (min-width: 48em) {
   .masthead-brand {
     float: left;
@@ -262,4 +273,16 @@ ul{
 
 .text-bold{
   font-weight: bold;
+}
+
+@media (max-width: 576px) {
+  #newsletter{
+    padding: 10px 0 10px 0 !important;
+  }
+  #newsletter p{
+    margin: 5px;
+  }
+  .text-xs-center{
+    text-align: center !important;
+  }
 }
