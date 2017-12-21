@@ -164,7 +164,8 @@ form{
   text-align: center;
 }
 #newsletter p {
-    margin: 15px 0 0 0;
+  margin: 15px 0 0 0;
+  padding: 0 0 15px 0;
 }
 
 @media (min-width: 48em) {
