@@ -6,7 +6,7 @@
  * #333    => Grey Dark
  */
 
-@import url('https://fonts.googleapis.com/css?family=Roboto+Condensed');
+@import url("font-awesome.min.css");
 
 /*
  * Globals
@@ -52,12 +52,11 @@ body {
 }
 
 h1, h2, h3, h4, h5{
-  font-family: 'Roboto Condensed', sans-serif;
+  font-family: "font-awesome", sans-serif;
 }
 
 header h3{
   color: #FFF;
-  font-weight: bold;
 }
 
 h3 img{
@@ -83,7 +82,7 @@ ul{
   padding: 0 0 0 0 !important;
 }
 
-button, .event, #close{
+button, .event{
   cursor: pointer;
 }
 
@@ -151,24 +150,19 @@ button, .event, #close{
   padding: 15px 0 0 0;
 }
 
-form{
-  text-align: center;
-}
 #newsletter {
   position: fixed;
   bottom: 0;
   background: #27ae60;
   height: auto;
   width : 100%;
-  padding: 0px 0 10px 0 !important;
+  padding: 5px 0 10px 0 !important;
   text-align: center;
 }
 
-#close{
-  margin: 0 0 0 10px;
+form{
+  text-align: center;
 }
-
-
 #newsletter p {
   margin: 15px 0 0 0;
   padding: 0 0 15px 0;

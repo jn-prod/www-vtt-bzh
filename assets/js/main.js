@@ -65,8 +65,4 @@ $(function(){
     eventName.toggleClass('text-primary-active')
     eventName.toggleClass('text-primary')
 	})
-
-  $('#close').on('click', ()=>{
-    $('#newsletter').remove()
-  })
 })
