@@ -2,7 +2,7 @@ $(function(){
 
   var dateNow = new Date(Date.now())
 
-	function eventConstructor (date, horaire, lieu, nomRando, departement, contact, description, lieuRdv, organisateur, prixClub, prixPublic){
+	var eventConstructor = (date, horaire, lieu, nomRando, departement, contact, description, lieuRdv, organisateur, prixClub, prixPublic) => {
 	  var event = 
 	  '<div class="row event">'+
 	    '<div class="col-sm-12">'+
@@ -40,6 +40,20 @@ $(function(){
 
       return event
 	}
+
+  var avisConstructor = (date, rate, comment, author, short)=>{
+    var avisDetails = 
+      '<div class="row">' +
+        '<div class="col-12 bg-light spacer-sm-top">' +
+          '<div class="spacer-md-top"></div>' +
+          '<p>' + rate + ' - ' + short + '</p>'+
+          '<p>' + ' ' + date + ' ' + author + '</p>'+
+          '<p>' + comment + '</p>'+
+        '</div>' +
+      '</div>'
+
+    return avisDetails
+  }
 
 	/*------
 	CALDENDAR
@@ -87,4 +101,28 @@ $(function(){
   $('#close').on('click', ()=>{
     $('#newsletter').remove()
   })
+
+  /*------
+  AVIS
+  ------*/
+  if($('#avis') !== undefined) {
+    $.getJSON( "https://sheets.googleapis.com/v4/spreadsheets/1AMjV9P5haoZ5P3_Y9LtKSz4UxxBBejVVstBQCP-gymY/values/avis_old?key=AIzaSyCvAxjcQyPFS839MQpYLbZcykzQzeoogPA", ( data ) => {
+      
+      //console.log(data.values)
+
+      $.each( data.values, ( key, val ) => {
+        if(key !== 0){
+          var avis =  {
+            date : val[0],
+            rate : val[1],
+            comment : val[2],
+            author : val[3],
+            short : val[4]
+          }
+
+          $(avisConstructor(avis.date,avis.rate,avis.comment,avis.author,avis.short)).appendTo("#avis") 
+        }      
+      })
+    })
+  }
 })
