@@ -60,7 +60,7 @@ $(function(){
 	------*/
 
   /*Event init*/
-  if($('#calendar') !== undefined) {
+  if($('#calendar').length !== 0) {
     $.getJSON( "https://jn-prod.github.io/node_scrapper/exports_files/details/vtt_details.json", ( data ) => {
 
       //console.log(data[0])
@@ -105,7 +105,7 @@ $(function(){
   /*------
   AVIS
   ------*/
-  if($('#avis') !== undefined) {
+  if($('#avis').length !== 0) {
     $.getJSON( "https://sheets.googleapis.com/v4/spreadsheets/1AMjV9P5haoZ5P3_Y9LtKSz4UxxBBejVVstBQCP-gymY/values/avis_old?key=AIzaSyCvAxjcQyPFS839MQpYLbZcykzQzeoogPA", ( data ) => {
       
       //console.log(data.values)
