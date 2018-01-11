@@ -95,12 +95,7 @@ $(function(){
     })  
   }
 
-  /*------
-  NEWSLETTER
-  ------*/
-  $('#close').on('click', ()=>{
-    $('#newsletter').remove()
-  })
+
 
   /*------
   AVIS
@@ -125,4 +120,13 @@ $(function(){
       })
     })
   }
+
+  /*------
+  NEWSLETTER
+  ------*/
+
+  $('#close').on('click', ()=>{
+    $('#newsletter').remove()
+  })
+
 })
