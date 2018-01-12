@@ -16,6 +16,9 @@ page '/*.xml', layout: false
 page '/*.json', layout: false
 page '/*.txt', layout: false
 
+#Custom layout
+page "/premium.html", :layout => "landing"
+
 set :build_dir, 'docs'
 
 # With alternative layout

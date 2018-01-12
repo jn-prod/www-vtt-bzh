@@ -293,6 +293,11 @@ form{
   font-weight: bold;
 }
 
+.btn-primary{
+  background-color: #f39c12 !important;
+  border: #f39c12 .25rem solid !important;
+}
+
 @media (max-width: 576px) {
   #newsletter{
     padding: 10px 0 10px 0 !important;
