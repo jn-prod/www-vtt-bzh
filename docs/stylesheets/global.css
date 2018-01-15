@@ -152,6 +152,21 @@ button, .event, #close{
   padding: 15px 0 0 0;
 }
 
+.legend{
+  font-size: 0.9rem;
+  font-weight: 200;
+  color: #333;
+}
+
+.disabled{
+  color: #c1c3c6 !important;
+}
+
+.price-tab{
+  -webkit-box-shadow: 0 0 8px rgba(0, 0, 0, .2);
+          box-shadow: 0 0 8px rgba(0, 0, 0, .2);
+}
+
 form{
   text-align: center;
 }
@@ -278,6 +293,13 @@ form{
 .bg-light{
   background: #ecf0f1;
 }
+.color-primary{
+  color: #f39c12 !important;
+}
+
+.color-secondary {
+  color: #27ae60 !important;
+}
 
 .text-primary{
   color: #f39c12 !important;
@@ -296,6 +318,26 @@ form{
 .btn-primary{
   background-color: #f39c12 !important;
   border: #f39c12 .25rem solid !important;
+}
+
+.btn-primary:hover{
+  background-color: #27ae60 !important;
+  border: #27ae60 .25rem solid !important;
+}
+
+.btn-outline-primary{
+  border: #f39c12 .25rem solid !important;
+  color: #f39c12;
+}
+
+.btn-outline-primary:hover{
+  border: #27ae60 .25rem solid !important;
+  color: #27ae60;
+  background-color: #FFF;
+}
+
+.bg-white {
+  background-color: #FFF !important;
 }
 
 @media (max-width: 576px) {
