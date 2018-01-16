@@ -54,7 +54,14 @@ $(function(){
 
     return avisDetails
   }
+  /*------
+  NEWSLETTER
+  ------*/
 
+  $('#close').on('click', ()=>{
+    $('#newsletter').remove()
+  })
+  
 	/*------
 	CALDENDAR
 	------*/
@@ -120,13 +127,4 @@ $(function(){
       })
     })
   }
-
-  /*------
-  NEWSLETTER
-  ------*/
-
-  $('#close').on('click', ()=>{
-    $('#newsletter').remove()
-  })
-
 })
