@@ -68,23 +68,35 @@ $(function(){
 
   /*Event init*/
   if($('#calendar').length !== 0) {
-    $.getJSON( "https://jn-prod.github.io/node_scrapper/exports_files/details/vtt_details.json", ( data ) => {
+    var gap = 20,
+        nbProgrammeStart = 0,
+        nbProgrammeEnd = nbProgrammeStart + gap;
 
-      //console.log(data[0])
-      $.each( data, ( key, val ) => {
-        if(val.date.split('/')[2] !== undefined ){
-          var eventDateSplit = (val.date).split('/')
-          var eventDate = new Date(eventDateSplit[2], eventDateSplit[1] - 1, eventDateSplit[0])
+    var programme = (startNombre, endNombre)=>{
+      $.getJSON( "https://jn-prod.github.io/node_scrapper/exports_files/details/vtt_details.json", ( data ) => {
+        nbProgramme = data.length
 
-          /*Push only futur Date*/
-          if( eventDate > dateNow ){
-            $(eventConstructor(val.date, val.horaire, val.lieu, val.eventName, val.departement, val.contact, val.description, val.lieuRdv, val.organisateur, val.prixClub, val.prixPublic)).appendTo("#calendar-ajax")
-          }        
-        }
-      });
+        //console.log(data[0])
+        $.each( data, ( key, val ) => {
+          if(key >= startNombre && key <= endNombre) {
+            if(val.date.split('/')[2] !== undefined ){
+              console.log(key)
+              var eventDateSplit = (val.date).split('/')
+              var eventDate = new Date(eventDateSplit[2], eventDateSplit[1] - 1, eventDateSplit[0])
 
-      $('#waiting').remove()
-    });  
+              /*Push only futur Date*/
+              if( eventDate > dateNow ){
+                $(eventConstructor(val.date, val.horaire, val.lieu, val.eventName, val.departement, val.contact, val.description, val.lieuRdv, val.organisateur, val.prixClub, val.prixPublic)).appendTo("#calendar-ajax")
+              }        
+            }          
+          }
+        });
+
+        $('#waiting').remove()
+      });       
+    }
+ 
+    programme(nbProgrammeStart, nbProgrammeEnd)
 
     /*Event Details Trigger*/
     $(document).on('click', '.event', function (){
@@ -99,10 +111,18 @@ $(function(){
       event.toggleClass('bg-light')
       eventName.toggleClass('text-primary-active')
       eventName.toggleClass('text-primary')
-    })  
+    })
+
+        /*Event Details Trigger*/
+    $(document).on('click', '#load-more', function (){
+      nbProgrammeStart = nbProgrammeEnd + 1
+      nbProgrammeEnd = nbProgrammeEnd + gap 
+      programme(nbProgrammeStart, nbProgrammeEnd)
+      if(nbProgrammeEnd > nbProgramme){
+        $('#load-more').remove()
+      }
+    })
   }
-
-
 
   /*------
   AVIS
