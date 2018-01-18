@@ -20,14 +20,6 @@ a:hover {
 }
 
 /* Custom Bootstrap */
-.btn-secondary,
-.btn-secondary:hover,
-.btn-secondary:focus {
-  color: #333;
-  text-shadow: none; /* Prevent inheritance from `body` */
-  background-color: #fff;
-  border: .05rem solid #fff;
-}
 
 .nav{
   padding: 15px;
@@ -334,6 +326,32 @@ form{
   background-color: #FFF;
 }
 
+.btn-secondary{
+  background-color: #27ae60 !important;
+  border: #27ae60 .25rem solid !important;
+  color: #FFF;
+}
+
+.btn-secondary:hover{
+  background-color: #f39c12 !important;
+  border: #f39c12 .25rem solid !important;
+  color: #FFF;
+}
+
+.btn-default,
+.btn-default:focus {
+  color: #333;
+  text-shadow: none;
+  background-color: #fff;
+  border: .05rem solid #fff;
+}
+
+.btn-default:hover{
+  color: #333;
+  text-shadow: none;
+  background-color: #f39c12;
+  border: .05rem solid #f39c12;
+}
 .bg-white {
   background-color: #FFF !important;
 }

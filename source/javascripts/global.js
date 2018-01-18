@@ -72,15 +72,25 @@ $(function(){
         nbProgrammeStart = 0,
         nbProgrammeEnd = nbProgrammeStart + gap;
 
+      var cta =
+        '<div class="row bg-light premium">'+
+          '<div class="col-12 text-center">'+
+            '<p class="text-bold spacer-lg-top">Passez à VTT.bzh PREMIUM maintenant et recevez le programme de rando chaque semaine par email</p>'+
+            '<a href="/premium.html" class="btn btn-secondary text-uppercase text-bold spacer-lg-bottom">Abonnez-vous à VTT.bzh Premium</a>'+
+          '</div>'
+        '</div>'
+
     var programme = (startNombre, endNombre)=>{
       $.getJSON( "https://jn-prod.github.io/node_scrapper/exports_files/details/vtt_details.json", ( data ) => {
         nbProgramme = data.length
+
+        $('.premium').remove()
 
         //console.log(data[0])
         $.each( data, ( key, val ) => {
           if(key >= startNombre && key <= endNombre) {
             if(val.date.split('/')[2] !== undefined ){
-              console.log(key)
+              //console.log(key)
               var eventDateSplit = (val.date).split('/')
               var eventDate = new Date(eventDateSplit[2], eventDateSplit[1] - 1, eventDateSplit[0])
 
@@ -91,6 +101,13 @@ $(function(){
             }          
           }
         });
+
+        $('.event').each((i)=>{
+          if ((i % 20) == 0) {
+            console.log($('.event')[i])
+            $(cta).insertBefore($('.event')[i])
+          }          
+        }) 
 
         $('#waiting').remove()
       });       
@@ -113,7 +130,7 @@ $(function(){
       eventName.toggleClass('text-primary')
     })
 
-        /*Event Details Trigger*/
+    /*Event Details load-more*/
     $(document).on('click', '#load-more', function (){
       nbProgrammeStart = nbProgrammeEnd + 1
       nbProgrammeEnd = nbProgrammeEnd + gap 
