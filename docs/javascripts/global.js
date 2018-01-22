@@ -70,7 +70,7 @@ $(function(){
   if($('#calendar').length !== 0) {
     var gap = 20,
         nbProgrammeStart = 0,
-        nbProgrammeEnd = nbProgrammeStart + gap,
+        nbProgrammeEnd = nbProgrammeStart + gap + nbProgrammeStart,
         nbProgramme;
 
       var cta =
@@ -91,6 +91,7 @@ $(function(){
 
         //console.log(data[0])
         $.each( data, ( key, val ) => {
+	  nbProgrammeStart
           if(key >= startNombre && key <= endNombre) {
             if(val.date.split('/')[2] !== undefined ){
               //console.log(key)
@@ -102,11 +103,9 @@ $(function(){
                 $(eventConstructor(val.date, val.horaire, val.lieu, val.eventName, val.departement, val.contact, val.description, val.lieuRdv, val.organisateur, val.prixClub, val.prixPublic)).appendTo("#calendar-ajax")
               } else {
               	nbProgrammeStart++
-              	console.log(nbProgrammeStart)
               }         
             } else {
               	nbProgrammeStart++
-              	console.log(nbProgrammeStart)
             }          
           }
         });
