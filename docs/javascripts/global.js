@@ -81,7 +81,7 @@ $(function(){
           '</div>'
         '</div>'
 
-    var programme = (startNombre, endNombre)=>{
+    var programme = ()=>{
       $.getJSON( "https://jn-prod.github.io/node_scrapper/exports_files/details/vtt_details.json", ( data ) => {
         nbProgramme = data.length
 
@@ -105,14 +105,16 @@ $(function(){
               	nbProgrammeStart++
               }         
             } else {
-              	nbProgrammeStart++
+              nbProgrammeStart++
             }          
           }
+	console.log(nbProgrammeStart)
+	console.log(nbProgrammeEnd)
         });
 
         $('.event').each((i)=>{
           if ((i % 20) == 0) {
-            console.log($('.event')[i])
+            //console.log($('.event')[i])
             $(cta).insertBefore($('.event')[i])
           }          
         }) 
@@ -121,7 +123,7 @@ $(function(){
       })     
     }
  
-    programme(nbProgrammeStart, nbProgrammeEnd)
+    programme()
 
     /*Event Details Trigger*/
     $(document).on('click', '.event', function (){
@@ -143,7 +145,7 @@ $(function(){
       nbProgrammeStart = nbProgrammeEnd + 1
       nbProgrammeEnd = nbProgrammeEnd + gap
 
-      programme(nbProgrammeStart, nbProgrammeEnd)
+      programme()
 
       if(nbProgrammeEnd > nbProgramme){
         $('#load-more').remove()
