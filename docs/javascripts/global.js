@@ -100,7 +100,13 @@ $(function(){
               /*Push only futur Date*/
               if( eventDate > dateNow ){
                 $(eventConstructor(val.date, val.horaire, val.lieu, val.eventName, val.departement, val.contact, val.description, val.lieuRdv, val.organisateur, val.prixClub, val.prixPublic)).appendTo("#calendar-ajax")
-              }        
+              } else {
+              	nbProgrammeStart++
+              	console.log(nbProgrammeStart)
+              }         
+            } else {
+              	nbProgrammeStart++
+              	console.log(nbProgrammeStart)
             }          
           }
         });
