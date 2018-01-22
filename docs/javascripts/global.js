@@ -110,8 +110,6 @@ $(function(){
 	      nbProgrammeEnd++
             }          
           }
-	console.log(nbProgrammeStart)
-	console.log(nbProgrammeEnd)
         });
 
         $('.event').each((i)=>{
