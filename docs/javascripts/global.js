@@ -70,7 +70,7 @@ $(function(){
   if($('#calendar').length !== 0) {
     var gap = 20,
         nbProgrammeStart = 0,
-        nbProgrammeEnd = nbProgrammeStart + gap + nbProgrammeStart,
+        nbProgrammeEnd = nbProgrammeStart + gap,
         nbProgramme;
 
       var cta =
@@ -103,9 +103,11 @@ $(function(){
               	console.log(key)
 	      } else {
               	nbProgrammeStart++
+		nbProgrammeEnd++
               }         
             } else {
               nbProgrammeStart++
+	      nbProgrammeEnd++
             }          
           }
 	console.log(nbProgrammeStart)
