@@ -91,7 +91,7 @@ $(function(){
 
         //console.log(data[0])
         $.each( data, ( key, val ) => {
-          if(key >= nbProgrammeStart && key <= nbProgrammeEnd) {
+          if(key >= nbProgrammeStart && key < nbProgrammeEnd) {
             if(val.date.split('/')[2] !== undefined ){
               //console.log(key)
               var eventDateSplit = (val.date).split('/')
@@ -100,14 +100,13 @@ $(function(){
               /*Push only futur Date*/
               if( eventDate > dateNow ){
                 $(eventConstructor(val.date, val.horaire, val.lieu, val.eventName, val.departement, val.contact, val.description, val.lieuRdv, val.organisateur, val.prixClub, val.prixPublic)).appendTo("#calendar-ajax")
-              	console.log(key)
-	      } else {
+              } else {
               	nbProgrammeStart++
-		nbProgrammeEnd++
+		            nbProgrammeEnd++
               }         
             } else {
               nbProgrammeStart++
-	      nbProgrammeEnd++
+              nbProgrammeEnd++
             }          
           }
         });
@@ -142,7 +141,7 @@ $(function(){
 
     /*Event Details load-more*/
     $(document).on('click', '#load-more', function (){
-      nbProgrammeStart = nbProgrammeEnd + 1
+      nbProgrammeStart = nbProgrammeEnd
       nbProgrammeEnd = nbProgrammeEnd + gap
 
       programme()
@@ -154,7 +153,6 @@ $(function(){
 
   }
 
-  
 
   /*------
   AVIS
