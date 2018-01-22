@@ -81,8 +81,12 @@ $(function(){
           '</div>'
         '</div>'
 
+<<<<<<< HEAD
     var programme = (startNombre, endNombre)=>{
 
+=======
+    var programme = ()=>{
+>>>>>>> e56fc6800003ebb5be903606497250da1cb83666
       $.getJSON( "https://jn-prod.github.io/node_scrapper/exports_files/details/vtt_details.json", ( data ) => {
         nbProgramme = data.length
 
@@ -92,7 +96,7 @@ $(function(){
 
         //console.log(data[0])
         $.each( data, ( key, val ) => {
-          if(key >= startNombre && key <= endNombre) {
+          if(key >= nbProgrammeStart && key <= nbProgrammeEnd) {
             if(val.date.split('/')[2] !== undefined ){
               //console.log(key)
               var eventDateSplit = (val.date).split('/')
@@ -101,7 +105,18 @@ $(function(){
               /*Push only futur Date*/
               if( eventDate > dateNow ){
                 $(eventConstructor(val.date, val.horaire, val.lieu, val.eventName, val.departement, val.contact, val.description, val.lieuRdv, val.organisateur, val.prixClub, val.prixPublic)).appendTo("#calendar-ajax")
+<<<<<<< HEAD
               }   
+=======
+              	console.log(key)
+	      } else {
+              	nbProgrammeStart++
+		nbProgrammeEnd++
+              }         
+            } else {
+              nbProgrammeStart++
+	      nbProgrammeEnd++
+>>>>>>> e56fc6800003ebb5be903606497250da1cb83666
             }          
           }
         });
@@ -117,7 +132,7 @@ $(function(){
       })     
     }
  
-    programme(nbProgrammeStart, nbProgrammeEnd)
+    programme()
 
     /*Event Details Trigger*/
     $(document).on('click', '.event', function (){
@@ -139,7 +154,7 @@ $(function(){
       nbProgrammeStart = nbProgrammeEnd + 1
       nbProgrammeEnd = nbProgrammeEnd + gap
 
-      programme(nbProgrammeStart, nbProgrammeEnd)
+      programme()
 
       if(nbProgrammeEnd > nbProgramme){
         $('#load-more').remove()
