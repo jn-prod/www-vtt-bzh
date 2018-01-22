@@ -82,6 +82,7 @@ $(function(){
         '</div>'
 
     var programme = (startNombre, endNombre)=>{
+
       $.getJSON( "https://jn-prod.github.io/node_scrapper/exports_files/details/vtt_details.json", ( data ) => {
         nbProgramme = data.length
 
@@ -100,14 +101,14 @@ $(function(){
               /*Push only futur Date*/
               if( eventDate > dateNow ){
                 $(eventConstructor(val.date, val.horaire, val.lieu, val.eventName, val.departement, val.contact, val.description, val.lieuRdv, val.organisateur, val.prixClub, val.prixPublic)).appendTo("#calendar-ajax")
-              }        
+              }   
             }          
           }
         });
 
         $('.event').each((i)=>{
           if ((i % 20) == 0) {
-            console.log($('.event')[i])
+            //console.log($('.event')[i])
             $(cta).insertBefore($('.event')[i])
           }          
         }) 
