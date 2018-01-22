@@ -70,7 +70,8 @@ $(function(){
   if($('#calendar').length !== 0) {
     var gap = 20,
         nbProgrammeStart = 0,
-        nbProgrammeEnd = nbProgrammeStart + gap;
+        nbProgrammeEnd = nbProgrammeStart + gap,
+        nbProgramme;
 
       var cta =
         '<div class="row bg-light premium">'+
@@ -83,6 +84,8 @@ $(function(){
     var programme = (startNombre, endNombre)=>{
       $.getJSON( "https://jn-prod.github.io/node_scrapper/exports_files/details/vtt_details.json", ( data ) => {
         nbProgramme = data.length
+
+        $('#nombre_rando').text(data.length + " randonnées")
 
         $('.premium').remove()
 
@@ -110,7 +113,7 @@ $(function(){
         }) 
 
         $('#waiting').remove()
-      });       
+      })     
     }
  
     programme(nbProgrammeStart, nbProgrammeEnd)
@@ -133,13 +136,18 @@ $(function(){
     /*Event Details load-more*/
     $(document).on('click', '#load-more', function (){
       nbProgrammeStart = nbProgrammeEnd + 1
-      nbProgrammeEnd = nbProgrammeEnd + gap 
+      nbProgrammeEnd = nbProgrammeEnd + gap
+
       programme(nbProgrammeStart, nbProgrammeEnd)
+
       if(nbProgrammeEnd > nbProgramme){
         $('#load-more').remove()
       }
     })
+
   }
+
+  
 
   /*------
   AVIS
