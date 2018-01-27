@@ -27,7 +27,7 @@ $(function(){
             '</div>'+
             '<div class="col-sm-4 spacer-sm-top">'+
               '<span class="d-block"><p> Horaires : ' + horaire + '</p></span>'+
-              '<span class="d-block"><p> Département : ' + lieuRdv + '</p></span>'+
+              '<span class="d-block"><p> Département : ' + departement + '</p></span>'+
               '<span class="d-block"><p> Lieu de rendez-vous : ' + lieuRdv + '</p></span>'+
               '<span class="d-block"><p> Organisateur : ' + organisateur + '</p></span>'+
               '<span class="d-block"><p> Contact : ' + contact + '</p></span>'+
@@ -102,7 +102,8 @@ $(function(){
                 if(val.eventName.toUpperCase() === 'LA RANDO POUR LE SOURIRE DE CLAIRE') {
                   console.log(val.eventName)
                   val.eventName = '! randonnée reportée !'
-                  val.description = 'La randonnée a été reportée par l\'organisateur voir <a href="#last_minute_header" class="text-bold text-danger">info dernière minute</a>'
+                  val.description = 'La randonnée a été reportée par l\'organisateur voir <a href="#last_minute_header" class="text-bold text-danger">info dernière minute</a> ou contactez l\'organisateur'
+                  val.horaire = ""
                 }
 
                 $(eventConstructor(val.date, val.horaire, val.lieu, val.eventName, val.departement, val.contact, val.description, val.lieuRdv, val.organisateur, val.prixClub, val.prixPublic)).appendTo("#calendar-ajax")
