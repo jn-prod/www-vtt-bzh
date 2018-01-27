@@ -99,6 +99,12 @@ $(function(){
 
               /*Push only futur Date*/
               if( eventDate > dateNow ){
+                if(val.eventName.toUpperCase() === 'LA RANDO POUR LE SOURIRE DE CLAIRE') {
+                  console.log(val.eventName)
+                  val.eventName = '! randonnée reportée !'
+                  val.description = 'La randonnée a été reportée par l\'organisateur voir <a href="#last_minute_header" class="text-bold text-danger">info dernière minute</a>'
+                }
+
                 $(eventConstructor(val.date, val.horaire, val.lieu, val.eventName, val.departement, val.contact, val.description, val.lieuRdv, val.organisateur, val.prixClub, val.prixPublic)).appendTo("#calendar-ajax")
               } else {
               	nbProgrammeStart++
@@ -119,7 +125,7 @@ $(function(){
         }) 
 
         $('#waiting').remove()
-      })     
+      }) 
     }
  
     programme()
