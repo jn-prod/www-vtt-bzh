@@ -99,13 +99,19 @@ $(function(){
 
               /*Push only futur Date*/
               if( eventDate > dateNow ){
-                if(val.eventName.toUpperCase() === 'LA RANDO POUR LE SOURIRE DE CLAIRE') {
+
+                //évènement annulé ou reporté
+                if((val.eventName.toUpperCase() === 'LA RANDO POUR LE SOURIRE DE CLAIRE') && ((eventDate - new Date(2018, 1 - 1, 28)) === 0)) {
                   console.log(val.eventName)
                   val.eventName = '! randonnée reportée !'
                   val.description = 'La randonnée a été reportée par l\'organisateur voir <a href="#last_minute_header" class="text-bold text-danger">info dernière minute</a> ou contactez l\'organisateur'
                   val.horaire = ""
+                  val.lieuRdv = ""
+                  val.prixClub = ""
+                  val.prixPublic = ""
                 }
 
+                //construction de l'évènement
                 $(eventConstructor(val.date, val.horaire, val.lieu, val.eventName, val.departement, val.contact, val.description, val.lieuRdv, val.organisateur, val.prixClub, val.prixPublic)).appendTo("#calendar-ajax")
               } else {
               	nbProgrammeStart++
