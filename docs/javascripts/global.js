@@ -82,7 +82,7 @@ $(function(){
         '</div>'
 
     var programme = ()=>{
-      $.getJSON( "https://jn-prod.github.io/node_scrapper/exports_files/details/vtt_details.json", ( data ) => {
+      $.getJSON( "https://res.cloudinary.com/db1cri6ll/raw/upload/exports_files/details/vtt_details.json", ( data ) => {
         nbProgramme = data.length
 
         $('#nombre_rando').text(data.length + " randonnées")
