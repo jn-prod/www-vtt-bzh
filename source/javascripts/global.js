@@ -92,15 +92,13 @@ $(function(){
         //console.log(data[0])
         $.each( data, ( key, val ) => {
           if(key >= nbProgrammeStart && key < nbProgrammeEnd) {
-            if(val.date !== undefined ){
-              //console.log(key)
-              //var eventDateSplit = (val.date).split('/')
-              //var eventDate = new Date(eventDateSplit[2], eventDateSplit[1] - 1, eventDateSplit[0])
+            if(val.date){
 
               /*Push only futur Date*/
               if( val.date > dateNow ){
 
                 //évènement annulé ou reporté
+                /*
                 if((val.event_name.toUpperCase() === 'LA RANDO POUR LE SOURIRE DE CLAIRE') && ((val.date - new Date(2018, 1 - 1, 28)) === 0)) {
                   console.log(val.event_name)
                   val.event_ame = '! randonnée reportée !'
@@ -110,6 +108,7 @@ $(function(){
                   val.prix_club = ""
                   val.prix_public = ""
                 }
+                */
 
                 var dateDisplay = val.date.getDate() + '/' + val.date.getMonth() + '/' + val.date.getFullYear();
                 //construction de l'évènement
