@@ -98,7 +98,8 @@ $(function(){
               /*Push only futur Date*/
               if( val.date > dateNow ){
 
-                var dateDisplay = val.date.getDate() + '/' + val.date.getMonth() + '/' + val.date.getFullYear();
+                var date = new Date(val.date)
+                var dateDisplay = date.getDate() + '/' + date.getMonth() + '/' + date.getFullYear();
                 console.log(dateDisplay)
                 //construction de l'évènement
                 $(eventConstructor(dateDisplay, val.horaire, val.ville, val.event_name, val.departement, val.contact, val.description, val.lieu_rdv, val.organisateur, val.prix_club, val.prix_public)).appendTo("#calendar-ajax")
