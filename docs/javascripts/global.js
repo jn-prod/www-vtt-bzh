@@ -94,10 +94,10 @@ $(function(){
           if(key >= nbProgrammeStart && key < nbProgrammeEnd) {
 
             if(val.date){
-              console.log(val.date)
 
               /*Push only futur Date*/
               if( val.date > dateNow ){
+                console.log(val.date)
 
                 //évènement annulé ou reporté
                 /*
