@@ -82,7 +82,7 @@ $(function(){
         '</div>'
 
     var programme = ()=>{
-      $.getJSON( "https://res.cloudinary.com/db1cri6ll/raw/upload/exports_files/details/vtt_details.json", ( data ) => {
+      $.getJSON( "https://api-vtt-bzh.herokuapp.com/api/vtt", ( data ) => {
         nbProgramme = data.length
 
         $('#nombre_rando').text(data.length + " randonnées")
@@ -101,18 +101,18 @@ $(function(){
               if( eventDate > dateNow ){
 
                 //évènement annulé ou reporté
-                if((val.eventName.toUpperCase() === 'LA RANDO POUR LE SOURIRE DE CLAIRE') && ((eventDate - new Date(2018, 1 - 1, 28)) === 0)) {
-                  console.log(val.eventName)
-                  val.eventName = '! randonnée reportée !'
+                if((val.event_name.toUpperCase() === 'LA RANDO POUR LE SOURIRE DE CLAIRE') && ((eventDate - new Date(2018, 1 - 1, 28)) === 0)) {
+                  console.log(val.event_name)
+                  val.event_ame = '! randonnée reportée !'
                   val.description = 'La randonnée a été reportée par l\'organisateur voir <a href="#last_minute_header" class="text-bold text-danger">info dernière minute</a> ou contactez l\'organisateur'
                   val.horaire = ""
-                  val.lieuRdv = ""
-                  val.prixClub = ""
-                  val.prixPublic = ""
+                  val.lieu_rdv = ""
+                  val.prix_club = ""
+                  val.prix_public = ""
                 }
 
                 //construction de l'évènement
-                $(eventConstructor(val.date, val.horaire, val.lieu, val.eventName, val.departement, val.contact, val.description, val.lieuRdv, val.organisateur, val.prixClub, val.prixPublic)).appendTo("#calendar-ajax")
+                $(eventConstructor(val.date, val.horaire, val.ville, val.event_name, val.departement, val.contact, val.description, val.lieu_rdv, val.organisateur, val.prix_club, val.prix_public)).appendTo("#calendar-ajax")
               } else {
               	nbProgrammeStart++
 		            nbProgrammeEnd++
