@@ -97,22 +97,9 @@ $(function(){
 
               /*Push only futur Date*/
               if( val.date > dateNow ){
-                console.log(val.date)
-
-                //évènement annulé ou reporté
-                /*
-                if((val.event_name.toUpperCase() === 'LA RANDO POUR LE SOURIRE DE CLAIRE') && ((val.date - new Date(2018, 1 - 1, 28)) === 0)) {
-                  console.log(val.event_name)
-                  val.event_ame = '! randonnée reportée !'
-                  val.description = 'La randonnée a été reportée par l\'organisateur voir <a href="#last_minute_header" class="text-bold text-danger">info dernière minute</a> ou contactez l\'organisateur'
-                  val.horaire = ""
-                  val.lieu_rdv = ""
-                  val.prix_club = ""
-                  val.prix_public = ""
-                }
-                */
 
                 var dateDisplay = val.date.getDate() + '/' + val.date.getMonth() + '/' + val.date.getFullYear();
+                console.log(dateDisplay)
                 //construction de l'évènement
                 $(eventConstructor(dateDisplay, val.horaire, val.ville, val.event_name, val.departement, val.contact, val.description, val.lieu_rdv, val.organisateur, val.prix_club, val.prix_public)).appendTo("#calendar-ajax")
               } else {
