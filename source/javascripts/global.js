@@ -92,8 +92,9 @@ $(function(){
         //console.log(data[0])
         $.each( data, ( key, val ) => {
           if(key >= nbProgrammeStart && key < nbProgrammeEnd) {
-            console.log(val)
+
             if(val.date){
+              console.log(val.date)
 
               /*Push only futur Date*/
               if( val.date > dateNow ){
