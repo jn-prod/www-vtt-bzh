@@ -95,7 +95,12 @@ $(function(){
 
             if(val.date){
               
+              
               var date = new Date(val.date)
+              console.log(date)
+              console.log(dateNow)
+              console.log(date > dateNow)
+
               /*Push only futur Date*/
               if( date > dateNow ){
 
