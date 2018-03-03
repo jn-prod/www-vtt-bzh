@@ -97,25 +97,25 @@ $(function(){
               
               
               var date = new Date(val.date)
-              console.log(date)
-              console.log(dateNow)
-              console.log(date > dateNow)
 
               /*Push only futur Date*/
               if( date > dateNow ){
 
-                var dateDisplay = date.getDate() + '/' + date.getMonth() + '/' + date.getFullYear();
+                var dateDisplay = date.getDate() + '/' + ( date.getMonth() + 1 ) + '/' + date.getFullYear();
                 console.log(dateDisplay)
                 //construction de l'évènement
                 $(eventConstructor(dateDisplay, val.horaire, val.ville, val.event_name, val.departement, val.contact, val.description, val.lieu_rdv, val.organisateur, val.prix_club, val.prix_public)).appendTo("#calendar-ajax")
+              
               } else {
               	nbProgrammeStart++
 		            nbProgrammeEnd++
-              }         
+              }  
+
             } else {
               nbProgrammeStart++
               nbProgrammeEnd++
-            }          
+            }
+                     
           }
         });
 
