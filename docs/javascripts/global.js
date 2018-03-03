@@ -94,11 +94,11 @@ $(function(){
           if(key >= nbProgrammeStart && key < nbProgrammeEnd) {
 
             if(val.date){
-
+              
+              var date = new Date(val.date)
               /*Push only futur Date*/
-              if( val.date > dateNow ){
+              if( date > dateNow ){
 
-                var date = new Date(val.date)
                 var dateDisplay = date.getDate() + '/' + date.getMonth() + '/' + date.getFullYear();
                 console.log(dateDisplay)
                 //construction de l'évènement
