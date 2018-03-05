@@ -82,7 +82,7 @@ $(function(){
         '</div>'
 
     var programme = ()=>{
-      $.getJSON( "https://api-vtt-bzh.herokuapp.com/api/vtt", ( data ) => {
+      $.getJSON( "https://api-vtt-bzh.herokuapp.com/calendar/api/vtt", ( data ) => {
         nbProgramme = data.length
 
         $('#nombre_rando').text(data.length + " randonnées")
