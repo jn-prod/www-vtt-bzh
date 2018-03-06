@@ -79,6 +79,10 @@ button, .event, #close{
   cursor: pointer;
 }
 
+li {
+  list-style: none;
+}
+
 #main h1, #main p{
   color: #FFF;
 }
@@ -272,6 +276,32 @@ form{
   margin-bottom: 20px;
 }
 
+.spacer-xs-left{
+  margin-left: 5px;
+}
+.spacer-sm-left{
+  margin-left: 10px;
+}
+.spacer-md-left{
+  margin-left: 15px;
+}
+.spacer-lg-left{
+  margin-left: 20px;
+}
+
+.spacer-xs-right{
+  margin-right: 5px;
+}
+.spacer-sm-right{
+  margin-right: 10px;
+}
+.spacer-md-right{
+  margin-right: 15px;
+}
+.spacer-lg-right{
+  margin-right: 20px;
+}
+
 .hidde{
   display: none;
 }
@@ -282,6 +312,9 @@ form{
 
 .bg-light{
   background: #ecf0f1;
+}
+.bg-orange{
+  background: #f39c12;
 }
 .color-primary{
   color: #f39c12 !important;
@@ -354,6 +387,14 @@ form{
 }
 .bg-white {
   background-color: #FFF !important;
+}
+
+.img-landing {
+  max-height: 220px;
+}
+
+#submit-new-event {
+  width: 100%;
 }
 
 @media (max-width: 576px) {
