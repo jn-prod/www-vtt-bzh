@@ -197,7 +197,7 @@ $(function(){
 	    });
 	    var formConfirmation = confirm('Souhaitez-vous valider ces informations ?')
 	    if(formConfirmation) {
-              retun
+              return
 	    }
 	    e.preventDefault()
 	  })
