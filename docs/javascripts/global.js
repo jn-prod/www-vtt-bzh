@@ -202,19 +202,16 @@ $(function(){
 			  event.stopPropagation();
 			} else {
 			  form.classList.add('was-validated');
-			  formValidation = true		
+			  formValidation = true
+			  var formConfirmation = confirm('Souhaitez-vous valider ces informations ?')
+			  if(formConfirmation === false || formValidation === false) {
+			    event.preventDefault()
+			    event.stopPropagation()
+			  }
 			}
 		      }, false);
 		    });
 		  }, false);
-		})();      
-
-		$("#submit-new-event").on('click', (e) => {
-		  var formConfirmation = confirm('Souhaitez-vous valider ces informations ?')
-		    if(formConfirmation === false || formValidation === false) {
-		      e.preventDefault()
-		      e.stopPropagation()
-		    }
-		})
+		})();
 	}
 })
