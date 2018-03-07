@@ -188,18 +188,19 @@ $(function(){
 
   /*Event init*/
 	if($('#organisateurs')) {
-          $($('form')[0]).on('submit',(e)=>{
+          $('#form-post-event').on('submit',(e)=>{
+		  /*
 	    var forms = document.querySelectorAll("[required]");
 	    forms.forEach((val)=>{
               if (val.checkValidity() === false) {
                 e.preventDefault()
               }
 	    });
+	    */
 	    var formConfirmation = confirm('Souhaitez-vous valider ces informations ?')
-	    if(formConfirmation) {
-              return
+	    if(formConfirmation === false) {
+              e.preventDefault()
 	    }
-	    e.preventDefault()
 	  })
 	}
 })
