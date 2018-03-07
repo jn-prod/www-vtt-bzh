@@ -206,29 +206,7 @@ $(function(){
     $("#submit-new-event").on('click', (e) => {
       var confirmation = confirm('Souhaitez-vous valider ces informations ?')
 
-      if( confirmation === true) {
-      var data = {
-                  event_name : $('#event_name').val(),
-                  date : new Date( $('#annee_debut').val(), $('#mois_debut').val() - 1 , $('#jour_debut').val()),
-                  year : $('#annee_debut').val(),
-                  lieu_rdv : $('#').val(),
-                  horaire : $('#heure_debut').val() + 'h' + $('#minutes_debut').val(),
-                  prix_public : $('#prix_public').val(),
-                  prix_club : $('#prix_club').val(),
-                  contact : $('#contact').val(),
-                  description : $('#description').val(),
-                  organisateur : $('#organisateur').val(),
-                  ville : $('#ville').val(),
-                  departement : $('#departement').val(),
-                  email : $('#email').val(),
-                  site : $('#site').val()
-      }
-
-      console.log(data)
-
-      postEvent(data)
-
-      } else {
+      if(!confirmation) {
         e.preventDefault()
       }
     })
