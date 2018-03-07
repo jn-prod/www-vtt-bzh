@@ -62,7 +62,7 @@ title: Espace organisateurs | VTT.bzh
       <div class="col-12 spacer-lg-top">
         <form class="text-left" action="https://api-vtt-bzh.herokuapp.com/calendar/ajax/new-event" method="POST">
           <div class="form-group row">
-            <label for="event_name" class="col-sm-2 col-form-label">Nom de l'épreuve</label>
+            <label for="event_name" class="col-sm-2 col-form-label">Nom de l'épreuve *</label>
             <div class="col-sm-10">
               <input type="text" class="form-control" id="event_name" name="event_name" required>
             </div>
@@ -79,7 +79,7 @@ title: Espace organisateurs | VTT.bzh
             </div>
           </div>
           <div class="form-group row">
-            <label for="date" class="col-sm-2 col-form-label">Date de début</label>
+            <label for="date" class="col-sm-2 col-form-label">Date de début *</label>
             <div class="col-sm-1">
               <select class="form-control" id="jour_debut" name="jour_debut">
                 <option value="1">1</option>
@@ -132,7 +132,7 @@ title: Espace organisateurs | VTT.bzh
               </select>
             </div>
             <div class="col-sm-2">
-              <select class="form-control" id="annee_debut" name="annee_debut">
+              <select class="form-control" id="annee_debut" name="annee_debut" required>
                 <option value="2018">2018</option>
                 <option value="2019">2019</option>
                 <option value="2020">2020</option>
@@ -311,9 +311,9 @@ title: Espace organisateurs | VTT.bzh
             </div>
           </div>
           <div class="form-group row">
-            <label for="ville" class="col-sm-2 col-form-label">Ville</label>
+            <label for="ville" class="col-sm-2 col-form-label">Ville *</label>
             <div class="col-sm-4">
-              <input type="text" class="form-control" id="ville" name="ville">
+              <input type="text" class="form-control" id="ville" name="ville" required>
             </div>
             <label for="departement" class="col-sm-2 col-form-label">Departement</label>
             <div class="col-sm-4">
@@ -332,9 +332,9 @@ title: Espace organisateurs | VTT.bzh
             </div>
           </div>
           <div class="form-group row">
-            <label for="organisateur" class="col-sm-2 col-form-label">Organisateur</label>
+            <label for="organisateur" class="col-sm-2 col-form-label">Organisateur *</label>
             <div class="col-sm-4">
-              <input type="text" class="form-control" id="organisateur" name="organisateur">
+              <input type="text" class="form-control" id="organisateur" name="organisateur" required>
             </div>
             <label for="contact" class="col-sm-2 col-form-label">Nom & Prénom du contact</label>
             <div class="col-sm-4">
@@ -342,9 +342,9 @@ title: Espace organisateurs | VTT.bzh
             </div>
           </div>
           <div class="form-group row">
-            <label for="email" class="col-sm-2 col-form-label">Email</label>
+            <label for="email" class="col-sm-2 col-form-label">Email *</label>
             <div class="col-sm-10">
-              <input type="email" class="form-control" id="email" name="email">
+              <input type="email" class="form-control" id="email" name="email" required>
             </div>
           </div>
           <div class="form-group row">
