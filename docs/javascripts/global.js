@@ -215,12 +215,13 @@ $(function(){
 		if (form.checkValidity() === false) {
 		  event.preventDefault();
 		  event.stopPropagation();
-		}
-		form.classList.add('was-validated');
-		var confirmation = confirm('Souhaitez-vous valider ces informations ?')
-		if(!confirmation) {
-		  e.preventDefault()
-		  e.stopPropagation()
+		} else {
+		  form.classList.add('was-validated');
+		  var confirmation = confirm('Souhaitez-vous valider ces informations ?')
+		  if(!confirmation) {
+		    e.preventDefault()
+		    e.stopPropagation()
+		  }		
 		}
 	      }, false);
 	    });
