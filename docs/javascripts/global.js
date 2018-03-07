@@ -217,16 +217,15 @@ $(function(){
 		  event.stopPropagation();
 		}
 		form.classList.add('was-validated');
+		var confirmation = confirm('Souhaitez-vous valider ces informations ?')
+		if(!confirmation) {
+		  e.preventDefault()
+		  e.stopPropagation()
+		}
 	      }, false);
 	    });
 	  }, false);
-	})();	    
-	    
-      var confirmation = confirm('Souhaitez-vous valider ces informations ?')
-
-      if(!confirmation) {
-        e.preventDefault()
-      }
+	})();
     })
   }
 })
