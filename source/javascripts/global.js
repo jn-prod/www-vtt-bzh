@@ -187,28 +187,20 @@ $(function(){
   }
 
   /*Event init*/
-  if($('#organisateurs').length !== 0) {
-    var postEvent = (data)=>{
-      $.ajax({
-        type: "POST",
-        url: "http://api-vtt-bzh.herokuapp.com/calendar/ajax/new-event",
-        data: data,
-        complete : function(resultat, statut){
-          if(statut === "success") {
-            console.log('OK')
-          } else {
-            console.error('KO')
-          }   
-        }
-      });    
-    }
-
-    $("#submit-new-event").on('click', (e) => {
-      var confirmation = confirm('Souhaitez-vous valider ces informations ?')
-
-      if(!confirmation) {
-        e.preventDefault()
-      }
-    })
-  }
+	if($('#organisateurs')) {
+          $('#form-post-event').on('submit',(e)=>{
+		  /*
+	    var forms = document.querySelectorAll("[required]");
+	    forms.forEach((val)=>{
+              if (val.checkValidity() === false) {
+                e.preventDefault()
+              }
+	    });
+	    */
+	    var formConfirmation = confirm('Souhaitez-vous valider ces informations ?')
+	    if(formConfirmation === false) {
+              e.preventDefault()
+	    }
+	  })
+	}
 })
