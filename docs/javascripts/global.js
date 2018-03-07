@@ -188,26 +188,19 @@ $(function(){
 
   /*Event init*/
 	if($('#organisateurs').length !== 0) {
-		(function() {
-		  'use strict';
-		  window.addEventListener('load', function() {
-		    // Fetch all the forms we want to apply custom Bootstrap validation styles to
-		    var forms = document.querySelectorAll("[required]");
-		    // Loop over them and prevent submission
-		    document.querySelector('form').addEventListener('submit', function(event) {
-		      forms.forEach((val)=>{
-		  	if (val.checkValidity() === false) {
-			  event.preventDefault();
-			  event.stopPropagation();
-			}
-		      })
-		      var formConfirmation = confirm('Souhaitez-vous valider ces informations ?')
-		      if(formConfirmation === false) {
-		        event.preventDefault()
-		        event.stopPropagation()
-		      }
-		    })
-		  }, false);
-		})();
+	    document.querySelector('form').addEventListener('submit', function(event) {
+	      var forms = document.querySelectorAll("[required]");
+	      forms.forEach((val)=>{
+		if (val.checkValidity() === false) {
+		  event.preventDefault();
+		  event.stopPropagation();
+		}
+	      });
+	      var formConfirmation = confirm('Souhaitez-vous valider ces informations ?')
+	      if(formConfirmation === false) {
+		event.preventDefault()
+		event.stopPropagation()
+	      }
+	    })
 	}
 })
