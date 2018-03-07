@@ -188,38 +188,46 @@ $(function(){
 
   /*Event init*/
   if($('#organisateurs').length !== 0) {
-    function putEvent(){
+    var postEvent = (data)=>{
       $.ajax({
-          url: "https://api-vtt-bzh.herokuapp.com/calendrier/",
-          type: 'POST',
-          data: {
-            event_name : $('#event_name').val(),
-            date : new Date( $('#annee_debut').val(), $('#mois_debut').val() - 1 , $('#jour_debut').val()),
-            lieu_rdv : $('#').val(),
-            horaire : $('#heure_debut').val() + 'h' + $('#minutes_debut').val(),
-            prix_public : $('#prix_public').val(),
-            prix_club : $('#prix_club').val(),
-            contact : $('#contact').val(),
-            description : $('#description').val(),
-            organisateur : $('#organisateur').val(),
-            ville : $('#ville').val(),
-            departement : $('#departement').val(),
-            email : $('#email').val(),
-            site : $('#site').val()
-          },
-          success: (res, statut) => {
-            console.log(res);
-          },
-          error : (res, statut, erreur) => {
-            console.error(res);
-         }
-      });
+        type: "POST",
+        url: "http://api-vtt-bzh.herokuapp.com/calendar/ajax/new-event",
+        data: data,
+        complete : function(resultat, statut){
+          if(statut === "success") {
+            console.log('OK')
+          } else {
+            console.error('KO')
+          }   
+        }
+      });    
     }
 
-    $('#submit-new-event').on('click',(e)=>{
-      var validation = confirm('Souhaitez-vous valider ces informations ?')
-      if( validation === true ){
-        putEvent()
+    $("#submit-new-event").on('click', (e) => {
+      var confirmation = confirm('Souhaitez-vous valider ces informations ?')
+
+      if( confirmation === true) {
+      var data = {
+                  event_name : $('#event_name').val(),
+                  date : new Date( $('#annee_debut').val(), $('#mois_debut').val() - 1 , $('#jour_debut').val()),
+                  year : $('#annee_debut').val(),
+                  lieu_rdv : $('#').val(),
+                  horaire : $('#heure_debut').val() + 'h' + $('#minutes_debut').val(),
+                  prix_public : $('#prix_public').val(),
+                  prix_club : $('#prix_club').val(),
+                  contact : $('#contact').val(),
+                  description : $('#description').val(),
+                  organisateur : $('#organisateur').val(),
+                  ville : $('#ville').val(),
+                  departement : $('#departement').val(),
+                  email : $('#email').val(),
+                  site : $('#site').val()
+      }
+
+      console.log(data)
+
+      postEvent(data)
+
       } else {
         e.preventDefault()
       }
