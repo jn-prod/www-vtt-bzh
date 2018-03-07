@@ -187,46 +187,34 @@ $(function(){
   }
 
   /*Event init*/
-  if($('#organisateurs').length !== 0) {
-    var postEvent = (data)=>{
-      $.ajax({
-        type: "POST",
-        url: "http://api-vtt-bzh.herokuapp.com/calendar/ajax/new-event",
-        data: data,
-        complete : function(resultat, statut){
-          if(statut === "success") {
-            console.log('OK')
-          } else {
-            console.error('KO')
-          }   
-        }
-      });    
-    }
+	if($('#organisateurs').length !== 0) {
+		var formValidation = false
+		(function() {
+		  'use strict';
+		  window.addEventListener('load', function() {
+		    // Fetch all the forms we want to apply custom Bootstrap validation styles to
+		    var forms = document.getElementsByClassName('needs-validation');
+		    // Loop over them and prevent submission
+		    var validation = Array.prototype.filter.call(forms, function(form) {
+		      form.addEventListener('submit', function(event) {
+			if (form.checkValidity() === false) {
+			  event.preventDefault();
+			  event.stopPropagation();
+			} else {
+			  form.classList.add('was-validated');
+			  formValidation = true		
+			}
+		      }, false);
+		    });
+		  }, false);
+		})();      
 
-    $("#submit-new-event").on('click', (e) => {
-	(function() {
-	  'use strict';
-	  window.addEventListener('load', function() {
-	    // Fetch all the forms we want to apply custom Bootstrap validation styles to
-	    var forms = document.getElementsByClassName('needs-validation');
-	    // Loop over them and prevent submission
-	    var validation = Array.prototype.filter.call(forms, function(form) {
-	      form.addEventListener('submit', function(event) {
-		if (form.checkValidity() === false) {
-		  event.preventDefault();
-		  event.stopPropagation();
-		} else {
-		  form.classList.add('was-validated');
-		  var confirmation = confirm('Souhaitez-vous valider ces informations ?')
-		  if(!confirmation) {
-		    e.preventDefault()
-		    e.stopPropagation()
-		  }		
-		}
-	      }, false);
-	    });
-	  }, false);
-	})();
-    })
-  }
+		$("#submit-new-event").on('click', (e) => {
+		  var formConfirmation = confirm('Souhaitez-vous valider ces informations ?')
+		    if(formConfirmation === false || formValidation === false) {
+		      e.preventDefault()
+		      e.stopPropagation()
+		    }
+		})
+	}
 })
