@@ -187,19 +187,19 @@ $(function(){
   }
 
   /*Event init*/
-	if($('#organisateurs').length !== 0) {
-	    document.querySelector('form').addEventListener('submit', function(event) {
+	if($('#organisateurs')) {
+	    $('form').on('submit',(e)=>{
 	      var forms = document.querySelectorAll("[required]");
 	      forms.forEach((val)=>{
 		if (val.checkValidity() === false) {
-		  event.preventDefault();
-		  event.stopPropagation();
+		  e.preventDefault();
+		  e.stopPropagation();
 		}
 	      });
 	      var formConfirmation = confirm('Souhaitez-vous valider ces informations ?')
-	      if(formConfirmation === false) {
-		event.preventDefault()
-		event.stopPropagation()
+	      if(!formConfirmation) {
+		e.preventDefault()
+		e.stopPropagation()
 	      }
 	    })
 	}
