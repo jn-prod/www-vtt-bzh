@@ -196,9 +196,10 @@ $(function(){
               }
 	    });
 	    var formConfirmation = confirm('Souhaitez-vous valider ces informations ?')
-	    if(formConfirmation === false) {
-              e.preventDefault()
+	    if(formConfirmation) {
+              retun
 	    }
+	    e.preventDefault()
 	  })
 	}
 })
