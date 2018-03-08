@@ -259,10 +259,10 @@ form{
   margin-top: 10px;
 }
 .spacer-md-top{
-  margin-top: 15px;
+  margin-top: 20px;
 }
 .spacer-lg-top{
-  margin-top: 20px;
+  margin-top: 40px;
 }
 
 .spacer-xs-bottom{
@@ -272,10 +272,10 @@ form{
   margin-bottom: 10px;
 }
 .spacer-md-bottom{
-  margin-bottom: 15px;
+  margin-bottom: 20px;
 }
 .spacer-lg-bottom{
-  margin-bottom: 20px;
+  margin-bottom: 40px;
 }
 
 .spacer-xs-left{
@@ -285,10 +285,10 @@ form{
   margin-left: 10px;
 }
 .spacer-md-left{
-  margin-left: 15px;
+  margin-left: 20px;
 }
 .spacer-lg-left{
-  margin-left: 20px;
+  margin-left: 40px;
 }
 
 .spacer-xs-right{
@@ -298,10 +298,10 @@ form{
   margin-right: 10px;
 }
 .spacer-md-right{
-  margin-right: 15px;
+  margin-right: 20px;
 }
 .spacer-lg-right{
-  margin-right: 20px;
+  margin-right: 40px;
 }
 
 .hidde{
