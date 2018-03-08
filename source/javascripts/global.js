@@ -81,8 +81,22 @@ $(function(){
           '</div>'
         '</div>'
 
-    var programme = ()=>{
-      $.getJSON( "https://api-vtt-bzh.herokuapp.com/calendar/api/vtt", ( data ) => {
+    // date init
+    var dateFilterStart = new Date(Date.now() )
+    var dateFilterEnd = new Date( Date.UTC( dateFilterStart.getFullYear() + 1, dateFilterStart.getMonth(), dateFilterStart.getDate() ) )
+
+    var startYear = dateFilterStart.getFullYear()
+    var startMonth = dateFilterStart.getMonth() + 1
+    var startDay = dateFilterStart.getDate()
+    var endYear = dateFilterEnd.getFullYear()
+    var endMonth = dateFilterEnd.getMonth() + 1
+    var endDay = dateFilterEnd.getDate()
+
+    //load json
+    var programme = ()=>{//startYear, startMonth, startDay, endYear, endMonth, endDay
+      //query test url: https://api-vtt-bzh.herokuapp.com/calendar/api/vtt?start_year=2018&start_month=5&start_day=1&end_year=2018&end_month=5&end_day=20
+      $.getJSON( "https://api-vtt-bzh.herokuapp.com/calendar/api/vtt?start_year=" + startYear + "&start_month=" + startMonth + "&start_day=" + startDay + "&end_year=" + endYear + "&end_month=" + endMonth + "&end_day=" + endDay, ( data ) => {
+        
         nbProgramme = data.length
 
         $('#nombre_rando').text(data.length + " randonnées")
@@ -93,23 +107,13 @@ $(function(){
         $.each( data, ( key, val ) => {
           if(key >= nbProgrammeStart && key < nbProgrammeEnd) {
 
-            if(val.date){
-              
-              
+            if(val.date){ 
+              //definition de la date à display
               var date = new Date(val.date)
-
-              /*Push only futur Date*/
-              if( date > dateNow ){
-
-                var dateDisplay = date.getDate() + '/' + ( date.getMonth() + 1 ) + '/' + date.getFullYear();
-                console.log(dateDisplay)
-                //construction de l'évènement
-                $(eventConstructor(dateDisplay, val.horaire, val.ville, val.event_name, val.departement, val.contact, val.description, val.lieu_rdv, val.organisateur, val.prix_club, val.prix_public)).appendTo("#calendar-ajax")
+              var dateDisplay = date.getDate() + '/' + ( date.getMonth() + 1 ) + '/' + date.getFullYear();
               
-              } else {
-              	nbProgrammeStart++
-		            nbProgrammeEnd++
-              }  
+              //construction de l'évènement
+              $(eventConstructor(dateDisplay, val.horaire, val.ville, val.event_name, val.departement, val.contact, val.description, val.lieu_rdv, val.organisateur, val.prix_club, val.prix_public)).appendTo("#calendar-ajax")
 
             } else {
               nbProgrammeStart++
@@ -127,10 +131,109 @@ $(function(){
         }) 
 
         $('#waiting').remove()
+
+        if(nbProgramme <= gap){
+          $('#load-more').addClass('hidde')
+        } else {
+          $('#load-more').removeClass('hidde')
+        }
       }) 
     }
- 
+
+    var searchInit = ()=>{
+      console.log(startYear)
+      $('#startYear-option').val(startYear)
+      $('#startMonth-option').val(startMonth)
+      $('#startDay-option').val(startDay)
+      $('#endYear-option').val(endYear)
+      $('#endMonth-option').val(endMonth)
+      $('#endDay-option').val(endDay)
+
+      var startMonthText, endMonthText
+
+      if( startMonth === 1 ) {
+        startMonthText = 'janvier'
+      } else if ( startMonth === 2) {
+        startMonthText = 'février'
+      } else if ( startMonth === 3) {
+        startMonthText = 'mars'
+      } else if ( startMonth === 4) {
+        startMonthText = 'avril'
+      } else if ( startMonth === 5) {
+        startMonthText = 'mais'
+      } else if ( startMonth === 6) {
+        startMonthText = 'juin'
+      } else if ( startMonth === 7) {
+        startMonthText = 'juillet'
+      } else if ( startMonth === 8) {
+        startMonthText = 'aout'
+      } else if ( startMonth === 9) {
+        startMonthText = 'septembre'
+      } else if ( startMonth === 10) {
+        startMonthText = 'octobre'
+      } else if ( startMonth === 11) {
+        startMonthText = 'novembre'
+      } else if ( startMonth === 12) {
+        startMonthText = 'décembre'
+      }
+
+      if( endMonth === 1 ) {
+        endMonthText = 'janvier'
+      } else if ( endMonth === 2) {
+        endMonthText = 'février'
+      } else if ( endMonth === 3) {
+        endMonthText = 'mars'
+      } else if ( endMonth === 4) {
+        endMonthText = 'avril'
+      } else if ( endMonth === 5) {
+        endMonthText = 'mais'
+      } else if ( endMonth === 6) {
+        endMonthText = 'juin'
+      } else if ( endMonth === 7) {
+        endMonthText = 'juillet'
+      } else if ( endMonth === 8) {
+        endMonthText = 'aout'
+      } else if ( endMonth === 9) {
+        endMonthText = 'septembre'
+      } else if ( endMonth === 10) {
+        endMonthText = 'octobre'
+      } else if ( endMonth === 11) {
+        endMonthText = 'novembre'
+      } else if ( endMonth === 12) {
+        endMonthText = 'décembre'
+      }
+
+      $('#startYear-option').text(startYear)
+      $('#startMonth-option').text(startMonthText)
+      $('#startDay-option').text(startDay)
+      $('#endYear-option').text(endYear)
+      $('#endMonth-option').text(endMonthText)
+      $('#endDay-option').text(endDay)
+
+
+    }
+
     programme()
+
+    searchInit()
+
+    $('#search-button').on('click', () => {
+
+      $('.event').remove()   
+
+      nbProgrammeStart = 0
+      nbProgrammeEnd = nbProgrammeStart + gap
+    
+      startYear = $('#startYear').val() * 1
+      startMonth = $('#startMonth').val() * 1
+      startDay = $('#startDay').val() * 1
+      endYear = $('#endYear').val() * 1
+      endMonth = $('#endMonth').val() * 1
+      endDay = $('#endDay').val() * 1
+
+      programme()
+
+    })
 
     /*Event Details Trigger*/
     $(document).on('click', '.event', function (){
@@ -149,13 +252,14 @@ $(function(){
 
     /*Event Details load-more*/
     $(document).on('click', '#load-more', function (){
+
       nbProgrammeStart = nbProgrammeEnd
       nbProgrammeEnd = nbProgrammeEnd + gap
 
       programme()
 
       if(nbProgrammeEnd > nbProgramme){
-        $('#load-more').remove()
+        $('#load-more').addClass('hidde')
       }
     })
 

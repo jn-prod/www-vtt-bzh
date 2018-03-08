@@ -112,23 +112,158 @@
     </div>
   </div>
   
-  <div class="row">
-    <div class="col-12">
-      <!-- Bannière 
-      <a href="http://track.effiliation.com/servlet/effi.click?id_compteur=21773694" target="_blank">
-        <img src="http://track.effiliation.com/servlet/effi.show?id_compteur=21773694" alt="pub" border="0" />
-      </a>     -->
-      <!-- Adsense 
-      <ins class="adsbygoogle"
-           style="display:block"
-           data-ad-client="ca-pub-3881759601129285"
-           data-ad-slot="7018855683"
-           data-ad-format="auto"></ins>
-      <script>
-      (adsbygoogle = window.adsbygoogle || []).push({});
-      </script>-->
+  <section id="search-bar" class="text-center border-top border-bottom spacer-md-bottom">
+    <div class="row bg-light">
+      <div class="col-12 spacer-sm-top spacer-sm-bottom">
+        <strong>Rechercher un événement</strong>
+      </div>
     </div>
-  </div>
+    <div class="row">
+      <div class="col-lg-5 mx-auto">
+        <div class="row">
+          <div class="col-12 spacer-xs-top">
+            <p class="text-center">A partir du * <i class="fas fa-angle-down"></i></p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-4">
+            <select class="custom-select my-1 mr-sm-2" id="startDay">
+              <option value="" selected id="startDay-option"></option>
+              <option value="01">1</option>
+              <option value="02">2</option>
+              <option value="03">3</option>
+              <option value="04">4</option>
+              <option value="05">5</option>
+              <option value="06">6</option>
+              <option value="07">7</option>
+              <option value="08">8</option>
+              <option value="09">9</option>
+              <option value="10">10</option>
+              <option value="11">11</option>
+              <option value="12">12</option>
+              <option value="13">13</option>
+              <option value="14">14</option>
+              <option value="15">15</option>
+              <option value="16">16</option>
+              <option value="17">17</option>
+              <option value="18">18</option>
+              <option value="19">19</option>
+              <option value="20">20</option>
+              <option value="21">21</option>
+              <option value="22">22</option>
+              <option value="23">23</option>
+              <option value="24">24</option>
+              <option value="25">25</option>
+              <option value="26">26</option>
+              <option value="27">27</option>
+              <option value="28">28</option>
+              <option value="29">29</option>
+              <option value="30">30</option>
+              <option value="31">31</option>
+            </select>
+          </div>
+          <div class="col-4">
+            <select class="custom-select my-1 mr-sm-2" id="startMonth">
+              <option value="" selected id="startMonth-option"></option>
+              <option value="01">Janvier</option>
+              <option value="02">Février</option>
+              <option value="03">Mars</option>
+              <option value="04">Avril</option>
+              <option value="05">Mai</option>
+              <option value="06">Juin</option>
+              <option value="07">Juillet</option>
+              <option value="08">Aout</option>
+              <option value="09">Septembre</option>
+              <option value="10">Octobre</option>
+              <option value="11">Novembre</option>
+              <option value="12">Décembre</option>
+            </select>
+          </div>
+          <div class="col-4">
+            <select class="custom-select my-1 mr-sm-2" id="startYear">
+              <option value="" selected id="startYear-option"></option>
+              <option value="2018">2018</option>
+              <option value="2019">2019</option>
+              <option value="2020">2020</option>
+            </select>
+          </div>
+        </div>  
+      </div>
+      <div class="col-lg-5 mx-auto">
+        <div class="row">
+          <div class="col-12 spacer-xs-top">
+            <p class="text-center">Jusqu'au * <i class="fas fa-angle-down"></i></p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-4">
+            <select class="custom-select my-1 mr-sm-2" id="endDay">
+              <option value="" selected id="endDay-option"></option>
+              <option value="01">1</option>
+              <option value="02">2</option>
+              <option value="03">3</option>
+              <option value="04">4</option>
+              <option value="05">5</option>
+              <option value="06">6</option>
+              <option value="07">7</option>
+              <option value="08">8</option>
+              <option value="09">9</option>
+              <option value="10">10</option>
+              <option value="11">11</option>
+              <option value="12">12</option>
+              <option value="13">13</option>
+              <option value="14">14</option>
+              <option value="15">15</option>
+              <option value="16">16</option>
+              <option value="17">17</option>
+              <option value="18">18</option>
+              <option value="19">19</option>
+              <option value="20">20</option>
+              <option value="21">21</option>
+              <option value="22">22</option>
+              <option value="23">23</option>
+              <option value="24">24</option>
+              <option value="25">25</option>
+              <option value="26">26</option>
+              <option value="27">27</option>
+              <option value="28">28</option>
+              <option value="29">29</option>
+              <option value="30">30</option>
+              <option value="31">31</option>
+            </select>
+          </div>
+          <div class="col-4">
+            <select class="custom-select my-1 mr-sm-2" id="endMonth">
+              <option value="" selected id="endMonth-option"></option>
+              <option value="01">Janvier</option>
+              <option value="02">Février</option>
+              <option value="03">Mars</option>
+              <option value="04">Avril</option>
+              <option value="05">Mai</option>
+              <option value="06">Juin</option>
+              <option value="07">Juillet</option>
+              <option value="08">Aout</option>
+              <option value="09">Septembre</option>
+              <option value="10">Octobre</option>
+              <option value="11">Novembre</option>
+              <option value="12">Décembre</option>
+            </select>
+          </div>
+          <div class="col-4">
+            <select class="custom-select my-1 mr-sm-2" id="endYear">
+              <option value="" selected id="endYear-option"></option>
+              <option value="2018">2018</option>
+              <option value="2019">2019</option>
+              <option value="2020">2020</option>
+            </select>
+          </div>
+        </div>    
+      </div>
+      <div class="col-lg-2 spacer-md-botton">
+        <button class="btn btn-primary spacer-lg-top" id="search-button"><i class="fas fa-search spacer-xs-right"></i>Rechercher</button>
+      </div>
+    </div>
+  </section>
   <div class="row bg-light">
     <div class="col-sm-12 spacer-md-top ">
       <div class="row text-bold">
@@ -146,11 +281,11 @@
       </div>
     </div>
   </div>
-  <div class="row bg-danger spacer-lg-top" id="last_minute_header">
+  <!--<div class="row bg-danger spacer-lg-top" id="last_minute_header">
     <div class="col-12">
       <p class="spacer-md-top spacer-md-bottom text-white text-bold">Dernière minute : <span id="last_minute">la rando de bonnemain du 28/01/2018 est reportée au 11/03/2018</span></p>
     </div>
-  </div>
+  </div>-->
   <div class="row">
     <div id="calendar-ajax" class="col-12 spacer-lg-top">
       <div id="waiting">
