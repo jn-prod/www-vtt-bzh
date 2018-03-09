@@ -132,11 +132,12 @@ $(function(){
 
         $('#waiting').remove()
 
-        if(nbProgramme <= gap){
+        if(nbProgrammeEnd >= nbProgramme){
           $('#load-more').addClass('hidde')
         } else {
           $('#load-more').removeClass('hidde')
         }
+
       }) 
     }
 
@@ -203,7 +204,7 @@ $(function(){
 
       programme()
 
-      if(nbProgrammeEnd > nbProgramme){
+      if(nbProgrammeEnd >= nbProgramme){
         $('#load-more').addClass('hidde')
       }
     })
