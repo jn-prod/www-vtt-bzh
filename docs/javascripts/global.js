@@ -140,82 +140,27 @@ $(function(){
       }) 
     }
 
-    var searchInit = ()=>{
-      console.log(startYear)
-      $('#startYear-option').val(startYear)
-      $('#startMonth-option').val(startMonth)
-      $('#startDay-option').val(startDay)
-      $('#endYear-option').val(endYear)
-      $('#endMonth-option').val(endMonth)
-      $('#endDay-option').val(endDay)
-
-      var startMonthText, endMonthText
-
-      if( startMonth === 1 ) {
-        startMonthText = 'janvier'
-      } else if ( startMonth === 2) {
-        startMonthText = 'février'
-      } else if ( startMonth === 3) {
-        startMonthText = 'mars'
-      } else if ( startMonth === 4) {
-        startMonthText = 'avril'
-      } else if ( startMonth === 5) {
-        startMonthText = 'mais'
-      } else if ( startMonth === 6) {
-        startMonthText = 'juin'
-      } else if ( startMonth === 7) {
-        startMonthText = 'juillet'
-      } else if ( startMonth === 8) {
-        startMonthText = 'aout'
-      } else if ( startMonth === 9) {
-        startMonthText = 'septembre'
-      } else if ( startMonth === 10) {
-        startMonthText = 'octobre'
-      } else if ( startMonth === 11) {
-        startMonthText = 'novembre'
-      } else if ( startMonth === 12) {
-        startMonthText = 'décembre'
-      }
-
-      if( endMonth === 1 ) {
-        endMonthText = 'janvier'
-      } else if ( endMonth === 2) {
-        endMonthText = 'février'
-      } else if ( endMonth === 3) {
-        endMonthText = 'mars'
-      } else if ( endMonth === 4) {
-        endMonthText = 'avril'
-      } else if ( endMonth === 5) {
-        endMonthText = 'mais'
-      } else if ( endMonth === 6) {
-        endMonthText = 'juin'
-      } else if ( endMonth === 7) {
-        endMonthText = 'juillet'
-      } else if ( endMonth === 8) {
-        endMonthText = 'aout'
-      } else if ( endMonth === 9) {
-        endMonthText = 'septembre'
-      } else if ( endMonth === 10) {
-        endMonthText = 'octobre'
-      } else if ( endMonth === 11) {
-        endMonthText = 'novembre'
-      } else if ( endMonth === 12) {
-        endMonthText = 'décembre'
-      }
-
-      $('#startYear-option').text(startYear)
-      $('#startMonth-option').text(startMonthText)
-      $('#startDay-option').text(startDay)
-      $('#endYear-option').text(endYear)
-      $('#endMonth-option').text(endMonthText)
-      $('#endDay-option').text(endDay)
-
-
+    var setSelectedIndex = (s, valsearch) =>{ 
+      // Loop through all the items in drop down list   
+      for (i = 0; i< s.options.length; i++) {    
+        if (s.options[i].value == valsearch) {    
+          s.options[i].selected = true;   
+          break
+        }   
+      }   
+      return         
     }
 
+    //load Json
     programme()
 
-    searchInit()
+    //Init search bar with this startdate & this enddate ( n+1 default )
+    setSelectedIndex( document.getElementById("startYear" ), startYear );
+    setSelectedIndex( document.getElementById("startMonth" ), startMonth ); 
+    setSelectedIndex( document.getElementById("startDay" ), startDay ); 
+    setSelectedIndex( document.getElementById("endYear" ), endYear ); 
+    setSelectedIndex( document.getElementById("endMonth" ), endMonth ); 
+    setSelectedIndex( document.getElementById("endDay" ), endDay ); 
 
     $('#search-button').on('click', () => {
 
