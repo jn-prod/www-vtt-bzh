@@ -91,11 +91,12 @@ $(function(){
     var endYear = dateFilterEnd.getFullYear()
     var endMonth = dateFilterEnd.getMonth() + 1
     var endDay = dateFilterEnd.getDate()
+    var dpt = ""
 
     //load json
     var programme = ()=>{//startYear, startMonth, startDay, endYear, endMonth, endDay
       //query test url: https://api-vtt-bzh.herokuapp.com/calendar/api/vtt?start_year=2018&start_month=5&start_day=1&end_year=2018&end_month=5&end_day=20
-      $.getJSON( "https://api-vtt-bzh.herokuapp.com/calendar/api/vtt?start_year=" + startYear + "&start_month=" + startMonth + "&start_day=" + startDay + "&end_year=" + endYear + "&end_month=" + endMonth + "&end_day=" + endDay + "&dpt=''", ( data ) => {
+      $.getJSON( "https://api-vtt-bzh.herokuapp.com/calendar/api/vtt?start_year=" + startYear + "&start_month=" + startMonth + "&start_day=" + startDay + "&end_year=" + endYear + "&end_month=" + endMonth + "&end_day=" + endDay + "&dpt=" + dpt , ( data ) => {
         
         nbProgramme = data.length
 
@@ -176,6 +177,12 @@ $(function(){
       endYear = $('#endYear').val() * 1
       endMonth = $('#endMonth').val() * 1
       endDay = $('#endDay').val() * 1
+
+      dpt = $('#dpt').val()
+
+      if( dpt === 0 ) {
+        dpt = ""
+      }
 
       programme()
 
