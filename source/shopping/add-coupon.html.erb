@@ -61,7 +61,7 @@ title: Ajouter une promotion | VTT.bzh
     </div>
     <div class="row">
       <div class="col-12 spacer-lg-top">
-        <form class="text-left" action="https://api-vtt-bzh.herokuapp.com/shopping/add-coupon" method="POST" id="form-post-promo">
+        <form class="text-left" action="https://api-vtt-bzh.herokuapp.com/shopping/add-promotion" method="POST" id="form-post-promo">
           <div class="row">
             <div class="col-12 spacer-sm-bottom spacer-sm-left">
               <strong>Promotions</strong>
@@ -76,7 +76,7 @@ title: Ajouter une promotion | VTT.bzh
           <div class="form-group row">
             <label for="description" class="col-sm-2 col-form-label">Conditions de la promotion</label>
             <div class="col-sm-10">
-              <textarea class="form-control" id="description" name="description" rows="3"></textarea>
+              <textarea class="form-control" id="description" name="promo_description" rows="3"></textarea>
             </div>
           </div>
           <div class="form-group row">
@@ -217,43 +217,43 @@ title: Ajouter une promotion | VTT.bzh
           <div class="form-group row">
             <label for="shop-name" class="col-sm-2 col-form-label">Nom du magasin *</label>
             <div class="col-sm-4">
-              <input type="text" class="form-control" id="shop-name" name="shop-name" required>
+              <input type="text" class="form-control" id="shop-name" name="shop_name" required>
             </div>
             <label for="shop-phone" class="col-sm-2 col-form-label">Téléphone</label>
             <div class="col-sm-4">
-              <input type="text" class="form-control" id="shop-phone" name="shop-phone">
+              <input type="text" class="form-control" id="shop-phone" name="shop_phone">
             </div>
           </div>
           <div class="form-group row">
             <label for="shop-email" class="col-sm-2 col-form-label">Email *</label>
             <div class="col-sm-4">
-              <input type="email" class="form-control" id="shop-email" name="shop-email" required>
+              <input type="email" class="form-control" id="shop-email" name="shop_email" required>
             </div>
             <label for="shop-logo-url" class="col-sm-2 col-form-label">Logo *</label>
             <div class="col-sm-4">
-              <input type="text" class="form-control" id="shop-logo-url" name="shop-logo-url" required>
+              <input type="text" class="form-control" id="shop-logo-url" name="shop_logo_url" required>
             </div>
           </div>
           <div class="form-group row">
             <label for="shop-site" class="col-sm-2 col-form-label">Site / Facebook</label>
             <div class="col-sm-10">
-              <input type="text" class="form-control" id="shop-site" name="sshop-ite">
+              <input type="text" class="form-control" id="shop-site" name="shop_site">
             </div>
           </div>          
           <div class="form-group row">
             <label for="shop-adresse" class="col-sm-2 col-form-label">Adresse</label>
             <div class="col-sm-10">
-              <input type="text" class="form-control" id="shop-adresse" name="shop-adresse">
+              <input type="text" class="form-control" id="shop-adresse" name="shop_adresse">
             </div>
           </div>
           <div class="form-group row">
             <label for="shop-ville" class="col-sm-2 col-form-label">Ville *</label>
             <div class="col-sm-4">
-              <input type="text" class="form-control" id="shop-ville" name="shop-ville" required>
+              <input type="text" class="form-control" id="shop-ville" name="shop_ville" required>
             </div>
             <label for="shop-departement" class="col-sm-2 col-form-label">Departement</label>
             <div class="col-sm-4">
-              <select class="form-control" id="shop-departement" name="shop-departement">
+              <select class="form-control" id="shop-departement" name="shop_departement">
                 <option value="22">22 - cote d'armor</option>
                 <option value="56">56 - morbihan</option>
                 <option value="29">29 - finistère</option>
