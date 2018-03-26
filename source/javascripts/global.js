@@ -218,6 +218,26 @@ $(function(){
 
   }
 
+  /*------
+  COUPONS
+  ------*/
+  if($('#all-coupons') !== 0){
+    var programme = ()=>{
+      $.getJSON( "https://api-vtt-bzh.herokuapp.com/shopping/get-promotions?dpt=", ( data ) => {
+
+        //console.log(data[0])
+        $.each( data, ( key, val ) => {
+          console.log(val)
+        });
+
+        $('#waiting').remove()
+
+      }) 
+    }
+
+    programme()
+
+  }
 
   /*------
   AVIS
@@ -246,7 +266,7 @@ $(function(){
   /*------
   EVENT ADD
   ------*/
-	if($('#organisateurs')) {
+	if($('#organisateurs') !== 0) {
     $('#form-post-event').on('submit',(e)=>{
 	    var formConfirmation = confirm('Souhaitez-vous valider ces informations ?')
 	    if(formConfirmation === false) {
@@ -258,7 +278,7 @@ $(function(){
   /*------
   CHATROOM
   ------*/
-  if($('chatroom')) {
+  if($('#chatroom').length !== 0) {
 
     $.get('/get_chatters', function(response) {
       $('.chat-info').text("There are currently " + response.length + " people in the chat room");
