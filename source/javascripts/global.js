@@ -54,6 +54,22 @@ $(function(){
 
     return avisDetails
   }
+
+  /*------
+  GLOBAL
+  ------*/  
+
+  if($('#calendar').length === 0){
+    $('#newsletter').remove()
+    $('#header-cta').remove() 
+  } else {
+    $('#newsletter').removeClass('hidde')
+  }
+
+  if($('#landing').length === 0 && $('#calendar').length === 0){
+    $('#header-wrapper').css('height', '120px').css('min-height', '120px')
+  }
+
   /*------
   NEWSLETTER
   ------*/
@@ -61,12 +77,6 @@ $(function(){
   $('#close').on('click', ()=>{
     $('#newsletter').remove()
   })
-	
-  if($('#calendar').length === 0){
-    $('#newsletter').remove()
-    $('#header-cta').remove()
-    $('#header-wrapper').css('height', '120px').css('min-height', '120px')
-  }
   
 	/*------
 	CALDENDAR
