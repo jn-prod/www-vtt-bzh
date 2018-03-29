@@ -64,6 +64,7 @@ $(function(){
 	
   if($('#calendar').length === 0){
     $('#newsletter').remove()
+    $('#header-cta').remove()
   }
   
 	/*------
