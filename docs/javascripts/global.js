@@ -65,6 +65,7 @@ $(function(){
   if($('#calendar').length === 0){
     $('#newsletter').remove()
     $('#header-cta').remove()
+    $('#header-wrapper').css('height', '120px').css('min-height', '120px')
   }
   
 	/*------
