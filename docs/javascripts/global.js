@@ -61,6 +61,10 @@ $(function(){
   $('#close').on('click', ()=>{
     $('#newsletter').remove()
   })
+	
+  if($('#calendar').length === 0){
+    $('#newsletter').remove()
+  }
   
 	/*------
 	CALDENDAR
@@ -227,7 +231,40 @@ $(function(){
 
         //console.log(data[0])
         $.each( data, ( key, val ) => {
-          console.log(val)
+            var date = new Date( Date.parse('2018-04-30T00:00:00.000Z') ).getDate() + '/' + (new Date( Date.parse('2018-04-30T00:00:00.000Z') ).getMonth() + 1 ) + '/' + new Date( Date.parse('2018-04-30T00:00:00.000Z') ).getFullYear()//val.promo_end_date
+
+            var promo = 
+            '<div class="row spacer-sm-top bg-light">' +
+              '<div class="col-2">' +
+                '<img src="' + val.shop_logo_url + '" alt="' + val.shop_name + '" class="img-fluid">' +
+              '</div>' +
+              '<div class="col-5">' +
+                '<div class="row">' +
+                  '<div class="col-12 spacer-sm-top spacer-sm-bottom">' +
+                    '<strong>' + val.promo_name + '</strong> <span class="badge badge-warning"> Expire le ' + date + '</span>' +
+                  '</div>' +
+                '</div>' +
+                '<div class="row">' +
+                  '<div class="col-12 text-justify">' +
+                    '<p>' + val.promo_description + '</p>'+
+                  '</div>' +
+                '</div>' +
+              '</div>' +
+              '<div class="col-5">' +
+                '<div class="row">' +
+                  '<div class="col-12 spacer-sm-top spacer-sm-bottom">' +
+                    '<strong>' + val.shop_name + '</strong>' +
+                    '<ul>' +
+                      '<li> adresse : ' + val.shop_adresse + ' ' + val.shop_departement + ' '+ val.shop_ville +'</li>' +
+                      '<li>email : ' + val.shop_email + ' | téléphone : ' + val.shop_phone +'</li>' +
+                      '<li> site web : ' + val.shop_site + '</li>' +
+                    '</ul>' +
+                  '</div>' +
+                '</div>' +
+              '</div>' +              
+            '</div>'
+
+          $('#all-coupons').append(promo)
         });
 
         $('#waiting').remove()
