@@ -2,8 +2,12 @@ $(function(){
 
   var dateNow = new Date(Date.now())
 
-	var eventConstructor = (date, horaire, lieu, nomRando, departement, contact, description, lieuRdv, organisateur, prixClub, prixPublic) => {
-	  var event = 
+	var eventConstructor = (date, horaire, lieu, nomRando, departement, contact, description, lieuRdv, organisateur, prixClub, prixPublic, cancel) => {
+	  var cancelDiv
+    if(cancel === true){
+      cancelDiv = ' <span class="badge badge-danger text-uppercase">annulée</span'
+    }
+    var event = 
 	  '<div class="row event">'+
 	    '<div class="col-sm-12">'+
 		  '<div class="row text-bold">'+
@@ -14,7 +18,7 @@ $(function(){
               '<span class="d-block"><i class="fa fa-map-marker-alt" aria-hidden="true"></i> ' + departement + ' - ' + lieu + '</span>'+
             '</div>'+
             '<div class="col-sm-7">'+
-              '<p class="event-name text-primary spacer-sm-top text-uppercase">' + nomRando + '</p>'+
+              '<p class="event-name text-primary spacer-sm-top text-uppercase">' + nomRando + cancelDiv + '</p>'+
             '</div>'+
             '<div class="col-sm-1 read-more">'+
               '<i class="fas fa-chevron-circle-right"></i>'+
@@ -130,7 +134,7 @@ $(function(){
               var dateDisplay = date.getDate() + '/' + ( date.getMonth() + 1 ) + '/' + date.getFullYear();
               
               //construction de l'évènement
-              $(eventConstructor(dateDisplay, val.horaire, val.ville, val.event_name, val.departement, val.contact, val.description, val.lieu_rdv, val.organisateur, val.prix_club, val.prix_public)).appendTo("#calendar-ajax")
+              $(eventConstructor(dateDisplay, val.horaire, val.ville, val.event_name, val.departement, val.contact, val.description, val.lieu_rdv, val.organisateur, val.prix_club, val.prix_public, val.cancel)).appendTo("#calendar-ajax")
 
             } else {
               nbProgrammeStart++
