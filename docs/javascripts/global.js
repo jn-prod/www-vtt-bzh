@@ -247,7 +247,7 @@ $(function(){
 
         //console.log(data[0])
         $.each( data, function( key, val ) {
-            var date = new Date( Date.parse('2018-04-30T00:00:00.000Z') ).getDate() + '/' + (new Date( Date.parse('2018-04-30T00:00:00.000Z') ).getMonth() + 1 ) + '/' + new Date( Date.parse('2018-04-30T00:00:00.000Z') ).getFullYear()//val.promo_end_date
+            var date = new Date( Date.parse(val) ).getDate() + '/' + (new Date( Date.parse(val) ).getMonth() + 1 ) + '/' + new Date( Date.parse(val) ).getFullYear()//val.promo_end_date
 
             var promo = 
             '<div class="row spacer-sm-top bg-light">' +
