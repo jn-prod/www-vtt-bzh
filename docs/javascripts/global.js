@@ -2,16 +2,15 @@ $(function(){
 
   var dateNow = new Date(Date.now())
 
-	var eventConstructor = (date, horaire, lieu, nomRando, departement, contact, description, lieuRdv, organisateur, prixClub, prixPublic, cancel) => {
-	  var cancelDiv
+  function eventConstructor (date, horaire, lieu, nomRando, departement, contact, description, lieuRdv, organisateur, prixClub, prixPublic, cancel) {
+    var cancelDiv
     if(cancel === true){
-      cancelDiv = ' <span class="badge badge-danger text-uppercase">annulée</span>'
-	console.log(cancelDiv)
+      cancelDiv = '<span class="badge badge-danger text-uppercase">annulée</span>'
     }
     var event = 
-	  '<div class="row event">'+
-	    '<div class="col-sm-12">'+
-		  '<div class="row text-bold">'+
+    '<div class="row event">'+
+      '<div class="col-sm-12">'+
+      '<div class="row text-bold">'+
             '<div class="col-sm-2 spacer-sm-top">'+
               '<span class="d-block"><i class="far fa-calendar" aria-hidden="true"></i> ' + date +'</span>'+
             '</div>'+
@@ -19,7 +18,7 @@ $(function(){
               '<span class="d-block"><i class="fa fa-map-marker-alt" aria-hidden="true"></i> ' + departement + ' - ' + lieu + '</span>'+
             '</div>'+
             '<div class="col-sm-7">'+
-              '<p class="event-name text-primary spacer-sm-top text-uppercase">' + nomRando + cancelDiv + '</p>'+
+              '<p class="event-name text-primary spacer-sm-top text-uppercase">' + nomRando + ' ' + cancelDiv + '</p>'+
             '</div>'+
             '<div class="col-sm-1 read-more">'+
               '<i class="fas fa-chevron-circle-right"></i>'+
@@ -44,9 +43,9 @@ $(function(){
       '</div>'
 
       return event
-	}
+  }
 
-  var avisConstructor = (date, rate, comment, author, short)=>{
+  function avisConstructor (date, rate, comment, author, short) {
     var avisDetails = 
       '<div class="row">' +
         '<div class="col-12 bg-light spacer-sm-top">' +
@@ -79,13 +78,13 @@ $(function(){
   NEWSLETTER
   ------*/
 
-  $('#close').on('click', ()=>{
+  $('#close').on('click', function() {
     $('#newsletter').remove()
   })
   
-	/*------
-	CALDENDAR
-	------*/
+  /*------
+  CALDENDAR
+  ------*/
 
   /*Event init*/
   if($('#calendar').length !== 0) {
@@ -115,9 +114,9 @@ $(function(){
     var dpt = ""
 
     //load json
-    var programme = ()=>{//startYear, startMonth, startDay, endYear, endMonth, endDay
+    function programme () {//startYear, startMonth, startDay, endYear, endMonth, endDay
       //query test url: https://api-vtt-bzh.herokuapp.com/calendar/api/vtt?start_year=2018&start_month=5&start_day=1&end_year=2018&end_month=5&end_day=20
-      $.getJSON( "https://api-vtt-bzh.herokuapp.com/calendar/api/vtt?start_year=" + startYear + "&start_month=" + startMonth + "&start_day=" + startDay + "&end_year=" + endYear + "&end_month=" + endMonth + "&end_day=" + endDay + "&dpt=" + dpt , ( data ) => {
+      $.getJSON( "https://api-vtt-bzh.herokuapp.com/calendar/api/vtt?start_year=" + startYear + "&start_month=" + startMonth + "&start_day=" + startDay + "&end_year=" + endYear + "&end_month=" + endMonth + "&end_day=" + endDay + "&dpt=" + dpt , function( data ) {
         
         nbProgramme = data.length
 
@@ -126,7 +125,7 @@ $(function(){
         $('.premium').remove()
 
         //console.log(data[0])
-        $.each( data, ( key, val ) => {
+        $.each( data, function( key, val ) {
           if(key >= nbProgrammeStart && key < nbProgrammeEnd) {
 
             if(val.date){ 
@@ -145,7 +144,7 @@ $(function(){
           }
         });
 
-        $('.event').each((i)=>{
+        $('.event').each(function(i){
           if ((i % 20) == 0) {
             //console.log($('.event')[i])
             $(cta).insertBefore($('.event')[i])
@@ -163,7 +162,7 @@ $(function(){
       }) 
     }
 
-    var setSelectedIndex = (s, valsearch) =>{ 
+    function setSelectedIndex (s, valsearch){ 
       // Loop through all the items in drop down list   
       for (i = 0; i< s.options.length; i++) {    
         if (s.options[i].value == valsearch) {    
@@ -185,7 +184,7 @@ $(function(){
     setSelectedIndex( document.getElementById("endMonth" ), endMonth ); 
     setSelectedIndex( document.getElementById("endDay" ), endDay ); 
 
-    $('#search-button').on('click', () => {
+    $('#search-button').on('click', function() {
 
       $('.event').remove()   
 
@@ -243,11 +242,11 @@ $(function(){
   COUPONS
   ------*/
   if($('#all-coupons') !== 0){
-    var programme = ()=>{
-      $.getJSON( "https://api-vtt-bzh.herokuapp.com/shopping/get-promotions?dpt=", ( data ) => {
+    function programme () {
+      $.getJSON( "https://api-vtt-bzh.herokuapp.com/shopping/get-promotions?dpt=", function( data ) {
 
         //console.log(data[0])
-        $.each( data, ( key, val ) => {
+        $.each( data, function( key, val ) {
             var date = new Date( Date.parse('2018-04-30T00:00:00.000Z') ).getDate() + '/' + (new Date( Date.parse('2018-04-30T00:00:00.000Z') ).getMonth() + 1 ) + '/' + new Date( Date.parse('2018-04-30T00:00:00.000Z') ).getFullYear()//val.promo_end_date
 
             var promo = 
@@ -297,11 +296,11 @@ $(function(){
   AVIS
   ------*/
   if($('#avis').length !== 0) {
-    $.getJSON( "https://sheets.googleapis.com/v4/spreadsheets/1AMjV9P5haoZ5P3_Y9LtKSz4UxxBBejVVstBQCP-gymY/values/avis_old?key=AIzaSyCvAxjcQyPFS839MQpYLbZcykzQzeoogPA", ( data ) => {
+    $.getJSON( "https://sheets.googleapis.com/v4/spreadsheets/1AMjV9P5haoZ5P3_Y9LtKSz4UxxBBejVVstBQCP-gymY/values/avis_old?key=AIzaSyCvAxjcQyPFS839MQpYLbZcykzQzeoogPA", function( data ) {
       
       //console.log(data.values)
 
-      $.each( data.values, ( key, val ) => {
+      $.each( data.values, function( key, val ) {
         if(key !== 0){
           var avis =  {
             date : val[0],
@@ -320,14 +319,14 @@ $(function(){
   /*------
   EVENT ADD
   ------*/
-	if($('#organisateurs') !== 0) {
-    $('#form-post-event').on('submit',(e)=>{
-	    var formConfirmation = confirm('Souhaitez-vous valider ces informations ?')
-	    if(formConfirmation === false) {
+  if($('#organisateurs') !== 0) {
+    $('#form-post-event').on('submit',function(e) {
+      var formConfirmation = confirm('Souhaitez-vous valider ces informations ?')
+      if(formConfirmation === false) {
               e.preventDefault()
-	    }
-	  })
-	}
+      }
+    })
+  }
 
   /*------
   CHATROOM
