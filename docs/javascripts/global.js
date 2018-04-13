@@ -6,6 +6,7 @@ $(function(){
 	  var cancelDiv
     if(cancel === true){
       cancelDiv = ' <span class="badge badge-danger text-uppercase">annulée</span>'
+	console.log(cancelDiv)
     }
     var event = 
 	  '<div class="row event">'+
