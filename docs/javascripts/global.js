@@ -5,7 +5,7 @@ $(function(){
 	var eventConstructor = (date, horaire, lieu, nomRando, departement, contact, description, lieuRdv, organisateur, prixClub, prixPublic, cancel) => {
 	  var cancelDiv
     if(cancel === true){
-      cancelDiv = ' <span class="badge badge-danger text-uppercase">annulée</span'
+      cancelDiv = ' <span class="badge badge-danger text-uppercase">annulée</span>'
     }
     var event = 
 	  '<div class="row event">'+
