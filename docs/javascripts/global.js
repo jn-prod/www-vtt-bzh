@@ -3,7 +3,7 @@ $(function(){
   var dateNow = new Date(Date.now())
 
   function eventConstructor (date, horaire, lieu, nomRando, departement, contact, description, lieuRdv, organisateur, prixClub, prixPublic, cancel) {
-    var cancelDiv
+    var cancelDiv = ''
     if(cancel === true){
       cancelDiv = '<span class="badge badge-danger text-uppercase">annulée</span>'
     }
