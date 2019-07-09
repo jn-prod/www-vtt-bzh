@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="fr">
+
+  <!-- Head
+  ================================================== -->
+  {% include /header/head.html %}
+
+  <body>
+    <div id="header-wrapper">
+      <!-- Header
+      ================================================== -->
+      {% include /header/header.html %}
+
+      <div class="container" id="header-cta">
+        <div class="row">
+          <div class="col-12">
+            <section id="main" role="main" class="jumbotron">
+              <h1 class="cover-heading">Et si ta prochaine rando VTT était à coté de chez toi</h1>
+              <p class="lead">Retrouve toutes les semaines ta rando du week-end et quelques tips en bonus pour y prendre un max de plaisir.</p>
+              <p class="lead">
+                <a href="/#calendar" class="btn btn-lg btn-default">Calendrier</a>
+              </p>
+            </section>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    {{ content }}
+
+    <footer class="container">
+      <div class="row">
+        <div class="col-12">
+          <ul class="icons">
+            <li>
+              <span itemscope itemtype="http://schema.org/Organization">
+                <span itemprop="name">{{ site.title }}</span> &copy; 2013 - {{ site.time | date: "%Y" }} • 
+                <span itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating">
+                  <span itemprop="ratingValue">4.533</span>/5 sur <span itemprop="reviewCount">30</span> avis • 
+                </span>
+              </span>            
+            </li>
+          </ul>
+       </div>
+      </div>
+
+      <div class="row">
+        <div class="col-12 text-center">
+          Créer et réalisé avec passion par : <a href="https://nicolasjouanno.com">Nicolas Jouanno</a>
+        </div>
+      </div>
+    </footer>
+
+    
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+
+    <!-- fontawesome -->
+    <script defer src="https://use.fontawesome.com/releases/v5.0.1/js/all.js"></script>
+    
+    <!--Main scripts-->
+    <script src="assets/public/global.js"></script>
+    
+    <!--GetSiteControl.js-->
+    <script>
+      (function (w,i,d,g,e,t,s) {w[d] = w[d]||[];t= i.createElement(g);
+        t.async=1;t.src=e;s=i.getElementsByTagName(g)[0];s.parentNode.insertBefore(t, s);
+      })(window, document, '_gscq','script','//widgets.getsitecontrol.com/50678/script.js');
+    </script>
+  </body>
+</html>

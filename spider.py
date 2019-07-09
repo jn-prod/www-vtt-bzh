@@ -1,5 +1,5 @@
 """
-run with python shell : "-m scrapy runspider spider.py -o events.json"
+run with python shell : "python -m scrapy runspider spider.py -o events.json"
 """
 
 import scrapy
