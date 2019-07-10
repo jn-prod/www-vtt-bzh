@@ -2,228 +2,38 @@
 layout: default
 title: Calendrier des randonnées VTT de Bretagne | VTT.bzh
 ---
-    
-<section id="calendar" class="container">
+<div id="header-wrapper">
+  <!-- Header
+  ================================================== -->
+  {% include /header/header.html %}
+ 
+  <div class="container" id="header-cta">
+    <div class="row">
+      <div class="col-12">
+        <section id="main" role="main" class="jumbotron">
+          <h1 class="cover-heading">Et si ta prochaine rando VTT était à coté de chez toi</h1>
+          <p class="lead">Retrouve toutes les semaines ta rando du week-end et quelques tips en bonus pour y prendre un max de plaisir.</p>
+          <p class="lead">
+            <a href="/#calendar" class="btn btn-lg btn-default">Calendrier</a>
+          </p>
+        </section>
+      </div>
+    </div>
+  </div>
+</div> 
+<section class="container" id="calendar">
   <div class="row">
     <div class="col-12 spacer-lg-top spacer-lg-bottom">
       <h3 class="spacer-md-top">Calendrier des randonnées à venir</h3>
       <span id="nombre_rando" class="badge badge-success"></span>
     </div>
   </div>
-  
-  <section id="search-bar" class="text-center border-top border-bottom spacer-md-bottom">
-    <div class="row bg-light">
-      <div class="col-12 spacer-sm-top spacer-sm-bottom">
-        <strong>Rechercher un événement</strong>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-lg-4 mx-auto">
-        <div class="row">
-          <div class="col-12 spacer-xs-top">
-            <p class="text-center">A partir du * <i class="fas fa-angle-down"></i></p>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-4">
-            <select class="custom-select w-100" id="startDay">
-              <option value="01">1</option>
-              <option value="02">2</option>
-              <option value="03">3</option>
-              <option value="04">4</option>
-              <option value="05">5</option>
-              <option value="06">6</option>
-              <option value="07">7</option>
-              <option value="08">8</option>
-              <option value="09">9</option>
-              <option value="10">10</option>
-              <option value="11">11</option>
-              <option value="12">12</option>
-              <option value="13">13</option>
-              <option value="14">14</option>
-              <option value="15">15</option>
-              <option value="16">16</option>
-              <option value="17">17</option>
-              <option value="18">18</option>
-              <option value="19">19</option>
-              <option value="20">20</option>
-              <option value="21">21</option>
-              <option value="22">22</option>
-              <option value="23">23</option>
-              <option value="24">24</option>
-              <option value="25">25</option>
-              <option value="26">26</option>
-              <option value="27">27</option>
-              <option value="28">28</option>
-              <option value="29">29</option>
-              <option value="30">30</option>
-              <option value="31">31</option>
-            </select>
-          </div>
-          <div class="col-4">
-            <select class="custom-select w-100" id="startMonth">
-              <option value="01">Janvier</option>
-              <option value="02">Février</option>
-              <option value="03">Mars</option>
-              <option value="04">Avril</option>
-              <option value="05">Mai</option>
-              <option value="06">Juin</option>
-              <option value="07">Juillet</option>
-              <option value="08">Aout</option>
-              <option value="09">Septembre</option>
-              <option value="10">Octobre</option>
-              <option value="11">Novembre</option>
-              <option value="12">Décembre</option>
-            </select>
-          </div>
-          <div class="col-4">
-            <select class="custom-select w-100" id="startYear">
-              <option value="2018">2018</option>
-              <option value="2019">2019</option>
-              <option value="2020">2020</option>
-            </select>
-          </div>
-        </div>  
-      </div>
-      <div class="col-lg-4 offset-2 mx-auto">
-        <div class="row">
-          <div class="col-12 spacer-xs-top">
-            <p class="text-center">Jusqu'au * <i class="fas fa-angle-down"></i></p>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-4">
-            <select class="custom-select w-100" id="endDay">
-              <option value="01">1</option>
-              <option value="02">2</option>
-              <option value="03">3</option>
-              <option value="04">4</option>
-              <option value="05">5</option>
-              <option value="06">6</option>
-              <option value="07">7</option>
-              <option value="08">8</option>
-              <option value="09">9</option>
-              <option value="10">10</option>
-              <option value="11">11</option>
-              <option value="12">12</option>
-              <option value="13">13</option>
-              <option value="14">14</option>
-              <option value="15">15</option>
-              <option value="16">16</option>
-              <option value="17">17</option>
-              <option value="18">18</option>
-              <option value="19">19</option>
-              <option value="20">20</option>
-              <option value="21">21</option>
-              <option value="22">22</option>
-              <option value="23">23</option>
-              <option value="24">24</option>
-              <option value="25">25</option>
-              <option value="26">26</option>
-              <option value="27">27</option>
-              <option value="28">28</option>
-              <option value="29">29</option>
-              <option value="30">30</option>
-              <option value="31">31</option>
-            </select>
-          </div>
-          <div class="col-4">
-            <select class="custom-select w-100" id="endMonth">
-              <option value="01">Janvier</option>
-              <option value="02">Février</option>
-              <option value="03">Mars</option>
-              <option value="04">Avril</option>
-              <option value="05">Mai</option>
-              <option value="06">Juin</option>
-              <option value="07">Juillet</option>
-              <option value="08">Aout</option>
-              <option value="09">Septembre</option>
-              <option value="10">Octobre</option>
-              <option value="11">Novembre</option>
-              <option value="12">Décembre</option>
-            </select>
-          </div>
-          <div class="col-4">
-            <select class="custom-select w-100" id="endYear">
-              <option value="2018">2018</option>
-              <option value="2019">2019</option>
-              <option value="2020">2020</option>
-            </select>
-          </div>
-        </div>    
-      </div>
-      <div class="col-lg-2 mx-auto spacer-md-botton">
-        <div class="row">
-          <div class="col-12 spacer-xs-top">
-            <p class="text-center">Département <i class="fas fa-angle-down"></i></p>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-12">
-            <select class="custom-select w-100" id="dpt">
-              <option value="" selected>Tous</option>
-              <option value="22">Côtes d'Armor</option>
-              <option value="29">Finistère</option>
-              <option value="35">Ille et Villaine</option>
-              <option value="44">Loire Atlantique</option>
-              <option value="56">Morbihan</option>
-            </select>
-          </div>
-        </div>  
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-12 text-center">
-        <a href="#calendar-ajax"><button class="btn btn-primary spacer-lg-top" id="search-button"><i class="fas fa-search spacer-xs-right"></i>Rechercher</button></a>
-      </div>
-    </div>
-  </section>
-  <div class="row bg-light">
-    <div class="col-sm-12 spacer-md-top ">
-      <div class="row text-bold">
-        <div class="col-sm-2">
-          <span class="d-block text-uppercase"><i class="far fa-calendar" aria-hidden="true"></i> date </span>
-        </div>
-        <div class="col-sm-2">
-          <span class="d-block text-uppercase"><i class="fa fa-map-marker-alt" aria-hidden="true"></i> lieu </span>
-        </div>
-        <div class="col-sm-7">
-          <p class="text-uppercase"> randonnée</p>
-        </div>
-        <div class="col-sm-1">
-        </div>
-      </div>
-    </div>
-  </div>
-  <!--<div class="row bg-danger spacer-lg-top" id="last_minute_header">
-    <div class="col-12">
-      <p class="spacer-md-top spacer-md-bottom text-white text-bold">Dernière minute : <span id="last_minute">la rando de bonnemain du 28/01/2018 est reportée au 11/03/2018</span></p>
-    </div>
-  </div>-->
-  <div class="row">
-    <div id="calendar-ajax" class="col-12 spacer-md-top">
-      <div id="waiting">
-        <p>Chargement en cours du calendrier. Celà peut prendre quelques secondes.</p> 
-        <p>Merci pour votre patience.</p>
-        <span class="mx-auto"><i class="fa fa-spinner fa-spin fa-3x fa-fw"></i></span>
-      </div>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-12">
-      <button class="btn btn-primary text-bold spacer-lg-top spacer-lg-bottom" id="load-more">Voir +</button>
-    </div>
-  </div>
-<!--   <div class="row bg-light">
-    <div class="col-12 text-center">
-      <p class="text-bold spacer-lg-top">Passez à VTT.bzh PREMIUM maintenant et recevez le programme de rando chaque semaine par email</p>
-      <a href="/premium.html" class="btn btn-secondary text-uppercase text-bold spacer-lg-bottom">Abonnez-vous à VTT.bzh Premium</a>
-    </div>
-  </div>
-  <div class="row spacer-sm-top alert alert-warning text-center">
-    <div class="col-sm-12">
-      <p>Votre évènement n'est pas dans le calendrier ?</p>
-      <a href="/organisateurs/"><button class="btn btn-default bottom-spacer-xs-top spacer-sm-bottom"><i class="fa fa-plus"></i> Ajouter un évènement</button></a>
-    </div>
-  </div> -->
+
+  <!-- Load event -->
+  <event-item
+    v-for="event in info"
+    v-bind:event="event"
+    v-bind:key="event.id"
+  ></event-item>
+
 </section>
