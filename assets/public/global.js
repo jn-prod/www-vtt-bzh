@@ -36,7 +36,7 @@ $(function(){
               '<span class="d-block"><p> Organisateur : ' + organisateur + '</p></span>'+
               '<span class="d-block"><p> Contact : ' + contact + '</p></span>'+
               '<span class="d-block"><p> Prix Club : ' + prixClub + '</p></span>'+
-              '<span class="d-block"><p> Prix Public : ' + prixPublic + '</p></span>'+
+              // '<span class="d-block"><p> Prix Public : ' + prixPublic + '</p></span>'+
             '</div>'+           
           '</div>'+
         '</div>'+
@@ -129,8 +129,12 @@ $(function(){
           if(key >= nbProgrammeStart && key < nbProgrammeEnd) {
 
             if(val.date){ 
-              //definition de la date à display
-              var date = new Date(val.date)
+              //define date display
+              var day = val.date.split('/')[0]
+              var month = val.date.split('/')[1]
+              var year = val.date.split('/')[2]
+
+              var date = new Date(year, month, day)
               var dateDisplay = date.getDate() + '/' + ( date.getMonth() + 1 ) + '/' + date.getFullYear();
               
               //construction de l'évènement
@@ -235,209 +239,5 @@ $(function(){
         $('#load-more').addClass('hidde')
       }
     })
-
-  }
-
-  /*------
-  COUPONS
-  ------*/
-  if($('#all-coupons') !== 0){
-    function programme () {
-      $.getJSON( "https://api-vtt-bzh.herokuapp.com/shopping/get-promotions?dpt=", function( data ) {
-
-        //console.log(data[0])
-        $.each( data, function( key, val ) {
-            var date = new Date( Date.parse('2018-04-30T00:00:00.000Z') ).getDate() + '/' + (new Date( Date.parse('2018-04-30T00:00:00.000Z') ).getMonth() + 1 ) + '/' + new Date( Date.parse('2018-04-30T00:00:00.000Z') ).getFullYear()//val.promo_end_date
-
-            var promo = 
-            '<div class="row spacer-sm-top bg-light">' +
-              '<div class="col-2">' +
-                '<img src="' + val.shop_logo_url + '" alt="' + val.shop_name + '" class="img-fluid">' +
-              '</div>' +
-              '<div class="col-5">' +
-                '<div class="row">' +
-                  '<div class="col-12 spacer-sm-top spacer-sm-bottom">' +
-                    '<strong>' + val.promo_name + '</strong> <span class="badge badge-warning"> Expire le ' + date + '</span>' +
-                  '</div>' +
-                '</div>' +
-                '<div class="row">' +
-                  '<div class="col-12 text-justify">' +
-                    '<p>' + val.promo_description + '</p>'+
-                  '</div>' +
-                '</div>' +
-              '</div>' +
-              '<div class="col-5">' +
-                '<div class="row">' +
-                  '<div class="col-12 spacer-sm-top spacer-sm-bottom">' +
-                    '<strong>' + val.shop_name + '</strong>' +
-                    '<ul>' +
-                      '<li> adresse : ' + val.shop_adresse + ' ' + val.shop_departement + ' '+ val.shop_ville +'</li>' +
-                      '<li>email : ' + val.shop_email + ' | téléphone : ' + val.shop_phone +'</li>' +
-                      '<li> site web : ' + val.shop_site + '</li>' +
-                    '</ul>' +
-                  '</div>' +
-                '</div>' +
-              '</div>' +              
-            '</div>'
-
-          $('#all-coupons').append(promo)
-        });
-
-        $('#waiting').remove()
-
-      }) 
-    }
-
-    programme()
-
-  }
-
-  /*------
-  AVIS
-  ------*/
-  if($('#avis').length !== 0) {
-    $.getJSON( "https://sheets.googleapis.com/v4/spreadsheets/1AMjV9P5haoZ5P3_Y9LtKSz4UxxBBejVVstBQCP-gymY/values/avis_old?key=AIzaSyCvAxjcQyPFS839MQpYLbZcykzQzeoogPA", function( data ) {
-      
-      //console.log(data.values)
-
-      $.each( data.values, function( key, val ) {
-        if(key !== 0){
-          var avis =  {
-            date : val[0],
-            rate : val[1],
-            comment : val[2],
-            author : val[3],
-            short : val[4]
-          }
-
-          $(avisConstructor(avis.date,avis.rate,avis.comment,avis.author,avis.short)).appendTo("#avis") 
-        }      
-      })
-    })
-  }
-
-  /*------
-  EVENT ADD
-  ------*/
-  if($('#organisateurs') !== 0) {
-    $('#form-post-event').on('submit',function(e) {
-      var formConfirmation = confirm('Souhaitez-vous valider ces informations ?')
-      if(formConfirmation === false) {
-              e.preventDefault()
-      }
-    })
-  }
-
-  /*------
-  CHATROOM
-  ------*/
-  if($('#chatroom').length !== 0) {
-
-    $.get('/get_chatters', function(response) {
-      $('.chat-info').text("There are currently " + response.length + " people in the chat room");
-      chatter_count = response.length; //update chatter count
-    });
-
-    $('#join-chat').click(function() {
-      var username = $.trim($('#username').val());
-      $.ajax({
-        url: '/join',
-        type: 'POST',
-        data: {
-            username: username
-        },
-        success: function(response) {
-          if (response.status == 'OK') { //username doesn't already exists
-            socket.emit('update_chatter_count', {
-              'action': 'increase'
-            });
-            $('.chat').show();
-            $('#leave-chat').data('username', username);
-            $('#send-message').data('username', username);
-            $.get('/get_messages', function(response) {
-              if (response.length > 0) {
-                var message_count = response.length;
-                var html = '';
-                for (var x = 0; x < message_count; x++) {
-                  html += "<div class='msg'><div class='user'>" + response[x]['sender'] + "</div><div class='txt'>" + response[x]['message'] + "</div></div>";
-                }
-                $('.messages').html(html);
-              }
-            });
-            $('.join-chat').hide(); //hide the container for joining the chat room.
-          } else if (response.status == 'FAILED') { //username already exists
-            alert("Sorry but the username already exists, please choose another one");
-            $('#username').val('').focus();
-          }
-        }
-      });
-    });
-
-    $('#leave-chat').click(function() {
-      var username = $(this).data('username');
-      $.ajax({
-        url: '/leave',
-        type: 'POST',
-        dataType: 'json',
-        data: {
-          username: username
-        },
-        success: function(response) {
-          if (response.status == 'OK') {
-            socket.emit('message', {
-              'username': username,
-              'message': username + " has left the chat room.."
-            });
-            socket.emit('update_chatter_count', {
-              'action': 'decrease'
-            });
-            $('.chat').hide();
-            $('.join-chat').show();
-            $('#username').val('');
-            alert('You have successfully left the chat room');
-          }
-        }
-      });
-    });
-
-    $('#send-message').click(function() {
-      var username = $(this).data('username');
-      var message = $.trim($('#message').val());
-      $.ajax({
-        url: '/send_message',
-        type: 'POST',
-        dataType: 'json',
-        data: {
-          'username': username,
-          'message': message
-        },
-        success: function(response) {
-          if (response.status == 'OK') {
-            socket.emit('message', {
-              'username': username,
-              'message': message
-            });
-            $('#message').val('');
-          }
-        }
-      });
-    });
-
-    socket.on('send', function(data) {
-      var username = data.username;
-      var message = data.message;
-      var html = "<div class='msg'><div class='user'>" + username + "</div><div class='txt'>" + message + "</div></div>";
-      $('.messages').append(html);
-    });
-
-    socket.on('count_chatters', function(data) {
-      if (data.action == 'increase') {
-        chatter_count++;
-      } else {
-        chatter_count--;
-      }
-      $('.chat-info').text("There are currently " + chatter_count + " people in the chat room");
-    });
-
   }
 })
