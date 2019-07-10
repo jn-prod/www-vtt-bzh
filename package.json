@@ -1,0 +1,46 @@
+{
+  "name": "www-vtt-bzh",
+  "version": "1.0.0",
+  "description": "Breizh Mountain Bike Calendar",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm run test",
+    "spider": "python -m scrapy runspider spider.py -o events.json",
+    "dev:server": "bundle exec jekyll server",
+    "dev:webpack": "cross-env NODE_ENV=development webpack",
+    "build": "cross-env NODE_ENV=production webpack --progress --hide-modules",
+    "watch": "cross-env NODE_ENV=development webpack --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jn-prod/www-vtt-bzh.git"
+  },
+  "author": "nicolas jouanno",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jn-prod/www-vtt-bzh/issues"
+  },
+  "homepage": "https://github.com/jn-prod/www-vtt-bzh#readme",
+  "dependencies": {
+    "axios": "^0.19.0",
+    "vue": "^2.6.10"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.5.4",
+    "babel-core": "^6.26.3",
+    "babel-loader": "^8.0.6",
+    "babel-minify-webpack-plugin": "^0.3.1",
+    "clean-webpack-plugin": "^3.0.0",
+    "cross-env": "^5.2.0",
+    "css-loader": "^3.0.0",
+    "eslint": "^6.0.1",
+    "eslint-loader": "^2.2.1",
+    "node-sass": "^4.12.0",
+    "sass-loader": "^7.1.0",
+    "vue-loader": "^15.7.0",
+    "vue-style-loader": "^4.1.2",
+    "vue-template-compiler": "^2.6.10",
+    "webpack": "^4.35.3",
+    "webpack-cli": "^3.3.5"
+  }
+}
