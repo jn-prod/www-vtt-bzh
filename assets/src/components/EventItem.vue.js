@@ -1,5 +1,4 @@
 export default {
-  template: '<li>This is a todo</li>',
   props: ['event'],
   data() {
     return {
