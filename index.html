@@ -36,4 +36,12 @@ title: Calendrier des randonnées VTT de Bretagne | VTT.bzh
     v-bind:key="event.id"
   ></event-item>
 
+  <load-more-button
+    class="btn btn-primary mx-auto text-center"
+    v-on:click="updateDatas"
+    v-if="loadMoreButton"
+  >
+      voir +            
+  </load-more-button>
+
 </section>
