@@ -39,6 +39,7 @@ var app = new Vue({
   data: {
     info: null,
     dataDefaultLength: 0,
+    searchForm: null,
     loadMoreButton: false
   },
   methods: {
@@ -52,6 +53,9 @@ var app = new Vue({
           this.loadMoreButton = false
         }
       })
+    },
+    searchSubmit: function (event) {
+      
     }
   }
 })

@@ -2,46 +2,88 @@
 layout: default
 title: Calendrier des randonnées VTT de Bretagne | VTT.bzh
 ---
-<div id="header-wrapper">
-  <!-- Header
-  ================================================== -->
-  {% include /header/header.html %}
- 
-  <div class="container" id="header-cta">
+<!-- application -->
+<section class="container-fluid p-0" id="app">
+
+  <div class="row" id="header-wrapper">
+    <div class="col-md-4 bg-white p-5 m-5 rounded shadow">
+      <section>
+        <!-- logo -->
+        <h3 class="text-center mb-5">
+          <a href="/"><img src="assets/public/images/logo.png" alt=""></a>VTT.bzh
+        </h3>
+
+        <!-- value proposition        -->
+        <h1 class="h5 text-left m-3">Rechercher une rando VTT à coté de chez toi n'aura jamais été aussi simple.</h1>
+
+        <!-- form -->
+        <form id="search">
+          <div class="row">
+            <div class="col-md-6 my-2">
+              <div class="d-block">
+                Debut
+              </div>
+              <div class="d-block">
+                <input class="form-control" type="date" name="start_date">
+              </div>
+            </div>
+            <div class="col-md-6 my-2">
+              <div class="d-block">
+                Fin
+              </div>
+              <div class="d-block">
+                <input class="form-control" type="date" name="end_date">
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12 my-2">Département</div>
+          </div>
+          <div class="row">
+            <div class="col-12 my-2">
+              <select name="departement" id="" class="form-control">
+                <option selected>département</option>
+                <option value="22">Côtes d'Armor</option>
+                <option value="29">Finistère</option>  
+                <option value="35">Ille et Vilaine</option>
+                <option value="44">Loire Atlantique</option>  
+                <option value="56">Morbihan</option>             
+              </select>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12 my-2">
+              <button type="submit" class="btn btn-primary float-right" id="search_button">Rechercher</button>
+            </div>
+          </div>
+        </form>
+      </section>
+    </div>
+  </div>
+
+  <div class="container">
     <div class="row">
-      <div class="col-12">
-        <section id="main" role="main" class="jumbotron">
-          <h1 class="cover-heading">Et si ta prochaine rando VTT était à coté de chez toi</h1>
-          <p class="lead">Retrouve toutes les semaines ta rando du week-end et quelques tips en bonus pour y prendre un max de plaisir.</p>
-          <p class="lead">
-            <a href="/#calendar" class="btn btn-lg btn-default">Calendrier</a>
-          </p>
-        </section>
+      <div class="col-12 spacer-lg-top spacer-lg-bottom">
+        <h3 class="spacer-md-top">Calendrier des randonnées à venir</h3>
+        <span id="nombre_rando" class="badge badge-success"></span>
       </div>
     </div>
-  </div>
-</div> 
-<section class="container" id="calendar">
-  <div class="row">
-    <div class="col-12 spacer-lg-top spacer-lg-bottom">
-      <h3 class="spacer-md-top">Calendrier des randonnées à venir</h3>
-      <span id="nombre_rando" class="badge badge-success"></span>
-    </div>
-  </div>
 
-  <!-- Load event -->
-  <event-item
-    v-for="event in info"
-    v-bind:event="event"
-    v-bind:key="event.id"
-  ></event-item>
+    <!-- Load event -->
+    <event-item
+      v-for="event in info"
+      v-bind:event="event"
+      v-bind:key="event.id"
+    ></event-item>
 
-  <load-more-button
-    class="btn btn-primary mx-auto text-center"
-    v-on:click="updateDatas"
-    v-if="loadMoreButton"
-  >
-      voir +            
-  </load-more-button>
+    <!-- load-more button -->
+    <load-more-button
+      class="btn btn-primary mx-auto text-center"
+      v-on:click="updateDatas"
+      v-if="loadMoreButton"
+    >
+        voir +            
+    </load-more-button>    
+  </div>
 
 </section>
