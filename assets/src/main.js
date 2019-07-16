@@ -11,53 +11,51 @@ function dateFormat (date) {
   return new Date(year, month, day)
 }
 
-function getDatas (sliceEnd, callback) {
-  axios
-    .get('https://vtt.bzh/events.json')
-    .then((response) => {
-      var data = response.data
-
-      // get only next events
-      data = data.filter((val) => {
-        return dateFormat(val.date) >= dateNow
-      })
-
-      // sort by dates
-      data.sort((a, b) => {
-        return dateFormat(a.date) - dateFormat(b.date)
-      })
-        
-      // set info value
-      callback(data.slice(0,sliceEnd))
-    })      
+function sliceDatas (datas, slicer) {
+  return datas.slice(0,slicer)
 }
 
 Vue.component('event-item', EventItem)
 
+Vue.component('load-more-button', {
+  template: '<button v-on:click.prevent="$parent.dataDefaultLength += 20" v-show="$parent.loadMoreButton" class="btn btn-primary">Voir +</button>'
+})
+
 var app = new Vue({
   el: '#app',
-  data: {
-    info: null,
-    dataDefaultLength: 0,
-    searchForm: null,
-    loadMoreButton: false
+  data () {
+    return {
+      datas: null,
+      dataDefaultLength: 0,
+      searchForm: null,
+      loadMoreButton: false      
+    }
+  },
+  mounted () {
+    axios
+      .get('https://vtt.bzh/events.json')
+      .then((json) => {
+        // get only next events
+        var response = json.data.filter((val) => {
+          return dateFormat(val.date) >= dateNow
+        })
+
+        // sort by dates
+        response.sort((a, b) => {
+          return dateFormat(a.date) - dateFormat(b.date)
+        })
+        this.datas = response
+      }) 
   },
   methods: {
-    updateDatas: function (event) {
+  },
+  computed: {
+    loadDatas: function () {
       this.dataDefaultLength += 20
-      getDatas(this.dataDefaultLength, (datas) => {
-        this.info = datas
-        if (this.info.length >= this.dataDefaultLength) {
-          this.loadMoreButton = true
-        } else {
-          this.loadMoreButton = false
-        }
-      })
-    },
-    searchSubmit: function (event) {
-      
+      if (this.datas) {
+        this.loadMoreButton = this.datas.length >= this.dataDefaultLength
+        return sliceDatas(this.datas,this.dataDefaultLength)  
+      }
     }
   }
 })
-
-app.updateDatas()

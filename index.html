@@ -70,20 +70,19 @@ title: Calendrier des randonnées VTT de Bretagne | VTT.bzh
     </div>
 
     <!-- Load event -->
-    <event-item
-      v-for="event in info"
-      v-bind:event="event"
-      v-bind:key="event.id"
-    ></event-item>
+    <div class="row" 
+      v-for="(event, index) in loadDatas"
+      :key="event.id"
+      v-if="index < dataDefaultLength"
+    >
+      <event-item
+        v-bind:event="event"
+      >
+      </event-item>
+    </div>
 
     <!-- load-more button -->
-    <load-more-button
-      class="btn btn-primary mx-auto text-center"
-      v-on:click="updateDatas"
-      v-if="loadMoreButton"
-    >
-        voir +            
-    </load-more-button>    
+    <load-more-button></load-more-button>    
   </div>
 
 </section>
