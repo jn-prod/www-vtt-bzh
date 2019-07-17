@@ -1,6 +1,8 @@
 import Vue from 'vue'
 import axios from 'axios'
 import EventItem from './components/EventItem.vue.js'
+import LoadMoreButton from './components/LoadMoreButton.vue.js'
+import SearchForm from './components/SearchForm.vue.js'
 
 var dateNow = new Date(Date.now())
 
@@ -17,16 +19,16 @@ function sliceDatas (datas, slicer) {
 
 Vue.component('event-item', EventItem)
 
-Vue.component('load-more-button', {
-  template: '<button v-on:click.prevent="$parent.dataDefaultLength += 20" v-show="$parent.loadMoreButton" class="btn btn-primary">Voir +</button>'
-})
+Vue.component('load-more-button', LoadMoreButton)
+
+Vue.component('search-form', SearchForm)
 
 var app = new Vue({
   el: '#app',
   data () {
     return {
       datas: null,
-      dataDefaultLength: 0,
+      dataDefaultLength: 20,
       searchForm: null,
       loadMoreButton: false      
     }
@@ -48,10 +50,12 @@ var app = new Vue({
       }) 
   },
   methods: {
+    startSearch: function () {
+      console.log('startSearch:' + this.searchForm)
+    }
   },
   computed: {
     loadDatas: function () {
-      this.dataDefaultLength += 20
       if (this.datas) {
         this.loadMoreButton = this.datas.length >= this.dataDefaultLength
         return sliceDatas(this.datas,this.dataDefaultLength)  

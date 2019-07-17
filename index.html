@@ -17,47 +17,8 @@ title: Calendrier des randonnées VTT de Bretagne | VTT.bzh
         <h1 class="h5 text-left m-3">Rechercher une rando VTT à coté de chez toi n'aura jamais été aussi simple.</h1>
 
         <!-- form -->
-        <form id="search">
-          <div class="row">
-            <div class="col-md-6 my-2">
-              <div class="d-block">
-                Debut
-              </div>
-              <div class="d-block">
-                <input class="form-control" type="date" name="start_date">
-              </div>
-            </div>
-            <div class="col-md-6 my-2">
-              <div class="d-block">
-                Fin
-              </div>
-              <div class="d-block">
-                <input class="form-control" type="date" name="end_date">
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-12 my-2">Département</div>
-          </div>
-          <div class="row">
-            <div class="col-12 my-2">
-              <select name="departement" id="" class="form-control">
-                <option selected>département</option>
-                <option value="22">Côtes d'Armor</option>
-                <option value="29">Finistère</option>  
-                <option value="35">Ille et Vilaine</option>
-                <option value="44">Loire Atlantique</option>  
-                <option value="56">Morbihan</option>             
-              </select>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-12 my-2">
-              <button id="clean_search" class="btn btn-outline-dark">Réinitialiser</button>
-              <button type="submit" class="btn btn-primary float-right" id="search_button">Rechercher</button>
-            </div>
-          </div>
-        </form>
+        <search-form>
+        </search-form>
       </section>
     </div>
   </div>
