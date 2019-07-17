@@ -5,20 +5,20 @@ export default {
       active: false,
     }
   },
-  template: '<div class="col-12" @click.prevent="active = !active">' +
+  template: '<div class="col-12 rounded border border-muted p-2" @click.prevent="active = !active">' +
               '<div class="row">' +
-                '<div class="col-sm-12">' +
+                '<div class="col-12">' +
                   '<div class="row text-bold">' +
-                    '<div class="col-sm-2 mt-2">' +
+                    '<div class="col-sm-2 mt-2 my-auto">' +
                       '<span class="d-block"><i class="far fa-calendar" aria-hidden="true"></i>{{ event.date }}</span>' +
                     '</div>' +
-                    '<div class="col-sm-2 mt-2">' +
-                      '<span class="d-block"><i class="fa fa-map-marker-alt" aria-hidden="true"></i>{{ event.departement }}  - {{ event.city }} </span>' +
+                    '<div class="col-sm-2 mt-2 my-auto">' +
+                      '<span class="d-block my-auto"><i class="fa fa-map-marker-alt" aria-hidden="true"></i>{{ event.departement }}  - {{ event.city }} </span>' +
                     '</div>' +
-                    '<div class="col-sm-7">' +
+                    '<div class="col-sm-7 my-auto">' +
                       '<p class="event-name text-primary mt-2 text-uppercase">{{ event.name }}</p>' +
                     '</div>' +
-                    '<div class="col-sm-1 read-more">' +
+                    '<div class="col-sm-1 read-more my-auto">' +
                       '<i class="fas fa-chevron-circle-right"></i>' +
                     '</div>' +
                   '</div>' +
