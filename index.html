@@ -17,7 +17,7 @@ title: Calendrier des randonnées VTT de Bretagne | VTT.bzh
         <h1 class="h5 text-left m-3">Rechercher une rando VTT à coté de chez toi n'aura jamais été aussi simple.</h1>
 
         <!-- form -->
-        <search-form>
+        <search-form v-on:search-submit="startSearch">
         </search-form>
       </section>
     </div>
@@ -25,9 +25,17 @@ title: Calendrier des randonnées VTT de Bretagne | VTT.bzh
 
   <div class="container">
     <div class="row">
-      <div class="col-12 spacer-lg-top spacer-lg-bottom">
-        <h3 class="spacer-md-top">Calendrier des randonnées à venir</h3>
+      <div class="col-12 my-5">
+        <h3 class="">Calendrier des randonnées à venir</h3>
         <span id="nombre_rando" class="badge badge-success"></span>
+      </div>
+    </div>
+
+    <div class="row" v-show="displayNoResults">
+      <div class="col-12">
+        <div class="alert alert-danger">
+          Aucun Résultat pour cette recherche
+        </div>
       </div>
     </div>
 

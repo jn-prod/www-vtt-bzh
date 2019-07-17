@@ -6,10 +6,10 @@
   "scripts": {
     "test": "npm run test",
     "spider": "python -m scrapy runspider spider.py -o events.json",
-    "dev:server": "bundle exec jekyll server",
-    "dev:webpack": "cross-env NODE_ENV=development webpack",
-    "build": "cross-env NODE_ENV=production webpack --progress --hide-modules",
-    "watch": "cross-env NODE_ENV=development webpack --watch"
+    "jekyll": "bundle exec jekyll server",
+    "webpack": "cross-env NODE_ENV=development webpack --watch",
+    "dev:server": "concurrently \"npm run jekyll\" \"npm run webpack\"",
+    "build": "cross-env NODE_ENV=production webpack --progress --hide-modules"
   },
   "repository": {
     "type": "git",
@@ -23,6 +23,7 @@
   "homepage": "https://github.com/jn-prod/www-vtt-bzh#readme",
   "dependencies": {
     "axios": "^0.19.0",
+    "concurrently": "^4.1.1",
     "vue": "^2.6.10"
   },
   "devDependencies": {

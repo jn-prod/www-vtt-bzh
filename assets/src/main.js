@@ -1,5 +1,7 @@
 import Vue from 'vue'
 import axios from 'axios'
+
+// import components
 import EventItem from './components/EventItem.vue.js'
 import LoadMoreButton from './components/LoadMoreButton.vue.js'
 import SearchForm from './components/SearchForm.vue.js'
@@ -17,12 +19,12 @@ function sliceDatas (datas, slicer) {
   return datas.slice(0,slicer)
 }
 
+// components
 Vue.component('event-item', EventItem)
-
 Vue.component('load-more-button', LoadMoreButton)
-
 Vue.component('search-form', SearchForm)
 
+// application
 var app = new Vue({
   el: '#app',
   data () {
@@ -30,7 +32,9 @@ var app = new Vue({
       datas: null,
       dataDefaultLength: 20,
       searchForm: null,
-      loadMoreButton: false      
+      searchResult: [],
+      loadMoreButton: false,
+      displayNoResults: false
     }
   },
   mounted () {
@@ -50,15 +54,44 @@ var app = new Vue({
       }) 
   },
   methods: {
-    startSearch: function () {
-      console.log('startSearch:' + this.searchForm)
-    }
+    startSearch: function (value) {
+      // initialize query
+      this.searchForm = {}
+      this.displayNoResults = false
+      // setup query
+      this.searchForm.startDate = new Date(value.startDate)
+      this.searchForm.endDate = new Date(value.endDate)
+      this.searchForm.dpt = value.dpt
+      var query = this.searchForm
+
+      var result = this.datas.filter(function (data) {
+        var dateFilter = dateFormat(data.date) >= query.startDate && dateFormat(data.date) <= query.endDate
+        var dptFilter
+        if (query.dpt !== "all") {
+          dptFilter = Number(data.departement) === Number(query.dpt)
+        } else {
+          dptFilter = true
+        }
+        return dateFilter && dptFilter
+      })
+
+      if (result.length === 0) {
+        this.displayNoResults = true
+      }
+
+      this.searchResult = result
+    },
   },
   computed: {
     loadDatas: function () {
       if (this.datas) {
-        this.loadMoreButton = this.datas.length >= this.dataDefaultLength
-        return sliceDatas(this.datas,this.dataDefaultLength)  
+        if (this.searchResult.length > 0) {
+          this.loadMoreButton = false
+          return this.searchResult
+        } else {
+          this.loadMoreButton = this.datas.length >= this.dataDefaultLength
+          return sliceDatas(this.datas,this.dataDefaultLength)
+        }
       }
     }
   }
