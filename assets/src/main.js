@@ -5,6 +5,7 @@ import axios from 'axios'
 import EventItem from './components/EventItem.vue.js'
 import LoadMoreButton from './components/LoadMoreButton.vue.js'
 import SearchForm from './components/SearchForm.vue.js'
+import Datepicker from 'vuejs-datepicker'
 
 var dateNow = new Date(Date.now())
 
@@ -23,6 +24,7 @@ function sliceDatas (datas, slicer) {
 Vue.component('event-item', EventItem)
 Vue.component('load-more-button', LoadMoreButton)
 Vue.component('search-form', SearchForm)
+Vue.component('datepicker', Datepicker)
 
 // application
 var app = new Vue({
