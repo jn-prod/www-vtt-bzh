@@ -5,15 +5,48 @@ export default {
       active: false,
     }
   },
+  filters: {
+    dateFormat: function (val) {
+      var day = val.split('/')[0]
+      var year = val.split('/')[2]
+      var month = Number(val.split('/')[1])
+      if (month === 1) {
+        month = 'Jan.'
+      } else if (month === 2) {
+        month ='Fév.'
+      } else if (month === 3) {
+        month = 'Mars'
+      } else if (month === 4) {
+       month = 'Avr.'
+      } else if (month === 5) {
+       month = 'Mai'
+      } else if (month === 6) {
+       month = 'Juin'
+      } else if (month === 7) {
+       month = 'Juil.'
+      } else if (month === 8) {
+       month = 'Aou.'
+      } else if (month === 9) {
+       month = 'Sep.'
+      } else if (month === 10) {
+       month = 'Oct.'
+      } else if (month === 11) {
+       month = 'Nov.'
+      } else if (month === 12) {
+       month = 'Déc.'
+      }
+      return day + ' ' + month + ' ' + year
+    }
+  },
   template: '<div class="col-12 rounded border border-muted p-2" @click.prevent="active = !active">' +
               '<div class="row">' +
                 '<div class="col-12">' +
                   '<div class="row text-bold">' +
                     '<div class="col-sm-2 mt-2 my-auto">' +
-                      '<span class="d-block"><i class="far fa-calendar" aria-hidden="true"></i>{{ event.date }}</span>' +
+                      '<span class="d-block"><i class="far fa-calendar mr-2" aria-hidden="true"></i>{{ event.date | dateFormat }}</span>' +
                     '</div>' +
                     '<div class="col-sm-2 mt-2 my-auto">' +
-                      '<span class="d-block my-auto"><i class="fa fa-map-marker-alt" aria-hidden="true"></i>{{ event.departement }}  - {{ event.city }} </span>' +
+                      '<span class="d-block my-auto"><i class="fa fa-map-marker-alt mr-2" aria-hidden="true"></i>{{ event.departement }}  - {{ event.city }} </span>' +
                     '</div>' +
                     '<div class="col-sm-7 my-auto">' +
                       '<p class="event-name text-primary mt-2 text-uppercase">{{ event.name }}</p>' +
