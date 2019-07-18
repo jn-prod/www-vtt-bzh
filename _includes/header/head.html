@@ -3,11 +3,32 @@
   <!-- seo -->
   <title>{{ site.title }}</title>
   <meta name="description" content="{{ site.description }}">
+  <meta name="keywords" content="randonnée, rando, randonnées, vtt, rando vtt, rando vtt bretagne" />
   <meta name="author" content="Nicolas Jouanno">
 
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="google-site-verification" content="p6n7BrHhMIgg3KX7bCmj6fzgSvSRwlppzRWJY4-d9IY" />
+
+  <!-- icon -->
+  <link rel="apple-touch-icon" href="assets/public/images/logo.png">
+  <link rel="icon" href="assets/public/images/favicon.ico">
+
+  <!-- opengraph -->
+  <meta property="og:title" content="{{ site.title }}" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="{{ site.url }}" />
+  <meta property="og:image" content="{{ site.url }}/{{ site.main_image }}" />
+  <meta property="og:description" content="{{ site.description }}" />
+  <meta property="og:locale" content="{{ site.local }}" />
+  <meta property="og:site_name" content="{{ site.title }}" />
+
+  <!-- twitter -->
+  <meta name="twitter:card" content="{{ site.url }}/{{ site.main_image }}" />
+  <meta name="twitter:site" content="@nicolasjouanno" />
+  <meta name="twitter:title" content="{{ site.title }}" />
+  <meta name="twitter:description" content="{{ site.description }}" />
+  <meta name="twitter:image" content="{{ site.url }}/{{ site.main_image }}" />  
 
   <!-- Boostrap -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -53,7 +74,5 @@
         }
     }
   </script>
-
-  <link rel="icon" href="assets/public/images/favicon.ico">
 
 </head>

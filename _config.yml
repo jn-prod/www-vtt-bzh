@@ -15,7 +15,9 @@
 # in the templates via {{ site.myvariable }}.
 title: Calendrier Rando VTT Bretagne | vtt.bzh
 # email: your-email@example.com
+local: "fr_FR"
 description: "Calendrier des randonnées VTT de Bretagne | VTT.bzh. Morbihan, finistère, Ille et Vilaine, Cotes d'armor, Loire Atlantique, programmer des maintenant votre prochaine rando VTT du week-end."
+main_image: "assets/public/images/banner-min.jpg"
 url: "https://vtt.bzh" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: jekyllrb
 github_username:  jekyll
