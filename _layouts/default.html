@@ -22,6 +22,9 @@
 
 
     <footer class="container">
+      <!-- newsletter -->
+      {% include plugins/newsletter.html %}
+
       <!-- author -->
       <div class="row">
         <div class="col-12 text-center">
@@ -65,17 +68,27 @@
   <!-- fontawesome -->
   <script defer src="https://use.fontawesome.com/releases/v5.0.1/js/all.js"></script>
 
-  <!-- getsitecontrole -->
+  {% if site.url != "http://localhost:4000" %}
+    <!-- getsitecontrole -->
+    <script>
+      (function (w,i,d,g,e,t,s) {w[d] = w[d]||[];t= i.createElement(g);
+        t.async=1;t.src=e;s=i.getElementsByTagName(g)[0];s.parentNode.insertBefore(t, s);
+      })(window, document, '_gscq','script','//widgets.getsitecontrol.com/186147/script.js');
+    </script>
+
+    <!-- Start of HubSpot Embed Code -->
+    <script type="text/javascript" id="hs-script-loader" async defer src="//js.hs-scripts.com/5421786.js"></script>
+  {% endif %}
+
+  <!-- mailerlite -->
+  <script src="https://static.mailerlite.com/js/w/webforms.min.js?vd890ed88b3a28c805acc70e1a88fa27c" type="text/javascript"></script>
   <script>
-    (function (w,i,d,g,e,t,s) {w[d] = w[d]||[];t= i.createElement(g);
-      t.async=1;t.src=e;s=i.getElementsByTagName(g)[0];s.parentNode.insertBefore(t, s);
-    })(window, document, '_gscq','script','//widgets.getsitecontrol.com/186147/script.js');
+    function ml_webform_success_1408622() {
+        var $ = ml_jQuery || jQuery;
+        $('#newsletter .row-success').show();
+        $('#newsletter .row-form').hide();
+      }
   </script>
-
-  <!-- Start of HubSpot Embed Code -->
-  <script type="text/javascript" id="hs-script-loader" async defer src="//js.hs-scripts.com/5421786.js"></script>
-  <!-- End of HubSpot Embed Code -->
-
   <!-- application -->
   <script src="assets/public/app.js"></script>
   

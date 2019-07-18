@@ -1,55 +1,27 @@
-<div id="newsletter" class="hidde">
-  <div class="container">
-    <div class="row">
-      <div class="col-12 text-white text-center">
-        <div class="row">
-          <div class="col-12">
-            <p class="text-bold text-center spacer-xs-bottom">Recevez chaque mois le calendrier des randos VTT de Bretagne gratuitement</p>
-          </div>
-          <div class="col-12">
-            <form class="form-inline justify-content-center" id="theform" name="theform" action="https://my.sendinblue.com/users/subscribeembed/js_id/32393/id/1" method="POST">
-              <div class="form-group">
-                <input required type="email" name="email" id="email" value="" class="form-control" placeholder="votre@email.ici">
-              </div>
-              <div class="form-group">
-                <input type="text" name="PRENOM" id="PRENOM" value="" class="form-control" placeholder="Votre prénom">
-              </div>
-
-              <input type="hidden" name="js_id" id="js_id" value="32393">
-              <input type="hidden" name="listid" id="listid" value="4">
-              <input type="hidden" name="from_url" id="from_url" value="yes">
-              <input type="hidden" name="hdn_email_txt" id="hdn_email_txt" value="">
-              <input type="hidden" name="sib_simple" value="simple">
-              <input type="hidden" name="sib_forward_url" value="http://www.vtt.bzh" id="sib_forward_url"> 
-              <input type="hidden" name="req_hid" id="req_hid" value="">
-
-              <button type="submit" data-editfield="subscribe" class="btn btn-default">M'abonner !</button>
-
-              <div id="close" class="text-right btn btn-outline-secondary">
-                X
-              </div>
-            </form>               
-            <!--
-            <form action="https://docs.google.com/forms/d/e/1FAIpQLSdoI65ioc5Tlkn6p9d83M_6ka7NVF3UuRRsPGsflEafYYS0gA/formResponse?embedded=true" target="_blank" method="POST" id="mG61Hd" class="form-inline justify-content-center">
-              <div class="form-group">
-                <input placeholder="votre@email.ici" type="email" class="form-control" jsname="YPqjbf" autocomplete="email" tabindex="0" aria-label="Votre adresse e-mail" name="emailAddress" value="" required dir="auto" data-initial-dir="auto" data-initial-value="">
-              </div>
-              <div class="form-group">
-                <input placeholder="votre prénom" type="text" class="form-control" jsname="YPqjbf" autocomplete="off" tabindex="0" aria-label="Prénom" aria-describedby="i.desc.1961727179 i.err.1961727179" name="entry.362509159" value="" dir="auto" data-initial-dir="auto" data-initial-value="">
-              </div>
-              <input type="hidden" name="fvv" value="1">
-              <input type="hidden" name="draftResponse" value="[null,null,&quot;-2763437167515760419&quot;]">
-              <input type="hidden" name="pageHistory" value="0">
-              <input type="hidden" name="fbzx" value="-2763437167515760419">
-              <input type="submit" value="M'abonner !" class="btn btn-secondary">
-              <div id="close" class="text-right btn btn-outline-secondary">
-                X
-              </div>
-            </form>
-            -->                
-          </div>
-        </div>
+<div class="row" id="newsletter" ">
+  <div class="col-12 my-auto py-3">
+    <form  class="ml-block-form row-form" action="https://app.mailerlite.com/webforms/submit/b7y4q9" data-code="b7y4q9" method="post" target="_blank">
+      <div class="d-inline-block">
+        <strong>Recevez chaque moi le calendrier des randonnées VTT de Bretagne →</strong>
       </div>
-    </div>         
+      <div class="d-inline-block">
+        <input type="email" class="form-control my-auto" data-inputmask="" name="fields[email]" value="" placeholder="Email">
+      </div>
+      <div class="d-inline-block">
+        <button type="submit" class="btn btn-sm btn-secondary my-auto shadow">M'abonner</button>
+      </div>
+      <!-- verification -->
+      <input type="hidden" name="ml-submit" value="1">
+      <button disabled="disabled" style="display: none;" type="button" class="loading">
+        <div class="ml-form-embedSubmitLoad"><div></div><div></div><div></div><div></div></div>
+      </button>
+    </form>
+    <div class="row-success alert alert-success d-none">
+      Merci de vous êtes inscrit au calendrier mensuel.
+    </div>
   </div>
 </div>
+
+
+
+<img src="https://track.mailerlite.com/webforms/o/1408622/b7y4q9?vd890ed88b3a28c805acc70e1a88fa27c" width="1" height="1" style="max-width: 1px; max-height: 1px; visibility: hidden; padding: 0; margin: 0; display: block;" border="0">
