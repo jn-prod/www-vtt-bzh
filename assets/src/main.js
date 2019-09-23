@@ -41,7 +41,7 @@ var app = new Vue({
   },
   mounted () {
     axios
-      .get('https://vtt.bzh/events.json')
+      .get('https://vtt.bzh/api/events.json')
       .then((json) => {
         // get only next events
         var response = json.data.filter((val) => {
