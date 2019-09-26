@@ -1,0 +1,52 @@
+<!-- Author Box -->     
+
+<div class="d-flex mb-3 px-5">
+    <div class="d-inline">
+        <img class="img-fluid mx-auto d-inline" src="{{ author.avatar }}" alt="{{ site.data.authors.nicolas.display_name }}, {{ site.data.authors.nicolas.current_job }}"  style="max-height: 90px; width: auto;">
+        <meta itemprop="author creator" content="{{ author.display_name }}">
+    </div>
+    <div class="d-inline my-auto ml-3 text-muted">  
+        <div class="d-block">
+            <!-- Post Categories -->
+            <span class="text-center text-primary pt-2">
+                {% for category in page.categories %}
+                <a href="{{site.url}}/categories/{{ category | downcase }}.html" class="mr-2">#{{category}}</a>
+                {% endfor %}
+            </span>            
+        </div>  
+
+        <div class="d-block">
+            <span itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+                <span itemprop="name" class="font-weight-bold text-dark d-inline">Par {{ author.display_name }},</span>
+                
+                <!-- Post Date -->
+                {% if page.date %}
+                    <span class="post-date">
+                        le 
+                        {% if page.layout == "post" %}
+                            <time>{{ page.date | date_to_string }}</time>
+                        {% else %}
+                            <time class="" itemprop="dateCreated datePublished dateModified" datetime="{{ page.date | date:"%Y-%m-%d" }}">{{ page.date | date_to_string }}</time>
+                        {% endif %}
+                    </span>
+                {% endif %} 
+
+                <span itemprop="logo" itemscope itemtype="https://schema.org/ImageObject">
+                    <meta itemprop="url" content="{{ site.url }}/{{ site.logo }}">
+                    <meta itemprop="width" content="60">
+                    <meta itemprop="height" content="60">
+                </span>
+                <meta itemprop="url" content="{{site.url}}">
+            </span>                
+        </div>
+
+        <div class="d-block">
+            <a target="_blank" class="link-dark ml-1" href="{{ author.twitter }}/" rel="me">
+              <i class="fab fa-twitter"></i>
+            </a>  
+            <a target="_blank" class="link-dark ml-1" href="{{ author.linkedin }}/" rel="me">
+              <i class="fab fa-linkedin"></i>
+            </a>
+        </div>            
+    </div>
+</div>

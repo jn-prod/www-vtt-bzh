@@ -1,0 +1,32 @@
+---
+layout: archive
+title: Stories
+---
+        
+<div class="row pt-2">
+
+    {% for post in paginator.posts %}
+
+        {% include /boxes/post.html class="col-lg-4 col-md-6" %}
+
+    {% endfor %}
+
+</div>
+
+<!-- Pagination
+================================================== -->
+<div class="bottompagination mt-3 mb-5">
+
+    <div class="pointerup">
+
+        <i class="fa fa-caret-up"></i>
+
+    </div>
+
+    <div class="navigation text-center" role="navigation">
+
+        {% include /plugins/pagination.html %}
+
+    </div>
+
+</div>

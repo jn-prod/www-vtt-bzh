@@ -1,0 +1,139 @@
+---
+layout: default
+disqus: true
+archive: false
+post_class: post-template
+---
+
+<!-- Begin Article
+================================================== -->
+
+<div class="container">
+
+    <div class="row">
+
+        <!-- Post Share -->
+        <div class="col-md-2 pl-0">
+
+            <aside>
+
+                {% include /plugins/share.html %} 
+
+            </aside>     
+            
+        </div>
+        
+        <!-- Post --> 
+        {% assign author = site.data.authors[page.author] %}
+
+        {% if page.ads %}
+
+            {% assign sponsor = site.data.ads[page.ads] %}
+
+        {% else %}
+
+            {% assign sponsor = site.data.ads.default %}
+
+        {% endif %}
+
+            
+        
+        <div class="col-md-9 flex-first flex-md-unordered">
+
+            <article itemscope itemtype="http://schema.org/BlogPosting">
+                <time class="" itemprop="dateCreated datePublished dateModified" datetime="{{ page.date | date:"%Y-%m-%d" }}"></time>
+
+                <div class="mainheading">
+
+                    <!-- Post Featured Image -->
+                    {% if page.image %}
+
+                        <img itemprop="image thumbnailUrl" class="featured-image img-fluid mx-auto" src="{{ site.url }}/{{ page.image }}" alt="{{ page.title }}">
+                    
+                    {% endif %}
+
+                    <div class="post-header pt-3">
+
+                        <!-- Post heading -->
+                        <h1 class="posttitle text-center d-block" itemprop="name headline">{{ page.title }}</h1>
+                        <meta itemprop="url mainEntityOfPage" content="{{ site.url}}{{page.url }}">
+
+                        <!-- Author Box -->
+                        {% if page.author %}
+
+                            <div class="d-block pt-4">
+                               
+                               {% include /boxes/author.html %}  
+
+                            </div>
+
+                        {% endif %}
+                       
+                    </div>                      
+
+                </div>
+
+                <!-- Post Content -->
+                <section class="text-left" itemprop="articleBody">
+                    
+                    {% include /boxes/ads.html %}
+
+                    {% if page.youtube_video_id %}
+
+                        <div class="d-block mb-5">
+
+                            <iframe width="100%" height="315" src="https://www.youtube.com/embed/{{ page.youtube_video_id }}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+                        </div>
+
+                    {% endif %}
+
+                    <div class="article-post">
+
+                        {{content}}
+
+                        <p>- Nicolas</p>   
+
+                    </div>
+
+                </section>
+
+
+            </article>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- End Article
+================================================== -->
+
+<aside>
+
+    <div class="container">
+
+        <!-- Prev/Next -->
+        <div class="row justify-content-end mt-3">
+
+            <div class="col-md-9">
+
+                {% include /footer/nav.html %}
+
+            </div>  
+
+            <div class="col-1"></div> 
+
+        </div>
+
+        <!-- Comments -->
+<!--         <div class="d-block">
+
+            {% include /plugins/commentaires.html %}
+
+        </div> -->
+
+    </div>
+
+</aside>

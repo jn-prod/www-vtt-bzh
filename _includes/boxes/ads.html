@@ -1,0 +1,24 @@
+<div class="d-block border-top border-bottom border-muted mb-5">
+    <div class="d-sm-block d-md-flex justify-content-between">
+        <div class="font-weight-bold font-secondary my-auto py-2 px-3 d-block text-uppercase">
+            {{ sponsor.title }}
+        </div>
+        <div class="my-auto py-2 px-3 d-block">
+            <small class="text-muted">SPONSOR*</small>
+        </div>
+    </div>
+    <div class="d-sm-block d-md-flex justify-content-between">
+        <div class="my-auto px-3 d-block">
+            <a href="{{ sponsor.link }}" target="_blank" rel="nofollow">
+               <img src="{{ sponsor.img }}" alt="{{ sponsor.name }}" style="max-height: 220px; max-width: 220px; width: auto;" class="img-fluid my-auto"> 
+            </a>
+        </div>
+        <div class="my-auto px-3 d-block my-auto">
+            <a href="{ sponsor.link }}" alt="{{ sponsor.name }}" target="_blank" rel="nofollow"><small>{{ sponsor.name }} →</small></a>
+            <p>
+                <small class="p-0 m-0">{{ sponsor.description }}</small>
+            </p>
+        </div>
+    </div>   
+    <small class="text-muted p-2 text-center d-block text-italic">*La création des stories est possible grâce au soutien des sponsors. <a href="{{site.url}}/advertise.html" class="text-muted"><u>Sponsoriser la prochaine story</u> →</a></small>                     
+</div>
