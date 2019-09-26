@@ -1,9 +1,11 @@
 <div class="row">
   <div class="col-12 my-auto py-3">
     <form  class="ml-block-form row-form" action="https://app.mailerlite.com/webforms/submit/b7y4q9" data-code="b7y4q9" method="post" target="_blank" id="newsletter-inline-form">
-      <div class="d-inline-block">
-        <strong>Recevez chaque mois le calendrier des randonnées VTT de Bretagne →</strong>
-      </div>
+      {% if include.text %}
+        <div class="d-inline-block font-weight-bold">
+          {{ include.text }}
+        </div>
+      {% endif %}
       <div class="d-inline-block">
         <input type="email" class="form-control my-auto" data-inputmask="" name="fields[email]" value="" placeholder="Email">
       </div>
