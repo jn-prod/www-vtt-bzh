@@ -4,7 +4,5 @@
 bundle exec jekyll server
 ```
 
-## Launch spider
-```
-python -m scrapy runspider spider.py -o events.json
-```
+## Spider
+https://github.com/jn-prod/vttbzh_scraper
