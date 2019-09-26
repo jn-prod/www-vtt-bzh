@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Le Code
-permalink: "/advertize/contract.html
+permalink: "/advertize/contract.html"
 ---
 # Le code vtt.bzh FREE
 
