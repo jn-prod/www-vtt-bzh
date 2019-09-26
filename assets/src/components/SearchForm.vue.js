@@ -46,7 +46,7 @@ export default {
           '<div class="row">' +
             '<div class="col-12 my-2">' +
               '<a href="#calendar" v-on:click="deleteQuery" class="btn btn-sm btn-outline-danger shadow m-2">X Réinitialiser</a>' +
-              '<button type="submit" class="btn btn-primary float-none float-xl-right shadow m-2" id="search_button">Rechercher →</button>' +
+              '<button type="submit" class="btn btn-primary float-none float-xl-right shadow m-2 rounded-pill" id="search_button">Rechercher →</button>' +
             '</div>' +
           '</div>' +
         '</form>'
