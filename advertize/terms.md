@@ -7,6 +7,5 @@ permalink: "/advertize/terms.html"
 Vous aimez le style de vtt.bzh ?
 Nous vous proposons un espace dédié pour communiquer sur votre marque auprès de nos 2500+ abonnés : l'email partenaire.
 Empruntant le ton amicale et bienveillant de VTT.bzh, nous concevons ces e-mails partenaires en intégrant votre marque à notre univers.
-Un graphisme unique, un ton impertinent : nous communiquons sur votre marque en respectant <a href="/advertize
-/contract.html">le contract</a> que nous avons avec nos lecteurs.
+Un graphisme unique, un ton impertinent : nous communiquons sur votre marque en respectant <a href="/advertize/contract.html">le contract</a> que nous avons avec nos lecteurs.
 Pour plus d'informations, contactez Nicolas : nicolas@vtt.bzh
