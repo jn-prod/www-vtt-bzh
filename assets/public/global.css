@@ -25,6 +25,10 @@ a:hover {
   padding: 15px;
 }
 
+.logo{
+  max-height: 80px;
+}
+
 .jumbotron{
   background: none !important;
       margin-top: 20%;
