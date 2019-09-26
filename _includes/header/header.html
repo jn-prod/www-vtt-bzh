@@ -1,5 +1,6 @@
 <header class="container">
   <div class="d-flex justify-content-between">
+    <!-- Logo -->
     {% if page.url != "/" or page.url != "/index.html" %}
       <div>
         <a href="{{ site.url }}" class="btn btn-outline-dark border-0">
@@ -9,8 +10,10 @@
       </div>
     {% else %}
     {% endif %}
+    
     <!-- newsletter -->
-    {% include plugins/newsletter.html text="M'abonner →" %}
+    <div>
+      {% include plugins/newsletter.html text="M'abonner →" %}
     </div>
   </div>
 </header>
