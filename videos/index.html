@@ -1,0 +1,26 @@
+---
+layout: default
+title: Vidéos de VTT
+description: "trouvez l'inspiration de votre prochaine sortie vtt avec notre sélection de vidéos on demand"
+keywords: "vidéos vtt,vidéo vélo, video vtt, videos vtt, film vtt"
+permalink: "/videos/"
+---
+<div class="row">
+
+  <div class="col-12">
+  
+    <h1>Vidéos de VTT à la demande</h1>
+    
+    {% for video in site.data.videos %}
+    
+      <div class="my-5">
+      
+      <iframe width="auto" height="315" src="https://www.youtube.com/embed/{{ video.id }}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      
+      </div>
+    
+    {% endfor %}
+    
+  </div>
+  
+</div>
