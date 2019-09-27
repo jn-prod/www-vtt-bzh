@@ -5,19 +5,12 @@ redirect_from:
   - "/suspension-5-points-pour-regler-la-fourche-et-lamortisseur-de-son-vtt/"
 layout: post
 title: 'Comment régler les suspensions de son VTT, de la fourche à l’amortisseur'
+description: ""
+keywords: ""
+
 date: 2017-02-14 07:48:53.000000000 +01:00
-type: post
-
-categories:
-- Sport
-
-tags:
-- VTT
-- matériel
-
 author: nicolas
 image: assets/public/images/posts/a3d50-0omp6q8ru_v_v0drm.jpg
-featured: false
 ---
 <em>Comment régler la fourche et l’amortisseur de votre VTT ? XC Marathon, enduro, DH, … de 100 à 200mm et plus, nos <strong>VTT</strong> sont tous, ou presque, équipés d’une <strong>fourche</strong> télescopique et d’un <strong>amortisseur</strong>. Gagner en stabilité, augmenter le confort, l’adhérence… votre <strong>VTT</strong> tout-suspendu à de nombreux avantages, mais faut-il encore que vos <strong>suspensions</strong> soit bien réglées! Découvrez ici les astuces et méthodes simples pour régler <strong>la fourche</strong> et <strong>l’amortisseur</strong> de votre <strong>VTT</strong>.</em> 
 
@@ -47,7 +40,7 @@ Vous n’avez pas de pompe haute pression pour <strong>régler</strong> votre <s
 Pour les <strong>fourches</strong> de <strong>VTT</strong> à élastomère/ressort, si vous souhaitez durcir ou assouplir votre fourche de manière significative, il conviens de les changer pour des références plus dures ou plus souples qui sont adaptées à la <strong>fourche</strong> de votre <strong>VTT</strong>.
 
 <figure>
-	<img alt="Pompe Haute Pression pour Suspension ROCKSHOX" src="{{ site.url }}/assets/public/images/posts/a3d50-0omp6q8ru_v_v0drm.jpg" />
+	<img alt="Pompe Haute Pression pour Suspension ROCKSHOX" src="{{ site.url }}/assets/public/images/posts/a3d50-0omp6q8ru_v_v0drm.jpg" class="img-fluid"/>
   <figcaption>Pompe Haute Pression pour Suspension ROCKSHOX</figcaption>
 </figure>
 <a href="http://track.effiliation.com/servlet/effi.redir?id_compteur=12855409&amp;url=https://www.alltricks.fr/F-11929-outillage/P-79483-rockshox_pompe_haute_pression_fourches___amortisseurs" target="_blank" rel="nofollow" class="btn btn-outline-primary text-center">Acheter chez Alltricks</a>
@@ -68,7 +61,7 @@ Pour les <strong>fourches</strong> de <strong>VTT</strong> à élastomère/resso
 - un ressort trop mou risque d’abîmer votre matériel, car votre système de <strong>suspension</strong> ira très souvent en butée sur gros choc (même pour une pratique xc).
 - l’air de la fourche de votre <strong>VTT</strong> ne réagis pas de la même manière quand il fait 0° et 30°, votre <strong>réglage</strong> doit varier et votre pression être vérifiée chaque mois de l’année pour être le plus adapté possible aux conditions dans lesquels vous roulez. (l’hiver l’air se comprime idéalement ajoutez +5% en pression, alors que l’été elle se dilate, idéalement enlevez -5% en pression)
 <figure>
-	<img alt="Jared Graves - action Championnat du monde de DH 2013 - Crédits photos @ yeticycles.com" src="{{ site.url }}/assets/public/images/posts/89754-0y1psiewctqe8xr-m.jpg" /><br />
+	<img alt="Jared Graves - action Championnat du monde de DH 2013 - Crédits photos @ yeticycles.com" src="{{ site.url }}/assets/public/images/posts/89754-0y1psiewctqe8xr-m.jpg" class="img-fluid"/><br />
 </figure>
 
 Jared Graves — action Championnat du monde de DH 2013 — Crédits photos @ yeticycles.com
@@ -96,7 +89,7 @@ Si le blocage de <strong>la fourche de votre VTT ou de l’amortisseur</strong> 
 - <strong>La fourche ou amortisseur</strong> manque d’huile, vérifiez qu’il n’a pas de fuite et rajoutez quelques cuillères à café d’huile.
 
 <figure>
-	<img alt="Huile pour Suspensions FOX RACING SHOX GOLD 20 WT (946 ml)" src="{{ site.url }}/assets/public/images/posts/17b3c-0awqo5thxnz5oesdo.jpg" />
+	<img alt="Huile pour Suspensions FOX RACING SHOX GOLD 20 WT (946 ml)" src="{{ site.url }}/assets/public/images/posts/17b3c-0awqo5thxnz5oesdo.jpg" class="img-fluid"/>
   <figcaption>Huile pour Suspensions FOX RACING SHOX GOLD 20 WT (946 ml)</figcaption>
 </figure>
 <a href="http://track.effiliation.com/servlet/effi.redir?id_compteur=12855409&amp;url=https://www.alltricks.fr/F-11939-produits-d-entretien/P-86030-fox_huile_fourche_fox_fluid_32_oz_10_wt_verte_940ml" target="_blank" rel="nofollow" class="btn btn-outline-primary text-center">Acheter chez Alltricks</a>
@@ -134,19 +127,19 @@ Ainsi le fonctionnement des <strong>suspensions</strong> de votre <strong>VTT</s
 ## Ma sélection de fourches et amortisseurs:
 
 <figure>
-	<img alt="Fourche FOX RACING SHOX 32 SC FLOAT FACTORY 27,5 100 mm FIT4 Pivot Conique Axe Kabolt 15 mm Boost Noir 2017 " src="{{ site.url }}/assets/public/images/posts/66a09-0noa0olg9r-f9pkec.jpg" />
+	<img alt="Fourche FOX RACING SHOX 32 SC FLOAT FACTORY 27,5 100 mm FIT4 Pivot Conique Axe Kabolt 15 mm Boost Noir 2017 " src="{{ site.url }}/assets/public/images/posts/66a09-0noa0olg9r-f9pkec.jpg" class="img-fluid"/>
   <figcaption>Fourche FOX RACING SHOX 32 FLOAT SC FACTORY FIT4 27.5´´ Kabolt | Boost 15x110mm | Noir</figcaption>
 </figure>
 <a href="http://track.effiliation.com/servlet/effi.redir?id_compteur=12855409&amp;url=https://www.alltricks.fr/F-11918-fourches/P-189977-fourche_fox_racing_shox_32_float_sc_factory_fit4_27_5___kabolt___boost_15x110mm___2017___noir" target="_blank" rel="nofollow" class="btn btn-outline-primary text-center">Acheter chez Alltricks</a>
 
 <figure>
-	<img alt="Fourche ROCKSHOX PIKE RCT3 27,5 160/130 mm Dual Position Air Pivot Conique Axe 15 mm Noir 2017" src="{{ site.url }}/assets/public/images/posts/cd839-0i54iojtdqawv4hhd.jpg" />
+	<img alt="Fourche ROCKSHOX PIKE RCT3 27,5 160/130 mm Dual Position Air Pivot Conique Axe 15 mm Noir 2017" src="{{ site.url }}/assets/public/images/posts/cd839-0i54iojtdqawv4hhd.jpg" class="img-fluid"/>
   <figcaption>Fourche ROCKSHOX PIKE RCT3 27,5" 160/130 mm Dual Position Air Pivot Conique Axe 15 mm Noir</figcaption>
 </figure>
 <a href="http://track.effiliation.com/servlet/effi.redir?id_compteur=12855409&amp;url=https://www.alltricks.fr/F-11918-fourches/P-103071-rockshox_2017_fourche_pike_rct3_27_5___axe_15_mm_dual_position_air_130_160_conique_noir" target="_blank" rel="nofollow" class="btn btn-outline-primary text-center">Acheter chez Alltricks</a>
 
 <figure>
-	<img alt="Amortisseur FOX RACING SHOX FLOAT DPS FACTORY SV 2017" src="{{ site.url }}/assets/public/images/posts/3123e-00jzvgtbazkfyrjn6.jpg" />
+	<img alt="Amortisseur FOX RACING SHOX FLOAT DPS FACTORY SV 2017" src="{{ site.url }}/assets/public/images/posts/3123e-00jzvgtbazkfyrjn6.jpg" class="img-fluid"/>
   <figcaption>Amortisseur FOX RACING SHOX FLOAT DPS FACTORY SV</figcaption>
 </figure>
 <a href="http://track.effiliation.com/servlet/effi.redir?id_compteur=12855409&amp;url=https://www.alltricks.fr/Acheter/Amortisseur%2BFOX%2BRACING%2BSHOX%2BFLOAT%2BDPS%2BFACTORY%2BSV%2B2017" target="_blank" rel="nofollow" class="btn btn-outline-primary text-center">Acheter chez Alltricks</a>
