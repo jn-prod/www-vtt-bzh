@@ -20,6 +20,14 @@ post_class: post-template
     <div class="row">
 
         <div class="col-12 my-5 flex-first flex-md-unordered">
+            <!--Breadcrumb-->
+            <nav aria-label="breadcrumb">
+              <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{{ site.url }}">Home</a></li>
+                <li class="breadcrumb-item"><a href="{{ site.url }}/blog/index.html">Blog</a></li>
+                <li class="breadcrumb-item active" aria-current="page">{{ page.title }}</li>
+              </ol>
+            </nav>
             
             <!-- Post --> 
             <article itemscope itemtype="http://schema.org/BlogPosting">                
