@@ -147,7 +147,7 @@ Il existe des tiges de selle pour VTT avec + ou — de recul afin de peaufin
 
 Idéalement l’inclinaison de la selle sera neutre (de niveau) ou légèrement vers l’avant.
 
-<strong>Tige de selle télescopique</strong>: <a href="/test-tige-de-selle-telescopique-rockshox-reverb" target="_blank">lire l’article sur les tiges de selle télescopiques, écrit précédemment.</a>
+<strong>Tige de selle télescopique</strong>: lire l’article sur les tiges de [selle télescopiques](/test-tige-de-selle-telescopique-rockshox-reverb.html), écrit précédemment.
 <hr />
 
 ## 4/ Conclusion sur le choix de la taille de votre VTT et de votre position : {#conclusion}
