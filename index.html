@@ -1,61 +1,42 @@
 ---
-redirect_from:
-  - "/calendrier/calendrier-randonnee-vtt-bretagne/"
-  - "/category/circuits/morbihan"
-  - "/rando-vtt-pornichet/"
 layout: default
-title: Calendrier des randonnées VTT de Bretagne | VTT.bzh
+title: Calendrier des rando et conseils pour pratiquer le VTT en Bretagne
 ---
 <!-- application -->
-<section id="app">
-    <div class="row">
-        <div class="col-12">
+<section>
+  
+  <div class="row">
 
-          <div class="row" id="header-wrapper">
-            <div class="col-md-4 bg-white p-2 p-md-5 m-2 m-md-5 rounded shadow">
-              <section>
+    <div class="col-12">
 
-                <!-- value proposition        -->
-                <h1 class="h3 text-left my-5">Rechercher une rando VTT à coté de chez toi n'aura jamais été aussi simple.</h1>
+      <div class="row" id="header-wrapper">
 
-                <!-- form -->
-                <search-form v-on:search-submit="startSearch">
-                </search-form>
-              </section>
-            </div>
-          </div>
+        <div class="col-md-4 bg-white p-2 p-md-5 m-2 m-md-5 rounded shadow">
 
-          <div class="container">
-            <div class="row">
-              <div class="col-12 mt-5 mb-3">
-                <h2 id="calendar">Calendrier des randonnées à venir</h2>
-                <span id="nombre_rando" class="badge badge-success"></span>
-              </div>
-            </div>
+          <!-- value proposition        -->
+          <h1 class="h3 text-left my-5">Rechercher une rando VTT à coté de chez toi n'aura jamais été aussi simple.</h1>
 
-            <div class="row" v-show="displayNoResults">
-              <div class="col-12">
-                <div class="alert alert-danger">
-                  Aucun résultat pour cette recherche, choisissez une autre date de début et de fin.
-                </div>
-              </div>
-            </div>
-
-            <!-- Load event -->
-            <div class="row m-3 shadow" 
-              v-for="(event, index) in loadDatas"
-              :key="event.id"
-              v-if="index < dataDefaultLength"
-            >
-              <event-item
-                v-bind:event="event"
-              >
-              </event-item>
-            </div>
-
-            <!-- load-more button -->
-            <load-more-button></load-more-button>    
-          </div>
+          <!-- form -->
         </div>
+
       </div>
+
+      <div class="container">
+
+        <div class="row">
+
+          <div class="col-12 mt-5 mb-3">
+
+            <h2 id="calendar">Calendrier des randonnées à venir</h2>
+
+          </div>
+
+        </div>  
+
+      </div>
+
+    </div>
+
+  </div>
+  
 </section>
