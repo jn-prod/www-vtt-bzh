@@ -1,16 +1,10 @@
 ---
 layout: post
 title: 'Comment choisir entre pédales automatiques et plates de VTT?'
+description: "Le guide ultime pour faire son choix entre le pédales plates et les pédales automatique en vtt."
+keywords: "pédales vtt, pédales plate vtt, pédales automatique vtt, choisir pédales vtt"
+
 date: 2017-01-29 22:12:37.000000000 +01:00
-type: post
-
-categories: 
-- Sport
-
-tags:
-- VTT
-- matériel
-
 author: nicolas
 image: assets/public/images/posts/ccs-62657-0-58346000-1479391864.jpg
 ---
@@ -33,7 +27,7 @@ Comment choisir entre les <strong>pédales plates et les pédales automatiques</
 ## 2/ Avantages / inconvénients de la pédale plate traditionnelle : {#pedales-plates}
 
 <figure>
-	<img alt="Pédales SHIMANO SAINT PD-MX80 " src="{{ site.url }}/assets/public/images/posts/1e33e-0me9njiu_fhg0h5fc.jpg" />
+	<img alt="Pédales SHIMANO SAINT PD-MX80 " src="{{ site.url }}/assets/public/images/posts/1e33e-0me9njiu_fhg0h5fc.jpg" class="img-fluid"/>
   <figcaption>Pédales plates - SHIMANO SAINT PD-MX80</figcaption>
 </figure>
 
@@ -65,7 +59,7 @@ Les <strong>pédales plates</strong> restent avant tout des pédales idéales po
 ## 3/ Avantages / inconvénients de la pédale automatique : {#pedales-automatiques}
 
 <figure>
-	<img alt="Pédale automatique VTT : Crankbrothers - Egg Beater" src="{{ site.url }}/assets/public/images/posts/7c850-0mtwevjri_e7fkdab.jpg" />
+	<img alt="Pédale automatique VTT : Crankbrothers - Egg Beater" src="{{ site.url }}/assets/public/images/posts/7c850-0mtwevjri_e7fkdab.jpg" class="img-fluid"/>
   <figcaption>Pédale automatique VTT    Crankbrothers — Egg Beater</figcaption>
 </figure>
 
@@ -129,25 +123,25 @@ Pour la <strong>descente</strong>, chacun à sa réponse en fonction de son pilo
 ## 6/ Notre sélection de pédales VTT {#best-of}
 
 <figure>
-	<img alt="PAIRE DE PÉDALES SHIMANO SPD-M520 ARGENT " src="{{ site.url }}/assets/public/images/posts/af16b-0y_u7-3bbkdtbx_aa.jpg" />
+	<img alt="PAIRE DE PÉDALES SHIMANO SPD-M520 ARGENT " src="{{ site.url }}/assets/public/images/posts/af16b-0y_u7-3bbkdtbx_aa.jpg" class="img-fluid"/>
   <figcaption>PAIRE DE PÉDALES SHIMANO SPD-M520 ARGENT <strong>(économique)</strong></figcaption>
 </figure>
 <a href="http://track.effiliation.com/servlet/effi.redir?id_compteur=12855409&amp;url=https://www.alltricks.fr/Acheter/SHIMANO%2BSPD-M520" target="_blank" rel="nofollow" class="btn btn-outline-primary text-center">Acheter chez Alltricks</a>
 
 <figure>
-	<img alt="CRANKBROTHERS PAIRE DE PÉDALES CANDY 3 " src="{{ site.url }}/assets/public/images/posts/9724d-0qj-pgpuwr39vwzbm.jpg" />
+	<img alt="CRANKBROTHERS PAIRE DE PÉDALES CANDY 3 " src="{{ site.url }}/assets/public/images/posts/9724d-0qj-pgpuwr39vwzbm.jpg" class="img-fluid"/>
   <figcaption>CRANKBROTHERS PAIRE DE PÉDALES CANDY 3 <strong>(XC/ENDURO)</strong></figcaption>
 </figure>
 <a href="http://track.effiliation.com/servlet/effi.redir?id_compteur=12855409&amp;url=https://www.alltricks.fr/Acheter/crankbrothers%2Bcandy" target="_blank" rel="nofollow" class="btn btn-outline-primary text-center">Acheter chez Alltricks</a>
 
 <figure>
-	<img alt="PAIRE DE PÉDALES CRANKBROTHERS MALLET 2" src="{{ site.url }}/assets/public/images/posts/0120e-0pdui5pnl2zcxsxum.jpg" />
+	<img alt="PAIRE DE PÉDALES CRANKBROTHERS MALLET 2" src="{{ site.url }}/assets/public/images/posts/0120e-0pdui5pnl2zcxsxum.jpg" class="img-fluid"/>
   <figcaption>PAIRE DE PÉDALES CRANKBROTHERS MALLET 2 <strong>(ENDURO/DH)</strong></figcaption>
 </figure>
 <a href="http://track.effiliation.com/servlet/effi.redir?id_compteur=12855409&amp;url=https://www.alltricks.fr/Acheter/CRANKBROTHERS%2BMALLET%2B2" target="_blank" rel="nofollow" class="btn btn-outline-primary text-center">Acheter chez Alltricks</a>
 
 <figure>
-	<img alt="Pédales SHIMANO SAINT PD-MX80 " src="{{ site.url }}/assets/public/images/posts/c9250-0hirkgovxa7gjzone.jpg" />
+	<img alt="Pédales SHIMANO SAINT PD-MX80 " src="{{ site.url }}/assets/public/images/posts/c9250-0hirkgovxa7gjzone.jpg" class="img-fluid"/>
   <figcaption>Pédales SHIMANO SAINT PD-MX80 <strong>(ENDURO/DH)</strong></figcaption>
 </figure>
 <a href="http://track.effiliation.com/servlet/effi.redir?id_compteur=12855409&amp;url=https://www.alltricks.fr/F-11931-pedales-plates/P-80288-shimano_paire_de_pedales_plates_saint_pd_mx80" target="_blank" rel="nofollow" class="btn btn-outline-primary text-center">Acheter chez Alltricks</a>
