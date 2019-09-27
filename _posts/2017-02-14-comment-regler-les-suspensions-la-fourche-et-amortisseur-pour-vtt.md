@@ -22,7 +22,7 @@ image: assets/public/images/posts/a3d50-0omp6q8ru_v_v0drm.jpg
 4. [La détente de la suspension](#detente)
 5. [Le débattement variable](#debattement)
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/aXZ_WWjIQdA" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+<iframe width="auto" height="315" src="https://www.youtube.com/embed/aXZ_WWjIQdA" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 <hr />
 
 ## 1/ Le ressort de la suspension {#ressort}
