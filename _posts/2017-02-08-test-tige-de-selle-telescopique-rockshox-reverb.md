@@ -52,7 +52,7 @@ Débattement : 125mm<br />Matériau : Alu 7050 forgé 3D, chariot en Alu 7050 
 Dans cette vidéo découvrez comment installer et raccourcir la durite de votre tige de selle Rockshox Reverb vous même.
 <iframe src="https://player.vimeo.com/video/105743742" width="auto" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 
-<a href="https://vimeo.com/105743742" target="_blank" rel="nofollow">TECH VIDEO - Installation compl&egrave;te d&#039;une tige de selle Rockshox Reverb sur un cadre de META V4</a> from COMMENCAL on Vimeo.
+<a href="https://vimeo.com/105743742" target="_blank" >TECH VIDEO - Installation compl&egrave;te d&#039;une tige de selle Rockshox Reverb sur un cadre de META V4</a> from COMMENCAL on Vimeo.
 
 ### Purger une tige de selle ROCKSHOX REVERB:
 
@@ -119,4 +119,4 @@ Découvrez par vous le même le plaisir de rouler sur une tige de selle télesco
   <img alt="Tige de Selle Télescopique ROCKSHOX REVERB" src="{{ site.url }}/assets/public/images/posts/2154b-0on0ct9jh4z8cleqj.jpg" class="img-fluid"/>
   <figcaption>Tige de Selle Télescopique ROCKSHOX REVERB</figcaption>
 </figure>
-<a href="http://track.effiliation.com/servlet/effi.redir?id_compteur=12855409&amp;url=https://www.alltricks.fr/Acheter/ROCKSHOX%2BREVERB" target="_blank" rel="nofollow" class="btn btn-outline-primary text-center">Acheter chez Alltricks</a>
+<a href="http://track.effiliation.com/servlet/effi.redir?id_compteur=12855409&amp;url=https://www.alltricks.fr/Acheter/ROCKSHOX%2BREVERB" target="_blank"  class="btn btn-outline-primary text-center">Acheter chez Alltricks</a>
