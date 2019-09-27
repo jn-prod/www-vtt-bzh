@@ -12,16 +12,25 @@
   {% if page.description %}
     <meta name="description" content="{{ page.description }}">
   {% else %}
-    <meta name="description" content="{{ site.description }}">
+    <meta name="description" content="{{ content | strip_html | truncatewords:19 }} | {{site.title}}">   
   {% endif %}
   
   <meta name="keywords" content="randonnée, rando, randonnées, vtt, rando vtt, rando vtt bretagne" />
-  <meta name="author" content="Nicolas Jouanno">
 
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="google-site-verification" content="p6n7BrHhMIgg3KX7bCmj6fzgSvSRwlppzRWJY4-d9IY" />
 
+  <meta name="robots" content="index, follow">
+  <meta name="referrer" content="always">
+  <meta name="theme-color" content="#000000">
+  {% if site.google_verification %}
+    <meta name="google-site-verification" content="{{ site.google_verification }}" />
+  {% endif %}
+  <link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.url }}">
+  <meta name="author" content="{{ site.data.authors.nicolas.display_name }}">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
   <!-- icon -->
   <link rel="apple-touch-icon" href="{{ site.url }}/assets/public/images/logo.png">
   <link rel="icon" href="{{ site.url }}/assets/public/images/favicon.ico">
@@ -34,10 +43,10 @@
   {% else %}
     <meta property="og:image" content="{{ site.url }}/{{ site.main_image }}" />
   {% endif %}
-   {% if post.excerpt %}
-    <meta property="og:description" content="{{ post.excerpt | strip_html | truncatewords:30 }}" />
+  {% if post.excerpt %}
+    <meta property="og:description" content="{{ post.excerpt | strip_html | truncatewords:30 }} | {{site.title}}" />
   {% else %}
-    <meta property="og:description" content="{{ site.description }}" />
+    <meta property="og:description" content="{{ content | strip_html | truncatewords:19 }} | {{site.title}}" />
   {% endif %} 
   
   <meta property="og:locale" content="{{ site.local }}" />
