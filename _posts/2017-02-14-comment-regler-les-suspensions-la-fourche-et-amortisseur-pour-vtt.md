@@ -1,6 +1,6 @@
 ---
 redirect_from:
-	- "/suspension-5-points-pour-regler-la-fourche-et-lamortisseur-de-son-vtt"
+  - "/suspension-5-points-pour-regler-la-fourche-et-lamortisseur-de-son-vtt"
   - "/suspension-5-points-pour-régler-la-fourche-et-lamortisseur-de-son-vtt-162b9a939ac0"
   - "/suspension-5-points-pour-regler-la-fourche-et-lamortisseur-de-son-vtt/"
 layout: post
