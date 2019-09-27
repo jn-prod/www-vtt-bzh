@@ -47,7 +47,7 @@ Réalisez cette enchainement 3 fois d’affilé et recommencez après 15 minutes
 L’exercice lui se décompose de la manière suivante:
 réalisez 8 flexions 5 fois avec 2 minutes de récupération entre chacune d’elles (le temps de récupération est très important pour l’efficacité de l’exercice). Cet exercice vous prendra 15 minutes, il peut se faire au réveil ou avant de vous coucher par exemple.
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/yS4M8-y6Jr4" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+<iframe width="auto" height="315" src="https://www.youtube.com/embed/yS4M8-y6Jr4" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 <hr />
 
 ## 3/ Améliorer son endurance en VTT: {#endurance}
