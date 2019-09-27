@@ -9,7 +9,7 @@ author: nicolas
 image: "assets/public/images/posts/bf91f-04tn2madty8ffu2ug.jpg"
 ---
 
-<em>En 2015, les différentes épreuves des <strong>Roc’h des monts d’Arrée</strong> totalisaient plus de 6200 VTTisites au départ du Huelgouat, <strong>Bretagne</strong>. Ce rassemblement, point d’orgue de la saison des <strong>randos en Bretagne</strong>, permet aux VTTistes de tous âges de s’exprimer à leur niveau sur des distances allant jusqu’à 120 kilomètres. Une goutte d’eau dans l’Océan si l’on sait qu’en Bretagne, chaque week-end, ce sont plus d’une dizaine de <strong>randonnées VTT</strong> qui ont Lieu.</em>
+<em>En 2015, les différentes épreuves des Roc’h des monts d’Arrée totalisaient plus de 6200 VTTisites au départ du Huelgouat, Bretagne. Ce rassemblement, point d’orgue de la saison des randos en Bretagne, permet aux VTTistes de tous âges de s’exprimer à leur niveau sur des distances allant jusqu’à 120 kilomètres. Une goutte d’eau dans l’Océan si l’on sait qu’en Bretagne, chaque week-end, ce sont plus d’une dizaine de randonnées VTT qui ont Lieu.</em>
 
 ## Au programme:
 
@@ -23,76 +23,76 @@ image: "assets/public/images/posts/bf91f-04tn2madty8ffu2ug.jpg"
 ## 1/ Chaque week-end des milliers de VTTistes sillonnent les sentiers de Bretagne en VTT {#preambule}
 
 <figure>
-	<img alt="Carte des voies vertes accessibles au VTT en Bretagne" src="{{ site.url }}/assets/public/images/posts/a1019-0eb-pflbqbfbuhb14.jpg" class="img-fluid"/><br />
+  <img alt="Carte des voies vertes accessibles au VTT en Bretagne" src="{{ site.url }}/assets/public/images/posts/a1019-0eb-pflbqbfbuhb14.jpg" class="img-fluid"/><br />
 </figure>
 
 Carte des voies vertes accessibles en randonnée VTT en Bretagne
 
-VTTiste débutant ou confirmé, nous sommes nombreux le week-end à la recherche de nouveaux <strong>terrains à découvrir en VTT</strong> dans notre belle Région: la <strong>Bretagne</strong>. Les multiples organisateurs de randonnées vous donnent rendez-vous chaque week-end dans les différents départements de <strong>Bretagne: Morbihan, Finistère, Côte d’Armor, Ille-et-Vilaine et la Loire-Atlantique</strong>.
+VTTiste débutant ou confirmé, nous sommes nombreux le week-end à la recherche de nouveaux terrains à découvrir en VTT dans notre belle Région: la Bretagne. Les multiples organisateurs de randonnées vous donnent rendez-vous chaque week-end dans les différents départements de Bretagne: Morbihan, Finistère, Côte d’Armor, Ille-et-Vilaine et la Loire-Atlantique.
 
-Il vous est possible de mettre le pied à l’étrier en profitant en <strong>VTT des chemins balisés FFC</strong> et autres <strong>voies vertes</strong> qui parcourent les grandes lignes de la Bretagne de son intéreur à son extérieur (cf: carte ci-dessus).
+Il vous est possible de mettre le pied à l’étrier en profitant en VTT des chemins balisés FFC et autres voies vertes qui parcourent les grandes lignes de la Bretagne de son intéreur à son extérieur (cf: carte ci-dessus).
 
 Envie de plus d’aventure? L’inscription à une randonnée organisée vous coutera généralement 5€. Vous aurez ainsi accès à des randonnées allant d’une dizaine de kilomètres balisées par des passionnés locaux. Il est commun que les bénéfices de ces organisations soient reversés à des causes telles que la lutte contre le cancer, la mucoviscidose, … Les commodités, douche, station de lavage et le traditionnel sandwich patté cornichon vous attendrons traditionnellement à votre arrivée.
 
-<strong>Toutes les randonnées VTT organisées valent le détour</strong>, ne serais-ce que pour la sueur qui a coulé sur le front des bénévoles, les convivialité des pilotes à rencontrer, mais aussi pour leur authenticité. Bien sur vous ne pourrez pas toutes les faire le même week-end mais au <strong>fil des années vous commencerez à connaitre de nombreux chemins où la pratique du VTT est possible</strong>.
+Toutes les randonnées VTT organisées valent le détour, ne serais-ce que pour la sueur qui a coulé sur le front des bénévoles, les convivialité des pilotes à rencontrer, mais aussi pour leur authenticité. Bien sur vous ne pourrez pas toutes les faire le même week-end mais au fil des années vous commencerez à connaitre de nombreux chemins où la pratique du VTT est possible.
 
 <em>Vous ne savez pas quelle randonnée VTT choisir? Voici un petit tour de Bretagne à vélo et de bonnes idées..</em> 
 
 ## 2/ Les randos de la côte Nord de Bretagne à VTT de Brest au Mont-Saint-Michel (Finistère, Côtes d’Armor, Ille et Vilaine) {#cote-nord}
 <figure>
-	<img alt="Randonnée VTT au mont st michel" src="{{ site.url }}/assets/public/images/posts/04f42-0nrby8alnuktzebeg.jpg" class="img-fluid"/><br />
+  <img alt="Randonnée VTT au mont st michel" src="{{ site.url }}/assets/public/images/posts/04f42-0nrby8alnuktzebeg.jpg" class="img-fluid"/><br />
 </figure>
 
 Randonnée VTT au mont st michel ©<a rel="nofollow" href="http://www.safrantours.com/fr/randonnee-velo-France/voyage-velo-famille/voyage-velo-mont-saint-michel-et-randonnee-velo-normandie" target="_blank">safrantours.com</a>
 
-De <strong>Brest</strong> à <strong>Ploudalmézeau</strong>, c’est le charme du bout du Monde, l’Ouest du continent Européen, avec une côte frappée par les tempêtes arrivant de l’Atlantique qui se déroulera sous vos roues de <strong>VTT</strong>. L<strong>’espace VTT du Pays d’Iroise</strong> accueillera tous les niveaux de pilote sur ses 12 pistes VTT balisées totalisant 364 km à partir de l’une des communes du Pays d’Iroise.
+De Brest à Ploudalmézeau, c’est le charme du bout du Monde, l’Ouest du continent Européen, avec une côte frappée par les tempêtes arrivant de l’Atlantique qui se déroulera sous vos roues de VTT. L’espace VTT du Pays d’Iroise accueillera tous les niveaux de pilote sur ses 12 pistes VTT balisées totalisant 364 km à partir de l’une des communes du Pays d’Iroise.
 
-De <strong>Morlaix</strong> au <strong>Mont-Saint-Michel</strong>, le paysage rocheux offert par la <strong>côte Nord de la Bretagne</strong>, vous fera découvrir à <strong>VTT</strong> les falaises qui jalonnent la Manche. Prenez le temps de vous arrêter et profitez du paysage à <strong>Perros-Guirec, Paimpol, Erqy, Saint Malo</strong>.
+De Morlaix au Mont-Saint-Michel, le paysage rocheux offert par la côte Nord de la Bretagne, vous fera découvrir à VTT les falaises qui jalonnent la Manche. Prenez le temps de vous arrêter et profitez du paysage à Perros-Guirec, Paimpol, Erqy, Saint Malo.
 
-<strong>Saint-Brieuc</strong>, ville préfecture des <strong>Côtes d’Amor</strong>, est une ville d’histoire qui a de quoi vous séduire avec ses bâtiments d’architecture médiévale, les vallées du Gouédic et du Gouët, la vallée de Souvenant, le port de plaisance de pêche et de commerce, la baie de Saint-Brieuc (réserve naturelle), le jardin et la roseraie de Ty Coat, le parc des Promenades, le parc de la Villa Rohannec’h et l’arboretum de la ville.
+Saint-Brieuc, ville préfecture des Côtes d’Amor, est une ville d’histoire qui a de quoi vous séduire avec ses bâtiments d’architecture médiévale, les vallées du Gouédic et du Gouët, la vallée de Souvenant, le port de plaisance de pêche et de commerce, la baie de Saint-Brieuc (réserve naturelle), le jardin et la roseraie de Ty Coat, le parc des Promenades, le parc de la Villa Rohannec’h et l’arboretum de la ville.
 
-On arrêtera de longer la face de la Bretagne au <strong>Mont Saint Michel</strong>. On découvrira l’espace<strong> VTT de La Baie du Mont St Michel</strong> et ses 8 pistes au totalisant 257 km. On posera ensuite notre VTT à l’entrée de la baie pour prendre une photo de carte postale, faire un selfie avec sa Go Pro, où simplement terminer en s’émerveillant devant l’authenticité de la vieille ville construite sur un îlot rocheux.
+On arrêtera de longer la face de la Bretagne au Mont Saint Michel. On découvrira l’espace VTT de La Baie du Mont St Michel et ses 8 pistes au totalisant 257 km. On posera ensuite notre VTT à l’entrée de la baie pour prendre une photo de carte postale, faire un selfie avec sa Go Pro, où simplement terminer en s’émerveillant devant l’authenticité de la vieille ville construite sur un îlot rocheux.
 
 ## 3/ Les randos de l’intérieur des Terres à VTT (Finistère, Côtes d’Armor, Ille et Vilaine, Morbihan et Loire Atlantique) {#interieur-bretagne}
 
 <figure>
-	<img alt="Randonnée VTT parc Naturel Régional d'Armorique" src="{{ site.url }}/assets/public/images/posts/105eb-0-dfntbdaminuvgyn.jpg" class="img-fluid"/><br />
+  <img alt="Randonnée VTT parc Naturel Régional d'Armorique" src="{{ site.url }}/assets/public/images/posts/105eb-0-dfntbdaminuvgyn.jpg" class="img-fluid"/><br />
 </figure>
 
 Randonnée VTT parc Naturel Régional d’Armorique ©<a rel="nofollow" href="http://www.tourismebretagne.com/decouvrir-les-destinations/coeur-de-bretagne-kalon-breizh/les-incontournables/les-monts-d-arree" target="_blank">tourismebretagne.com</a>
 
-<strong>Crozon, Huelgouat, Le Faou, Chateaulin</strong> sont des villes qui ont pour point commun d’être sur le <strong>Parc Naturel Régional d’Armorique</strong>. Le parc naturel régional d’Armorique fait partie des 51 parcs naturels régionaux français. Situé dans le Finistère, le parc recouvre un territoire très contrasté, qui se divise en quatre territoires : les îles de <strong>la mer d’Iroise, la presqu’île de Crozon, l’Aulne maritime et les monts d’Armée</strong>. Un espace protégé qui ravira de diversité et de dénivelé les pilotes VTT les plus chevronnés.
+Crozon, Huelgouat, Le Faou, Chateaulin sont des villes qui ont pour point commun d’être sur le Parc Naturel Régional d’Armorique. Le parc naturel régional d’Armorique fait partie des 51 parcs naturels régionaux français. Situé dans le Finistère, le parc recouvre un territoire très contrasté, qui se divise en quatre territoires : les îles de la mer d’Iroise, la presqu’île de Crozon, l’Aulne maritime et les monts d’Armée. Un espace protégé qui ravira de diversité et de dénivelé les pilotes VTT les plus chevronnés.
 
-Un peu au-dessus du Parc c’est <strong>à partir de Morlaix que s’ouvre à vous 180Km de pistes FFC balisés</strong>. Avec 8 pistes traversent <strong>l’Espace VTT Morlaix Mont d’Arrée</strong>.
+Un peu au-dessus du Parc c’est à partir de Morlaix que s’ouvre à vous 180Km de pistes FFC balisés. Avec 8 pistes traversent l’Espace VTT Morlaix Mont d’Arrée.
 
-On se retrouvera ensuite dans la <strong>vallée du Blavet</strong>. Le Blavet est un fleuve côtier français de Bretagne qui coule dans les départements des Côtes-d’Armor et du Morbihan, ilse jette dans l’océan Atlantique près de <strong>Lorient</strong>. C’est au départ de <strong>Baud</strong> que 9 pistes et 187 Km de sentiers, traversant des terres sauvages, que les <strong>circuits de randonnée VTT labéllisés FFC </strong>prennent leurs départs.
+On se retrouvera ensuite dans la vallée du Blavet. Le Blavet est un fleuve côtier français de Bretagne qui coule dans les départements des Côtes-d’Armor et du Morbihan, ilse jette dans l’océan Atlantique près de Lorient. C’est au départ de Baud que 9 pistes et 187 Km de sentiers, traversant des terres sauvages, que les circuits de randonnée VTT labéllisés FFC prennent leurs départs.
 
-On fera une pause sur le lac artificiel de <strong>Guerlédan</strong> situé sur les communes, d’une part, de <strong>Saint-Aignan et Sainte-Brigitte</strong> dans le <strong>Morbihan</strong> et, d’autre part, de <strong>Mûr-de-Bretagne, Caurel et Saint-Gelven</strong> dans les <strong>Côtes-d’Armor</strong>. Sa formation est due à la construction du barrage de Guerlédan de 1923 à 1930 sur le cours d’eau du Blavet. Le tour du lac est accessible à tous les <strong>niveaux de VTTistes</strong> alors que les pentes qui le bordent demanderons plus de précisions techniques, un matériel fiable et une condition physique reconnue.
+On fera une pause sur le lac artificiel de Guerlédan situé sur les communes, d’une part, de Saint-Aignan et Sainte-Brigitte dans le Morbihan et, d’autre part, de Mûr-de-Bretagne, Caurel et Saint-Gelven dans les Côtes-d’Armor. Sa formation est due à la construction du barrage de Guerlédan de 1923 à 1930 sur le cours d’eau du Blavet. Le tour du lac est accessible à tous les niveaux de VTTistes alors que les pentes qui le bordent demanderons plus de précisions techniques, un matériel fiable et une condition physique reconnue.
 
-On continuera notre tour des <strong>sites VTT FFC dans le centre Bretagne à Jugon Les Lacs</strong> sur l’espace VTT Arguenon Hunaudaye qui compte 10 pistes et 200 km de parcours de randonnée VTT.
+On continuera notre tour des sites VTT FFC dans le centre Bretagne à Jugon Les Lacs sur l’espace VTT Arguenon Hunaudaye qui compte 10 pistes et 200 km de parcours de randonnée VTT.
 
-On finira un peu plus à l’est de la <strong>Bretagne</strong>, sur <strong>l’espace VTT du Pays de la Gacilly</strong>, qui compte lui 6 parcours de randonnée et 200 km au total de chemins VTT balisés.
+On finira un peu plus à l’est de la Bretagne, sur l’espace VTT du Pays de la Gacilly, qui compte lui 6 parcours de randonnée et 200 km au total de chemins VTT balisés.
 
 ## 4/ Les randos de la côte Sud à VTT de Brest à Nantes (Finistère, Morbihan, Loire Atlantique) {#sud-bretagne}
 
 <figure>
-	<img alt="Randonnée VTT en Cornouaille ©ouest-cornouaille.com" src="{{ site.url }}/assets/public/images/posts/f2277-0jmbuxkcfyonj3pxw.jpg" class="img-fluid"/><br />
+  <img alt="Randonnée VTT en Cornouaille ©ouest-cornouaille.com" src="{{ site.url }}/assets/public/images/posts/f2277-0jmbuxkcfyonj3pxw.jpg" class="img-fluid"/><br />
 </figure>
 
 Randonnée VTT en Cornouaille ©<a rel="nofollow" href="http://www.ouest-cornouaille.com/randonnees-accompagnees-et-circuits_secteur-ouest-cornouaille/randonnees-vtt-dans-ouest-cornouaille/1111" target="_blank">ouest-cornouaille.com</a>
 
-C’est sur un terrain de jeu qui s’étend sur un secteur couvrant les deux tiers sud du département du <strong>Finistère</strong>, que l’on découvre l’espace <strong>VTT de Cornouaille</strong>. Il a comprend un fort secteur Sud-Ouest du département des Côtes-d’Armor et les grands alentours de <strong>Gourin</strong> et du <strong>Faouët</strong> dans le département du <strong>Morbihan</strong>. Il est traversé par 46 pistes VTT totalisant 2670m de dénivelé. On découvrira sur ce secteur la <strong>baie d’Audierne et la baie de Concarneau</strong> , aux portes de <strong>Quimper</strong>. On continuera jusqu’à Quimperlé qui recèle un patrimoine architecturale fort d’églises, chapelles et abbaye. On finira son tour de la Cornouaille dans les <strong>Monts d’Arrée</strong> déjà, lieu déjà présenté ci-dessus.
+C’est sur un terrain de jeu qui s’étend sur un secteur couvrant les deux tiers sud du département du Finistère, que l’on découvre l’espace VTT de Cornouaille. Il a comprend un fort secteur Sud-Ouest du département des Côtes-d’Armor et les grands alentours de Gourin et du Faouët dans le département du Morbihan. Il est traversé par 46 pistes VTT totalisant 2670m de dénivelé. On découvrira sur ce secteur la baie d’Audierne et la baie de Concarneau , aux portes de Quimper. On continuera jusqu’à Quimperlé qui recèle un patrimoine architecturale fort d’églises, chapelles et abbaye. On finira son tour de la Cornouaille dans les Monts d’Arrée déjà, lieu déjà présenté ci-dessus.
 
-C’est entre le <strong>Blavet</strong> et la <strong>Loire</strong> que l’on continuera notre tour de <strong>Bretagne</strong> à <strong>VTT</strong>. Des parcours de randonnée les plus touristiques le long de l’<strong>Océan Atlantique</strong> aux circuits de randonnée plus accidentés dans les “terres”. Ce ne sont pas les hébergements en villes qui manqueront, avec des villes traversées comme <strong>Lorient, Vannes et Saint-Nazaire</strong> pour n’en garder que les grandes lignes. Plusieurs sites touristiques sont aux abords de ces villes avec la presqu’île de <strong>Quiberon</strong> et la presqu’île de de <strong>Rhuys</strong>.
+C’est entre le Blavet et la Loire que l’on continuera notre tour de Bretagne à VTT. Des parcours de randonnée les plus touristiques le long de l’Océan Atlantique aux circuits de randonnée plus accidentés dans les “terres”. Ce ne sont pas les hébergements en villes qui manqueront, avec des villes traversées comme Lorient, Vannes et Saint-Nazaire pour n’en garder que les grandes lignes. Plusieurs sites touristiques sont aux abords de ces villes avec la presqu’île de Quiberon et la presqu’île de de Rhuys.
 
-Autour du <strong>Parc Naturel régional de Brière</strong> on découvrira en <strong>VTT</strong> la pointe du <strong>Croizic, Guérande, Ponchateau et la Roche Bernard</strong>. C’est d’ailleurs de la Roche Bernard que débute les <strong>parcours du site VTT FFC de Bretagne sud</strong> avec 22 pistes totalisant 334 km.
+Autour du Parc Naturel régional de Brière on découvrira en VTT la pointe du Croizic, Guérande, Ponchateau et la Roche Bernard. C’est d’ailleurs de la Roche Bernard que débute les parcours du site VTT FFC de Bretagne sud avec 22 pistes totalisant 334 km.
 
-On finira notre tour de Bretagne <strong>VTT</strong> par <strong>Nantes</strong>, bien qu’en région du <strong>Pays de Loire</strong>, cette ville d’art et d’histoire abritant le château des Ducs de Bretagne reste attaché de “coeur” à la Bretagne. <strong>Nantes</strong> sera pour les <strong>randonneurs à VTT un nouveau point de départs pour des aventures sur le littorale ou dans les terres</strong> avec les <strong>parcours de randonné VTT reconnus</strong> que sont la “<strong>vélodyssée</strong>” et de la “<strong>Loire à Vélo</strong>”.
+On finira notre tour de Bretagne VTT par Nantes, bien qu’en région du Pays de Loire, cette ville d’art et d’histoire abritant le château des Ducs de Bretagne reste attaché de “coeur” à la Bretagne. Nantes sera pour les randonneurs à VTT un nouveau point de départs pour des aventures sur le littorale ou dans les terres avec les parcours de randonné VTT reconnus que sont la “vélodyssée” et de la “Loire à Vélo”.
 
 ## 5/ Récapitulatif des 9 sites labellisés VTT FFC {#site-ffc}
 
 <figure>
-	<img alt="balise site VTT FFC" src="{{ site.url }}/assets/public/images/posts/6512f-00uqqunzuq26gp-p3.jpg" class="img-fluid"/><br />
+  <img alt="balise site VTT FFC" src="{{ site.url }}/assets/public/images/posts/6512f-00uqqunzuq26gp-p3.jpg" class="img-fluid"/><br />
 </figure>
 
 balise site VTT FFC
