@@ -4,6 +4,8 @@ title: L'histoire de vtt.bzh
 permalink: "/about.html"
 
 ---
+# A propos de vtt.bzh
+
 Créé en 2013 sous l’appellation: rando VTT Bretagne, le site et l’application font peaux neuves 2016 sous le nom de VTT.bzh . Cette nouvelle version définitivement plus mobile regroupe les informations pour les passionnés de randonnée VTT en Bretagne sur le site internet et l’application, et ne vous quittera plus!
 
 Alliant web et mobile, VTT.bzh répertorie l’ensemble des randos VTT de Bretagne dans un calendrier des randonnées le plus large possible. Un média-thèque de traces GPS vous permettra de combler les jours sans rando VTT, ceci avec la plus grande autonomie et le plus grand plaisir d’être seul avec son VTT, face à la nature.
