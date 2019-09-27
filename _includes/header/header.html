@@ -1,23 +1,6 @@
 <header class="container-fluid shadow">
   <div class="container">
-    <div class="d-md-flex justify-content-between py-3">
-      <!-- Logo -->
-      <div class="py-2">
-        <a href="{{ site.url }}" class="text-dark">
-          <img src="{{ site.url }}/assets/public/images/logo.png" alt="{{ site.title }} - {{ site.headline }}" class="logo">
-          <span class="h3">VTT.bzh</span>
-        </a>
-      </div>
-
-      <!-- newsletter -->
-      <div class="my-auto">
-        <div class="d-inline-block">
-          <a href="{{ site.url }}" class="btn btn-outline-dark border-0 font-weight-bold rounded-pill">Calendrier</a>
-        </div>
-        <div class="d-inline-block">
-          {% include plugins/newsletter.html text="" %}
-        </div>
-      </div>
-    </div>
+    <!--Navigation-->
+    {% include header/nav.html %}
   </div>
 </header>
