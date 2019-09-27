@@ -8,96 +8,58 @@ post_class: post-template
 <!-- Begin Article
 ================================================== -->
 
+{% assign author = site.data.authors[page.author] %}
+{% if page.ads %}
+    {% assign sponsor = site.data.ads[page.ads] %}
+{% else %}
+    {% assign sponsor = site.data.ads.default %}
+{% endif %}
+
 <div class="container">
 
     <div class="row">
 
-        <!-- Post Share -->
-        <div class="col-md-2 pl-0">
-
-            <aside>
-
-                {% include /plugins/share.html %} 
-
-            </aside>     
+        <div class="col-12 flex-first flex-md-unordered">
             
-        </div>
-        
-        <!-- Post --> 
-        {% assign author = site.data.authors[page.author] %}
+            <!-- Post --> 
+            <article itemscope itemtype="http://schema.org/BlogPosting">                
 
-        {% if page.ads %}
-
-            {% assign sponsor = site.data.ads[page.ads] %}
-
-        {% else %}
-
-            {% assign sponsor = site.data.ads.default %}
-
-        {% endif %}
-
-            
-        
-        <div class="col-md-9 flex-first flex-md-unordered">
-
-            <article itemscope itemtype="http://schema.org/BlogPosting">
+                <!-- Post heading -->
+                <h1 class="posttitle text-center d-block" itemprop="name headline">{{ page.title }}</h1>
+                <meta itemprop="url mainEntityOfPage" content="{{ site.url}}{{page.url }}">
                 <time class="" itemprop="dateCreated datePublished dateModified" datetime="{{ page.date | date:"%Y-%m-%d" }}"></time>
 
-                <div class="mainheading">
+                <!-- Post Featured Image -->
+                {% if page.image %}
 
-                    <!-- Post Featured Image -->
-                    {% if page.image %}
+                    <img itemprop="image thumbnailUrl" class="featured-image img-fluid mx-auto" src="{{ site.url }}/{{ page.image }}" alt="{{ page.title }}">
 
-                        <img itemprop="image thumbnailUrl" class="featured-image img-fluid mx-auto" src="{{ site.url }}/{{ page.image }}" alt="{{ page.title }}">
-                    
-                    {% endif %}
+                {% endif %}
 
-                    <div class="post-header pt-3">
+                <!-- Author Box -->
+                {% if page.author %}
 
-                        <!-- Post heading -->
-                        <h1 class="posttitle text-center d-block" itemprop="name headline">{{ page.title }}</h1>
-                        <meta itemprop="url mainEntityOfPage" content="{{ site.url}}{{page.url }}">
+                    <div class="my-5">
 
-                        <!-- Author Box -->
-                        {% if page.author %}
+                       {% include /boxes/author.html %}  
 
-                            <div class="d-block pt-4">
-                               
-                               {% include /boxes/author.html %}  
+                    </div>
 
-                            </div>
-
-                        {% endif %}
-                       
-                    </div>                      
-
-                </div>
+                {% endif %}                  
 
                 <!-- Post Content -->
                 <section class="text-left" itemprop="articleBody">
                     
+                    <!-- Ads -->
                     {% include /boxes/ads.html %}
-
-                    {% if page.youtube_video_id %}
-
-                        <div class="d-block mb-5">
-
-                            <iframe width="100%" height="315" src="https://www.youtube.com/embed/{{ page.youtube_video_id }}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
-                        </div>
-
-                    {% endif %}
 
                     <div class="article-post">
 
                         {{content}}
 
-                        <p>- Nicolas</p>   
-
                     </div>
 
                 </section>
-
 
             </article>
 
@@ -128,11 +90,11 @@ post_class: post-template
         </div>
 
         <!-- Comments -->
-<!--         <div class="d-block">
+        <div class="d-block">
 
             {% include /plugins/commentaires.html %}
 
-        </div> -->
+        </div>
 
     </div>
 
