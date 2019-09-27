@@ -23,40 +23,40 @@ image: assets/public/images/posts/Rockshox-Reverb_dropper-seatpost_updates_5_det
 
 Simulation: grosse descente, prise de vitesse dans une grande ligne droite et là une épingle, le pote qui fait pression sur la roue arrière, trajectoire limite, la selle qui bloque une trajectoire trop fermée et un arbre nous attend à la sortie de l’épingle… 1, 2, 3, … c’est fait, il est pour nous!
 
-<strong>Enduriste confirmé ou simple randonneur du dimanche, combien de fois ça nous est arrivée de se sentir restreint techniquement à cause de cette selle trop haute?</strong>
+Enduriste confirmé ou simple randonneur du dimanche, combien de fois ça nous est arrivée de se sentir restreint techniquement à cause de cette selle trop haute?
 
 Beaucoup trop souvent! On tente de mettre des hauteurs de selle plus intermédiaires, au détriment du rendement, on perd du temps dans les passages sinueux, rocailleux, un se prive des sauts les plus gros, bref le coté joueur du VTT s’envole avec cette appendice qui nous sert de fauteuil.
 
-C’est justement pour répondre à ce problème et rendre à César le coté fun et libertaire sur les randonnées des plus physiques et des plus techniques parcourant nos sentiers, que la <strong>tige de selle télescopique</strong> trouve sa place.
+C’est justement pour répondre à ce problème et rendre à César le coté fun et libertaire sur les randonnées des plus physiques et des plus techniques parcourant nos sentiers, que la tige de selle télescopique trouve sa place.
 
 Pour vous présenter les Tiges de Selle télescopiques, je me suis arrêté sur la Rockshox Reverb pour plusieurs raisons:
 
-- on la retrouve <strong>de série sur de nombreux VTT,</strong>
-- c’est <strong>le choix que 50% d’entre nous finissons par faire</strong> quand vient le moment de s’équiper
-- elle existe dans un <strong>grand nombre de diamètres et de longueurs,</strong>
-- elle à un <strong>débattement de 125mm</strong> qui correspond à la moyenne du marché et <strong>l’amplitude la plus adaptée.</strong>
+- on la retrouve de série sur de nombreux VTT,
+- c’est le choix que 50% d’entre nous finissons par faire quand vient le moment de s’équiper
+- elle existe dans un grand nombre de diamètres et de longueurs,
+- elle à un débattement de 125mm qui correspond à la moyenne du marché et l’amplitude la plus adaptée.
 
 <hr />
 
 ## 2/ Détails techniques de la Tige de selle ROCKSHOX REVERB II {#details}
 
-<strong>(modèle de test, la Reverb existe dans d’autres diamètres et longueurs)</strong>
+(modèle de test, la Reverb existe dans d’autres diamètres et longueurs)
 
-Débattement : 125mm<br />Matériau : Alu 7050 forgé 3D, chariot en Alu 7050 forgé<br />Poids vérifié : 538 grammes (pesé sur une tige de 380 mm et 30.9 mm de diamètre)<br />Longueur : 380 mm<br />Pour tube de selle de 190 mm minimum<br />Diamètre : 31.6mm<br />Longeur de durite 145 cm<br />Finition : Noire anodisée<br />Tige de selle droite, 2 vis de fixation, Commande au guidon qui permet de doser la vitesse et la hauteur du retour de la tige.<br /><strong><em>Fournie avec collier gauche et option Matchmaker </em></strong>: Le matchmaker est un collier permettant la fixation d’un trigger Sram sur la commande au guidon. Attention, seulement compatible avec les triggers suivants : X7 (à partir de 2010), X9, XO et XX.
+Débattement : 125mm<br />Matériau : Alu 7050 forgé 3D, chariot en Alu 7050 forgé<br />Poids vérifié : 538 grammes (pesé sur une tige de 380 mm et 30.9 mm de diamètre)<br />Longueur : 380 mm<br />Pour tube de selle de 190 mm minimum<br />Diamètre : 31.6mm<br />Longeur de durite 145 cm<br />Finition : Noire anodisée<br />Tige de selle droite, 2 vis de fixation, Commande au guidon qui permet de doser la vitesse et la hauteur du retour de la tige.<br /><em>Fournie avec collier gauche et option Matchmaker </em>: Le matchmaker est un collier permettant la fixation d’un trigger Sram sur la commande au guidon. Attention, seulement compatible avec les triggers suivants : X7 (à partir de 2010), X9, XO et XX.
 <hr />
 
 ## 3/ Pose et entretien de la Tige de selle ROCKSHOX REVERB {#pose}
 
 ### Installer la tige de selle ROCKSHOX REVERB et racourcir la durite
 
-Dans cette vidéo découvrez comment <strong>installer</strong> et <strong>raccourcir la durite de votre tige de selle Rockshox Reverb</strong> vous même.
+Dans cette vidéo découvrez comment installer et raccourcir la durite de votre tige de selle Rockshox Reverb vous même.
 <iframe src="https://player.vimeo.com/video/105743742" width="auto" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 
 <a href="https://vimeo.com/105743742" target="_blank" rel="nofollow">TECH VIDEO - Installation compl&egrave;te d&#039;une tige de selle Rockshox Reverb sur un cadre de META V4</a> from COMMENCAL on Vimeo.
 
 ### Purger une tige de selle ROCKSHOX REVERB:
 
-Dans cette vidéo découvrez comment <strong>purger votre tige de selle Rockshox Reverb</strong> vous même.
+Dans cette vidéo découvrez comment purger votre tige de selle Rockshox Reverb vous même.
 <iframe width="auto" height="315" src="https://www.youtube.com/embed/wlfFJuGFEkE" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 <hr />
 
@@ -113,7 +113,7 @@ Un prix public TTC annoncé à 350€ le rockshox Reverb ne sera pas offerte à 
 
 ## 5/ Les bons plans pour acheter votre tige de selle Rockshox Reverb {#acheter}
 
-Découvrez par vous le même le plaisir de rouler sur une <strong>tige de selle télescopique</strong> <strong>ROCKSHOX REVERB</strong> et profitez des bonnes adresses suivantes et de leurs <strong>prix attractifs</strong>:
+Découvrez par vous le même le plaisir de rouler sur une tige de selle télescopique ROCKSHOX REVERB et profitez des bonnes adresses suivantes et de leurs prix attractifs:
 
 <figure>
   <img alt="Tige de Selle Télescopique ROCKSHOX REVERB" src="{{ site.url }}/assets/public/images/posts/2154b-0on0ct9jh4z8cleqj.jpg" class="img-fluid"/>
