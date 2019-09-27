@@ -1,4 +1,6 @@
 ---
+redirect_from:
+  - "/matos-comment-choisir-la-taille-de-son-vtt-et-sa-position-540e5a0563b2"
 layout: post
 title: 'Comment choisir la taille de son VTT et sa position ?'
 date: 2017-02-03 23:00:22.000000000 +01:00
