@@ -33,27 +33,23 @@ post_class: post-template
             <article itemscope itemtype="http://schema.org/BlogPosting">                
 
                 <!-- Post heading -->
-                <h1 class="text-center mt-5" itemprop="name headline">{{ page.title }}</h1>
+                <h1 class="mt-5" itemprop="name headline">{{ page.title }}</h1>
                 <meta itemprop="url mainEntityOfPage" content="{{ site.url}}{{page.url }}">
                 <time class="" itemprop="dateCreated datePublished dateModified" datetime="{{ page.date | date:"%Y-%m-%d" }}"></time>
 
+                <!-- Author Box -->
+                {% if page.author %}
+
+                       {% include /boxes/author.html %}  
+
+                {% endif %}  
+                
                 <!-- Post Featured Image -->
                 {% if page.image %}
 
                     <img itemprop="image thumbnailUrl" class="featured-image img-fluid mx-auto" src="{{ site.url }}/{{ page.image }}" alt="{{ page.title }}">
 
-                {% endif %}
-
-                <!-- Author Box -->
-                {% if page.author %}
-
-                    <div class="my-5">
-
-                       {% include /boxes/author.html %}  
-
-                    </div>
-
-                {% endif %}                  
+                {% endif %}                
 
                 <!-- Post Content -->
                 <section class="text-left" itemprop="articleBody">
