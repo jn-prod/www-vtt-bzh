@@ -16,6 +16,9 @@
             <span itemprop="name" class="font-weight-bold text-dark d-inline">
                 {{ author.display_name }}
             </span>
+            <a target="_blank" class="link-dark ml-1" href="{{ author.facebook }}" rel="me">
+              <i class="fab fa-facebook"></i>
+            </a>
             ,
         </span>
 
@@ -36,12 +39,6 @@
             <meta itemprop="width" content="60">
             <meta itemprop="height" content="60">
         </span>
-        <meta itemprop="url" content="{{site.url}}">             
-
-        <div class="d-block">
-            <a target="_blank" class="link-dark ml-1" href="{{ author.facebook }}" rel="me">
-              <i class="fab fa-twitter"></i>
-            </a>
-        </div>            
+        <meta itemprop="url" content="{{site.url}}">          
     </div>
 </div>
