@@ -1,4 +1,8 @@
 ---
+redirect_from:
+  - "/entrainement-5-points-pour-progresser-physiquement-en-vtt/"
+  - "/entrainement-5-points-pour-progresser-physiquement-en-vtt"
+  - "/entraînement-5-points-pour-progresser-physiquement-en-vtt-49828e10198b"
 layout: post
 title: "5 points pour progresser rapidement en vtt."
 date: 2017-02-12 18:14:32.000000000 +01:00

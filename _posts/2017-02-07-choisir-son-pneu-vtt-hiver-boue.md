@@ -1,4 +1,7 @@
 ---
+redirect_from:
+  - "/matos-quel-pneu-choisir-pour-rouler-hiver-dans-la-boue"
+  - "/matos-quel-pneu-choisir-pour-rouler-lhiver-dans-la-boue-78413cdf1f34"
 layout: post
 title: "Les meilleurs pneus vtt spéciale boue pour l'hiver"
 date: 2017-02-07 18:03:13.000000000 +01:00
