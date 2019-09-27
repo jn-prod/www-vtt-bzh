@@ -11,8 +11,12 @@
 
       <!-- newsletter -->
       <div class="my-auto">
-        <a href="{{ site.url }}" class="text-dark font-weight-bold">Calendrier des randos</a>
-        {% include plugins/newsletter.html text=" →" %}
+        <div class="d-inline-block">
+          <a href="{{ site.url }}" class="text-dark font-weight-bold">Calendrier des randos</a>
+        </div>
+        <div class="d-inline-block">
+          {% include plugins/newsletter.html text=" →" %}
+        </div>
       </div>
     </div>
   </div>
