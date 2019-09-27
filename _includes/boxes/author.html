@@ -3,7 +3,7 @@
 <div class="d-flex mb-3 px-5">
     <meta itemprop="author creator" content="{{ author.display_name }}">
     
-    <div class="py-2">
+    <div class="">
         <!-- Post Categories -->
         {% for category in page.categories %}
             <a href="{{site.url}}/categories/{{ category | downcase }}.html" class="mr-2 text-primary">#{{category}}</a>
@@ -16,7 +16,7 @@
             <span itemprop="name" class="font-weight-bold text-dark d-inline">
                 {{ author.display_name }}
             </span>
-            <a target="_blank" class="link-dark ml-1" href="{{ author.facebook }}" rel="me">
+            <a target="_blank" class="text-secondary ml-1" href="{{ author.facebook }}" rel="me">
               <i class="fab fa-facebook"></i>
             </a>
             ,
