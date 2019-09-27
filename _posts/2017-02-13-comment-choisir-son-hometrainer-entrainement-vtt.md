@@ -21,21 +21,21 @@ Au programme :
 
 ## L’home-trainer est votre meilleur-ami lors des changements de saison et d’heure ! {#preambule}
 
-Plus humides, plus froides et plus ventées, d’octobre à mars, les saisons mènent à mal votre soif de VTT. C’est lorsque le temps change et que le soleil devient plus fainéant que vos habitudes sont chamboulées. Pour ceux qui veulent continuer à s’entraîner sérieusement en VTT et progresser, le<strong> home-trainer</strong> sera bien utile en cardio-training et garder la forme ! L’home-trainer reste le meilleur moyen de continuer avec son VTT en intérieur!
+Plus humides, plus froides et plus ventées, d’octobre à mars, les saisons mènent à mal votre soif de VTT. C’est lorsque le temps change et que le soleil devient plus fainéant que vos habitudes sont chamboulées. Pour ceux qui veulent continuer à s’entraîner sérieusement en VTT et progresser, le home-trainer sera bien utile en cardio-training et garder la forme ! L’home-trainer reste le meilleur moyen de continuer avec son VTT en intérieur!
 
-On trouve différents modèles d’<strong>Home-Trainer</strong>. Chaque gamme est construite pour vous redonner des sensations au plus proche de la réalité lors de vos ride en VTT. Néanmoins, la grille de prix va définir plusieurs niveaux de finitions.
+On trouve différents modèles d’Home-Trainer. Chaque gamme est construite pour vous redonner des sensations au plus proche de la réalité lors de vos ride en VTT. Néanmoins, la grille de prix va définir plusieurs niveaux de finitions.
 
-Il devient alors important pour vous de choisir l’<strong>home-trainer</strong> qui sera le bon compagnon d’entrainement et le bon investissement.
+Il devient alors important pour vous de choisir l’home-trainer qui sera le bon compagnon d’entrainement et le bon investissement.
 
 Les modèles d’entrée de gamme remplacerons les petites sorties estivales d’entretien, pour un usage ponctuel et sans efforts puissants.
 
-Pour les utilisateurs cherchant un outil d’entrainement performant, regardez du côté des modèles d’<strong>home-trainer</strong> offrant une bonne résistance et un ordinateur de bord pour suivre les indicateurs de performance, type ergo-trainers et virtual-trainers.
+Pour les utilisateurs cherchant un outil d’entrainement performant, regardez du côté des modèles d’home-trainer offrant une bonne résistance et un ordinateur de bord pour suivre les indicateurs de performance, type ergo-trainers et virtual-trainers.
 
 Sportif amateur ou professionnel, l’home-trainer est aujourd’hui devenu un outil essentiel.
 
 <figure class="wp-caption">
-	<img alt="Home trainer au chaud vs VTT dans la boue?" src="{{ site.url }}/assets/public/images/posts/dec76-0cscharjawldysi56.jpg" class="img-fluid"/>
-	<figcaption class="wp-caption-text">Home trainer au chaud vs VTT dans la boue?</figcaption>
+  <img alt="Home trainer au chaud vs VTT dans la boue?" src="{{ site.url }}/assets/public/images/posts/dec76-0cscharjawldysi56.jpg" class="img-fluid"/>
+  <figcaption class="wp-caption-text">Home trainer au chaud vs VTT dans la boue?</figcaption>
 </figure>
 
 ## 1/ Choisir son mécanisme d’home-trainer {#mecanisme}
@@ -44,19 +44,19 @@ Il existe trois familles de home-trainer :
 
 ### Home-trainer avec système à air :
 
-+ La <strong>résistance</strong> permet de simuler une montée plus ou moins raide. Gestion de la difficulté se gère simplement avec les plateaux et les vitesses du VTT.
++ La résistance permet de simuler une montée plus ou moins raide. Gestion de la difficulté se gère simplement avec les plateaux et les vitesses du VTT.
 
-- Assez <strong>bruyant</strong> et peu ou pas de résistance au pédalage. Absence de réglage de résistance
+- Assez bruyant et peu ou pas de résistance au pédalage. Absence de réglage de résistance
 
 ### Home-trainer avec système Magnétique :
 
 + Bon rapport qualité/prix. Permet une résistance sportive au pédalage.
 
-- <strong>Bruyant</strong>
+- Bruyant
 
 ### Home-trainer avec système fluide :
 
-+ <strong>Silencieux</strong>, <strong>souple</strong> et <strong>réaliste</strong> avec des gestions de puissances élevées.
++ Silencieux, souple et réaliste avec des gestions de puissances élevées.
 
 - Prix
 
@@ -86,22 +86,22 @@ Du moins cher au plus onéreux :
 
 ### Cyclotrainers
 
-Le <strong>Cyclotrainers</strong> est un Home-trainer avec ou réglage de la dureté, celle-ci pourra se régler avec une molette qui durcie l’inerte du rouleau.
+Le Cyclotrainers est un Home-trainer avec ou réglage de la dureté, celle-ci pourra se régler avec une molette qui durcie l’inerte du rouleau.
 
 ### Ergotrainers
 
-L’<strong>ergotrainer</strong> est un Home-trainer qui comporte un compteur qui recueil plusieurs informations: vitesse, puissance, cadence, distance, …. et permettra de gérer la difficulté de l’effort parfois avec des programmes pré-définis.
+L’ergotrainer est un Home-trainer qui comporte un compteur qui recueil plusieurs informations: vitesse, puissance, cadence, distance, …. et permettra de gérer la difficulté de l’effort parfois avec des programmes pré-définis.
 
 L’ergotrainer peut celon le modèle évoluer vers un Home Trainer Virtuel grâce à un kit qui le transforme en Home Trainer virtuel.
 
 ### Virtual Trainer
 
 <figure class="wp-caption">
-	<img alt="Home Trainer ELITE REALPOWER WIRELESS" src="{{ site.url }}/assets/public/images/posts/bb212-0bx2pkg9g-z2gzrlm.jpg" class="img-fluid"/>
-	<figcaption class="wp-caption-text">Home Trainer ELITE REALPOWER WIRELESS</figcaption>
+  <img alt="Home Trainer ELITE REALPOWER WIRELESS" src="{{ site.url }}/assets/public/images/posts/bb212-0bx2pkg9g-z2gzrlm.jpg" class="img-fluid"/>
+  <figcaption class="wp-caption-text">Home Trainer ELITE REALPOWER WIRELESS</figcaption>
 </figure>
 
-Le <strong>virtual Trainer</strong> est un <strong>home-trainer</strong> qui vous fera voyager sur les pentes les plus prestigieuses du globe, vous frotter au peloton, participer à des courses virtuelles, programmer des entrainements.
+Le virtual Trainer est un home-trainer qui vous fera voyager sur les pentes les plus prestigieuses du globe, vous frotter au peloton, participer à des courses virtuelles, programmer des entrainements.
 
 L’entraînement devient plus ludique grâce à un logiciel type “jeux vidéo” ou “DVD” reprenant la montée d’un col, une étape du tour de France et pleins d’autres moment mythique du vélo immortalisé sur écran. Une connexion internet vous permettra de vous mesurer à d’autres cyclistes. Attention à bien choisir votre modèle, car certaines options peuvent être payantes …
 
@@ -111,15 +111,15 @@ Les jeux en réseau ou multiplayers sont vous donnerons plus de motivation et as
 
 ### Un home-trainer à quatre pattes :
 
-Il est très important que votre <strong>Home-trainer</strong> soit <strong>stable</strong>. Le nombre de points d’appuis au sol est très important pour avoir une bonne stabilité. L’idéale, un home trainer à quatre pieds avec des caoutchoucs tendres ou sur ressort pour absorber les vibrations.
+Il est très important que votre Home-trainer soit stable. Le nombre de points d’appuis au sol est très important pour avoir une bonne stabilité. L’idéale, un home trainer à quatre pieds avec des caoutchoucs tendres ou sur ressort pour absorber les vibrations.
 
 ### La roue d’inertie un facteur d’évolution :
 
-Pour évoluer lors de vos <strong>entraînements</strong> sur <strong>Home-trainer</strong>, il est important qu’il ai une bonne roue d’inertie, cela vous évitera des sensations de saccade très important et vous garantira un <strong>pédalage plus souple</strong>. Vous aurez également la possibilité d’évoluer avec de plus fortes résistances (PMA, travail de force..). Plus vous montez en gamme plus la roue d’inertie de l’home trainer sera importante.
+Pour évoluer lors de vos entraînements sur Home-trainer, il est important qu’il ai une bonne roue d’inertie, cela vous évitera des sensations de saccade très important et vous garantira un pédalage plus souple. Vous aurez également la possibilité d’évoluer avec de plus fortes résistances (PMA, travail de force..). Plus vous montez en gamme plus la roue d’inertie de l’home trainer sera importante.
 
 ### Système de fixation de la roue arrière :
 
-La <strong>fixation</strong> du vélo sur l’<strong>home-trainer</strong> est importante, il doit être pratique pour monter et enlever le vélo <strong>simplement</strong>. Il doit être <strong>costaud</strong> pour votre sécurité et éviter tout mauvais traitement à votre VTT.
+La fixation du vélo sur l’home-trainer est importante, il doit être pratique pour monter et enlever le vélo simplement. Il doit être costaud pour votre sécurité et éviter tout mauvais traitement à votre VTT.
 
 ### Le refroidissement:
 
@@ -127,7 +127,7 @@ Le bloc de freinage peut rapidement devenir brulant s’il n’est pas bien vent
 
 ### Rangement
 
-Optez pour un modèle d’home-trainer qui <strong>se plie et se range facilement</strong>.
+Optez pour un modèle d’home-trainer qui se plie et se range facilement.
 
 ### Nettoyage
 
@@ -136,7 +136,7 @@ Choisissez un modèle d’home-trainer qui se nettoie facilement est un plus.
 ## 5/ Quelques conseils d’utilisation de votre home-trainer {#conseils}
 
 <figure>
-	<img alt="Home Trainer ELITE REALPOWER WIRELESS" src="{{ site.url }}/assets/public/images/posts/91fb5-0fgh8hb1_kl1ubyul.jpg" class="img-fluid"/>
+  <img alt="Home Trainer ELITE REALPOWER WIRELESS" src="{{ site.url }}/assets/public/images/posts/91fb5-0fgh8hb1_kl1ubyul.jpg" class="img-fluid"/>
 
 </figure>
 
@@ -160,14 +160,14 @@ Rehaussez la roue avant du vélo pour la mettre à niveau avec votre roue arriè
 
 ### Bruleur de gomme
 
-l’<strong>home-trainer</strong> par son frottement brule la gomme de votre pneu arrière plus rapidement surtout sur des pneus de VTT et leur crampons, un pneu spécial pour Home-trainer vous permet d’économiser vos beau pneus flambant neuf et permet aussi de diminuer le bruit du frottement sur le rouleau de l’home-trainer.
+l’home-trainer par son frottement brule la gomme de votre pneu arrière plus rapidement surtout sur des pneus de VTT et leur crampons, un pneu spécial pour Home-trainer vous permet d’économiser vos beau pneus flambant neuf et permet aussi de diminuer le bruit du frottement sur le rouleau de l’home-trainer.
 
 ## 6/ Notre sélection d’home-trainer {#selection}
 
 ### Home Trainer TACX BLUE MATIC T2650 (Cyclo-trainer)
 
 <figure>
-	<img alt="Home Trainer TACX BLUE MATIC T2650" src="{{ site.url }}/assets/public/images/posts/28b49-0-7a5ib4fvmj9s-fa.jpg" class="img-fluid"/>
+  <img alt="Home Trainer TACX BLUE MATIC T2650" src="{{ site.url }}/assets/public/images/posts/28b49-0-7a5ib4fvmj9s-fa.jpg" class="img-fluid"/>
   <figcaption>Home Trainer TACX BLUE MATIC T2650</figcaption>
 </figure>
 <a href="http://track.effiliation.com/servlet/effi.redir?id_compteur=12855409&amp;url=https://www.alltricks.fr/F-41490-home-training/P-95024-tacx_home_trainer_blue_matic_t2650" target="_blank"  rel="nofollow" class="btn btn-outline-primary text-center">Acheter chez Alltricks</a>
@@ -185,7 +185,7 @@ l’<strong>home-trainer</strong> par son frottement brule la gomme de votre pne
 ### Home Trainer TACX I-FLOW T2270 (Ergo-trainer)
 
 <figure>
-	<img alt="Home Trainer TACX I-FLOW T2270" src="{{ site.url }}/assets/public/images/posts/eec12-0xbhdkpvkwiznfftv.jpg" class="img-fluid"/>
+  <img alt="Home Trainer TACX I-FLOW T2270" src="{{ site.url }}/assets/public/images/posts/eec12-0xbhdkpvkwiznfftv.jpg" class="img-fluid"/>
   <figcaption>Home Trainer TACX I-FLOW T2270</figcaption>
 </figure>
 <a href="http://track.effiliation.com/servlet/effi.redir?id_compteur=12855409&amp;url=https://www.alltricks.fr/Acheter/Home%2BTrainer%2BTACX%2BI-FLOW%2BT2270" target="_blank"  rel="nofollow" class="btn btn-outline-primary text-center">Acheter chez Alltricks</a>
@@ -204,7 +204,7 @@ l’<strong>home-trainer</strong> par son frottement brule la gomme de votre pne
 ### Home Trainer TACX BUSHIDO Smart T2780 (Virtual trainer)
 
 <figure>
-	<img alt="Home Trainer TACX BUSHIDO Smart T2780" src="{{ site.url }}/assets/public/images/posts/d9123-0_f4jzckdyphq0ioy.jpg" class="img-fluid"/>
+  <img alt="Home Trainer TACX BUSHIDO Smart T2780" src="{{ site.url }}/assets/public/images/posts/d9123-0_f4jzckdyphq0ioy.jpg" class="img-fluid"/>
   <figcaption>Home Trainer TACX BUSHIDO Smart T2780</figcaption>
 </figure>
 <a href="http://track.effiliation.com/servlet/effi.redir?id_compteur=12855409&amp;url=https://www.alltricks.fr/F-41490-home-training/P-95050-tacx_home_trainer_bushido_smart_t_2780" target="_blank"  rel="nofollow" class="btn btn-outline-primary text-center">Acheter chez Alltricks</a>
@@ -225,7 +225,7 @@ Cette application permet notamment de prendre part à des courses cyclistes clas
 
 ### Home Trainer TACX I-GENIUS Multiplayer Smart T2010 (Virtual trainer)
 <figure>
-	<img alt="Home Trainer TACX I-GENIUS Multiplayer Smart T2010" src="{{ site.url }}/assets/public/images/posts/042f2-0naxiwzfmybfepba7.jpg" class="img-fluid"/>
+  <img alt="Home Trainer TACX I-GENIUS Multiplayer Smart T2010" src="{{ site.url }}/assets/public/images/posts/042f2-0naxiwzfmybfepba7.jpg" class="img-fluid"/>
   <figcaption>Home Trainer TACX I-GENIUS Multiplayer Smart T2010</figcaption>
 </figure>
 <a href="http://track.effiliation.com/servlet/effi.redir?id_compteur=12855409&amp;url=https://www.alltricks.fr/F-41490-home-training/P-147790-tacx_home_trainer_i_genius_multiplayer_smart" target="_blank"  rel="nofollow" class="btn btn-outline-primary text-center">Acheter chez Alltricks</a>
