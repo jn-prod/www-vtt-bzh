@@ -6,6 +6,11 @@ keywords: "randonnée, rando, randonnées, vtt, rando vtt, rando vtt bretagne"
 main_image: "assets/public/images/banner-min.jpg"
 url: "https://vtt.bzh"
 
+# disqus
+comments:
+  disqus: 
+    shortname: 'nicolasjouanno-com'  
+    
 # Outputting
 permalink : /:title:output_ext
 paginate: 12
