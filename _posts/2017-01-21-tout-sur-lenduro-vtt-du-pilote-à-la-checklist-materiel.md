@@ -22,12 +22,12 @@ image: assets/public/images/posts/p5pb12718966.jpg
 ## 1/ Qu’est que le VTT enduro ? {#preambule}
 
 <figure>
-	<img alt="jerome clementz l'un des meilleurs pilotes Enduro de sa génération" src="{{ site.url }}/assets/public/images/posts/de923-0ox0m4w6j-q1hpkxf.jpg" class="img-fluid"/><br />
+  <img alt="jerome clementz l'un des meilleurs pilotes Enduro de sa génération" src="{{ site.url }}/assets/public/images/posts/de923-0ox0m4w6j-q1hpkxf.jpg" class="img-fluid"/><br />
 </figure>
 
 jerome clementz l’un des meilleurs pilotes Enduro de sa génération
 
-Le monde du VTT a connu dans les années 2000, l’émergence d’une nouvelle discipline en France: L’<strong>Enduro VTT.</strong>
+Le monde du VTT a connu dans les années 2000, l’émergence d’une nouvelle discipline en France: L’Enduro VTT.
 
 L’Enduro VTT est hybride en le VTT XC et le VTT DH, héritée de la discipline de la moto qui porte le même nom.
 
@@ -35,19 +35,19 @@ Toutefois, le terme d’enduro peut faire référence à plusieurs disciplines l
 
 A l’origine l’appellation commerciale pour un certain profil de VTT, l’enduro est finalement devenu une véritable discipline du VTT.
 
-En 2011, l’UCI lance une consultation pour faire de <strong>l’enduro</strong> une discipline de la <strong>coupe du monde de VTT</strong> pour 2013. L’idée sera finalement abandonnée, mais un circuit d’enduro international (non rattaché à l’UCI), les <strong>Enduro World Series</strong>, verra tout de même le jour lors de la saison 2013 sous l’impulsion de Chris Ball, démissionnaire de la commission descente à <strong>l’UCI</strong>. La fédération internationale a réagi en annoncant qu’un <strong>circuit d’enduro officiel</strong> sera créé en <strong>2014</strong>. Le rendez-vous est pris
+En 2011, l’UCI lance une consultation pour faire de l’enduro une discipline de la coupe du monde de VTT pour 2013. L’idée sera finalement abandonnée, mais un circuit d’enduro international (non rattaché à l’UCI), les Enduro World Series, verra tout de même le jour lors de la saison 2013 sous l’impulsion de Chris Ball, démissionnaire de la commission descente à l’UCI. La fédération internationale a réagi en annoncant qu’un circuit d’enduro officiel sera créé en 2014. Le rendez-vous est pris
 
 ## 2/ Différence enduro, XC, DH. {#difference}
 
 Vous l’avez donc compris L’enduro VTT est une discipline Hybride entre deux opposés: XC et DH.
 
-<strong>Le VTT enduro à ces points communs avec:</strong>
+Le VTT enduro à ces points communs avec:
 
 - le cross country : recherche de performance sur une distance de 40km sur une épreuve de masse.
 - la DH : se faire plaisir dans les descentes avec un VTT confortable qui permet l’engagement, en se battant contre le chrono.
 - L’Enduro VTT : recherche de confort et de performance. Tu peux te battre contre le chrono en départs différés avec plusieurs spéciales (comme en rally) ou en “mass-start” sur une épreuve de masse ou tout le monde par en même temps. L’épreuve de “mass-start” la plus connue est la Mégavalanche, une course rassemblant plus de 1500 pilotes venus de tous les horizons qui avalent depuis un glacier la pente à flancs de montagne, sur leur VTT, pendant 1–2h.
 
-<strong>L’enduro VTT n’est pas la recherche d’endurance à outrance</strong>, la recherche de la distance à un public qui se partage des Raids VTT et des épreuves XC Marathon qui se déroulent sur plus de 80kms à 120kms en moyenne.
+L’enduro VTT n’est pas la recherche d’endurance à outrance, la recherche de la distance à un public qui se partage des Raids VTT et des épreuves XC Marathon qui se déroulent sur plus de 80kms à 120kms en moyenne.
 <figure>
 
 <img alt="départ enduro Mondraker serie" src="{{ site.url }}/assets/public/images/posts/7cfbe-02oodqud9goosydgh.jpg" class="img-fluid"/><br />
@@ -63,11 +63,11 @@ L’Enduro VTT est une affaire d’expérience, une culture du VTT dont on s’i
 
 ## 4/ A quoi ressemble le VTT enduro IDEAL ? {#vtt-ideal}
 
-Un <strong>VTT Enduro</strong> ce serait un <strong>VTT de cross-country</strong> qui aurait trop de débattement pour gagner une coupe du monde avec le meilleur des médecins, il serait qualifié de trop lourd, pas assez nerveux, trop mou, pas assez de rendement, bref ce n’est pas un VTT d’XC!
+Un VTT Enduro ce serait un VTT de cross-country qui aurait trop de débattement pour gagner une coupe du monde avec le meilleur des médecins, il serait qualifié de trop lourd, pas assez nerveux, trop mou, pas assez de rendement, bref ce n’est pas un VTT d’XC!
 
-Un <strong>VTT Enduro</strong> ce serait un <strong>VTT de DH </strong>qui n’aurait pas assez débattement pour encaisser le haut de la descente de Fort William sans plier, il ne serait pas assez stable, trop légé, pas assez de débattement, trop fragile, bref une fois de plus ce n’est pas un VTT de DH!
+Un VTT Enduro ce serait un VTT de DH qui n’aurait pas assez débattement pour encaisser le haut de la descente de Fort William sans plier, il ne serait pas assez stable, trop légé, pas assez de débattement, trop fragile, bref une fois de plus ce n’est pas un VTT de DH!
 
-Bon en recommence en fait le <strong>VTT d’Enduro idéal</strong>, c’est un mixe de tout ça, un VTT qui ressemble à son pilote: <strong>engagé, confortable, qui a du rendement, qui sache monter et descendre</strong>. Idéalement, si votre VTT revient vivant d’un trip en <strong>Colombie Britannique</strong> (Canada) c’est que c’est un <strong>VTT Enduro</strong>, pour synthétiser!
+Bon en recommence en fait le VTT d’Enduro idéal, c’est un mixe de tout ça, un VTT qui ressemble à son pilote: engagé, confortable, qui a du rendement, qui sache monter et descendre. Idéalement, si votre VTT revient vivant d’un trip en Colombie Britannique (Canada) c’est que c’est un VTT Enduro, pour synthétiser!
 
 ## a) Quelques critères de bases:
 
@@ -83,52 +83,52 @@ Bon en recommence en fait le <strong>VTT d’Enduro idéal</strong>, c’est un 
 
 ## b) Une sélection de VTT Enduro de prédilections :
 
-<strong>ROCKY MOUNTAIN — Altitude 790 MSL</strong>
+ROCKY MOUNTAIN — Altitude 790 MSL
 <figure>
-	<img alt="ROCKY MOUNTAIN - Altitude 790 MSL" src="{{ site.url }}/assets/public/images/posts/99f11-0ld6lpmg4f8ssdgry.jpg" class="img-fluid"/><br />
-	<figcaption class="wp-caption-text">ROCKY MOUNTAIN — Altitude 790 MSL</figcaption>
+  <img alt="ROCKY MOUNTAIN - Altitude 790 MSL" src="{{ site.url }}/assets/public/images/posts/99f11-0ld6lpmg4f8ssdgry.jpg" class="img-fluid"/><br />
+  <figcaption class="wp-caption-text">ROCKY MOUNTAIN — Altitude 790 MSL</figcaption>
 </figure>
 
-<strong>Santa Cruz — Bronson</strong>
+Santa Cruz — Bronson
 <figure class="wp-caption">
-	<img alt="Santa Cruz - Bronson" src="{{ site.url }}/assets/public/images/posts/8bd9c-03stysmi7roqgusmy.jpg" class="img-fluid"/>
-	<figcaption class="wp-caption-text">Santa Cruz — Bronson</figcaption>
+  <img alt="Santa Cruz - Bronson" src="{{ site.url }}/assets/public/images/posts/8bd9c-03stysmi7roqgusmy.jpg" class="img-fluid"/>
+  <figcaption class="wp-caption-text">Santa Cruz — Bronson</figcaption>
 </figure>
 
-<strong>GT — Force</strong>
+GT — Force
 <figure class="wp-caption">
-	<img alt="GT - Force" src="{{ site.url }}/assets/public/images/posts/abeff-0rpvf5myfinn3x2y3.jpg" class="img-fluid"/>
-	<figcaption class="wp-caption-text">GT Force</figcaption>
+  <img alt="GT - Force" src="{{ site.url }}/assets/public/images/posts/abeff-0rpvf5myfinn3x2y3.jpg" class="img-fluid"/>
+  <figcaption class="wp-caption-text">GT Force</figcaption>
 </figure>
 
-<strong>LAPIERRE — Zesty</strong>
+LAPIERRE — Zesty
 <figure class="wp-caption">
-	<img alt="Lapierre - Zesty 650B" src="{{ site.url }}/assets/public/images/posts/e4db0-0w-ax1ybapqa3r8-e.jpg" class="img-fluid"/>
-	<figcaption class="wp-caption-text">Lapierre — Zesty 650B</figcaption>
+  <img alt="Lapierre - Zesty 650B" src="{{ site.url }}/assets/public/images/posts/e4db0-0w-ax1ybapqa3r8-e.jpg" class="img-fluid"/>
+  <figcaption class="wp-caption-text">Lapierre — Zesty 650B</figcaption>
 </figure>
 
-<strong>COMMENCAL — Meta AM</strong>
+COMMENCAL — Meta AM
 <figure class="wp-caption">
-	<img alt="Commencal - Meta AM 650B" src="{{ site.url }}/assets/public/images/posts/acf30-0_3e-mfzpfaer0cka.jpg" class="img-fluid"/>
-	<figcaption class="wp-caption-text">Commencal — Meta AM 650B</figcaption>
+  <img alt="Commencal - Meta AM 650B" src="{{ site.url }}/assets/public/images/posts/acf30-0_3e-mfzpfaer0cka.jpg" class="img-fluid"/>
+  <figcaption class="wp-caption-text">Commencal — Meta AM 650B</figcaption>
 </figure>
 
-<strong>CANYON — Strive</strong>
+CANYON — Strive
 <figure class="wp-caption">
-	<img alt="canyon - stryve" src="{{ site.url }}/assets/public/images/posts/0a3c7-0fdsmrbuwp54gpwwd.jpg" class="img-fluid"/>
-	<figcaption class="wp-caption-text">canyon — stryve</figcaption>
+  <img alt="canyon - stryve" src="{{ site.url }}/assets/public/images/posts/0a3c7-0fdsmrbuwp54gpwwd.jpg" class="img-fluid"/>
+  <figcaption class="wp-caption-text">canyon — stryve</figcaption>
 </figure>
 
 ## 5/ Quel équipement pilote choisir pour la pratique du VTT Enduro? {#equipement}
 
-<strong>Roches, racines, gaps, single, voir même neige, le VTT Enduro</strong> nous amène dans des coins plus reculés, plus accidentés, plus risqué. C’est pourquoi, il est recommandé de porter un <strong>minimum de protections</strong> lorsque l’on pratique cette discipline du VTT.
+Roches, racines, gaps, single, voir même neige, le VTT Enduro nous amène dans des coins plus reculés, plus accidentés, plus risqué. C’est pourquoi, il est recommandé de porter un minimum de protections lorsque l’on pratique cette discipline du VTT.
 
-<strong>L’équipement de base du pilote pour pratiquer l’enduro</strong> est un <strong>casque avec mentonnière monocoque </strong>légé et ventilé ou<strong> un casque VTT </strong>qui englobe fortement la nuque, et plutôt légé dans les conditions les plus extrêmes. Une paire de <strong>gants</strong>, une paire de <strong>genouillères</strong> souples pour pouvoir pédaler des heures, une protection <strong>dorsale</strong> (rigide ou mousse type D3O) ou sac avec protection dorsale intégrée et pourquoi pas dans le sac des coudières légères et souples.
+L’équipement de base du pilote pour pratiquer l’enduro est un casque avec mentonnière monocoque légé et ventilé ou un casque VTT qui englobe fortement la nuque, et plutôt légé dans les conditions les plus extrêmes. Une paire de gants, une paire de genouillères souples pour pouvoir pédaler des heures, une protection dorsale (rigide ou mousse type D3O) ou sac avec protection dorsale intégrée et pourquoi pas dans le sac des coudières légères et souples.
 
 ## 6/ ENDURO VTT: la checklist d’avant sortie {#checklist}
 
 <figure>
-	<img alt="VTT Enduro: se préparer à une épreuve" src="{{ site.url }}/assets/public/images/posts/7dc32-0wxgebvuxq5bcl684.jpg" class="img-fluid"/><br />
+  <img alt="VTT Enduro: se préparer à une épreuve" src="{{ site.url }}/assets/public/images/posts/7dc32-0wxgebvuxq5bcl684.jpg" class="img-fluid"/><br />
 </figure>
 
 - casque intégrale ou avc mantionière amovible
@@ -151,10 +151,10 @@ Bon en recommence en fait le <strong>VTT d’Enduro idéal</strong>, c’est un 
 
 ## 7/ Conclusion {#conclusion}
 
-Voilà maintenant <strong>les bases de l’Enduro VTT</strong> n’ont plus de secrets pour vous.
+Voilà maintenant les bases de l’Enduro VTT n’ont plus de secrets pour vous.
 
-Si vous ne savez pas quoi faire de votre prochaine journée de repos, passez faire un tour chez votre vélociste vous équiper un peu et prenez juste votre VTT pour profitez des chemins en testant vos limites raisonablement et surtout <strong>SORTEZ COUVERT!</strong>
+Si vous ne savez pas quoi faire de votre prochaine journée de repos, passez faire un tour chez votre vélociste vous équiper un peu et prenez juste votre VTT pour profitez des chemins en testant vos limites raisonablement et surtout SORTEZ COUVERT!
 
-N’oubliez pas de lire<a href="/20-elements-indispensables-pour-votre-sac-de-rando-raid-enduro-vtt.html" title="MATOS: Les 20 éléments indispensables à avoir dans votre sac de Rando / Raid / Enduro VTT" target="_blank"> cet article </a>pour plus d’info sur le <strong>contenu du sac pour une grosse sortie de VTT Enduro.</strong>
+N’oubliez pas de lire<a href="/20-elements-indispensables-pour-votre-sac-de-rando-raid-enduro-vtt.html" title="MATOS: Les 20 éléments indispensables à avoir dans votre sac de Rando / Raid / Enduro VTT" target="_blank"> cet article </a>pour plus d’info sur le contenu du sac pour une grosse sortie de VTT Enduro.
 
 <em>ps: Ceci n’est qu’une première base de réflexion ce n’est pas un cour pour passer un BAC ENDURO, l’enduro est une question de compromis pour chaque style de pilotage, un style qui vous appartiens; on ne retrouvera jamais en Enduro 2 VTT identiques… Prenez ce qui vous intéresse et jetez le reste! (enfin ni votre PC, ni votre tablette et autre smartphone …)</em>
