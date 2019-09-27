@@ -50,7 +50,7 @@ Pas besoin d’acheter de nouveaux disques pour votre nouvelles roues, pensez à
   <img alt="roues Mavic - Crossmax SLR 27,5 et 29" src="{{ site.url }}/assets/public/images/posts/3a462-02vut69yj9so5bft.jpg" class="img-fluid"/>
   <figcaption class="wp-caption-text">Kit centerlock pour les roues Mavic Crossmax SLR 27,5 et 29</figcaption>
 </figure>
-<a href="http://track.effiliation.com/servlet/effi.redir?id_compteur=12855409&amp;url=https://www.alltricks.fr/Acheter/roues%2BMavic%2BCrossmax" target="_blank" rel="nofollow" class="btn btn-outline-primary text-center">Acheter chez Alltricks</a>
+<a href="http://track.effiliation.com/servlet/effi.redir?id_compteur=12855409&amp;url=https://www.alltricks.fr/Acheter/roues%2BMavic%2BCrossmax" target="_blank"  class="btn btn-outline-primary text-center">Acheter chez Alltricks</a>
 
 ### 5) Roues compatible SRAM XX1
 
@@ -70,11 +70,11 @@ Pour les possesseurs de grandes roues pensez à investir dans une bonne paire de
 
 Accidents, chocs ou chutes les risques de tous les jours pour les pilotes VTT. Mavic l’a bien compris et propose la Garantie MP3 qui couvre l’ensemble de ces risques pendant deux ans.
 
-Pour 76€ de plus, offrez vous l’assistance Mavic avec l’extension de garantie MP3, en vous enregistrant sur le site dédier <a href="http://www.mavicmp3.com," target="_blank" rel="nofollow">www.mavicmp3.com,</a> dans les cinq jours qui suivent votre achat, grâce aux informations fournies par votre détaillant .
+Pour 76€ de plus, offrez vous l’assistance Mavic avec l’extension de garantie MP3, en vous enregistrant sur le site dédier <a href="http://www.mavicmp3.com," target="_blank" >www.mavicmp3.com,</a> dans les cinq jours qui suivent votre achat, grâce aux informations fournies par votre détaillant .
 
 Le règlement du montant du programme MP3 s’effectue uniquement sur le site internet à l’issue de l’enregistrement.
 
-<a href="http://www.mavic-mp3.com/choose_language.php?storeid=5" title="mavic MP3" target="_blank" rel="nofollow" class="btn btn-outline-primary text-center">Découvrir mavic MP3</a>
+<a href="http://www.mavic-mp3.com/choose_language.php?storeid=5" title="mavic MP3" target="_blank"  class="btn btn-outline-primary text-center">Découvrir mavic MP3</a>
 
 <figure class="wp-caption">
   <img alt="roues Mavic - Crossmax SLR 27,5 et 29" src="{{ site.url }}/assets/public/images/posts/51377-0z7xebg9vspdxjeus.jpg" class="img-fluid"/>
@@ -86,10 +86,10 @@ Le règlement du montant du programme MP3 s’effectue uniquement sur le site in
   <figcaption class="wp-caption-text">roues Mavic — Crossmax SLR 27,5 et 29</figcaption>
 </figure>
 
-<a href="http://track.effiliation.com/servlet/effi.redir?id_compteur=12855409&amp;url=https://www.alltricks.fr/Acheter/roues%2BMavic%2BCrossmax" target="_blank" rel="nofollow" class="btn btn-outline-primary text-center">Acheter chez Alltricks</a>
+<a href="http://track.effiliation.com/servlet/effi.redir?id_compteur=12855409&amp;url=https://www.alltricks.fr/Acheter/roues%2BMavic%2BCrossmax" target="_blank"  class="btn btn-outline-primary text-center">Acheter chez Alltricks</a>
 
 ## Le choix des pilotes professionnel: {#mavic-crossmax}
 
 Ils ont gagné avec des roues Mavic: CAMERON ZINK, MARTIN SODERSTRÖM, JULIE BRESSET, FILIP POLC, CEDRIC GRACIA, ANNE-CAROLINE CHAUSSON, FABIEN BAREL, JERÔME CLEMENTZ.
 
-<a href="http://track.effiliation.com/servlet/effi.redir?id_compteur=12855409&amp;url=https://www.alltricks.fr/Acheter/roues%2BMavic%2BCrossmax" target="_blank" rel="nofollow" class="btn btn-outline-primary text-center">Acheter chez Alltricks</a>
+<a href="http://track.effiliation.com/servlet/effi.redir?id_compteur=12855409&amp;url=https://www.alltricks.fr/Acheter/roues%2BMavic%2BCrossmax" target="_blank"  class="btn btn-outline-primary text-center">Acheter chez Alltricks</a>
