@@ -50,14 +50,14 @@ Débattement : 125mm<br />Matériau : Alu 7050 forgé 3D, chariot en Alu 7050 
 ### Installer la tige de selle ROCKSHOX REVERB et racourcir la durite
 
 Dans cette vidéo découvrez comment <strong>installer</strong> et <strong>raccourcir la durite de votre tige de selle Rockshox Reverb</strong> vous même.
-<iframe src="https://player.vimeo.com/video/105743742" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+<iframe src="https://player.vimeo.com/video/105743742" width="auto" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 
 <a href="https://vimeo.com/105743742" target="_blank" rel="nofollow">TECH VIDEO - Installation compl&egrave;te d&#039;une tige de selle Rockshox Reverb sur un cadre de META V4</a> from COMMENCAL on Vimeo.
 
 ### Purger une tige de selle ROCKSHOX REVERB:
 
 Dans cette vidéo découvrez comment <strong>purger votre tige de selle Rockshox Reverb</strong> vous même.
-<iframe width="560" height="315" src="https://www.youtube.com/embed/wlfFJuGFEkE" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+<iframe width="auto" height="315" src="https://www.youtube.com/embed/wlfFJuGFEkE" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 <hr />
 
 ## 4/ Test et avis de la Test tige de selle télescopique Rockshox Reverb {#test}
