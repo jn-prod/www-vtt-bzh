@@ -31,7 +31,7 @@ Comment choisir entre les pédales plates et les pédales automatiques? Cette qu
   <figcaption>Pédales plates - SHIMANO SAINT PD-MX80</figcaption>
 </figure>
 
-<a href="http://track.effiliation.com/servlet/effi.redir?id_compteur=12855409&amp;url=https://www.alltricks.fr/F-11931-pedales-plates/P-80288-shimano_paire_de_pedales_plates_saint_pd_mx80" target="_blank" rel="nofollow" class="btn btn-outline-primary text-center">Acheter chez Alltricks</a>
+<a href="http://track.effiliation.com/servlet/effi.redir?id_compteur=12855409&amp;url=https://www.alltricks.fr/F-11931-pedales-plates/P-80288-shimano_paire_de_pedales_plates_saint_pd_mx80" target="_blank"  class="btn btn-outline-primary text-center">Acheter chez Alltricks</a>
 
 La pédale plate, c’est la pédale de nos débuts, la base du vélo, celle qui nous rappelle qu’à 2 ans papa nous avait poussé pour voir si l’on était capable de voler avec un vélo sans roulettes et qui nous permettait de nous rattraper sur nos pieds.
 
@@ -63,7 +63,7 @@ Les pédales plates restent avant tout des pédales idéales pour débuter et se
   <figcaption>Pédale automatique VTT    Crankbrothers — Egg Beater</figcaption>
 </figure>
 
-<a href="http://track.effiliation.com/servlet/effi.redir?id_compteur=12855409&amp;url=https://www.alltricks.fr/Acheter/Crankbrothers______Egg%2BBeater" target="_blank"  rel="nofollow" class="btn btn-outline-primary text-center">Acheter chez Alltricks</a>
+<a href="http://track.effiliation.com/servlet/effi.redir?id_compteur=12855409&amp;url=https://www.alltricks.fr/Acheter/Crankbrothers______Egg%2BBeater" target="_blank"   class="btn btn-outline-primary text-center">Acheter chez Alltricks</a>
 
 Plus répandue auprès des cyclistes que des VTTistes, la pédales automatique trouve ses origines sur la route avec la marque LOOK, précurseur dans le domaine, et remplacera les bons vieux cales-pieds tout en poursuivant les mêmes objectifs: performance et rendement.
 
@@ -126,22 +126,22 @@ Pour la descente, chacun à sa réponse en fonction de son pilotage, il faut gar
   <img alt="PAIRE DE PÉDALES SHIMANO SPD-M520 ARGENT " src="{{ site.url }}/assets/public/images/posts/af16b-0y_u7-3bbkdtbx_aa.jpg" class="img-fluid"/>
   <figcaption>PAIRE DE PÉDALES SHIMANO SPD-M520 ARGENT (économique)</figcaption>
 </figure>
-<a href="http://track.effiliation.com/servlet/effi.redir?id_compteur=12855409&amp;url=https://www.alltricks.fr/Acheter/SHIMANO%2BSPD-M520" target="_blank" rel="nofollow" class="btn btn-outline-primary text-center">Acheter chez Alltricks</a>
+<a href="http://track.effiliation.com/servlet/effi.redir?id_compteur=12855409&amp;url=https://www.alltricks.fr/Acheter/SHIMANO%2BSPD-M520" target="_blank"  class="btn btn-outline-primary text-center">Acheter chez Alltricks</a>
 
 <figure>
   <img alt="CRANKBROTHERS PAIRE DE PÉDALES CANDY 3 " src="{{ site.url }}/assets/public/images/posts/9724d-0qj-pgpuwr39vwzbm.jpg" class="img-fluid"/>
   <figcaption>CRANKBROTHERS PAIRE DE PÉDALES CANDY 3 (XC/ENDURO)</figcaption>
 </figure>
-<a href="http://track.effiliation.com/servlet/effi.redir?id_compteur=12855409&amp;url=https://www.alltricks.fr/Acheter/crankbrothers%2Bcandy" target="_blank" rel="nofollow" class="btn btn-outline-primary text-center">Acheter chez Alltricks</a>
+<a href="http://track.effiliation.com/servlet/effi.redir?id_compteur=12855409&amp;url=https://www.alltricks.fr/Acheter/crankbrothers%2Bcandy" target="_blank"  class="btn btn-outline-primary text-center">Acheter chez Alltricks</a>
 
 <figure>
   <img alt="PAIRE DE PÉDALES CRANKBROTHERS MALLET 2" src="{{ site.url }}/assets/public/images/posts/0120e-0pdui5pnl2zcxsxum.jpg" class="img-fluid"/>
   <figcaption>PAIRE DE PÉDALES CRANKBROTHERS MALLET 2 (ENDURO/DH)</figcaption>
 </figure>
-<a href="http://track.effiliation.com/servlet/effi.redir?id_compteur=12855409&amp;url=https://www.alltricks.fr/Acheter/CRANKBROTHERS%2BMALLET%2B2" target="_blank" rel="nofollow" class="btn btn-outline-primary text-center">Acheter chez Alltricks</a>
+<a href="http://track.effiliation.com/servlet/effi.redir?id_compteur=12855409&amp;url=https://www.alltricks.fr/Acheter/CRANKBROTHERS%2BMALLET%2B2" target="_blank"  class="btn btn-outline-primary text-center">Acheter chez Alltricks</a>
 
 <figure>
   <img alt="Pédales SHIMANO SAINT PD-MX80 " src="{{ site.url }}/assets/public/images/posts/c9250-0hirkgovxa7gjzone.jpg" class="img-fluid"/>
   <figcaption>Pédales SHIMANO SAINT PD-MX80 (ENDURO/DH)</figcaption>
 </figure>
-<a href="http://track.effiliation.com/servlet/effi.redir?id_compteur=12855409&amp;url=https://www.alltricks.fr/F-11931-pedales-plates/P-80288-shimano_paire_de_pedales_plates_saint_pd_mx80" target="_blank" rel="nofollow" class="btn btn-outline-primary text-center">Acheter chez Alltricks</a>
+<a href="http://track.effiliation.com/servlet/effi.redir?id_compteur=12855409&amp;url=https://www.alltricks.fr/F-11931-pedales-plates/P-80288-shimano_paire_de_pedales_plates_saint_pd_mx80" target="_blank"  class="btn btn-outline-primary text-center">Acheter chez Alltricks</a>
