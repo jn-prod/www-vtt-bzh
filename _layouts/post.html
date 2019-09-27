@@ -19,7 +19,7 @@ post_class: post-template
 
     <div class="row">
 
-        <div class="col-12 my-5 flex-first flex-md-unordered">
+        <div class="col-12 flex-first flex-md-unordered">
             <!--Breadcrumb-->
             <nav aria-label="breadcrumb">
               <ol class="breadcrumb">
@@ -33,7 +33,7 @@ post_class: post-template
             <article itemscope itemtype="http://schema.org/BlogPosting">                
 
                 <!-- Post heading -->
-                <h1 class="posttitle text-center d-block" itemprop="name headline">{{ page.title }}</h1>
+                <h1 class="text-center mt-5" itemprop="name headline">{{ page.title }}</h1>
                 <meta itemprop="url mainEntityOfPage" content="{{ site.url}}{{page.url }}">
                 <time class="" itemprop="dateCreated datePublished dateModified" datetime="{{ page.date | date:"%Y-%m-%d" }}"></time>
 
