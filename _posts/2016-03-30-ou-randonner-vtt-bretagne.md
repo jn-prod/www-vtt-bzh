@@ -1,16 +1,10 @@
 ---
 layout: post
 title: "Quelques idées de circuits de randonnée VTT en Bretagne"
+description: "Voici une sélection de circuit de randonnées VTT pour parcourir la Bretagne: Morbihan, Cotes d'Armor, Ille et Vilaine, Finistère."
+keywords: "vtt, circuits vtt, Bretagne, Morbihan, Cotes d'Armor, Ille et Vilaine, Finistère"
+
 date: 2016-03-30 16:40:10.000000000 +02:00
-type: post
-
-categories: 
-- Sport
-
-tags:
-- VTT
-- randonnée
-
 author: nicolas
 image: "assets/public/images/posts/bf91f-04tn2madty8ffu2ug.jpg"
 ---
@@ -29,7 +23,7 @@ image: "assets/public/images/posts/bf91f-04tn2madty8ffu2ug.jpg"
 ## 1/ Chaque week-end des milliers de VTTistes sillonnent les sentiers de Bretagne en VTT {#preambule}
 
 <figure>
-	<img alt="Carte des voies vertes accessibles au VTT en Bretagne" src="{{ site.url }}/assets/public/images/posts/a1019-0eb-pflbqbfbuhb14.jpg" /><br />
+	<img alt="Carte des voies vertes accessibles au VTT en Bretagne" src="{{ site.url }}/assets/public/images/posts/a1019-0eb-pflbqbfbuhb14.jpg" class="img-fluid"/><br />
 </figure>
 
 Carte des voies vertes accessibles en randonnée VTT en Bretagne
@@ -46,7 +40,7 @@ Envie de plus d’aventure? L’inscription à une randonnée organisée vous co
 
 ## 2/ Les randos de la côte Nord de Bretagne à VTT de Brest au Mont-Saint-Michel (Finistère, Côtes d’Armor, Ille et Vilaine) {#cote-nord}
 <figure>
-	<img alt="Randonnée VTT au mont st michel" src="{{ site.url }}/assets/public/images/posts/04f42-0nrby8alnuktzebeg.jpg" /><br />
+	<img alt="Randonnée VTT au mont st michel" src="{{ site.url }}/assets/public/images/posts/04f42-0nrby8alnuktzebeg.jpg" class="img-fluid"/><br />
 </figure>
 
 Randonnée VTT au mont st michel ©<a rel="nofollow" href="http://www.safrantours.com/fr/randonnee-velo-France/voyage-velo-famille/voyage-velo-mont-saint-michel-et-randonnee-velo-normandie" target="_blank">safrantours.com</a>
@@ -62,7 +56,7 @@ On arrêtera de longer la face de la Bretagne au <strong>Mont Saint Michel</stro
 ## 3/ Les randos de l’intérieur des Terres à VTT (Finistère, Côtes d’Armor, Ille et Vilaine, Morbihan et Loire Atlantique) {#interieur-bretagne}
 
 <figure>
-	<img alt="Randonnée VTT parc Naturel Régional d'Armorique" src="{{ site.url }}/assets/public/images/posts/105eb-0-dfntbdaminuvgyn.jpg" /><br />
+	<img alt="Randonnée VTT parc Naturel Régional d'Armorique" src="{{ site.url }}/assets/public/images/posts/105eb-0-dfntbdaminuvgyn.jpg" class="img-fluid"/><br />
 </figure>
 
 Randonnée VTT parc Naturel Régional d’Armorique ©<a rel="nofollow" href="http://www.tourismebretagne.com/decouvrir-les-destinations/coeur-de-bretagne-kalon-breizh/les-incontournables/les-monts-d-arree" target="_blank">tourismebretagne.com</a>
@@ -82,7 +76,7 @@ On finira un peu plus à l’est de la <strong>Bretagne</strong>, sur <strong>l�
 ## 4/ Les randos de la côte Sud à VTT de Brest à Nantes (Finistère, Morbihan, Loire Atlantique) {#sud-bretagne}
 
 <figure>
-	<img alt="Randonnée VTT en Cornouaille ©ouest-cornouaille.com" src="{{ site.url }}/assets/public/images/posts/f2277-0jmbuxkcfyonj3pxw.jpg" /><br />
+	<img alt="Randonnée VTT en Cornouaille ©ouest-cornouaille.com" src="{{ site.url }}/assets/public/images/posts/f2277-0jmbuxkcfyonj3pxw.jpg" class="img-fluid"/><br />
 </figure>
 
 Randonnée VTT en Cornouaille ©<a rel="nofollow" href="http://www.ouest-cornouaille.com/randonnees-accompagnees-et-circuits_secteur-ouest-cornouaille/randonnees-vtt-dans-ouest-cornouaille/1111" target="_blank">ouest-cornouaille.com</a>
@@ -98,7 +92,7 @@ On finira notre tour de Bretagne <strong>VTT</strong> par <strong>Nantes</strong
 ## 5/ Récapitulatif des 9 sites labellisés VTT FFC {#site-ffc}
 
 <figure>
-	<img alt="balise site VTT FFC" src="{{ site.url }}/assets/public/images/posts/6512f-00uqqunzuq26gp-p3.jpg" /><br />
+	<img alt="balise site VTT FFC" src="{{ site.url }}/assets/public/images/posts/6512f-00uqqunzuq26gp-p3.jpg" class="img-fluid"/><br />
 </figure>
 
 balise site VTT FFC
@@ -132,8 +126,6 @@ balise site VTT FFC
 - Points d’accueil : Communauté de Communes du Pays d’Iroise. Tel : 02 98 84 41 15 - Office de Tourisme Place du vieux marché 29290 Saint-Renan (Tel. : 02 98 84 23 78 / Fax :02 98 84 60 18) — Office de tourisme rue F. Squiban 29830 Ploudalmézeau — Tél : 02.98.48.73.19 — Tourisme en Iroise, quai de Cambarell 29840 Lanildut — Tél : 02.98.48.12.88 — Office de tourisme Bd de la mer, 29217 Plougonvelin : 02 98 48 30 18 — Office de Tourisme, Parc de Beauséjour, 29217 Le Conquet : 02 98 89 11 31
 - Contact : tourisme@ccpi.fr
 - Site internet : <a rel="nofollow" href="http://www.pays-iroise.com" target="_blank">www.pays-iroise.com</a> 
-
-
 
 ### Espace randonnée VTT Morlaix Mont d’Arrée
 
