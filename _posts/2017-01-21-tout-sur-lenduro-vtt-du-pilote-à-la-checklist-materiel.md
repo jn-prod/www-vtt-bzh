@@ -1,4 +1,6 @@
 ---
+redirect_from: "/tout-sur-lenduro-vtt-du-pilote-%C3%A0-la-checklist-materiel.html"
+permalink: "/enduro-vtt-pilote-checklist-materiel.html"
 layout: post
 title: "GUIDE: L'enduro VTT de A à Z."
 description: "Tout savoir sur la discipline la plus complête du VTT: l'enduro. Sa définition, son équipement et quelques conseils."
