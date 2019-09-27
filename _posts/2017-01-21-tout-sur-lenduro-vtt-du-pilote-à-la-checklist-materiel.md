@@ -147,7 +147,7 @@ L’équipement de base du pilote pour pratiquer l’enduro est un casque avec m
 - outillage: multi-outil, pompes, clefs minutes, dérive-chaine
 - trousse de premier secours
 
-<a href="http://track.effiliation.com/servlet/effi.redir?id_compteur=12855409&amp;url=https://www.alltricks.fr" target="_blank" rel="nofollow" class="btn btn-outline-primary text-center">Acheter chez Alltricks</a>
+<a href="http://track.effiliation.com/servlet/effi.redir?id_compteur=12855409&amp;url=https://www.alltricks.fr" target="_blank"  class="btn btn-outline-primary text-center">Acheter chez Alltricks</a>
 
 ## 7/ Conclusion {#conclusion}
 
