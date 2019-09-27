@@ -1,6 +1,6 @@
 ---
 redirect_from:
-	- "/matos-les-20-Ã©lÃ©ments-indispensables-Ã-avoir-dans-votre-sac-de-rando-raid-enduro-vtt-cb0c75d6b475"
+  - "/matos-les-20-Ã©lÃ©ments-indispensables-Ã-avoir-dans-votre-sac-de-rando-raid-enduro-vtt-cb0c75d6b475"
 layout: post
 title: "Checklist - L'équipement indispensable à avoir dans son sac à dos de VTT"
 date: 2017-01-17 16:59:59.000000000 +01:00
