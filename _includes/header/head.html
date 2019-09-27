@@ -2,17 +2,17 @@
 
   <!-- seo -->
   {% if page.title %}
-    <title>{{ page.title }} | {{ site.title }}</title>
-    <meta property="og:title" content="{{ page.title }} | {{ site.title }}" /> 
+    <title>{{ page.title }} | vtt.bzh</title>
+    <meta property="og:title" content="{{ page.title }} | vtt.bzh" /> 
   {% else %}
     <title>{{ site.title }}</title>
     <meta property="og:title" content="{{ site.title }}" /> 
   {% endif %}
 
   {% if page.description %}
-    <meta name="description" content="{{ page.description }}">
+    <meta name="description" content="{{ page.description }} | vtt.bzh">
   {% else %}
-    <meta name="description" content="{{ content | strip_html | truncatewords:19 }} | {{site.title}}">   
+    <meta name="description" content="{{ content | strip_html | truncatewords:19 }} | vtt.bzh">   
   {% endif %}
   
   <meta name="keywords" content="randonnée, rando, randonnées, vtt, rando vtt, rando vtt bretagne" />
