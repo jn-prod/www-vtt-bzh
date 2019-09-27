@@ -5,7 +5,7 @@ redirect_from:
   - "/suspension-5-points-pour-regler-la-fourche-et-lamortisseur-de-son-vtt/"
 layout: post
 title: 'Comment régler les suspensions de son VTT, de la fourche à l’amortisseur'
-description: ""
+description: "Voici le guide complet pour régler avec précision la fourche et de l'armotisseur de votre VTT."
 keywords: ""
 
 date: 2017-02-14 07:48:53.000000000 +01:00
