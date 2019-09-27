@@ -3,16 +3,10 @@ redirect_from:
   - "/matos-les-20-Ã©lÃ©ments-indispensables-Ã-avoir-dans-votre-sac-de-rando-raid-enduro-vtt-cb0c75d6b475"
 layout: post
 title: "Checklist - L'équipement indispensable à avoir dans son sac à dos de VTT"
+description: "Une randonnée VTT ou de l'enduro, ça demande de la préparation et de l'équipement. Voici la liste des affaires indispensable à avoir dans votre sac dos."
+keywords: "randonnée vtt, enduro vtt, equipement, sac à dos, contenu"
+
 date: 2017-01-17 16:59:59.000000000 +01:00
-type: post
-
-categories: 
-- Sport
-
-tags:
-- VTT
-- matériel
-
 author: nicolas
 image: assets/public/images/posts/jervol.jpg
 ---
@@ -63,7 +57,7 @@ Comme beaucoup d’outils, ces objets sont très utiles si vous savez les utilis
 ## 1/ Chambre à air de rechange (x2) {#chambre-air}
 
 <figure>
-	<img alt=" En rando VTT il faut prévoir 2 chambres à air" src="{{ site.url }}/assets/public/images/posts/e0cfd-0ir9frbgszc5bnao2.jpg" /><br />
+	<img alt=" En rando VTT il faut prévoir 2 chambres à air" src="{{ site.url }}/assets/public/images/posts/e0cfd-0ir9frbgszc5bnao2.jpg" class="img-fluid"/><br />
 </figure>
 
 <strong>En rando VTT il faut prévoir 2 chambres à air</strong>
@@ -78,7 +72,7 @@ Quand je roule avec un groupe, je ne prend que la taille et le modèle de chambr
 ## 2/ Kit de rustines {#rustines}
 
 <figure>
-	<img alt="La rustine l'indispensable dans votre sac VTT" src="{{ site.url }}/assets/public/images/posts/34d26-0bqsphfozyyeawghj.jpg" /><br />
+	<img alt="La rustine l'indispensable dans votre sac VTT" src="{{ site.url }}/assets/public/images/posts/34d26-0bqsphfozyyeawghj.jpg" class="img-fluid"/><br />
 </figure>
 
 <strong>La rustine l’indispensable dans votre sac VTT</strong>
@@ -88,7 +82,7 @@ Les Kits de rustines prennent très peu de place dans votre sac à dos et sont u
 ## 3/ Pompe à mains {#pompes}
 
 <figure>
-	<img alt="la pompe à main est le must-have de votre sac à dos" src="{{ site.url }}/assets/public/images/posts/bb4ea-0ucoznme43gawniof.jpg" /><br />
+	<img alt="la pompe à main est le must-have de votre sac à dos" src="{{ site.url }}/assets/public/images/posts/bb4ea-0ucoznme43gawniof.jpg" class="img-fluid"/><br />
 </figure>
 
 <strong>La pompe à main est le must-have de votre sac à dos</strong>
@@ -98,7 +92,7 @@ Les deux premiers éléments sont assez inutiles sans une pompe. Une pompe ou un
 ## 4/ Multi-outils {#outils}
 
 <figure>
-	<img alt="Un multi-outils dans votre sac peut s'avérer très utile!" src="{{ site.url }}/assets/public/images/posts/17f3a-01qsbayq4zflp7vy4.jpg" /><br />
+	<img alt="Un multi-outils dans votre sac peut s'avérer très utile!" src="{{ site.url }}/assets/public/images/posts/17f3a-01qsbayq4zflp7vy4.jpg" class="img-fluid"/><br />
 </figure>
 
 <strong>Un multi-outils dans votre sac peut s’avérer très utile!</strong>
@@ -108,7 +102,7 @@ Ne jamais quitter la maison sans un bon multi-outil. J’opte toujours pour un m
 ## 5/ Démontes pneus (x2) {#demontes-pneus}
 
 <figure>
-	<img alt="démontes pneus" src="{{ site.url }}/assets/public/images/posts/79155-0608tljcxxisbnxgf.jpg" /><br />
+	<img alt="démontes pneus" src="{{ site.url }}/assets/public/images/posts/79155-0608tljcxxisbnxgf.jpg" class="img-fluid"/><br />
 </figure>
 
 <strong>démontes pneus</strong>
@@ -118,7 +112,7 @@ Alors que de nombreux multi-outils ont un démonte-pneu intégré, ils ne sont g
 ## 6/ Pompe à fourche {#pompe-suspension}
 
 <figure>
-	<img alt="pompe pour fourche et amortisseur" src="{{ site.url }}/assets/public/images/posts/62331-0c-gwj37uxs1pz1mk.jpg" /><br />
+	<img alt="pompe pour fourche et amortisseur" src="{{ site.url }}/assets/public/images/posts/62331-0c-gwj37uxs1pz1mk.jpg" class="img-fluid"/><br />
 </figure>
 
 <strong>pompe pour fourche et amortisseur</strong>
@@ -128,7 +122,7 @@ Les amortisseurs à air modernes sont assez fiables, mais c’est toujours une b
 ## 7/ Lubrifiant chaine {#lubrifiant}
 
 <figure>
-	<img alt="lubrifiant pour chaine" src="{{ site.url }}/assets/public/images/posts/b521b-0ua9ib02ekkzhvudc.jpg" /><br />
+	<img alt="lubrifiant pour chaine" src="{{ site.url }}/assets/public/images/posts/b521b-0ua9ib02ekkzhvudc.jpg" class="img-fluid"/><br />
 </figure>
 
 <strong>lubrifiant pour chaine</strong>
@@ -138,7 +132,7 @@ Si vous êtes susceptible de rencontrer de multiples traversées de cours d’ea
 ## 8/ Baume à lèvres {#baume}
 
 <figure>
-	<img alt="baume à lèvres" src="{{ site.url }}/assets/public/images/posts/3b448-0hsdmuyt563rtfigx.jpg" /><br />
+	<img alt="baume à lèvres" src="{{ site.url }}/assets/public/images/posts/3b448-0hsdmuyt563rtfigx.jpg" class="img-fluid"/><br />
 </figure>
 
 <strong>baume à lèvres</strong>
@@ -148,7 +142,7 @@ Garder un bâton de baume à lèvres (de préférence avec un indice SPF) dans v
 ## 9/ Crème solaire {#creme}
 
 <figure>
-	<img alt="Crème solaire pour vélo" src="{{ site.url }}/assets/public/images/posts/0b7a1-0jl4edju-tjqtnrvu.jpg" /><br />
+	<img alt="Crème solaire pour vélo" src="{{ site.url }}/assets/public/images/posts/0b7a1-0jl4edju-tjqtnrvu.jpg" class="img-fluid"/><br />
 </figure>
 
 <strong>Crème solaire pour vélo</strong>
@@ -158,7 +152,7 @@ Nous profitons de faire de longues sorties au soleil l’été, ce signifie éga
 ## 10/ Téléphone {#telephone}
 
 <figure>
-	<img alt="Téléphone pour les appels d'urgences" src="{{ site.url }}/assets/public/images/posts/d077f-0qpdd9fpc2izihuv3.png" /><br />
+	<img alt="Téléphone pour les appels d'urgences" src="{{ site.url }}/assets/public/images/posts/d077f-0qpdd9fpc2izihuv3.png"  class="img-fluid"/><br />
 </figure>
 
 <strong>Téléphone pour les appels d’urgences</strong>
@@ -168,7 +162,7 @@ Le téléphone et notamment les smartphones peuvent faire un certain nombre de c
 ## 11/ Veste de pluie ultra-light {#veste}
 
 <figure>
-	<img alt="veste de pluie compactable" src="{{ site.url }}/assets/public/images/posts/3c59c-0sq_d3_nehlfyyzam.jpg" /><br />
+	<img alt="veste de pluie compactable" src="{{ site.url }}/assets/public/images/posts/3c59c-0sq_d3_nehlfyyzam.jpg"  class="img-fluid"/><br />
 </figure>
 
 <strong>veste de pluie compactable</strong>
@@ -178,7 +172,7 @@ Le temps est imprévisible. Une veste compactable et imperméable vous gardera a
 ## 12/ Kit de premiers secours {#kit-secours}
 
 <figure>
-	<img alt="Kit de premiers secours" src="{{ site.url }}/assets/public/images/posts/5147c-0s1jf-pjj5a7cbtno.jpg" /><br />
+	<img alt="Kit de premiers secours" src="{{ site.url }}/assets/public/images/posts/5147c-0s1jf-pjj5a7cbtno.jpg"  class="img-fluid"/><br />
 </figure>
 
 <strong>Kit de premiers secours</strong>
@@ -188,7 +182,7 @@ Une petite trousse de premiers soins dans un emballage étanche à l’eau est u
 ## 13/ Patte de dérailleur {#patte-derailleur}
 
 <figure>
-	<img alt="Patte de Derailleur" src="{{ site.url }}/assets/public/images/posts/5c569-0el_cgjfusuobaj_y.jpg" /><br />
+	<img alt="Patte de Derailleur" src="{{ site.url }}/assets/public/images/posts/5c569-0el_cgjfusuobaj_y.jpg" class="img-fluid" /><br />
 </figure>
 
 <strong>Patte de Derailleur du modèle de votre VTT</strong>
@@ -198,7 +192,7 @@ Une patte de dérailleur tordue ou cassée peut signifier la fin de votre sortie
 ## 14/ Maillons de chaine supplémentaires avec maillon rapide {#maillon}
 
 <figure>
-	<img alt="Maillons de chaines supplémentaires" src="{{ site.url }}/assets/public/images/posts/9e95d-0oovezoydbs6u4mzm.jpg" /><br />
+	<img alt="Maillons de chaines supplémentaires" src="{{ site.url }}/assets/public/images/posts/9e95d-0oovezoydbs6u4mzm.jpg" class="img-fluid"/><br />
 </figure>
 
 <strong>Maillons de chaines supplémentaires</strong>
@@ -208,7 +202,7 @@ Garder quelques maillons de chaîne, avec une maille rapide, dans votre sac vous
 ## 15/ Vis de plateaux {#vis}
 
 <figure>
-	<img alt="vss plateau VTT" src="{{ site.url }}/assets/public/images/posts/aa63b-0-dz2zmeaehykkzsm.jpg" /><br />
+	<img alt="vss plateau VTT" src="{{ site.url }}/assets/public/images/posts/aa63b-0-dz2zmeaehykkzsm.jpg" class="img-fluid"/><br />
 </figure>
 
 <strong>vis plateau pour votre VTT</strong>
@@ -218,7 +212,7 @@ Les vis de plateau parfois cisailler ou secouer lâche. Garder une pièce de rec
 ## 16/ Cales de rechanges et plaque de fixation {#cales}
 
 <figure>
-	<img alt="Cales VTT de rechanges" src="{{ site.url }}/assets/public/images/posts/22aa7-0oj_ow2lxqsjheo_2.jpg" /><br />
+	<img alt="Cales VTT de rechanges" src="{{ site.url }}/assets/public/images/posts/22aa7-0oj_ow2lxqsjheo_2.jpg" class="img-fluid"/><br />
 </figure>
 
 <strong>Cales VTT de rechanges</strong>
@@ -228,7 +222,7 @@ Il arrive, rarement, mais quand ça le fait c’est un calvaire qui commence, et
 ## 17/ Rislans {#rislans}
 
 <figure>
-	<img alt="rislans" src="{{ site.url }}/assets/public/images/posts/e5287-0vp_b-sckiipxbmmv.jpg" /><br />
+	<img alt="rislans" src="{{ site.url }}/assets/public/images/posts/e5287-0vp_b-sckiipxbmmv.jpg" class="img-fluid"/><br />
 </figure>
 
 <strong>rislans</strong>
@@ -238,7 +232,7 @@ Les rislans sont utiles dans beaucoup de situations. Ils peuvent être utilisés
 ## 18/ Rayon + Tête de rayon {#rayon}
 
 <figure>
-	<img alt="Rayon + Tête de rayon" src="{{ site.url }}/assets/public/images/posts/96583-0vao4nay7hcr4dqbl.jpg" /><br />
+	<img alt="Rayon + Tête de rayon" src="{{ site.url }}/assets/public/images/posts/96583-0vao4nay7hcr4dqbl.jpg" class="img-fluid"/><br />
 </figure>
 
 <strong>Rayon + Tête de rayon</strong>
@@ -248,7 +242,7 @@ Gardez un rayon de rechange et sa tête de rayon sous la main au cas où dans vo
 ## 19/ Argent {#argent}
 
 <figure>
-	<img alt="Un peu d'espèce" src="{{ site.url }}/assets/public/images/posts/708e8-0vdqvwydjnojlpq-c.jpeg" /><br />
+	<img alt="Un peu d'espèce" src="{{ site.url }}/assets/public/images/posts/708e8-0vdqvwydjnojlpq-c.jpeg" class="img-fluid"/><br />
 </figure>
 
 <strong>Un peu d’espèce</strong>
@@ -258,7 +252,7 @@ Avoir quelques euros dans le fond de son sac, en plus d’être utile pour se pr
 ## 20/ Un éclairage compact {#eclairage}
 
 <figure>
-	<img alt="Eclairage vélo + Frontale" src="{{ site.url }}/assets/public/images/posts/95e13-0xbjrtd4aj4kg64ad.jpg" /><br />
+	<img alt="Eclairage vélo + Frontale" src="{{ site.url }}/assets/public/images/posts/95e13-0xbjrtd4aj4kg64ad.jpg" class="img-fluid"/><br />
 </figure>
 
 <strong>Eclairage vélo + Frontale</strong>
