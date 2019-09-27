@@ -3,22 +3,16 @@ redirect_from:
   - "/entrainement-5-points-pour-progresser-physiquement-en-vtt/"
   - "/entrainement-5-points-pour-progresser-physiquement-en-vtt"
   - "/entraînement-5-points-pour-progresser-physiquement-en-vtt-49828e10198b"
-permalink: "/entrainement-5-points-pour-progresser-physiquement-en-vtt"
+
 layout: post
 title: "5 points pour progresser rapidement en vtt."
+description: "L'entrainement est un juste équilibre entre le travail de la technique et du physique. Voici comment progresser sur ces deux tableaux."
+keywords: "entrainement vtt, progresser vtt, entrainement technique vtt, entrainement physique vtt, planning entrainement vtt"
+permalink: "/entrainement-5-points-pour-progresser-physiquement-en-vtt.html"
+
 date: 2017-02-12 18:14:32.000000000 +01:00
-type: post
-
-categories:
-- Sport
-
-tags:
-- VTT
-- entrainement
-
 author: nicolas
 image: assets/public/images/posts/e0b76bf4d60afc3bf83e25f6bf3cefb4.png
-featured: true
 ---
 
 <em>Pour progresser rapidement sur le point physique à VTT, il vous faudra agir sur différents éléments clefs de la condition physique.</em>
