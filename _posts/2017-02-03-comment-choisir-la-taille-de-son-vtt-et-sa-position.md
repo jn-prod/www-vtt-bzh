@@ -37,7 +37,7 @@ A l’opposé, vous pouvez aussi avoir la chance d’avoir près de chez vous un
 
 ## 2/ Comment choisir la taille de son VTT ? {#taille}
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/3LmqMBfwwSU" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+<iframe width="auto" height="315" src="https://www.youtube.com/embed/3LmqMBfwwSU" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 
 ### Etape 1: mesure de l’entrejambe
 
