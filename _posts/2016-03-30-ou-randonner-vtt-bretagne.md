@@ -43,7 +43,7 @@ Toutes les randonnées VTT organisées valent le détour, ne serais-ce que pour 
   <img alt="Randonnée VTT au mont st michel" src="{{ site.url }}/assets/public/images/posts/04f42-0nrby8alnuktzebeg.jpg" class="img-fluid"/><br />
 </figure>
 
-Randonnée VTT au mont st michel ©<a rel="nofollow" href="http://www.safrantours.com/fr/randonnee-velo-France/voyage-velo-famille/voyage-velo-mont-saint-michel-et-randonnee-velo-normandie" target="_blank">safrantours.com</a>
+Randonnée VTT au mont st michel ©<a  href="http://www.safrantours.com/fr/randonnee-velo-France/voyage-velo-famille/voyage-velo-mont-saint-michel-et-randonnee-velo-normandie" target="_blank">safrantours.com</a>
 
 De Brest à Ploudalmézeau, c’est le charme du bout du Monde, l’Ouest du continent Européen, avec une côte frappée par les tempêtes arrivant de l’Atlantique qui se déroulera sous vos roues de VTT. L’espace VTT du Pays d’Iroise accueillera tous les niveaux de pilote sur ses 12 pistes VTT balisées totalisant 364 km à partir de l’une des communes du Pays d’Iroise.
 
@@ -59,7 +59,7 @@ On arrêtera de longer la face de la Bretagne au Mont Saint Michel. On découvri
   <img alt="Randonnée VTT parc Naturel Régional d'Armorique" src="{{ site.url }}/assets/public/images/posts/105eb-0-dfntbdaminuvgyn.jpg" class="img-fluid"/><br />
 </figure>
 
-Randonnée VTT parc Naturel Régional d’Armorique ©<a rel="nofollow" href="http://www.tourismebretagne.com/decouvrir-les-destinations/coeur-de-bretagne-kalon-breizh/les-incontournables/les-monts-d-arree" target="_blank">tourismebretagne.com</a>
+Randonnée VTT parc Naturel Régional d’Armorique ©<a  href="http://www.tourismebretagne.com/decouvrir-les-destinations/coeur-de-bretagne-kalon-breizh/les-incontournables/les-monts-d-arree" target="_blank">tourismebretagne.com</a>
 
 Crozon, Huelgouat, Le Faou, Chateaulin sont des villes qui ont pour point commun d’être sur le Parc Naturel Régional d’Armorique. Le parc naturel régional d’Armorique fait partie des 51 parcs naturels régionaux français. Situé dans le Finistère, le parc recouvre un territoire très contrasté, qui se divise en quatre territoires : les îles de la mer d’Iroise, la presqu’île de Crozon, l’Aulne maritime et les monts d’Armée. Un espace protégé qui ravira de diversité et de dénivelé les pilotes VTT les plus chevronnés.
 
@@ -79,7 +79,7 @@ On finira un peu plus à l’est de la Bretagne, sur l’espace VTT du Pays de l
   <img alt="Randonnée VTT en Cornouaille ©ouest-cornouaille.com" src="{{ site.url }}/assets/public/images/posts/f2277-0jmbuxkcfyonj3pxw.jpg" class="img-fluid"/><br />
 </figure>
 
-Randonnée VTT en Cornouaille ©<a rel="nofollow" href="http://www.ouest-cornouaille.com/randonnees-accompagnees-et-circuits_secteur-ouest-cornouaille/randonnees-vtt-dans-ouest-cornouaille/1111" target="_blank">ouest-cornouaille.com</a>
+Randonnée VTT en Cornouaille ©<a  href="http://www.ouest-cornouaille.com/randonnees-accompagnees-et-circuits_secteur-ouest-cornouaille/randonnees-vtt-dans-ouest-cornouaille/1111" target="_blank">ouest-cornouaille.com</a>
 
 C’est sur un terrain de jeu qui s’étend sur un secteur couvrant les deux tiers sud du département du Finistère, que l’on découvre l’espace VTT de Cornouaille. Il a comprend un fort secteur Sud-Ouest du département des Côtes-d’Armor et les grands alentours de Gourin et du Faouët dans le département du Morbihan. Il est traversé par 46 pistes VTT totalisant 2670m de dénivelé. On découvrira sur ce secteur la baie d’Audierne et la baie de Concarneau , aux portes de Quimper. On continuera jusqu’à Quimperlé qui recèle un patrimoine architecturale fort d’églises, chapelles et abbaye. On finira son tour de la Cornouaille dans les Monts d’Arrée déjà, lieu déjà présenté ci-dessus.
 
@@ -125,7 +125,7 @@ balise site VTT FFC
 - Distance des circuits : 364kms
 - Points d’accueil : Communauté de Communes du Pays d’Iroise. Tel : 02 98 84 41 15 - Office de Tourisme Place du vieux marché 29290 Saint-Renan (Tel. : 02 98 84 23 78 / Fax :02 98 84 60 18) — Office de tourisme rue F. Squiban 29830 Ploudalmézeau — Tél : 02.98.48.73.19 — Tourisme en Iroise, quai de Cambarell 29840 Lanildut — Tél : 02.98.48.12.88 — Office de tourisme Bd de la mer, 29217 Plougonvelin : 02 98 48 30 18 — Office de Tourisme, Parc de Beauséjour, 29217 Le Conquet : 02 98 89 11 31
 - Contact : tourisme@ccpi.fr
-- Site internet : <a rel="nofollow" href="http://www.pays-iroise.com" target="_blank">www.pays-iroise.com</a> 
+- Site internet : <a  href="http://www.pays-iroise.com" target="_blank">www.pays-iroise.com</a> 
 
 ### Espace randonnée VTT Morlaix Mont d’Arrée
 
@@ -137,7 +137,7 @@ balise site VTT FFC
 - Contact :
   - 02 98 63 87 82 / velo.rando@tourisme.morlaix.fr
   - 02 98 62 14 94 / Fax : 02 98 63 84 87 / nh@tourisme-morlaix.fr
-- Site internet : <a rel="nofollow" href="http://www.tourisme.morlaix.fr" target="_blank">www.tourisme.morlaix.fr</a>
+- Site internet : <a  href="http://www.tourisme.morlaix.fr" target="_blank">www.tourisme.morlaix.fr</a>
 
 ### Espace randonnée VTT Argueront Hunaudaye
 
@@ -145,7 +145,7 @@ balise site VTT FFC
 - Distance des circuits : 200kms
 - Points d’accueil : Office de Tourisme — Place du Martray — 22270 Jugon Les Lacs
 - Contact : 02.96.31.70.75 / Fax : 02.96.31.79.27 / tourisme.jugon.les.lacs@wanadoo.fr ou station.vtt.jugon@fr.oleane.com
-- Site internet : <a rel="nofollow" href="http://www.jugon-les-lacs.com" target="_blank">www.jugon-les-lacs.com</a> (et Station Sports Nature / tél : 02.96.31.67.04
+- Site internet : <a  href="http://www.jugon-les-lacs.com" target="_blank">www.jugon-les-lacs.com</a> (et Station Sports Nature / tél : 02.96.31.67.04
 - Date d’ouverture : juillet et août
 
 ### Espace randonnée VTT de la Roche Bernard n°183 :
@@ -169,7 +169,7 @@ balise site VTT FFC
 - Distance des circuits : 200 kms
 - Points d’accueil : Office de Tourisme du Pays de la Gacilly Le bout du pont 56200 La Gacilly
 - Contact : 02 99 08 21 75 / tourisme@cc-payslagacilly.fr
-- Site internet : <a rel="nofollow" href="http://www.paysdelagacilly.com" target="_blank">www.paysdelagacilly.com</a> 
+- Site internet : <a  href="http://www.paysdelagacilly.com" target="_blank">www.paysdelagacilly.com</a> 
 
 ### Espace randonnée Cyclosport « Pays de Jean Robic “: 
 
@@ -177,12 +177,12 @@ balise site VTT FFC
 - Distance des circuits : 155kms
 - Points d’accueil : Office de tourisme de Pontivy Communauté 2 Quai Niémen — Péniche Duchesse Anne 56300 Pontivy
 - Contact : 02.97.25.04.10 — Fax : 02.97.79.14.94
-- Site internet : <a rel="nofollow" href="http://www.pontivy-communaute.fr" target="_blank">www.pontivy-communaute.fr</a>
+- Site internet : <a  href="http://www.pontivy-communaute.fr" target="_blank">www.pontivy-communaute.fr</a>
 
 ### Espace randonnée VTT DÉPARTEMENTALE SECTEUR VIOREAU
 - Point d’accueil: Club de Nature Sport Vioreau “Les Hardais” 44440 Joué Sur Erdre
 - Contact : 06 83 41 61 59
-- Site internet : <a rel="nofollow" href="http://www.asso.ffv.fr/nsc-voile/" target="_blank">http://www.asso.ffv.fr/nsc-voile/</a>
+- Site internet : <a  href="http://www.asso.ffv.fr/nsc-voile/" target="_blank">http://www.asso.ffv.fr/nsc-voile/</a>
 
 ## 6/ Vous recherchez une randonnée VTT en Bretagne? {#conclusion}
 
