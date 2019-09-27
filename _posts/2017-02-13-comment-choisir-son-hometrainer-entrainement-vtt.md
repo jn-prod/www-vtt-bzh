@@ -15,7 +15,7 @@ author: nicolas
 image: "assets/public/images/posts/dec76-0cscharjawldysi56.jpg"
 ---
 
-## Au programme :
+Au programme :
 
 1. [L’home-trainer est votre meilleur-ami lors des changements de saison et d’heure !](#preambule)
 2. [1/ Choisir son mécanisme d’home-trainer](#mecanisme)
@@ -178,7 +178,7 @@ l’<strong>home-trainer</strong> par son frottement brule la gomme de votre pne
 </figure>
 <a href="http://track.effiliation.com/servlet/effi.redir?id_compteur=12855409&amp;url=https://www.alltricks.fr/F-41490-home-training/P-95024-tacx_home_trainer_blue_matic_t2650" target="_blank"  rel="nofollow" class="btn btn-outline-primary text-center">Acheter chez Alltricks</a>
 
-#### Points forts
+**Points forts**
 
 + Le frein magnétique du Blue Matic comprend deux disques présentant 6 aimants permanents chacun.
 + Manette de résistance au guidon à 10 positions: vous pouvez régler le positionnement des aimants.
@@ -196,7 +196,7 @@ l’<strong>home-trainer</strong> par son frottement brule la gomme de votre pne
 </figure>
 <a href="http://track.effiliation.com/servlet/effi.redir?id_compteur=12855409&amp;url=https://www.alltricks.fr/Acheter/Home%2BTrainer%2BTACX%2BI-FLOW%2BT2270" target="_blank"  rel="nofollow" class="btn btn-outline-primary text-center">Acheter chez Alltricks</a>
 
-#### Points forts
+**Points forts**
 
 + Entraînement avec PC, logiciel Tacx Trainer software 4 basic (Vista ou Windows 7) ;
 + Calcule la puissance, la cadence, le rythme cardiaque, la distance… ;
@@ -223,7 +223,7 @@ Extrêmement ergonomique et fonctionnant complètement sans fil — y compri
 
 Cette application permet notamment de prendre part à des courses cyclistes classiques et à des étapes de légende. Vous pourrez aussi créer vos propres programmes d’entraînement et vous exercer en fonction de votre fréquence cardiaque, de la pente et de la puissance produite, ou utiliser les tests prédéfinis de niveaux de forme. Toutes vos performances sont mesurées et affichées pendant que vous roulez, et enregistrées de façon à les analyser ultérieurement.
 
-#### Points forts
+**Points forts**
 
 + Très grande résistance pour un réalisme maximal
 + Interactivité des applications Tacx Cycling
@@ -236,7 +236,7 @@ Cette application permet notamment de prendre part à des courses cyclistes clas
 </figure>
 <a href="http://track.effiliation.com/servlet/effi.redir?id_compteur=12855409&amp;url=https://www.alltricks.fr/F-41490-home-training/P-147790-tacx_home_trainer_i_genius_multiplayer_smart" target="_blank"  rel="nofollow" class="btn btn-outline-primary text-center">Acheter chez Alltricks</a>
 
-#### Points forts
+**Points forts**
 
 + Frein motorisé repoduisant fidèlement la pression exercée sur la roue arrière ;
 + Simulation de pente réaliste ;
