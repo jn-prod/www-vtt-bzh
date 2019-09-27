@@ -2,15 +2,18 @@
 {% assign author = site.data.authors[post.author] %}
 <article class="{{ include.class }} mb-3" itemscope="" itemtype="http://schema.org/BlogPosting">
     <div class="card h-100 shadow">
+        <h2 class="card-title h5" itemprop="headline">
+            <a class="text-dark" href="{{ post.url | absolute_url }}">{{ post.title }}</a>
+        </h2>
+        <span class="text-muted" itemprop="dateCreated datePublished dateModified">
+            <small>{{ post.date | date_to_string }}</small>
+         </span>
         <div class="maxthumb">
             <a href="{{ post.url | absolute_url }}">
                 {% if post.image %} <img class="img-fluid" src="{% if post.image contains "://" %}{{ post.image }}{% else %}{{ post.image | absolute_url }}{% endif %}" alt="{{ post.title }}" itemprop="image thumbnailUrl"> {% endif %}
             </a>
         </div>
         <div class="card-body">
-            <h2 class="card-title h5" itemprop="headline">
-                <a class="text-dark" href="{{ post.url | absolute_url }}">{{ post.title }}</a>
-            </h2>
             <meta itemprop="url mainEntityOfPage" content="{{ site.url}}{{post.url }}">
             <section itemprop="articleBody">
                 <div class="card-text">
@@ -20,7 +23,7 @@
         </div>
         <footer class="">
             <div class="wrapfooter">
-                <span class="post-date" itemprop="dateCreated datePublished dateModified">{{ post.date | date_to_string }}</span>
+                
                 <div class="clearfix"></div>
             </div>
         </footer>
