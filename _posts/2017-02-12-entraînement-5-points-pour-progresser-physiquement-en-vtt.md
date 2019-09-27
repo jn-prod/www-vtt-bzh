@@ -17,7 +17,7 @@ image: assets/public/images/posts/e0b76bf4d60afc3bf83e25f6bf3cefb4.png
 
 <em>Pour progresser rapidement sur le point physique à VTT, il vous faudra agir sur différents éléments clefs de la condition physique.</em>
  
-Préambule : pensez à utiliser un outil pour suivre votre entraînement comme <a href="https://app.nicolasjouanno.com" target="_blank" rel="nofollow">feezify:me</a>
+Préambule : pensez à utiliser un outil pour suivre votre entraînement comme <a href="https://app.nicolasjouanno.com" target="_blank" >feezify:me</a>
 
 1. [Comment rapidement progresser physiquement en VTT?](#comment)
 2. [Améliorer sa puissance en VTT](#puissance)
