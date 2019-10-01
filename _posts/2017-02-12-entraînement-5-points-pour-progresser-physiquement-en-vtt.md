@@ -25,8 +25,7 @@ Voici deux types de méthode d'entrainement à utiliser dans votre programme d'e
   3. [Construire son programme d'entrainement](#programme-entrainement)
   4. [Prévention](#prevention)
 
-## Entrainement VTT sans vélo
-{#sans-velo}
+## Entrainement VTT sans vélo {#sans-velo}
 
 **Améliorer sa puissance**
 
@@ -91,8 +90,7 @@ Le secret ultime pour une bonne récupération musculaire : les étirements et n
 Vous pouvez aussi vous initier à la méditation, sophrologie, yoga, pilate, ... Qui sont d'excellents moyens de détendre les muscles.
 
 
-## Entrainement avec VTT pour l'XC, l'enduro et la route.
-{#avec-velo}
+## Entrainement avec VTT pour l'XC, l'enduro et la route. {#avec-velo}
 
 **Gagner en puissance**
 
@@ -163,8 +161,7 @@ Pour améliorer votre récupération, il vous faudra apprendre à faire des sort
 Profitez de cette sortie de repos pour y ajouter quelques exercices d'agilité !
 
 
-## Construire son programme d'entrainement
-{#programme-entrainement}
+## Construire son programme d'entrainement {#programme-entrainement}
 
 L’objectif n’est pas de vous donner un plan d’entrainement précis pour progresser en VTT. Le VTT est une discipline riche et complexe qui demande de l'investissement.
 
@@ -184,8 +181,7 @@ La règle d'or de l’entrainement est de pratiquer au moins 3 fois par semaine 
 Avec un entrainement par semaine vous êtes en régression/stagnation. Un faible volume d'entrainement ne vous fera pas progresser physiquement. Un entrainement productif est bien construit vous donne du plaisir.
 
 
-## Prévention
-{#prevention}
+## Prévention {#prevention}
 
 Tous les temps de récupération et de travail sont essentiels pour la bonne réalisation des exercices. Vous aurez une progression physique constante.
 
