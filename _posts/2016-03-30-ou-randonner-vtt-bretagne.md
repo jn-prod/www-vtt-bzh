@@ -43,7 +43,7 @@ Toutes les randonnées VTT organisées valent le détour, ne serais-ce que pour 
   <img alt="Randonnée VTT au mont st michel" src="{{ site.url }}/assets/public/images/posts/04f42-0nrby8alnuktzebeg.jpg" class="img-fluid"/><br />
 </figure>
 
-Randonnée VTT au mont st michel ©<a  href="http://www.safrantours.com/fr/randonnee-velo-France/voyage-velo-famille/voyage-velo-mont-saint-michel-et-randonnee-velo-normandie" target="_blank">safrantours.com</a>
+Randonnée VTT au mont st michel ©safrantours.com
 
 De Brest à Ploudalmézeau, c’est le charme du bout du Monde, l’Ouest du continent Européen, avec une côte frappée par les tempêtes arrivant de l’Atlantique qui se déroulera sous vos roues de VTT. L’espace VTT du Pays d’Iroise accueillera tous les niveaux de pilote sur ses 12 pistes VTT balisées totalisant 364 km à partir de l’une des communes du Pays d’Iroise.
 
@@ -125,7 +125,7 @@ balise site VTT FFC
 - Distance des circuits : 364kms
 - Points d’accueil : Communauté de Communes du Pays d’Iroise. Tel : 02 98 84 41 15 - Office de Tourisme Place du vieux marché 29290 Saint-Renan (Tel. : 02 98 84 23 78 / Fax :02 98 84 60 18) — Office de tourisme rue F. Squiban 29830 Ploudalmézeau — Tél : 02.98.48.73.19 — Tourisme en Iroise, quai de Cambarell 29840 Lanildut — Tél : 02.98.48.12.88 — Office de tourisme Bd de la mer, 29217 Plougonvelin : 02 98 48 30 18 — Office de Tourisme, Parc de Beauséjour, 29217 Le Conquet : 02 98 89 11 31
 - Contact : tourisme@ccpi.fr
-- Site internet : <a  href="http://www.pays-iroise.com" target="_blank">www.pays-iroise.com</a> 
+- Site internet :[http://www.pays-iroise.bzh/](http://www.pays-iroise.bzh/) 
 
 ### Espace randonnée VTT Morlaix Mont d’Arrée
 
@@ -137,7 +137,7 @@ balise site VTT FFC
 - Contact :
   - 02 98 63 87 82 / velo.rando@tourisme.morlaix.fr
   - 02 98 62 14 94 / Fax : 02 98 63 84 87 / nh@tourisme-morlaix.fr
-- Site internet : <a  href="http://www.tourisme.morlaix.fr" target="_blank">www.tourisme.morlaix.fr</a>
+- Site internet : <a  href="https://www.morlaix-communaute.bzh/" target="_blank">www.tourisme.morlaix.fr</a>
 
 ### Espace randonnée VTT Argueront Hunaudaye
 
@@ -169,7 +169,7 @@ balise site VTT FFC
 - Distance des circuits : 200 kms
 - Points d’accueil : Office de Tourisme du Pays de la Gacilly Le bout du pont 56200 La Gacilly
 - Contact : 02 99 08 21 75 / tourisme@cc-payslagacilly.fr
-- Site internet : <a  href="http://www.paysdelagacilly.com" target="_blank">www.paysdelagacilly.com</a> 
+- Site internet : <a  href="https://www.broceliande-vacances.com/decouvrir/incontournables/villes-villages/la-gacilly/" target="_blank">www.paysdelagacilly.com</a> 
 
 ### Espace randonnée Cyclosport « Pays de Jean Robic “: 
 
@@ -177,7 +177,7 @@ balise site VTT FFC
 - Distance des circuits : 155kms
 - Points d’accueil : Office de tourisme de Pontivy Communauté 2 Quai Niémen — Péniche Duchesse Anne 56300 Pontivy
 - Contact : 02.97.25.04.10 — Fax : 02.97.79.14.94
-- Site internet : <a  href="http://www.pontivy-communaute.fr" target="_blank">www.pontivy-communaute.fr</a>
+- Site internet : <a  href="https://www.pontivy-communaute.bzh/" target="_blank">www.pontivy-communaute.fr</a>
 
 ### Espace randonnée VTT DÉPARTEMENTALE SECTEUR VIOREAU
 - Point d’accueil: Club de Nature Sport Vioreau “Les Hardais” 44440 Joué Sur Erdre
