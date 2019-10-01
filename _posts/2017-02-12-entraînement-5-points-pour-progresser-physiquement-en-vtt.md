@@ -1,123 +1,202 @@
 ---
 redirect_from:
+  - "/entrainement-5-points-pour-progresser-physiquement-en-vtt.html"
   - "/entrainement-5-points-pour-progresser-physiquement-en-vtt/"
   - "/entrainement-5-points-pour-progresser-physiquement-en-vtt"
   - "/entraînement-5-points-pour-progresser-physiquement-en-vtt-49828e10198b"
 
 layout: post
-title: "5 points pour progresser rapidement en vtt."
+title: "Quel entrainement pour progresser en VTT ?"
 description: "L'entrainement est un juste équilibre entre le travail de la technique et du physique. Voici comment progresser sur ces deux tableaux."
 keywords: "entrainement vtt, progresser vtt, entrainement technique vtt, entrainement physique vtt, planning entrainement vtt"
-permalink: "/entrainement-5-points-pour-progresser-physiquement-en-vtt.html"
+permalink: "/entrainement-vtt.html"
 
 date: 2017-02-12 18:14:32.000000000 +01:00
 author: nicolas
 image: assets/public/images/posts/e0b76bf4d60afc3bf83e25f6bf3cefb4.png
 ---
+Le VTT est une discipline complète. Puissance, endurance, équilibre et explosivité sont des compétences à travailler à l'entrainement. En alternant avec des périodes de récupération, vous observerez une progression constante.
 
-<em>Pour progresser rapidement sur le point physique à VTT, il vous faudra agir sur différents éléments clefs de la condition physique.</em>
- 
-Préambule : pensez à utiliser un outil pour suivre votre entraînement comme <a href="https://app.nicolasjouanno.com" target="_blank" >feezify:me</a>
 
-1. [Comment rapidement progresser physiquement en VTT?](#comment)
-2. [Améliorer sa puissance en VTT](#puissance)
-3. [Améliorer son endurance en VTT](#endurance)
-4. [Améliorer son équilibre/agilité en VTT](#agility)
-5. [Améliorer son explosivité en VTT](#explosivity)
-6. [Améliorer sa récupération en VTT](#recuperation)
-7. [Et après ?](#after)
-8. [Prévention](#prevention)
+Voici deux types de méthode d'entrainement à utiliser dans votre programme d'entrainement.
 
-## 1/ Comment rapidement progresser physiquement en VTT? {#comment}
+  1. [Entrainement VTT sans vélo.](#sans-velo)
+  2. [Entrainement VTT avec vélo pour l'XC, l'enduro et la route.](#avec-velo)
+  3. [Construire son programme d'entrainement](#programme-entrainement)
+  4. [Prévention](#prevention)
 
-Pour progresser à VTT et faire de grosses moyennes (!) il vous faudra améliorer votre puissance, votre endurance, votre équilibre, votre explosivité et votre récupération
+## Entrainement VTT sans vélo
+{#sans-velo}
 
-Retrouvez les réponses à ces différentes problématiques selon 2 méthodes, une première avec VTT et là deuxième sans VTT, car il n’y a pas que ça dans la vie. De plus le VTT étant un sport physiquement complet, un travail plus global du corps sans vélo sera recommandé pour progresser et garder l’envie de rouler!
-<hr />
+**Améliorer sa puissance**
 
-## 2/ Améliorer sa puissance en VTT: {#puissance}
 
-Avec VTT: Pour améliorer votre puissance à VTT, il vous faudra réaliser une sortie allant de 1h30 à 2h30, au cour de laquelle vous réalisez un exercice de “cadence de pédalage” sur le plat ou en bosse.
-Pédaler à une cadence de 60 tours/min pendant 5 minutes avec un développement suffisamment gros pour travailler le muscle puis enchainer à 120 tours/min pendant 5 minutes avec un braquet très light sans pour autant pédaler dans la choucroute!
-Réalisez cette enchainement 3 fois d’affilé et recommencez après 15 minutes de récupération.
-<em>attention si vous ressentez des douleurs ligamentaires aux genoux, chevilles, … remontez quelques dents!</em>
+Pour améliorer votre puissance sans votre vélo, les Squats sont très efficaces. Cet entrainement se pratique à la maison. Pour bien réaliser ce mouvement regardez la vidéo ci-après.
 
-Sans VTT: Pour améliorer votre puissance sans votre VTT rien de tel que des Squats, vous n’êtes pas obligé d’aller en salle de sport pour ce faire, pour bien réaliser ce mouvement suivez le guide de cette vidéo que vous retrouverez ci-après.
 
-L’exercice lui se décompose de la manière suivante:
-réalisez 8 flexions 5 fois avec 2 minutes de récupération entre chacune d’elles (le temps de récupération est très important pour l’efficacité de l’exercice). Cet exercice vous prendra 15 minutes, il peut se faire au réveil ou avant de vous coucher par exemple.
+L’exercice se décompose de la sorte : réalisez 8 flexions, 5 fois, avec 2 minutes de récupération entre chacune d’elles. Le temps de récupération est très important pour l’efficacité de l’exercice. Cet exercice vous prendra 15 minutes, il peut se faire au réveil ou avant de vous coucher.
 
-<iframe width="auto" height="315" src="https://www.youtube.com/embed/yS4M8-y6Jr4" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-<hr />
 
-## 3/ Améliorer son endurance en VTT: {#endurance}
+Une variante, consiste à faire des squats sautées. Le mouvement a pour différence que vous sautez en fin de mouvement.
 
-Avec VTT: Pour améliorer votre endurance en VTT, il vous faudra réaliser une sortie à 50%-70% de votre FC max avec une cadence de pédalage modérée. Vous devrez bien faire attention de ne pas sortir de la zone cardiaque. Cette sortie VTT se fera sur une durée de 2–4h 1 à 2 fois par semaine avec 2 jours récupération minimum entre chaque sortie en Endurance.
 
-Sans VTT: Pour améliorer votre endurance sans votre VTT, il vous faudra réaliser un autre sport d’endurance sollicitant les jambes et le coeur a une intensité de travail linéaire: footing, natation, … reprenez l’exercice cité au-dessus en adaptant la durée au sport pratiqué.
+**Être plus endurant**
 
-Exemple: 1h de footing ou 750m de natation à 60% en moyenne de votre FC Max est un excellent moyen de gagner en endurance avec peu de temps de pratique.
-<hr />
 
-## 4/ Améliorer son équilibre/agilité en VTT: {#agility}
+Peu être pratiquez-vous déjà un autre sport d'endurance ?
 
-Avec VTT: Pour améliorer votre équilibre et votre agilité en VTT, il n’y a pas de miracle il faut travailler sous forme de jeux ludiques:
-exercice 1: slalomer entre des arbres ou bidons, ou plots sur un parking par exemple.
-exercice 2: s’entrainer à récupérer un bidon posé au sol en avançant sans poser le pied à terre,
-exercice 3: apprendre à faire du surplace sans déplacement de roues (pas de trial, du moins avant de maitriser cet exercice!), augmentez la difficulté en le faisant face à un trottoir par exemple (il est plus facile d’assimiler cet exercice dans une légère pente montante).
-Globalement plus votre terrain de jeu sera dans un espace petit et varier en franchissement, moins votre guidon aura l’opportunité de rester droit et plus vous prendrez de reflex. Alors inventez et perfectionnez vos jeux d’équilibre, car il est bien du travail quand il s’agit d’améliorer son équilibre!
 
-Sans VTT: Pour améliorer votre équilibre et votre agilité sans votre VTT, il vous faudra passer par la case d’entrainement de fitness sous formes d’exercices de proprioception.
-L’avantage est que ces exercices ne nécessitent que très peu de moyen et de temps, et vous permettent de travailler de manière plus efficace votre oreille interne (les terminaison nerveuse qui gère votre équilibre) en restant chez vous!
+Le running et la natation sont les sports qu'on cite spontanément. Ils ont l'avantage de travailler vos capacités cardiaque et de solliciter vos jambes. Ils complètent parfaitement un entrainement de VTT. Ils vous permettront d'améliorer votre endurance sans vélo, avec des temps de pratique plus court. Ils s'intercalent facilement dans le planning de la semaine. Et s'adaptent à vos contraintes horaires.
 
-Pour un travail efficace sur votre équilibre, regarder les exercices expliqués dans la vidéo ci-dessous.
-Effectuez un de ces exercices 2 à 3 fois par semaine pour progresser rapidement, durcissez le niveau au fure et à mesure de votre progression.
-<hr />
 
-## 5/ Améliorer son explosivité en VTT: {#explosivity}
+Reprenez l’exercice d'endurance avec VTT cité au-dessous en adaptant la durée au sport pratiqué.
 
-Avec VTT: Pour améliorer votre explosivité en VTT, il vous faudra monter de bosses raides au sprint 30–45 secondes 5 fois à 95% de votre fréquence cardiaque max, avec 2 minutes de récupération entre chaque. Renouveler l’opération une deuxième fois après une récupération de 15 minutes en vélocité à faible vitesse.
-La durée de la sortie VTT ne dépassera pas les 2h.
 
-Sans VTT: Pour améliorer votre explosivité sans votre VTT, trois exercices simples s’offrent à vous:
-- exercice 1: Le premier exercice est bien connue des athlètes travaillant en stade ou gymnase, il consiste à monter une 15ène de marches au sprint, 10 fois, avec une récupération de 2 minutes entre chaque.
-- exercice 2: Le deuxième exercice et mieux connu en salle de fitness, il consiste à sauter sur un step ou une marche, pieds joints, 8–12 fois d’affilé sans temps mort. Répété l’exercice 5 fois avec 2 minutes de récupération entre chaque.
-- exercice 3: Le dernier et surement le plus connus est la corde à sauter, faite 10–15 minutes de corde à sauter avec des accélérations de 20 secondes maxi.
-<hr />
+Vous pouvez, réaliser 1 h de footing ou 750m de natation à 60% en moyenne de votre FC Max. Vous gagnerez en endurance avec peu de temps de pratique.
 
-## 6/ Améliorer sa récupération en VTT: {#recuperation}
 
-Avec VTT: La phase de récupération est essentiel dans une préparation physique, pour enchainer les difficultés jour après jour. Pour améliorer votre récupération, il vous faudra apprendre à faire des sorties de fainéant au cours de laquelle vous promenez le vélo, ce peut-être une balade en famille, un petit tour en campagne ou une balade en centre ville d’une heure.
+**Gagner en agilité**
 
-Profitez de cette sortie de repos pour y ajouter quelques exercices ludiques d’agilité pour travailler votre équilibre!
 
-Sans VTT: Pour améliorer votre récupération musculaire sans votre VTT après une longue sortie rien de tel que des étirements, des exercices de respiration et de faire attention à sa nutrition avant, pendant et après l’effort.
+Le travail de proprioceptions est excellent pour améliorer votre équilibre sans vélo.
 
-Cette question sera traitée plus en profondeur dans un prochain article tant elle est vaste mérite plus d’attention.
-<hr />
 
-## 7/ Les 5 clefs pour progresser physiquement en VTT sont entre main, et après? {#after}
+En peu de temps, vous perfectionner votre oreille interne. Vous stimulez les terminaisons nerveuses qui gèrent votre équilibre.
 
-L’objectif n’est pas de vous donner un plan d’entrainement précis pour progresser en VTT.
-Il vous faudra trouver vous même votre rythme selon vos obligations (travail, déplacements, vie privée, famille, temps, climats, …). Mais les point apportées plus haut sont essentiels pour progresser physiquement en VTT, ils vous donne les clefs pour que vous trouviez vous même votre méthode afin d’améliorer vos capacité physique en VTT.
-Ces complémentarité des exercices, leur régularité, vous permetterons d’évouluer rapidement dans votre discipline de prédilection, tout en continuant de vous faire plaisir jours après jours sur votre vélo.
-Retenez simplement qu’une des principales règles de l’entrainement physique quelque sport que ce soit est qu’ il faut pratiquer au moins 3 fois par semaine pour progresser physiquement et que pour entretenir cette même qualité 2 entrainements suffisent.
 
-<em>Toutefois, 1 fois par semaine signifie déjà que vous êtes en régression/stagnation ou du moins n’apporte que peux à votre prépartion physique si ce n’est en technique et en plaisir à s’aérer les idées.</em>
-<hr />
+Des séances courtes de 5-10 minutes, 2 à 3 fois par semaine suffisent. Pour un travail efficace de votre équilibre, regarder les exercices de cette vidéo.
 
-## 8/ Prévention: {#prevention}
 
-TOUS LES TEMPS DE RECUPERATION ET DE TRAVAIL SONT ESSENTIELS POUR LA BONNE REALISATION DES EXERCICES ET AINSI AVOIR UNE PROGRESSION PHYSIQUE CONSTANTE!
+**Être plus explosif**
 
-Attention, cet article ne se substitue en rien aux conseils que pourrais vous apporter un professionnel de la santé et du sport.
-Les conseils de cet article sur la préparation physique restent sur le plan théorique, ne forcez pas si vous ressentez une douleur, si celle-ci persiste consultez un professionnel.
+
+Voici trois exercices pour améliorer votre explosivité sans votre VTT :
+
+
+  - exercice 1  : Le premier exercice est bien connu des athlètes travaillant en stade ou gymnase. Il consiste à monter une quinzaine de marches au sprint, 10 fois, avec une récupération de 2 minutes entre chaque.
+
+
+  - exercice 2  : Le deuxième exercice et connu en salle de sport. Il consiste à sauter sur un step ou une marche, pieds joints, 8–12 fois d'affilée sans temps mort. Répété l’exercice 5 fois avec 2 minutes de récupération entre chaque.
+
+
+  - exercice 3  : Le dernier et surement le plus connus est la corde à sauter. Faites 10–15 minutes de corde à sauter avec des accélérations de 20 secondes maxi.
+
+
+**Accélérerer sa récupération**
+
+
+Le secret ultime pour une bonne récupération musculaire : les étirements et nutrition.
+
+
+Vous pouvez aussi vous initier à la méditation, sophrologie, yoga, pilate, ... Qui sont d'excellents moyens de détendre les muscles.
+
+
+## Entrainement avec VTT pour l'XC, l'enduro et la route.
+{#avec-velo}
+
+**Gagner en puissance**
+
+
+Réalisez une sortie sur terrain plat d'une durée de 1h30 à 2h30. En lui ajoutant un travail de cadence de pédalage vous progresser en puissance. Une fois que vous vous sentirez plus a votre aise vous pourrez aller dans les bosses.
+
+
+Pédaler à une cadence de 60 tours/min pendant 5 minutes avec un développement suffisamment gros. Cet excercice travaille tous les muscles. Enchainer à 120 tours/min pendant 5 minutes avec un petit braquet.
+
+
+Réalisez cet enchainement 3 fois d'affilée et recommencez après 15 minutes de récupération.
+
+
+Attention si vous ressentez des douleurs ligamentaires aux genoux, chevilles, ... Remontez quelques dents !
+
+
+**Progresser en endurance**
+
+
+Une sortie longue par semaine de 2h30 est incontournable dans votre programme d'entrainement. Elle vous donnera le fond nécessaire.
+
+
+En roulant à 50%-70% de votre FC max et une cadence de pédalage modérée vous rendez votre entrainement plus efficace. Vous devrez bien faire attention de ne pas sortir de la zone cardiaque.
+
+
+Réalisez deux fois par semaine une sortie d'endurance en VTT ou en vélo de route. Espacez-les de deux jours de récupération entre elle.
+
+
+**Avoir un meilleur équilibre**
+
+
+Des entrainements ludiques sont idéaux pour améliorer votre équilibre et votre agilité en VTT.
+
+
+Travailler sous forme de jeux, vous pouvez :
+
+
+  - Exercice 1: slalomer entre des arbres ou bidons, ou plots sur un parking.
+
+
+  - Exercice 2: s’entrainer à récupérer un bidon posé au sol en avançant sans poser le pied à terre.
+
+
+Exercice 3: apprendre à faire du surplace sans déplacement de roues. Pas de trial, avant de maitriser cet exercice ! Augmentez la difficulté en le faisant face à un trottoir. Il est plus facile d’assimiler cet exercice dans une légère pente montante.
+
+
+Plus votre terrain de jeu sera dans un espace petit et varier en franchissement. Moins votre guidon aura l’opportunité de rester droit et plus vous prendrez de reflex. Alors inventez et perfectionnez vos jeux d’équilibre pour progresser techniquement.
+
+
+**Améliorer son explosivité**
+
+
+Monter de bosses très raides au sprint améliore efficacement votre explosivité en VTT. Répétez cet exercice de 30–45 secondes 5 fois à 95% de votre fréquence cardiaque max. Prenez 2 minutes de récupération entre chaque répétition.
+
+
+Renouveler l’opération une deuxième fois après une récupération de 15 minutes en vélocité à faible vitesse. La durée de la sortie VTT ne dépassera pas les 2h.
+
+
+**Récupérer plus rapidement**
+
+
+La phase de récupération est essentiel dans une préparation physique.
+
+
+Pour améliorer votre récupération, il vous faudra apprendre à faire des sorties à faible intensité. Dès sorties où vous promenez le vélo. Les balades en famille, un petit tour en campagne ou une balade en centre-ville sont de parfaits exemples.
+
+
+Profitez de cette sortie de repos pour y ajouter quelques exercices d'agilité !
+
+
+## Construire son programme d'entrainement
+{#programme-entrainement}
+
+L’objectif n’est pas de vous donner un plan d’entrainement précis pour progresser en VTT. Le VTT est une discipline riche et complexe qui demande de l'investissement.
+
+
+Il vous faudra trouver vous-même votre rythme d'après vos obligations : travail, déplacements, vie privée, famille, temps, climats... Mais les point apportées plus haut sont essentiels pour progresser en VTT.
+
+
+La complémentarité des exercices et leur régularité, vous permettrons de progresser rapidement.
+
+
+Ne perdez pas de vue que pour progresser il faut avant tout se faire plaisir sur votre vélo.
+
+
+La règle d'or de l’entrainement est de pratiquer au moins 3 fois par semaine pour en voir ses bienfaits. Alors qu'avec 2 entrainements vous ne ferez qu'entretenir votre niveau actuel.
+
+
+Avec un entrainement par semaine vous êtes en régression/stagnation. Un faible volume d'entrainement ne vous fera pas progresser physiquement. Un entrainement productif est bien construit vous donne du plaisir.
+
+
+## Prévention
+{#prevention}
+
+Tous les temps de récupération et de travail sont essentiels pour la bonne réalisation des exercices. Vous aurez une progression physique constante.
+
+
+Attention. Cet article ne remplacera pas les conseils d'un professionnel de la santé et du sport. Les conseils prodigués sont théorique et découle de mon expérience. Ne forcez pas si vous ressentez une douleur. Si elles-ci persistent consultez un professionnel.
+
 
 Il faut savoir que le repos est bien souvent le meilleur des remèdes aux blessures.
 
-De nombreux club de VTT bénéficient de personnes diplômés qui sauront personnaliser votre entrainement selon vos capacités physiques et vos objectifs.
-<hr />
 
-## Conclusion
+De nombreux club de VTT bénéficient de personnes diplômés. D'après vos capacités physiques et vos objectifs, ils sauront personnaliser votre entrainement.
 
-Le VTT est a consommer avec modération et sans excès pour progresser de manière constante avec le sourire, il faut savoir ménager sa monture pour aller plus loin!
+
+Le VTT est à consommer avec modération et sans excès. Pour progresser de manière constante avec le sourire, il faut savoir ménager sa monture pour aller plus loin!
