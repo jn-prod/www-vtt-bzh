@@ -15,6 +15,7 @@ date: 2017-02-12 18:14:32.000000000 +01:00
 author: nicolas
 image: assets/public/images/posts/e0b76bf4d60afc3bf83e25f6bf3cefb4.png
 ---
+
 Le VTT est une discipline complète. Puissance, endurance, équilibre et explosivité sont des compétences à travailler à l'entrainement. En alternant avec des périodes de récupération, vous observerez une progression constante.
 
 
@@ -27,6 +28,7 @@ Voici deux types de méthode d'entrainement à utiliser dans votre programme d'e
 
 ## Entrainement VTT sans vélo {#sans-velo}
 
+
 **Améliorer sa puissance**
 
 
@@ -38,6 +40,7 @@ L’exercice se décompose de la sorte : réalisez 8 flexions, 5 fois, avec 2 mi
 
 Une variante, consiste à faire des squats sautées. Le mouvement a pour différence que vous sautez en fin de mouvement.
 
+<iframe width="auto" height="315" src="https://www.youtube.com/embed/yS4M8-y6Jr4" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 
 **Être plus endurant**
 
