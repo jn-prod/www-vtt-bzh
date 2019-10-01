@@ -70,11 +70,9 @@ Pour les possesseurs de grandes roues pensez à investir dans une bonne paire de
 
 Accidents, chocs ou chutes les risques de tous les jours pour les pilotes VTT. Mavic l’a bien compris et propose la Garantie MP3 qui couvre l’ensemble de ces risques pendant deux ans.
 
-Pour 76€ de plus, offrez vous l’assistance Mavic avec l’extension de garantie MP3, en vous enregistrant sur le site dédier <a href="http://www.mavicmp3.com," target="_blank" >www.mavicmp3.com,</a> dans les cinq jours qui suivent votre achat, grâce aux informations fournies par votre détaillant .
+Pour 76€ de plus, offrez vous l’assistance Mavic avec l’extension de garantie MP3, en vous enregistrant sur le site dédier de [Mavic](https://www.mavic.com/fr-fr), dans les cinq jours qui suivent votre achat, grâce aux informations fournies par votre détaillant .
 
 Le règlement du montant du programme MP3 s’effectue uniquement sur le site internet à l’issue de l’enregistrement.
-
-<a href="http://www.mavic-mp3.com/choose_language.php?storeid=5" title="mavic MP3" target="_blank"  class="btn btn-outline-primary text-center">Découvrir mavic MP3</a>
 
 <figure class="wp-caption">
   <img alt="roues Mavic - Crossmax SLR 27,5 et 29" src="{{ site.url }}/assets/public/images/posts/51377-0z7xebg9vspdxjeus.jpg" class="img-fluid"/>
