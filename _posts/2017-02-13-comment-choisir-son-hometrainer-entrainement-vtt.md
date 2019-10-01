@@ -207,7 +207,7 @@ l’home-trainer par son frottement brule la gomme de votre pneu arrière plus r
   <img alt="Home Trainer TACX BUSHIDO Smart T2780" src="{{ site.url }}/assets/public/images/posts/d9123-0_f4jzckdyphq0ioy.jpg" class="img-fluid"/>
   <figcaption>Home Trainer TACX BUSHIDO Smart T2780</figcaption>
 </figure>
-<a href="http://track.effiliation.com/servlet/effi.redir?id_compteur=12855409&amp;url=https://www.alltricks.fr/F-41490-home-training/P-95050-tacx_home_trainer_bushido_smart_t_2780" target="_blank"   class="btn btn-outline-primary text-center">Acheter chez Alltricks</a>
+<a href="http://track.effiliation.com/servlet/effi.redir?id_compteur=12855409&url=https://www.alltricks.fr" target="_blank"   class="btn btn-outline-primary text-center">Acheter chez Alltricks</a>
 
 Trainer interactif Smart doté de l’unité de résistance la plus puissante, le home trainer TACX Bushido Smart T2780 ravira les coureurs en quête de réalisme.
 
@@ -228,7 +228,7 @@ Cette application permet notamment de prendre part à des courses cyclistes clas
   <img alt="Home Trainer TACX I-GENIUS Multiplayer Smart T2010" src="{{ site.url }}/assets/public/images/posts/042f2-0naxiwzfmybfepba7.jpg" class="img-fluid"/>
   <figcaption>Home Trainer TACX I-GENIUS Multiplayer Smart T2010</figcaption>
 </figure>
-<a href="http://track.effiliation.com/servlet/effi.redir?id_compteur=12855409&amp;url=https://www.alltricks.fr/F-41490-home-training/P-147790-tacx_home_trainer_i_genius_multiplayer_smart" target="_blank"   class="btn btn-outline-primary text-center">Acheter chez Alltricks</a>
+<a href="http://track.effiliation.com/servlet/effi.redir?id_compteur=12855409&url=https://www.alltricks.fr" target="_blank"   class="btn btn-outline-primary text-center">Acheter chez Alltricks</a>
 
 **Points forts**
 
