@@ -7,7 +7,7 @@ redirect_from:
 
 layout: post
 title: "Quel entrainement pour progresser en VTT ?"
-description: "L'entrainement est un juste équilibre entre le travail de la technique et du physique. Voici comment progresser sur ces deux tableaux."
+description: "Pour progresser en VTT, il faut un juste équilibre de séances d'entrainement technique et du physique. Voici comment améliorer ces capacités."
 keywords: "entrainement vtt, progresser vtt, entrainement technique vtt, entrainement physique vtt, planning entrainement vtt"
 permalink: "/entrainement-vtt.html"
 
@@ -72,7 +72,7 @@ Des séances courtes de 5-10 minutes, 2 à 3 fois par semaine suffisent. Pour un
 **Être plus explosif**
 
 
-Voici trois exercices pour améliorer votre explosivité sans votre VTT :
+Voici trois exercices de type PMA pour améliorer votre explosivité sans votre VTT :
 
 
   - exercice 1  : Le premier exercice est bien connu des athlètes travaillant en stade ou gymnase. Il consiste à monter une quinzaine de marches au sprint, 10 fois, avec une récupération de 2 minutes entre chaque.
@@ -116,7 +116,7 @@ Attention si vous ressentez des douleurs ligamentaires aux genoux, chevilles, ..
 Une sortie longue par semaine de 2h30 est incontournable dans votre programme d'entrainement. Elle vous donnera le fond nécessaire.
 
 
-En roulant à 50%-70% de votre FC max et une cadence de pédalage modérée vous rendez votre entrainement plus efficace. Vous devrez bien faire attention de ne pas sortir de la zone cardiaque.
+En roulant à 50%-70% de votre FC max et une cadence de pédalage modérée vous rendez votre entrainement plus efficace. Pour une plus grande efficacité, évitez les passages en seuil anaérobie, au-delà de 70% de votre FC max.
 
 
 Réalisez deux fois par semaine une sortie d'endurance en VTT ou en vélo de route. Espacez-les de deux jours de récupération entre elle.
@@ -146,7 +146,7 @@ Plus votre terrain de jeu sera dans un espace petit et varier en franchissement.
 **Améliorer son explosivité**
 
 
-Monter de bosses très raides au sprint améliore efficacement votre explosivité en VTT. Répétez cet exercice de 30–45 secondes 5 fois à 95% de votre fréquence cardiaque max. Prenez 2 minutes de récupération entre chaque répétition.
+Monter des bosses très raides au sprint améliore efficacement votre explosivité en VTT. Répétez cet exercice de PMA de 30–45 secondes 5 fois à 95% de votre fréquence cardiaque max. Prenez 2 minutes de récupération entre chaque répétition.
 
 
 Renouveler l’opération une deuxième fois après une récupération de 15 minutes en vélocité à faible vitesse. La durée de la sortie VTT ne dépassera pas les 2h.
@@ -189,7 +189,7 @@ Avec un entrainement par semaine vous êtes en régression/stagnation. Un faible
 Tous les temps de récupération et de travail sont essentiels pour la bonne réalisation des exercices. Vous aurez une progression physique constante.
 
 
-Attention. Cet article ne remplacera pas les conseils d'un professionnel de la santé et du sport. Les conseils prodigués sont théorique et découle de mon expérience. Ne forcez pas si vous ressentez une douleur. Si elles-ci persistent consultez un professionnel.
+Attention. Cet article ne remplacera pas les conseils d'un professionnel de la santé et du sport. Les conseils prodigués sont théorique et découle de mon expérience. Ne forcez pas lors de vos séances si vous ressentez une douleur. Si elles-ci persistent consultez un professionnel.
 
 
 Il faut savoir que le repos est bien souvent le meilleur des remèdes aux blessures.
