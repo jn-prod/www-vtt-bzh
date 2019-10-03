@@ -42,9 +42,11 @@ html, body {
   height: 100%;
   background-color: #FFF;
 }
+
 body {
   color: #333;
   text-align: center;
+  font-family: "Lato" , sans-serif !important;
 }
 
 h1, h2, h3, h4, h5, .h1, .h2, .h3, .h4, .h5 {
