@@ -2,6 +2,8 @@
 {% assign author = site.data.authors[post.author] %}
 <article class="{{ include.class }} mb-3" itemscope="" itemtype="http://schema.org/BlogPosting">
     <div class="card h-100 shadow">
+        <meta itemprop="url mainEntityOfPage" content="{{ site.url}}{{post.url }}">
+        <meta itemprop="articleBody" content="{{ post.excerpt | strip_html | truncatewords:30 }}">  
         <h2 class="card-title h5 mt-3" itemprop="headline">
             <a class="text-dark" href="{{ post.url | absolute_url }}">{{ post.title }}</a>
         </h2>
@@ -13,17 +15,8 @@
                 {% if post.image %} <img class="img-fluid" src="{% if post.image contains "://" %}{{ post.image }}{% else %}{{ post.image | absolute_url }}{% endif %}" alt="{{ post.title }}" itemprop="image thumbnailUrl"> {% endif %}
             </a>
         </div>
-        <div class="card-body">
-            <meta itemprop="url mainEntityOfPage" content="{{ site.url}}{{post.url }}">
-            <section itemprop="articleBody">
-                <div class="card-text">
-                    {{ post.excerpt | strip_html | truncatewords:30 }}
-                </div>
-            </section>            
-        </div>
         <footer class="">
             <div class="wrapfooter">
-                
                 <div class="clearfix"></div>
             </div>
         </footer>
