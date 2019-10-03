@@ -28,7 +28,7 @@
     <div class="col-12 mt-5">
       <div class="icons d-inline">
         <span>
-          <a href="/about.html">A propos</a> • <a href="/advertize/terms.html">Publicités</a> • <a href="/terms/legals.html">Mentions légales</a> • <a href="/blog/index.html">Blog</a> • <a href="{{ site.url }}/calendrier.html">{{ site.headline }}</a>
+          <a href="/about.html">A propos</a> • <a href="/advertize/terms.html">Publicités</a> • <a href="/terms/legals.html">Mentions légales</a> • <a href="/blog/index.html">Blog</a> • <a href="{{ site.url }}/calendrier.html">{{ site.headline }} {{ site.time | date: "%Y" }}</a>
         </span>
         <span itemscope itemtype="http://schema.org/Organization">
            &copy; <span itemprop="name">{{ site.title }}</span>, 2013 - {{ site.time | date: "%Y" }} • 
