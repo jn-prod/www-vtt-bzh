@@ -29,7 +29,7 @@ Voici deux types de méthode d'entrainement à utiliser dans votre programme d'e
 ## Entrainement VTT sans vélo {#sans-velo}
 
 
-**Améliorer sa puissance**
+### Améliorer sa puissance
 
 
 Pour améliorer votre puissance sans votre vélo, les Squats sont très efficaces. Cet entrainement se pratique à la maison. Pour bien réaliser ce mouvement regardez la vidéo ci-après.
@@ -42,7 +42,7 @@ Une variante, consiste à faire des squats sautées. Le mouvement a pour différ
 
 <iframe width="auto" height="315" src="https://www.youtube.com/embed/yS4M8-y6Jr4" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 
-**Être plus endurant**
+### Être plus endurant
 
 
 Peu être pratiquez-vous déjà un autre sport d'endurance ?
@@ -57,7 +57,7 @@ Reprenez l’exercice d'endurance avec VTT cité au-dessous en adaptant la duré
 Vous pouvez, réaliser 1 h de footing ou 750m de natation à 60% en moyenne de votre FC Max. Vous gagnerez en endurance avec peu de temps de pratique.
 
 
-**Gagner en agilité**
+### Gagner en agilité
 
 
 Le travail de proprioceptions est excellent pour améliorer votre équilibre sans vélo.
@@ -69,7 +69,7 @@ En peu de temps, vous perfectionner votre oreille interne. Vous stimulez les ter
 Des séances courtes de 5-10 minutes, 2 à 3 fois par semaine suffisent. Pour un travail efficace de votre équilibre, regarder les exercices de cette vidéo.
 
 
-**Être plus explosif**
+### Être plus explosif
 
 
 Voici trois exercices de type PMA pour améliorer votre explosivité sans votre VTT :
@@ -95,7 +95,7 @@ Vous pouvez aussi vous initier à la méditation, sophrologie, yoga, pilate, ...
 
 ## Entrainement avec VTT pour l'XC, l'enduro et la route. {#avec-velo}
 
-**Gagner en puissance**
+### Gagner en puissance
 
 
 Réalisez une sortie sur terrain plat d'une durée de 1h30 à 2h30. En lui ajoutant un travail de cadence de pédalage vous progresser en puissance. Une fois que vous vous sentirez plus a votre aise vous pourrez aller dans les bosses.
@@ -110,7 +110,7 @@ Réalisez cet enchainement 3 fois d'affilée et recommencez après 15 minutes de
 Attention si vous ressentez des douleurs ligamentaires aux genoux, chevilles, ... Remontez quelques dents !
 
 
-**Progresser en endurance**
+### Progresser en endurance
 
 
 Une sortie longue par semaine de 2h30 est incontournable dans votre programme d'entrainement. Elle vous donnera le fond nécessaire.
@@ -122,7 +122,7 @@ En roulant à 50%-70% de votre FC max et une cadence de pédalage modérée vous
 Réalisez deux fois par semaine une sortie d'endurance en VTT ou en vélo de route. Espacez-les de deux jours de récupération entre elle.
 
 
-**Avoir un meilleur équilibre**
+### Avoir un meilleur équilibre
 
 
 Des entrainements ludiques sont idéaux pour améliorer votre équilibre et votre agilité en VTT.
@@ -143,7 +143,7 @@ Exercice 3: apprendre à faire du surplace sans déplacement de roues. Pas de tr
 Plus votre terrain de jeu sera dans un espace petit et varier en franchissement. Moins votre guidon aura l’opportunité de rester droit et plus vous prendrez de reflex. Alors inventez et perfectionnez vos jeux d’équilibre pour progresser techniquement.
 
 
-**Améliorer son explosivité**
+### Améliorer son explosivité
 
 
 Monter des bosses très raides au sprint améliore efficacement votre explosivité en VTT. Répétez cet exercice de PMA de 30–45 secondes 5 fois à 95% de votre fréquence cardiaque max. Prenez 2 minutes de récupération entre chaque répétition.
@@ -152,7 +152,7 @@ Monter des bosses très raides au sprint améliore efficacement votre explosivit
 Renouveler l’opération une deuxième fois après une récupération de 15 minutes en vélocité à faible vitesse. La durée de la sortie VTT ne dépassera pas les 2h.
 
 
-**Récupérer plus rapidement**
+### Récupérer plus rapidement
 
 
 La phase de récupération est essentiel dans une préparation physique.
