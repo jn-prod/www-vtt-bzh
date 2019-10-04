@@ -1,27 +1,30 @@
 <footer class="container">
-  <!-- newsletter -->
-  <div class="row">
-    <div class="col-12 my-auto py-3">
-      {% include plugins/newsletter.html text="Recevez chaque mois le calendrier des randonnées VTT de Bretagne →" %}
+  
+  {% if page.layout != "landing" %}
+    <!-- newsletter -->
+    <div class="row">
+      <div class="col-12 my-auto py-3">
+        {% include plugins/newsletter.html text="Recevez chaque mois le calendrier des randonnées VTT de Bretagne →" %}
+      </div>
     </div>
-  </div>
 
-  <!-- author -->
-  <div class="row">
-    <div class="col-12 text-center">
-      <div class="row bg-light shadow p-3">
-        <div class="col-md-2 my-auto">
-          <img src="{{ site.url }}/assets/public/images/profile.png" alt="Nicolas Jouanno" class="img-fluid">
-        </div>
-        <div class="col-md-10 my-auto text-center text-md-left">
-          <div class="d-block">
-            Par <a href="https://nicolasjouanno.com" target="_blank" class="text-secondary">Nicolas Jouanno</a>, Développeur Web Freelance, ex-cycliste professionnel. Je passe mon temps libre à rider, courir, surfer, jardinner et photographier. VTT.bzh est une application créée en 2013 et développée avec passion à Pontivy, France. <br>
-            Contactez moi sur <a href="https://www.facebook.com/blog.nicolasjouanno/" target="_blank" rel="me" class="text-secondary">facebook</a>.
+    <!-- author -->
+    <div class="row">
+      <div class="col-12 text-center">
+        <div class="row bg-light shadow p-3">
+          <div class="col-md-2 my-auto">
+            <img src="{{ site.url }}/assets/public/images/profile.png" alt="Nicolas Jouanno" class="img-fluid">
+          </div>
+          <div class="col-md-10 my-auto text-center text-md-left">
+            <div class="d-block">
+              Par <a href="https://nicolasjouanno.com" target="_blank" class="text-secondary">Nicolas Jouanno</a>, Développeur Web Freelance, ex-cycliste professionnel. Je passe mon temps libre à rider, courir, surfer, jardinner et photographier. VTT.bzh est une application créée en 2013 et développée avec passion à Pontivy, France. <br>
+              Contactez moi sur <a href="https://www.facebook.com/blog.nicolasjouanno/" target="_blank" rel="me" class="text-secondary">facebook</a>.
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
+  {% endif %}
 
   <!-- signature -->
   <div class="row">
