@@ -5,7 +5,7 @@
         <meta itemprop="url mainEntityOfPage" content="{{ site.url}}{{post.url }}">
         <meta itemprop="articleBody" content="{{ post.excerpt | strip_html | truncatewords:30 }}">  
         <meta itemprop="dateCreated datePublished dateModified" content="{{ post.date | date_to_string }}">     
-        <h2 class="card-title h5 mt-3 px-2" itemprop="headline">
+        <h2 class="card-title h5 mt-3 px-2 text-center" itemprop="headline">
             <a class="text-dark" href="{{ post.url | absolute_url }}">{{ post.title }}</a>
         </h2>
         <div class="maxthumb">
