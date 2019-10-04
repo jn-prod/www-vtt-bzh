@@ -192,3 +192,8 @@ li {
   background-color: #f39c12;
   border: .05rem solid #f39c12;
 }
+
+ .maxthumb {
+   max-height:300px;
+   overflow:hidden;
+}
