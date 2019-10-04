@@ -1,5 +1,5 @@
 <!-- begin guide -->
-<article class="mb-3" itemscope="" itemtype="http://schema.org/BlogPosting">
+<article class="{{ include.class }} mb-3" itemscope="" itemtype="http://schema.org/BlogPosting">
     <div class="card h-100 shadow">
         <meta itemprop="url mainEntityOfPage" content="{{ site.url}}{{guide.url }}">
         <meta itemprop="articleBody" content="{{ guide.description | strip_html | truncatewords:30 }}">  
