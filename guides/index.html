@@ -6,8 +6,10 @@ permalink: "/guides.html"
 ---
 <h1>Guides</h1>
 
-{% for guide in site.data.guides %}
+<div class="row">
+  {% for guide in site.data.guides %}
 
-  {% include boxes/guide.html %}
+    {% include boxes/guide.html class="col-lg-4 col-md-6" %}
 
-{% endfor %}
+  {% endfor %}
+</div>
