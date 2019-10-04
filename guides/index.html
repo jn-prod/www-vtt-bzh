@@ -1,0 +1,13 @@
+---
+layout: default
+title: "Découvrez tous nos guides pour la pratique du vtt et de la randonnée"
+description: "Parcourez nos guides pour perfectionner vos connaissances sur le VTT et découvrir de nouvelles randonnées "
+permalink: "/guides.html"
+---
+<h1>Guides</h1>
+
+{% for guide in site.data.guides %}
+
+  {% include boxes/guide.html %}
+
+{% endfor %}
