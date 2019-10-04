@@ -6,7 +6,27 @@ permalink: "guide-marques.html"
 ---
 # Notre guide ultime de 125 marques au meilleur rapport qualité/prix
 
-
+<form class="ml-block-form" action="https://app.mailerlite.com/webforms/submit/e9f9g5" data-code="e9f9g5" method="post" target="_blank">
+  <div class="ml-form-formContent">
+    <div class="ml-form-fieldRow ">
+      <div class="ml-field-group ml-field-name ml-validate-required">
+        <input type="text" class="form-control" data-inputmask="" name="fields[name]" value="" placeholder="Name">
+      </div>
+    </div>
+    <div class="ml-form-fieldRow ml-last-item">
+      <div class="ml-field-group ml-field-email ml-validate-email ml-validate-required">
+        <input type="email" class="form-control" data-inputmask="" name="fields[email]" value="" placeholder="Email">
+      </div>
+    </div>
+  </div>
+  <input type="hidden" name="ml-submit" value="1">
+  <div class="ml-form-embedSubmit">
+    <button type="submit" class="btn btn-primary rounded-pill shadow">Télécharger le guide →</button>
+    <button disabled="disabled" style="display: none;" type="button" class="loading">
+      <div class="ml-form-embedSubmitLoad"><div></div><div></div><div></div><div></div></div>
+    </button>
+  </div>
+</form>
 
 ## Dans ce guide tu trouveras
 
@@ -15,3 +35,16 @@ du vélo au textile, en passant par les chaussures, on a vraiment essayé de pen
 
 ### Près de 125 marques au rapport qualité/prix avantageux
 tu vas découvrir de nombreuses pépites de connaisseurs qui valent le détour !
+
+<!-- Mailerlite scripts-->
+<script>
+  function ml_webform_success_1531998() {
+    try {
+        window.top.location.href = 'https://vtt.bzh/landing/vtt-bzh_guide-des-marques.pdf';
+      } catch (e) {
+        window.location.href = 'https://vtt.bzh/landing/vtt-bzh_guide-des-marques.pdf';
+      }
+    }
+</script>
+<img src="https://track.mailerlite.com/webforms/o/1531998/e9f9g5?v253251d9ecd93b8e74c12a37f72e896f" width="1" height="1" style="max-width: 1px; max-height: 1px; visibility: hidden; padding: 0; margin: 0; display: block;" border="0">
+<script src="https://static.mailerlite.com/js/w/webforms.min.js?v253251d9ecd93b8e74c12a37f72e896f" type="text/javascript"></script>
