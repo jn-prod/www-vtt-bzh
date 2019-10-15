@@ -1,70 +1,81 @@
-<!-- title -->
-<div class="row">
-  <div class="col-12 mt-5 mb-3">
-    <h2 id="calendar">Calendrier des randonnées à venir</h2>
-    <span id="nombre_rando" class="badge badge-success"></span>
-  </div>
-</div>
-
-<!-- helper -->
-<div class="row" ng-if="$ctrl.events.length < 1">
-  <div class="col-12">
-    <div class="alert alert-danger">
-      Aucun résultat pour cette recherche, choisissez une autre date de début et de fin.
+<div class="container">
+  <!-- title -->
+  <div class="row">
+    <div class="col-12 mt-5 mb-3">
+      <h2 id="calendar">Calendrier des randonnées à venir</h2>
+      <span id="nombre_rando" class="badge badge-success"></span>
     </div>
   </div>
-</div>
 
-<!-- content -->
-<div class="row">
-  <div class="col-12">
-    <div ng-repeat="event in $ctrl.events" class="">
-			<div class="event col-12 rounded border border-muted p-2" >
-        <div class="row">
-          <div class="col-12">
-            <div class="row text-bold">
-              <div class="col-sm-4 mt-2 my-auto">
-                <span class="d-block">
-                  <i class="far fa-calendar mr-2" aria-hidden="true"></i>
-                  {{ event.date }}</span>
-                </span>
-              	<!-- <div class="col-sm-2 mt-2 my-auto"> -->
-                <span class="d-block">
-                  <i class="fa fa-map-marker-alt mr-2" aria-hidden="true"></i>
-                  {{ event.departement }}  - {{ event.city }} </span>
-                </span>
-              </div>
-              <div class="col-sm-7 my-auto">
-                <p class="text-primary mt-2 text-uppercase">{{ event.name }}</p>
-              </div>
-              <div class="col-sm-1 my-auto">
-                <span ><i class="fas fa-chevron-circle-right"></i></span>
-                <span class="d-none"><i class="fas fa-chevron-circle-down"></i></span>
+  <!-- helper -->
+  <div class="row" ng-if="$ctrl.getEvents().length < 1">
+    <div class="col-12">
+      <div class="alert alert-danger">
+        Aucun résultat pour cette recherche, choisissez une autre date de début et de fin.
+      </div>
+    </div>
+  </div>
+
+  <!-- content -->
+  <div class="row">
+    <div class="col-12">
+      <div ng-repeat="event in $ctrl.getEvents()" class="">
+        <div class="event col-12 rounded border border-muted shadow p-2 my-3" ng-click="active = !active" ng-init="active = false">
+          <div class="row">
+            <div class="col-12">
+              <div class="row text-bold">
+                <div class="col-sm-4 mt-2 my-auto">
+                  <span class="d-block">
+                    <i class="far fa-calendar mr-2" aria-hidden="true"></i>
+                    {{ event.date }}</span>
+                  </span>
+                  <!-- <div class="col-sm-2 mt-2 my-auto"> -->
+                  <span class="d-block">
+                    <i class="fa fa-map-marker-alt mr-2" aria-hidden="true"></i>
+                    {{ event.departement }}  - {{ event.city }} </span>
+                  </span>
+                </div>
+                <div class="col-sm-7 my-auto">
+                  <p class="text-primary mt-2 text-uppercase">{{ event.name }}</p>
+                </div>
+                <div class="col-sm-1 my-auto">
+                  <span ng-show="!active"><i class="fas fa-chevron-circle-right"></i></span>
+                  <span ng-show="active"><i class="fas fa-chevron-circle-down"></i></span>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-        <div class="row">
-          <div class="col-12 text-left">
-            <div class="d-block text-left bg-light shadow rounded my-3 p-2">
-              <span class="d-block m-2">
-                Description : {{event.description}}
-              </span>
-              <span class="d-block m-2">
-                Organisateur : {{event.organisateur}}
-              </span>
-            </div>
-            <div class="d-block">
-              <span class="d-inline-block m-2 bg-light shadow rounded p-2">Horaires : {{event.horaire}}</span>
-              <span class="d-inline-block m-2 bg-light shadow rounded p-2">Département : {{event.departement}}</span>
-              <span class="d-inline-block m-2 bg-light shadow rounded p-2">Lieu de rendez-vous : {{event.lieuRdv}}</span>
-              <span class="d-inline-block m-2 bg-light shadow rounded p-2">Contact : {{event.contact}}</span>
-              <span class="d-inline-block m-2 bg-light shadow rounded p-2">Prix Club : {{event.prixClub}}</span> 
+          <div class="row" ng-show="active">
+            <div class="col-12 text-left">
+              <div class="bg-white my-2">
+                <div class=" text-left  rounded my-3 p-2">
+                  <span class="d-block m-2">
+                    Description : {{event.description}}
+                  </span>
+                  <span class="d-block m-2">
+                    Organisateur : {{event.organisateur}}
+                  </span>
+                </div>
+                <div class="">
+                  <span class="d-inline-block m-2 p-2">Horaires : {{event.horaire}}</span>
+                  <span class="d-inline-block m-2 p-2">Département : {{event.departement}}</span>
+                  <span class="d-inline-block m-2 p-2">Lieu de rendez-vous : {{event.lieuRdv}}</span>
+                  <span class="d-inline-block m-2 p-2">Contact : {{event.contact}}</span>
+                  <span class="d-inline-block m-2 p-2">Prix Club : {{event.prixClub}}</span> 
+                </div>                
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
 
+    </div>
   </div>
+
+  <!-- paginator -->
+  <div class="row" ng-show="$ctrl.paginator < $ctrl.events.length">
+    <div class="col-12 text-center mt-3">
+      <button ng-click="$ctrl.paginator = $ctrl.paginator + 20" class="btn btn-primary shadow mt-3 px-5 rounded-pill">Voir +</button>
+    </div>
+  </div> 
 </div>
