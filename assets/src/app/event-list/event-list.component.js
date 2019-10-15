@@ -13,10 +13,14 @@ export default angular.
         self.paginator = 20;
     
         var loadEvents = function() {
-          console.log(Event.all().$$state.value.data)
-          Event.all().success(function(data){
-            self.events = data.results;
-          });       
+          Event.all().then(
+    function resolved (response) {
+        self.event = response.data;
+    },
+    function rejected (response) {
+        alert(response.status + ': ' + response.statusText);
+    }
+);
         };
       
         self.getEvents = function(){
