@@ -1,5 +1,5 @@
 export default angular
-  .module('core.event', [])
+  .module('services.event', [])
   .factory('Event', function Event($http) {
     return{
       all: function(){
