@@ -6,19 +6,15 @@ export default angular.
   module(eventList.name).
   component('eventList', {
     template: require('./event-list.template.html'),
-    controller: ['$http',
-    	function EventListController($http) {
+    controller: ['Event',
+    	function EventListController(Event) {
 	      var self = this;
-	      self.events = []
+	      self.events = Event.all()
 	      self.paginator = 20
-
-	      $http.get('api/events.json').then(function(response) {
-	        self.events = response.data;
-	      });
 
 	      self.getEvents = function(){
 	      	if (self.events.length > 0) {
-						return self.events.slice(0,self.paginator)
+			return self.events.slice(0,self.paginator)
 	      	} else {
 	      		return self.events
 	      	}
