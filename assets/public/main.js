@@ -98,27 +98,27 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var angu
 
 /***/ }),
 
-/***/ "./assets/src/app/core/services/event.module.js":
-/*!******************************************************!*\
-  !*** ./assets/src/app/core/services/event.module.js ***!
-  \******************************************************/
+/***/ "./assets/src/app/core/event/event.module.js":
+/*!***************************************************!*\
+  !*** ./assets/src/app/core/event/event.module.js ***!
+  \***************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony default export */ __webpack_exports__[\"default\"] = (angular.module('services.event', []));\n\n//# sourceURL=webpack:///./assets/src/app/core/services/event.module.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony default export */ __webpack_exports__[\"default\"] = (angular.module('services.event', []));\n\n//# sourceURL=webpack:///./assets/src/app/core/event/event.module.js?");
 
 /***/ }),
 
-/***/ "./assets/src/app/core/services/event.service.js":
-/*!*******************************************************!*\
-  !*** ./assets/src/app/core/services/event.service.js ***!
-  \*******************************************************/
+/***/ "./assets/src/app/core/event/event.service.js":
+/*!****************************************************!*\
+  !*** ./assets/src/app/core/event/event.service.js ***!
+  \****************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _event_module__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./event.module */ \"./assets/src/app/core/services/event.module.js\");\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (angular.module(_event_module__WEBPACK_IMPORTED_MODULE_0__[\"default\"].name).factory('Event', ['$http', function ($http) {\n  return {\n    all: function () {\n      return $http.get(\"api/events.json\");\n    }\n  };\n}]));\n\n//# sourceURL=webpack:///./assets/src/app/core/services/event.service.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _event_module__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./event.module */ \"./assets/src/app/core/event/event.module.js\");\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (angular.module(_event_module__WEBPACK_IMPORTED_MODULE_0__[\"default\"].name).factory('Event', ['$http', function ($http) {\n  return {\n    all: function () {\n      return $http.get(\"api/events.json\");\n    }\n  };\n}]));\n\n//# sourceURL=webpack:///./assets/src/app/core/event/event.service.js?");
 
 /***/ }),
 
@@ -142,7 +142,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _eve
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _core_services_event_service__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../core/services/event.service */ \"./assets/src/app/core/services/event.service.js\");\n // Define the `eventList` module\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (angular.module('eventList', [_core_services_event_service__WEBPACK_IMPORTED_MODULE_0__[\"default\"].name]));\n\n//# sourceURL=webpack:///./assets/src/app/event-list/event-list.module.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _core_event_event_service__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../core/event/event.service */ \"./assets/src/app/core/event/event.service.js\");\n // Define the `eventList` module\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (angular.module('eventList', [_core_event_event_service__WEBPACK_IMPORTED_MODULE_0__[\"default\"].name]));\n\n//# sourceURL=webpack:///./assets/src/app/event-list/event-list.module.js?");
 
 /***/ }),
 
