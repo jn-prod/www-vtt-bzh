@@ -1,5 +1,7 @@
+import eventModule from './event.module'
+
 export default angular
-  .module('services.event', [])
+  .module(eventModule.name)
   .factory('Event', ['$http',
     function ($http) {
       return {

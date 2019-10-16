@@ -14,13 +14,12 @@ export default angular.
     
         var loadEvents = function() {
           Event.all().then(
-    function resolved (response) {
-        self.event = response.data;
-    },
-    function rejected (response) {
-        alert(response.status + ': ' + response.statusText);
-    }
-);
+				    function resolved (response) {
+				        self.events = response.data;
+				    },
+				    function rejected (response) {
+				        alert("Une erreur est survenue lors du chargement de la liste. Réactualisez la page.");
+				    });
         };
       
         self.getEvents = function(){

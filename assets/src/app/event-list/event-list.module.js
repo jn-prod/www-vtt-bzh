@@ -1,3 +1,3 @@
-import event from '../core/event/event.module'
+import eventService from '../core/services/event.service'
 // Define the `eventList` module
-export default angular.module('eventList', [event.name]);
+export default angular.module('eventList', [eventService.name]);
