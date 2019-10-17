@@ -1,3 +1,4 @@
+  
 <!-- search header -->
 <div class="row" id="header-wrapper">
   <div class="col-md-4 bg-white p-2 p-md-5 m-2 m-md-5 rounded shadow">
@@ -12,13 +13,13 @@
           <div class="col-md-6 my-2">
             <div class="d-block">Debut</div>
             <div class="d-block">
-              <input ng-model="$ctrl.query.startDate" type="date">
+              <input ng-model="$ctrl.search.query.startDate" type="date">
             </div>
           </div>
           <div class="col-md-6 my-2">
             <div class="d-block">Fin</div>
             <div class="d-block">
-              <input ng-model="$ctrl.query.endDate" type="date">
+              <input ng-model="$ctrl.search.query.endDate" type="date">
             </div>
           </div>
         </div>
@@ -27,7 +28,7 @@
         </div>
         <div class="row">
           <div class="col-12 my-2">
-            <select ng-model="$ctrl.query.dpt" class="form-control">
+            <select ng-model="$ctrl.search.query.dpt" class="form-control">
               <option value="all">Tous les départements</option>
               <option value="22">Côtes d\'Armor</option>
               <option value="29">Finistère</option>
@@ -39,7 +40,7 @@
         </div>
         <div class="row">
           <div class="col-12 my-2">
-            <a href="#calendar" ng-click="$ctrl.resetSearch()" class="btn btn-sm btn-outline-danger shadow m-2">X Réinitialiser</a>
+            <a href="#calendar" ng-click="$ctrl.searchReset()" class="btn btn-sm btn-outline-danger shadow m-2">X Réinitialiser</a>
             <input type="submit" value="Rechercher →" class="btn btn-primary float-none float-xl-right shadow m-2 rounded-pill">
           </div>
         </div>
@@ -122,8 +123,8 @@
     </div>
   </div>
 
-  <!-- paginator -->
-  <div class="row" ng-show="$ctrl.paginator < $ctrl.events.length">
+  <!-- loadmore -->
+  <div class="row" ng-show="$ctrl.loadMoreIsActive()">
     <div class="col-12 text-center mt-3">
       <button ng-click="$ctrl.paginator = $ctrl.paginator + 20" class="btn btn-primary shadow mt-3 px-5 rounded-pill">Voir +</button>
     </div>
