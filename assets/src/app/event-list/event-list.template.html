@@ -57,8 +57,10 @@
     </div>
   </div>
 
+  <md-progress-circular md-mode="indeterminate" ng-show="$ctrl.isLoading" class="mx-auto my-5 d-block text-center"></md-progress-circular>
+
   <!-- helper -->
-  <div class="row" ng-if="$ctrl.events.length < 1">
+  <div class="row" ng-show="$ctrl.showHelper()">
     <div class="col-12">
       <div class="alert alert-danger">
         Aucun résultat pour cette recherche, choisissez une autre date de début et de fin.
