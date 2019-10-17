@@ -21,18 +21,17 @@ export default angular.
         var self = this;
         self.events = []
         self.paginator = 20;
-        self.query = {}
-        self.query.dpt = "all"
         self.search = {
+          query: { dpt: "all"},
           active: false,
           results: []
         }
     
         var loadEvents = function() {
           Event.all().then(
-				    function resolved (response) {
+            function resolved (response) {
               // get only next events
-			        self.events = response.data.filter((val) => {
+              self.events = response.data.filter((val) => {
                 return dateFormat(val.date) >= dateNow
               });
 
@@ -40,10 +39,10 @@ export default angular.
               self.events.sort((a, b) => {
                 return dateFormat(a.date) - dateFormat(b.date)
               })
-				    },
-				    function rejected (response) {
-				        alert("Une erreur est survenue lors du chargement de la liste. Réactualisez la page.");
-				    });
+            },
+            function rejected (response) {
+                alert("Une erreur est survenue lors du chargement de la liste. Réactualisez la page.");
+            });
         };
       
         self.getEvents = function() {
@@ -56,47 +55,60 @@ export default angular.
           }
         }
 
+        // search event
         self.searchEvents = function() {
-          self.paginator = 20;
-          self.search.active = true
           // initialize query
           var query = {}
+
+          self.paginator = 20;
+          self.search.active = true
 
           // set start date query
           if (query.startDate === undefined || query.startDate === null) {
             query.startDate = dateNow
           } else {
-            query.startDate = self.query.startDate
+            query.startDate = self.search.query.startDate
           }
 
           // set end date query
           if (query.endDate === undefined || query.endDate === null) {
             query.endDate = new Date(dateNow.getFullYear() + 1, dateNow.getMonth(), dateNow.getDate());
           } else {
-            query.endDate = self.query.endDate
+            query.endDate = self.search.query.endDate
           }
 
           // set departement query
-          query.dpt = self.query.dpt
+          query.dpt = self.search.query.dpt
           
+          // query on events data
           self.search.results = self.events.filter(function(data) {
-            var eventDate = dateFormat(data.date)
-
-            var dateFilter = (eventDate >= query.startDate) && (eventDate <= query.endDate)
-            console.log(dateFilter)
             var dptFilter
+            var eventDate = dateFormat(data.date)
+            var dateFilter = (eventDate >= query.startDate) && (eventDate <= query.endDate)
+
             if (query.dpt !== "all") {
               dptFilter = Number(data.departement) === Number(query.dpt)
             } else {
               dptFilter = true
             }
+
             return dateFilter && dptFilter
           })
         }
 
-        self.resetSearch = function() {
+        // reset search
+        self.searchReset = function() {
           self.paginator = 20;
           self.search.active = false
+        }
+
+        // display button load more
+        self.loadMoreIsActive = function () {
+          if(self.search.active) {
+            return self.paginator < self.search.results.length
+          } else {
+            return self.paginator < self.events.length
+          }         
         }
 
         loadEvents()
