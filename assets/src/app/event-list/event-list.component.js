@@ -21,11 +21,16 @@ export default angular.
         var self = this;
         self.events = []
         self.paginator = 20;
+        self.isOpen = false;
         self.search = {
-          query: { dpt: "all"},
+          query: {
+            dpt: "all",
+            startDate: dateNow,
+            endDate: new Date(dateNow.getFullYear() + 1, dateNow.getMonth(), dateNow.getDate())
+          },
           active: false,
           results: []
-        }
+        };
     
         var loadEvents = function() {
           Event.all().then(
@@ -41,7 +46,7 @@ export default angular.
               })
             },
             function rejected (response) {
-                alert("Une erreur est survenue lors du chargement de la liste. Réactualisez la page.");
+                alert("Une erreur est survenue lors du chargement ddu calendrier. Réactualisez la page.");
             });
         };
       
@@ -58,29 +63,13 @@ export default angular.
         // search event
         self.searchEvents = function() {
           // initialize query
-          var query = {}
-
+          var query = self.search.query
+          
+          // ctrl config
           self.paginator = 20;
           self.search.active = true
 
-          // set start date query
-          if (query.startDate === undefined || query.startDate === null) {
-            query.startDate = dateNow
-          } else {
-            query.startDate = self.search.query.startDate
-          }
-
-          // set end date query
-          if (query.endDate === undefined || query.endDate === null) {
-            query.endDate = new Date(dateNow.getFullYear() + 1, dateNow.getMonth(), dateNow.getDate());
-          } else {
-            query.endDate = self.search.query.endDate
-          }
-
-          // set departement query
-          query.dpt = self.search.query.dpt
-          
-          // query on events data
+          // return events' data wich match with the query
           self.search.results = self.events.filter(function(data) {
             var dptFilter
             var eventDate = dateFormat(data.date)
