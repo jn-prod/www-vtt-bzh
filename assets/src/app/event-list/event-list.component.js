@@ -19,10 +19,7 @@ export default angular.
       function EventListController(Event) {
         // config
         var self = this;
-        self.events = []
-        self.paginator = 20;
-        self.isOpen = false;
-        self.search = {
+        var defaultSearch = {
           query: {
             dpt: "all",
             startDate: dateNow,
@@ -30,7 +27,20 @@ export default angular.
           },
           active: false,
           results: []
-        };
+        }
+        self.events = []
+        self.paginator = 20;
+        self.isOpen = false;
+        self.search = formatDefaultSearch(defaultSearch);
+        self.isLoading = true
+
+        function formatDefaultSearch(defaultSearchParams) {
+          var search = JSON.parse(JSON.stringify(defaultSearchParams))
+          search.query.startDate = new Date(search.query.startDate)
+          search.query.endDate = new Date(search.query.endDate)
+          console.log(search)
+          return search
+        }
     
         var loadEvents = function() {
           Event.all().then(
@@ -44,9 +54,11 @@ export default angular.
               self.events.sort((a, b) => {
                 return dateFormat(a.date) - dateFormat(b.date)
               })
+              self.isLoading = false
             },
             function rejected (response) {
-                alert("Une erreur est survenue lors du chargement ddu calendrier. Réactualisez la page.");
+              self.isLoading = true
+              alert("Une erreur est survenue lors du chargement du calendrier. Réactualisez la page.");
             });
         };
       
@@ -64,7 +76,7 @@ export default angular.
         self.searchEvents = function() {
           // initialize query
           var query = self.search.query
-          
+          console.log(self.search)
           // ctrl config
           self.paginator = 20;
           self.search.active = true
@@ -88,7 +100,7 @@ export default angular.
         // reset search
         self.searchReset = function() {
           self.paginator = 20;
-          self.search.active = false
+          self.search = formatDefaultSearch(defaultSearch)
         }
 
         // display button load more
@@ -98,6 +110,16 @@ export default angular.
           } else {
             return self.paginator < self.events.length
           }         
+        }
+
+        self.showHelper = function() {
+          if(!self.isLoading && self.search.active && self.search.results.length < 1) {
+            return true
+          } else if (!self.isLoading && self.events.length < 1) {
+            return true
+          } else {
+            return false
+          }
         }
 
         loadEvents()
