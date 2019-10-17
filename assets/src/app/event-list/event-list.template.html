@@ -1,4 +1,3 @@
-  
 <!-- search header -->
 <div class="row" id="header-wrapper">
   <div class="col-md-4 bg-white p-2 p-md-5 m-2 m-md-5 rounded shadow">
@@ -13,13 +12,13 @@
           <div class="col-md-6 my-2">
             <div class="d-block">Debut</div>
             <div class="d-block">
-              <input ng-model="$ctrl.search.query.startDate" type="date">
+              <md-datepicker ng-model="$ctrl.search.query.startDate" md-placeholder="Date de début" md-open-on-focus=""></md-datepicker>
             </div>
           </div>
           <div class="col-md-6 my-2">
             <div class="d-block">Fin</div>
             <div class="d-block">
-              <input ng-model="$ctrl.search.query.endDate" type="date">
+              <md-datepicker ng-model="$ctrl.search.query.endDate" md-placeholder="Date de fin" md-open-on-focus=""></md-datepicker>
             </div>
           </div>
         </div>
@@ -30,7 +29,7 @@
           <div class="col-12 my-2">
             <select ng-model="$ctrl.search.query.dpt" class="form-control">
               <option value="all">Tous les départements</option>
-              <option value="22">Côtes d\'Armor</option>
+              <option value="22">Côtes d'Armor</option>
               <option value="29">Finistère</option>
               <option value="35">Ille et Vilaine</option>
               <option value="44">Loire Atlantique</option> 
