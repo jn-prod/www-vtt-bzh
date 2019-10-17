@@ -38,7 +38,6 @@ export default angular.
           var search = JSON.parse(JSON.stringify(defaultSearchParams))
           search.query.startDate = new Date(search.query.startDate)
           search.query.endDate = new Date(search.query.endDate)
-          console.log(search)
           return search
         }
     
@@ -76,7 +75,7 @@ export default angular.
         self.searchEvents = function() {
           // initialize query
           var query = self.search.query
-          console.log(self.search)
+
           // ctrl config
           self.paginator = 20;
           self.search.active = true
