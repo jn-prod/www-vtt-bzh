@@ -17,11 +17,16 @@ export default angular.
     template: require('./event-list.template.html'),
     controller: ['Event',
       function EventListController(Event) {
+        // config
         var self = this;
         self.events = []
         self.paginator = 20;
         self.query = {}
         self.query.dpt = "all"
+        self.search = {
+          active: false,
+          results: []
+        }
     
         var loadEvents = function() {
           Event.all().then(
@@ -42,7 +47,9 @@ export default angular.
         };
       
         self.getEvents = function() {
-          if (self.events.length > 0) {
+          if(self.search.active) {
+            return self.search.results.slice(0,self.paginator)
+          } else if (self.events.length > 0) {
             return self.events.slice(0,self.paginator)
           } else {
             return self.events
@@ -50,14 +57,33 @@ export default angular.
         }
 
         self.searchEvents = function() {
+          self.paginator = 20;
+          self.search.active = true
           // initialize query
           var query = {}
-          query.startDate = new Date(self.query.startDate)
-          query.endDate = new Date(self.query.endDate)
-          query.dpt = self.query.dpt
 
-          self.events = self.events.filter(function (data) {
-            var dateFilter = dateFormat(data.date) >= query.startDate && dateFormat(data.date) <= query.endDate
+          // set start date query
+          if (query.startDate === undefined || query.startDate === null) {
+            query.startDate = dateNow
+          } else {
+            query.startDate = self.query.startDate
+          }
+
+          // set end date query
+          if (query.endDate === undefined || query.endDate === null) {
+            query.endDate = new Date(dateNow.getFullYear() + 1, dateNow.getMonth(), dateNow.getDate());
+          } else {
+            query.endDate = self.query.endDate
+          }
+
+          // set departement query
+          query.dpt = self.query.dpt
+          
+          self.search.results = self.events.filter(function(data) {
+            var eventDate = dateFormat(data.date)
+
+            var dateFilter = (eventDate >= query.startDate) && (eventDate <= query.endDate)
+            console.log(dateFilter)
             var dptFilter
             if (query.dpt !== "all") {
               dptFilter = Number(data.departement) === Number(query.dpt)
@@ -66,6 +92,11 @@ export default angular.
             }
             return dateFilter && dptFilter
           })
+        }
+
+        self.resetSearch = function() {
+          self.paginator = 20;
+          self.search.active = false
         }
 
         loadEvents()
