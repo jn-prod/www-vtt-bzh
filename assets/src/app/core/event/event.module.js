@@ -1,1 +1,1 @@
-export default angular.module('services.event', [])
+export default angular.module('core.event', [])
