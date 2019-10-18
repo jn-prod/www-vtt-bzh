@@ -2,12 +2,14 @@ const path = require('path')
 const webpack = require('webpack')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const MinifyPlugin = require('babel-minify-webpack-plugin')
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+// const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   entry: './assets/src/main.js',
   output: {
     path: path.resolve(__dirname, './assets/public'),
-    filename: 'app.js'
+    filename: 'main.js'
   },
   mode: 'development',
   module: {
@@ -19,23 +21,15 @@ module.exports = {
 	      use: ['babel-loader'] // , 'eslint-loader'
 	    },
       {
-        test: /\.vue$/,
-        loader: 'vue-loader',
-        options: {
-          loaders: {
-            scss: ['vue-style-loader', 'css-loader', 'sass-loader']
-          }
-        }
+        test: /\.html$/,
+        use: [ {
+          loader: 'html-loader'
+        }],
       }
     ]
   },
-  resolve: {
-    alias: {
-      vue$: 'vue/dist/vue.esm.js'
-    },
-    extensions: ['*', '.js', '.vue', '.json']
-  },
   plugins: [
+    // new HtmlWebpackPlugin({template: './src/index.html'}),
     new CleanWebpackPlugin({
       cleanOnceBeforeBuildPatterns: ['!images*', '!global.css*']
     })
