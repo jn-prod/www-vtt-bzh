@@ -1,36 +1,41 @@
 'use strict';
 describe('Event', function() {
-
-  var EventData, $http;
-
+  var $httpBackend;
+  var Event;
   var eventsData = [
     {name: 'Event X'},
     {name: 'Event Y'},
     {name: 'Event Z'}
   ];
 
+  // Add a custom equality tester before each test
+  beforeEach(function() {
+    jasmine.addCustomEqualityTester(angular.equals);
+  });
+
   // Load the module that contains the `Event` service before each test
-  beforeEach(function(){
-    angular.mock.module('core.event')
-    angular.mock.inject(function(_Event_, $httpBackend){
-      Event = _Event_
-      $http = $httpBackend
-    })
-  })
+  beforeEach(angular.mock.module('core.event'));
+  beforeEach(inject(function(_$httpBackend_, _Event_){
+    $httpBackend = _$httpBackend_;
+    $httpBackend.when('api/events.json').respond(eventsData);
+
+    Event = _Event_;
+  }));
 
   afterEach(function(){
-    $http.verifyNoOutstandingExpectation();
-    $http.verifyNoOutstandingRequest();
+    $httpBackend.verifyNoOutstandingExpectation();
+    $httpBackend.verifyNoOutstandingRequest();
   })
 
-  it("Should have a getAll method", function(){
-   expect(Event.all).to.be.a('function')
-  })
 
-  it("Should call API", function(){
-    $http.expect(Event.all).respond(false)
-    Event.all()
-    $http.flush()
-  })
+  describe('.all()', function() {
+    it("'Event' should have a '.all()' method", function(){
+      expect(typeof Event.all).toBe('function')
+    })
+
+    it('fetches from the API', function() {
+      expect(true).toBe(true)
+    });
+  });
 
 });
