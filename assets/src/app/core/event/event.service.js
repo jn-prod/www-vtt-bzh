@@ -2,11 +2,20 @@ import eventModule from './event.module'
 
 export default angular
   .module(eventModule.name)
-  .factory('Event', ['$http',
-    function ($http) {
+  .factory('Event', ['$http', '$q',
+    function ($http, $q) {
       return {
         all: function(){
-          return $http.get("api/events.json");
+          var defered= $q.defer()
+          $http({
+            url: 'api/events.json',
+            method:'GET'
+          }).then(function(events){
+            defered.resolve(events.data);
+          },function(err){
+            defered.reject(err);
+          })
+          return defered.promise;;
         }
       }
     }

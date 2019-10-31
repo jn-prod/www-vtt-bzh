@@ -42,10 +42,9 @@ export default angular.
         }
     
         var loadEvents = function() {
-          Event.all().then(
-            function resolved (response) {
+          Event.all().then(function (data) {
               // get only next events
-              self.events = response.data.filter((val) => {
+              self.events = data.filter((val) => {
                 return dateFormat(val.date) >= dateNow
               });
 
@@ -54,10 +53,9 @@ export default angular.
                 return dateFormat(a.date) - dateFormat(b.date)
               })
               self.isLoading = false
-            },
-            function rejected (response) {
+            }).catch(function(err) {
               self.isLoading = true
-              alert("Une erreur est survenue lors du chargement du calendrier. Réactualisez la page.");
+              alert("Une erreur est survenue lors du chargement du calendrier. Réactualisez la page.");              
             });
         };
       
