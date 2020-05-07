@@ -17,7 +17,7 @@
 
     <main role="main">
     
-      {% if page.url == "/calendrier.html" %}
+      {% if page.url == "/calendrier.html" or page.url == "/calendar-v2.html" %}
         <div class="container-fluid">
           {{ content }}
         </div>
@@ -36,7 +36,8 @@
   </body>
   
   <!-- application -->
-  <script src="assets/public/main.js" async></script>
+  <script src=app/dist/js/chunk-vendors.js></script>
+  <script src=app/dist/js/app.js>
   
   <!-- Bootstrap -->
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
@@ -52,7 +53,10 @@
 
     <!-- Start of HubSpot Embed Code -->
     <script type="text/javascript" id="hs-script-loader" async defer src="//js.hs-scripts.com/5421786.js"></script>
- 
+  {% else if site.url == "http://localhost:4000"%}
+    <!-- launch app in localhost -->
+    <script type="text/javascript" src="http://localhost:8080/js/chunk-vendors.js"></script>
+    <script type="text/javascript" src="http://localhost:8080/js/app.js"></script>
   {% endif %}
 
   <!-- mailerlite -->

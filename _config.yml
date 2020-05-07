@@ -53,3 +53,6 @@ highlighter: rouge
 future: false
 sass:
   style: compact # possible values: nested expanded compact compressed
+
+# Server Config options
+livereload: false     # You no longer need to include --livereload
