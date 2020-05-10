@@ -8,7 +8,7 @@ keywords: "taille vtt, position vtt, choix la taille vtt"
 
 date: 2017-02-03 23:00:22.000000000 +01:00
 author: nicolas
-image: "assets/public/images/posts/90cc1-0wscg_9_yafgnydvo.jpg"
+image: "assets/images/posts/90cc1-0wscg_9_yafgnydvo.jpg"
 ---
 <em>Le choix de la taille de votre VTT est essentiel dans votre pratique, qu’elle soit loisir ou de compétition. Cela peut vous permettre de gagner rapidement en efficacité sur votre VTT. De manière certaine, une meilleure position améliorera vos performances pour plusieurs raisons qui seront dévoilées plus bas.</em>
 
@@ -42,7 +42,7 @@ Ici, nous allons voir comment choisir la taille de votre VTT vous-même. Une foi
 ### Etape 1: mesure de l’entrejambe
 
 <figure class="wp-caption">
-  <img alt="mesurer l'entrejambe" src="{{ site.url }}/assets/public/images/posts/be51c-0hfcgbqmgeoo9jz4_.jpg" class="img-fluid"/>
+  <img alt="mesurer l'entrejambe" src="{{ site.url }}/assets/images/posts/be51c-0hfcgbqmgeoo9jz4_.jpg" class="img-fluid"/>
   <figcaption class="wp-caption-text">mesurer l’entrejambe</figcaption>
 </figure>
 
@@ -148,7 +148,7 @@ Tige de selle télescopique: lire l’article sur les tiges de [selle télescopi
 
 
 <figure class="wp-caption">
-  <img alt="Régler la position de votre VTT" src="{{ site.url }}/assets/public/images/posts/c3412-0q9h0y5sobcadmm5g.jpg" class="img-fluid" />
+  <img alt="Régler la position de votre VTT" src="{{ site.url }}/assets/images/posts/c3412-0q9h0y5sobcadmm5g.jpg" class="img-fluid" />
   <figcaption class="wp-caption-text">Régler la position de votre VTT</figcaption>
 </figure>
 
@@ -165,19 +165,19 @@ Il faudra retenir qu’un mauvais vélo bien ajusté est préférable à un bon 
 
 
 <figure>
-  <img alt="TIGE DE SELLE TÉLESCOPIQUE ROCKSHOX REVERB " src="{{ site.url }}/assets/public/images/posts/e5da7-0xj0yqcv6lzqqklhv.jpg" class="img-fluid"/>
+  <img alt="TIGE DE SELLE TÉLESCOPIQUE ROCKSHOX REVERB " src="{{ site.url }}/assets/images/posts/e5da7-0xj0yqcv6lzqqklhv.jpg" class="img-fluid"/>
   <figcaption>TIGE DE SELLE TÉLESCOPIQUE ROCKSHOX REVERB</figcaption>
 </figure>
 <a href="http://track.effiliation.com/servlet/effi.redir?id_compteur=12855409&amp;url=https://www.alltricks.fr/Acheter/ROCKSHOX%2BREVERB" target="_blank"  class="btn btn-outline-primary text-center">Acheter chez Alltricks</a>
 
 <figure>
-  <img alt="SELLE FIZIK VTT" src="{{ site.url }}/assets/public/images/posts/987f5-0l7go23ijzjg1tfbl.jpg" class="img-fluid"/>
+  <img alt="SELLE FIZIK VTT" src="{{ site.url }}/assets/images/posts/987f5-0l7go23ijzjg1tfbl.jpg" class="img-fluid"/>
   <figcaption>SELLE FIZIK VTT</figcaption>
 </figure>
 <a href="http://track.effiliation.com/servlet/effi.redir?id_compteur=12855409&amp;url=https://www.alltricks.fr/Acheter/SELLE%2BFIZIK%2BVTT" target="_blank"  class="btn btn-outline-primary text-center">Acheter chez Alltricks</a>
 
 <figure>
-  <img alt="CINTRE RACE FACE" src="{{ site.url }}/assets/public/images/posts/3675d-02lcpym5czygodzpr.jpg" class="img-fluid"/>
+  <img alt="CINTRE RACE FACE" src="{{ site.url }}/assets/images/posts/3675d-02lcpym5czygodzpr.jpg" class="img-fluid"/>
   <figcaption>CINTRE RACE FAC</figcaption>
 </figure>
 <a href="http://track.effiliation.com/servlet/effi.redir?id_compteur=12855409&amp;url=https://www.alltricks.fr/Acheter/CINTRE%2BRACE%2BFACE" target="_blank"  class="btn btn-outline-primary text-center">Acheter chez Alltricks</a>

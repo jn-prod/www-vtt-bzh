@@ -13,7 +13,7 @@ permalink: "/entrainement-vtt.html"
 
 date: 2017-02-12 18:14:32.000000000 +01:00
 author: nicolas
-image: assets/public/images/posts/e0b76bf4d60afc3bf83e25f6bf3cefb4.png
+image: assets/images/posts/e0b76bf4d60afc3bf83e25f6bf3cefb4.png
 ---
 
 Le VTT est une discipline complète. Puissance, endurance, équilibre et explosivité sont des compétences à travailler à l'entrainement. En alternant avec des périodes de récupération, vous observerez une progression constante.

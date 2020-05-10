@@ -6,7 +6,7 @@ keywords: "vtt, circuits vtt, Bretagne, Morbihan, Cotes d'Armor, Ille et Vilaine
 
 date: 2016-03-30 16:40:10.000000000 +02:00
 author: nicolas
-image: "assets/public/images/posts/bf91f-04tn2madty8ffu2ug.jpg"
+image: "assets/images/posts/bf91f-04tn2madty8ffu2ug.jpg"
 ---
 
 <em>En 2015, les différentes épreuves des Roc’h des monts d’Arrée totalisaient plus de 6200 VTTisites au départ du Huelgouat, Bretagne. Ce rassemblement, point d’orgue de la saison des randos en Bretagne, permet aux VTTistes de tous âges de s’exprimer à leur niveau sur des distances allant jusqu’à 120 kilomètres. Une goutte d’eau dans l’Océan si l’on sait qu’en Bretagne, chaque week-end, ce sont plus d’une dizaine de randonnées VTT qui ont Lieu.</em>
@@ -23,7 +23,7 @@ image: "assets/public/images/posts/bf91f-04tn2madty8ffu2ug.jpg"
 ## 1/ Chaque week-end des milliers de VTTistes sillonnent les sentiers de Bretagne en VTT {#preambule}
 
 <figure>
-  <img alt="Carte des voies vertes accessibles au VTT en Bretagne" src="{{ site.url }}/assets/public/images/posts/a1019-0eb-pflbqbfbuhb14.jpg" class="img-fluid"/><br />
+  <img alt="Carte des voies vertes accessibles au VTT en Bretagne" src="{{ site.url }}/assets/images/posts/a1019-0eb-pflbqbfbuhb14.jpg" class="img-fluid"/><br />
 </figure>
 
 Carte des voies vertes accessibles en randonnée VTT en Bretagne
@@ -40,7 +40,7 @@ Toutes les randonnées VTT organisées valent le détour, ne serais-ce que pour 
 
 ## 2/ Les randos de la côte Nord de Bretagne à VTT de Brest au Mont-Saint-Michel (Finistère, Côtes d’Armor, Ille et Vilaine) {#cote-nord}
 <figure>
-  <img alt="Randonnée VTT au mont st michel" src="{{ site.url }}/assets/public/images/posts/04f42-0nrby8alnuktzebeg.jpg" class="img-fluid"/><br />
+  <img alt="Randonnée VTT au mont st michel" src="{{ site.url }}/assets/images/posts/04f42-0nrby8alnuktzebeg.jpg" class="img-fluid"/><br />
 </figure>
 
 Randonnée VTT au mont st michel ©safrantours.com
@@ -56,7 +56,7 @@ On arrêtera de longer la face de la Bretagne au Mont Saint Michel. On découvri
 ## 3/ Les randos de l’intérieur des Terres à VTT (Finistère, Côtes d’Armor, Ille et Vilaine, Morbihan et Loire Atlantique) {#interieur-bretagne}
 
 <figure>
-  <img alt="Randonnée VTT parc Naturel Régional d'Armorique" src="{{ site.url }}/assets/public/images/posts/105eb-0-dfntbdaminuvgyn.jpg" class="img-fluid"/><br />
+  <img alt="Randonnée VTT parc Naturel Régional d'Armorique" src="{{ site.url }}/assets/images/posts/105eb-0-dfntbdaminuvgyn.jpg" class="img-fluid"/><br />
 </figure>
 
 Randonnée VTT parc Naturel Régional d’Armorique ©<a  href="http://www.tourismebretagne.com/decouvrir-les-destinations/coeur-de-bretagne-kalon-breizh/les-incontournables/les-monts-d-arree" target="_blank">tourismebretagne.com</a>
@@ -76,7 +76,7 @@ On finira un peu plus à l’est de la Bretagne, sur l’espace VTT du Pays de l
 ## 4/ Les randos de la côte Sud à VTT de Brest à Nantes (Finistère, Morbihan, Loire Atlantique) {#sud-bretagne}
 
 <figure>
-  <img alt="Randonnée VTT en Cornouaille ©ouest-cornouaille.com" src="{{ site.url }}/assets/public/images/posts/f2277-0jmbuxkcfyonj3pxw.jpg" class="img-fluid"/><br />
+  <img alt="Randonnée VTT en Cornouaille ©ouest-cornouaille.com" src="{{ site.url }}/assets/images/posts/f2277-0jmbuxkcfyonj3pxw.jpg" class="img-fluid"/><br />
 </figure>
 
 Randonnée VTT en Cornouaille ©<a  href="http://www.ouest-cornouaille.com/randonnees-accompagnees-et-circuits_secteur-ouest-cornouaille/randonnees-vtt-dans-ouest-cornouaille/1111" target="_blank">ouest-cornouaille.com</a>
@@ -92,7 +92,7 @@ On finira notre tour de Bretagne VTT par Nantes, bien qu’en région du Pays de
 ## 5/ Récapitulatif des 9 sites labellisés VTT FFC {#site-ffc}
 
 <figure>
-  <img alt="balise site VTT FFC" src="{{ site.url }}/assets/public/images/posts/6512f-00uqqunzuq26gp-p3.jpg" class="img-fluid"/><br />
+  <img alt="balise site VTT FFC" src="{{ site.url }}/assets/images/posts/6512f-00uqqunzuq26gp-p3.jpg" class="img-fluid"/><br />
 </figure>
 
 balise site VTT FFC

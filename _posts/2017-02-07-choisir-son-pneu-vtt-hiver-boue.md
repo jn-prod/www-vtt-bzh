@@ -9,7 +9,7 @@ keywords: "pneu vtt boue, pneu vtt hiver"
 
 date: 2017-02-07 18:03:13.000000000 +01:00
 author: nicolas
-image: "assets/public/images/posts/d6a09-0klmuoxlc_xyukmmx.jpg"
+image: "assets/images/posts/d6a09-0klmuoxlc_xyukmmx.jpg"
 ---
 <em>Changement d’heure, changement de temps, changement de pneus… c’est la dure réalité des VTTistes quand l’hiver arrive, quand les chemins deviennent boueux, n’évacuent plus l’eau et que les feuilles tombent, votre pilotage change, plus en glisse. Mais combien d’entre vous gardent les mêmes pneus sur leur VTT l’hiver que l’été? A tord… l’adhérence est un gage de sécurité que l’on soit un pilote engagé ou simple randonneur.</em>
 
@@ -62,7 +62,7 @@ De même, sur le flanc vous retrouverez une indication des pressions minimum et 
 Le pneu tubetype sera un pneu utilisé avec des chambres à air et seulement avec des chambres à air, car c’est celle-ci qui lui permet au pneu de tenir en place une fois mise sous pression. Pour pouvoir préserver votre chambre à air des perçages de la jantes et de la tête de rayon et vous évite les crevaisons, il est important de vérifier régulièrement l’état du fond de jante qui peut s’entailler avec le temps, perdre de son efficacité et causer des crevaisons en cisaillant la chambre à air, les autres causes de crevaisons sont: la perforation par un objet, le pincement et les coupures et déchirures. Une chambre air latex ou avec du préventif injecté au préalable à l’intérieur à l’intérieur de celle-ci vous permettra de diminuer les crevaisons.
 
 <figure class="wp-caption">
-  <img alt="Conversion Tubeless" src="{{ site.url }}/assets/public/images/posts/400bd-0ombzoecns3glpn7a.jpg" class="img-fluid"/>
+  <img alt="Conversion Tubeless" src="{{ site.url }}/assets/images/posts/400bd-0ombzoecns3glpn7a.jpg" class="img-fluid"/>
   <figcaption class="wp-caption-text">Conversion Tubeless</figcaption>
 </figure>
 
@@ -100,7 +100,7 @@ Variante possible pour plus d’accroche avec votre VTT: si le pneu est moins la
 
 ### Pneu VTT d’enduro et d’all mountain pour terrain gras l’hiver et la boue:
 <figure class="wp-caption">
-  <img alt="Le VTT de Jared Graves monté en Maxxis" src="{{ site.url }}/assets/public/images/posts/3a012-0jfkexwvknlk36spt.jpg" class="img-fluid"/>
+  <img alt="Le VTT de Jared Graves monté en Maxxis" src="{{ site.url }}/assets/images/posts/3a012-0jfkexwvknlk36spt.jpg" class="img-fluid"/>
   <figcaption class="wp-caption-text">Le VTT de Jared Graves monté en Maxxis</figcaption>
 </figure>
 
@@ -122,25 +122,25 @@ En VTT DH le montage le plus polyvalent reste un High Roller en 2.50 super tacky
 
 ## 6/ Les meilleurs pneus VTT d'hiver pour vaincre la boue {#best-of}
 <figure>
-  <img alt="Pneu HUTCHINSON TORO" src="{{ site.url }}/assets/public/images/posts/57126-0c6n1i609mgd_3rm7.jpg" class="img-fluid"/>
+  <img alt="Pneu HUTCHINSON TORO" src="{{ site.url }}/assets/images/posts/57126-0c6n1i609mgd_3rm7.jpg" class="img-fluid"/>
   <figcaption>Pneu HUTCHINSON TORO (Loisir / XC)</figcaption>
 </figure>
 <a href="http://track.effiliation.com/servlet/effi.redir?id_compteur=12855409&amp;url=https://www.alltricks.fr/Acheter/Pneu%2BHUTCHINSON%2BTORO" target="_blank"  class="btn btn-outline-primary text-center">Achetez chez Alltricks</a>
 
 <figure>
-  <img alt="pneu SCHWALBE NOBBY NIC" src="{{ site.url }}/assets/public/images/posts/bc2c9-0kuckpd1y2nb3rli6.jpg" class="img-fluid"/>
+  <img alt="pneu SCHWALBE NOBBY NIC" src="{{ site.url }}/assets/images/posts/bc2c9-0kuckpd1y2nb3rli6.jpg" class="img-fluid"/>
   <figcaption>pneu SCHWALBE NOBBY NIC (Rando / Enduro)</figcaption>
 </figure>
 <a href="http://track.effiliation.com/servlet/effi.redir?id_compteur=12855409&amp;url=https://www.alltricks.fr/Acheter/pneu%2BSCHWALBE%2BNOBBY%2BNIC" target="_blank"  class="btn btn-outline-primary text-center">Achetez chez Alltricks</a>
 
 <figure>
-  <img alt="Pneu MAXXIS MEDUSA" src="{{ site.url }}/assets/public/images/posts/5722c-0zsdugggwrkpxqmuh.jpg" class="img-fluid"/>
+  <img alt="Pneu MAXXIS MEDUSA" src="{{ site.url }}/assets/images/posts/5722c-0zsdugggwrkpxqmuh.jpg" class="img-fluid"/>
   <figcaption>Pneu MAXXIS MEDUSA (XC, rando)</figcaption>
 </figure>
 <a href="https://www.alltricks.fr/Acheter/Pneu+MAXXIS+MEDUSA" target="_blank"  class="btn btn-outline-primary text-center">Achetez chez Alltricks</a>
 
 <figure>
-  <img alt="Pneu MAXXIS HIGH ROLLER " src="{{ site.url }}/assets/public/images/posts/c14c5-04jhnw3ph3ltb3vwi.jpg" class="img-fluid"/>
+  <img alt="Pneu MAXXIS HIGH ROLLER " src="{{ site.url }}/assets/images/posts/c14c5-04jhnw3ph3ltb3vwi.jpg" class="img-fluid"/>
   <figcaption>Pneu MAXXIS HIGH ROLLER (Enduro / All Mountain)</figcaption>
 </figure>
 <a href="http://track.effiliation.com/servlet/effi.redir?id_compteur=12855409&amp;url=https://www.alltricks.fr/Acheter/Pneu%2BMAXXIS%2BHIGH%2BROLLER" target="_blank"  class="btn btn-outline-primary text-center">Achetez chez Alltricks</a>

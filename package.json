@@ -6,7 +6,7 @@
   "scripts": {
     "server:dev": "bundle exec jekyll serve --livereload",
     "client:dev": "cd app && npm run client:server",
-    "client:build": "cd app && npm run client:build && mv ./dist/js ../assets/public",
+    "client:build": "rm -rf ./assets/js && cd app && npm run client:build && mv ./dist/js ../assets",
     "dev": "concurrently \"npm run server:dev\" \"npm run client:dev\"",
     "vue:ui": "cd app && npm run vue:ui"
   },

@@ -6,7 +6,7 @@ keywords: "roues vtt, mavic, crossmax, choisir roues vtt, choisir mavic crossmax
 
 date: 2014-08-10 21:02:19.000000000 +02:00
 author: nicolas
-image: "assets/public/images/posts/9c05d-05lwfpqvtdkfbts1o.jpg"
+image: "assets/images/posts/9c05d-05lwfpqvtdkfbts1o.jpg"
 ---
 *Choisir votre nouvelle paire de **roues de vtt** peu être fastidieux tant les possibilités sont vastes. Les nouveaux standards de roues de VTT en **27,5 pouces** et **29 pouces** nous amène à la recherche du compromis entre la rigidité et la légerté. Pour ma part, j'ai choisi les **roues Mavic Crossmax** et je ne reveiendrais pour rien au monde sur ma décision. Je vous explique pourquoi.*
 
@@ -47,7 +47,7 @@ Avec une double étanchéité et jeu interne, un système de micro-ajustement ce
 Pas besoin d’acheter de nouveaux disques pour votre nouvelles roues, pensez à bien choisir la référence adapté à vos disques en centerlock ou fixation 6 trous de quoi alléger le budget en plus VTT.
 
 <figure class="wp-caption">
-  <img alt="roues Mavic - Crossmax SLR 27,5 et 29" src="{{ site.url }}/assets/public/images/posts/3a462-02vut69yj9so5bft.jpg" class="img-fluid"/>
+  <img alt="roues Mavic - Crossmax SLR 27,5 et 29" src="{{ site.url }}/assets/images/posts/3a462-02vut69yj9so5bft.jpg" class="img-fluid"/>
   <figcaption class="wp-caption-text">Kit centerlock pour les roues Mavic Crossmax SLR 27,5 et 29</figcaption>
 </figure>
 <a href="http://track.effiliation.com/servlet/effi.redir?id_compteur=12855409&amp;url=https://www.alltricks.fr/Acheter/roues%2BMavic%2BCrossmax" target="_blank"  class="btn btn-outline-primary text-center">Acheter chez Alltricks</a>
@@ -75,12 +75,12 @@ Pour 76€ de plus, offrez vous l’assistance Mavic avec l’extension de garan
 Le règlement du montant du programme MP3 s’effectue uniquement sur le site internet à l’issue de l’enregistrement.
 
 <figure class="wp-caption">
-  <img alt="roues Mavic - Crossmax SLR 27,5 et 29" src="{{ site.url }}/assets/public/images/posts/51377-0z7xebg9vspdxjeus.jpg" class="img-fluid"/>
+  <img alt="roues Mavic - Crossmax SLR 27,5 et 29" src="{{ site.url }}/assets/images/posts/51377-0z7xebg9vspdxjeus.jpg" class="img-fluid"/>
   <figcaption class="wp-caption-text">roues Mavic — Crossmax SLR 27,5 et 29</figcaption>
 </figure>
 
 <figure class="wp-caption">
-  <img alt="roues Mavic - Crossmax SLR 27,5 et 29" src="{{ site.url }}/assets/public/images/posts/63a64-0eomemo8zjuvqnhxk.jpg" class="img-fluid"/>
+  <img alt="roues Mavic - Crossmax SLR 27,5 et 29" src="{{ site.url }}/assets/images/posts/63a64-0eomemo8zjuvqnhxk.jpg" class="img-fluid"/>
   <figcaption class="wp-caption-text">roues Mavic — Crossmax SLR 27,5 et 29</figcaption>
 </figure>
 

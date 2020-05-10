@@ -6,7 +6,7 @@ keywords: "home-trainer, home-trainer vtt, ergo-trainer, virtual-trainer"
 
 date: 2017-02-13 12:56:48.000000000 +01:00
 author: nicolas
-image: "assets/public/images/posts/dec76-0cscharjawldysi56.jpg"
+image: "assets/images/posts/dec76-0cscharjawldysi56.jpg"
 ---
 
 Au programme :
@@ -34,7 +34,7 @@ Pour les utilisateurs cherchant un outil d’entrainement performant, regardez d
 Sportif amateur ou professionnel, l’home-trainer est aujourd’hui devenu un outil essentiel.
 
 <figure class="wp-caption">
-  <img alt="Home trainer au chaud vs VTT dans la boue?" src="{{ site.url }}/assets/public/images/posts/dec76-0cscharjawldysi56.jpg" class="img-fluid"/>
+  <img alt="Home trainer au chaud vs VTT dans la boue?" src="{{ site.url }}/assets/images/posts/dec76-0cscharjawldysi56.jpg" class="img-fluid"/>
   <figcaption class="wp-caption-text">Home trainer au chaud vs VTT dans la boue?</figcaption>
 </figure>
 
@@ -97,7 +97,7 @@ L’ergotrainer peut celon le modèle évoluer vers un Home Trainer Virtuel grâ
 ### Virtual Trainer
 
 <figure class="wp-caption">
-  <img alt="Home Trainer ELITE REALPOWER WIRELESS" src="{{ site.url }}/assets/public/images/posts/bb212-0bx2pkg9g-z2gzrlm.jpg" class="img-fluid"/>
+  <img alt="Home Trainer ELITE REALPOWER WIRELESS" src="{{ site.url }}/assets/images/posts/bb212-0bx2pkg9g-z2gzrlm.jpg" class="img-fluid"/>
   <figcaption class="wp-caption-text">Home Trainer ELITE REALPOWER WIRELESS</figcaption>
 </figure>
 
@@ -136,7 +136,7 @@ Choisissez un modèle d’home-trainer qui se nettoie facilement est un plus.
 ## 5/ Quelques conseils d’utilisation de votre home-trainer {#conseils}
 
 <figure>
-  <img alt="Home Trainer ELITE REALPOWER WIRELESS" src="{{ site.url }}/assets/public/images/posts/91fb5-0fgh8hb1_kl1ubyul.jpg" class="img-fluid"/>
+  <img alt="Home Trainer ELITE REALPOWER WIRELESS" src="{{ site.url }}/assets/images/posts/91fb5-0fgh8hb1_kl1ubyul.jpg" class="img-fluid"/>
 
 </figure>
 
@@ -167,7 +167,7 @@ l’home-trainer par son frottement brule la gomme de votre pneu arrière plus r
 ### Home Trainer TACX BLUE MATIC T2650 (Cyclo-trainer)
 
 <figure>
-  <img alt="Home Trainer TACX BLUE MATIC T2650" src="{{ site.url }}/assets/public/images/posts/28b49-0-7a5ib4fvmj9s-fa.jpg" class="img-fluid"/>
+  <img alt="Home Trainer TACX BLUE MATIC T2650" src="{{ site.url }}/assets/images/posts/28b49-0-7a5ib4fvmj9s-fa.jpg" class="img-fluid"/>
   <figcaption>Home Trainer TACX BLUE MATIC T2650</figcaption>
 </figure>
 <a href="http://track.effiliation.com/servlet/effi.redir?id_compteur=12855409&amp;url=https://www.alltricks.fr/F-41490-home-training/P-95024-tacx_home_trainer_blue_matic_t2650" target="_blank"   class="btn btn-outline-primary text-center">Acheter chez Alltricks</a>
@@ -185,7 +185,7 @@ l’home-trainer par son frottement brule la gomme de votre pneu arrière plus r
 ### Home Trainer TACX I-FLOW T2270 (Ergo-trainer)
 
 <figure>
-  <img alt="Home Trainer TACX I-FLOW T2270" src="{{ site.url }}/assets/public/images/posts/eec12-0xbhdkpvkwiznfftv.jpg" class="img-fluid"/>
+  <img alt="Home Trainer TACX I-FLOW T2270" src="{{ site.url }}/assets/images/posts/eec12-0xbhdkpvkwiznfftv.jpg" class="img-fluid"/>
   <figcaption>Home Trainer TACX I-FLOW T2270</figcaption>
 </figure>
 <a href="http://track.effiliation.com/servlet/effi.redir?id_compteur=12855409&amp;url=https://www.alltricks.fr/Acheter/Home%2BTrainer%2BTACX%2BI-FLOW%2BT2270" target="_blank"   class="btn btn-outline-primary text-center">Acheter chez Alltricks</a>
@@ -204,7 +204,7 @@ l’home-trainer par son frottement brule la gomme de votre pneu arrière plus r
 ### Home Trainer TACX BUSHIDO Smart T2780 (Virtual trainer)
 
 <figure>
-  <img alt="Home Trainer TACX BUSHIDO Smart T2780" src="{{ site.url }}/assets/public/images/posts/d9123-0_f4jzckdyphq0ioy.jpg" class="img-fluid"/>
+  <img alt="Home Trainer TACX BUSHIDO Smart T2780" src="{{ site.url }}/assets/images/posts/d9123-0_f4jzckdyphq0ioy.jpg" class="img-fluid"/>
   <figcaption>Home Trainer TACX BUSHIDO Smart T2780</figcaption>
 </figure>
 <a href="http://track.effiliation.com/servlet/effi.redir?id_compteur=12855409&url=https://www.alltricks.fr" target="_blank"   class="btn btn-outline-primary text-center">Acheter chez Alltricks</a>
@@ -225,7 +225,7 @@ Cette application permet notamment de prendre part à des courses cyclistes clas
 
 ### Home Trainer TACX I-GENIUS Multiplayer Smart T2010 (Virtual trainer)
 <figure>
-  <img alt="Home Trainer TACX I-GENIUS Multiplayer Smart T2010" src="{{ site.url }}/assets/public/images/posts/042f2-0naxiwzfmybfepba7.jpg" class="img-fluid"/>
+  <img alt="Home Trainer TACX I-GENIUS Multiplayer Smart T2010" src="{{ site.url }}/assets/images/posts/042f2-0naxiwzfmybfepba7.jpg" class="img-fluid"/>
   <figcaption>Home Trainer TACX I-GENIUS Multiplayer Smart T2010</figcaption>
 </figure>
 <a href="http://track.effiliation.com/servlet/effi.redir?id_compteur=12855409&url=https://www.alltricks.fr" target="_blank"   class="btn btn-outline-primary text-center">Acheter chez Alltricks</a>
