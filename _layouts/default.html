@@ -35,14 +35,15 @@
 
   </body>
 
-  <!-- application -->
-  <script src={{site.url}}/assets/js/chunk-vendors.js></script>
-  <script src={{site.url}}/assets/js/app.js></script>
-
+  
   {% if site.url != "http://localhost:4000" %}
+    <!-- application -->
+    <script src={{site.url}}/assets/js/chunk-vendors.js></script>
+    <script src={{site.url}}/assets/js/app.js></script>
+
     <!-- sumome -->
     <script async>(function(s,u,m,o,j,v){j=u.createElement(m);v=u.getElementsByTagName(m)[0];j.async=1;j.src=o;j.dataset.sumoSiteId='d88d4df58d80f8305722c8cb0545387e267fdb273431e3d7c65b7450aab441db';v.parentNode.insertBefore(j,v)})(window,document,'script','//load.sumo.com/');</script>
-
+    
     <!-- Start of HubSpot Embed Code -->
     <script type="text/javascript" id="hs-script-loader" async defer src="//js.hs-scripts.com/5421786.js"></script>
   {% else if site.url == "http://localhost:4000"%}

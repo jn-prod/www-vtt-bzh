@@ -1,7 +1,7 @@
 /*
  * COULEURS PALETTE (https://flatuicolors.com)
- * #f39c12 => Orange primary
- * #27ae60 => Green secondary
+ * #1C7D44 => Orange primary
+ * #166437 => Green secondary
  * #ecf0f1 => Grey light
  * #333    => Grey Dark
  */
@@ -46,7 +46,7 @@ html, body {
 body {
   color: #333;
   font-family: "Lato" , sans-serif !important;
-  font-weight: 300 !imporant;
+  font-weight: 300 !important;
   letter-spacing: normal !important;
 }
 
@@ -125,7 +125,7 @@ li {
 }
 
 .bg-orange{
-  background: #f39c12;
+  background: #1C7D44;
 }
 
 .bg-white {
@@ -133,11 +133,11 @@ li {
 }
 
 .text-secondary {
-  color: #27ae60 !important;
+  color: #166437 !important;
 }
 
 .text-primary{
-  color: #f39c12 !important;
+  color: #1C7D44 !important;
   border-bottom: transparent .25rem solid;
 }
 
@@ -146,35 +146,35 @@ li {
 }
 
 .btn-primary{
-  background-color: #f39c12 !important;
-  border: #f39c12 .25rem solid !important;
+  background-color: #1C7D44 !important;
+  border: #1C7D44 .25rem solid !important;
 }
 
 .btn-primary:hover{
-  background-color: #27ae60 !important;
-  border: #27ae60 .25rem solid !important;
+  background-color: #166437 !important;
+  border: #166437 .25rem solid !important;
 }
 
 .btn-outline-primary{
-  border: #f39c12 .25rem solid !important;
-  color: #f39c12;
+  border: #1C7D44 .25rem solid !important;
+  color: #1C7D44;
 }
 
 .btn-outline-primary:hover{
-  border: #27ae60 .25rem solid !important;
-  color: #27ae60;
+  border: #166437 .25rem solid !important;
+  color: #166437;
   background-color: #FFF;
 }
 
 .btn-secondary{
-  background-color: #27ae60 !important;
-  border: #27ae60 .25rem solid !important;
+  background-color: #166437 !important;
+  border: #166437 .25rem solid !important;
   color: #FFF;
 }
 
 .btn-secondary:hover{
-  background-color: #f39c12 !important;
-  border: #f39c12 .25rem solid !important;
+  background-color: #1C7D44 !important;
+  border: #1C7D44 .25rem solid !important;
   color: #FFF;
 }
 
@@ -189,8 +189,8 @@ li {
 .btn-default:hover{
   color: #333;
   text-shadow: none;
-  background-color: #f39c12;
-  border: .05rem solid #f39c12;
+  background-color: #1C7D44;
+  border: .05rem solid #1C7D44;
 }
 
  .maxthumb {
