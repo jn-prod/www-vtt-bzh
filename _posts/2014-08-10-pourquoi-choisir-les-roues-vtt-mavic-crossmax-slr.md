@@ -50,7 +50,8 @@ Pas besoin d’acheter de nouveaux disques pour votre nouvelles roues, pensez à
   <img alt="roues Mavic - Crossmax SLR 27,5 et 29" src="{{ site.url }}/assets/images/posts/3a462-02vut69yj9so5bft.jpg" class="img-fluid"/>
   <figcaption class="wp-caption-text">Kit centerlock pour les roues Mavic Crossmax SLR 27,5 et 29</figcaption>
 </figure>
-<a href="http://track.effiliation.com/servlet/effi.redir?id_compteur=12855409&amp;url=https://www.alltricks.fr/Acheter/roues%2BMavic%2BCrossmax" target="_blank"  class="btn btn-outline-primary text-center">Acheter chez Alltricks</a>
+
+{% include /components/buttons/btn-advertising.html %}
 
 ### 5) Roues compatible SRAM XX1
 
@@ -84,10 +85,10 @@ Le règlement du montant du programme MP3 s’effectue uniquement sur le site in
   <figcaption class="wp-caption-text">roues Mavic — Crossmax SLR 27,5 et 29</figcaption>
 </figure>
 
-<a href="http://track.effiliation.com/servlet/effi.redir?id_compteur=12855409&amp;url=https://www.alltricks.fr/Acheter/roues%2BMavic%2BCrossmax" target="_blank"  class="btn btn-outline-primary text-center">Acheter chez Alltricks</a>
+{% include /components/buttons/btn-advertising.html %}
 
 ## Le choix des pilotes professionnel: {#mavic-crossmax}
 
 Ils ont gagné avec des roues Mavic: CAMERON ZINK, MARTIN SODERSTRÖM, JULIE BRESSET, FILIP POLC, CEDRIC GRACIA, ANNE-CAROLINE CHAUSSON, FABIEN BAREL, JERÔME CLEMENTZ.
 
-<a href="http://track.effiliation.com/servlet/effi.redir?id_compteur=12855409&amp;url=https://www.alltricks.fr/Acheter/roues%2BMavic%2BCrossmax" target="_blank"  class="btn btn-outline-primary text-center">Acheter chez Alltricks</a>
+{% include /components/buttons/btn-advertising.html %}
