@@ -138,34 +138,32 @@ li {
 .btn-primary{
   background-color: $color-primary !important;
   border: $color-primary .25rem solid !important;
-}
-
-.btn-primary:hover{
-  background-color: $color-secondary !important;
-  border: $color-secondary .25rem solid !important;
+  &:hover{
+    background-color: $color-secondary !important;
+    border: $color-secondary .25rem solid !important;
+  }
 }
 
 .btn-outline-primary{
-  border: $color-primary .25rem solid !important;
+  border: $color-primary .10rem solid !important;
   color: $color-primary;
-}
 
-.btn-outline-primary:hover{
-  border: $color-secondary .25rem solid !important;
-  color: $color-secondary;
-  background-color: $color-white;
+  &:hover{
+    border: $color-secondary .10rem solid !important;
+    color: $color-secondary;
+    background-color: $color-white;
+  }
 }
 
 .btn-secondary{
   background-color: $color-secondary !important;
   border: $color-secondary .25rem solid !important;
   color: $color-white;
-}
-
-.btn-secondary:hover{
-  background-color: $color-primary !important;
-  border: $color-primary .25rem solid !important;
-  color: $color-white;
+  &:hover{
+    background-color: $color-primary !important;
+    border: $color-primary .25rem solid !important;
+    color: $color-white;
+  }
 }
 
 .btn-default,
