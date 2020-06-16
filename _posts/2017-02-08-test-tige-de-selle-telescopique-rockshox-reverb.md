@@ -119,4 +119,5 @@ Découvrez par vous le même le plaisir de rouler sur une tige de selle télesco
   <img alt="Tige de Selle Télescopique ROCKSHOX REVERB" src="{{ site.url }}/assets/images/posts/2154b-0on0ct9jh4z8cleqj.jpg" class="img-fluid"/>
   <figcaption>Tige de Selle Télescopique ROCKSHOX REVERB</figcaption>
 </figure>
-<a href="http://track.effiliation.com/servlet/effi.redir?id_compteur=12855409&amp;url=https://www.alltricks.fr/Acheter/ROCKSHOX%2BREVERB" target="_blank"  class="btn btn-outline-primary text-center">Acheter chez Alltricks</a>
+
+{% include /components/buttons/btn-advertising.html %}

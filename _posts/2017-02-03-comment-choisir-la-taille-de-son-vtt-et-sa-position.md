@@ -168,16 +168,19 @@ Il faudra retenir qu’un mauvais vélo bien ajusté est préférable à un bon 
   <img alt="TIGE DE SELLE TÉLESCOPIQUE ROCKSHOX REVERB " src="{{ site.url }}/assets/images/posts/e5da7-0xj0yqcv6lzqqklhv.jpg" class="img-fluid"/>
   <figcaption>TIGE DE SELLE TÉLESCOPIQUE ROCKSHOX REVERB</figcaption>
 </figure>
-<a href="http://track.effiliation.com/servlet/effi.redir?id_compteur=12855409&amp;url=https://www.alltricks.fr/Acheter/ROCKSHOX%2BREVERB" target="_blank"  class="btn btn-outline-primary text-center">Acheter chez Alltricks</a>
+
+{% include /components/buttons/btn-advertising.html %}
 
 <figure>
   <img alt="SELLE FIZIK VTT" src="{{ site.url }}/assets/images/posts/987f5-0l7go23ijzjg1tfbl.jpg" class="img-fluid"/>
   <figcaption>SELLE FIZIK VTT</figcaption>
 </figure>
-<a href="http://track.effiliation.com/servlet/effi.redir?id_compteur=12855409&amp;url=https://www.alltricks.fr/Acheter/SELLE%2BFIZIK%2BVTT" target="_blank"  class="btn btn-outline-primary text-center">Acheter chez Alltricks</a>
+
+{% include /components/buttons/btn-advertising.html %}
 
 <figure>
   <img alt="CINTRE RACE FACE" src="{{ site.url }}/assets/images/posts/3675d-02lcpym5czygodzpr.jpg" class="img-fluid"/>
   <figcaption>CINTRE RACE FAC</figcaption>
 </figure>
-<a href="http://track.effiliation.com/servlet/effi.redir?id_compteur=12855409&amp;url=https://www.alltricks.fr/Acheter/CINTRE%2BRACE%2BFACE" target="_blank"  class="btn btn-outline-primary text-center">Acheter chez Alltricks</a>
+
+{% include /components/buttons/btn-advertising.html %}

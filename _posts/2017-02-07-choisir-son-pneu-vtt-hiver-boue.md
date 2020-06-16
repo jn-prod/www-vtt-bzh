@@ -125,22 +125,26 @@ En VTT DH le montage le plus polyvalent reste un High Roller en 2.50 super tacky
   <img alt="Pneu HUTCHINSON TORO" src="{{ site.url }}/assets/images/posts/57126-0c6n1i609mgd_3rm7.jpg" class="img-fluid"/>
   <figcaption>Pneu HUTCHINSON TORO (Loisir / XC)</figcaption>
 </figure>
-<a href="http://track.effiliation.com/servlet/effi.redir?id_compteur=12855409&amp;url=https://www.alltricks.fr/Acheter/Pneu%2BHUTCHINSON%2BTORO" target="_blank"  class="btn btn-outline-primary text-center">Achetez chez Alltricks</a>
+
+{% include /components/buttons/btn-advertising.html %}
 
 <figure>
   <img alt="pneu SCHWALBE NOBBY NIC" src="{{ site.url }}/assets/images/posts/bc2c9-0kuckpd1y2nb3rli6.jpg" class="img-fluid"/>
   <figcaption>pneu SCHWALBE NOBBY NIC (Rando / Enduro)</figcaption>
 </figure>
-<a href="http://track.effiliation.com/servlet/effi.redir?id_compteur=12855409&amp;url=https://www.alltricks.fr/Acheter/pneu%2BSCHWALBE%2BNOBBY%2BNIC" target="_blank"  class="btn btn-outline-primary text-center">Achetez chez Alltricks</a>
+
+{% include /components/buttons/btn-advertising.html %}
 
 <figure>
   <img alt="Pneu MAXXIS MEDUSA" src="{{ site.url }}/assets/images/posts/5722c-0zsdugggwrkpxqmuh.jpg" class="img-fluid"/>
   <figcaption>Pneu MAXXIS MEDUSA (XC, rando)</figcaption>
 </figure>
-<a href="https://www.alltricks.fr/Acheter/Pneu+MAXXIS+MEDUSA" target="_blank"  class="btn btn-outline-primary text-center">Achetez chez Alltricks</a>
+
+{% include /components/buttons/btn-advertising.html %}
 
 <figure>
   <img alt="Pneu MAXXIS HIGH ROLLER " src="{{ site.url }}/assets/images/posts/c14c5-04jhnw3ph3ltb3vwi.jpg" class="img-fluid"/>
   <figcaption>Pneu MAXXIS HIGH ROLLER (Enduro / All Mountain)</figcaption>
 </figure>
-<a href="http://track.effiliation.com/servlet/effi.redir?id_compteur=12855409&amp;url=https://www.alltricks.fr/Acheter/Pneu%2BMAXXIS%2BHIGH%2BROLLER" target="_blank"  class="btn btn-outline-primary text-center">Achetez chez Alltricks</a>
+
+{% include /components/buttons/btn-advertising.html %}
