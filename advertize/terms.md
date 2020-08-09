@@ -3,14 +3,25 @@ layout: default
 title: Les plublicités sur VTT.bzh
 permalink: "/advertize/terms.html"
 ---
-# Espace Annonceurs
+# Publicité sur VTT.bzh
 
-Vous aimez le style de vtt.bzh et vous aveez besoin de visibilité ?
+VTT.bzh est une plate-forme dédiée au vtt visant un publique passionnés breton. Le calendrier des randonnées VTT de Bretagne permet aux passionnés de se retrouver chaque week-end sur les sentiers bretons.
 
-Nous vous proposons un espace dédié pour communiquer sur votre marque auprès de nos 2500+ abonnés : l'email partenaire.
+## En chiffre
 
-Empruntant le ton amicale et bienveillant de VTT.bzh, nous concevons ces e-mails partenaires en intégrant votre marque à notre univers.
+- Création: 2013
+- Jusqu'à 10 000 visiteurs mensuel
+- Profil du visiteur: Homme 18-35ans, actif, passionné de sport d'aventure et de nature.
 
-Un graphisme unique, un ton impertinent : nous communiquons sur votre marque en respectant <a href="/advertize/contract.html">le contract</a> que nous avons avec nos lecteurs.
+## Prix et disponibilité
 
-Parlons de votre projet sans plus attendre, demandez Nicolas à nicolas@vtt.bzh.
+Use the link below to view current pricing and availability. Once you’re ready, please click on an open slot to proceed with the booking.
+Utilisez le lien ci-dessous pour voir les prix actuels et les disponibilités
+
+<a class="btn btn-primary my-2" href="{{site.data.advertizing.slot.href}}" target="_blank">Voir les disponibilités et réserver un encart</a>
+
+## Format de piblicité possible
+
+### Annonce sponsorisée
+
+Mettez en avant votre randonnées en la possitionnant en premier position sur le calendrier. Une image cliquable et un text de présentation. <a href="/calendrier.html">Voir en action.</a>

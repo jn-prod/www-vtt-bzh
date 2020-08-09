@@ -1,3 +1,7 @@
-<p class="text-center my-5">
-    <a class="btn btn-outline-primary text-center" href="{{site.data.advertising.main.url}}" target="_blank" title="Acheter sur {{site.data.advertising.main.title}}">Acheter sur {{site.data.advertising.main.title}}</a>
-</p>
+{% if site.data.advertising.main.active == true %}
+
+    <p class="text-center my-5">
+        <a class="btn btn-outline-primary text-center" href="{{site.data.advertising.main.url}}" target="_blank" title="Acheter sur {{site.data.advertising.main.title}}">Acheter sur {{site.data.advertising.main.title}}</a>
+    </p>
+
+{% endif %}
