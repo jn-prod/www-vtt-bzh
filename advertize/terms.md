@@ -13,15 +13,14 @@ VTT.bzh est une plate-forme dédiée au vtt visant un publique passionnés breto
 - Jusqu'à 10 000 visiteurs mensuel
 - Profil du visiteur: Homme 18-35ans, actif, passionné de sport d'aventure et de nature.
 
-## Prix et disponibilité
+## Prix et disponibilités
 
-Use the link below to view current pricing and availability. Once you’re ready, please click on an open slot to proceed with the booking.
 Utilisez le lien ci-dessous pour voir les prix actuels et les disponibilités
 
 <a class="btn btn-primary my-2" href="{{site.data.advertising.slot.href}}" target="_blank">Voir les disponibilités et réserver un encart</a>
 
-## Format de piblicité possible
+## Formats de publicité possibles
 
 ### Annonce sponsorisée
 
-Mettez en avant votre randonnées en la possitionnant en premier position sur le calendrier. Une image cliquable et un text de présentation. <a href="/calendrier.html">Voir en action.</a>
+Mettez en avant votre randonnée en la possitionnant en première position sur le calendrier, avec une image cliquable et un texte de présentation. <a href="/calendrier.html">Voir en action.</a>
