@@ -18,7 +18,7 @@ VTT.bzh est une plate-forme dédiée au vtt visant un publique passionnés breto
 Use the link below to view current pricing and availability. Once you’re ready, please click on an open slot to proceed with the booking.
 Utilisez le lien ci-dessous pour voir les prix actuels et les disponibilités
 
-<a class="btn btn-primary my-2" href="{{site.data.advertizing.slot.href}}" target="_blank">Voir les disponibilités et réserver un encart</a>
+<a class="btn btn-primary my-2" href="{{site.data.advertising.slot.href}}" target="_blank">Voir les disponibilités et réserver un encart</a>
 
 ## Format de piblicité possible
 
