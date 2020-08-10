@@ -2,6 +2,4 @@ main:
   url: "https://track.effiliation.com/servlet/effi.click?id_compteur=22466560"
   title: "Wiggle"
   active: false
-
-slot:
-  href: "https://docs.google.com/spreadsheets/d/1kr9_JBGrVEhsbxHNr_XKOVbjtLnxJo6JTgh53Dl5bl8/edit?usp=sharing"
+    
