@@ -1,4 +1,6 @@
 ---
+redirect_from:
+  - "/advertize/contract.html"
 layout: default
 title: Les plublicités sur VTT.bzh
 permalink: "/advertize/terms.html"
