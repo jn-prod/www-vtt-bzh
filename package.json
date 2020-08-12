@@ -21,7 +21,7 @@
   },
   "homepage": "https://github.com/jn-prod/www-vtt-bzh#readme",
   "dependencies": {
-    "concurrently": "^4.1.2"
+    "concurrently": "^5.3.0"
   },
   "devDependencies": {
     "babel-eslint": "^10.1.0",
