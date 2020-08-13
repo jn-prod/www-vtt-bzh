@@ -34,34 +34,26 @@
     {% include /footer/footer.html %}
 
   </body>
-
   
   {% if site.url != "http://localhost:4000" %}
     <!-- application -->
-    <script src={{site.url}}/assets/js/chunk-vendors.js></script>
-    <script src={{site.url}}/assets/js/app.js></script>
+    <script src={{site.url}}/assets/dist/js/chunk-vendors.js></script>
+    <script src={{site.url}}/assets/dist/js/app.js></script>
 
-    <!-- sumome -->
-    <script async>(function(s,u,m,o,j,v){j=u.createElement(m);v=u.getElementsByTagName(m)[0];j.async=1;j.src=o;j.dataset.sumoSiteId='d88d4df58d80f8305722c8cb0545387e267fdb273431e3d7c65b7450aab441db';v.parentNode.insertBefore(j,v)})(window,document,'script','//load.sumo.com/');</script>
-    
     <!-- Start of HubSpot Embed Code -->
     <script type="text/javascript" id="hs-script-loader" async defer src="//js.hs-scripts.com/5421786.js"></script>
   {% else if site.url == "http://localhost:4000"%}
+    <!-- application -->
+    <script src={{site.url}}/assets/dist/js/chunk-vendors.js></script>
+    <script src={{site.url}}/assets/dist/js/app.js></script>
+
     <!-- launch app in localhost -->
     <script type="text/javascript" src="http://localhost:8080/js/chunk-vendors.js"></script>
     <script type="text/javascript" src="http://localhost:8080/js/app.js"></script>
   {% endif %}
 
-  <!-- Bootstrap -->
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-  
-  <!-- fontawesome -->
-  <script defer src="https://use.fontawesome.com/releases/v5.0.1/js/all.js"></script>
-
   <!-- mailerlite -->
-  <script src="https://static.mailerlite.com/js/w/webforms.min.js?vd890ed88b3a28c805acc70e1a88fa27c" type="text/javascript" async></script>
+  <script src="https://static.mailerlite.com/js/w/webforms.min.js?vd890ed88b3a28c805acc70e1a88fa27c" type="text/javascript" async defer></script>
   <script>
     function ml_webform_success_1408622() {
         var $ = ml_jQuery || jQuery;
@@ -71,7 +63,7 @@
   </script>
 
   <!-- gumroad -->
-  <script src="https://gumroad.com/js/gumroad.js"></script>
+  <script src="https://gumroad.com/js/gumroad.js" async defer></script>
 
   <!-- disqus -->
   <script id="dsq-count-scr" src="//{{site.comments.disqus.shortname}}.disqus.com/count.js" async defer></script>

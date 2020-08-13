@@ -28,6 +28,8 @@ plugins:
 
 whitelist:
   - jekyll-paginate
+
+exclude: [app]
     
 # Archives
 # jekyll-archives:

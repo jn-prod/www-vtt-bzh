@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "server:dev": "bundle exec jekyll serve --livereload",
-    "client:dev": "cd app && npm run client:server",
-    "client:build": "rm -rf ./assets/js && cd app && npm run client:build && mv ./dist/js ../assets",
+    "client:dev": "rm -rf ./assets/dist && cd app && npm run client:server",
+    "client:build": "rm -rf ./assets/dist && cd app && npm run client:build && mv ./dist/ ../assets && rm -rf ../assets/dist/index.html",
     "dev": "concurrently \"npm run server:dev\" \"npm run client:dev\"",
     "vue:ui": "cd app && npm run vue:ui"
   },
