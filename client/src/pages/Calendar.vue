@@ -38,18 +38,20 @@
             </div>
           </div>
 
-          <!-- <md-progress-circular md-mode="indeterminate" ng-show="$ctrl.isLoading"
-          class="mx-auto my-5 d-block text-center"></md-progress-circular> -->
+          <!-- ads slot -->
+          <ads-card
+          :ad="ad"
+          v-for="(ad, index) in ads"
+          :key="index"
+          ></ads-card>
 
           <!-- Load event -->
-          <ul>
-            <event-card
-              v-for="event in events"
-              :key="event.id"
-              v-bind:event="event"
-            >
-            </event-card>
-          </ul>
+          <event-card
+            v-for="event in events"
+            :key="event.id"
+            :event="event"
+          >
+          </event-card>
 
           <!-- load-more button -->
           <div class="row">
@@ -70,22 +72,37 @@
 
 <script>
 import axios from 'axios';
+import moment from 'moment';
+
 // import components
 import EventCard from '../components/EventCard.vue';
 import SearchForm from '../components/SearchForm.vue';
+import AdsCard from '../components/AdsCard.vue';
 
 import { dateFormat, dateNow } from '../utils/date';
+
+const activeWeekNum = moment().week();
+const year = moment().year();
 
 export default {
   components: {
     EventCard,
     SearchForm,
+    AdsCard,
   },
   data() {
     return {
       cache: {
         events: [],
       },
+      ads: [{
+        title: 'Mettez en avant votre épreuve',
+        description: 'Réserver cet espace pour faire la promotion votre randonnée au meilleur emplacement. Avec un contenu original et dynamique (photos, video, ...)',
+        img: '',
+        href: '/advertize/terms.html',
+        default: true,
+        active: true,
+      }],
       eventsDatas: [],
       paginator: 20,
       searchFormQuery: null,
@@ -101,6 +118,16 @@ export default {
         return dateFormat(val.date) >= dateNow;
       }).sort((a, b) => dateFormat(a.date) - dateFormat(b.date));
       this.eventsDatas = [...this.cache.events];
+    });
+
+    // set ads
+    axios.get('api/ads.json').then((response) => {
+      const { data, status } = response;
+      if (!data && status !== 200) return;
+      // eslint-disable-next-line max-len
+      const activeAds = response.data.filter((val) => Number(val.weekNum) >= activeWeekNum && Number(val.year) >= year);
+      if (!activeAds.length) return;
+      this.ads = activeAds;
     });
   },
   computed: {
