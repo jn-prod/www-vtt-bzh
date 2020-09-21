@@ -1,13 +1,13 @@
 <template>
-  <article
-    class="col-12 p-0 my-3"
-    @click="toogleActive()">
+  <article class="col-12 p-0 my-3">
     <div class="row">
       <div class="col-sm-3 mt-2">
         <div class="row">
           <div class=" col-sm-6 col-md-12">
             <i class="far fa-calendar mr-2" aria-hidden="true"></i>
-            {{ event.date | toDate }}
+            <time itemprop="startDate" :datetime="isoStringDate">
+              {{ event.date | toDate }}
+            </time>
           </div>
           <div class=" col-sm-6 col-md-12">
             <i class="fa fa-map-marker-alt mr-2" aria-hidden="true"></i>
@@ -17,7 +17,10 @@
       </div>
       <div class="col-sm-9 rounded border border-muted shadow">
         <h3 class="mt-2 text-uppercase">
-          <button class="btn d-flex text-bold">
+          <button
+            class="btn d-flex text-bold"
+            @click="toogleActive()"
+          >
             <span
               class="my-auto mr-3"
               v-show="active"
@@ -77,7 +80,7 @@
   </article>
 </template>
 <script>
-import { getMonth } from '../utils/date';
+import { getMonth, dateFormat } from '../utils/date';
 
 export default {
   props: ['event'],
@@ -89,6 +92,14 @@ export default {
   methods: {
     toogleActive() {
       this.active = !this.active;
+    },
+  },
+  computed: {
+    isoStringDate() {
+      if (this.event.date) {
+        return dateFormat(this.event.date).toISOString();
+      }
+      return '';
     },
   },
   filters: {

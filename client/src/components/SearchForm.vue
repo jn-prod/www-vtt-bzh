@@ -9,6 +9,7 @@
           :bootstrap-styling="true"
           :typeable="true"
           :required="true"
+          :use-utc="true"
           name="start-date"
           id="start-date"
           v-model="query.startDate">
@@ -22,6 +23,7 @@
             :bootstrap-styling="true"
             :typeable="true"
             :required="true"
+            :use-utc="true"
             name="end-date"
             id="end-date"
             v-model="query.endDate">

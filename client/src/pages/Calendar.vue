@@ -152,6 +152,7 @@ export default {
       this.paginator += 20;
     },
     setSearchQuery({ dpt, endDate, startDate }) {
+      console.log(endDate);
       this.searchFormQuery = {
         dpt,
         endDate,

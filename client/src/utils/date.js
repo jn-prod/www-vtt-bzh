@@ -4,7 +4,7 @@ export function dateFormat(date) {
   const day = Number(date.split('/')[0]);
   const month = Number(date.split('/')[1]) - 1;
   const year = Number(date.split('/')[2]);
-  return new Date(year, month, day);
+  return new Date(Date.UTC(year, month, day));
 }
 
 export function getMonth(month) {
