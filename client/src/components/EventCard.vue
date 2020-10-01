@@ -40,6 +40,7 @@
               ></i>
             </span>
             {{ event.name }}
+            <span v-if="isCanceled" class="badge badge-danger ml-2 my-auto">Annulée</span>
           </button>
         </h3>
         <div class="row my-2" v-show="active">
@@ -100,6 +101,9 @@ export default {
         return dateFormat(this.event.date).toISOString();
       }
       return '';
+    },
+    isCanceled() {
+      return this.event.canceled === 'true';
     },
   },
   filters: {
