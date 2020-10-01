@@ -36,34 +36,58 @@ L’utilisateur déclare savoir que l’Internet est un réseau mondial associan
 
 ## IV. RESPONSABILITÉ
 
-<p>Malgré tout le soin apporté à notre politique de partenariat, la société JN Prod décline toute responsabilité sur le contenu des sites liés à vtt.tld ; Notre responsabilité ne pourra être recherchée au sujet des liens hypertextes mis en place en direction d’autres ressources présentes sur le réseau de l’Internet ou provenant du réseau vers vtt.tld
+Malgré tout le soin apporté à notre politique de partenariat, la société JN Prod décline toute responsabilité sur le contenu des sites liés à vtt.tld ; Notre responsabilité ne pourra être recherchée au sujet des liens hypertextes mis en place en direction d’autres ressources présentes sur le réseau de l’Internet ou provenant du réseau vers vtt.tld
 Les utilisateurs et/ou visiteurs de vtt.tld peuvent mettre en place des hyperliens en direction de ce site sous leur seule responsabilité, à la condition expresse que les dits liens n’aient pas pour objectif de nuire à l’intégrité, à la réputation ou au référencement de vtt.tld
-En cliquant sur un lien hypertexte externe, l’internaute reconnaît qu’il change de site et que dès lors, l’ensemble des informations disponibles sur les sites auxquels il a accès ne relève plus des présentes.<br>
-La société JN Prod ne propose aucune garantie quant à la fiabilité ou au fonctionnement de ce service. JN Prod ne peut en aucun cas être tenue pour responsable de tous dommages quels qu’ils soient, y compris mais non de façon limitative, des dommages directs, indirects, accessoires ou incidents, des pertes de bénéfices ou de l’interruption d’activité, résultant de l’utilisation ou de l’impossibilité d’utilisation de ce service.</p>
+En cliquant sur un lien hypertexte externe, l’internaute reconnaît qu’il change de site et que dès lors, l’ensemble des informations disponibles sur les sites auxquels il a accès ne relève plus des présentes.
 
-## V. CONFIDENTIALITÉ
+La société JN Prod ne propose aucune garantie quant à la fiabilité ou au fonctionnement de ce service. JN Prod ne peut en aucun cas être tenue pour responsable de tous dommages quels qu’ils soient, y compris mais non de façon limitative, des dommages directs, indirects, accessoires ou incidents, des pertes de bénéfices ou de l’interruption d’activité, résultant de l’utilisation ou de l’impossibilité d’utilisation de ce service.
 
-<p>Conformément à la loi du 6 janvier 1978 relative à l’informatique, aux fichiers et aux libertés et à l’article 43 de la loi du 30 septembre 1986 modifiée, ce site web a fait l’objet d’une déclaration auprès de la Commission Nationale Informatique et Libertés (CNIL). Nos bases de données sont déclarées sous le N°1675833.
-L’utilisateur est informé que, lors de ses visites sur vtt.tld un cookie peut s’installer automatiquement sur son logiciel de navigation.
-Le cookie est un bloc de données qui ne permet pas d’identifier l’utilisateur mais sert à enregistrer des informations relatives à la navigation de celui-ci sur le site. L’utilisation de ces cookies a pour finalité de fluidifier la navigation sur le site.
-Nous vous informons que vous pouvez vous opposer à l’enregistrement de cookies en configurant votre navigateur de la manière suivante :
-Pour Microsoft Internet Explorer 6.0 :
-1. Choisissez le menu “Outils” (ou “Tools”), puis “Options Internet” (ou “Internet Options”)
-2. Cliquez sur l’onglet “Confidentialité” (ou “Confidentiality”)
-3. Sélectionnez le niveau souhaité à l’aide du curseur
-Pour Microsoft Internet Explorer 5 :
-1. Choisissez le menu “Outils” (ou “Tools”), puis “Options Internet” (ou “Internet Options”)
-2. Cliquez sur l’onglet “Sécurité” (ou “Security”)
-3. Sélectionnez “Internet” puis “Personnaliser le niveau” (ou “CustomLevel”)
-4. Repérez la rubrique “cookies” et choisissez l’option qui vous convient
-Pour Netscape 6.X et 7. X :
-1. Choisissez le menu “Edition” > “Préférences”
-2. Confidentialité et Sécurité
-3. Cookies
-Pour Firefox :
-1. choisissez le menu “Outils” > “Options”
-2. Cliquez sur l’option “Vie privée”
-3. Rubrique “Cookies”
-Pour Opéra 6.0 et au-delà :
-1. choisissez le menu “Fichier” > “Préférences”
-2. Vie Privée
+## V. CONFIDENTIALITÉ et COOKIES
+
+En visitant notre site Web et en utilisant nos services, vous comprenez et acceptez la façon dont nous traitons les données personnelles conformément à notre politique de confidentialité. Nous respectons votre vie privée et le droit de contrôler vos données personnelles. Nos principes directeurs sont simples. Nous allons être ouverts avec quelles données nous collectons et pourquoi. Veuillez prendre un moment pour les lire. C'est important !
+
+Les cookies sont de petites quantités d’informations stockées dans des fichiers au sein même du navigateur de votre ordinateur. Les cookies sont accessibles et enregistrés par les sites internet que vous consultez, et par les sociétés qui affichent leurs annonces publicitaires sur des sites internet, pour qu’ils puissent reconnaître le navigateur. Les sites Internet peuvent uniquement accéder aux cookies qu’ils ont stockés sur votre ordinateur.
+
+En utilisant le Site Internet , vous consentez à l’utilisation des cookies déposés par notre Site.
+
+Le site Internet utilisent des cookies aux fins suivantes :
+
+Usage du site : pour nous aider à reconnaître votre navigateur comme celui d’un visiteur précédent et pour enregistrer les préférences que vous avez déterminées lors de votre précédente visite sur le Site. Par exemple, nous pouvons enregistrer vos informations de connexion de sorte que vous n’ayez pas à vous connecter à chaque fois que vous visitez le Site ;
+Réseaux sociaux : pour vérifier si vous êtes connectés à des services tiers (Facebook, Twitter, Google+…) ;
+Ciblage : pour nous permettre de cibler (emailing, enrichissement de base) à postériori ou en temps réel l’internaute qui navigue sur notre Site ;
+Mesure d’audience : pour suivre les données statistiques de fréquentation du Site (soit l’utilisation faite du Site par les utilisateurs et pour améliorer les services du Site) et pour nous aider à mesurer et étudier l’efficacité de notre contenu interactif en ligne, de ses caractéristiques, publicités et autres communications.
+ 
+Vos Choix Concernant les Cookies et Balises Web
+
+Vous avez le choix de configurer votre navigateur pour accepter tous les cookies, rejeter tous les cookies, vous informer quand un cookie est émis, sa durée de validité et son contenu, ainsi que vous permettre de refuser son enregistrement dans votre terminal, et supprimer vos cookies périodiquement.
+
+Vous pouvez paramétrer votre navigateur Internet pour désactiver les cookies. Notez toutefois que si vous désactivez les cookies, votre nom d’utilisateur ainsi que votre mot de passe ne seront plus sauvegardés sur aucun site web.
+
+Comment configurer votre navigateur
+
+Firefox :
+1. Ouvrez Firefox
+2. Appuyez sur la touche « Alt »
+3. Dans le menu en haut de la page cliquez sur « Outils » puis « Options »
+4. Sélectionnez l’onglet « Vie privée »
+5. Dans le menu déroulant à droite de « Règles de conservation », cliquez sur « utiliser les paramètres personnalisés pour l’historique »
+6. Un peu plus bas, décochez « Accepter les cookies »
+7. Sauvegardez vos préférences en cliquant sur « OK »
+Internet Explorer :
+1. Ouvrez Internet Explorer
+2. Dans le menu « Outils », sélectionnez « Options Internet »
+3. Cliquez sur l’onglet « Confidentialité »
+4. Cliquez sur « Avancé » et décochez « Accepter »
+5. Sauvegardez vos préférences en cliquant sur « OK »
+Google Chrome :
+1. Ouvrez Google Chrome
+2. Cliquez sur l’icône d’outils dans la barre de menu
+3. Sélectionnez « Options »
+4. Cliquez sur l’onglet « Options avancées »
+5. Dans le menu déroulant « Paramètres des cookies », sélectionnez « Bloquer tous les cookies »
+Safari :
+1. Ouvrez Safari
+2. Dans la barre de menu en haut, cliquez sur « Safari », puis « Préférences »
+3. Sélectionnez l’icône « Sécurité »
+4. À côté de « Accepter les cookies », cochez « Jamais »
+5. Si vous souhaitez voir les cookies qui sont déjà sauvegardés sur votre ordinateur, cliquez sur « Afficher les cookies »

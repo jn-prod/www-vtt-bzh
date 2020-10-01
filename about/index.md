@@ -2,7 +2,6 @@
 layout: default
 title: L'histoire de vtt.bzh
 permalink: "/about.html"
-
 ---
 # A propos de vtt.bzh
 
