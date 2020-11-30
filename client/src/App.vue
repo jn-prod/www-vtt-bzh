@@ -8,7 +8,7 @@
 
 <script>
 // import pages
-import Calendar from './pages/Calendar.vue';
+import Calendar from './views/Calendar.vue';
 
 export default {
   name: 'App',
