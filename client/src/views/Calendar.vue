@@ -39,11 +39,16 @@
           </div>
 
           <!-- ads slot -->
-          <ads-card
+          <!-- <ads-card
           :ad="ad"
           v-for="(ad, index) in ads"
           :key="index"
-          ></ads-card>
+          ></ads-card> -->
+          <div class="text-center">
+            <a href="https://track.effiliation.com/servlet/effi.click?id_compteur=22558013" target="_blank">
+              <img src="https://track.effiliation.com/servlet/effi.show?id_compteur=22558013" alt="pub" border="0"/>
+            </a>
+          </div>
 
           <!-- Load event -->
           <event-card
@@ -64,6 +69,12 @@
               </button>
             </div>
           </div>
+
+          <div class="text-center">
+            <a href="https://track.effiliation.com/servlet/effi.click?id_compteur=22558013" target="_blank">
+              <img src="https://track.effiliation.com/servlet/effi.show?id_compteur=22558013" alt="pub" border="0"/>
+            </a>
+          </div>
         </div>
       </div>
     </div>
@@ -77,7 +88,7 @@ import moment from 'moment';
 // import components
 import EventCard from '../components/EventCard.vue';
 import SearchForm from '../components/SearchForm.vue';
-import AdsCard from '../components/AdsCard.vue';
+// import AdsCard from '../components/AdsCard.vue';
 
 import { dateFormat, dateNow } from '../utils/date';
 
@@ -88,7 +99,7 @@ export default {
   components: {
     EventCard,
     SearchForm,
-    AdsCard,
+    // AdsCard,
   },
   data() {
     return {
