@@ -2,4 +2,10 @@ main:
   url: "https://track.effiliation.com/servlet/effi.click?id_compteur=22466560"
   title: "Wiggle"
   active: false
+banner:
+  url: "https://track.effiliation.com/servlet/effi.click?id_compteur=22558013"
+  img: "https://static.cdnekoi.com/img/cms/Affiliation/728x90_BF.gif"
+  title: "ekoi"
+  active: true
+
     
