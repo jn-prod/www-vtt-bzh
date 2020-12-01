@@ -46,23 +46,25 @@
           ></ads-card> -->
           <AdsBannerCard />
 
-          <!-- Load event -->
-          <event-card
-            v-for="event in events"
-            :key="event.id"
-            :event="event"
-          >
-          </event-card>
+          <div class="my-5">
+            <!-- Load event -->
+            <event-card
+              v-for="event in events"
+              :key="event.id"
+              :event="event"
+            >
+            </event-card>
 
-          <!-- load-more button -->
-          <div class="row">
-            <div class="col-12 text-center mt-3">
-              <button
-                v-on:click.prevent="setPaginator()"
-                v-show="isLoadMoreActive"
-                class="btn btn-secondary shadow mt-3 px-5 rounded-pill">
-                  Voir +
-              </button>
+            <!-- load-more button -->
+            <div class="row">
+              <div class="col-12 text-center mt-3">
+                <button
+                  v-on:click.prevent="setPaginator()"
+                  v-show="isLoadMoreActive"
+                  class="btn btn-secondary shadow mt-3 px-5 rounded-pill">
+                    Voir +
+                </button>
+              </div>
             </div>
           </div>
 

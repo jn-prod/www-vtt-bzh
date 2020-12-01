@@ -1,9 +1,9 @@
 <template>
-    <div class="text-center my-3" v-if="ads.banner">
-        <a :href="ads.banner.url" target="_blank">
-            <img :src="ads.banner.img" :alt="`publicité: ${ads.banner.title}`" class="img-fluid">
-        </a>
-    </div>
+  <div class="text-center my-3" v-if="ads.banner">
+    <a :href="ads.banner.url" target="_blank">
+      <img :src="ads.banner.img" :alt="`publicité: ${ads.banner.title}`" class="img-fluid" />
+    </a>
+  </div>
 </template>
 
 <script>
