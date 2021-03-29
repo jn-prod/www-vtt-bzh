@@ -44,7 +44,7 @@
           v-for="(ad, index) in ads"
           :key="index"
           ></ads-card> -->
-          <AdsBannerCard />
+          <!-- <AdsBannerCard /> -->
 
           <div class="my-5">
             <!-- Load event -->
@@ -68,7 +68,7 @@
             </div>
           </div>
 
-          <AdsBannerCard />
+          <!-- <AdsBannerCard /> -->
         </div>
       </div>
     </div>
@@ -82,7 +82,7 @@ import moment from 'moment';
 // import components
 import EventCard from '../components/EventCard.vue';
 import SearchForm from '../components/SearchForm.vue';
-import AdsBannerCard from '../components/AdsBannerCard.vue';
+// import AdsBannerCard from '../components/AdsBannerCard.vue';
 // import AdsCard from '../components/AdsCard.vue';
 
 import { dateFormat, dateNow } from '../utils/date';
@@ -94,7 +94,7 @@ export default {
   components: {
     EventCard,
     SearchForm,
-    AdsBannerCard,
+    // AdsBannerCard,
     // AdsCard,
   },
   data() {

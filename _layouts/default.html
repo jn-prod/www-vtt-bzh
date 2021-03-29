@@ -64,10 +64,4 @@
 
   <!-- disqus -->
   <script id="dsq-count-scr" src="//{{site.comments.disqus.shortname}}.disqus.com/count.js" async defer></script>
-  <script>
-    var advertize = {{ site.data.advertize | jsonify }};
-    if (!window.localStorage.getItem('vtt_bzh_ads')) {
-      window.localStorage.setItem('vtt_bzh_ads', JSON.stringify(advertize));
-    }
-  </script>
 </html>
