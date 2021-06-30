@@ -40,7 +40,7 @@
               ></i>
             </span>
             {{ event.name }}
-            <span v-if="isCanceled" class="badge badge-danger ml-2 my-auto">Annulée</span>
+            <span v-if="event.canceled" class="badge badge-danger ml-2 my-auto">Annulée</span>
           </button>
         </h3>
         <div class="row my-2" v-show="active">
@@ -53,16 +53,16 @@
                 <li class="d-inline-block m-2 p-2">
                   Organisateur : {{event.organisateur || "NC"}}</li>
                 <li class="d-inline-block m-2 p-2">
-                  Horaires : {{event.horaire || "NC"}}
+                  Horaires : {{event.hour || "NC"}}
                 </li>
                 <li class="d-inline-block m-2 p-2">
-                  Lieu de rendez-vous : {{event.lieuRdv || "NC"}}
+                  Lieu de rendez-vous : {{event.place || "NC"}}
                 </li>
                 <li class="d-inline-block m-2 p-2">
                   Contact : {{event.contact || "NC"}}
                 </li>
                 <li class="d-inline-block m-2 p-2">
-                  Prix Club : {{event.prixClub || "NC"}}
+                  Prix Club : {{event.price || "NC"}}
                 </li>
               </ul>
             </div>
@@ -101,9 +101,6 @@ export default {
         return dateFormat(this.event.date).toISOString();
       }
       return '';
-    },
-    isCanceled() {
-      return this.event.canceled === 'true';
     },
   },
   filters: {

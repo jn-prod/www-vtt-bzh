@@ -1,6 +1,9 @@
 // fonts
-import './assets/fonts/Roboto_Condensed/RobotoCondensed-Regular.ttf';
-import './assets/fonts/Roboto_Condensed/RobotoCondensed-Bold.ttf';
+import './assets/fonts/RobotoCondensed-Regular.ttf';
+import './assets/fonts/RobotoCondensed-Bold.ttf';
+
+// images
+import './assets/images/banner-min.jpg';
 
 // css
 import 'bootstrap/dist/css/bootstrap.min.css';

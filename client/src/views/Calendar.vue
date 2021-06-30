@@ -76,26 +76,19 @@
 </template>
 
 <script>
-import axios from 'axios';
-import moment from 'moment';
+import eventService from '../services/event-service';
+import addsService from '../services/adds-service';
 
 // import components
 import EventCard from '../components/EventCard.vue';
 import SearchForm from '../components/SearchForm.vue';
-// import AdsBannerCard from '../components/AdsBannerCard.vue';
-// import AdsCard from '../components/AdsCard.vue';
 
-import { dateFormat, dateNow } from '../utils/date';
-
-const activeWeekNum = moment().week();
-const year = moment().year();
+import { dateFormat } from '../utils/date';
 
 export default {
   components: {
     EventCard,
     SearchForm,
-    // AdsBannerCard,
-    // AdsCard,
   },
   data() {
     return {
@@ -115,27 +108,12 @@ export default {
       searchFormQuery: null,
     };
   },
-  mounted() {
+  async mounted() {
     // set only next events
-    axios.get('api/events.json').then((response) => {
-      const { data, status } = response;
-      if (!data && status !== 200) return;
-      this.cache.events = response.data.filter((val) => {
-        if (!val.date) return false;
-        return dateFormat(val.date) >= dateNow;
-      }).sort((a, b) => dateFormat(a.date) - dateFormat(b.date));
-      this.eventsDatas = [...this.cache.events];
-    });
-
+    this.cache.events = await eventService.getEvents();
+    this.eventsDatas = [...this.cache.events];
     // set ads
-    axios.get('api/ads.json').then((response) => {
-      const { data, status } = response;
-      if (!data && status !== 200) return;
-      // eslint-disable-next-line max-len
-      const activeAds = response.data.filter((val) => Number(val.weekNum) >= activeWeekNum && Number(val.year) >= year);
-      if (!activeAds.length) return;
-      this.ads = activeAds;
-    });
+    this.ads = await addsService.getAdds();
   },
   computed: {
     isLoadMoreActive() {
