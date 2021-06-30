@@ -1,5 +1,4 @@
 import axios from 'axios';
-// import formater from '@luckylab/json-formater';
 import { dateFormat, dateNow } from '../utils/date';
 
 export default {
