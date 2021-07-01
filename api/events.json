@@ -7,7 +7,7 @@
     "city": "MAHALON",
     "price": "2€",
     "organisateur": "Mairie de Mahalon",
-    "canceled": "false",
+    "canceled": false,
     "contact": "animation.mahalon@orange.fr",
     "date": "29/08/2021",
     "name": "Rando Santé"
@@ -19,7 +19,7 @@
     "city": "Plescop",
     "price": "5€ rando route et vtt 4€ marche",
     "organisateur": "Amicale Cyclo Plescop",
-    "canceled": "false",
+    "canceled": false,
     "contact": "claudedubois56@yahoo.fr 0781947132",
     "date": "05/09/2021",
     "name": "Rando Plescopaise"
