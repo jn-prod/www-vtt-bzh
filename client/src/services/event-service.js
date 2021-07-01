@@ -22,14 +22,10 @@ const getEventsFromCache = () => {
 
 const getEventsFromApi = async () => {
   try {
-    const { data, status } = await axios.get('https://gleaypou6k.execute-api.eu-west-3.amazonaws.com/prod/events');
-    const { data: customEvents } = await axios.get('/api/events.json');
-    // const customEvents = [];
-    if (!data && status !== 200) return [];
+    const { data: body = {}, status } = await axios.get('https://gleaypou6k.execute-api.eu-west-3.amazonaws.com/prod/events');
+    if (status !== 200) return [];
 
-    const { data: formatedData } = data;
-
-    const events = [...formatedData, ...customEvents];
+    const { data: events = [] } = body;
 
     setEventsCache(events);
 
