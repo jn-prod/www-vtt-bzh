@@ -47,7 +47,7 @@ const getEvents = async () => {
     }
 
     return events.filter((val) => {
-      if (!val.date) return false;
+      if (!val || !val.date) return false;
       return dateFormat(val.date) >= dateNow;
     }).sort((a, b) => dateFormat(a.date) - dateFormat(b.date));
   } catch (e) {
