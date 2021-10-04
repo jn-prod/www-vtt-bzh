@@ -48,16 +48,16 @@
     <div class="row">
       <div class="col-12 my-2">
         <button
-          href="#calendar"
-          v-on:click="deleteSearch"
-          class="btn btn-dark rounded-pill shadow m-2">
-          <i class="far fa-trash-alt"></i> Réinitialiser
-        </button>
-        <button
           type="submit"
           class="btn btn-secondary shadow m-2 rounded-pill"
           id="search_button">
           <i class="fas fa-search"></i> Rechercher
+        </button>
+        <button
+          href="#calendar"
+          v-on:click="deleteSearch"
+          class="btn btn-outline-dark rounded-pill shadow m-2">
+          <i class="far fa-trash-alt"></i> Réinitialiser
         </button>
       </div>
     </div>
