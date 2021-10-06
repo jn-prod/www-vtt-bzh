@@ -36,3 +36,18 @@ export function getMonth(month) {
   }
   return res;
 }
+
+export function dateFormatToText(date) {
+  if (!date) return '';
+
+  const day = date.split('/')[0];
+  const month = getMonth(Number(date.split('/')[1]));
+  const year = date.split('/')[2];
+  return `${day} ${month} ${year}`;
+}
+
+export function dateFormatToIsoString(date) {
+  if (!date) return '';
+
+  return dateFormat(date).toISOString();
+}

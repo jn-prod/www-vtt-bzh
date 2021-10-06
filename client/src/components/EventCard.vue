@@ -6,7 +6,7 @@
           <div class=" col-sm-6 col-md-12">
             <i class="far fa-calendar mr-2" aria-hidden="true"></i>
             <time itemprop="startDate" :datetime="isoStringDate">
-              {{ event.date | toDate }}
+              {{ date }}
             </time>
           </div>
           <div class=" col-sm-6 col-md-12">
@@ -81,38 +81,30 @@
   </article>
 </template>
 <script>
-import { getMonth, dateFormat } from '../utils/date';
+import { computed, ref } from 'vue';
+import { get as lGet } from 'lodash';
+import { dateFormatToIsoString, dateFormatToText } from '@/utils/date';
 
 export default {
+  name: 'EventCard',
   props: ['event'],
-  data() {
-    return {
-      active: false,
+  setup(props) {
+    const active = ref(false);
+
+    const toogleActive = () => {
+      active.value = !active.value;
     };
-  },
-  methods: {
-    toogleActive() {
-      this.active = !this.active;
-    },
-  },
-  computed: {
-    isoStringDate() {
-      if (this.event.date) {
-        return dateFormat(this.event.date).toISOString();
-      }
-      return '';
-    },
-  },
-  filters: {
-    toDate: (val) => {
-      if (val) {
-        const day = val.split('/')[0];
-        const month = getMonth(Number(val.split('/')[1]));
-        const year = val.split('/')[2];
-        return `${day} ${month} ${year}`;
-      }
-      return '';
-    },
+
+    const isoStringDate = computed(() => dateFormatToIsoString(lGet(props, 'event.date')));
+
+    const date = computed(() => dateFormatToText(lGet(props, 'event.date')));
+
+    return {
+      active,
+      toogleActive,
+      isoStringDate,
+      date,
+    };
   },
 };
 </script>

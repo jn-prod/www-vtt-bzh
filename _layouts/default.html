@@ -34,7 +34,7 @@
     {% include /footer/footer.html %}
 
   </body>
-  
+
   {% if site.url != "http://localhost:4000" %}
     <!-- application -->
     <script src={{site.url}}/assets/dist/js/chunk-vendors.js></script>
@@ -45,8 +45,8 @@
     <script src={{site.url}}/assets/dist/js/app.js></script>
 
     <!-- launch app in localhost -->
-    <script type="text/javascript" src="http://localhost:8080/js/chunk-vendors.js"></script>
-    <script type="text/javascript" src="http://localhost:8080/js/app.js"></script>
+    <!-- <script type="text/javascript" src="http://localhost:8080/js/chunk-vendors.js"></script> -->
+    <!-- <script type="text/javascript" src="http://localhost:8080/js/app.js"></script> -->
   {% endif %}
 
   <!-- mailerlite -->

@@ -12,7 +12,7 @@ import './assets/css/cookies.scss';
 import './assets/css/global.scss';
 
 // Vue
-import Vue from 'vue';
+import { createApp } from 'vue';
 import App from './App.vue';
 
 // js
@@ -23,8 +23,4 @@ import 'cookieconsent';
 import '@fortawesome/fontawesome-free/js/all';
 import './utils/cookies';
 
-Vue.config.productionTip = false;
-
-new Vue({
-  render: (h) => h(App),
-}).$mount('#app');
+createApp(App).mount('#app');

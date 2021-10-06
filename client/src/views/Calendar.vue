@@ -3,7 +3,6 @@
     <div class="row" id="header-wrapper">
       <div class="col-md-4 bg-white p-2 p-md-5 m-2 m-md-5 rounded shadow">
         <section>
-
           <!-- value proposition        -->
           <h1 class="h3 text-left my-5">
             Rechercher une rando VTT à coté de chez toi n'aura jamais été aussi simple.
@@ -14,7 +13,6 @@
             @submit-search-form="setSearchQuery"
             @cancel-search-form="cancelSearchQuery"
           ></search-form>
-
         </section>
       </div>
     </div>
@@ -29,7 +27,6 @@
               <span id="nombre_rando" class="badge badge-success"></span>
             </div>
           </div>
-
           <div class="row" v-if="isResults">
             <div class="col-12">
               <div class="alert alert-danger">
@@ -37,14 +34,6 @@
               </div>
             </div>
           </div>
-
-          <!-- ads slot -->
-          <!-- <ads-card
-          :ad="ad"
-          v-for="(ad, index) in ads"
-          :key="index"
-          ></ads-card> -->
-          <!-- <AdsBannerCard /> -->
 
           <div class="my-5">
             <!-- Load event -->
@@ -67,8 +56,6 @@
               </div>
             </div>
           </div>
-
-          <!-- <AdsBannerCard /> -->
         </div>
       </div>
     </div>
@@ -76,93 +63,79 @@
 </template>
 
 <script>
-import eventService from '../services/event-service';
-import addsService from '../services/adds-service';
+import { computed, ref } from 'vue';
+
+import eventService from '@/services/event-service';
 
 // import components
-import EventCard from '../components/EventCard.vue';
-import SearchForm from '../components/SearchForm.vue';
+import EventCard from '@/components/EventCard.vue';
+import SearchForm from '@/components/SearchForm.vue';
 
-import { dateFormat } from '../utils/date';
+import { dateFormat } from '@/utils/date';
 
 export default {
+  name: 'Calendar',
   components: {
     EventCard,
     SearchForm,
   },
-  data() {
-    return {
-      cache: {
-        events: [],
-      },
-      ads: [{
-        title: 'Mettez en avant votre épreuve',
-        description: 'Réserver cet espace pour faire la promotion votre randonnée au meilleur emplacement. Avec un contenu original et dynamique (photos, video, ...)',
-        img: '',
-        href: '/advertize/terms.html',
-        default: true,
-        active: true,
-      }],
-      eventsDatas: [],
-      paginator: 20,
-      searchFormQuery: null,
+  setup() {
+    const data = ref([]);
+    const paginator = ref(20);
+    const searchFormQuery = ref(null);
+
+    const getEvents = async () => {
+      data.value = await eventService.getEvents();
     };
-  },
-  async mounted() {
-    // set only next events
-    this.cache.events = await eventService.getEvents();
-    this.eventsDatas = [...this.cache.events];
-    // set ads
-    this.ads = await addsService.getAdds();
-  },
-  computed: {
-    isLoadMoreActive() {
-      if (!this.eventsDatas || !this.paginator) {
-        return false;
-      }
-      return this.eventsDatas.length > this.paginator;
-    },
-    isResults() {
-      return this.eventsDatas.length < 1;
-    },
-    events() {
-      if (!this.eventsDatas || !this.paginator) return [];
-      // paginate events datas
-      const events = [...this.eventsDatas];
-      return events.slice(0, this.paginator);
-    },
-  },
-  methods: {
-    setPaginator() {
-      this.paginator += 20;
-    },
-    setSearchQuery({ dpt, endDate, startDate }) {
-      this.searchFormQuery = {
+
+    getEvents();
+
+    const setPaginator = (inc = 20) => {
+      paginator.value += inc;
+    };
+
+    const setSearchQuery = async ({ dpt, endDate, startDate }) => {
+      searchFormQuery.value = {
         dpt,
         endDate,
         startDate,
       };
-      if (!dpt && !endDate && !startDate) return;
-      this.eventsDatas = this.cache.events.filter((data) => {
-        const eventDate = dateFormat(data.date);
-        const dateFilter = (eventDate >= startDate) && (eventDate <= endDate);
-        let dptFilter;
 
-        if (dpt !== 'all') {
-          dptFilter = Number(data.departement) === Number(dpt);
-        } else {
-          dptFilter = true;
-        }
+      if (!dpt && !endDate && !startDate) return;
+
+      const cacheEvents = await eventService.getEvents();
+
+      data.value = cacheEvents.filter((event) => {
+        const eventDate = dateFormat(event.date);
+        const dateFilter = (eventDate >= startDate) && (eventDate <= endDate);
+        const dptFilter = dpt === 'all' ? true
+          : Number(event.departement) === Number(dpt);
 
         return dateFilter && dptFilter;
       });
-    },
-    cancelSearchQuery({ cancel }) {
+    };
+
+    const cancelSearchQuery = async ({ cancel }) => {
       if (!cancel) return;
 
-      this.searchFormQuery = null;
-      this.eventsDatas = [...this.cache.events];
-    },
+      searchFormQuery.value = null;
+      data.value = await eventService.getEvents();
+    };
+
+    const isLoadMoreActive = computed(() => (data.value || []).length > (paginator.value || 0));
+
+    const events = computed(() => (data.value || []).slice(0, paginator.value));
+
+    const isResults = computed(() => data.value.length < 1);
+
+    return {
+      setSearchQuery,
+      cancelSearchQuery,
+      setPaginator,
+      isLoadMoreActive,
+      events,
+      isResults,
+    };
   },
 };
 
