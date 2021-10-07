@@ -1,4 +1,6 @@
-window.cookieconsent.initialise({
+import cookieconsent from 'cookieconsent';
+
+cookieconsent.initialise({
   palette: {
     popup: {
       background: '#000',

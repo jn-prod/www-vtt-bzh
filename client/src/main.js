@@ -6,21 +6,18 @@ import './assets/fonts/RobotoCondensed-Bold.ttf';
 import './assets/images/banner-min.jpg';
 
 // css
-import 'bootstrap/dist/css/bootstrap.min.css';
 import '@fortawesome/fontawesome-free/css/all.css';
+import 'bootstrap/scss/bootstrap.scss';
 import './assets/css/cookies.scss';
 import './assets/css/global.scss';
+
+// js
+import 'bootstrap';
+import '@fortawesome/fontawesome-free/js/all';
+import './utils/cookies';
 
 // Vue
 import { createApp } from 'vue';
 import App from './App.vue';
-
-// js
-import 'jquery';
-import 'popper.js';
-import 'bootstrap';
-import 'cookieconsent';
-import '@fortawesome/fontawesome-free/js/all';
-import './utils/cookies';
 
 createApp(App).mount('#app');

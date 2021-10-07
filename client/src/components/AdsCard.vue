@@ -12,7 +12,7 @@
         <a
           :href="ad.href"
           class="
-          btn btn-outline-dark border-bottom-2 rounded-0 border-top-0 border-right-0 border-left-0"
+          btn btn-outline-dark border-bottom-2 rounded-0 border-top-0 border-end-0 border-start-0"
           v-if="ad.href"
         >
           En savoir plus →

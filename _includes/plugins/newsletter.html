@@ -1,12 +1,12 @@
 <form  class="ml-block-form row-form" action="https://app.mailerlite.com/webforms/submit/b7y4q9" data-code="b7y4q9" method="post" target="_blank" id="newsletter-inline-form">
   {% if include.text %}
-    <div class="d-inline-block font-weight-bold">
+    <div class="d-inline-block fw-bold">
       <label for="newsletter-email">{{ include.text }}</label>
     </div>
   {% endif %}
-  <div class="d-inline-block my-auto shadow rounded-pill pl-3">
+  <div class="d-inline-block my-auto shadow rounded-pill ps-3">
     <input type="email" id="newsletter-email" class="border-0" data-inputmask="" name="fields[email]" value="" placeholder="mon@email.ici">
-    <button type="submit" class="btn btn-sm btn-secondary rounded-pill font-weight-bold">M'abonner</button>
+    <button type="submit" class="btn btn-sm btn-secondary rounded-pill fw-bold">M'abonner</button>
   </div>
   <!-- verification -->
   <input type="hidden" name="ml-submit" value="1">

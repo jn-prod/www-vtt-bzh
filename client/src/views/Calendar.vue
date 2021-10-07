@@ -1,10 +1,10 @@
 <template>
   <div>
     <div class="row" id="header-wrapper">
-      <div class="col-md-4 bg-white p-2 p-md-5 m-2 m-md-5 rounded shadow">
+      <div class="col-md-4 bg-white p-2 m-2 mx-md-5 px-md-5 rounded shadow">
         <section>
           <!-- value proposition        -->
-          <h1 class="h3 text-left my-5">
+          <h1 class="h3 text-left m2-5">
             Rechercher une rando VTT à coté de chez toi n'aura jamais été aussi simple.
           </h1>
 
@@ -24,7 +24,7 @@
           <div class="row">
             <div class="col-12 mt-5 mb-3">
               <h2 id="calendar">Calendrier des randonnées à venir</h2>
-              <span id="nombre_rando" class="badge badge-success"></span>
+              <span id="nombre_rando" class="badge bg-success"></span>
             </div>
           </div>
           <div class="row" v-if="isResults">

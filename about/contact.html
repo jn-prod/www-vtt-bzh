@@ -7,29 +7,30 @@ permalink: "/contact.html"
 
 <p>Contactez-moi par email en remplissant le formulaire ci-dessous.</p>
 
+<p class="mt-3">Les champs signalés par <span class="text-danger">*</span> sont obligatoires.</p>
+
 <form id="form2" name="form2" accept-charset="UTF-8" autocomplete="off"
     enctype="multipart/form-data" method="post" novalidate target="_blank"
     action="https://vttbzh.wufoo.com/forms/m1m5tmlf1b70921/#public">
 
-    <div class="form-group">
-        <label id="title1" for="Field1">
-            Votre email
-            <span id="req_1" class="text-danger">*</span>
-        </label>
-        <input id="Field1" name="Field1" type="email" spellcheck="false" class="form-control" value=""
-            maxlength="255" tabindex="0" placeholder="" required />
-    </div>
-    <div class="form-group">
-        <label id="title3" for="Field3">
-            Message
-            <span id="req_3" class="text-danger">*</span>
-        </label>
-        <textarea class="form-control" id="Field3" name="Field3" spellcheck="true" rows="10" cols="50"
-            tabindex="0" onkeyup="" placeholder="" required></textarea>
-    </div>
-    <div>
-        <input id="saveForm" name="saveForm" class="btn btn-primary" type="submit" value="Envoyer" />
-    </div>
+    <label id="title1" for="Field1" class="mb-3">
+        Votre email
+        <span id="req_1" class="text-danger">*</span>
+    </label>
+    
+    <input id="Field1" name="Field1" type="email" spellcheck="false" class="form-control" value=""
+        maxlength="255" tabindex="0" placeholder="" required />
+    
+    <label id="title3" for="Field3" class="my-3">
+        Message
+        <span id="req_3" class="text-danger">*</span>
+    </label>
+    
+    <textarea class="col-12 form-control" id="Field3" name="Field3" spellcheck="true" rows="10" cols="50"
+        tabindex="0" onkeyup="" placeholder="" required></textarea>
+    
+    <input id="saveForm" name="saveForm" class="btn btn-primary mt-3 ms-auto" type="submit" value="Envoyer" />
+    
     <div class="d-none">
         <label for="comment">Ne pas remplir ces champs</label>
         <textarea name="comment" id="comment" rows="1" cols="1"></textarea>
@@ -37,5 +38,3 @@ permalink: "/contact.html"
         <input type="hidden" id="encryptedPassword" name="encryptedPassword" value="" />
     </div>
 </form>
-
-<p class="mt-3">Les champs signalés par <span class="text-danger">*</span> sont obligatoires.</p>

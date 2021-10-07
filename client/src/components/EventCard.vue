@@ -4,25 +4,29 @@
       <div class="col-sm-3 mt-2">
         <div class="row">
           <div class=" col-sm-6 col-md-12">
-            <i class="far fa-calendar mr-2" aria-hidden="true"></i>
-            <time itemprop="startDate" :datetime="isoStringDate">
-              {{ date }}
-            </time>
+            <i class="far fa-calendar" aria-hidden="true"></i>
+            <span class="ms-2">
+              <time itemprop="startDate" :datetime="isoStringDate">
+                {{ date }}
+              </time>
+            </span>
           </div>
           <div class=" col-sm-6 col-md-12">
-            <i class="fa fa-map-marker-alt mr-2" aria-hidden="true"></i>
-            {{ event.departement }}  - {{ event.city }}
+            <i class="fa fa-map-marker-alt" aria-hidden="true"></i>
+            <span class="ms-2">
+              {{ event.departement }}  - {{ event.city }}
+            </span>
           </div>
         </div>
       </div>
       <div class="col-sm-9 rounded border border-muted shadow">
         <h3 class="mt-2 text-uppercase">
           <button
-            class="btn d-flex text-bold"
+            class="btn text-bold"
             @click="toogleActive()"
           >
             <span
-              class="my-auto mr-3"
+              class="my-auto me-3"
               v-show="active"
             >
               <i
@@ -31,7 +35,7 @@
               ></i>
             </span>
             <span
-              class="my-auto mr-3"
+              class="my-auto me-3"
               v-show="!active"
             >
               <i
@@ -40,7 +44,7 @@
               ></i>
             </span>
             {{ event.name }}
-            <span v-if="event.canceled" class="badge badge-danger ml-2 my-auto">Annulée</span>
+            <span v-if="event.canceled" class="badge bg-danger ms-2 my-auto">Annulée</span>
           </button>
         </h3>
         <div class="row my-2" v-show="active">
@@ -69,7 +73,7 @@
             <div>
               <span
                 v-if="event.departement"
-                class="badge badge-pill badge-secondary ml-sm-0 ml-md-3"
+                class="badge rounded-pill bg-secondary ml-sm-0 ml-md-3"
               >
                 Département : {{event.departement}}
               </span>

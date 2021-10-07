@@ -1,48 +1,46 @@
 {
-  "name": "app",
+  "name": "client-v2",
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "lint": "vue-cli-service lint",
     "client:build": "vue-cli-service build",
     "client:server": "vue-cli-service serve",
+    "lint": "vue-cli-service lint",
+    "test:unit": "vue-cli-service test:unit",
     "vue:ui": "vue ui"
   },
   "main": "./src/main.js",
   "dependencies": {
-    "@fortawesome/fontawesome-free": "^5.15.3",
-    "@fortawesome/fontawesome-svg-core": "^1.2.35",
-    "@fortawesome/free-brands-svg-icons": "^5.15.3",
-    "@fortawesome/free-regular-svg-icons": "^5.15.3",
-    "@fortawesome/free-solid-svg-icons": "^5.15.3",
-    "@fortawesome/vue-fontawesome": "^0.1.10",
+    "@fortawesome/fontawesome-free": "^5.15.4",
+    "@fortawesome/fontawesome-svg-core": "^1.2.36",
+    "@fortawesome/free-brands-svg-icons": "^5.15.4",
+    "@fortawesome/free-regular-svg-icons": "^5.15.4",
+    "@fortawesome/free-solid-svg-icons": "^5.15.4",
+    "@popperjs/core": "^2.10.2",
     "axios": "^0.22.0",
     "bootstrap": "^5.1.2",
     "cookieconsent": "^3.1.1",
-    "core-js": "^3.18.2",
-    "jquery": "^3.6.0",
+    "core-js": "^3.6.5",
     "lodash": "^4.17.21",
-    "moment": "^2.29.1",
-    "popper.js": "^1.16.1",
-    "vue": "3.1"
+    "vue": "^3.0.0"
   },
   "devDependencies": {
-    "@vue/cli-plugin-babel": "^4.5.13",
-    "@vue/cli-plugin-eslint": "^4.5.13",
-    "@vue/cli-plugin-router": "^4.5.13",
-    "@vue/cli-plugin-unit-jest": "^4.5.13",
-    "@vue/cli-plugin-vuex": "^4.5.13",
-    "@vue/cli-service": "^4.5.13",
-    "@vue/compiler-sfc": "^3.2.19",
-    "@vue/eslint-config-prettier": "^6.0.0",
+    "@vue/cli-plugin-babel": "~4.5.0",
+    "@vue/cli-plugin-eslint": "~4.5.0",
+    "@vue/cli-plugin-unit-jest": "~4.5.0",
+    "@vue/cli-service": "~4.5.0",
+    "@vue/compiler-sfc": "^3.0.0",
+    "@vue/eslint-config-airbnb": "^5.0.2",
+    "@vue/test-utils": "^2.0.0-0",
     "babel-eslint": "^10.1.0",
     "css-loader": "^6.3.0",
-    "eslint": "^6.8.0",
-    "eslint-plugin-import": "^2.24.2",
-    "eslint-plugin-vue": "^7.19.0",
-    "sass": "^1.42.1",
-    "sass-loader": "^12.1.0",
-    "vue-template-compiler": "^2.6.14"
+    "eslint": "^6.7.2",
+    "eslint-plugin-import": "^2.20.2",
+    "eslint-plugin-vue": "^7.0.0",
+    "sass": "^1.26.5",
+    "sass-loader": "^8.0.2",
+    "typescript": "~3.9.3",
+    "vue-jest": "^5.0.0-0"
   },
   "eslintConfig": {
     "root": true,
@@ -51,8 +49,7 @@
     },
     "extends": [
       "plugin:vue/vue3-essential",
-      "eslint:recommended",
-      "@vue/prettier"
+      "@vue/airbnb"
     ],
     "parserOptions": {
       "parser": "babel-eslint"

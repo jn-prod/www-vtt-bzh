@@ -1,51 +1,52 @@
-<nav id="nav-top" class="py-4 navbar navbar-expand-lg">
+<nav id="nav-top" class="py-4 navbar navbar-expand-lg navbar-light">
 
-      <a href="{{ site.url }}" class="navbar-brand">
-      
-        <img src="{{ site.url }}/assets/images/logo.png" alt="{{ site.title }} - {{ site.headline }}" class="logo">
-        
-        <span class="h3 text-dark">VTT.bzh</span>
-        
-      </a>
-      
-      {% if page.layout != "landing" %}
-
-            <button class="navbar-toggler collapsed ml-auto" type="button" data-toggle="collapse" data-target="#mainMenu" aria-controls="mainMenu" aria-expanded="false" aria-label="Toggle navigation">
-                <i class="fas fa-bars text-dark float-right"></i>
-            </button>
-
-            <div class="navbar-collapse collapse " id="mainMenu">
-              <!-- Begin Menu -->
-              <ul class="navbar-nav ml-auto">
-
-                <li class="nav-item my-2">
-                  <a href="{{ site.url }}/calendrier.html" class="nav-link btn btn-outline-dark border-0 px-4 font-weight-bold rounded-pill">Randonnées</a>
-                </li> 
-
-                <li class="nav-item my-2">
-                  <a href="{{ site.url }}/videos/" class="nav-link btn btn-outline-dark border-0 px-4 font-weight-bold rounded-pill">Videos</a>
-                </li> 
-                    
-                <li class="nav-item my-2">
-                  <a href="{{ site.url }}/guides/" class="nav-link btn btn-outline-dark border-0 px-4 font-weight-bold rounded-pill">Guides</a>
-                </li> 
-
-                <li class="nav-item my-2">
-                  <a href="{{ site.url }}/blog/index.html" class="nav-link btn btn-outline-dark border-0 px-4 font-weight-bold rounded-pill">Articles</a>
-                </li> 
-
-                <!-- newsletter -->
-                <li class="nav-item my-2">
-                  <div class="d-inline-block">
-                    {% include plugins/newsletter.html text="" %}
-                  </div>
-                </li>  
-              </ul>
-              <!-- End Menu -->
-            </div>
-      
-      {% endif %}
-
-    <div id="mobile-menu"></div>
+  <div class="container-fluid">
+    <a href="{{ site.url }}" class="navbar-brand">
     
+      <img src="{{ site.url }}/assets/images/logo.png" alt="{{ site.title }} - {{ site.headline }}" class="d-inline-block align-text-center logo">
+      
+      <span class="h3 text-dark">VTT.bzh</span>
+      
+    </a>
+    
+    {% if page.layout != "landing" %}
+  
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainMenu" aria-controls="mainMenu" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+  
+      <div class="collapse navbar-collapse justify-content-end" id="mainMenu">
+        <!-- Begin Menu -->
+        <ul class="navbar-nav ml-auto">
+  
+          <li class="nav-item my-2">
+            <a href="{{ site.url }}/calendrier.html" class="btn btn-outline-dark border-0 px-4 fw-bold rounded-pill">Randonnées</a>
+          </li> 
+  
+          <li class="nav-item my-2">
+            <a href="{{ site.url }}/videos/" class="btn btn-outline-dark border-0 px-4 fw-bold rounded-pill">Videos</a>
+          </li> 
+              
+          <li class="nav-item my-2">
+            <a href="{{ site.url }}/guides/" class="btn btn-outline-dark border-0 px-4 fw-bold rounded-pill">Guides</a>
+          </li> 
+  
+          <li class="nav-item my-2">
+            <a href="{{ site.url }}/blog/index.html" class="btn btn-outline-dark border-0 px-4 fw-bold rounded-pill">Articles</a>
+          </li> 
+  
+          <!-- newsletter -->
+          <li class="nav-item my-2">
+            <div class="d-inline-block">
+              {% include plugins/newsletter.html text="" %}
+            </div>
+          </li>  
+        </ul>
+        <!-- End Menu -->
+      </div>
+      
+    {% endif %}
+
+  </div>
+
 </nav>
