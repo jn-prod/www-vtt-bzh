@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { dateFormat, dateNow } from '../utils/date';
+import { dateFormat, getPreviousDate } from '../utils/date';
 
 const setEventsCache = (events) => {
   const date = new Date();
@@ -48,7 +48,7 @@ const getEvents = async () => {
 
     return events.filter((val) => {
       if (!val || !val.date) return false;
-      return dateFormat(val.date) >= dateNow;
+      return dateFormat(val.date) >= getPreviousDate();
     }).sort((a, b) => dateFormat(a.date) - dateFormat(b.date));
   } catch (e) {
     console.error(e);

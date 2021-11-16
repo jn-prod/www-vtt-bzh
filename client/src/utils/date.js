@@ -1,53 +1,64 @@
-export const dateNow = new Date(Date.now());
+export const dateNow = new Date();
 
-export function dateFormat(date) {
+export const getPreviousDate = () => {
+  const date = new Date();
+  return new Date(date.setDate(date.getDate() - 1));
+};
+
+export const dateFormat = (date) => {
   const day = Number(date.split('/')[0]);
   const month = Number(date.split('/')[1]) - 1;
   const year = Number(date.split('/')[2]);
   return new Date(Date.UTC(year, month, day));
-}
+};
 
-export function getMonth(month) {
-  let res;
+export const getMonth = (month) => {
   if (month === 1) {
-    res = 'Jan.';
+    return 'Jan.';
   } if (month === 2) {
-    res = 'Fév.';
+    return 'Fév.';
   } if (month === 3) {
-    res = 'Mars';
+    return 'Mars';
   } if (month === 4) {
-    res = 'Avr.';
+    return 'Avr.';
   } if (month === 5) {
-    res = 'Mai.';
+    return 'Mai.';
   } if (month === 6) {
-    res = 'Juin.';
+    return 'Juin.';
   } if (month === 7) {
-    res = 'Juil.';
+    return 'Juil.';
   } if (month === 8) {
-    res = 'Aou.';
+    return 'Aou.';
   } if (month === 9) {
-    res = 'Sep.';
+    return 'Sep.';
   } if (month === 10) {
-    res = 'Oct.';
+    return 'Oct.';
   } if (month === 11) {
-    res = 'Nov.';
+    return 'Nov.';
   } if (month === 12) {
-    res = 'Déc.';
+    return 'Déc.';
   }
-  return res;
-}
+  return 'NC';
+};
 
-export function dateFormatToText(date) {
-  if (!date) return '';
+export const dateFormatToText = (date) => {
+  const defaultValue = '';
+  if (!date) return defaultValue;
 
-  const day = date.split('/')[0];
-  const month = getMonth(Number(date.split('/')[1]));
-  const year = date.split('/')[2];
+  const dateElements = date.split('/');
+
+  if (dateElements.length <= 1) {
+    return defaultValue;
+  }
+
+  const day = dateElements[0];
+  const month = getMonth(Number(dateElements[1]));
+  const year = dateElements[2] || new Date().getFullYear();
   return `${day} ${month} ${year}`;
-}
+};
 
-export function dateFormatToIsoString(date) {
+export const dateFormatToIsoString = (date) => {
   if (!date) return '';
 
   return dateFormat(date).toISOString();
-}
+};

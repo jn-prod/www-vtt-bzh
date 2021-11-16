@@ -14,7 +14,7 @@ import './assets/css/global.scss';
 // js
 import 'bootstrap';
 import '@fortawesome/fontawesome-free/js/all';
-import './utils/cookies';
+// import './utils/cookies';
 
 // Vue
 import { createApp } from 'vue';
