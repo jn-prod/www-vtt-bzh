@@ -64,14 +64,13 @@
 
 <script>
 import { computed, ref } from 'vue';
+import { cloneDeep } from 'lodash';
 
 import eventService from '@/services/event-service';
 
 // import components
 import EventCard from '@/components/EventCard.vue';
 import SearchForm from '@/components/SearchForm.vue';
-
-import { dateFormat } from '@/utils/date';
 
 export default {
   name: 'Calendar',
@@ -83,9 +82,13 @@ export default {
     const data = ref([]);
     const paginator = ref(20);
     const searchFormQuery = ref(null);
+    const projection = 'date.place.name.contact.price.canceled.departement.hour.organisateur.city';
+    const filter = { fromDate: `${new Date().toISOString().split('T')[0]}` };
+    const sort = { date: 1 };
+    const baseQuery = { projection, filter, sort };
 
     const getEvents = async () => {
-      data.value = await eventService.getEvents();
+      data.value = await eventService.getEvents(baseQuery);
     };
 
     getEvents();
@@ -103,23 +106,20 @@ export default {
 
       if (!dpt && !endDate && !startDate) return;
 
-      const cacheEvents = await eventService.getEvents();
+      const searchQuery = cloneDeep(baseQuery);
 
-      data.value = cacheEvents.filter((event) => {
-        const eventDate = dateFormat(event.date);
-        const dateFilter = (eventDate >= startDate) && (eventDate <= endDate);
-        const dptFilter = dpt === 'all' ? true
-          : Number(event.departement) === Number(dpt);
+      searchQuery.filter.fromDate = startDate;
+      searchQuery.filter.toDate = endDate;
+      searchQuery.filter.departement = dpt === 'all' ? undefined : dpt;
 
-        return dateFilter && dptFilter;
-      });
+      data.value = await eventService.getEvents(searchQuery);
     };
 
     const cancelSearchQuery = async ({ cancel }) => {
       if (!cancel) return;
 
       searchFormQuery.value = null;
-      data.value = await eventService.getEvents();
+      data.value = await eventService.getEvents(baseQuery);
     };
 
     const isLoadMoreActive = computed(() => (data.value || []).length > (paginator.value || 0));

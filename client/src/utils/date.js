@@ -41,19 +41,17 @@ export const getMonth = (month) => {
   return 'NC';
 };
 
-export const dateFormatToText = (date) => {
-  const defaultValue = '';
-  if (!date) return defaultValue;
+export const dateFormatToText = (date = '') => {
+  if (!date.length) return date;
 
-  const dateElements = date.split('/');
+  const dateToFormat = new Date(date);
+  const isInvalidDate = Number.isNaN(dateToFormat.getMonth());
+  if (isInvalidDate) return '';
 
-  if (dateElements.length <= 1) {
-    return defaultValue;
-  }
+  const day = dateToFormat.getDate();
+  const month = getMonth(dateToFormat.getMonth() + 1);
+  const year = dateToFormat.getFullYear();
 
-  const day = dateElements[0];
-  const month = getMonth(Number(dateElements[1]));
-  const year = dateElements[2] || new Date().getFullYear();
   return `${day} ${month} ${year}`;
 };
 

@@ -87,7 +87,7 @@
 <script>
 import { computed, ref } from 'vue';
 import { get as lGet } from 'lodash';
-import { dateFormatToIsoString, dateFormatToText } from '@/utils/date';
+import { dateFormatToText } from '@/utils/date';
 
 export default {
   name: 'EventCard',
@@ -99,7 +99,7 @@ export default {
       active.value = !active.value;
     };
 
-    const isoStringDate = computed(() => dateFormatToIsoString(lGet(props, 'event.date')));
+    const isoStringDate = computed(() => lGet(props, 'event.date'));
 
     const date = computed(() => dateFormatToText(lGet(props, 'event.date')));
 
