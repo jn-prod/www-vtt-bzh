@@ -6,15 +6,22 @@ export const queryParser = (query: string): any => {
     console.log('enable to parse query');
   }
 
-  if (parsedQuery.fromDate) {
+  if (parsedQuery.fromDate && !parsedQuery.toDate) {
     parsedQuery.date = { $gte: parsedQuery.fromDate };
     delete parsedQuery.fromDate;
   }
 
-  if (parsedQuery.toDate) {
+  if (parsedQuery.toDate && !parsedQuery.fromDate) {
     parsedQuery.date = { $lte: parsedQuery.toDate };
     delete parsedQuery.toDate;
   }
+
+
+  if (parsedQuery.fromDate && parsedQuery.toDate){
+    parsedQuery.date = { $lte: parsedQuery.toDate, $gte: parsedQuery.fromDate }
+    delete parsedQuery.fromDate;
+    delete parsedQuery.toDate;
+}
 
   return parsedQuery;
 };
