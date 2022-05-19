@@ -72,6 +72,8 @@ import eventService from '@/services/event-service';
 import EventCard from '@/components/EventCard.vue';
 import SearchForm from '@/components/SearchForm.vue';
 
+const getDate = (date) => date.toISOString().split('T')[0];
+
 export default {
   name: 'Calendar',
   components: {
@@ -83,7 +85,7 @@ export default {
     const paginator = ref(20);
     const searchFormQuery = ref(null);
     const projection = 'date.place.name.contact.price.canceled.departement.hour.organisateur.city';
-    const filter = { fromDate: `${new Date().toISOString().split('T')[0]}` };
+    const filter = { fromDate: `${getDate(new Date())}` };
     const sort = { date: 1 };
     const baseQuery = { projection, filter, sort };
 
@@ -108,8 +110,8 @@ export default {
 
       const searchQuery = cloneDeep(baseQuery);
 
-      searchQuery.filter.fromDate = startDate;
-      searchQuery.filter.toDate = endDate;
+      searchQuery.filter.fromDate = getDate(startDate);
+      searchQuery.filter.toDate = getDate(endDate);
       searchQuery.filter.departement = dpt === 'all' ? undefined : dpt;
 
       data.value = await eventService.getEvents(searchQuery);
