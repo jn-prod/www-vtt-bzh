@@ -84,7 +84,7 @@ export default {
     const data = ref([]);
     const paginator = ref(20);
     const searchFormQuery = ref(null);
-    const projection = 'date.place.name.contact.price.canceled.departement.hour.organisateur.city';
+    const projection = 'date.place.name.contact.price.canceled.departement.hour.organisateur.city.description';
     const filter = { fromDate: `${getDate(new Date())}` };
     const sort = { date: 1 };
     const baseQuery = { projection, filter, sort };
