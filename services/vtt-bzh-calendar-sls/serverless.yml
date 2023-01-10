@@ -1,0 +1,83 @@
+# For full config options, check the docs:
+#    docs.serverless.com
+app: api-vtt-bzh
+service: events
+
+# Create an optimized package for our functions
+package:
+  individually: true
+
+plugins:
+  - serverless-plugin-typescript
+  - serverless-esbuild
+  - serverless-dotenv-plugin
+  - serverless-offline
+
+provider:
+  name: aws
+  runtime: nodejs16.x
+  stage: ${opt:stage, 'dev'}
+  region: eu-west-3
+  timeout: 120
+
+custom:
+  stage: ${opt:stage, 'dev'}
+  serverless-offline:
+    httpPort: 3040
+    location: ../.esbuild/.build/
+  esbuild:
+    bundle: true
+    minify: false
+    packager: pnpm
+    watch:
+      pattern: ['src/**/*.ts'] # match only typescript files in src directory
+      ignore: ['temp/**/*']
+
+resources:
+  Outputs:
+    ApiUrl:
+      Description: "The API Gateway URL"
+      Value:
+        Fn::Join:
+          - ""
+          - - "https://"
+            - Ref: ApiGatewayRestApi
+            - ".execute-api.${self:provider.region}.amazonaws.com/${self:provider.stage}"
+
+functions:
+  healthcheck:
+    handler: src/index.healthcheck
+    description: Healthcheck to ensure the service is up
+    events:
+      - http:
+          path: healthcheck
+          method: get
+  events-cron:
+    handler: src/index.cron
+    description: cron to populate events from sources
+    events:
+      - schedule: rate(1 day)
+      - http:
+          path: events/cron
+          method: get
+  events-get:
+    handler: src/index.getEvents
+    description: GET events with filters
+    events:
+      - http:
+          path: events
+          method: get
+  events-get-by-id:
+    handler: src/index.getEventById
+    description: GET one event with filters
+    events:
+      - http:
+          path: events/{id}
+          method: get
+  events-post:
+    handler: src/index.postEvent
+    description: POST new events
+    events:
+      - http:
+          path: events
+          method: post

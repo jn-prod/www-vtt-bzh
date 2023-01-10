@@ -1,0 +1,10 @@
+{
+    "name": "eslint-config-client",
+    "version": "0.0.0",
+    "main": "./src/index.js",
+    "dependencies": {
+      "eslint": "latest",
+      "eslint-config-prettier": "latest",
+      "eslint-config-turbo": "latest"
+    }
+}
