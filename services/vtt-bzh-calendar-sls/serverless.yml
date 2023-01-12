@@ -8,7 +8,6 @@ package:
   individually: true
 
 plugins:
-  - serverless-plugin-typescript
   - serverless-esbuild
   - serverless-dotenv-plugin
   - serverless-offline
@@ -24,10 +23,10 @@ custom:
   stage: ${opt:stage, 'dev'}
   serverless-offline:
     httpPort: 3040
-    location: ../.esbuild/.build/
   esbuild:
     bundle: true
     minify: false
+    platform: node
     packager: pnpm
     watch:
       pattern: ['src/**/*.ts'] # match only typescript files in src directory

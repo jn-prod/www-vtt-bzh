@@ -7,7 +7,7 @@ export interface Config extends BaseConfig {
 
 const config: Config = {
   moduleName: 'calendar',
-  serviceName: 'calendarevent',
+  serviceName: 'calendarevent-sls',
   cronStartUri: process.env.CRON_START_URI as CronStartUri,
   mongoUrl: process.env.MONGO_URL as MongoUrl,
   admin: {
