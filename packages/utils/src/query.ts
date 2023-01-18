@@ -16,12 +16,12 @@ export const queryParser: IQueryParser = (query): Record<string, unknown> =>
   jsonParse(query).match({
     Ok: (parsedQuery: Record<string, unknown>) => {
       if (parsedQuery.fromDate) {
-        parsedQuery.date = { $gte: parsedQuery.fromDate };
+        parsedQuery.date = { $gte: new Date(parsedQuery.fromDate as string) };
         delete parsedQuery.fromDate;
       }
 
       if (parsedQuery.toDate) {
-        parsedQuery.date = { $lte: parsedQuery.toDate };
+        parsedQuery.date = { $lte: new Date(parsedQuery.toDate as string) };
         delete parsedQuery.toDate;
       }
 

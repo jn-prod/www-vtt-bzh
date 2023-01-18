@@ -13,6 +13,7 @@ jobs:
       AWS_SECRET_ACCESS_KEY: ${{secrets.AWS_SECRET_ACCESS_KEY}}
       MONGO_URL: ${{secrets.MONGO_URL}}
       CRON_START_URI: ${{secrets.CRON_START_URI}}
+      BASE_URL: ${{secrets.BASE_URL}}
       ADMIN_NAME: ${{secrets.ADMIN_NAME}}
       ADMIN_PASSWORD: ${{secrets.ADMIN_PASSWORD}}
     strategy:

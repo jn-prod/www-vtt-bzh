@@ -14,6 +14,7 @@ interface IHeaderOption {
   'Content-Type': 'application/json';
   'Access-Control-Allow-Origin'?: string;
   'Access-Control-Allow-Methods'?: Method;
+  'Access-Control-Allow-Credentials'?: boolean;
 }
 
 export interface IHandler {
@@ -24,7 +25,8 @@ export const formatResponse = <T>(statusCode: StatusCode, method: Method, payloa
   statusCode: statusCode,
   headers: {
     'Content-Type': 'application/json',
-    'Access-Control-Allow-Origin': '*',
+    'Access-Control-Allow-Origin': process.env.BASE_URL || '*',
+    'Access-Control-Allow-Credentials': true,
     'Access-Control-Allow-Methods': method,
   },
   body: JSON.stringify(payload),
