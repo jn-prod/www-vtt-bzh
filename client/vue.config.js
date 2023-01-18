@@ -5,9 +5,10 @@ module.exports = {
   filenameHashing: false,
   devServer: {
     proxy: {
-      '/prod/': {
+      '^/events': {
         target: baseUri,
         ws: true,
+        changeOrigin: true
       },
     },
   },
