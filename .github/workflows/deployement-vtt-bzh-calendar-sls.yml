@@ -36,12 +36,6 @@ jobs:
     # - name: Install serverless
     #   run: pnpm install -g serverless@3
 
-    - name: Install dependencies
-      run: pnpm install
-
-    - name: Move in /vtt-bzh-calendar-sls
-      run: cd services/vtt-bzh-calendar-sls
-
     - name: Deploy
       if: github.ref == 'refs/heads/main'
-      run: pnpx serverless deploy --verbose
+      run: cd services/vtt-bzh-calendar-sls && pnpx serverless deploy --verbose
