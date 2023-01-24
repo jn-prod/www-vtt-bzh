@@ -44,4 +44,4 @@ jobs:
 
     - name: Deploy
       if: github.ref == 'refs/heads/main'
-      run: serverless deploy --verbose
+      run: pnpx serverless deploy --verbose
