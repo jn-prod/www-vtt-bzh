@@ -1,0 +1,49 @@
+{
+  "name": "vtt-bzh-calendar-events-lamdbas",
+  "version": "0.0.0",
+  "main": "src/index.js",
+  "engines": {
+    "node": "16"
+  },
+  "dependencies": {
+    "@swan-io/boxed": "^0.11.1",
+    "axios": "latest",
+    "common": "workspace:*",
+    "linkedom": "0",
+    "mongodb": "latest",
+    "text-converter": "workspace:*",
+    "typescript": "^4.8.3",
+    "utils": "workspace:*"
+  },
+  "devDependencies": {
+    "@types/axios": "latest",
+    "@types/iconv-lite": "latest",
+    "@types/jest": "latest",
+    "esbuild": "0",
+    "esbuild-jest": "latest",
+    "eslint-config-lambda": "workspace:*",
+    "jest": "latest",
+    "prettier-custom": "workspace:*",
+    "serverless": "3",
+    "serverless-dotenv-plugin": "latest",
+    "serverless-esbuild": "1",
+    "serverless-offline": "12",
+    "ts-jest": "latest",
+    "tsconfig": "workspace:*"
+  },
+  "scripts": {
+    "test": "jest",
+    "dev": "export SLS_DEBUG=* && sls offline -s dev",
+    "remove": "sls remove",
+    "doco:up": "docker-compose up",
+    "doco:down": "docker-compose down",
+    "deploy:prod": "sls deploy --stage production",
+    "lint": "npm run lint:es && npm run lint:prettier",
+    "lint:fix": "npm run lint:es:fix && npm run lint:prettier:fix",
+    "lint:es": "eslint src/**/*.{ts,js}",
+    "lint:es:fix": "eslint src/**/*.{ts,js} --fix",
+    "lint:prettier": "prettier --check **/*.{ts,js,json}",
+    "lint:prettier:fix": "prettier --write **/*.{ts,js,json}",
+    "debug": "export SLS_DEBUG=* && sls offline -s dev"
+  }
+}
