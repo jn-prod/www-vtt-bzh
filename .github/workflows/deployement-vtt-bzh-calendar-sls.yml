@@ -38,4 +38,4 @@ jobs:
 
     - name: Deploy
       if: github.ref == 'refs/heads/main'
-      run: cd services/vtt-bzh-calendar-sls && pnpx serverless deploy --verbose
+      run: cd services/vtt-bzh-calendar-sls && touch .env && pnpx serverless deploy --verbose
