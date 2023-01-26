@@ -8,13 +8,6 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-20.04
-    env:
-      AWS_ACCESS_KEY_ID: ${{secrets.AWS_ACCESS_KEY_ID}}
-      AWS_SECRET_ACCESS_KEY: ${{secrets.AWS_SECRET_ACCESS_KEY}}
-      MONGO_URL: ${{secrets.MONGO_URL}}
-      CRON_START_URI: ${{secrets.CRON_START_URI}}
-      ADMIN_NAME: ${{secrets.ADMIN_NAME}}
-      ADMIN_PASSWORD: ${{secrets.ADMIN_PASSWORD}}
     strategy:
       matrix:
         node-version: [16]
@@ -32,15 +25,22 @@ jobs:
     - name: Install dependencies
       run: pnpm install
 
-    # - name: Install serverless
-    #   run: pnpm install -g serverless@3
+    - name: create env file
+      run: |
+        cd services/vtt-bzh-calendar-sls
+        touch .env
+        echo MONGO_URL=${{secrets.MONGO_URL}} >> .env
+        echo CRON_START_URI=${{secrets.CRON_START_URI}} >> .env
+        echo BASE_URL=${{secrets.BASE_URL}} >> .env
+        echo ADMIN_NAME=${{secrets.ADMIN_NAME}} >> .env
+        echo ADMIN_PASSWORD=${{secrets.ADMIN_PASSWORD}} >> .env
 
-    - name: Install dependencies
-      run: pnpm install
-
-    - name: Move in /vtt-bzh-calendar-sls
-      run: cd services/vtt-bzh-calendar-sls
-
-    - name: Deploy
+    - name: Deploy lambda
       if: github.ref == 'refs/heads/main'
-      run: serverless deploy --verbose
+      env:
+        AWS_ACCESS_KEY_ID: ${{secrets.AWS_ACCESS_KEY_ID}}
+        AWS_SECRET_ACCESS_KEY: ${{secrets.AWS_SECRET_ACCESS_KEY}}
+      uses: serverless/github-action@3
+      with:
+        args: -c "cd ./services/vtt-bzh-calendar-sls && serverless deploy"
+        entrypoint: /bin/sh
