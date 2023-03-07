@@ -78,8 +78,13 @@ export const updateOne = async <UpdateDto extends Document, T>(
     return Result.Error(new DbClientError());
   }
   try {
-    const { value } = await db.collection(collection).findOneAndUpdate({ ...filter }, { $set: resource }, { projection: {_id: 1} });
-    return Result.Ok(value as T | null);
+    const isLock = await db.collection(collection).findOne({ ...filter, lock: true }, { projection: {_id: 1} }) !== null;
+    if (!isLock) {
+      const { value } = await db.collection(collection).findOneAndUpdate({ ...filter }, { $set: resource }, { projection: {_id: 1} });
+      return Result.Ok(value as T | null);
+    } else {
+      return Result.Ok(null);
+    }
   } catch (err) {
     return Result.Error(err as Error);
   }
@@ -102,13 +107,11 @@ export const updateOrCreate = async <UpdateDto extends Document, T>(
   resource: UpdateDto
 ): Promise<Result<T| null, Error>> => (await updateOne<UpdateDto, T>(db, collection, { ...filter }, resource)).match({
     Ok: async updated => {
-      debugger;
       if (updated !== null) {
         return Result.Ok(updated as T);
       } else {
         return (await create<UpdateDto, T>(db, collection, resource)).match({
           Ok: inserted => {
-            debugger;
             return Result.Ok(inserted as T)
           },
           Error: (err: Error) =>  Result.Error(err as Error)

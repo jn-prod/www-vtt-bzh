@@ -24,7 +24,8 @@ export class CreateEventDto implements Document {
     public readonly description?: string,
     public readonly origin = 'form',
     public readonly kind?: Kind,
-    public readonly canceled?: boolean
+    public readonly canceled?: boolean,
+    public readonly lock = false
   ) {}
 }
 

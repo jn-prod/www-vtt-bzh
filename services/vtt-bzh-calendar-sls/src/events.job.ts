@@ -81,7 +81,6 @@ const canceled = (document: HTMLElement, selector: selector): boolean => {
 };
 
 const parseEvent = (
-  cronStartUri: CronStartUri,
   body: body,
   url: url
 ): CreateEventDto | null => {
@@ -143,7 +142,7 @@ export async function runner(
         const content = decode(data, 'latin1');
 
         // parse content
-        const event = parseEvent(config.cronStartUri, content, url);
+        const event = parseEvent(content, url);
   
         // if content we insert it in db
         if (event !== null) {

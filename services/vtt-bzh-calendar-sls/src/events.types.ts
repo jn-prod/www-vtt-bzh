@@ -19,4 +19,5 @@ export type CalendarEvent = {
   origin?: string;
   canceled?: boolean;
   active?: boolean;
+  lock: boolean;
 };
