@@ -1,6 +1,6 @@
 import { Result } from '@swan-io/boxed';
-import { Document, SortDirection, UpdateResult } from 'mongodb';
-import { queryParser, getProjection } from 'utils';
+import { Document, SortDirection } from 'mongodb';
+import { queryParser, getProjection, jsonParse } from 'utils';
 import { ServiceName } from './base.conf';
 import { DbClientError } from '../db/errors';
 import { DatabaseConnection } from '../db/client';
@@ -20,13 +20,19 @@ export const find = async <T>(
     return Result.Error(new DbClientError());
   }
   try {
+    const sortValue = jsonParse(sort).match({
+      Ok: (value) => value,
+      Error: () => ('')
+    })
+
     const res = (await db
       .collection(collection)
       .find(queryParser(filter), { projection: getProjection(projection) })
       .skip(skip)
       .limit(limit)
-      .sort(queryParser(sort) as unknown as [string, SortDirection])
+      .sort(sortValue as unknown as [string, SortDirection])
       .toArray());
+
     return Result.Ok(res as T[]);
   } catch (err) {
     return Result.Error(err as Error);

@@ -1,5 +1,10 @@
 import { jsonParse } from './json';
 
+type DateQueryType = undefined | {
+  $gte?: Date,
+  $lte?: Date
+}
+
 export interface IQueryPagination {
   filter?: string;
   limit?: number;
@@ -14,18 +19,27 @@ export interface IQueryParser {
 
 export const queryParser: IQueryParser = (query): Record<string, unknown> =>
   jsonParse(query).match({
-    Ok: (parsedQuery: Record<string, unknown>) => {
-      if (parsedQuery.fromDate) {
-        parsedQuery.date = { $gte: new Date(parsedQuery.fromDate as string) };
-        delete parsedQuery.fromDate;
+    Ok: (parsedQuery = {}) => {
+      if (typeof parsedQuery === 'object') {
+        const value: Record<string, unknown> = {...parsedQuery};
+  
+        let date: DateQueryType = {};
+        if (parsedQuery.fromDate) {
+          date = { ...date, $gte: new Date(parsedQuery.fromDate as string) };
+        }
+        
+        if (parsedQuery.toDate) {
+          date = { ...date, $lte: new Date(parsedQuery.toDate as string) };
+        }
+  
+        // clean value
+        delete value.fromDate;
+        delete value.toDate;
+  
+        return {...value, date};
+      } else {
+        return {}
       }
-
-      if (parsedQuery.toDate) {
-        parsedQuery.date = { $lte: new Date(parsedQuery.toDate as string) };
-        delete parsedQuery.toDate;
-      }
-
-      return parsedQuery;
     },
     Error: () => ({}),
   });
