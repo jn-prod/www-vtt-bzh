@@ -1,20 +1,29 @@
 {
-    "$schema": "https://turborepo.org/schema.json",
-    "pipeline": {
-      "build": {
-        "dependsOn": [
-          "^build"
-        ],
-        "outputs": [
-          "dist/**",
-          ".dist/**"
-        ]
-      },
-      "lint": {
-        "outputs": []
-      },
-      "dev": {
-        "cache": false
-      }
+  "$schema": "https://turborepo.org/schema.json",
+  "pipeline": {
+    "build": {
+      "dependsOn": ["^build"],
+      "outputs": ["dist/**", ".dist/**"]
+    },
+    "lint": {
+      "outputs": []
+    },
+    "dev": {
+      "cache": false
     }
-  }
+  },
+  "globalEnv": [
+    "CRON_START_URI",
+    "MONGO_URL",
+    "ADMIN_NAME",
+    "ADMIN_PASSWORD",
+    "JWT_KEY",
+    "WUFOO_USERNAME",
+    "WUFOO_PASSWORD",
+    "WUFOO_DOMAIN",
+    "WUFOO_FORM",
+    "BASE_URL",
+    "SERVICE_NAME",
+    "MODULE_NAME"
+  ]
+}

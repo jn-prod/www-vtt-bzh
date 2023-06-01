@@ -1,21 +1,22 @@
-import { connectToDatabase, getController, postController, formatResponse, IHandler } from 'common';
+import { connectToDatabase } from 'db-connector';
+import { getController, postController, formatResponse, IHandler } from 'base-lambda';
+import { CreateEventDto, isCreateEventDto, CalendarEvent } from 'calendar-events';
 import { runner } from './events.job';
-import { CreateEventDto, isCreateEventDto } from './events.dto';
-import config from './events.conf';
-import { CalendarEvent } from './events.types';
+import config from './config';
 
-export { healthcheck } from 'common';
+export { healthcheck } from 'base-lambda';
 
 export const getEvents: IHandler = (event) => getController<CalendarEvent>(config)(event);
 
-export const postEvent: IHandler = (event) => postController<CalendarEvent, CreateEventDto>(config, isCreateEventDto)(event);
+export const postEvent: IHandler = (event) =>
+  postController<CalendarEvent, CreateEventDto>(config, isCreateEventDto)(event);
 
 export const getEventById: IHandler = async (event) => {
   const id = event?.pathParameters?.id;
   if (!id) {
-    return await formatResponse(404, 'GET', { message: 'Not found' });
+    return await formatResponse(404, 'GET', { message: 'Not found' }, config.baseUrl);
   } else {
-    return await formatResponse(200, 'GET', { data: `event ${id}` });
+    return await formatResponse(200, 'GET', { data: `event ${id}` }, config.baseUrl);
   }
 };
 
@@ -25,11 +26,11 @@ export const cron: IHandler = async () =>
       const data = await runner(dbConnection, config);
       console.log('[cron] - succeed to get events');
 
-      const body = { data, kind: 'event', count: data?.length };
+      const body = { data, kind: 'event' };
 
-      return formatResponse(200, 'GET', body);
+      return formatResponse(200, 'GET', body, config.baseUrl);
     },
-    Error: async (err) => formatResponse(500, 'GET', { err }),
+    Error: async (err) => formatResponse(500, 'GET', { err }, config.baseUrl),
   });
 
 // @Public()

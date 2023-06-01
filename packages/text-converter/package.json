@@ -1,14 +1,13 @@
 {
-    "name": "text-converter",
-    "version": "0.0.0",
-    "main": "src/index.js",
-    "dependencies": {
-      "iconv-lite": "latest",
-      "typescript": "latest"
-    },
-    "devDependencies": {
-      "prettier-custom": "workspace:*",
-      "tsconfig": "workspace:*",
-      "eslint-config-lambda": "workspace:*"
+  "name": "text-converter",
+  "version": "0.0.0",
+  "main": "src/index.js",
+  "dependencies": {
+    "iconv-lite": "latest",
+    "typescript": "latest"
+  },
+  "devDependencies": {
+    "@types/iconv-lite": "latest",
+    "tsconfig": "workspace:*"
   }
 }

@@ -29,8 +29,8 @@ custom:
     platform: node
     packager: pnpm
     watch:
-      pattern: ['src/**/*.ts'] # match only typescript files in src directory
-      ignore: ['temp/**/*']
+      pattern: 'src/**/*.ts' # match only typescript files in src directory
+      ignore: 'temp/**/*'
 
 resources:
   Outputs:

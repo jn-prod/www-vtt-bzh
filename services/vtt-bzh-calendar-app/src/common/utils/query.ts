@@ -16,12 +16,11 @@ export const queryParser = (query: string): any => {
     delete parsedQuery.toDate;
   }
 
-
-  if (parsedQuery.fromDate && parsedQuery.toDate){
-    parsedQuery.date = { $lte: parsedQuery.toDate, $gte: parsedQuery.fromDate }
+  if (parsedQuery.fromDate && parsedQuery.toDate) {
+    parsedQuery.date = { $lte: parsedQuery.toDate, $gte: parsedQuery.fromDate };
     delete parsedQuery.fromDate;
     delete parsedQuery.toDate;
-}
+  }
 
   return parsedQuery;
 };
