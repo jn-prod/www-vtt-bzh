@@ -24,8 +24,7 @@
     "prod": "run-s build bundle-packages",
     "lint": "turbo lint",
     "lint:fix": "turbo lint:fix",
-    "clean-dist": "rm ./dist/package.json && rm ./dist/CHANGELOG.md",
-    "bundle-packages": "rm -rf ./dist && cp -R ./site/www/_site/ ./dist && cp -R ./packages/client/dist/assets/ ./dist/assets && pnpm clean-dist"
+    "bundle-packages": "rm -rf ./dist && cp -R ./site/www/_site/ ./dist"
   },
   "keywords": [],
   "dependencies": {

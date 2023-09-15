@@ -33,6 +33,8 @@ jobs:
       run: cd ./site/www && bundle install && cd ../..
     - name: Lint
       run: pnpm lint
+    - name: Test
+      run: pnpm test
     - name: Build
       run: pnpm prod
     - name: Deploy GitHub Pages
