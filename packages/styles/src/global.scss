@@ -1,0 +1,202 @@
+// project
+@import '@fortawesome/fontawesome-free/css/all.css';
+@import 'bootstrap/dist/css/bootstrap.css';
+@import './_colors.scss';
+@import './fonts';
+
+/*
+ * Globals
+ */
+
+/* Links */
+a,
+a:focus,
+a:hover {
+  color: $color-primary;
+}
+
+/* Custom Bootstrap */
+
+.nav{
+  padding: 15px;
+}
+
+.logo{
+  max-height: 50px;
+}
+
+.jumbotron{
+  background: none !important;
+  margin-top: 20%;
+}
+
+/*
+ * Base structure
+ */
+
+html, body {
+  height: 100%;
+  background-color: $color-white;
+}
+
+body {
+  color: $color-grey-dark;
+  font-family: "Lato" , sans-serif !important;
+  font-weight: 300 !important;
+  letter-spacing: normal !important;
+}
+
+h1, h2, h3, h4, h5, .h1, .h2, .h3, .h4, .h5 {
+  font-family: 'Roboto Condensed', sans-serif;
+}
+
+header {
+  h3{
+    color: $color-white;
+    font-weight: bold;
+  }
+}
+
+h3 img{
+  max-width: 90px;
+  width: auto;
+  margin: 0 15px 0 0;
+}
+
+footer {
+  padding: 40px 0 40px 0;
+  li{
+    font-size: 0.9em;
+  }
+  ul, li{
+    display: inline;
+  }
+}
+
+ul{
+  margin: 0 0 0 0 !important;
+  padding: 0 0 0 0 !important;
+}
+
+button, .event, #close{
+  cursor: pointer;
+}
+
+li {
+  list-style: none;
+}
+
+#header-wrapper{
+  box-shadow: inset 0 0 5rem rgba(0,0,0,.5);
+  background: url('./banner-min.jpg') no-repeat;
+  background-size: cover;
+  background-position: center;
+  padding: 20px;
+}
+
+.event:hover{
+  background-color: $color-grey-light;
+  cursor: pointer;
+}
+
+/*
+* Backgrounds
+*/
+.bg-light{
+  background: $color-grey-light;
+}
+
+.bg-orange{
+  background: $color-primary;
+}
+
+.bg-white {
+  background-color: $color-white !important;
+}
+
+/*
+* Text
+*/
+.text-secondary {
+  color: $color-secondary !important;
+}
+
+.text-primary{
+  color: $color-primary !important;
+  border-bottom: transparent .25rem solid;
+}
+
+.text-bold{
+  font-weight: bold;
+}
+
+
+/*
+* Buttons
+*/
+.btn-primary{
+  background-color: $color-primary !important;
+  border: $color-primary .25rem solid !important;
+  &:hover{
+    background-color: $color-secondary !important;
+    border: $color-secondary .25rem solid !important;
+  }
+}
+
+.btn-outline-primary{
+  border-color: $color-primary !important;
+  color: $color-primary;
+
+  &:hover{
+    border-color: $color-secondary !important;
+    color: $color-secondary;
+    background-color: $color-white;
+  }
+}
+
+.btn-secondary{
+  background-color: $color-secondary !important;
+  border-color: $color-secondary !important;
+  color: $color-white;
+  &:hover{
+    background-color: $color-primary !important;
+    border-color: $color-primary !important;
+    color: $color-white;
+  }
+}
+
+.btn-default,
+.btn-default:focus {
+  color: $color-grey-dark;
+  text-shadow: none;
+  background-color: $color-white;
+  border-color: $color-white;
+}
+
+.btn-default:hover{
+  color: $color-grey-dark;
+  text-shadow: none;
+  background-color: $color-primary;
+  border-color: $color-primary;
+}
+
+/*
+* images
+*/
+.maxthumb {
+  max-height:300px;
+  overflow:hidden;
+}
+
+/*
+ * Responsive
+ */
+
+ @media (min-width: 48em) {
+  .masthead-brand {
+    float: left;
+  }
+  .nav-masthead {
+    float: right;
+  }
+}

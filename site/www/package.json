@@ -1,0 +1,18 @@
+{
+  "name": "www",
+  "version": "1.0.0",
+  "description": "Breizh Mountain Bike Calendar",
+  "scripts": {
+    "dev": "bundle exec jekyll serve --livereload",
+    "build": "jekyll build",
+    "lint": "pnpm prettier",
+    "lint:prettier": "prettier --check **/*.{css,scss,html,mdx,json}",
+    "lint:prettier:fix": "prettier --write **/*.{css,scss,html,mdx,json}"
+  },
+  "dependencies": {
+    "calendar": "workspace:*"
+  },
+  "devDependencies": {
+    "cross-env": "^5.2.1"
+  }
+}

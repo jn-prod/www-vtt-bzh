@@ -1,0 +1,4 @@
+#!/usr/bin/env sh
+. "$(direname -- "$0")/_/husky.sh"
+
+pnpm test && pnpm lint-stagged
