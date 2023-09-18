@@ -17,11 +17,11 @@
     "prepare": "husky install",
     "dev": "turbo dev",
     "build": "turbo build",
+    "build:prod": "run-s build bundle-packages",
     "test": "turbo test",
     "change": "changeset",
     "release": "changeset version",
     "release:status": "changeset status",
-    "prod": "bundle-packages",
     "lint": "turbo lint",
     "lint:fix": "turbo lint:fix",
     "bundle-packages": "rm -rf ./dist && cp -R ./site/www/_site/ ./dist"
