@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="fr" ng-app="app">
+
+  <!-- Head
+  ================================================== -->
+  {% include /header/head.html %}
+
+  <body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-59S43HM"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    
+    <!-- Header
+    ================================================== -->
+    {% include /header/header.html %}
+
+    <main role="main">
+    
+      {% if page.url == "/calendrier.html" or page.url == "/calendar-v2.html" %}
+        <div class="container-fluid">
+          {{ content }}
+        </div>
+      {% else %}
+        <div class="container mt-5">
+          {{ content }}
+        </div>
+      {% endif %}
+
+    </main>
+
+    <!-- Footer
+    ================================================== -->
+    {% include /footer/footer.html %}
+
+  </body>
+  <script type="module" crossorigin src="{{ site.url }}/assets/calendar/index.js"></script>
+
+  <!-- mailerlite -->
+  <script src="https://static.mailerlite.com/js/w/webforms.min.js?vd890ed88b3a28c805acc70e1a88fa27c" type="text/javascript" async defer></script>
+  <script>
+    function ml_webform_success_1408622() {
+        var $ = ml_jQuery || jQuery;
+        $('#newsletter .row-success').show();
+        $('#newsletter .row-form').hide();
+      }
+  </script>
+
+  <!-- gumroad -->
+  <!-- <script src="https://gumroad.com/js/gumroad.js" async defer></script> -->
+
+  <!-- disqus -->
+  <script id="dsq-count-scr" src="//{{site.comments.disqus.shortname}}.disqus.com/count.js" async defer></script>
+</html>

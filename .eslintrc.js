@@ -4,9 +4,7 @@ module.exports = {
     es6: true,
   },
   extends: [
-    'plugin:vue/essential',
     'plugin:prettier/recommended',
-    'airbnb-base'
   ],
   globals: {
     Atomics: 'readonly',
@@ -17,7 +15,6 @@ module.exports = {
     sourceType: 'module',
   },
   plugins: [
-    'vue',
     'prettier'
   ],
   rules: {

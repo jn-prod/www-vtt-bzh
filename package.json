@@ -1,15 +1,7 @@
 {
-  "name": "www.vtt.bzh",
+  "name": "vtt-bzh",
   "version": "1.0.0",
-  "description": "Breizh Mountain Bike Calendar",
-  "main": "index.js",
-  "scripts": {
-    "server:dev": "bundle exec jekyll serve --livereload",
-    "client:dev": "rm -rf ./assets/dist && cd client && npm run client:server",
-    "client:build": "rm -rf ./assets/dist && cd client && npm run client:build && mv ./dist/ ../assets && rm -rf ../assets/dist/index.html",
-    "dev": "concurrently \"npm run server:dev\" \"npm run client:dev\"",
-    "vue:ui": "cd client && npm run vue:ui"
-  },
+  "description": "",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/jn-prod/www-vtt-bzh.git"
@@ -20,18 +12,40 @@
     "url": "https://github.com/jn-prod/www-vtt-bzh/issues"
   },
   "homepage": "https://github.com/jn-prod/www-vtt-bzh#readme",
-  "dependencies": {
-    "concurrently": "^5.3.0"
+  "scripts": {
+    "postinstall": "manypkg check",
+    "prepare": "husky install",
+    "dev": "turbo dev",
+    "build": "turbo build",
+    "test": "turbo test",
+    "change": "changeset",
+    "release": "changeset version",
+    "release:status": "changeset status",
+    "prod": "run-s build bundle-packages",
+    "lint": "turbo lint",
+    "lint:fix": "turbo lint:fix",
+    "bundle-packages": "rm -rf ./dist && cp -R ./site/www/_site/ ./dist"
   },
-  "devDependencies": {
-    "babel-eslint": "^10.1.0",
-    "cross-env": "^5.2.1",
-    "eslint": "^6.8.0",
-    "eslint-config-airbnb-base": "^14.2.1",
-    "eslint-config-prettier": "^6.15.0",
-    "eslint-plugin-import": "^2.22.1",
-    "eslint-plugin-prettier": "^3.3.1",
-    "eslint-plugin-vue": "^6.2.1",
-    "prettier": "^1.19.1"
+  "keywords": [],
+  "dependencies": {
+    "@changesets/cli": "^2.26.2",
+    "@manypkg/cli": "^0.21.0",
+    "eslint": "^8.49.0",
+    "eslint-config-prettier": "^9.0.0",
+    "eslint-plugin-prettier": "^5.0.0",
+    "husky": "^8.0.3",
+    "lint-staged": "^14.0.1",
+    "npm-run-all": "^4.1.5",
+    "prettier": "^3.0.3",
+    "turbo": "^1.10.13"
+  },
+  "manypkg": {
+    "ignoredRules": [
+      "INTERNAL_MISMATCH"
+    ]
+  },
+  "lint-staged": {
+    "*.{js,ts,tsx,vue}": "eslint --fix --ignore-path .gitignore",
+    "*.{json,yaml,yml,md,mdx}": "prettier --write"
   }
 }

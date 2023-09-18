@@ -1,0 +1,45 @@
+name: Build and deploy site to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [18]
+    steps:
+    - uses: actions/checkout@v3
+    - name: Use ruby
+      uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: '2.5'
+        bundler-cache: true
+    - name: Use pnpm
+      uses: pnpm/action-setup@v2
+      with:
+        version: 7
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v3
+      with:
+        node-version: ${{ matrix.node-version }}
+        cache: 'pnpm'
+    - name: Install node dependencies
+      run: pnpm install
+    - name: Install ruby dependencies
+      run: cd ./site/www && bundle install && cd ../..
+    - name: Lint
+      run: pnpm lint
+    - name: Test
+      run: pnpm test
+    - name: Build
+      run: pnpm prod
+    - name: Deploy GitHub Pages
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./dist
+        cname: www.vtt.bzh

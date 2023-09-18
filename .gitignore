@@ -1,9 +1,5 @@
-.bundle
-.cache
-.DS_Store
-.sass-cache
-_site
-.sass-cache
-.jekyll-metadata
-**/node_modules/**
-**/vendor/**
+node_modules
+.vscode
+.env
+dist
+.turbo

@@ -1,8 +1,5 @@
-## Launch serveur
+# vtt.bzh
 
-```
-bundle exec jekyll server
-```
+## Gettting started
 
-## Spider
-https://github.com/jn-prod/vttbzh_scraper
+- [documentation](./GETTING-STARTED.md)
