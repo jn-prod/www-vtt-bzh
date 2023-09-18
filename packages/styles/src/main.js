@@ -3,10 +3,10 @@ import './fonts/RobotoCondensed-Regular.ttf';
 import './fonts/RobotoCondensed-Bold.ttf';
 
 // image
-import './images/banner-min.jpg'
+import './images/banner-min.jpg';
 
 // style
-import './style.scss'
+import './style.scss';
 
 // js
 import 'bootstrap';
