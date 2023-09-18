@@ -31,12 +31,12 @@ jobs:
       run: pnpm install
     - name: Install ruby dependencies
       run: cd ./site/www && bundle install && cd ../..
-    # - name: Lint
-    #   run: pnpm lint
-    - name: Test
-      run: pnpm test
     - name: Build
       run: pnpm prod
+    - name: Lint
+      run: pnpm lint
+    - name: Test
+      run: pnpm test
     - name: Deploy GitHub Pages
       uses: peaceiris/actions-gh-pages@v3
       with:
