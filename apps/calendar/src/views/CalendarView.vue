@@ -1,11 +1,12 @@
 <template>
   <div>
-    <div class="row" id="header-wrapper">
+    <div id="header-wrapper" class="row">
       <div class="col-md-4 bg-white p-2 m-2 mx-md-5 px-md-5 rounded shadow">
         <section>
           <!-- value proposition        -->
           <h1 class="h3 text-left m2-5">
-            Rechercher une rando VTT à coté de chez toi n'aura jamais été aussi simple.
+            Rechercher une rando VTT à coté de chez toi n'aura jamais été aussi
+            simple.
           </h1>
 
           <!-- search form component -->
@@ -27,31 +28,29 @@
               <span id="nombre_rando" class="badge bg-success"></span>
             </div>
           </div>
-          <div class="row" v-if="isResults">
+          <div v-if="isResults" class="row">
             <div class="col-12">
               <div class="alert alert-danger">
-                Aucun résultat pour cette recherche, choisissez une autre date de début et de fin.
+                Aucun résultat pour cette recherche, choisissez une autre date
+                de début et de fin.
               </div>
             </div>
           </div>
 
           <div class="my-5">
             <!-- Load event -->
-            <event-card
-              v-for="event in events"
-              :key="event.id"
-              :event="event"
-            >
+            <event-card v-for="event in events" :key="event.id" :event="event">
             </event-card>
 
             <!-- load-more button -->
             <div class="row">
               <div class="col-12 text-center mt-3">
                 <button
-                  v-on:click.prevent="setPaginator()"
                   v-show="isLoadMoreActive"
-                  class="btn btn-secondary shadow mt-3 px-5 rounded-pill">
-                    Voir +
+                  class="btn btn-secondary shadow mt-3 px-5 rounded-pill"
+                  @click.prevent="setPaginator()"
+                >
+                  Voir +
                 </button>
               </div>
             </div>
@@ -75,7 +74,7 @@ import SearchForm from '@/components/SearchForm.vue';
 const getDate = (date) => date.toISOString().split('T')[0];
 
 export default {
-  name: 'Calendar',
+  name: 'CalendarView',
   components: {
     EventCard,
     SearchForm,
@@ -84,7 +83,8 @@ export default {
     const data = ref([]);
     const paginator = ref(20);
     const searchFormQuery = ref(null);
-    const projection = 'date.place.name.contact.price.canceled.departement.hour.organisateur.city.description';
+    const projection =
+      'date.place.name.contact.price.canceled.departement.hour.organisateur.city.description';
     const filter = { fromDate: `${getDate(new Date())}` };
     const sort = { date: 1 };
     const baseQuery = { projection, filter, sort };
@@ -124,7 +124,9 @@ export default {
       data.value = await eventService.getEvents(baseQuery);
     };
 
-    const isLoadMoreActive = computed(() => (data.value || []).length > (paginator.value || 0));
+    const isLoadMoreActive = computed(
+      () => (data.value || []).length > (paginator.value || 0),
+    );
 
     const events = computed(() => (data.value || []).slice(0, paginator.value));
 
@@ -140,5 +142,4 @@ export default {
     };
   },
 };
-
 </script>

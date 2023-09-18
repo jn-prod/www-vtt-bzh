@@ -6,11 +6,13 @@
     "dev": "pnpm pre-build && bundle exec jekyll serve --livereload",
     "build": "pnpm pre-build && jekyll build",
     "pre-build": "rm -rf ./assets/calendar && mkdir ./assets/calendar && cp -R ../../apps/calendar/dist/assets/calendar/. ./assets/calendar",
-    "lint": "pnpm prettier",
-    "lint:prettier": "prettier --check **/*.{css,scss,html,mdx,json}",
-    "lint:prettier:fix": "prettier --write **/*.{css,scss,html,mdx,json}"
+    "prettier": "prettier --check **/*.{css,scss,html,mdx,json}",
+    "prettier:fix": "prettier --write **/*.{css,scss,html,mdx,json}"
   },
   "dependencies": {
     "calendar": "workspace:*"
+  },
+  "devDependencies": {
+    "@shopify/prettier-plugin-liquid": "^1.2.3"
   }
 }

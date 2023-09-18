@@ -2,25 +2,21 @@
   <form id="search" @submit.prevent="submitSearch()">
     <div class="row">
       <div class="col-12 my-2">
-        <label for="start-date">
-          Debut
-        </label>
         <input-date
-          :name="'start-date'"
           :id="'start-date'"
+          :name="'start-date'"
           :value="dateRange.start"
+          label="Debut"
           @input-date="updateStartDate"
         >
         </input-date>
       </div>
       <div class="col-12 my-2">
-        <label for="end-date">
-          Fin
-        </label>
         <input-date
-          :name="'end-date'"
           :id="'end-date'"
+          :name="'end-date'"
           :value="dateRange.end"
+          label="Fin"
           @input-date="updateEndDate"
         >
         </input-date>
@@ -28,11 +24,18 @@
     </div>
     <div class="row">
       <div class="col-12 my-2">
-        <label for="departement">
-          Département
-        </label>
-        <select v-model="dpt" name="departement" id="departement" class="form-control">
-          <option v-for="option in options" v-bind:value="option.value" :key="option.value">
+        <label for="departement"> Département </label>
+        <select
+          id="departement"
+          v-model="dpt"
+          name="departement"
+          class="form-control"
+        >
+          <option
+            v-for="option in options"
+            :key="option.value"
+            :value="option.value"
+          >
             {{ option.text }}
           </option>
         </select>
@@ -42,15 +45,17 @@
       <div class="col-12 my-2">
         <div class="mx-auto">
           <button
+            id="search_button"
             type="submit"
             class="btn btn-secondary shadow m-2 rounded-pill"
-            id="search_button">
+          >
             <i class="fas fa-search"></i> Rechercher
           </button>
           <button
             href="#calendar"
-            v-on:click="deleteSearch"
-            class="btn btn-outline-dark rounded-pill shadow m-2">
+            class="btn btn-outline-dark rounded-pill shadow m-2"
+            @click="deleteSearch"
+          >
             <i class="far fa-trash-alt"></i> Réinitialiser
           </button>
         </div>
@@ -68,7 +73,11 @@ import departementslist from '../constants/departementslist';
 const dateNow = new Date(Date.now());
 const defaultQuery = {
   startDate: dateNow,
-  endDate: new Date(dateNow.getFullYear() + 1, dateNow.getMonth(), dateNow.getDate()),
+  endDate: new Date(
+    dateNow.getFullYear() + 1,
+    dateNow.getMonth(),
+    dateNow.getDate(),
+  ),
   dpt: 'all',
 };
 
@@ -90,11 +99,12 @@ export default {
 
     const dpt = ref(defaultQuery.dpt);
 
-    const submitSearch = () => emit('submit-search-form', {
-      dpt: dpt.value,
-      startDate: dateRange.value.start,
-      endDate: dateRange.value.end,
-    });
+    const submitSearch = () =>
+      emit('submit-search-form', {
+        dpt: dpt.value,
+        startDate: dateRange.value.start,
+        endDate: dateRange.value.end,
+      });
 
     const deleteSearch = () => {
       dateRange.value.start = cloneDeep(defaultQuery.startDate);

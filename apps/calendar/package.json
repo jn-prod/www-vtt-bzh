@@ -10,8 +10,8 @@
     "test": "vitest --run",
     "lint": "run-s lint:es lint:prettier",
     "lint:fix": "run-s lint:es:fix lint:prettier:fix",
-    "lint:es": "eslint src/**/*.{js,ts,tsx}",
-    "lint:es:fix": "eslint src/**/*.{js,ts,tsx} --fix",
+    "lint:es": "eslint src/**/*.{vue,js,ts,tsx}",
+    "lint:es:fix": "eslint src/**/*.{vue,js,ts,tsx} --fix",
     "lint:prettier": "prettier --check **/*.{css,scss,html,mdx,json}",
     "lint:prettier:fix": "prettier --write **/*.{css,scss,html,mdx,json}"
   },
