@@ -10,6 +10,7 @@ export default defineConfig(({command, mode}) => {
   return {
     plugins: [vue(), vueJsx()],
     minify: true,
+    base: 'https://vtt.bzh',
     server: {
       proxy: {
         '^/events': {
