@@ -99,10 +99,8 @@ importers:
 
   packages/dates:
     specifiers:
-      rollup: ^3.29.1
       vitest: ^0.34.4
     devDependencies:
-      rollup: 3.29.1
       vitest: 0.34.4
 
   packages/styles:
