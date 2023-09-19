@@ -1,20 +1,20 @@
 <script lang="tsx">
 // import pages
-import Calendar from '@/views/Calendar.vue';
+import CalendarView from '@/views/CalendarView.vue';
 
 export default {
   name: 'App',
   components: {
-    Calendar,
+    CalendarView,
   },
   render() {
     return (
       <div class="row">
         <div class="col-12">
-          <Calendar></Calendar>
+          <CalendarView></CalendarView>
         </div>
       </div>
-    )
-  }
+    );
+  },
 };
 </script>

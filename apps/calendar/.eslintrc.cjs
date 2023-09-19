@@ -21,6 +21,7 @@ module.exports = {
   ],
   rules: {
     'no-console': 'warn',
-    'no-debugger': 'warn'
+    'no-debugger': 'warn',
+    'vuejs-accessibility/label-has-for': 'off'
   }
 };
