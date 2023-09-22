@@ -1,18 +1,37 @@
 {
-  "name": "www",
+  "name": "www.vtt.bzh",
   "version": "1.0.0",
   "description": "Breizh Mountain Bike Calendar",
+  "main": "index.js",
   "scripts": {
-    "dev": "pnpm pre-build && bundle exec jekyll serve --livereload",
-    "build": "pnpm pre-build && jekyll build",
-    "pre-build": "rm -rf ./assets/calendar && mkdir ./assets/calendar && cp -R ../../apps/calendar/dist/assets/calendar/. ./assets/calendar",
-    "prettier": "prettier --check **/*.{css,scss,html,mdx,json}",
-    "prettier:fix": "prettier --write **/*.{css,scss,html,mdx,json}"
+    "server:dev": "bundle exec jekyll serve --livereload",
+    "client:dev": "rm -rf ./assets/dist && cd client && npm run client:server",
+    "client:build": "rm -rf ./assets/dist && cd client && npm run client:build && mv ./dist/ ../assets && rm -rf ../assets/dist/index.html",
+    "dev": "concurrently \"npm run server:dev\" \"npm run client:dev\"",
+    "vue:ui": "cd client && npm run vue:ui"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jn-prod/www-vtt-bzh.git"
+  },
+  "author": "nicolas jouanno",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jn-prod/www-vtt-bzh/issues"
+  },
+  "homepage": "https://github.com/jn-prod/www-vtt-bzh#readme",
   "dependencies": {
-    "calendar": "workspace:*"
+    "concurrently": "^5.3.0"
   },
   "devDependencies": {
-    "@shopify/prettier-plugin-liquid": "^1.2.3"
+    "babel-eslint": "^10.1.0",
+    "cross-env": "^5.2.1",
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-config-prettier": "^6.15.0",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-prettier": "^3.3.1",
+    "eslint-plugin-vue": "^6.2.1",
+    "prettier": "^1.19.1"
   }
 }

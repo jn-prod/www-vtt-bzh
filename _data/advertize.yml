@@ -1,0 +1,11 @@
+main:
+  url: "https://track.effiliation.com/servlet/effi.click?id_compteur=22466560"
+  title: "Wiggle"
+  active: false
+banner:
+  url: "https://track.effiliation.com/servlet/effi.click?id_compteur=22558013"
+  img: "https://track.effiliation.com/servlet/effi.show?id_compteur=22558013"
+  title: "ekoi"
+  active: false
+
+    

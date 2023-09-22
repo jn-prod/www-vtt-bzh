@@ -1,0 +1,21 @@
+<form  class="ml-block-form row-form" action="https://app.mailerlite.com/webforms/submit/b7y4q9" data-code="b7y4q9" method="post" target="_blank" id="newsletter-inline-form">
+  {% if include.text %}
+    <div class="d-inline-block fw-bold">
+      <label for="newsletter-email">{{ include.text }}</label>
+    </div>
+  {% endif %}
+  <div class="d-inline-block my-auto shadow rounded-pill ps-3">
+    <input type="email" id="newsletter-email" class="border-0" data-inputmask="" name="fields[email]" value="" placeholder="mon@email.ici">
+    <button type="submit" class="btn btn-sm btn-secondary rounded-pill fw-bold">M'abonner</button>
+  </div>
+  <!-- verification -->
+  <input type="hidden" name="ml-submit" value="1">
+  <button disabled="disabled" style="display: none;" type="button" class="loading">
+    <div class="ml-form-embedSubmitLoad"><div></div><div></div><div></div><div></div></div>
+  </button>
+</form>
+<div class="row-success alert alert-success d-none">
+  Merci de vous êtes inscrit au calendrier mensuel.
+</div>
+
+<img src="https://track.mailerlite.com/webforms/o/1408622/b7y4q9?vd890ed88b3a28c805acc70e1a88fa27c" width="1" height="1" style="max-width: 1px; max-height: 1px; visibility: hidden; padding: 0; margin: 0; display: block;" border="0" alt="mailerlite">

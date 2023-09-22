@@ -1,0 +1,117 @@
+<head>
+  <!-- seo -->
+  {% if page.title %}
+    <title>{{ page.title }} | {{ site.title }}</title>
+    <meta property="og:title" content="{{ page.title }} | {{ site.title }}" /> 
+  {% else %}
+    <title>{{ site.title }}</title>
+    <meta property="og:title" content="{{ site.title }}" /> 
+  {% endif %}
+
+  {% if page.description %}
+    <meta name="description" content="{{ page.description }}">
+  {% else %}
+    <meta name="description" content="{{ content | strip_html | truncatewords:19 }}">   
+  {% endif %}
+  
+  {% if page.keywords %}
+    <meta name="keywords" content="{{ page.keywords }}" />
+  {% else %}
+    <meta name="keywords" content="{{ site.keywords }}" />
+  {% endif %}
+
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="google-site-verification" content="p6n7BrHhMIgg3KX7bCmj6fzgSvSRwlppzRWJY4-d9IY" />
+
+  <meta name="robots" content="index, follow">
+  <meta name="referrer" content="always">
+  <meta name="theme-color" content="#000000">
+  {% if site.google_verification %}
+    <meta name="google-site-verification" content="{{ site.google_verification }}" />
+  {% endif %}
+  <link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.url }}">
+  <meta name="author" content="{{ site.data.authors.nicolas.display_name }}">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+  <!-- icon -->
+  <link rel="apple-touch-icon" href="{{ site.url }}/assets/images/logo.png">
+  <link rel="icon" href="{{ site.url }}/assets/images/favicon.ico">
+
+  <!-- opengraph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="{{ site.url }}{{ page.url }}" />
+  {% if page.image %}
+    <meta property="og:image" content="{{ site.url }}/{{ page.image }}" />
+  {% else %}
+    <meta property="og:image" content="{{ site.url }}/{{ site.main_image }}" />
+  {% endif %}
+  {% if post.excerpt %}
+    <meta property="og:description" content="{{ post.excerpt | strip_html | truncatewords:30 }} | {{site.title}}" />
+  {% else %}
+    <meta property="og:description" content="{{ content | strip_html | truncatewords:19 }} | {{site.title}}" />
+  {% endif %} 
+  
+  <meta property="og:locale" content="{{ site.local }}" />
+  <meta property="og:site_name" content="{{ site.title }}" />
+
+  <!-- twitter -->
+  <meta name="twitter:card" content="{{ site.url }}/{{ site.main_image }}" />
+  <meta name="twitter:site" content="@nicolasjouanno" />
+  <meta name="twitter:title" content="{{ site.title }}" />
+  <meta name="twitter:description" content="{{ site.description }}" />
+  <meta name="twitter:image" content="{{ site.url }}/{{ site.main_image }}" />  
+
+  <!-- Custom styles for this template -->
+  <link rel="stylesheet" href="{{ site.url }}/assets/dist/css/chunk-vendors.css">
+  <link rel="stylesheet" href="{{ site.url }}/assets/dist/css/app.css">
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-143610763-1"></script>
+
+  {% if site.url != "http://localhost:4000" %}
+    <!-- google analytics -->
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-143610763-1');
+    </script>
+  
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-59S43HM');</script>
+  {% endif %}
+    
+  <!-- Schema.org -->
+  <script type="application/ld+json">
+    {
+      "@context":"http://schema.org",
+      "@type":"Organization",
+      "name":"VTT.bzh",
+      "address":
+        {
+          "@type":"PostalAddress",
+          "streetAddress":"rue nationale",
+          "addressLocality":"Pontivy",
+          "addressRegion":"Bretagne","postalCode":"56300"
+        },
+      "aggregateRating":
+        {
+          "@type":"AggregateRating",
+          "ratingValue": 4.533,
+          "ratingCount": 30,
+          "bestRating": 5,
+          "worstRating": 0
+        }
+    }
+  </script>
+
+  <!-- app -->
+  <link href={{site.url}}/assets/dist/js/chunk-vendors.js rel=preload as=script>
+  <link href={{site.url}}/assets/dist/js/app.js rel=preload as=script>
+</head>
