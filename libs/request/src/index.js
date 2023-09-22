@@ -1,8 +1,7 @@
-import axios from 'axios';
-
-export const get = async (uri) => {
+export const get = async (baseURL, uri) => {
   try {
-    return axios.get(encodeURI(uri));
+    const res = await fetch(encodeURI(baseURL + uri));
+    return res.json()
   } catch (e) {
     return {};
   }

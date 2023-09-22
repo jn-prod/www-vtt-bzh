@@ -1,10 +1,12 @@
 import { get } from 'request';
 
+const baseURL = import.meta.env.VITE_APP_API_BASE;
 const entity = 'events';
 
 const getEvents = async ({ filter, projection, sort }) => {
   const { datas = [] } = await get(
-    `https://ftvt7d5clg.execute-api.eu-west-3.amazonaws.com/production/${entity}?filter=${JSON.stringify(
+    baseURL,
+    `/${entity}?filter=${JSON.stringify(
       filter,
     )}&projection=${projection}&sort=${JSON.stringify(sort)}`,
   );
