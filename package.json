@@ -13,7 +13,7 @@
   },
   "homepage": "https://github.com/jn-prod/www-vtt-bzh#readme",
   "scripts": {
-    "postinstall": "manypkg check",
+    "postinstall": "pnpm manypkg check",
     "prepare": "husky install",
     "dev": "turbo dev",
     "build": "turbo build",

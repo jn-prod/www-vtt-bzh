@@ -11,17 +11,7 @@ export default defineConfig(({ command, mode }) => {
     plugins: [vue(), vueJsx()],
     minify: true,
     base: '/',
-    server: {
-      proxy: {
-        '/events': {
-          // target: env.VITE_APP_API_BASE,
-          target:
-            'https://ftvt7d5clg.execute-api.eu-west-3.amazonaws.com/production',
-          changeOrigin: true,
-          secure: false,
-        },
-      },
-    },
+    // publicPath: process.env.NODE_ENV === 'production' ? '/assets/' : '/',
     resolve: {
       alias: {
         '@': fileURLToPath(new URL('src', import.meta.url)),
