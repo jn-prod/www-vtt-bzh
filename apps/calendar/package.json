@@ -24,6 +24,7 @@
     "core-js": "^3.6.5",
     "dates": "workspace:*",
     "lodash": "^4.17.21",
+    "mixpanel-browser": "^2.47.0",
     "request": "workspace:*",
     "styles": "workspace:*",
     "vue": "^3.x"

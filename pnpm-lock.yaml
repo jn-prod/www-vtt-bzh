@@ -53,6 +53,7 @@ importers:
       jest-serializer-vue-tjw: ^3.20.0
       jsdom: ^22.1.0
       lodash: ^4.17.21
+      mixpanel-browser: ^2.47.0
       prettier: ^3.0.3
       request: workspace:*
       sass: ^1.x
@@ -71,6 +72,7 @@ importers:
       core-js: 3.32.2
       dates: link:../../packages/dates
       lodash: 4.17.21
+      mixpanel-browser: 2.47.0
       request: link:../../libs/request
       styles: link:../../packages/styles
       vue: 3.3.4
@@ -3824,6 +3826,10 @@ packages:
   /mixme/0.5.9:
     resolution: {integrity: sha512-VC5fg6ySUscaWUpI4gxCBTQMH2RdUpNrk+MsbpCYtIvf9SBJdiUey4qE7BXviJsJR4nDQxCZ+3yaYNW3guz/Pw==}
     engines: {node: '>= 8.0.0'}
+    dev: false
+
+  /mixpanel-browser/2.47.0:
+    resolution: {integrity: sha512-Ldrva0fRBEIFWmEibBQO1PulfpJVF3pf28Guk09lDirDaSQqqU/xs9zQLwN2rL5VwVtsP1aD3JaCgaa98EjojQ==}
     dev: false
 
   /mlly/1.4.2:

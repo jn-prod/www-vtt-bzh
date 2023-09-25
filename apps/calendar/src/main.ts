@@ -2,6 +2,9 @@
 import 'styles/dist/index.css';
 import '@/styles/cookies.scss';
 
+// js
+import './utils/analytics';
+
 // Vue
 import 'styles';
 import { createApp } from 'vue';
