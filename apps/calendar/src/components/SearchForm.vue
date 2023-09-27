@@ -1,64 +1,58 @@
 <template>
   <form id="search" @submit.prevent="submitSearch()">
-    <div class="row">
-      <div class="col-12 my-2">
-        <input-date
-          :id="'start-date'"
-          :name="'start-date'"
-          :value="dateRange.start"
-          label="Debut"
-          @input-date="updateStartDate"
-        >
-        </input-date>
-      </div>
-      <div class="col-12 my-2">
-        <input-date
-          :id="'end-date'"
-          :name="'end-date'"
-          :value="dateRange.end"
-          label="Fin"
-          @input-date="updateEndDate"
-        >
-        </input-date>
-      </div>
+    <div class="my-2">
+      <input-date
+        :id="'start-date'"
+        :name="'start-date'"
+        :value="dateRange.start"
+        label="Debut"
+        @input-date="updateStartDate"
+      >
+      </input-date>
     </div>
-    <div class="row">
-      <div class="col-12 my-2">
-        <label for="departement"> Département </label>
-        <select
-          id="departement"
-          v-model="dpt"
-          name="departement"
-          class="form-control"
-        >
-          <option
-            v-for="option in options"
-            :key="option.value"
-            :value="option.value"
-          >
-            {{ option.text }}
-          </option>
-        </select>
-      </div>
+    <div class="my-2">
+      <input-date
+        :id="'end-date'"
+        :name="'end-date'"
+        :value="dateRange.end"
+        label="Fin"
+        @input-date="updateEndDate"
+      >
+      </input-date>
     </div>
-    <div class="row">
-      <div class="col-12 my-2">
-        <div class="mx-auto">
-          <button
-            id="search_button"
-            type="submit"
-            class="btn btn-secondary shadow m-2 rounded-pill"
-          >
-            <i class="fas fa-search"></i> Rechercher
-          </button>
-          <button
-            href="#calendar"
-            class="btn btn-outline-dark rounded-pill shadow m-2"
-            @click="deleteSearch"
-          >
-            <i class="far fa-trash-alt"></i> Réinitialiser
-          </button>
-        </div>
+    <div class="my-2">
+      <label for="departement"> Département </label>
+      <select
+        id="departement"
+        v-model="dpt"
+        name="departement"
+        class="form-control"
+      >
+        <option
+          v-for="option in options"
+          :key="option.value"
+          :value="option.value"
+        >
+          {{ option.text }}
+        </option>
+      </select>
+    </div>
+    <div class="my-2">
+      <div class="mx-auto">
+        <button
+          id="search_button"
+          type="submit"
+          class="btn btn-secondary shadow m-2 rounded-pill"
+        >
+          <i class="fas fa-search"></i> Rechercher
+        </button>
+        <button
+          href="#calendar"
+          class="btn btn-outline-dark rounded-pill shadow m-2"
+          @click="deleteSearch"
+        >
+          <i class="far fa-trash-alt"></i> Réinitialiser
+        </button>
       </div>
     </div>
   </form>

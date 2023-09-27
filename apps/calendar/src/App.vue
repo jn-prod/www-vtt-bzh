@@ -8,13 +8,7 @@ export default {
     CalendarView,
   },
   render() {
-    return (
-      <div class="row">
-        <div class="col-12">
-          <CalendarView></CalendarView>
-        </div>
-      </div>
-    );
+    return <CalendarView></CalendarView>;
   },
 };
 </script>

@@ -71,7 +71,7 @@ importers:
       core-js: 3.32.2
       dates: link:../../packages/dates
       lodash: 4.17.21
-      request: link:../../libs/request
+      request: link:../../packages/request
       styles: link:../../packages/styles
       vue: 3.3.4
     devDependencies:
@@ -99,9 +99,6 @@ importers:
       vitest: 0.34.4_jsdom@22.1.0+sass@1.67.0
       vue-tsc: 1.8.11_typescript@5.2.2
 
-  libs/request:
-    specifiers: {}
-
   packages/analytics:
     specifiers:
       cookieconsent: ^3.1.1
@@ -115,6 +112,9 @@ importers:
       vitest: ^0.34.4
     devDependencies:
       vitest: 0.34.4
+
+  packages/request:
+    specifiers: {}
 
   packages/styles:
     specifiers:

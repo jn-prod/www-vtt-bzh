@@ -1,64 +1,53 @@
 <template>
-  <div>
-    <div id="header-wrapper" class="row">
-      <div class="col-md-4 bg-white p-2 m-2 mx-md-5 px-md-5 rounded shadow">
-        <section>
-          <!-- value proposition        -->
-          <h1 class="h3 text-left m2-5">
-            Rechercher une rando VTT à coté de chez toi n'aura jamais été aussi
-            simple.
-          </h1>
+  <section class="container-fluid">
+    <header id="header-wrapper" class="row mb-5">
+      <section class="col-md-4 bg-white p-2 m-2 mx-md-5 px-md-5 rounded shadow">
+        <!-- value proposition        -->
+        <h1 class="h3 text-left m2-5">
+          Rechercher une rando VTT à coté de chez toi n'aura jamais été aussi
+          simple.
+        </h1>
 
-          <!-- search form component -->
-          <search-form
-            @submit-search-form="setSearchQuery"
-            @cancel-search-form="cancelSearchQuery"
-          ></search-form>
-        </section>
-      </div>
-    </div>
+        <!-- search form component -->
+        <search-form
+          @submit-search-form="setSearchQuery"
+          @cancel-search-form="cancelSearchQuery"
+        ></search-form>
+      </section>
+    </header>
 
     <!-- calendar component -->
-    <div class="row">
-      <div class="col-12">
-        <div class="container">
-          <div class="row">
-            <div class="col-12 mt-5 mb-3">
-              <h2 id="calendar">Calendrier des randonnées à venir</h2>
-              <span id="nombre_rando" class="badge bg-success"></span>
-            </div>
-          </div>
-          <div v-if="isResults" class="row">
-            <div class="col-12">
-              <div class="alert alert-danger">
-                Aucun résultat pour cette recherche, choisissez une autre date
-                de début et de fin.
-              </div>
-            </div>
-          </div>
+    <div class="mt-5 mx-5">
+      <h2 id="calendar" class="mb-5 text-center">
+        Calendrier des randonnées à venir
+        <span id="nombre_rando" class="badge bg-success">{{ count }}</span>
+      </h2>
+      <p v-if="isResults" class="alert alert-danger">
+        Aucun résultat pour cette recherche, choisissez une autre date de début
+        et de fin.
+      </p>
 
-          <div class="my-5">
-            <!-- Load event -->
-            <event-card v-for="event in events" :key="event.id" :event="event">
-            </event-card>
+      <!-- Load event -->
+      <event-card
+        v-for="event in events"
+        :key="event.id"
+        :event="event"
+        class="my-3"
+      >
+      </event-card>
 
-            <!-- load-more button -->
-            <div class="row">
-              <div class="col-12 text-center mt-3">
-                <button
-                  v-show="isLoadMoreActive"
-                  class="btn btn-secondary shadow mt-3 px-5 rounded-pill"
-                  @click.prevent="setPaginator()"
-                >
-                  Voir +
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
+      <!-- load-more button -->
+      <div class="text-center mt-3">
+        <button
+          v-show="isLoadMoreActive"
+          class="btn btn-secondary shadow mt-3 px-5 rounded-pill"
+          @click.prevent="setPaginator()"
+        >
+          Voir +
+        </button>
       </div>
     </div>
-  </div>
+  </section>
 </template>
 
 <script>
@@ -132,12 +121,15 @@ export default {
 
     const isResults = computed(() => data.value.length < 1);
 
+    const count = computed(() => data?.value.length || 0);
+
     return {
       setSearchQuery,
       cancelSearchQuery,
       setPaginator,
       isLoadMoreActive,
       events,
+      count,
       isResults,
     };
   },
