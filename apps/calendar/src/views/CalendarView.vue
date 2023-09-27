@@ -17,7 +17,7 @@
     </header>
 
     <!-- calendar component -->
-    <div class="mt-5 mx-5">
+    <div class="mt-5 mx-md-5">
       <h2 id="calendar" class="mb-5 text-center">
         Calendrier des randonnées à venir
         <span id="nombre_rando" class="badge bg-success">{{ count }}</span>

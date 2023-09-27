@@ -1,8 +1,11 @@
 <template>
   <article class="rounded border border-muted shadow">
-    <header class="p-2 d-flex">
+    <header class="p-2 d-md-flex">
       <h3 class="text-uppercase m-0">
-        <button class="btn btn-light text-bold" @click="toogleActive()">
+        <button
+          class="btn btn-light text-bold text-left"
+          @click="toogleActive()"
+        >
           <span v-if="active" class="my-auto me-2">
             <i class="fas fa-chevron-up" aria-hidden="true"></i>
           </span>
@@ -15,19 +18,17 @@
           >
         </button>
       </h3>
-      <div class="my-auto">
-        <span class="mx-3">
+      <div class="my-auto d-md-flex">
+        <div class="ms-3 ms-md-3">
           <i class="far fa-calendar" aria-hidden="true"></i>
-          <span class="ms-2">
-            <time itemprop="startDate" :datetime="isoStringDate">
-              {{ date }}
-            </time>
-          </span>
-        </span>
-        <span>
+          <time class="ms-2" itemprop="startDate" :datetime="isoStringDate">
+            {{ date }}
+          </time>
+        </div>
+        <div class="ms-3 ms-md-3">
           <i class="fa fa-map-marker-alt" aria-hidden="true"></i>
           <span class="ms-2"> {{ event.departement }} - {{ event.city }} </span>
-        </span>
+        </div>
       </div>
     </header>
     <div v-show="active" class="p-3 text-left">
@@ -91,3 +92,9 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+.text-left {
+  text-align: left;
+}
+</style>

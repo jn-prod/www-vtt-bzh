@@ -18,9 +18,7 @@
     <main role="main">
     
       {% if page.url == "/calendrier.html" or page.url == "/calendar-v2.html" %}
-        <div class="container-fluid">
-          {{ content }}
-        </div>
+        {{ content }}
       {% else %}
         <div class="container mt-5">
           {{ content }}
