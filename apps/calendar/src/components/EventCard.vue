@@ -3,11 +3,11 @@
     <header class="p-2 d-flex">
       <h3 class="text-uppercase m-0">
         <button class="btn btn-light text-bold" @click="toogleActive()">
-          <span v-show="active" class="my-auto me-3">
-            <i class="fas fa-chevron-circle-down" :aria-hidden="active"></i>
+          <span v-if="active" class="my-auto me-2">
+            <i class="fas fa-chevron-up" aria-hidden="true"></i>
           </span>
-          <span v-show="!active" class="my-auto me-3">
-            <i class="fas fa-chevron-circle-right" :aria-hidden="active"></i>
+          <span v-if="!active" class="my-auto me-2">
+            <i class="fas fa-chevron-down" aria-hidden="true"></i>
           </span>
           {{ event.name }}
           <span v-if="event.canceled" class="badge bg-danger ms-2 my-auto"
@@ -16,7 +16,7 @@
         </button>
       </h3>
       <div class="my-auto">
-        <span class="mx-3 text-muted">
+        <span class="mx-3">
           <i class="far fa-calendar" aria-hidden="true"></i>
           <span class="ms-2">
             <time itemprop="startDate" :datetime="isoStringDate">
@@ -24,7 +24,7 @@
             </time>
           </span>
         </span>
-        <span class="text-muted">
+        <span>
           <i class="fa fa-map-marker-alt" aria-hidden="true"></i>
           <span class="ms-2"> {{ event.departement }} - {{ event.city }} </span>
         </span>
