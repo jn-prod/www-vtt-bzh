@@ -1,13 +1,11 @@
-import axios from 'axios';
 import packageConfig, { Config } from './config';
+import { scrapper, type IScrapper } from 'scrapper';
 import { DatabaseConnection, connectToDatabase } from 'db-connector';
 import { put } from 'base-lambda';
 import { CreateEventDto, CalendarEvent, Kind } from 'calendar-events';
-
-const pageSize = 20;
 let config = packageConfig;
 
-const mappeur = (entrie: Record<string, string>): CreateEventDto => ({
+const mappeur = (entrie: unknown): CreateEventDto => ({
   // : entrie.DateCreated, //:'2021-05-18 09:08:30',
   updatedAt: entrie.DateUpdated.length > 0 ? new Date(entrie.DateUpdated) : undefined,
   origin: `form/${entrie.EntryId}`,
@@ -27,63 +25,51 @@ const mappeur = (entrie: Record<string, string>): CreateEventDto => ({
   lock: false,
 });
 
-const get = (url: string, params = {}) =>
-  axios.get(url, {
-    auth: { username: config.wufoo.username, password: config.wufoo.password },
-    ...params,
-  });
+const getEvents = async <T>(client: IScrapper, totalCount: number, events: T[] = []): Promise<T[]> => {
+  const pageSize = 20;
+  const eventsCount = events?.length || 0;
 
-const getEventsCount = async (): Promise<number> => {
-  try {
-    const { data } = await get(`${config.wufoo.domain}/api/v3/forms/${config.wufoo.form}/entries/count.json`);
-    return Number(data.EntryCount);
-  } catch (err) {
-    console.log(err);
-    return 0;
-  }
-};
-
-const getEvents = async (pageStart: number) => {
-  const { data } = await get(`${config.wufoo.domain}/api/v3/forms/${config.wufoo.form}/entries.json`, {
+  const newEvents = await client('/entries.json', {
     params: {
-      pageStart,
+      pageStart: eventsCount,
       pageSize,
     },
-  });
+  }, []);
 
-  return (data.Entries as Record<string, string>[]).map((entrie) => mappeur(entrie));
-};
-
-const addEvents = async (db: DatabaseConnection, eventsCount: number, counter = 0): Promise<void> => {
-  const events = await getEvents(counter);
-
-  for await (const event of events) {
-    (await put<CalendarEvent, CreateEventDto>(db, config.serviceName, { origin: event.origin }, event)).match({
-      Ok: (ok) => {
-        console.log(ok);
-      },
-      Error: (err) => {
-        console.log(err);
-      },
-    });
-  }
-  const currentCount = events.length + counter;
+  // update events
+  events = [...events, ...newEvents]
 
   // we recursurvely parse the next items
-  if (currentCount < eventsCount) return addEvents(db, eventsCount, currentCount);
-  else return;
-};
+  if ((events?.length || 0) + eventsCount < eventsCount) return getEvents<T>(client, totalCount, events);
+  else return events as T[];
+}
 
-export const runner = async (db: DatabaseConnection, externalConfig?: Config) => {
+export const runner = async <T>(db: DatabaseConnection, externalConfig?: Config): Promise<T[]> => {
   if (config) config = externalConfig as Config;
-  const eventsCount = await getEventsCount();
-  return addEvents(db, eventsCount);
+  const auth = { username: config.wufoo.username, password: config.wufoo.password }
+
+  const client = scrapper('API', `${config.wufoo.domain}/api/v3/forms/${config.wufoo.form}`);
+  const eventsCount = Number(await client('/entries/count.json', {auth}, 0));
+
+  const events = await getEvents<T>(client, eventsCount);
+
+  return events.map(mappeur) as T[];
 };
 
 export const run = async () =>
   (await connectToDatabase(packageConfig.mongoUrl, packageConfig.moduleName)).match({
     Ok: async (dbConnection) => {
-      await runner(dbConnection);
+      const events = await runner<CreateEventDto>(dbConnection);
+      for await (const event of events) {
+        (await put<CalendarEvent, CreateEventDto>(dbConnection, config.serviceName, { origin: event.origin }, event)).match({
+          Ok: (ok) => {
+            console.log(ok);
+          },
+          Error: (err) => {
+            console.log(err);
+          },
+        });
+      }
       console.log('[runner] - succeed to get events');
     },
     Error: async (err) => {

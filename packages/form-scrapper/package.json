@@ -11,11 +11,11 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "axios": "latest",
     "base-lambda": "workspace:*",
     "calendar-events": "workspace:*",
     "db-connector": "workspace:*",
     "dotenv": "^16.0.3",
+    "scrapper": "workspace:*",
     "utils": "workspace:*"
   },
   "devDependencies": {
