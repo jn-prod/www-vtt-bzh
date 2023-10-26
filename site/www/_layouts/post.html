@@ -1,0 +1,118 @@
+---
+layout: default
+disqus: true
+archive: false
+post_class: post-template
+---
+
+<!-- Begin Article
+================================================== -->
+
+{% assign author = site.data.authors[page.author] %}
+{% if page.ads %}
+    {% assign sponsor = site.data.ads[page.ads] %}
+{% else %}
+    {% assign sponsor = site.data.ads.default %}
+{% endif %}
+
+<div class="container">
+
+    <div class="row">
+
+        <div class="col-12 flex-first flex-md-unordered">
+            <!--Breadcrumb-->
+            <nav aria-label="breadcrumb">
+              <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{{ site.url }}">Home</a></li>
+                <li class="breadcrumb-item"><a href="{{ site.url }}/blog/index.html">Blog</a></li>
+                <li class="breadcrumb-item active" aria-current="page">{{ page.title }}</li>
+              </ol>
+            </nav>
+            
+            <!-- Post --> 
+            <article itemscope itemtype="http://schema.org/BlogPosting">                
+
+                <!-- ads-->
+                <div class="mt-5">
+                    {% include /components/ads/banner_728x90.html %}
+                </div>
+
+                <!-- Post heading -->
+                <h1 class="mt-5" itemprop="name headline">{{ page.title }}</h1>
+                <meta itemprop="url mainEntityOfPage" content="{{ site.url}}{{page.url }}">
+                <time class="" itemprop="dateCreated datePublished dateModified" datetime="{{ page.date | date:"%Y-%m-%d" }}"></time>
+
+                <!-- Author Box -->
+                {% if page.author %}
+
+                       {% include /boxes/author.html %}  
+
+                {% endif %}  
+                
+                <!-- Post Featured Image -->
+                {% if page.image %}
+
+                    <img itemprop="image thumbnailUrl" class="featured-image img-fluid mx-auto" src="{{ site.url }}/{{ page.image }}" alt="{{ page.title }}">
+
+                {% endif %}                
+
+                <!-- Post Content -->
+                <section class="text-left" itemprop="articleBody">
+
+                    <div class="article-post">
+                        
+                        <div class="row">
+
+                            <div class="col-md-8 mx-auto">
+                                
+                                {{content}}
+
+                                <!-- ads-->
+                                {% include /components/ads/banner_728x90.html %}
+
+                            </div>
+                            
+                        </div>
+
+                    </div>
+
+                </section>
+
+            </article>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- End Article
+================================================== -->
+
+<aside>
+
+    <div class="container">
+
+        <!-- Prev/Next -->
+        <div class="row justify-content-end mt-3">
+
+            <div class="col-md-9">
+
+                {% include /footer/nav.html %}
+
+            </div>  
+
+            <div class="col-1"></div> 
+
+        </div>
+
+        <!-- Comments -->
+        <div class="d-block">
+
+            {% include /plugins/commentaires.html %}
+
+        </div>
+
+    </div>
+
+</aside>

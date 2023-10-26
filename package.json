@@ -1,24 +1,54 @@
 {
-  "name": "nj-websites",
+  "name": "www-vtt-bzh",
   "author": "Nicolas Jouanno",
   "license": "MIT",
-  "devDependencies": {
-    "@types/node": "^18.7.18",
-    "eslint": "8.41.0",
+  "version": "1.0.0",
+  "description": "",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jn-prod/www-vtt-bzh.git"
+  },
+  "bugs": {
+    "url": "https://github.com/jn-prod/www-vtt-bzh/issues"
+  },
+  "homepage": "https://github.com/jn-prod/www-vtt-bzh#readme",
+  "private": true,
+  "scripts": {
+    "postinstall": "pnpm manypkg check",
+    "prepare": "husky install",
+    "dev": "turbo dev --parallel",
+    "build": "turbo build",
+    "build:prod": "run-s build bundle-packages",
+    "test": "turbo test",
+    "change": "changeset",
+    "release": "changeset version",
+    "release:status": "changeset status",
+    "lint": "turbo lint",
+    "lint:fix": "turbo lint:fix",
+    "bundle-packages": "rm -rf ./dist && cp -R ./site/www/_site/ ./dist"
+  },
+  "dependencies": {
+    "@changesets/cli": "^2.26.2",
+    "@manypkg/cli": "^0.21.0",
+    "@types/node": "^20.6.0",
+    "eslint": "^8.49.0",
     "eslint-config-custom": "workspace:*",
-    "prettier": "^2.5.1",
+    "eslint-config-prettier": "^9.0.0",
+    "eslint-plugin-prettier": "^5.0.0",
+    "husky": "^8.0.3",
+    "lint-staged": "^14.0.1",
+    "npm-run-all": "^4.1.5",
+    "prettier": "^3.0.3",
     "prettier-custom": "workspace:*",
     "turbo": "latest"
   },
-  "private": true,
-  "scripts": {
-    "build": "turbo run build",
-    "dev": "turbo run dev --parallel",
-    "lint": "npm run lint:es && npm run lint:prettier",
-    "lint:fix": "npm run lint:es:fix && npm run lint:prettier:fix",
-    "lint:es": "eslint **/*.{ts,js}",
-    "lint:es:fix": "eslint **/*.{ts,js} --fix",
-    "lint:prettier": "prettier --check **/*.{ts,js,json}",
-    "lint:prettier:fix": "prettier --write **/*.{ts,js,json}"
+  "manypkg": {
+    "ignoredRules": [
+      "INTERNAL_MISMATCH"
+    ]
+  },
+  "lint-staged": {
+    "*.{js,ts,tsx,vue}": "eslint --fix --ignore-path .gitignore",
+    "*.{json,yaml,yml,md,mdx}": "prettier --write"
   }
 }

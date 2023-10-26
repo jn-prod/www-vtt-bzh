@@ -3,13 +3,13 @@
   "pipeline": {
     "build": {
       "dependsOn": ["^build"],
-      "outputs": ["dist/**", ".dist/**"]
+      "outputs": ["dist/**", ".dist/**", "_site/**"]
     },
-    "lint": {
-      "outputs": []
-    },
-    "dev": {
-      "cache": false
+    "lint": {},
+    "lint:fix": {},
+    "test": {},
+    "deploy": {
+      "dependsOn": ["build"]
     }
   },
   "globalEnv": [
