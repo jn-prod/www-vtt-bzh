@@ -17,7 +17,7 @@
   },
   "devDependencies": {
     "@types/jest": "latest",
-    "esbuild": "0",
+    "esbuild": "0.16",
     "esbuild-jest": "latest",
     "jest": "latest",
     "serverless": "3",
