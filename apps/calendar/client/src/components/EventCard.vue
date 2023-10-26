@@ -2,10 +2,7 @@
   <article class="rounded border border-muted shadow">
     <header class="p-2 d-md-flex">
       <h3 class="text-uppercase m-0">
-        <button
-          class="btn btn-light text-bold text-left"
-          @click="toogleActive()"
-        >
+        <button class="btn btn-light text-bold text-left" @click="toogleActive()">
           <span v-if="active" class="my-auto me-2">
             <i class="fas fa-chevron-up" aria-hidden="true"></i>
           </span>
@@ -13,9 +10,7 @@
             <i class="fas fa-chevron-down" aria-hidden="true"></i>
           </span>
           {{ event.name }}
-          <span v-if="event.canceled" class="badge bg-danger ms-2 my-auto"
-            >Annulée</span
-          >
+          <span v-if="event.canceled" class="badge bg-danger ms-2 my-auto">Annulée</span>
         </button>
       </h3>
       <div class="my-auto d-md-flex">
@@ -32,28 +27,15 @@
       </div>
     </header>
     <div v-show="active" class="p-3 text-left">
-      <p v-if="event.description" class="m-2">
-        Description : {{ event.description }}
-      </p>
+      <p v-if="event.description" class="m-2">Description : {{ event.description }}</p>
       <ul class="list-none">
-        <li class="d-inline-block m-2">
-          Organisateur : {{ event.organisateur || 'NC' }}
-        </li>
+        <li class="d-inline-block m-2">Organisateur : {{ event.organisateur || 'NC' }}</li>
         <li class="d-inline-block m-2">Horaires : {{ event.hour || 'NC' }}</li>
-        <li class="d-inline-block m-2">
-          Lieu de rendez-vous : {{ event.place || 'NC' }}
-        </li>
-        <li class="d-inline-block m-2">
-          Contact : {{ event.contact || 'NC' }}
-        </li>
-        <li class="d-inline-block m-2">
-          Prix Club : {{ event.price || 'NC' }}
-        </li>
+        <li class="d-inline-block m-2">Lieu de rendez-vous : {{ event.place || 'NC' }}</li>
+        <li class="d-inline-block m-2">Contact : {{ event.contact || 'NC' }}</li>
+        <li class="d-inline-block m-2">Prix Club : {{ event.price || 'NC' }}</li>
       </ul>
-      <span
-        v-if="event.departement"
-        class="badge rounded-pill bg-secondary m-2"
-      >
+      <span v-if="event.departement" class="badge rounded-pill bg-secondary m-2">
         Département : {{ event.departement }}
       </span>
     </div>

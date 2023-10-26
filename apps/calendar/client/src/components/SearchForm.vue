@@ -11,46 +11,23 @@
       </input-date>
     </div>
     <div class="my-2">
-      <input-date
-        :id="'end-date'"
-        :name="'end-date'"
-        :value="dateRange.end"
-        label="Fin"
-        @input-date="updateEndDate"
-      >
+      <input-date :id="'end-date'" :name="'end-date'" :value="dateRange.end" label="Fin" @input-date="updateEndDate">
       </input-date>
     </div>
     <div class="my-2">
       <label for="departement"> Département </label>
-      <select
-        id="departement"
-        v-model="dpt"
-        name="departement"
-        class="form-control"
-      >
-        <option
-          v-for="option in options"
-          :key="option.value"
-          :value="option.value"
-        >
+      <select id="departement" v-model="dpt" name="departement" class="form-control">
+        <option v-for="option in options" :key="option.value" :value="option.value">
           {{ option.text }}
         </option>
       </select>
     </div>
     <div class="my-2">
       <div class="mx-auto">
-        <button
-          id="search_button"
-          type="submit"
-          class="btn btn-secondary shadow m-2 rounded-pill"
-        >
+        <button id="search_button" type="submit" class="btn btn-secondary shadow m-2 rounded-pill">
           <i class="fas fa-search"></i> Rechercher
         </button>
-        <button
-          href="#calendar"
-          class="btn btn-outline-dark rounded-pill shadow m-2"
-          @click="deleteSearch"
-        >
+        <button href="#calendar" class="btn btn-outline-dark rounded-pill shadow m-2" @click="deleteSearch">
           <i class="far fa-trash-alt"></i> Réinitialiser
         </button>
       </div>
@@ -67,11 +44,7 @@ import departementslist from '../constants/departementslist';
 const dateNow = new Date(Date.now());
 const defaultQuery = {
   startDate: dateNow,
-  endDate: new Date(
-    dateNow.getFullYear() + 1,
-    dateNow.getMonth(),
-    dateNow.getDate(),
-  ),
+  endDate: new Date(dateNow.getFullYear() + 1, dateNow.getMonth(), dateNow.getDate()),
   dpt: 'all',
 };
 

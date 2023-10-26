@@ -11,11 +11,7 @@ export default {
     return this.ads.banner.active ? (
       <div class="text-center my-3">
         <a href={this.ads.banner.url} target="_blank">
-          <img
-            src={this.ads.banner.img}
-            alt={`publicité: ${this.ads.banner.title}`}
-            class="img-fluid"
-          />
+          <img src={this.ads.banner.img} alt={`publicité: ${this.ads.banner.title}`} class="img-fluid" />
         </a>
       </div>
     ) : (

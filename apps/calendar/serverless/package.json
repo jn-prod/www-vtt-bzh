@@ -28,7 +28,7 @@
     "tsconfig": "workspace:*"
   },
   "scripts": {
-    "test": "jest",
+    "-test": "jest",
     "dev": "export SLS_DEBUG=* && sls offline -s dev",
     "remove": "sls remove",
     "doco:up": "docker-compose up",

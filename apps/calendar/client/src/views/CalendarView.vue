@@ -3,16 +3,10 @@
     <header id="header-wrapper" class="row mb-5">
       <section class="col-md-4 bg-white p-2 m-2 mx-md-5 px-md-5 rounded shadow">
         <!-- value proposition        -->
-        <h1 class="h3 text-left m2-5">
-          Rechercher une rando VTT à coté de chez toi n'aura jamais été aussi
-          simple.
-        </h1>
+        <h1 class="h3 text-left m2-5">Rechercher une rando VTT à coté de chez toi n'aura jamais été aussi simple.</h1>
 
         <!-- search form component -->
-        <search-form
-          @submit-search-form="setSearchQuery"
-          @cancel-search-form="cancelSearchQuery"
-        ></search-form>
+        <search-form @submit-search-form="setSearchQuery" @cancel-search-form="cancelSearchQuery"></search-form>
       </section>
     </header>
 
@@ -23,18 +17,11 @@
         <span id="nombre_rando" class="badge bg-success">{{ count }}</span>
       </h2>
       <p v-if="isResults" class="alert alert-danger">
-        Aucun résultat pour cette recherche, choisissez une autre date de début
-        et de fin.
+        Aucun résultat pour cette recherche, choisissez une autre date de début et de fin.
       </p>
 
       <!-- Load event -->
-      <event-card
-        v-for="event in events"
-        :key="event.id"
-        :event="event"
-        class="my-3"
-      >
-      </event-card>
+      <event-card v-for="event in events" :key="event.id" :event="event" class="my-3"> </event-card>
 
       <!-- load-more button -->
       <div class="text-center mt-3">
@@ -72,8 +59,7 @@ export default {
     const data = ref([]);
     const paginator = ref(20);
     const searchFormQuery = ref(null);
-    const projection =
-      'date.place.name.contact.price.canceled.departement.hour.organisateur.city.description';
+    const projection = 'date.place.name.contact.price.canceled.departement.hour.organisateur.city.description';
     const filter = { fromDate: `${getDate(new Date())}` };
     const sort = { date: 1 };
     const baseQuery = { projection, filter, sort };
@@ -113,9 +99,7 @@ export default {
       data.value = await eventService.getEvents(baseQuery);
     };
 
-    const isLoadMoreActive = computed(
-      () => (data.value || []).length > (paginator.value || 0),
-    );
+    const isLoadMoreActive = computed(() => (data.value || []).length > (paginator.value || 0));
 
     const events = computed(() => (data.value || []).slice(0, paginator.value));
 

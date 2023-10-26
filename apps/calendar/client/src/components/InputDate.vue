@@ -39,10 +39,7 @@ export default {
 
     // alternative implementations in https://stackoverflow.com/q/23593052/1850609
     const dateToYYYYMMDD = (d) =>
-      d &&
-      new Date(d.getTime() - d.getTimezoneOffset() * 60 * 1000)
-        .toISOString()
-        .split('T')[0];
+      d && new Date(d.getTime() - d.getTimezoneOffset() * 60 * 1000).toISOString().split('T')[0];
 
     const updateValue = (target) => emit('input-date', target.valueAsDate);
 

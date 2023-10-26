@@ -6,9 +6,7 @@ const entity = 'events';
 const getEvents = async ({ filter, projection, sort }) => {
   const { datas = [] } = await get(
     baseURL,
-    `/${entity}?filter=${JSON.stringify(
-      filter,
-    )}&projection=${projection}&sort=${JSON.stringify(sort)}`,
+    `/${entity}?filter=${JSON.stringify(filter)}&projection=${projection}&sort=${JSON.stringify(sort)}`
   );
 
   return datas;

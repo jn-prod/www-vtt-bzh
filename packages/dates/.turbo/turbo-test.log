@@ -1,32 +1,14 @@
 
 > dates@1.0.0 test /home/nicolas/Sites/www-vtt-bzh/packages/dates
-> vitest
+> vitest --run
 
 
- DEV  v0.34.4 /home/nicolas/Sites/www-vtt-bzh/packages/dates
+ RUN  v0.34.6 /home/nicolas/Sites/www-vtt-bzh/packages/dates
 
- ✓ src/index.spec.js  (8 tests) 13ms
-
- Test Files  1 passed (1)
-      Tests  8 passed (8)
-   Start at  13:08:55
-   Duration  919ms (transform 80ms, setup 0ms, collect 57ms, tests 13ms, environment 0ms, prepare 244ms)
-
-
- PASS  Waiting for file changes...
-       press h to show help, press q to quit
-[3Jc
- RERUN  package.json x1
-
- ✓ src/index.spec.js  (8 tests) 34ms
+ ✓ src/index.spec.js  (8 tests) 17ms
 
  Test Files  1 passed (1)
       Tests  8 passed (8)
-   Start at  13:12:41
-   Duration  82ms
+   Start at  13:35:00
+   Duration  1.41s (transform 133ms, setup 0ms, collect 121ms, tests 17ms, environment 0ms, prepare 450ms)
 
-
- PASS  Waiting for file changes...
-       press h to show help, press q to quit
-       rerun x1
-[2K[1A[2K[G
