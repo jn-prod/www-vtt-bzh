@@ -28,7 +28,7 @@ jobs:
 
     - name: create env file
       run: |
-        cd app/calendar/serverless
+        cd apps/calendar/serverless
         touch .env
         echo MONGO_URL=${{secrets.MONGO_URL}} >> .env
         echo CRON_START_URI=${{secrets.CRON_START_URI}} >> .env
@@ -43,5 +43,5 @@ jobs:
         AWS_SECRET_ACCESS_KEY: ${{secrets.AWS_SECRET_ACCESS_KEY}}
       uses: serverless/github-action@v3.1
       with:
-        args: -c "cd ./app/calendar/serverless && serverless deploy --stage production"
+        args: -c "cd ./apps/calendar/serverless && serverless deploy --stage production"
         entrypoint: /bin/sh
