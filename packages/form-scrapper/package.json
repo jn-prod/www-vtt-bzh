@@ -11,7 +11,7 @@
   "license": "ISC",
   "dependencies": {
     "base-lambda": "workspace:*",
-    "calendar-events": "workspace:*",
+    "calendar-shared": "workspace:*",
     "db-connector": "workspace:*",
     "dotenv": "^16.0.3",
     "scrapper": "workspace:*",

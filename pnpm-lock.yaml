@@ -203,7 +203,7 @@ importers:
       '@swan-io/boxed': ^0.11.1
       '@types/jest': latest
       base-lambda: workspace:*
-      calendar-events: workspace:*
+      calendar-shared: workspace:*
       db-connector: workspace:*
       esbuild: '0.16'
       esbuild-jest: latest
@@ -221,7 +221,7 @@ importers:
     dependencies:
       '@swan-io/boxed': 0.11.1
       base-lambda: link:../../../packages/base-lambda
-      calendar-events: link:../../../packages/calendar-events
+      calendar-shared: link:../shared
       db-connector: link:../../../packages/db-connector
       form-scrapper: link:../../../packages/form-scrapper
       typescript: 4.8.4
@@ -238,6 +238,17 @@ importers:
       serverless-offline: 12.0.4_serverless@3.26.0
       ts-jest: 29.1.1_fl62derdlbbrksfmsghb7ybdoi
       tsconfig: link:../../../configs/tsconfig
+
+  apps/calendar/shared:
+    specifiers:
+      db-connector: workspace:*
+      tsconfig: workspace:*
+      typescript: ^4.8.3
+    dependencies:
+      db-connector: link:../../../packages/db-connector
+    devDependencies:
+      tsconfig: link:../../../configs/tsconfig
+      typescript: 4.8.4
 
   configs/base-config:
     specifiers:
@@ -308,17 +319,6 @@ importers:
       tsconfig: link:../../configs/tsconfig
       typescript: 4.8.4
 
-  packages/calendar-events:
-    specifiers:
-      db-connector: workspace:*
-      tsconfig: workspace:*
-      typescript: ^4.8.3
-    dependencies:
-      db-connector: link:../db-connector
-    devDependencies:
-      tsconfig: link:../../configs/tsconfig
-      typescript: 4.8.4
-
   packages/dates:
     specifiers:
       vitest: ^0.34.4
@@ -345,7 +345,7 @@ importers:
       '@types/axios': latest
       base-config: workspace:*
       base-lambda: workspace:*
-      calendar-events: workspace:*
+      calendar-shared: workspace:*
       db-connector: workspace:*
       dotenv: ^16.0.3
       scrapper: workspace:*
@@ -354,7 +354,7 @@ importers:
       utils: workspace:*
     dependencies:
       base-lambda: link:../base-lambda
-      calendar-events: link:../calendar-events
+      calendar-shared: link:../../apps/calendar/shared
       db-connector: link:../db-connector
       dotenv: 16.0.3
       scrapper: link:../scrapper
@@ -422,7 +422,7 @@ importers:
       axios: latest
       base-config: workspace:*
       base-lambda: workspace:*
-      calendar-events: workspace:*
+      calendar-shared: workspace:*
       db-connector: workspace:*
       linkedom: '0'
       text-converter: workspace:*
@@ -432,7 +432,7 @@ importers:
     dependencies:
       axios: 1.5.1
       base-lambda: link:../base-lambda
-      calendar-events: link:../calendar-events
+      calendar-shared: link:../../apps/calendar/shared
       db-connector: link:../db-connector
       linkedom: 0.14.16
       text-converter: link:../text-converter

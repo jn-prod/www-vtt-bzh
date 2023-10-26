@@ -3,7 +3,7 @@ import { parseHTML } from 'linkedom';
 import { decode } from 'text-converter';
 import { put } from 'base-lambda';
 import { DatePattern, getDateFromPattern } from 'utils';
-import { CalendarEvent, Kind, CreateEventDto } from 'calendar-events';
+import { CalendarEvent, Kind, CreateEventDto } from 'calendar-shared';
 import { DatabaseConnection } from 'db-connector';
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const assert = require('assert').strict;

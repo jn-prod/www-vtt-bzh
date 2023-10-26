@@ -8,7 +8,7 @@
   "dependencies": {
     "@swan-io/boxed": "^0.11.1",
     "base-lambda": "workspace:*",
-    "calendar-events": "workspace:*",
+    "calendar-shared": "workspace:*",
     "db-connector": "workspace:*",
     "form-scrapper": "workspace:*",
     "typescript": "^4.8.3",

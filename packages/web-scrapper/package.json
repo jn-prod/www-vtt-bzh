@@ -9,7 +9,7 @@
   "dependencies": {
     "axios": "latest",
     "base-lambda": "workspace:*",
-    "calendar-events": "workspace:*",
+    "calendar-shared": "workspace:*",
     "db-connector": "workspace:*",
     "linkedom": "0",
     "text-converter": "workspace:*",

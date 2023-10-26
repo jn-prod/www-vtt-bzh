@@ -2,7 +2,7 @@ import packageConfig, { Config } from './config';
 import { scrapper, type IScrapper } from 'scrapper';
 import { DatabaseConnection, connectToDatabase } from 'db-connector';
 import { put } from 'base-lambda';
-import { CreateEventDto, CalendarEvent, Kind } from 'calendar-events';
+import { CreateEventDto, CalendarEvent, Kind } from 'calendar-shared';
 let config = packageConfig;
 
 const mappeur = (entrie: unknown): CreateEventDto => ({
