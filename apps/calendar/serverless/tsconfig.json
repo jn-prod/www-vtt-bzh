@@ -1,0 +1,4 @@
+{
+  "extends": "tsconfig/lambdas.json",
+  "include": ["src/**/*.ts"]
+}

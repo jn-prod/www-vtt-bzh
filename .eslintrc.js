@@ -1,11 +1,10 @@
 module.exports = {
+  extends: ['custom', 'plugin:prettier/recommended'],
   env: {
+    node: true,
     browser: true,
     es6: true,
   },
-  extends: [
-    'plugin:prettier/recommended',
-  ],
   globals: {
     Atomics: 'readonly',
     SharedArrayBuffer: 'readonly',
@@ -14,10 +13,8 @@ module.exports = {
     ecmaVersion: 2018,
     sourceType: 'module',
   },
-  plugins: [
-    'prettier'
-  ],
+  plugins: ['prettier'],
   rules: {
-    'prettier/prettier': 'error'
+    'prettier/prettier': 'error',
   },
 };

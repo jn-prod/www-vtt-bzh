@@ -1,0 +1,15 @@
+{
+  "name": "db-connector",
+  "version": "1.0.0",
+  "main": "./src/index.ts",
+  "types": "./src/index.ts",
+  "dependencies": {
+    "@swan-io/boxed": "latest",
+    "mongodb": "latest",
+    "utils": "workspace:*"
+  },
+  "devDependencies": {
+    "tsconfig": "workspace:*",
+    "typescript": "^4.8.3"
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "name": "text-converter",
+  "version": "0.0.0",
+  "main": "src/index.ts",
+  "dependencies": {
+    "iconv-lite": "latest",
+    "typescript": "latest"
+  },
+  "devDependencies": {
+    "@types/iconv-lite": "latest",
+    "tsconfig": "workspace:*"
+  }
+}

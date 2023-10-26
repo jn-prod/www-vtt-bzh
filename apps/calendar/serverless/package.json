@@ -1,0 +1,39 @@
+{
+  "name": "app-calendar-serverless",
+  "version": "0.0.0",
+  "main": "src/index.js",
+  "engines": {
+    "node": "16"
+  },
+  "dependencies": {
+    "@swan-io/boxed": "^0.11.1",
+    "base-lambda": "workspace:*",
+    "calendar-events": "workspace:*",
+    "db-connector": "workspace:*",
+    "form-scrapper": "workspace:*",
+    "typescript": "^4.8.3",
+    "utils": "workspace:*",
+    "web-scrapper": "workspace:*"
+  },
+  "devDependencies": {
+    "@types/jest": "latest",
+    "esbuild": "0",
+    "esbuild-jest": "latest",
+    "jest": "latest",
+    "serverless": "3",
+    "serverless-dotenv-plugin": "latest",
+    "serverless-esbuild": "1",
+    "serverless-offline": "12",
+    "ts-jest": "latest",
+    "tsconfig": "workspace:*"
+  },
+  "scripts": {
+    "test": "jest",
+    "dev": "export SLS_DEBUG=* && sls offline -s dev",
+    "remove": "sls remove",
+    "doco:up": "docker-compose up",
+    "doco:down": "docker-compose down",
+    "deploy:prod": "sls deploy --stage production",
+    "debug": "export SLS_DEBUG=* && sls offline -s dev"
+  }
+}

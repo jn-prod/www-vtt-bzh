@@ -5,11 +5,11 @@
   "scripts": {
     "dev": "pnpm pre-build && bundle exec jekyll serve --livereload",
     "build": "pnpm pre-build && jekyll build",
-    "pre-build": "rm -rf ./assets/calendar && mkdir ./assets/calendar && cp -R ../../apps/calendar/dist/assets/calendar/. ./assets/calendar",
+    "pre-build": "rm -rf ./assets/calendar && mkdir ./assets/calendar && cp -R ../../apps/calendar/client/dist/assets/calendar/. ./assets/calendar",
     "prettier": "prettier --check **/*.{css,scss,html,mdx,json}",
     "prettier:fix": "prettier --write **/*.{css,scss,html,mdx,json}"
   },
   "dependencies": {
-    "calendar": "workspace:*"
+    "app-calendar-client": "workspace:*"
   }
 }
