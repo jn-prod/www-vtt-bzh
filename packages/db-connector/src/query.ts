@@ -1,5 +1,5 @@
 import { Sort, SortDirection } from 'mongodb';
-import { jsonParse } from 'utils';
+import { jsonParse } from 'utils/src';
 
 type DateQueryType =
   | undefined

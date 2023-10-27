@@ -1,5 +1,5 @@
 import { connectToDatabase, Document } from 'db-connector';
-import { jsonParse } from 'utils';
+import { jsonParse } from 'utils/src';
 import { Config } from './base.conf';
 import { formatResponse, IHandler } from './base.handler';
 import { getAll, post } from './base.service';
