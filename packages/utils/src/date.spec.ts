@@ -1,10 +1,10 @@
 import { describe, expect, test } from 'vitest';
-import * as date from './index';
+import * as date from './date';
 
 describe('date utils', () => {
   describe('dateNow', () => {
     test('should be the current date', () => {
-      const val = date.dateNow;
+      const val = date.dateNow();
       const compare = new Date();
       expect(val.getFullYear()).toEqual(compare.getFullYear());
       expect(val.getMonth()).toEqual(compare.getMonth());
@@ -30,7 +30,7 @@ describe('date utils', () => {
       expect(val).toEqual('Jan.');
     });
     test('should get NC, case val is not defined', () => {
-      const val = date.getMonth();
+      const val = date.getMonth(undefined);
       expect(val).toEqual('NC');
     });
   });

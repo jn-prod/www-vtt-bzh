@@ -42,16 +42,18 @@
   </article>
 </template>
 
-<script lang="js">
-import { computed, ref } from 'vue';
-import { dateFormatToText } from 'dates';
+<script lang="ts">
+import { computed, ref, defineComponent } from 'vue';
+import type { PropType } from 'vue';
+import { dateFormatToText, getStringDate } from 'utils/src/date';
+import type { CalendarEvent } from 'calendar-shared/src/types';
 
-export default {
+export default defineComponent({
   name: 'EventCard',
   props: {
     event: {
-      type: Object,
-      default: undefined,
+      type: Object as PropType<CalendarEvent>,
+      required: true,
     },
   },
   setup(props) {
@@ -61,9 +63,9 @@ export default {
       active.value = !active.value;
     };
 
-    const isoStringDate = computed(() => props?.event?.date);
+    const isoStringDate = computed(() => getStringDate(props?.event?.date));
 
-    const date = computed(() => dateFormatToText(props?.event?.date));
+    const date = computed(() => dateFormatToText(getStringDate(props?.event?.date)));
 
     return {
       active,
@@ -72,7 +74,7 @@ export default {
       date,
     };
   },
-};
+});
 </script>
 
 <style scoped>

@@ -1,18 +1,20 @@
 <template>
-  <label :for="id">{{ label }}</label>
-  <input
-    :id="id"
-    ref="input"
-    type="date"
-    class="form-control"
-    :value="dateToYYYYMMDD(value)"
-    :name="name"
-    @input="updateValue($event.target)"
-    @focus="selectAll"
-  />
+  <span>
+    <label :for="id">{{ label }}</label>
+    <input
+      :id="id"
+      ref="input"
+      type="date"
+      class="form-control"
+      :value="dateToYYYYMMDD(value)"
+      :name="name"
+      @input="updateValue($event.target)"
+      @focus="selectAll"
+    />
+  </span>
 </template>
 
-<script>
+<script lang="js">
 export default {
   name: 'InputDate',
   props: {

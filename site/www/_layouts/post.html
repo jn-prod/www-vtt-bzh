@@ -9,11 +9,6 @@ post_class: post-template
 ================================================== -->
 
 {% assign author = site.data.authors[page.author] %}
-{% if page.ads %}
-    {% assign sponsor = site.data.ads[page.ads] %}
-{% else %}
-    {% assign sponsor = site.data.ads.default %}
-{% endif %}
 
 <div class="container">
 
@@ -31,11 +26,6 @@ post_class: post-template
             
             <!-- Post --> 
             <article itemscope itemtype="http://schema.org/BlogPosting">                
-
-                <!-- ads-->
-                <div class="mt-5">
-                    {% include /components/ads/banner_728x90.html %}
-                </div>
 
                 <!-- Post heading -->
                 <h1 class="mt-5" itemprop="name headline">{{ page.title }}</h1>
@@ -66,9 +56,6 @@ post_class: post-template
                             <div class="col-md-8 mx-auto">
                                 
                                 {{content}}
-
-                                <!-- ads-->
-                                {% include /components/ads/banner_728x90.html %}
 
                             </div>
                             

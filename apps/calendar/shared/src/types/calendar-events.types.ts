@@ -2,7 +2,7 @@ export enum Kind {
   VTT = 'vtt',
 }
 
-export type CalendarEvent = {
+export interface CalendarEvent {
   name: string;
   kind: Kind;
   date?: Date;
@@ -20,4 +20,4 @@ export type CalendarEvent = {
   canceled?: boolean;
   active?: boolean;
   lock: boolean;
-};
+}

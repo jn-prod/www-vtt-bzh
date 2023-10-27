@@ -20,11 +20,12 @@
     "@fortawesome/free-brands-svg-icons": "^5.15.4",
     "@fortawesome/free-regular-svg-icons": "^5.15.4",
     "@fortawesome/free-solid-svg-icons": "^5.15.4",
+    "calendar-shared": "workspace:*",
     "core-js": "^3.6.5",
-    "dates": "workspace:*",
     "lodash": "^4.17.21",
     "request": "workspace:*",
     "styles": "workspace:*",
+    "utils": "workspace:*",
     "vue": "^3.x"
   },
   "devDependencies": {
