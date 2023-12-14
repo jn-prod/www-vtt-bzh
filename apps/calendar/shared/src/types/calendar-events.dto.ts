@@ -9,7 +9,7 @@ export class CreateEventDto implements Document {
     public readonly id?: ObjectId,
     public readonly name?: string,
     public readonly city?: string,
-    public readonly departement?: '22' | '29' | '35' | '44' | '56' | string,
+    public readonly departement?: 22 | 29 | 35 | 44 | 56 | number,
     public readonly updatedAt?: Date,
     public readonly organisateur?: string,
     public readonly website?: string,
@@ -20,7 +20,7 @@ export class CreateEventDto implements Document {
     public readonly origin = 'form',
     public readonly kind?: Kind,
     public readonly canceled?: boolean,
-    public readonly lock = false
+    public readonly lock = false,
   ) {}
 }
 
@@ -29,13 +29,15 @@ export class UpdateEventDto extends CreateEventDto {
     public readonly id: ObjectId,
     public readonly date: Date,
     public readonly hour: string,
-    public readonly active: boolean
+    public readonly active: boolean,
   ) {
     super(date, hour, active);
   }
 }
 
-export const isCreateEventDto = (payload: unknown): payload is CreateEventDto => {
+export const isCreateEventDto = (
+  payload: unknown,
+): payload is CreateEventDto => {
   if (typeof payload === 'object') {
     const event = payload as CreateEventDto;
     return typeof event.hour === 'string';

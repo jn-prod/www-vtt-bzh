@@ -37,11 +37,10 @@
   </section>
 </template>
 
-<script>
+<script lang="js">
 import { computed, ref } from 'vue';
-import { cloneDeep } from 'lodash';
 
-import eventService from '@/services/events';
+import eventService from '@/services/events.service';
 
 // import components
 import EventCard from '@/components/EventCard.vue';
@@ -50,7 +49,7 @@ import SearchForm from '@/components/SearchForm.vue';
 const getDate = (date) => date.toISOString().split('T')[0];
 
 export default {
-  name: 'CalendarView',
+  name: 'SearchEventView',
   components: {
     EventCard,
     SearchForm,
@@ -59,53 +58,45 @@ export default {
     const data = ref([]);
     const paginator = ref(20);
     const searchFormQuery = ref(null);
-    const projection = 'date.place.name.contact.price.canceled.departement.hour.organisateur.city.description';
-    const filter = { fromDate: `${getDate(new Date())}` };
-    const sort = { date: 1 };
-    const baseQuery = { projection, filter, sort };
+    const baseQuery = { from: `${getDate(new Date())}` };
 
-    const getEvents = async () => {
-      data.value = await eventService.getEvents(baseQuery);
-    };
-
-    getEvents();
+    (async () => {
+      const { data: events } = await eventService.fetchSearch(baseQuery);
+      data.value = events;
+    })();
 
     const setPaginator = (inc = 20) => {
       paginator.value += inc;
     };
 
     const setSearchQuery = async ({ dpt, endDate, startDate }) => {
-      searchFormQuery.value = {
-        dpt,
-        endDate,
-        startDate,
-      };
-
       if (!dpt && !endDate && !startDate) return;
 
-      const searchQuery = cloneDeep(baseQuery);
+      searchFormQuery.value = {
+        where: dpt === 'all' ? undefined : dpt,
+        from: getDate(startDate),
+        to: getDate(endDate),
+      };
 
-      searchQuery.filter.fromDate = getDate(startDate);
-      searchQuery.filter.toDate = getDate(endDate);
-      searchQuery.filter.departement = dpt === 'all' ? undefined : dpt;
-
-      data.value = await eventService.getEvents(searchQuery);
+      const { data: events } = await eventService.fetchSearch(searchFormQuery.value);
+      data.value = events;
     };
 
     const cancelSearchQuery = async ({ cancel }) => {
       if (!cancel) return;
 
-      searchFormQuery.value = null;
-      data.value = await eventService.getEvents(baseQuery);
+      searchFormQuery.value = baseQuery;
+      const { data: events } = await eventService.fetchSearch(baseQuery);
+      data.value = events;
     };
 
     const isLoadMoreActive = computed(() => (data.value || []).length > (paginator.value || 0));
 
     const events = computed(() => (data.value || []).slice(0, paginator.value));
 
-    const isResults = computed(() => data.value.length < 1);
+    const isResults = computed(() => data.value?.length < 1);
 
-    const count = computed(() => data?.value.length || 0);
+    const count = computed(() => data?.value?.length || 0);
 
     return {
       setSearchQuery,
