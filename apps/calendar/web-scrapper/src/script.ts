@@ -57,7 +57,7 @@ const canceled = (document: Document, selector: selector): boolean => {
   return (document.querySelector('head')?.innerHTML || '').includes('crise_sanitaire_v1');
 };
 
-const parseEvent = (body: body, url: url): CreateEventDto | null => {
+const parseEvent = (body: body, url: url): Partial<CreateEventDto> | null => {
   assert.ok(body, '[parseEvent] - missing body param');
   try {
     const { document } = parseHTML(body);
@@ -65,7 +65,7 @@ const parseEvent = (body: body, url: url): CreateEventDto | null => {
     return {
       name: extractWithCss(document, ElementSelector.NOM),
       city: extractWithCss(document, ElementSelector.LIEU),
-      departement: extractWithCss(document, ElementSelector.DPT),
+      departement: Number(extractWithCss(document, ElementSelector.DPT)),
       date: getDateFromPattern(extractWithCss(document, ElementSelector.DATE), DatePattern.DDMMYYYY),
       organisateur: extractWithCss(document, ElementSelector.ORGANISATEUR),
       hour: extractWithCss(document, ElementSelector.HORAIRES),
@@ -78,7 +78,7 @@ const parseEvent = (body: body, url: url): CreateEventDto | null => {
       origin: url,
       kind: Kind.VTT,
       updatedAt: new Date(),
-    } as CreateEventDto;
+    };
   } catch (e) {
     console.error(e);
     return null;
@@ -106,7 +106,7 @@ export async function runner(db: DatabaseConnection, config: Config): Promise<(C
         const content = decode(data, 'latin1');
 
         // parse content
-        const event = parseEvent(content, url);
+        const event = parseEvent(content, url) as CreateEventDto;
 
         // if content we insert it in db
         if (event !== null) {
