@@ -1,16 +1,8 @@
 import { Result } from '@swan-io/boxed';
-import { ServiceName } from './base.conf';
-import {
-  DbClientError,
-  DatabaseConnection,
-  queryParser,
-  getProjection,
-  sortParser,
-  Filter,
-  Document,
-} from 'db-connector';
+import { DbClientError, DatabaseConnection, queryParser, getProjection, sortParser, Filter, Document } from './';
 
 export type ID = string;
+export type ServiceName = string;
 
 export const find = async <T>(
   db: DatabaseConnection,
@@ -91,7 +83,7 @@ export const updateOne = async <UpdateDto extends Document, T>(
     const entity = await db.collection(collection).findOne({ ...filter, lock: true }, { projection: { _id: 1 } });
     // update entity if NOT locked
     if (entity === null) {
-      const { value } = await db
+      const value = await db
         .collection(collection)
         .findOneAndUpdate({ ...filter }, { $set: resource }, { projection: { _id: 1 } });
       return Result.Ok(value as T | null);

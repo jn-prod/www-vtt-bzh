@@ -1,5 +1,6 @@
+import { BaseConfig } from 'base-config';
+import type { MongoUrl } from 'mongodb-adapter';
 import { Context, APIGatewayEvent } from 'aws-lambda';
-import { Config } from './base.conf';
 
 type StatusCode = 200 | 201 | 404 | 500;
 
@@ -38,4 +39,14 @@ export const formatResponse = <T>(
   body: JSON.stringify(payload),
 });
 
-export const healthcheck: IHandler = async () => formatResponse(200, 'GET', 'OK');
+export interface S3 {
+  accessKeyId: string;
+  secretAccessKey: string;
+}
+
+export interface Config extends BaseConfig {
+  baseUrl: string;
+  mongoUrl: MongoUrl;
+}
+
+export { type Auth, type ServiceName } from 'base-config';

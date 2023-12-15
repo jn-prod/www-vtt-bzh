@@ -1,5 +1,5 @@
-import { DatabaseConnection } from 'db-connector';
-import { runner as webRunner } from 'web-scrapper';
+import { DatabaseConnection } from 'mongodb-adapter';
+import { WebConfig, webRunner } from 'scrapper';
 // import { runner as formRunner } from 'form-scrapper';
 import { Config } from './config';
 
@@ -12,7 +12,7 @@ export const runner = async (db: DatabaseConnection, config: Config) => {
   //   result = 'FORM_RUNNER_KO';
   // }
   try {
-    await webRunner(db, config);
+    await webRunner(db, config as unknown as WebConfig);
   } catch (err) {
     console.log(err);
     result = 'WEB_RUNNER_KO';

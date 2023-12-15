@@ -13,7 +13,7 @@
   },
   "dependencies": {
     "@swan-io/boxed": "latest",
-    "typescript": "^4.8.3"
+    "typescript": "^5.3.3"
   },
   "devDependencies": {
     "tsconfig": "workspace:*",

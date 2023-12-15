@@ -1,4 +1,4 @@
-import { MongoUrl } from 'db-connector';
+import { MongoUrl } from 'mongodb-adapter';
 import { Auth, Config as BaseConfig } from 'base-lambda';
 import { CronStartUri, Config as ScrapperConfig } from 'web-scrapper';
 import { Config as FormConfig } from 'form-scrapper';

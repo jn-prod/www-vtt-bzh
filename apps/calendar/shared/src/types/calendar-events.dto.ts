@@ -1,5 +1,5 @@
 import { Kind } from './calendar-events.types';
-import { ObjectId, Document } from 'db-connector';
+import { ObjectId, Document } from 'mongodb-adapter';
 
 export class CreateEventDto implements Document {
   constructor(

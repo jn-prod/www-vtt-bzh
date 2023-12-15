@@ -1,4 +1,4 @@
-import { connectToDatabase } from 'db-connector';
+import { connectToDatabase } from 'mongodb-adapter';
 import { getController, postController, formatResponse, IHandler } from 'base-lambda';
 import { CreateEventDto, isCreateEventDto, CalendarEvent } from 'calendar-shared';
 import { runner } from './events.job';

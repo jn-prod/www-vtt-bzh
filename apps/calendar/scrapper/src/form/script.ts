@@ -1,7 +1,7 @@
 import packageConfig, { Config } from './config';
-import { scrapper, type IScrapper } from 'scrapper';
-import { DatabaseConnection, connectToDatabase } from 'db-connector';
-import { put } from 'base-lambda';
+import { scrapper, type IScrapper } from 'request';
+import { DatabaseConnection, connectToDatabase } from 'mongodb-adapter';
+import { updateOrCreate } from 'mongodb-adapter';
 import { CreateEventDto, CalendarEvent, Kind } from 'calendar-shared';
 let config = packageConfig;
 
@@ -29,27 +29,31 @@ const getEvents = async <T>(client: IScrapper, totalCount: number, events: T[] =
   const pageSize = 20;
   const eventsCount = events?.length || 0;
 
-  const newEvents = await client('/entries.json', {
-    params: {
-      pageStart: eventsCount,
-      pageSize,
+  const newEvents = await client(
+    '/entries.json',
+    {
+      params: {
+        pageStart: eventsCount,
+        pageSize,
+      },
     },
-  }, []);
+    []
+  );
 
   // update events
-  events = [...events, ...newEvents]
+  events = [...events, ...newEvents];
 
   // we recursurvely parse the next items
   if ((events?.length || 0) + eventsCount < eventsCount) return getEvents<T>(client, totalCount, events);
   else return events as T[];
-}
+};
 
-export const runner = async <T>(db: DatabaseConnection, externalConfig?: Config): Promise<T[]> => {
+export const formRunner = async <T>(db: DatabaseConnection, externalConfig?: Config): Promise<T[]> => {
   if (config) config = externalConfig as Config;
-  const auth = { username: config.wufoo.username, password: config.wufoo.password }
+  const auth = { username: config.wufoo.username, password: config.wufoo.password };
 
   const client = scrapper('API', `${config.wufoo.domain}/api/v3/forms/${config.wufoo.form}`);
-  const eventsCount = Number(await client('/entries/count.json', {auth}, 0));
+  const eventsCount = Number(await client('/entries/count.json', { auth }, 0));
 
   const events = await getEvents<T>(client, eventsCount);
 
@@ -61,7 +65,14 @@ export const run = async () =>
     Ok: async (dbConnection) => {
       const events = await runner<CreateEventDto>(dbConnection);
       for await (const event of events) {
-        (await put<CalendarEvent, CreateEventDto>(dbConnection, config.serviceName, { origin: event.origin }, event)).match({
+        (
+          await updateOrCreate<CalendarEvent, CreateEventDto>(
+            dbConnection,
+            config.serviceName,
+            { origin: event.origin },
+            event
+          )
+        ).match({
           Ok: (ok) => {
             console.log(ok);
           },

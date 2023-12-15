@@ -10,10 +10,10 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "db-connector": "workspace:*"
+    "mongodb-adapter": "workspace:*"
   },
   "devDependencies": {
     "tsconfig": "workspace:*",
-    "typescript": "^4.8.3"
+    "typescript": "^5.3.3"
   }
 }

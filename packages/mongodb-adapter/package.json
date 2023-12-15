@@ -1,18 +1,15 @@
 {
-  "name": "base-lambda",
+  "name": "mongodb-adapter",
   "version": "1.0.0",
   "main": "./src/index.ts",
   "types": "./src/index.ts",
   "dependencies": {
     "@swan-io/boxed": "latest",
-    "aws-lambda": "latest",
-    "base-config": "workspace:*",
-    "db-connector": "workspace:*",
+    "mongodb": "latest",
     "utils": "workspace:*"
   },
   "devDependencies": {
-    "@types/aws-lambda": "latest",
     "tsconfig": "workspace:*",
-    "typescript": "^4.8.3"
+    "typescript": "^5.3.3"
   }
 }
