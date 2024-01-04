@@ -1,13 +1,10 @@
 import type { Result } from 'types';
+import { encaseResult } from 'types';
 import axios, { type AxiosRequestConfig } from 'axios';
 
-export const get = async (baseURL: string, uri: string): Promise<Result<unknown, Error>> => {
-  try {
-    const res = await fetch(encodeURI(baseURL + uri));
-    return { ok: res.json(), err: null };
-  } catch (err) {
-    return { ok: null, err: err as Error };
-  }
+export const get = async <T>(baseURL: string, uri: string): Promise<Result<T>> => {
+  const res = await fetch(encodeURI(baseURL + uri));
+  return encaseResult<T>(() => res.json() as T);
 };
 
 interface IRequest {
