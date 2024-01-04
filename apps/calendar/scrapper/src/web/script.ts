@@ -1,10 +1,9 @@
 import axios from 'axios';
 import { parseHTML } from 'linkedom';
 import { decode } from 'text-converter';
-import { put } from 'base-lambda';
 import { DatePattern, getDateFromPattern } from 'utils/src';
+import { updateOrCreate } from 'repository';
 import { CalendarEvent, Kind, CreateEventDto } from 'calendar-shared';
-import { DatabaseConnection } from 'mongodb-adapter';
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const assert = require('assert').strict;
 
@@ -85,7 +84,7 @@ const parseEvent = (body: body, url: url): Partial<CreateEventDto> | null => {
   }
 };
 
-export async function webRunner(db: DatabaseConnection, config: WebConfig): Promise<(CreateEventDto | null)[]> {
+export async function webRunner(db: unknown, config: WebConfig): Promise<(CreateEventDto | null)[]> {
   const start = new Date().getTime();
   console.log('start cron ...');
   const events: (null | CreateEventDto)[] = [];
@@ -110,7 +109,7 @@ export async function webRunner(db: DatabaseConnection, config: WebConfig): Prom
 
         // if content we insert it in db
         if (event !== null) {
-          await put<CalendarEvent, CreateEventDto>(db, config.serviceName, { origin: event.origin }, event);
+          await updateOrCreate<CreateEventDto, CalendarEvent>(db, config.serviceName, { origin: event.origin }, event);
 
           events.push(event);
         }

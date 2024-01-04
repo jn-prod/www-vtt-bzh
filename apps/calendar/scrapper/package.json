@@ -13,6 +13,7 @@
     "dotenv": "^16.0.3",
     "linkedom": "0",
     "mongodb-adapter": "workspace:*",
+    "repository": "workspace:*",
     "request": "workspace:*",
     "text-converter": "workspace:*",
     "utils": "workspace:*"

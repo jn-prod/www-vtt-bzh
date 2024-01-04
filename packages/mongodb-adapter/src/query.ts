@@ -1,78 +1,62 @@
-import { Sort, SortDirection } from 'mongodb';
-import { jsonParse } from 'utils/src';
+import { queryParser, projectionParser, sortParser } from './parser';
+import type { Db, Condition, ObjectId, OptionalId, MatchKeysAndValues } from 'mongodb';
 
-type DateQueryType =
-  | undefined
-  | {
-      $gte?: Date;
-      $lte?: Date;
-    };
+export type ServiceName = string;
 
-export interface IQueryPagination {
-  filter?: string;
-  limit?: number;
-  skip?: number;
-  projection?: string;
-  sort?: string;
-}
+export const find = async <T>(
+  db: Db,
+  collection: ServiceName,
+  projection = '',
+  limit = 0,
+  skip = 0,
+  sort = '',
+  filter = ''
+): Promise<T[]> => {
+  const filterQuery = { ...queryParser(filter), active: { $ne: false } };
 
-export interface IQueryParser {
-  (query: string): Record<string, string | number | unknown>;
-}
+  const res = await db
+    .collection(collection)
+    .find(filterQuery, { projection: projectionParser(projection) })
+    .skip(skip)
+    .limit(limit)
+    .sort(sortParser(sort))
+    .toArray();
 
-export const queryParser: IQueryParser = (query): Record<string, unknown> =>
-  jsonParse(query).match({
-    Ok: (parsedQuery = {}) => {
-      if (typeof parsedQuery === 'object') {
-        const value: Record<string, unknown> = { ...parsedQuery };
-
-        let date: DateQueryType = {};
-        if (parsedQuery.fromDate) {
-          date = { ...date, $gte: new Date(parsedQuery.fromDate as string) };
-        }
-
-        if (parsedQuery.toDate) {
-          date = { ...date, $lte: new Date(parsedQuery.toDate as string) };
-        }
-
-        // clean value
-        delete value.fromDate;
-        delete value.toDate;
-
-        return { ...value, date };
-      } else {
-        return {};
-      }
-    },
-    Error: () => ({}),
-  });
-
-export const getProjection = (projection: string): Record<string, number> => {
-  const base: Record<string, number> = { _id: 0, name: 1 };
-  projection.split('.').forEach((e) => {
-    const key = e.replace('"', '');
-    if (key.length) {
-      base[key] = 1;
-    }
-  });
-
-  return { ...base };
+  return res as T[];
 };
 
-const isSort = (object: unknown): object is Sort => {
-  const sort = object as Sort;
-  return (
-    typeof sort === 'object' &&
-    Object.values(sort).every((value: unknown) => typeof value === 'number' && [-1, 1].includes(value))
-  );
-};
+export const findOne = async <T>(
+  db: Db,
+  collection: ServiceName,
+  filter = {},
+  projection = ''
+): Promise<T & { _id: string }> =>
+  db.collection(collection).findOne(filter, projectionParser(projection)) as unknown as T & {
+    _id: string;
+  };
 
-export const sortParser = (input: string): Sort => {
-  const defaultValue: [string, SortDirection] = ['id', 1];
-  const sortValue = jsonParse(input).match({
-    Ok: (value) => (isSort(value) ? value : defaultValue),
-    Error: () => defaultValue,
+export const insertOne = async <CreateDto, T>(
+  db: Db,
+  collection: ServiceName,
+  resource: CreateDto
+): Promise<T & { insertedId: string }> =>
+  db.collection(collection).insertOne(resource as OptionalId<Document>) as unknown as T & { insertedId: string };
+
+export const updateOne = async <UpdateDto, T>(
+  db: Db,
+  collection: ServiceName,
+  filter = {},
+  resource: UpdateDto
+): Promise<T> =>
+  db
+    .collection(collection)
+    .findOneAndUpdate(
+      { ...filter },
+      { $set: resource as MatchKeysAndValues<Document> },
+      { projection: { _id: 1 } }
+    ) as T;
+
+export const remove = <T>(db: Db, collection: ServiceName, id: string): Promise<unknown | null> =>
+  db?.collection(collection).findOneAndDelete({
+    _id: id as unknown as Condition<ObjectId>,
   });
-
-  return sortValue;
-};
