@@ -1,18 +1,17 @@
 import { Result } from '@swan-io/boxed';
 import { MongoClient, Db } from 'mongodb';
 import { DbClientError } from './errors';
-
-export type MongoUrl = string;
+import { MongoConfig } from './config';
 
 let cachedDb: Db | null = null;
 
-export const connectToDatabase = async (mongoUrl: MongoUrl, dbName: string): Promise<Result<Db, Error>> => {
+export const connectToDatabase = async ({ dbUrl, dbName }: MongoConfig): Promise<Result<Db, Error>> => {
   if (cachedDb) {
     return Result.Ok(cachedDb);
   }
 
   try {
-    const client = await MongoClient.connect(mongoUrl);
+    const client = await MongoClient.connect(dbUrl);
     const db = await client.db(dbName);
     cachedDb = db;
     return Result.Ok(db);

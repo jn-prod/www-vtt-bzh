@@ -1,7 +1,8 @@
-export type CronStartUri = string;
+import { Config } from '../config';
 export type url = string;
 export type body = string;
 export type selector = string;
+export type CronStartUri = Config['cronStartUri'];
 
 export enum ElementSelector {
   NOM = '#txt_ref_int_nom_2',

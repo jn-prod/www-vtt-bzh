@@ -1,7 +1,7 @@
-import packageConfig, { Config } from './config';
+import packageConfig, { Config } from '../config';
 import { scrapper, type IScrapper } from 'request';
-import { DatabaseConnection, connectToDatabase } from 'mongodb-adapter';
-import { updateOrCreate } from 'mongodb-adapter';
+import { Db } from 'mongodb-adapter';
+import { updateOrCreate } from 'repository';
 import { CreateEventDto, CalendarEvent, Kind } from 'calendar-shared';
 let config = packageConfig;
 
@@ -48,7 +48,7 @@ const getEvents = async <T>(client: IScrapper, totalCount: number, events: T[] =
   else return events as T[];
 };
 
-export const formRunner = async <T>(db: DatabaseConnection, externalConfig?: Config): Promise<T[]> => {
+export const formRunner = async <T>(db: Db, externalConfig?: Config): Promise<void> => {
   if (config) config = externalConfig as Config;
   const auth = { username: config.wufoo.username, password: config.wufoo.password };
 
@@ -57,33 +57,7 @@ export const formRunner = async <T>(db: DatabaseConnection, externalConfig?: Con
 
   const events = await getEvents<T>(client, eventsCount);
 
-  return events.map(mappeur) as T[];
-};
-
-export const run = async () =>
-  (await connectToDatabase(packageConfig.mongoUrl, packageConfig.moduleName)).match({
-    Ok: async (dbConnection) => {
-      const events = await runner<CreateEventDto>(dbConnection);
-      for await (const event of events) {
-        (
-          await updateOrCreate<CalendarEvent, CreateEventDto>(
-            dbConnection,
-            config.serviceName,
-            { origin: event.origin },
-            event
-          )
-        ).match({
-          Ok: (ok) => {
-            console.log(ok);
-          },
-          Error: (err) => {
-            console.log(err);
-          },
-        });
-      }
-      console.log('[runner] - succeed to get events');
-    },
-    Error: async (err) => {
-      console.log(err);
-    },
+  events.map(mappeur).forEach(async (event) => {
+    await updateOrCreate<CalendarEvent, CreateEventDto>(db, config.serviceName, { origin: event.origin }, event);
   });
+};

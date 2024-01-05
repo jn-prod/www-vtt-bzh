@@ -7,7 +7,7 @@ import { CalendarEvent, Kind, CreateEventDto } from 'calendar-shared';
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const assert = require('assert').strict;
 
-import { WebConfig } from './config';
+import { Config } from '../config';
 import { CronStartUri, ElementSelector, body, selector, url } from './types';
 
 const getUrl = (cronStartUri: CronStartUri, year: number): url =>
@@ -84,7 +84,7 @@ const parseEvent = (body: body, url: url): Partial<CreateEventDto> | null => {
   }
 };
 
-export async function webRunner(db: unknown, config: WebConfig): Promise<(CreateEventDto | null)[]> {
+export async function webRunner(db: unknown, config: Config): Promise<(CreateEventDto | null)[]> {
   const start = new Date().getTime();
   console.log('start cron ...');
   const events: (null | CreateEventDto)[] = [];
@@ -109,7 +109,12 @@ export async function webRunner(db: unknown, config: WebConfig): Promise<(Create
 
         // if content we insert it in db
         if (event !== null) {
-          await updateOrCreate<CreateEventDto, CalendarEvent>(db, config.serviceName, { origin: event.origin }, event);
+          await updateOrCreate<CreateEventDto, CalendarEvent>(
+            db,
+            config.mongodb.dbName,
+            { origin: event.origin },
+            event
+          );
 
           events.push(event);
         }
