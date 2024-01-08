@@ -1,3 +1,3 @@
+export * from './client';
 export * from './repository';
-
-export { type Document, type Filter, type ObjectId } from 'mongodb-adapter';
+export * from './types';

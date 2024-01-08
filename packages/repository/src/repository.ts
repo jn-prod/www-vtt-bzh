@@ -1,103 +1,96 @@
-import { Result } from '@swan-io/boxed';
+import { Err, type Result, encaseResult, Ok } from 'types';
 import { DbClientError } from './errors';
-import { find as mongoFind, findOne as mongoFindOne, insertOne } from 'mongodb-adapter';
-import type { Db, ServiceName } from 'mongodb-adapter';
+import type { SupabaseClient, SupabaseConfig, Filter, FilterOption } from './types';
 
-type DatabaseClient = Db | unknown;
+type DatabaseClient = SupabaseClient | unknown;
+type ServiceName = SupabaseConfig['table'];
 
-const isMongodbClient = (db: unknown): db is Db => typeof db !== 'object' && (db as Db)?.collection === undefined;
+const isSupabaseClient = (db: unknown): db is SupabaseClient => typeof db === 'object';
 
 export const find = async <T>(
   db: DatabaseClient,
   collection: ServiceName,
-  projection = '',
-  limit = 0,
-  skip = 0,
-  sort = '',
-  filter = ''
-): Promise<Result<T[], Error>> => {
-  if (!isMongodbClient(db)) return Result.Error(new DbClientError());
-
-  try {
-    return Result.Ok(await mongoFind<T>(db, collection, projection, limit, skip, sort, filter));
-  } catch (err) {
-    return Result.Error(err as Error);
-  }
+  filter: Filter[] = [],
+  projection = '*',
+  options?: Partial<FilterOption>
+): Promise<Result<T[]>> => {
+  if (!isSupabaseClient(db)) return Err(new DbClientError());
+  return encaseResult<T[]>(async () => {
+    const query = db.from(collection).select(projection);
+    filter.forEach((entrie) => {
+      query.filter(entrie.column, entrie.operator, entrie.value);
+    });
+    if (options && options.order) {
+      query.order(options.order.column, { ascending: options.order.ascending });
+    }
+    return (await query).data as T[];
+  });
 };
 
 export const findOne = async <T>(
   db: DatabaseClient,
   collection: ServiceName,
-  resource: string,
-  projection = '',
-  filter = {}
-): Promise<Result<T | null, Error>> => {
-  if (!isMongodbClient(db)) return Result.Error(new DbClientError());
-
-  try {
-    const res = await mongoFindOne<T>(db, collection, { _id: resource, ...filter }, projection);
-    if (res?._id) return Result.Ok(res);
-    else return Result.Ok(null);
-  } catch (err) {
-    return Result.Error(err as Error);
-  }
+  filter: Filter[] = [],
+  projection = '*'
+): Promise<Result<T | null>> => {
+  if (!isSupabaseClient(db)) return Err(new DbClientError());
+  return encaseResult<T | null>(async () => {
+    const res = await find(db, collection, filter, projection);
+    if (res.ok && res.value.length > 0) return res.value[0] as T;
+    else return null;
+  });
 };
+
+export const findOneById = async <T>(
+  db: DatabaseClient,
+  collection: ServiceName,
+  resource: string,
+  projection = '*'
+): Promise<Result<T | null>> =>
+  findOne<T>(db, collection, [{ column: 'id', operator: 'eq', value: resource }], projection);
 
 export const create = async <CreateDto, T>(
   db: DatabaseClient,
   collection: ServiceName,
   resource: CreateDto
-): Promise<Result<T, Error>> => {
-  if (!isMongodbClient(db)) return Result.Error(new DbClientError());
+): Promise<Result<T>> => {
+  if (!isSupabaseClient(db)) return Err(new DbClientError());
 
-  try {
-    const { insertedId } = await insertOne<CreateDto, T>(db, collection, resource);
-    return Result.Ok({ _id: insertedId } as unknown as T);
-  } catch (err) {
-    return Result.Error(err as Error);
-  }
+  return encaseResult<T>(async () => (await db.from(collection).insert([resource])).data as T);
 };
 
 export const updateOne = async <UpdateDto, T>(
   db: DatabaseClient,
   collection: ServiceName,
-  filter = {},
+  filter: Filter[] = [],
   resource: UpdateDto
-): Promise<Result<T | null, Error>> => {
-  if (!isMongodbClient(db)) return Result.Error(new DbClientError());
+): Promise<Result<T | null>> => {
+  if (!isSupabaseClient(db)) return Err(new DbClientError());
 
-  try {
-    const entity = await mongoFindOne(db, collection, { ...filter, lock: true });
+  return encaseResult<T | null>(async () => {
+    const res = await findOne<T & { lock: boolean; id: string }>(db, collection, filter);
     // update entity if NOT locked
-    if (entity === null) {
-      const value = await updateOne<UpdateDto, T>(db, collection, filter, resource);
-      return Result.Ok(value as T | null);
-    } else {
-      return Result.Ok(entity as T);
-    }
-  } catch (err) {
-    return Result.Error(err as Error);
-  }
+    if (res.ok && res.value !== null && res.value.lock !== true) {
+      const { data: updateRes, error } = await db.from(collection).update(resource).eq('id', res.value.id).select();
+      console.log(error);
+      if (updateRes !== null) return updateRes[0] as T;
+      else return null;
+    } else if (res.ok) return res.value as T;
+    else return null;
+  });
 };
 
 export const updateOrCreate = async <UpdateDto, T>(
   db: DatabaseClient,
   collection: ServiceName,
-  filter = {},
+  filter: Filter[] = [],
   resource: UpdateDto
-): Promise<Result<T | null, Error>> =>
-  (await updateOne<UpdateDto, T>(db, collection, { ...filter }, resource)).match({
-    Ok: async (updated) => {
-      if (updated !== null) {
-        return Result.Ok(updated as T);
-      } else {
-        return (await create<UpdateDto, T>(db, collection, resource)).match({
-          Ok: (inserted) => {
-            return Result.Ok(inserted as T);
-          },
-          Error: (err: Error) => Result.Error(err as Error),
-        });
-      }
-    },
-    Error: async (err: Error) => Result.Error(err as Error),
-  });
+): Promise<Result<T>> => {
+  const res = await updateOne<UpdateDto, T>(db, collection, filter, resource);
+  if (res.ok && res.value) return Ok<T>(res.value);
+  else {
+    const resCreate = await create<UpdateDto, T>(db, collection, resource);
+    if (resCreate.ok) return Ok<T>(resCreate.value);
+    else return Err(resCreate.error);
+  }
+};

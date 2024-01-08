@@ -7,21 +7,21 @@ export const get = async <T>(baseURL: string, uri: string): Promise<Result<T>> =
   return encaseResult<T>(() => res.json() as T);
 };
 
-interface IRequest {
+export interface IRequest {
   <T>(url: string, request: AxiosRequestConfig, defaultValue: unknown): Promise<T | null>;
 }
 
 export interface IScrapper {
-  (mode: 'API' | 'DOM', baseUrl: string): IRequest;
+  (mode: 'API' | 'DOM', baseUrl: string, auth: { username: string; password: string }): IRequest;
 }
 
 export const scrapper: IScrapper =
-  (mode, baseUrl) =>
-  async (url, request, defaultValue = null) => {
+  (mode, baseUrl, auth) =>
+  async (url, request = {}, defaultValue = null) => {
     switch (mode) {
       case 'API':
         try {
-          const res = await axios.get(baseUrl + url, request);
+          const res = await axios.get(baseUrl + url, { auth, ...request });
           return res.data;
         } catch (err) {
           console.log(err);

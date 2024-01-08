@@ -1,39 +1,23 @@
-import { connectToDatabase, type Db } from 'mongodb-adapter';
-
 import dotenv from 'dotenv';
 
 dotenv.config();
 
-import { webRunner } from './web';
-// import { formRunner } from './form';
+import { createClient } from 'repository';
+// import { webRunner } from './web';
+import { formRunner } from './form';
 import config from './config';
 
-export const runner = async (db: Db) => {
-  let result = 'OK';
-  // try {
-  //   await formRunner(db, config);
-  // } catch (err) {
-  //   console.log(err);
-  //   result = 'FORM_RUNNER_KO';
-  // }
+const run = () => {
   try {
-    await webRunner(db, config);
+    const client = createClient(config.supabase.url, config.supabase.key);
+    // return Promise.all(formRunner(db, config), webRunner(db, config)]).catch((err) => {
+    return Promise.all([formRunner(client, config)]).catch((err) => {
+      console.log(err);
+    });
   } catch (err) {
     console.log(err);
-    result = 'WEB_RUNNER_KO';
   }
-  return result;
+  process.exit();
 };
-
-const run = async () =>
-  (await connectToDatabase(config.mongodb)).match({
-    Ok: async (dbConnection) => {
-      await runner(dbConnection);
-      console.log('[runner] - succeed to get events');
-    },
-    Error: async (err) => {
-      console.log(err);
-    },
-  });
 
 run();

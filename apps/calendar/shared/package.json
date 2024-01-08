@@ -9,9 +9,6 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "dependencies": {
-    "mongodb-adapter": "workspace:*"
-  },
   "devDependencies": {
     "tsconfig": "workspace:*",
     "typescript": "^5.3.3"

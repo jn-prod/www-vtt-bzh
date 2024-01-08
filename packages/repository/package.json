@@ -10,8 +10,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@swan-io/boxed": "latest",
-    "mongodb-adapter": "workspace:*",
+    "@supabase/supabase-js": "^2.38.5",
+    "types": "workspace:*",
     "utils": "workspace:*"
   },
   "devDependencies": {

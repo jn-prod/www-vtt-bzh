@@ -11,7 +11,7 @@ jobs:
     environment: calendar-sls
     strategy:
       matrix:
-        node-version: [18]
+        node-version: [20]
     steps:
     - name: Only on main
       run: echo "This step will be skipped on Monday and Wednesday"

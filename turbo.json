@@ -24,6 +24,9 @@
     "WUFOO_FORM",
     "BASE_URL",
     "SERVICE_NAME",
-    "MODULE_NAME"
+    "MODULE_NAME",
+    "SUPABASE_KEY",
+    "SUPABASE_URL",
+    "SUPABASE_TABLE"
   ]
 }

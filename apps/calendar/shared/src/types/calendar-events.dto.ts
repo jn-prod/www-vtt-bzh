@@ -1,13 +1,13 @@
 import { Kind } from './calendar-events.types';
-import { ObjectId, Document } from 'mongodb-adapter';
 
-export class CreateEventDto implements Document {
+export class CreateEventDto {
   constructor(
     public readonly date: Date,
     public readonly hour: string,
     public readonly active = true,
-    public readonly id?: ObjectId,
-    public readonly name?: string,
+    public readonly name: string,
+    public readonly kind: Kind,
+    public readonly id?: string,
     public readonly city?: string,
     public readonly departement?: 22 | 29 | 35 | 44 | 56 | number,
     public readonly updatedAt?: Date,
@@ -18,26 +18,25 @@ export class CreateEventDto implements Document {
     public readonly contact?: string,
     public readonly description?: string,
     public readonly origin = 'form',
-    public readonly kind?: Kind,
     public readonly canceled?: boolean,
-    public readonly lock = false,
+    public readonly lock = false
   ) {}
 }
 
 export class UpdateEventDto extends CreateEventDto {
   constructor(
-    public readonly id: ObjectId,
+    public readonly id: string,
     public readonly date: Date,
     public readonly hour: string,
     public readonly active: boolean,
+    public readonly name: string,
+    public readonly kind: Kind
   ) {
-    super(date, hour, active);
+    super(date, hour, active, name, kind);
   }
 }
 
-export const isCreateEventDto = (
-  payload: unknown,
-): payload is CreateEventDto => {
+export const isCreateEventDto = (payload: unknown): payload is CreateEventDto => {
   if (typeof payload === 'object') {
     const event = payload as CreateEventDto;
     return typeof event.hour === 'string';

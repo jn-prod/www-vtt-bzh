@@ -61,8 +61,7 @@ export default {
     const baseQuery = { from: `${getDate(new Date())}` };
 
     (async () => {
-      const { data: events } = await eventService.fetchSearch(baseQuery);
-      data.value = events;
+      data.value = await eventService.fetchSearch(baseQuery);
     })();
 
     const setPaginator = (inc = 20) => {
@@ -78,16 +77,14 @@ export default {
         to: getDate(endDate),
       };
 
-      const { data: events } = await eventService.fetchSearch(searchFormQuery.value);
-      data.value = events;
+      data.value = await eventService.fetchSearch(searchFormQuery.value);
     };
 
     const cancelSearchQuery = async ({ cancel }) => {
       if (!cancel) return;
 
       searchFormQuery.value = baseQuery;
-      const { data: events } = await eventService.fetchSearch(baseQuery);
-      data.value = events;
+      data.value = await eventService.fetchSearch(baseQuery);
     };
 
     const isLoadMoreActive = computed(() => (data.value || []).length > (paginator.value || 0));

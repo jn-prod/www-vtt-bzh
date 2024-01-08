@@ -1,13 +1,13 @@
 import type { Auth, BaseConfig } from 'base-config';
 import { WebConfig } from './web';
 import { FormConfig } from './form';
-import { MongoConfig } from 'mongodb-adapter';
+import { SupabaseConfig } from 'repository';
 
 export interface Config extends BaseConfig, WebConfig {
   moduleName: string;
   admin: Auth;
-  mongodb: MongoConfig;
   wufoo: FormConfig;
+  supabase: SupabaseConfig;
 }
 
 const moduleName = 'calendar';
@@ -16,9 +16,10 @@ const config: Config = {
   moduleName,
   serviceName: 'event',
   cronStartUri: process.env.CRON_START_URI as string,
-  mongodb: {
-    dbUrl: process.env.MONGO_URL as MongoConfig['dbUrl'],
-    dbName: moduleName + 'event-sls',
+  supabase: {
+    url: process.env.SUPABASE_URL as string,
+    key: process.env.SUPABASE_KEY as string,
+    table: process.env.SUPABASE_TABLE as string,
   },
   admin: {
     username: process.env.ADMIN_NAME as string,
