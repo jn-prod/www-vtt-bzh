@@ -74,30 +74,28 @@ const getEvents = async <T>(client: IRequest, totalCount: number, events: T[] = 
   else return events as T[];
 };
 
-export const formRunner = async <T>(client: SupabaseClient, externalConfig?: Config): Promise<void> => {
+export const formRunner = async <T>(db: SupabaseClient, externalConfig?: Config): Promise<void | void[]> => {
   if (config) config = externalConfig as Config;
 
-  // const client = scrapper('API', `${config.wufoo.domain}/api/v3/forms/${config.wufoo.form}`, {
-  //   username: config.wufoo.username,
-  //   password: config.wufoo.password,
-  // });
-  // const data = await client<{ EntryCount: string }>('/entries/count.json', {}, 0);
-  // console.log(data?.EntryCount);
+  const client = scrapper('API', `${config.wufoo.domain}/api/v3/forms/${config.wufoo.form}`, {
+    username: config.wufoo.username,
+    password: config.wufoo.password,
+  });
+  const data = await client<{ EntryCount: string }>('/entries/count.json', {}, 0);
 
-  // const events = await getEvents<T>(client, Number(data?.EntryCount));
-  const events = [{ EntryId: '53', Field14: 'test' }];
+  const events = await getEvents<T>(client, Number(data?.EntryCount));
 
-  await Promise.all(
+  return Promise.all(
     events.map((event) => {
       const mappedEvent = mappeur(event) || ({} as CreateEventDto);
       updateOrCreate<CalendarEvent, CreateEventDto>(
-        client,
+        db,
         config.supabase.table,
         [{ column: 'origin', operator: 'eq', value: mappedEvent.origin }],
-        { name: 'test', kind: Kind.VTT, lock: false } //mappedEvent
+        mappedEvent
       );
     })
   ).catch((err) => {
-    console.log(err);
+    console.error('[job] formRunner', err);
   });
 };

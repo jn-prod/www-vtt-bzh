@@ -53,10 +53,15 @@ export const create = async <CreateDto, T>(
   db: DatabaseClient,
   collection: ServiceName,
   resource: CreateDto
-): Promise<Result<T>> => {
+): Promise<Result<T | null>> => {
   if (!isSupabaseClient(db)) return Err(new DbClientError());
 
-  return encaseResult<T>(async () => (await db.from(collection).insert([resource])).data as T);
+  return encaseResult<T | null>(async () => {
+    const { data, error } = await db.from(collection).insert(resource).select();
+    if (error) console.error(`[repository] create`, error);
+    if (data && data?.length > 0) return data[0] as T;
+    else return null;
+  });
 };
 
 export const updateOne = async <UpdateDto, T>(
@@ -72,7 +77,7 @@ export const updateOne = async <UpdateDto, T>(
     // update entity if NOT locked
     if (res.ok && res.value !== null && res.value.lock !== true) {
       const { data: updateRes, error } = await db.from(collection).update(resource).eq('id', res.value.id).select();
-      console.log(error);
+      if (error) console.error(`[repository] updateOne`, error);
       if (updateRes !== null) return updateRes[0] as T;
       else return null;
     } else if (res.ok) return res.value as T;
@@ -85,12 +90,12 @@ export const updateOrCreate = async <UpdateDto, T>(
   collection: ServiceName,
   filter: Filter[] = [],
   resource: UpdateDto
-): Promise<Result<T>> => {
+): Promise<Result<T | null>> => {
   const res = await updateOne<UpdateDto, T>(db, collection, filter, resource);
   if (res.ok && res.value) return Ok<T>(res.value);
   else {
     const resCreate = await create<UpdateDto, T>(db, collection, resource);
-    if (resCreate.ok) return Ok<T>(resCreate.value);
+    if (resCreate.ok) return Ok<T | null>(resCreate.value);
     else return Err(resCreate.error);
   }
 };
