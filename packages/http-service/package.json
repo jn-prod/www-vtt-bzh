@@ -1,5 +1,5 @@
 {
-  "name": "request",
+  "name": "http-service",
   "version": "1.0.0",
   "description": "",
   "main": "./src/index.ts",

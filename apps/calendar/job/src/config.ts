@@ -1,29 +1,22 @@
-import type { Auth, BaseConfig } from 'base-config';
+import type { BaseConfig } from 'base-config';
 import { WebConfig } from './web';
 import { FormConfig } from './form';
 import { SupabaseConfig } from 'repository';
 
 export interface Config extends BaseConfig, WebConfig {
-  moduleName: string;
-  admin: Auth;
   wufoo: FormConfig;
   supabase: SupabaseConfig;
+  locale: boolean;
 }
 
-const moduleName = 'calendar';
-
 const config: Config = {
-  moduleName,
+  locale: !!process.env.LOCALE as boolean,
   serviceName: 'event',
   cronStartUri: process.env.CRON_START_URI as string,
   supabase: {
     url: process.env.SUPABASE_URL as string,
     key: process.env.SUPABASE_KEY as string,
     table: process.env.SUPABASE_TABLE as string,
-  },
-  admin: {
-    username: process.env.ADMIN_NAME as string,
-    password: process.env.ADMIN_PASSWORD as string,
   },
   wufoo: {
     username: process.env.WUFOO_USERNAME as string,

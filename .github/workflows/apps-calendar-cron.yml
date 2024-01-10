@@ -32,12 +32,15 @@ jobs:
       run: |
         cd apps/calendar/job
         touch .env
-        echo MONGO_URL=${{secrets.MONGO_URL}} >> .env
         echo CRON_START_URI=${{secrets.CRON_START_URI}} >> .env
-        echo BASE_URL=${{secrets.BASE_URL}} >> .env
-        echo ADMIN_NAME=${{secrets.ADMIN_NAME}} >> .env
-        echo ADMIN_PASSWORD=${{secrets.ADMIN_PASSWORD}} >> .env
+        echo WUFOO_USERNAME=${{secrets.WUFOO_USERNAME}} >> .env
+        echo WUFOO_PASSWORD=${{secrets.WUFOO_PASSWORD}} >> .env
+        echo WUFOO_DOMAIN=${{secrets.WUFOO_DOMAIN}} >> .env
+        echo WUFOO_FORM=${{secrets.WUFOO_FORM}} >> .env
+        echo SUPABASE_URL=${{secrets.SUPABASE_URL}} >> .env
+        echo SUPABASE_KEY=${{secrets.SUPABASE_KEY}} >> .env
+        echo SUPABASE_TABLE=${{secrets.SUPABASE_TABLE}} >> .env
 
     - name: run job
-      run: pnpm start
+      run: pnpm job
 

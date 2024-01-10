@@ -2,7 +2,7 @@ import axios from 'axios';
 import { parseHTML } from 'linkedom';
 import { decode } from 'text-converter';
 import { DatePattern, getDateFromPattern } from 'utils/src';
-import { updateOrCreate } from 'repository';
+import { updateOrCreate, type SupabaseClient } from 'repository';
 import { CalendarEvent, Kind, CreateEventDto } from 'calendar-shared';
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const assert = require('assert').strict;
@@ -76,7 +76,7 @@ const parseEvent = (body: body, url: url): Partial<CreateEventDto> | null => {
       canceled: canceled(document, ElementSelector.ANNULE),
       origin: url,
       kind: Kind.VTT,
-      updatedAt: new Date(),
+      lock: false,
     };
   } catch (e) {
     console.error(e);
@@ -84,48 +84,44 @@ const parseEvent = (body: body, url: url): Partial<CreateEventDto> | null => {
   }
 };
 
-export async function webRunner(db: unknown, config: Config): Promise<(CreateEventDto | null)[]> {
+export async function webRunner(db: SupabaseClient, config: Config): Promise<void> {
   const start = new Date().getTime();
   console.log('start cron ...');
-  const events: (null | CreateEventDto)[] = [];
-  try {
-    const urls = await getUrls(config.cronStartUri);
-    for (const url of urls) {
-      try {
-        const { status, data } = await axios.get(`${config.cronStartUri}${url}`, {
-          responseType: 'arraybuffer',
-        });
+  return getUrls(config.cronStartUri)
+    .then(async (urls) => {
+      for (const url of urls) {
+        try {
+          const { status, data } = await axios.get(`${config.cronStartUri}${url}`, {
+            responseType: 'arraybuffer',
+          });
 
-        if (status !== 200) {
-          console.error(`[getEvents] fail to process${url}: ${status}, ${data}`);
-          continue;
-        }
+          if (status !== 200) {
+            console.error(`[getEvents] fail to process${url}: ${status}, ${data}`);
+            continue;
+          }
 
-        // convert content to utf-8
-        const content = decode(data, 'latin1');
+          // parse content
+          const event = parseEvent(decode(data, 'latin1'), url) as CreateEventDto;
 
-        // parse content
-        const event = parseEvent(content, url) as CreateEventDto;
+          // if content we insert it in db
+          if (event === null) continue;
 
-        // if content we insert it in db
-        if (event !== null) {
-          await updateOrCreate<CreateEventDto, CalendarEvent>(
+          const updated = await updateOrCreate<CreateEventDto, CalendarEvent>(
             db,
-            config.mongodb.dbName,
-            { origin: event.origin },
+            config.supabase.table,
+            [{ column: 'origin', operator: 'eq', value: event.origin }],
             event
           );
-
-          events.push(event);
+          if (config.locale && updated.ok) console.log(updated.value?.origin);
+        } catch (err) {
+          console.log(err);
         }
-      } catch (err) {
-        console.log(err);
       }
-    }
-  } catch (e) {
-    console.error(`[run] - ${e}`);
-  } finally {
-    console.log(`... end cron (${Math.floor((new Date().getTime() - start) / 1000)}s)`);
-  }
-  return events;
+    })
+    .catch((err) => {
+      console.error('[job] - webRunner', err);
+    })
+    .finally(() => {
+      console.log(`... end cron (${Math.floor((new Date().getTime() - start) / 1000)}s)`);
+    });
 }

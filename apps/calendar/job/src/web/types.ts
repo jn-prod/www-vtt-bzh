@@ -4,6 +4,10 @@ export type body = string;
 export type selector = string;
 export type CronStartUri = Config['cronStartUri'];
 
+export interface WebConfig {
+  cronStartUri: string;
+}
+
 export enum ElementSelector {
   NOM = '#txt_ref_int_nom_2',
   LIEU = '#txt_ref_int_lieu_2',

@@ -3,6 +3,10 @@
   "author": "Nicolas Jouanno",
   "license": "MIT",
   "version": "1.0.0",
+  "engines": {
+    "pnpm": ">= 8",
+    "node": ">= 20"
+  },
   "description": "",
   "repository": {
     "type": "git",
@@ -18,7 +22,8 @@
     "prepare": "husky install",
     "dev": "turbo dev --parallel",
     "build": "turbo build",
-    "build:prod": "run-s build bundle-packages",
+    "build:prod": "pnpm build && pnpm bundle-packages",
+    "job": "pnpm --filter job start",
     "test": "turbo test",
     "change": "changeset",
     "release": "changeset version",
@@ -37,7 +42,6 @@
     "eslint-plugin-prettier": "^5.0.0",
     "husky": "^8.0.3",
     "lint-staged": "^14.0.1",
-    "npm-run-all": "^4.1.5",
     "prettier": "^3.0.3",
     "prettier-custom": "workspace:*",
     "turbo": "latest"

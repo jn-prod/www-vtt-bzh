@@ -14,7 +14,6 @@
   },
   "globalEnv": [
     "CRON_START_URI",
-    "MONGO_URL",
     "ADMIN_NAME",
     "ADMIN_PASSWORD",
     "JWT_KEY",
@@ -27,6 +26,7 @@
     "MODULE_NAME",
     "SUPABASE_KEY",
     "SUPABASE_URL",
-    "SUPABASE_TABLE"
+    "SUPABASE_TABLE",
+    "LOCALE"
   ]
 }

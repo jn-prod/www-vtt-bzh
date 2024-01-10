@@ -13,9 +13,9 @@
     "axios": "latest",
     "calendar-shared": "workspace:*",
     "dotenv": "^16.0.3",
+    "http-service": "workspace:*",
     "linkedom": "0",
     "repository": "workspace:*",
-    "request": "workspace:*",
     "text-converter": "workspace:*",
     "utils": "workspace:*"
   },
