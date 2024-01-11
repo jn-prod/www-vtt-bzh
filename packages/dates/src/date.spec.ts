@@ -2,17 +2,6 @@ import { describe, expect, test } from 'vitest';
 import * as date from './date';
 
 describe('date utils', () => {
-  describe('dateNow', () => {
-    test('should be the current date', () => {
-      const val = date.dateNow();
-      const compare = new Date();
-      expect(val.getFullYear()).toEqual(compare.getFullYear());
-      expect(val.getMonth()).toEqual(compare.getMonth());
-      expect(val.getDate()).toEqual(compare.getDate());
-      expect(val.getHours()).toEqual(compare.getHours());
-    });
-  });
-
   describe('getPreviousDate()', () => {
     test('should be the previous date', () => {
       const val = date.getPreviousDate();

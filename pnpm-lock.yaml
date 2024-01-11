@@ -65,6 +65,9 @@ importers:
       core-js:
         specifier: ^3.6.5
         version: 3.33.1
+      dates:
+        specifier: workspace:*
+        version: link:../../../packages/dates
       lodash:
         specifier: ^4.17.21
         version: 4.17.21
@@ -74,9 +77,6 @@ importers:
       styles:
         specifier: workspace:*
         version: link:../../../packages/styles
-      utils:
-        specifier: workspace:*
-        version: link:../../../packages/utils
       vue:
         specifier: ^3.x
         version: 3.3.7(typescript@5.3.3)
@@ -162,6 +162,9 @@ importers:
       calendar-shared:
         specifier: workspace:*
         version: link:../shared
+      dates:
+        specifier: workspace:*
+        version: link:../../../packages/dates
       dotenv:
         specifier: ^16.0.3
         version: 16.0.3
@@ -177,9 +180,6 @@ importers:
       text-converter:
         specifier: workspace:*
         version: link:../../../packages/text-converter
-      utils:
-        specifier: workspace:*
-        version: link:../../../packages/utils
     devDependencies:
       '@types/axios':
         specifier: latest
@@ -252,6 +252,18 @@ importers:
         specifier: latest
         version: 4.2.0
 
+  packages/dates:
+    devDependencies:
+      tsconfig:
+        specifier: workspace:*
+        version: link:../../configs/tsconfig
+      typescript:
+        specifier: ^5.3.3
+        version: 5.3.3
+      vitest:
+        specifier: ^0.34.4
+        version: 0.34.6(jsdom@22.1.0)(sass@1.69.4)
+
   packages/http-service:
     dependencies:
       axios:
@@ -273,16 +285,13 @@ importers:
       '@supabase/supabase-js':
         specifier: ^2.39.2
         version: 2.39.2
-      types:
-        specifier: workspace:*
-        version: link:../types
-      utils:
-        specifier: workspace:*
-        version: link:../utils
     devDependencies:
       tsconfig:
         specifier: workspace:*
         version: link:../../configs/tsconfig
+      types:
+        specifier: workspace:*
+        version: link:../types
       typescript:
         specifier: ^5.3.3
         version: 5.3.3
@@ -330,22 +339,6 @@ importers:
       typescript:
         specifier: ^5.3.3
         version: 5.3.3
-
-  packages/utils:
-    dependencies:
-      '@swan-io/boxed':
-        specifier: latest
-        version: 1.2.0
-      typescript:
-        specifier: ^5.3.3
-        version: 5.3.3
-    devDependencies:
-      tsconfig:
-        specifier: workspace:*
-        version: link:../../configs/tsconfig
-      vitest:
-        specifier: ^0.34.4
-        version: 0.34.6(jsdom@22.1.0)(sass@1.69.4)
 
   site/www:
     dependencies:
@@ -1428,10 +1421,6 @@ packages:
       '@supabase/storage-js': 2.5.4
     transitivePeerDependencies:
       - supports-color
-    dev: false
-
-  /@swan-io/boxed@1.2.0:
-    resolution: {integrity: sha512-Oh9/sBeCWNzpino8s5Wp6y+Ivg0q/m2SVQ0ThiPc7bNH+/zLIs12lgasYLwVP6C/1nQpuXi4QhoS11+OwaDg5Q==}
     dev: false
 
   /@szmarczak/http-timer@1.1.2:

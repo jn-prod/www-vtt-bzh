@@ -12,12 +12,12 @@
   "dependencies": {
     "axios": "latest",
     "calendar-shared": "workspace:*",
+    "dates": "workspace:*",
     "dotenv": "^16.0.3",
     "http-service": "workspace:*",
     "linkedom": "0",
     "repository": "workspace:*",
-    "text-converter": "workspace:*",
-    "utils": "workspace:*"
+    "text-converter": "workspace:*"
   },
   "devDependencies": {
     "@types/axios": "latest",

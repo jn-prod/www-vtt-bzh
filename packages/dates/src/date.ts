@@ -1,20 +1,15 @@
-export enum DatePattern {
-  DDMMYYYY = 'dd/mm/yyyy',
-}
+import { DatePattern } from './types';
 
 export const getDateFromPattern = (date: string, pattern: DatePattern): Date => {
-  const [day, month, year] = date.split('/');
-  if (pattern === DatePattern.DDMMYYYY) {
-    return new Date(`${year}-${month}-${day}`);
-  } else {
-    throw new Error('[getDateFromPattern] - Missing Date pattern config.');
-  }
+  const [day, month, year] = (date || '').split('/');
+  if ([day, month, year].some((val) => [undefined, ''].includes(val))) {
+    throw new Error('[getDateFromPattern] - Missing valide dateparam');
+  } else if (pattern !== DatePattern.DDMMYYYY) throw new Error('[getDateFromPattern] - Missing Date pattern config.');
+  else return new Date(`${year}-${month}-${day}`);
 };
 
-export const dateNow = (): Date => new Date();
-
 export const getPreviousDate = (): Date => {
-  const date = dateNow();
+  const date = new Date();
   return new Date(date.setDate(date.getDate() - 1));
 };
 
@@ -26,42 +21,18 @@ export const dateFormat = (date: string): Date => {
 };
 
 export const getMonth = (month: number | undefined): string => {
-  if (month === 1) {
-    return 'Jan.';
-  }
-  if (month === 2) {
-    return 'Fév.';
-  }
-  if (month === 3) {
-    return 'Mars';
-  }
-  if (month === 4) {
-    return 'Avr.';
-  }
-  if (month === 5) {
-    return 'Mai.';
-  }
-  if (month === 6) {
-    return 'Juin.';
-  }
-  if (month === 7) {
-    return 'Juil.';
-  }
-  if (month === 8) {
-    return 'Aou.';
-  }
-  if (month === 9) {
-    return 'Sep.';
-  }
-  if (month === 10) {
-    return 'Oct.';
-  }
-  if (month === 11) {
-    return 'Nov.';
-  }
-  if (month === 12) {
-    return 'Déc.';
-  }
+  if (month === 1) return 'Jan.';
+  if (month === 2) return 'Fév.';
+  if (month === 3) return 'Mars';
+  if (month === 4) return 'Avr.';
+  if (month === 5) return 'Mai.';
+  if (month === 6) return 'Juin.';
+  if (month === 7) return 'Juil.';
+  if (month === 8) return 'Aou.';
+  if (month === 9) return 'Sep.';
+  if (month === 10) return 'Oct.';
+  if (month === 11) return 'Nov.';
+  if (month === 12) return 'Déc.';
   return 'NC';
 };
 
@@ -79,11 +50,7 @@ export const dateFormatToText = (date: string | undefined = ''): string => {
   return `${day} ${month} ${year}`;
 };
 
-export const dateFormatToIsoString = (date: string): string => {
-  if (!date) return '';
-
-  return dateFormat(date).toISOString();
-};
+export const dateFormatToIsoString = (date: string): string => (date ? dateFormat(date).toISOString() : '');
 
 export const getStringDate = (date: string | Date | undefined): string => {
   if (typeof date === 'string') return date;

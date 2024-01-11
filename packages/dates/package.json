@@ -1,8 +1,8 @@
 {
-  "name": "utils",
+  "name": "dates",
   "version": "0.0.0",
-  "main": "./dist/index.js",
-  "types": "./dist/index.d.ts",
+  "main": "./src/index.ts",
+  "types": "./src/index.ts",
   "files": [
     "dist",
     "src"
@@ -11,12 +11,9 @@
     "build": "tsc",
     "test": "vitest --run"
   },
-  "dependencies": {
-    "@swan-io/boxed": "latest",
-    "typescript": "^5.3.3"
-  },
   "devDependencies": {
     "tsconfig": "workspace:*",
+    "typescript": "^5.3.3",
     "vitest": "^0.34.4"
   }
 }

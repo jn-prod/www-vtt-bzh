@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { parseHTML } from 'linkedom';
 import { decode } from 'text-converter';
-import { DatePattern, getDateFromPattern } from 'utils/src';
+import { DatePattern, getDateFromPattern } from 'dates';
 import { updateOrCreate, type SupabaseClient } from 'repository';
 import { CalendarEvent, Kind, CreateEventDto } from 'calendar-shared';
 // eslint-disable-next-line @typescript-eslint/no-var-requires
