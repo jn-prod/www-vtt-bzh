@@ -1,7 +1,8 @@
 {
   "name": "text-converter",
   "version": "0.0.0",
-  "main": "src/index.ts",
+  "main": "./dist/index.ts",
+  "types": "./dist/index.d.ts",
   "dependencies": {
     "iconv-lite": "latest",
     "typescript": "latest"
