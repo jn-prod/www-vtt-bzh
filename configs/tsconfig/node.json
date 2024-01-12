@@ -3,10 +3,11 @@
   "extends": "@tsconfig/node20/tsconfig.json",
   "display": "Default",
   "compilerOptions": {
+    "module": "esnext",
+    "moduleResolution": "Bundler",
     "composite": false,
     "declaration": true,
     "declarationMap": true,
-    "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "inlineSources": false,
     "isolatedModules": true,

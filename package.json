@@ -20,16 +20,16 @@
   "scripts": {
     "postinstall": "pnpm manypkg check",
     "prepare": "husky install",
-    "dev": "turbo dev --parallel",
-    "build": "turbo build",
-    "build:prod": "pnpm build && pnpm bundle-packages",
+    "dev": "pnpm -r dev",
+    "build": "pnpm -r build",
+    "build:prod": "pnpm -r build && pnpm bundle-packages",
     "job": "pnpm --filter job start",
-    "test": "turbo test",
+    "test": "pnpm -r test",
     "change": "changeset",
     "release": "changeset version",
     "release:status": "changeset status",
-    "lint": "turbo lint",
-    "lint:fix": "turbo lint:fix",
+    "lint": "pnpm -r lint",
+    "lint:fix": "pnpm -r lint:fix",
     "bundle-packages": "rm -rf ./dist && cp -R ./site/www/_site/ ./dist"
   },
   "dependencies": {
@@ -43,8 +43,7 @@
     "husky": "^8.0.3",
     "lint-staged": "^14.0.1",
     "prettier": "^3.0.3",
-    "prettier-custom": "workspace:*",
-    "turbo": "latest"
+    "prettier-custom": "workspace:*"
   },
   "manypkg": {
     "ignoredRules": [

@@ -1,8 +1,9 @@
 {
   "name": "dates",
   "version": "0.0.0",
-  "main": "./dist/index.ts",
-  "types": "./dist/index.d.ts",
+  "main": "./src/index.ts",
+  "types": "./src/index.d.ts",
+  "type": "module",
   "files": [
     "dist",
     "src"

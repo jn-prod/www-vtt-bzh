@@ -2,11 +2,15 @@
   "name": "types",
   "version": "1.0.0",
   "description": "",
-  "main": "./dist/index.ts",
-  "types": "./dist/index.d.ts",
+  "main": "./src/index.ts",
+  "types": "./src/index.d.ts",
+  "type": "module",
   "keywords": [],
   "author": "",
   "license": "ISC",
+  "scripts": {
+    "build": "tsc"
+  },
   "devDependencies": {
     "tsconfig": "workspace:*",
     "typescript": "^5.3.3"
