@@ -8,7 +8,7 @@ jobs:
   deploy:
     if: ${{ github.ref == 'refs/heads/main' }}
     runs-on: ubuntu-20.04
-    environment: calendar-sls
+    environment: cron
     strategy:
       matrix:
         node-version: [20]
