@@ -1,0 +1,57 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`SearchEventView > render 1`] = `
+<section class="container-fluid">
+  <header class="row mb-5" id="header-wrapper">
+    <section class="col-md-4 bg-white p-2 m-2 mx-md-5 px-md-5 rounded shadow">
+      <!-- value proposition        -->
+      <h1 class="h3 text-left m2-5">Rechercher une rando VTT à coté de chez toi n'aura jamais été aussi simple.</h1><!-- search form component -->
+      <form id="search">
+        <div class="my-2">
+          <span>
+            <label for="start-date">Debut</label>
+            <input class="form-control" id="start-date" name="start-date" type="date">
+          </span>
+        </div>
+        <div class="my-2">
+          <span>
+            <label for="end-date">Fin</label>
+            <input class="form-control" id="end-date" name="end-date" type="date">
+          </span>
+        </div>
+        <div class="my-2">
+          <label for="departement"> Département </label>
+          <select class="form-control" id="departement" name="departement">
+            <option value="22">Côtes d'Armor</option>
+            <option value="29">Finistère</option>
+            <option value="35">Ille et Vilaine</option>
+            <option value="44">Loire Atlantique</option>
+            <option value="56">Morbihan</option>
+            <option value="all">Tous les départements</option>
+          </select>
+        </div>
+        <div class="my-2">
+          <div class="mx-auto">
+            <button class="btn btn-secondary shadow m-2 rounded-pill" id="search_button" type="submit">
+              <i class="fas fa-search"></i> Rechercher
+            </button>
+            <button class="btn btn-outline-dark rounded-pill shadow m-2" href="#calendar">
+              <i class="far fa-trash-alt"></i> Réinitialiser
+            </button>
+          </div>
+        </div>
+      </form>
+    </section>
+  </header><!-- calendar component -->
+  <div class="mt-5 mx-md-5">
+    <h2 class="mb-5 text-center" id="calendar"> Calendrier des randonnées à venir <span class="badge bg-success" id="nombre_rando">0</span>
+    </h2>
+    <!--v-if-->
+    <p aria-busy="true" aria-live="polite" class="alert alert-info">Chargement en cours.</p><!-- Load event -->
+    <!-- load-more button -->
+    <div class="text-center mt-3">
+      <button class="btn btn-secondary shadow mt-3 px-5 rounded-pill" style="display: none;"> Voir + </button>
+    </div>
+  </div>
+</section>
+`;
