@@ -34,8 +34,8 @@ jobs:
       run: |
         cd apps/calendar/client
         touch .env
-        echo SUPABASE_URL=${{secrets.SUPABASE_URL}} >> .env
-        echo SUPABASE_KEY=${{secrets.SUPABASE_KEY}} >> .env
+        echo VITE_APP_SUPABASE_URL=${{secrets.SUPABASE_URL}} >> .env
+        echo VITE_APP_SUPABASE_KEY=${{secrets.SUPABASE_KEY}} >> .env
     - name: Install ruby dependencies
       run: pnpm --filter=www install:jekyll
     - name: Build
