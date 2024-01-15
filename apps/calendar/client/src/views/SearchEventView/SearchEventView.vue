@@ -16,9 +16,10 @@
         Calendrier des randonnées à venir
         <span id="nombre_rando" class="badge bg-success">{{ count }}</span>
       </h2>
-      <p v-if="isResults" class="alert alert-danger">
+      <p v-if="!isResults && !isLoading" class="alert alert-danger" aria-live="polite" :aria-busy="isLoading">
         Aucun résultat pour cette recherche, choisissez une autre date de début et de fin.
       </p>
+      <p v-if="isLoading" class="alert alert-info" aria-live="polite" :aria-busy="isLoading">Chargement en cours.</p>
 
       <!-- Load event -->
       <event-card v-for="event in events" :key="event.id" :event="event" class="my-3"> </event-card>
@@ -58,10 +59,21 @@ export default {
     const data = ref([]);
     const paginator = ref(20);
     const searchFormQuery = ref(null);
+    const isLoading = ref(true);
     const baseQuery = { from: `${getDate(new Date())}` };
 
+    const search = async (query) => {
+      isLoading.value = true;
+      try {
+        data.value = await eventService.fetchSearch(query);
+      } catch (err) {
+        console.error(err);
+      }
+      isLoading.value = false;
+    };
+
     (async () => {
-      data.value = await eventService.fetchSearch(baseQuery);
+      await search(baseQuery);
     })();
 
     const setPaginator = (inc = 20) => {
@@ -77,23 +89,23 @@ export default {
         to: getDate(endDate),
       };
 
-      data.value = await eventService.fetchSearch(searchFormQuery.value);
+      await search(searchFormQuery.value);
     };
 
     const cancelSearchQuery = async ({ cancel }) => {
       if (!cancel) return;
 
       searchFormQuery.value = baseQuery;
-      data.value = await eventService.fetchSearch(baseQuery);
+      await search(baseQuery);
     };
 
-    const isLoadMoreActive = computed(() => (data.value || []).length > (paginator.value || 0));
+    const count = computed(() => data?.value?.length || 0);
+
+    const isLoadMoreActive = computed(() => count.value > (paginator.value || 0));
 
     const events = computed(() => (data.value || []).slice(0, paginator.value));
 
-    const isResults = computed(() => data.value?.length < 1);
-
-    const count = computed(() => data?.value?.length || 0);
+    const isResults = computed(() => count.value > 0);
 
     return {
       setSearchQuery,
@@ -103,6 +115,7 @@ export default {
       events,
       count,
       isResults,
+      isLoading,
     };
   },
 };
