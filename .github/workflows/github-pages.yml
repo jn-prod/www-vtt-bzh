@@ -37,7 +37,7 @@ jobs:
         echo SUPABASE_URL=${{secrets.SUPABASE_URL}} >> .env
         echo SUPABASE_KEY=${{secrets.SUPABASE_KEY}} >> .env
     - name: Install ruby dependencies
-      run: cd site/www && bundle install && cd ../..
+      run: pnpm --filter=www install:jekyll
     - name: Build
       run: pnpm build
     - name: Lint
@@ -45,7 +45,7 @@ jobs:
     - name: Test
       run: pnpm test
     - name: Deploy
-      run: pnpm build:prod
+      run: pnpm build
     - name: Deploy GitHub Pages
       uses: peaceiris/actions-gh-pages@v3
       with:

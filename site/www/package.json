@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Breizh Mountain Bike Calendar",
   "scripts": {
+    "install:jekyll": "bundle install",
     "dev": "pnpm pre-build && bundle exec jekyll serve --livereload",
     "build": "pnpm pre-build && jekyll build",
     "pre-build": "rm -rf ./assets/calendar && mkdir ./assets/calendar && cp -R ../../apps/calendar/client/dist/assets/calendar/. ./assets/calendar",
