@@ -8,9 +8,10 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    environment: github-pages
     strategy:
       matrix:
-        node-version: [18]
+        node-version: [20]
     steps:
     - uses: actions/checkout@v3
     - name: Use ruby
@@ -29,8 +30,14 @@ jobs:
         cache: 'pnpm'
     - name: Install node dependencies
       run: pnpm install
+    - name: create env file
+      run: |
+        cd apps/calendar/client
+        touch .env
+        echo SUPABASE_URL=${{secrets.SUPABASE_URL}} >> .env
+        echo SUPABASE_KEY=${{secrets.SUPABASE_KEY}} >> .env
     - name: Install ruby dependencies
-      run: cd ./site/www && bundle install && cd ../..
+      run: pnpm --filter=www install:jekyll
     - name: Build
       run: pnpm build
     - name: Lint
@@ -38,7 +45,7 @@ jobs:
     - name: Test
       run: pnpm test
     - name: Deploy
-      run: pnpm build:prod
+      run: pnpm build
     - name: Deploy GitHub Pages
       uses: peaceiris/actions-gh-pages@v3
       with:

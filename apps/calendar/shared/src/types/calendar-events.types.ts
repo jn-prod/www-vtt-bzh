@@ -7,7 +7,7 @@ export interface CalendarEvent {
   kind: Kind;
   date?: Date;
   city?: string;
-  departement?: string;
+  departement?: number;
   updatedAt?: Date;
   organisateur?: string;
   hour?: string;

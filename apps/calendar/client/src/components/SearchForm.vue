@@ -41,7 +41,7 @@ import { cloneDeep } from 'lodash';
 import InputDate from './InputDate.vue';
 import departementslist from '../constants/departementslist';
 
-const dateNow = new Date(Date.now());
+const dateNow = new Date();
 const defaultQuery = {
   startDate: dateNow,
   endDate: new Date(dateNow.getFullYear() + 1, dateNow.getMonth(), dateNow.getDate()),

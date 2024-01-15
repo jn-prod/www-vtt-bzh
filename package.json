@@ -3,6 +3,10 @@
   "author": "Nicolas Jouanno",
   "license": "MIT",
   "version": "1.0.0",
+  "engines": {
+    "pnpm": ">= 8",
+    "node": ">= 20"
+  },
   "description": "",
   "repository": {
     "type": "git",
@@ -16,15 +20,15 @@
   "scripts": {
     "postinstall": "pnpm manypkg check",
     "prepare": "husky install",
-    "dev": "turbo dev --parallel",
-    "build": "turbo build",
-    "build:prod": "run-s build bundle-packages",
-    "test": "turbo test",
+    "dev": "pnpm -r dev",
+    "build": "pnpm -r build && pnpm bundle-packages",
+    "job": "pnpm --filter job start",
+    "test": "pnpm -r test",
     "change": "changeset",
     "release": "changeset version",
     "release:status": "changeset status",
-    "lint": "turbo lint",
-    "lint:fix": "turbo lint:fix",
+    "lint": "pnpm -r lint",
+    "lint:fix": "pnpm -r lint:fix",
     "bundle-packages": "rm -rf ./dist && cp -R ./site/www/_site/ ./dist"
   },
   "dependencies": {
@@ -37,10 +41,8 @@
     "eslint-plugin-prettier": "^5.0.0",
     "husky": "^8.0.3",
     "lint-staged": "^14.0.1",
-    "npm-run-all": "^4.1.5",
     "prettier": "^3.0.3",
-    "prettier-custom": "workspace:*",
-    "turbo": "latest"
+    "prettier-custom": "workspace:*"
   },
   "manypkg": {
     "ignoredRules": [

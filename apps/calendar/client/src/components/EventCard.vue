@@ -45,7 +45,7 @@
 <script lang="ts">
 import { computed, ref, defineComponent } from 'vue';
 import type { PropType } from 'vue';
-import { dateFormatToText, getStringDate } from 'utils/src/date';
+import { dateFormatToText, getStringDate } from 'dates';
 import type { CalendarEvent } from 'calendar-shared/src/types';
 
 export default defineComponent({
