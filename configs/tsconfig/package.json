@@ -1,7 +1,8 @@
 {
   "name": "tsconfig",
   "files": [
-    "./node.json"
+    "./node.json",
+    "./bundler.json"
   ],
   "devDependencies": {
     "@tsconfig/node20": "^20",
