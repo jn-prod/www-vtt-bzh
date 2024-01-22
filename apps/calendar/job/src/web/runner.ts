@@ -4,8 +4,7 @@ import { decode } from 'text-converter';
 import { DatePattern, getDateFromPattern } from 'dates';
 import { updateOrCreate, type SupabaseClient } from 'repository';
 import { CalendarEvent, Kind, CreateEventDto } from 'calendar-shared';
-// eslint-disable-next-line @typescript-eslint/no-var-requires
-const assert = require('assert').strict;
+import assert from 'assert';
 
 import { Config } from '../config';
 import { CronStartUri, ElementSelector, body, selector, url } from './types';

@@ -1,14 +1,13 @@
 {
-  "name": "job",
+  "name": "app-calendar-job",
   "version": "1.0.0",
   "description": "",
   "main": "./src/index.ts",
-  "type": "module",
   "keywords": [],
   "author": "",
   "license": "ISC",
   "scripts": {
-    "start": "ts-node ./src",
+    "job": "ts-node ./src",
     "build": "tsc"
   },
   "dependencies": {
