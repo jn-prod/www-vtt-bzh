@@ -42,7 +42,7 @@ jobs:
         echo SUPABASE_TABLE=${{secrets.SUPABASE_TABLE}} >> .env
 
     - name: Build apps
-      run: pnpm --filter=''./**/job' build
+      run: pnpm --filter='./**/job' build
 
     - name: run job
       run: pnpm job
