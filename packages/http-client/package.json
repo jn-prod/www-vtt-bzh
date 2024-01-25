@@ -1,5 +1,5 @@
 {
-  "name": "http-service",
+  "name": "http-client",
   "version": "1.0.0",
   "description": "",
   "main": "./src/index.ts",
@@ -9,9 +9,6 @@
   "license": "ISC",
   "scripts": {
     "build": "tsc"
-  },
-  "dependencies": {
-    "axios": "^1.5.1"
   },
   "devDependencies": {
     "tsconfig": "workspace:*",

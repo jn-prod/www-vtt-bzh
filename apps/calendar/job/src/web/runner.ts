@@ -1,18 +1,20 @@
-import axios from 'axios';
 import { parseHTML } from 'linkedom';
-import { decode } from 'text-converter';
+import { IRequest, client } from 'http-client';
+import { decode } from '../utils';
 import { DatePattern, getDateFromPattern } from 'dates';
 import { updateOrCreate, type SupabaseClient } from 'repository';
 import { CalendarEvent, Kind, CreateEventDto } from 'calendar-shared';
 import assert from 'assert';
 
 import { Config } from '../config';
-import { CronStartUri, ElementSelector, body, selector, url } from './types';
+import { ElementSelector, body, selector, url } from './types';
 
-const getUrl = (cronStartUri: CronStartUri, year: number): url =>
-  `${cronStartUri}/sorties/vtt/${year || new Date().getFullYear()}-avenir-56-29-22-35-44-0-0-0-1.html`;
+let cronClient: IRequest;
 
-const parseUrls = (cronStartUri: CronStartUri, body: body): url[] => {
+const getUrl = (year: number): url =>
+  `/sorties/vtt/${year || new Date().getFullYear()}-avenir-56-29-22-35-44-0-0-0-1.html`;
+
+const parseUrls = (body: body): url[] => {
   assert.ok(body, '[parseUrls] - missing body param');
   try {
     const { document } = parseHTML(body);
@@ -25,17 +27,13 @@ const parseUrls = (cronStartUri: CronStartUri, body: body): url[] => {
   }
 };
 
-const getUrls = async (cronStartUri: CronStartUri): Promise<url[]> => {
+const getUrls = async (): Promise<url[]> => {
   const currentYear = Number(new Date().getFullYear());
-  const startUrl = getUrl(cronStartUri, currentYear);
+  const startUrl = getUrl(currentYear);
 
-  try {
-    const { data } = await axios.get(startUrl);
-    return parseUrls(cronStartUri, data);
-  } catch (e) {
-    console.error(`[getUrls] - error in process ${getUrls}`);
-    return [];
-  }
+  const result = await cronClient<string>(startUrl, { responseType: 'text' });
+  if (!result.ok) return [];
+  return parseUrls(result.value as string);
 };
 
 const extractWithCss = (document: Document, selector: selector): string => {
@@ -55,7 +53,7 @@ const canceled = (document: Document, selector: selector): boolean => {
   return (document.querySelector('head')?.innerHTML || '').includes('crise_sanitaire_v1');
 };
 
-const parseEvent = (body: body, url: url): Partial<CreateEventDto> | null => {
+const parseEvent = (body: body, url: url): CreateEventDto | null => {
   assert.ok(body, '[parseEvent] - missing body param');
   try {
     const { document } = parseHTML(body);
@@ -76,6 +74,7 @@ const parseEvent = (body: body, url: url): Partial<CreateEventDto> | null => {
       origin: url,
       kind: Kind.VTT,
       lock: false,
+      active: true,
     };
   } catch (e) {
     console.error(e);
@@ -86,23 +85,24 @@ const parseEvent = (body: body, url: url): Partial<CreateEventDto> | null => {
 export async function webRunner(db: SupabaseClient, config: Config): Promise<void> {
   const start = new Date().getTime();
   console.log('start cron ...');
-  return getUrls(config.cronStartUri)
+  cronClient = client(config.cronStartUri);
+  return getUrls()
     .then(async (urls) => {
       for (const url of urls) {
         try {
-          const { status, data } = await axios.get(`${config.cronStartUri}${url}`, {
-            responseType: 'arraybuffer',
+          const response = await cronClient(url, {
+            responseType: 'arrayBuffer',
           });
 
-          if (status !== 200) {
-            console.error(`[getEvents] fail to process${url}: ${status}, ${data}`);
+          if (!response.ok) {
+            console.error(`[getEvents] fail to process${url}: ${response.error.message}`);
             continue;
           }
 
           // parse content
-          const event = parseEvent(decode(data, 'latin1'), url) as CreateEventDto;
+          const event = parseEvent(decode(response.value as Buffer, 'iso-8859-1'), url);
 
-          // if content we insert it in db
+          // if no content we insert it in db
           if (event === null) continue;
 
           const updated = await updateOrCreate<CreateEventDto, CalendarEvent>(

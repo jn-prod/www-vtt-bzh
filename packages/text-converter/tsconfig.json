@@ -1,7 +1,0 @@
-{
-  "extends": "tsconfig/bundler.json",
-  "include": ["src"],
-  "compilerOptions": {
-    "outDir": "./dist",
-  }
-}

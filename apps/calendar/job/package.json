@@ -11,17 +11,14 @@
     "build": "tsc"
   },
   "dependencies": {
-    "axios": "latest",
     "calendar-shared": "workspace:*",
     "dates": "workspace:*",
     "dotenv": "^16.0.3",
-    "http-service": "workspace:*",
+    "http-client": "workspace:*",
     "linkedom": "0",
-    "repository": "workspace:*",
-    "text-converter": "workspace:*"
+    "repository": "workspace:*"
   },
   "devDependencies": {
-    "@types/axios": "latest",
     "base-config": "workspace:*",
     "ts-node": "^10.9.2",
     "tsconfig": "workspace:*",
