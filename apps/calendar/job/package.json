@@ -19,7 +19,6 @@
     "repository": "workspace:*"
   },
   "devDependencies": {
-    "base-config": "workspace:*",
     "ts-node": "^10.9.2",
     "tsconfig": "workspace:*",
     "typescript": "^5.3.3"
