@@ -1,9 +1,8 @@
-import type { BaseConfig } from 'base-config';
 import { WebConfig } from './web';
 import { FormConfig } from './form';
 import { SupabaseConfig } from 'repository';
 
-export interface Config extends BaseConfig, WebConfig {
+export interface Config extends WebConfig {
   wufoo: FormConfig;
   supabase: SupabaseConfig;
   locale: boolean;
@@ -11,7 +10,6 @@ export interface Config extends BaseConfig, WebConfig {
 
 const config: Config = {
   locale: !!process.env.LOCALE as boolean,
-  serviceName: 'event',
   cronStartUri: process.env.CRON_START_URI as string,
   supabase: {
     url: process.env.SUPABASE_URL as string,

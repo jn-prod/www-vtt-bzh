@@ -1,21 +1,9 @@
 {
   "$schema": "https://json.schemastore.org/tsconfig",
-  "extends": "@tsconfig/node20/tsconfig.json",
+  "extends": "./base.json",
   "display": "Default",
   "compilerOptions": {
     "module": "esnext",
     "moduleResolution": "Bundler",
-    "composite": false,
-    "declaration": true,
-    "declarationMap": true,
-    "forceConsistentCasingInFileNames": true,
-    "inlineSources": false,
-    "isolatedModules": true,
-    "noUnusedLocals": false,
-    "noUnusedParameters": false,
-    "preserveWatchOutput": true,
-    "skipLibCheck": true,
-    "strict": true,
-  },
-  "exclude": ["node_modules"]
+  }
 }

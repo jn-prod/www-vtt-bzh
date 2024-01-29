@@ -1,6 +1,6 @@
 import packageConfig, { Config } from '../config';
 import type { Entrie } from './types';
-import { scrapper, type IRequest } from 'http-service';
+import { client as httpClient, type IRequest } from 'http-client';
 import { updateOrCreate, type SupabaseClient } from 'repository';
 import { CreateEventDto, CalendarEvent, Kind } from 'calendar-shared';
 let config = packageConfig;
@@ -35,37 +35,38 @@ const mappeur = <T>(value: T): CreateEventDto | null => {
 const getEvents = async <T>(client: IRequest, totalCount: number, events: T[] = []): Promise<T[]> => {
   const pageSize = 20;
   const eventsCount = events?.length || 0;
+  let entries: T[];
 
-  const data = await client<{ Entries: T[] }>(
-    '/entries.json',
-    {
-      params: {
-        pageStart: eventsCount,
-        pageSize,
-      },
+  const res = await client<{ Entries: T[] }>('/entries.json', {
+    params: {
+      pageStart: eventsCount,
+      pageSize,
     },
-    []
-  );
-  const newEvents = data?.Entries as T[];
+  } as RequestInit);
+  if (res.ok) entries = (res.value as { Entries: T[] }).Entries;
+  else entries = [];
+  const newEvents = entries;
 
   // update events
   events = Array.isArray(newEvents) ? [...events, ...newEvents] : events;
 
   // we recursurvely parse the next items
   if (events.length < totalCount) return getEvents<T>(client, totalCount, events);
-  else return events as T[];
+  else return events;
 };
 
 export const formRunner = async <T>(db: SupabaseClient, externalConfig?: Config): Promise<void | void[]> => {
   if (config) config = externalConfig as Config;
 
-  const client = scrapper('API', `${config.wufoo.domain}/api/v3/forms/${config.wufoo.form}`, {
+  const client = httpClient(`${config.wufoo.domain}/api/v3/forms/${config.wufoo.form}`, {
     username: config.wufoo.username,
     password: config.wufoo.password,
   });
-  const data = await client<{ EntryCount: string }>('/entries/count.json', {}, 0);
+  const data = await client<{ EntryCount: string }>('/entries/count.json', {});
 
-  const events = await getEvents<T>(client, Number(data?.EntryCount));
+  if (!data.ok) return;
+
+  const events = await getEvents<T>(client, Number((data.value as { EntryCount: string }).EntryCount));
 
   return Promise.all(
     events.map((event) => {
