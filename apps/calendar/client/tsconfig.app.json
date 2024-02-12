@@ -3,6 +3,7 @@
   "include": ["src/**/*", "src/**/*.vue", "vite-env.d.ts"],
   "compilerOptions": {
     "composite": true,
+    "lib": ["DOM"],
     "baseUrl": ".",
     "paths": {
       "@/*": [".src/*"]
