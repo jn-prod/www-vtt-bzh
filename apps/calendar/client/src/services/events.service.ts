@@ -25,7 +25,7 @@ const fetchSearch = async ({ from, to, where }: SearchType): Promise<CalendarEve
     'description',
   ].join(',');
 
-  let query: Filter[] = [];
+  let query: Filter[] = [{ column: 'active', operator: 'eq', value: true }];
   if (from) query.push({ column: 'date', operator: 'gte', value: from });
   if (to) query.push({ column: 'date', operator: 'lte', value: to });
   if (where) query.push({ column: 'departement', operator: 'eq', value: where });
