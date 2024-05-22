@@ -33,7 +33,7 @@
         <li class="d-inline-block m-2">Horaires : {{ event.hour || 'NC' }}</li>
         <li class="d-inline-block m-2">Lieu de rendez-vous : {{ event.place || 'NC' }}</li>
         <li class="d-inline-block m-2">Contact : {{ event.contact || 'NC' }}</li>
-        <li class="d-inline-block m-2">Prix Club : {{ event.price || 'NC' }}</li>
+        <li class="d-inline-block m-2">Prix : {{ event.price || 'NC' }}</li>
       </ul>
       <span v-if="event.departement" class="badge rounded-pill bg-secondary m-2">
         Département : {{ event.departement }}
