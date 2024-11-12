@@ -7,48 +7,48 @@ on:
 
 jobs:
   deploy:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     environment: github-pages
     strategy:
       matrix:
-        node-version: [20]
+        node-version: [22]
     steps:
-    - uses: actions/checkout@v3
-    - name: Use ruby
-      uses: ruby/setup-ruby@v1
-      with:
-        ruby-version: '2.5.5'
-        bundler-cache: true
-    - name: Use pnpm
-      uses: pnpm/action-setup@v2
-      with:
-        version: 9
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v3
-      with:
-        node-version: ${{ matrix.node-version }}
-        cache: 'pnpm'
-    - name: Install node dependencies
-      run: pnpm install
-    - name: create env file
-      run: |
-        cd apps/calendar/client
-        touch .env
-        echo VITE_APP_SUPABASE_URL=${{secrets.SUPABASE_URL}} >> .env
-        echo VITE_APP_SUPABASE_KEY=${{secrets.SUPABASE_KEY}} >> .env
-    - name: Install ruby dependencies
-      run: pnpm --filter=www install:jekyll
-    - name: Build
-      run: pnpm build
-    - name: Lint
-      run: pnpm lint
-    - name: Test
-      run: pnpm test
-    - name: Deploy
-      run: pnpm build
-    - name: Deploy GitHub Pages
-      uses: peaceiris/actions-gh-pages@v3
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: ./dist
-        cname: www.vtt.bzh
+      - uses: actions/checkout@v3
+      - name: Use ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '2.5.5'
+          bundler-cache: true
+      - name: Use pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 9
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'pnpm'
+      - name: Install node dependencies
+        run: pnpm install
+      - name: create env file
+        run: |
+          cd apps/calendar/client
+          touch .env
+          echo VITE_APP_SUPABASE_URL=${{secrets.SUPABASE_URL}} >> .env
+          echo VITE_APP_SUPABASE_KEY=${{secrets.SUPABASE_KEY}} >> .env
+      - name: Install ruby dependencies
+        run: pnpm --filter=www install:jekyll
+      - name: Build
+        run: pnpm build
+      - name: Lint
+        run: pnpm lint
+      - name: Test
+        run: pnpm test
+      - name: Deploy
+        run: pnpm build
+      - name: Deploy GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist
+          cname: www.vtt.bzh

@@ -4,8 +4,8 @@
   "license": "MIT",
   "version": "1.0.0",
   "engines": {
-    "pnpm": ">= 9",
-    "node": ">= 20"
+    "pnpm": "9.x",
+    "node": "22.x"
   },
   "description": "",
   "repository": {
@@ -19,7 +19,7 @@
   "private": true,
   "scripts": {
     "postinstall": "pnpm manypkg check",
-    "prepare": "husky install",
+    "prepare": "husky",
     "dev": "pnpm -r dev",
     "build": "pnpm -r build && pnpm bundle-packages",
     "preview": "pnpm build && python3 -m http.server -d ./dist",
@@ -33,15 +33,15 @@
     "bundle-packages": "rm -rf ./dist && cp -R ./site/www/_site/ ./dist"
   },
   "dependencies": {
-    "@changesets/cli": "^2.27.7",
-    "@manypkg/cli": "^0.21.4",
-    "@types/node": "^20.14.11",
+    "@changesets/cli": "^2.27.9",
+    "@manypkg/cli": "^0.22.0",
+    "@types/node": "^22.9.0",
     "eslint": "^8.49.0",
     "eslint-config-custom": "workspace:*",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-prettier": "^5.2.1",
-    "husky": "^8.0.3",
-    "lint-staged": "^14.0.1",
+    "husky": "^9.1.6",
+    "lint-staged": "^15.2.10",
     "prettier": "^3.3.3",
     "prettier-custom": "workspace:*",
     "ts-node": "^10.9.2"
@@ -54,5 +54,6 @@
   "lint-staged": {
     "*.{js,ts,tsx,vue}": "eslint --fix --ignore-path .gitignore",
     "*.{json,yaml,yml,md,mdx}": "prettier --write"
-  }
+  },
+  "packageManager": "pnpm@9.12.3"
 }

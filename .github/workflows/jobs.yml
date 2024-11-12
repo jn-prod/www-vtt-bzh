@@ -1,49 +1,48 @@
 name: Run vtt-bzh-calendar job
 
 on:
-  schedule: 
-    - cron: "0 2 * * *"
+  schedule:
+    - cron: '0 2 * * *'
 
 jobs:
   run:
     if: ${{ github.ref == 'refs/heads/main' }}
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-24.04
     environment: cron
     strategy:
       matrix:
-        node-version: [20]
+        node-version: [22]
     steps:
-    - name: Only on main
-      run: echo "This step will be skipped on Monday and Wednesday"
-    - uses: actions/checkout@v3
-    - uses: pnpm/action-setup@v2
-      with:
-        version: 9
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v3
-      with:
-        node-version: ${{ matrix.node-version }}
-        cache: 'pnpm'
+      - name: Only on main
+        run: echo "This step will be skipped on Monday and Wednesday"
+      - uses: actions/checkout@v3
+      - uses: pnpm/action-setup@v2
+        with:
+          version: 9
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'pnpm'
 
-    - name: Install dependencies
-      run: pnpm install
+      - name: Install dependencies
+        run: pnpm install
 
-    - name: create env file
-      run: |
-        cd apps/calendar/job
-        touch .env
-        echo CRON_START_URI=${{secrets.CRON_START_URI}} >> .env
-        echo WUFOO_USERNAME=${{secrets.WUFOO_USERNAME}} >> .env
-        echo WUFOO_PASSWORD=${{secrets.WUFOO_PASSWORD}} >> .env
-        echo WUFOO_DOMAIN=${{secrets.WUFOO_DOMAIN}} >> .env
-        echo WUFOO_FORM=${{secrets.WUFOO_FORM}} >> .env
-        echo SUPABASE_URL=${{secrets.SUPABASE_URL}} >> .env
-        echo SUPABASE_KEY=${{secrets.SUPABASE_KEY}} >> .env
-        echo SUPABASE_TABLE=${{secrets.SUPABASE_TABLE}} >> .env
+      - name: create env file
+        run: |
+          cd apps/calendar/job
+          touch .env
+          echo CRON_START_URI=${{secrets.CRON_START_URI}} >> .env
+          echo WUFOO_USERNAME=${{secrets.WUFOO_USERNAME}} >> .env
+          echo WUFOO_PASSWORD=${{secrets.WUFOO_PASSWORD}} >> .env
+          echo WUFOO_DOMAIN=${{secrets.WUFOO_DOMAIN}} >> .env
+          echo WUFOO_FORM=${{secrets.WUFOO_FORM}} >> .env
+          echo SUPABASE_URL=${{secrets.SUPABASE_URL}} >> .env
+          echo SUPABASE_KEY=${{secrets.SUPABASE_KEY}} >> .env
+          echo SUPABASE_TABLE=${{secrets.SUPABASE_TABLE}} >> .env
 
-    - name: Build apps
-      run: pnpm --filter='./**/job' build
+      - name: Build apps
+        run: pnpm --filter='./**/job' build
 
-    - name: run job
-      run: pnpm job
-
+      - name: run job
+        run: pnpm job

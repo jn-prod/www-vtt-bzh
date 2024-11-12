@@ -5,7 +5,7 @@
     "./bundler.json"
   ],
   "devDependencies": {
-    "@tsconfig/node20": "^20",
+    "@tsconfig/node22": "^22",
     "tsconfig-paths": "latest"
   }
 }

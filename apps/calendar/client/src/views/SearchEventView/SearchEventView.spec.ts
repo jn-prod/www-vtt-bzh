@@ -9,6 +9,7 @@ describe('SearchEventView', () => {
   test('render', async () => {
     const vm = createWrapper();
     // expect(await axe(vm.html())).toHaveNoViolations();
+    await Promise.all(vm.findAll('input').map((input) => input.setValue(new Date('2024-01-01'))));
     expect(vm.html()).toMatchSnapshot();
   });
 });
