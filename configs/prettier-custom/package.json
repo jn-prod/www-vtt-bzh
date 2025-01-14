@@ -3,6 +3,6 @@
   "version": "0.0.0",
   "main": "./src/index.js",
   "dependencies": {
-    "prettier": "latest"
+    "prettier": "^3.4.2"
   }
 }
