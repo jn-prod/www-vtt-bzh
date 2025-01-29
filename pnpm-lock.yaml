@@ -275,7 +275,7 @@ importers:
     dependencies:
       '@fortawesome/fontawesome-free':
         specifier: ^6.4.2
-        version: 6.6.0
+        version: 6.7.2
       '@popperjs/core':
         specifier: ^2.10.2
         version: 2.11.8
@@ -659,8 +659,8 @@ packages:
     resolution: {integrity: sha512-a/7BiSgobHAgBWeN7N0w+lAhInrGxksn13uK7231n2m8EDPE3BMCl9NZLTGrj9ZXfCmC6LM0QLqXidIizVQ6yg==}
     engines: {node: '>=6'}
 
-  '@fortawesome/fontawesome-free@6.6.0':
-    resolution: {integrity: sha512-60G28ke/sXdtS9KZCpZSHHkCbdsOGEhIUGlwq6yhY74UpTiToIh8np7A8yphhM4BWsvNFtIvLpi4co+h9Mr9Ow==}
+  '@fortawesome/fontawesome-free@6.7.2':
+    resolution: {integrity: sha512-JUOtgFW6k9u4Y+xeIaEiLr3+cjoUPiAuLXoyKOJSia6Duzb7pq+A76P9ZdPDoAoxHdHzq6gE9/jKBGXlZT8FbA==}
     engines: {node: '>=6'}
 
   '@fortawesome/fontawesome-svg-core@1.2.36':
@@ -3405,7 +3405,7 @@ snapshots:
 
   '@fortawesome/fontawesome-common-types@0.2.36': {}
 
-  '@fortawesome/fontawesome-free@6.6.0': {}
+  '@fortawesome/fontawesome-free@6.7.2': {}
 
   '@fortawesome/fontawesome-svg-core@1.2.36':
     dependencies:
