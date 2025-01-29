@@ -16,7 +16,6 @@
     "url": "https://github.com/jn-prod/www-vtt-bzh/issues"
   },
   "homepage": "https://github.com/jn-prod/www-vtt-bzh#readme",
-  "private": true,
   "scripts": {
     "postinstall": "pnpm manypkg check",
     "prepare": "husky",
