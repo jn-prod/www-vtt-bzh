@@ -55,5 +55,5 @@
     "*.{js,ts,tsx,vue}": "eslint --fix --ignore-path .gitignore",
     "*.{json,yaml,yml,md,mdx}": "prettier --write"
   },
-  "packageManager": "pnpm@9.12.3"
+  "packageManager": "pnpm@9.15.4"
 }
