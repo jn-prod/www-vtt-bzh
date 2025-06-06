@@ -15,7 +15,6 @@
     "dates": "workspace:*",
     "dotenv": "^16.0.3",
     "http-client": "workspace:*",
-    "linkedom": "0",
     "repository": "workspace:*"
   },
   "devDependencies": {

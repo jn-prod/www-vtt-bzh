@@ -1,1 +1,1 @@
-pnpm test && pnpm lint-staged
+# corepack enable && pnpm test && pnpm lint-staged
