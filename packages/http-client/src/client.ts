@@ -1,6 +1,8 @@
 import { Result, encaseResult } from 'types';
 import { Auth, IClient, RequestOptions } from './types';
 
+export type StringOrBufferType = ArrayBuffer | string;
+
 const isAuth = (auth: unknown): auth is Auth =>
   auth !== undefined &&
   typeof auth === 'object' &&
@@ -10,8 +12,11 @@ const request = async <T>(
   baseURL: string,
   uri: string,
   options: RequestOptions = {}
-): Promise<Result<T | ArrayBuffer | string>> => {
-  return encaseResult<T | ArrayBuffer | string>(async () => {
+): Promise<Result<T | StringOrBufferType>> => {
+  return encaseResult<T | StringOrBufferType>(async () => {
+    if (!URL.canParse(baseURL)) {
+      throw new Error('request - baseUrl param must a valid URL');
+    }
     // set clean url
     const url = new URL(encodeURI([baseURL, uri.split('?')[0]].join('')));
 
@@ -22,6 +27,9 @@ const request = async <T>(
 
     // fetch query
     const response = await fetch(new Request(url.toString(), options));
+    if (!response.ok) {
+      throw new Error('request - can not fetch request');
+    }
 
     // set result value
     let result;

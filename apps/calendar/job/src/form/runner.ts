@@ -3,9 +3,11 @@ import type { Entrie } from './types';
 import { client as httpClient, type IRequest } from 'http-client';
 import { updateOrCreate, type SupabaseClient } from 'repository';
 import { CreateEventDto, CalendarEvent, Kind } from 'calendar-shared';
+import type { Maybe } from 'types';
+
 let config = packageConfig;
 
-const mappeur = <T>(value: T): CreateEventDto | null => {
+const mappeur = <T>(value: T): Maybe<CreateEventDto> => {
   if (typeof value === 'object' && value !== null) {
     const entrie = value as unknown as Entrie;
     return {

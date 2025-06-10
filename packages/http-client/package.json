@@ -11,7 +11,7 @@
     "build": "tsc"
   },
   "dependencies": {
-    "linkedom": "0"
+    "linkedom": "^0.18.11"
   },
   "devDependencies": {
     "tsconfig": "workspace:*",
