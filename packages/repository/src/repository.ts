@@ -76,7 +76,11 @@ export const updateOne = async <UpdateDto, T>(
     const res = await findOne<T & { lock: boolean; id: string }>(db, collection, filter);
     // update entity if NOT locked
     if (res.ok && res.value !== null && res.value.lock !== true) {
-      const { data: updateRes, error } = await db.from(collection).update(resource).eq('id', res.value.id).select();
+      const { data: updateRes, error } = await db
+        .from(collection)
+        .update({ ...res.value, ...resource })
+        .eq('id', res.value.id)
+        .select();
       if (error) console.error(`[repository] updateOne`, error);
       if (updateRes !== null) return updateRes[0] as T;
       else return null;

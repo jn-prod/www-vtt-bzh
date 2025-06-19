@@ -23,18 +23,7 @@ export class CreateEventDto {
   ) {}
 }
 
-export class UpdateEventDto extends CreateEventDto {
-  constructor(
-    public readonly id: string,
-    public readonly date: Date,
-    public readonly hour: string,
-    public readonly active: boolean,
-    public readonly name: string,
-    public readonly kind: Kind
-  ) {
-    super(date, hour, active, name, kind);
-  }
-}
+export type UpdateEventDto = Partial<CreateEventDto>;
 
 export const isCreateEventDto = (payload: unknown): payload is CreateEventDto => {
   if (typeof payload === 'object') {
