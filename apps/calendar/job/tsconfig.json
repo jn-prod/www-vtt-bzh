@@ -2,7 +2,7 @@
   "extends": "tsconfig/node.json",
   "include": ["src"],
   "compilerOptions": {
-    "lib": ["DOM", "es2021"],
+    "lib": ["DOM", "es2024"],
     "outDir": "./dist"
   }
 }

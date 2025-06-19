@@ -2,6 +2,7 @@
   "extends": "tsconfig/bundler.json",
   "include": ["src"],
   "compilerOptions": {
+    "lib": ["DOM", "es2024"],
     "outDir": "./dist",
   }
 }

@@ -15,8 +15,8 @@
     "dates": "workspace:*",
     "dotenv": "^16.0.3",
     "http-client": "workspace:*",
-    "linkedom": "0",
-    "repository": "workspace:*"
+    "repository": "workspace:*",
+    "types": "workspace:*"
   },
   "devDependencies": {
     "ts-node": "^10.9.2",
