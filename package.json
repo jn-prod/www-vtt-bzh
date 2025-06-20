@@ -4,7 +4,7 @@
   "license": "MIT",
   "version": "1.0.0",
   "engines": {
-    "pnpm": "9.x",
+    "pnpm": "10.x",
     "node": "22.x"
   },
   "description": "",
@@ -40,7 +40,6 @@
     "*.{js,ts,tsx,vue}": "eslint --fix --ignore-path .gitignore",
     "*.{json,yaml,yml,md,mdx}": "prettier --write"
   },
-  "packageManager": "pnpm@9.15.4",
   "devDependencies": {
     "@changesets/cli": "^2.27.9",
     "@manypkg/cli": "^0.23.0",
