@@ -1,38 +1,51 @@
 <template>
-  <form id="search" @submit.prevent="submitSearch()">
-    <div class="my-2">
-      <input-date
-        :id="'start-date'"
-        :name="'start-date'"
-        :value="dateRange.start"
-        label="Debut"
-        @input-date="updateStartDate"
-      >
-      </input-date>
-    </div>
-    <div class="my-2">
-      <input-date :id="'end-date'" :name="'end-date'" :value="dateRange.end" label="Fin" @input-date="updateEndDate">
-      </input-date>
-    </div>
-    <div class="my-2">
-      <label for="departement"> Département </label>
-      <select id="departement" v-model="dpt" name="departement" class="form-control">
-        <option v-for="option in options" :key="option.value" :value="option.value">
-          {{ option.text }}
-        </option>
-      </select>
-    </div>
-    <div class="my-2">
-      <div class="mx-auto">
-        <button id="search_button" type="submit" class="btn btn-secondary shadow m-2 rounded-pill">
-          <i class="fas fa-search"></i> Rechercher
-        </button>
-        <button href="#calendar" class="btn btn-outline-dark rounded-pill shadow m-2" @click="deleteSearch">
-          <i class="far fa-trash-alt"></i> Réinitialiser
-        </button>
+  <article class="my-2">
+    <header class="d-flex">
+      <button class="btn btn-light ms-auto" aria-controls="search" @click="handleToggleButton">
+        <span v-if="open" class="my-auto me-2">
+          <i class="fas fa-chevron-up" aria-hidden="true"></i>
+        </span>
+        <span v-if="!open" class="my-auto me-2">
+          <i class="fas fa-chevron-down" aria-hidden="true"></i>
+        </span>
+        Filtrer
+      </button>
+    </header>
+    <form id="search" :hidden="!open" :aria-expanded="open" @submit.prevent="submitSearch()">
+      <div class="my-2">
+        <input-date
+          :id="'start-date'"
+          :name="'start-date'"
+          :value="dateRange.start"
+          label="Debut"
+          @input-date="updateStartDate"
+        >
+        </input-date>
       </div>
-    </div>
-  </form>
+      <div class="my-2">
+        <input-date :id="'end-date'" :name="'end-date'" :value="dateRange.end" label="Fin" @input-date="updateEndDate">
+        </input-date>
+      </div>
+      <div class="my-2">
+        <label for="departement"> Département </label>
+        <select id="departement" v-model="dpt" name="departement" class="form-control">
+          <option v-for="option in options" :key="option.value" :value="option.value">
+            {{ option.text }}
+          </option>
+        </select>
+      </div>
+      <div class="my-2">
+        <div class="mx-auto">
+          <button id="search_button" type="submit" class="btn btn-secondary shadow m-2 rounded-pill">
+            <i class="fas fa-search"></i> Rechercher
+          </button>
+          <button href="#calendar" class="btn btn-outline-dark rounded-pill shadow m-2" @click="deleteSearch">
+            <i class="far fa-trash-alt"></i> Réinitialiser
+          </button>
+        </div>
+      </div>
+    </form>
+  </article>
 </template>
 
 <script lang="js">
@@ -65,6 +78,11 @@ export default {
     const options = departementslist;
 
     const dpt = ref(defaultQuery.dpt);
+    const open = ref(false);
+
+    const handleToggleButton = () => {
+      open.value = !open.value;
+    };
 
     const submitSearch = () =>
       emit('submit-search-form', {
@@ -92,10 +110,12 @@ export default {
       dateRange,
       options,
       dpt,
+      open,
       submitSearch,
       deleteSearch,
       updateStartDate,
       updateEndDate,
+      handleToggleButton,
     };
   },
 };

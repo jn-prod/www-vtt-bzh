@@ -1,7 +1,7 @@
 // project
-@import 'bootstrap/dist/css/bootstrap.css';
-@import './_colors.scss';
-@import './fonts';
+@use 'bootstrap/dist/css/bootstrap.css';
+@use 'colors';
+@use 'fonts';
 
 /*
  * Globals
@@ -11,7 +11,7 @@
 a,
 a:focus,
 a:hover {
-  color: $color-primary;
+  color: colors.$color-primary;
 }
 
 /* Custom Bootstrap */
@@ -35,11 +35,11 @@ a:hover {
 
 html, body {
   height: 100%;
-  background-color: $color-white;
+  background-color: colors.$color-white;
 }
 
 body {
-  color: $color-grey-dark;
+  color: colors.$color-grey-dark;
   font-family: "Lato" , sans-serif !important;
   font-weight: 300 !important;
   letter-spacing: normal !important;
@@ -51,7 +51,7 @@ h1, h2, h3, h4, h5, .h1, .h2, .h3, .h4, .h5 {
 
 header {
   h3{
-    color: $color-white;
+    color: colors.$color-white;
     font-weight: bold;
   }
 }
@@ -94,7 +94,7 @@ li {
 }
 
 .event:hover{
-  background-color: $color-grey-light;
+  background-color: colors.$color-grey-light;
   cursor: pointer;
 }
 
@@ -102,26 +102,26 @@ li {
 * Backgrounds
 */
 .bg-light{
-  background: $color-grey-light;
+  background: colors.$color-grey-light;
 }
 
 .bg-orange{
-  background: $color-primary;
+  background: colors.$color-primary;
 }
 
 .bg-white {
-  background-color: $color-white !important;
+  background-color: colors.$color-white !important;
 }
 
 /*
 * Text
 */
 .text-secondary {
-  color: $color-secondary !important;
+  color: colors.$color-secondary !important;
 }
 
 .text-primary{
-  color: $color-primary !important;
+  color: colors.$color-primary !important;
   border-bottom: transparent .25rem solid;
 }
 
@@ -134,49 +134,49 @@ li {
 * Buttons
 */
 .btn-primary{
-  background-color: $color-primary !important;
-  border: $color-primary .25rem solid !important;
+  background-color: colors.$color-primary !important;
+  border: colors.$color-primary .25rem solid !important;
   &:hover{
-    background-color: $color-secondary !important;
-    border: $color-secondary .25rem solid !important;
+    background-color: colors.$color-secondary !important;
+    border: colors.$color-secondary .25rem solid !important;
   }
 }
 
 .btn-outline-primary{
-  border-color: $color-primary !important;
-  color: $color-primary;
+  border-color: colors.$color-primary !important;
+  color: colors.$color-primary;
 
   &:hover{
-    border-color: $color-secondary !important;
-    color: $color-secondary;
-    background-color: $color-white;
+    border-color: colors.$color-secondary !important;
+    color: colors.$color-secondary;
+    background-color: colors.$color-white;
   }
 }
 
 .btn-secondary{
-  background-color: $color-secondary !important;
-  border-color: $color-secondary !important;
-  color: $color-white;
+  background-color: colors.$color-secondary !important;
+  border-color: colors.$color-secondary !important;
+  color: colors.$color-white;
   &:hover{
-    background-color: $color-primary !important;
-    border-color: $color-primary !important;
-    color: $color-white;
+    background-color: colors.$color-primary !important;
+    border-color: colors.$color-primary !important;
+    color: colors.$color-white;
   }
 }
 
 .btn-default,
 .btn-default:focus {
-  color: $color-grey-dark;
+  color: colors.$color-grey-dark;
   text-shadow: none;
-  background-color: $color-white;
-  border-color: $color-white;
+  background-color: colors.$color-white;
+  border-color: colors.$color-white;
 }
 
 .btn-default:hover{
-  color: $color-grey-dark;
+  color: colors.$color-grey-dark;
   text-shadow: none;
-  background-color: $color-primary;
-  border-color: $color-primary;
+  background-color: colors.$color-primary;
+  border-color: colors.$color-primary;
 }
 
 /*
