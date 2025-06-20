@@ -1,21 +1,15 @@
 <template>
   <section class="container-fluid">
-    <header id="header-wrapper" class="row mb-5">
-      <section class="col-md-4 bg-white p-2 m-2 mx-md-5 px-md-5 rounded shadow">
-        <!-- value proposition        -->
-        <h1 class="h3 text-left m2-5">Rechercher une rando VTT à coté de chez toi n'aura jamais été aussi simple.</h1>
-
-        <!-- search form component -->
-        <search-form @submit-search-form="setSearchQuery" @cancel-search-form="cancelSearchQuery"></search-form>
-      </section>
-    </header>
-
     <!-- calendar component -->
     <div class="mt-5 mx-md-5">
-      <h2 id="calendar" class="mb-5 text-center">
+      <h1 id="calendar" class="mb-5 text-center">
         Calendrier des randonnées à venir
         <span id="nombre_rando" class="badge bg-success">{{ count }}</span>
-      </h2>
+      </h1>
+
+      <!-- search form component -->
+      <search-form @submit-search-form="setSearchQuery" @cancel-search-form="cancelSearchQuery"></search-form>
+
       <p v-if="!isResults && !isLoading" class="alert alert-danger" aria-live="polite" :aria-busy="isLoading">
         Aucun résultat pour cette recherche, choisissez une autre date de début et de fin.
       </p>
