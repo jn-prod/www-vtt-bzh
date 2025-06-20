@@ -3,8 +3,7 @@
     <!-- calendar component -->
     <div class="mt-5 mx-md-5">
       <h1 id="calendar" class="mb-5 text-center">
-        Calendrier des randonnées à venir
-        <span id="nombre_rando" class="badge bg-success">{{ count }}</span>
+        Calendrier
       </h1>
 
       <!-- search form component -->
@@ -12,6 +11,9 @@
 
       <p v-if="!isResults && !isLoading" class="alert alert-danger" aria-live="polite" :aria-busy="isLoading">
         Aucun résultat pour cette recherche, choisissez une autre date de début et de fin.
+      </p>
+      <p v-if="isResults && !isLoading" class="alert alert-info" aria-live="polite" :aria-busy="isLoading">
+        Decouvrez {{ count }} randonnées.
       </p>
       <p v-if="isLoading" class="alert alert-info" aria-live="polite" :aria-busy="isLoading">Chargement en cours.</p>
 
