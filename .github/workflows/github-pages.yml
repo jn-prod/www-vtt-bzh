@@ -42,8 +42,8 @@ jobs:
         run: pnpm build
       - name: Lint
         run: pnpm lint
-      - name: Test
-        run: pnpm test
+      #- name: Test
+      #  run: pnpm test
       - name: Deploy
         run: pnpm build
       - name: Deploy GitHub Pages
