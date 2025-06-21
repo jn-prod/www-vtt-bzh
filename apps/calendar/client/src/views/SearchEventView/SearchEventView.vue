@@ -13,7 +13,7 @@
         Aucun résultat pour cette recherche, choisissez une autre date de début et de fin.
       </p>
       <p v-if="isResults && !isLoading" class="alert alert-info" aria-live="polite" :aria-busy="isLoading">
-        Decouvrez {{ count }} randonnées.
+        {{ count }} randonnées à découvrir.
       </p>
       <p v-if="isLoading" class="alert alert-info" aria-live="polite" :aria-busy="isLoading">Chargement en cours.</p>
 
