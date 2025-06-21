@@ -12,7 +12,7 @@
       <p v-if="!isResults && !isLoading" class="alert alert-danger" aria-live="polite" :aria-busy="isLoading">
         Aucun résultat pour cette recherche, choisissez une autre date de début et de fin.
       </p>
-      <p v-if="isResults && !isLoading" class="alert alert-info" aria-live="polite" :aria-busy="isLoading">
+      <p v-if="isResults && !isLoading" class="alert alert-light" aria-live="polite" :aria-busy="isLoading">
         {{ count }} randonnées à découvrir.
       </p>
       <p v-if="isLoading" class="alert alert-info" aria-live="polite" :aria-busy="isLoading">Chargement en cours.</p>
