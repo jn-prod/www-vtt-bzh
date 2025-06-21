@@ -3,7 +3,7 @@
     <!-- calendar component -->
     <div class="mt-5 mx-md-5">
       <h1 id="calendar" class="mb-5 text-center">
-        Calendrier
+        Randonnées
       </h1>
 
       <!-- search form component -->
