@@ -7,14 +7,9 @@
       <div class="col-md-2 my-auto">
         <img src="{{ site.data.authors.nicolas.avatar }}" alt="{{ site.data.authors.nicolas.display_name }}" class="img-fluid">
       </div>
-      <div class="col-md-10 my-auto text-center text-md-left">
-        <p>
-          Par <a href="{{ site.data.authors.nicolas.web }}" target="_blank">{{ site.data.authors.nicolas.display_name }}</a>, {{ site.date.authors.nicolas.bio }}. {{ site.date.authors.nicolas.location }}
-        </p>
-        <p> 
-          Contactez moi avec le formulaire de <a href="/contact.html">contact</a>.
-        </p>
-      </div>
+      <p class="col-md-10 my-auto text-center text-md-left">
+        Par <a href="{{ site.data.authors.nicolas.web }}" target="_blank">{{ site.data.authors.nicolas.display_name }}</a>, {{ site.data.authors.nicolas.bio }}. {{ site.data.authors.nicolas.location }}. <a href="/contact.html">Me contacter</a>.
+      </p>
     </div>
   {% endif %}
 
