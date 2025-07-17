@@ -35,7 +35,30 @@ post_class: post-template
                 <!-- Author Box -->
                 {% if page.author %}
 
-                       {% include /boxes/author.html %}  
+                    <div class="d-flex mb-3 px-5">
+                        <meta itemprop="author creator" content="{{ author.display_name }}">
+                        
+                        <p class="mx-auto itemprop="publisher" itemscope itemtype="http://schema.org/Organization">  
+                            Par 
+                            <a target="_blank" class="text-dark ms-1" href="{{ author.web }}" rel="me">
+                                <span itemprop="name" class="fw-bold text-dark">
+                                    {{ author.display_name }}
+                                </span>
+                            </a>
+                    
+                            <!-- Post Date -->
+                            {% if page.date %}
+                                <span class="text-muted">
+                                    , le 
+                                    {% if page.layout == "post" %}
+                                        <time>{{ page.date | date_to_string }}</time>
+                                    {% else %}
+                                        <time class="" itemprop="dateCreated datePublished dateModified" datetime="{{ page.date | date:"%Y-%m-%d" }}">{{ page.date | date_to_string }}</time>
+                                    {% endif %}
+                                </span>
+                            {% endif %}     
+                        </p>
+                    </div>
 
                 {% endif %}  
                 
