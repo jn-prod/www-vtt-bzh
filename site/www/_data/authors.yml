@@ -1,17 +1,11 @@
 nicolas:
     # global
-    name             : "Nicolas"
-    display_name     : "Nicolas Jouanno"
-    current_job      : "Développeur Frontend"
-    bio              : "<a href="https://nicolasjouanno.com" target="_blank">Nicolas Jouanno Daniel</a>, développeur frontend @MGDIS & ex-cycliste professionnel - amateur de nature, de photographie et de vie simple en famille."
-    age              : "31 ans"
-    fone             : "06.63.45.29.38"
-    passions         : "Sports outdoor, Photographie, Jardinage"
-    location         : "Pontivy"
+    display_name     : "Nicolas JOUANNO DANIEL"
+    bio              : "Développeur frontend @MGDIS & ex-cycliste professionnel - amateur de nature, de photographie et de vie simple en famille."
+    location         : "Pontivy, Bretaggne"
     avatar           : "/assets/images/profile.jpeg"
     email            : "pro@nicolasjouanno.com"
-    web              : "https://nicolasjouanno.com/about.html"    
-    certifications_folder: "https://drive.google.com/open?id=14JiH6ytQDige_iIOZPUUYq-W38VPaWTo"
+    web              : "https://nicolasjouanno.com"    
     post_cta         : "Rejoins les 3 500 lecteurs de \"Volt!\", ma newsletter hebdomadaire, et découvre mes liens coups de coeur. Un mix de strategies, de feedbacks et d'outils qui t'aidera à développer ton produit !"
 
     # social
