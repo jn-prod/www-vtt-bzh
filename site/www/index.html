@@ -1006,47 +1006,9 @@ redirect_from:
   - '/blog/index.html'
   - '/guides/'
   - '/guides/marques.html'
+  - '/calendrier.html'
 layout: default
-title: Calendrier des rando et conseils pour pratiquer le VTT en Bretagne
+title: Calendrier des randonnées VTT de Bretagne
 ---
 <!-- application -->
-<section>
-
-  <div class="row">
-
-    <div class="col-12">
-
-      <div class="row">
-
-        <div class="col-12 py-5">
-
-          <!-- value proposition        -->
-          <h1 class="text-center">Trouver rapidement une randonnée VTT en Bretagne.</h1>
-
-          <img src="{{site.url}}/assets/images/home.png" alt="Application pour trouver la prochaine randonnée vtt"
-            class="img-fluid mx-auto d-block">
-
-        </div>
-
-      </div>
-
-
-      <div class="row">
-
-        {% for card in site.data.home.cards %}
-
-          <div class="col-md-6 my-5 p-3">
-
-            {% include /boxes/card-home.html card=card %}
-          
-          </div>
-
-        {% endfor %}
-
-      </div>
-
-    </div>
-
-  </div>
-
-</section>
+<section id="calendar"></section>
