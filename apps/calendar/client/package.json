@@ -45,7 +45,7 @@
     "eslint-plugin-vuejs-accessibility": "^2.2.0",
     "jest-axe": "^9.0.0",
     "jest-serializer-vue-tjw": "^3.20.0",
-    "jsdom": "^25.0.1",
+    "jsdom": "^26.0.0",
     "prettier": "^3.3.3",
     "sass": "^1.x",
     "tsconfig": "workspace:*",
