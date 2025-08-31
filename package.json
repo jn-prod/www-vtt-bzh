@@ -46,7 +46,7 @@
     "@types/node": "^22.9.0",
     "eslint": "^8.49.0",
     "eslint-config-custom": "workspace:*",
-    "eslint-config-prettier": "^9.1.0",
+    "eslint-config-prettier": "^10.0.0",
     "eslint-plugin-prettier": "^5.2.1",
     "husky": "^9.1.6",
     "lint-staged": "^15.2.10",
