@@ -8,7 +8,10 @@
         <img src="{{ site.data.authors.nicolas.avatar }}" alt="{{ site.data.authors.nicolas.display_name }}" class="img-fluid">
       </div>
       <p class="col-md-10 my-auto text-center text-md-left">
-        Par <a href="{{ site.data.authors.nicolas.web }}" target="_blank">{{ site.data.authors.nicolas.display_name }}</a>, {{ site.data.authors.nicolas.bio }}. {{ site.data.authors.nicolas.location }}. <a href="/contact.html">Me contacter</a>.
+        Par <a href="{{ site.data.authors.nicolas.web }}" target="_blank">{{ site.data.authors.nicolas.display_name }}</a>, {{ site.data.authors.nicolas.bio }}. {{ site.data.authors.nicolas.location }}.
+      </p>
+      <p>
+        Vous pouvez suivre ces liens pour <a href="/calendrier/ajouter.html">ajouter un évènement</a> ou <a href="https://www.nicolasjouanno.com/contact.html">me contacter</a>.
       </p>
     </div>
   {% endif %}
@@ -16,7 +19,7 @@
   <!-- signature -->
   <div class="mt-5">
       <p>
-        <a href="/about.html">A propos</a> • <a href="/contact.html">Contact</a> • <a href="/terms/legals.html">Mentions légales</a> • <a href="/blog/index.html">Blog</a> • <a href="{{ site.url }}/calendrier.html">{{ site.headline }} {{ site.time | date: "%Y" }}</a>
+        <a href="/about.html">A propos</a> • <a href="/terms/legals.html">Mentions légales</a> • <a href="/blog/index.html">Blog</a> • <a href="{{ site.url }}/calendrier.html">{{ site.headline }} {{ site.time | date: "%Y" }}</a>
       </p>
       <span itemscope itemtype="http://schema.org/Organization">
          &copy; <span itemprop="name">{{ site.title }}</span>, 2013 - {{ site.time | date: "%Y" }}
