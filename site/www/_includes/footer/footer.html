@@ -17,13 +17,8 @@
   {% endif %}
 
   <!-- signature -->
-  <div class="mt-5">
-      <p>
-        <a href="/about.html">A propos</a> • <a href="/terms/legals.html">Mentions légales</a> • <a href="/blog/index.html">Blog</a> • <a href="{{ site.url }}/calendrier.html">{{ site.headline }} {{ site.time | date: "%Y" }}</a>
-      </p>
-      <span itemscope itemtype="http://schema.org/Organization">
-         &copy; <span itemprop="name">{{ site.title }}</span>, 2013 - {{ site.time | date: "%Y" }}
-      </span>
-   </div>
+    <p itemscope itemtype="http://schema.org/Organization">
+       <a href="{{ site.url }}">{{ site.headline }} {{ site.time | date: "%Y" }}</a> &copy; <span itemprop="name"><a href="/about.html">{{ site.title }}/a></span>, 2013 - {{ site.time | date: "%Y" }} <a href="https://nicolasjouanno.com/">Nicolas Jouanno</a> • <a href="/terms/legals.html">Mentions légales</a>
+    </p>
   </div>
 </footer>
