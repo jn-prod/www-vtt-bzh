@@ -23,7 +23,7 @@
     "calendar-shared": "workspace:*",
     "core-js": "^3.6.5",
     "dates": "workspace:*",
-    "lodash": "^4.17.21",
+    "lodash": "^4.17.23",
     "repository": "workspace:*",
     "styles": "workspace:*",
     "vue": "^3.4.14"
