@@ -1,13 +1,3 @@
-import { DatePattern } from './types';
-
-export const getDateFromPattern = (date: string, pattern: DatePattern): Date => {
-  const [day, month, year] = (date || '').split('/');
-  if ([day, month, year].some((val) => [undefined, ''].includes(val))) {
-    throw new Error('[getDateFromPattern] - Missing valide dateparam');
-  } else if (pattern !== DatePattern.DDMMYYYY) throw new Error('[getDateFromPattern] - Missing Date pattern config.');
-  else return new Date(`${year}-${month}-${day}`);
-};
-
 export const getPreviousDate = (): Date => {
   const date = new Date();
   return new Date(date.setDate(date.getDate() - 1));
