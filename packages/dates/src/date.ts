@@ -21,11 +21,9 @@ export const dateFormatToText = (date: string | undefined = ''): string => {
   const isInvalidDate = Number.isNaN(dateToFormat.getMonth());
   if (isInvalidDate) return '';
 
-  const day = dateToFormat.getDate();
-  const month = getMonth(dateToFormat.getMonth() + 1);
-  const year = dateToFormat.getFullYear();
-
-  return `${day} ${month} ${year}`;
+  return new Intl.DateTimeFormat("fr-FR", {
+    dateStyle: "medium",
+  }).format(dateToFormat);
 };
 
 export const dateFormatToIsoString = (date: string): string => (date ? new Date(date.split("/").reverse().join("-")).toISOString() : '');
