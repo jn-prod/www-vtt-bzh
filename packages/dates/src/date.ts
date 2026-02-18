@@ -1,10 +1,3 @@
-export const dateFormat = (date: string): Date => {
-  const day = Number(date.split('/')[0]);
-  const month = Number(date.split('/')[1]) - 1;
-  const year = Number(date.split('/')[2]);
-  return new Date(Date.UTC(year, month, day));
-};
-
 export const getMonth = (month: number | undefined): string => {
   if (month === 1) return 'Jan.';
   if (month === 2) return 'Fév.';
