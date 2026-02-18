@@ -9,16 +9,16 @@ export interface WebConfig {
 }
 
 export enum ElementSelector {
-  NOM = '#txt_ref_int_nom_2',
-  LIEU = '#txt_ref_int_lieu_2',
-  DPT = '#txt_ref_int_dpt_2',
-  DATE = '#txt_ref_int_date_2',
-  ORGANISATEUR = '#txt_ref_int_organisateur_2',
-  HORAIRES = '#txt_ref_int_horaires_2',
-  LIEN = '#StyleLien1',
-  RDV = '#txt_ref_int_ldrdv_2',
-  PRIX = '#txt_ref_int_prix2',
-  CONTACT = '#txt_ref_int_contacttxt',
-  DESCRIPTION = '#txt_ref_int_decription',
+  NOM = '.row:nth-child(4) .vtt',         // "Nom de la rando"
+  LIEU = '.row:nth-child(3) .vtt',        // "Lieu"
+  DPT = '.row:nth-child(2) .vtt',           // "Département"
+  DATE = '.row:nth-child(1) .vtt',          // "Date"
+  ORGANISATEUR = '.row:nth-child(5) .vtt',  // "Organisateur"
+  HORAIRES = '.row:nth-child(7) .vtt',      // "Horaires"
+  LIEN = '.row:nth-child(8) .vtt a',        // "Site"
+  RDV = '.row:nth-child(6) .vtt',           // "Lieu de R-d-V"
+  PRIX = '#printableArea .row:nth-child(10) .form-control',    // "Prix public"
+  CONTACT = '#printableArea .row:nth-child(14) .form-control', // "Contact"
+  DESCRIPTION = '#printableArea .row:nth-child(16) .form-control', // "Description"
   ANNULE = '#zone_texte_annule',
 }
