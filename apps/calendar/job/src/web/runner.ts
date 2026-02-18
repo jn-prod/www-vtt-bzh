@@ -1,4 +1,3 @@
-import { DatePattern, getDateFromPattern } from 'dates';
 import { Filter, find, updateOrCreate, type SupabaseClient } from 'repository';
 import { CalendarEvent, Kind, CreateEventDto, UpdateEventDto } from 'calendar-shared';
 import { Config } from '../config';
@@ -72,15 +71,12 @@ export async function webRunner(db: SupabaseClient, config: Config): Promise<voi
       }
 
       const event: CreateEventDto = {
-        name: getTextContent(document.querySelector(ElementSelector.NOM)) || '',
+        name: getTextContent(document.querySelector(ElementSelector.NOM)) ?? '',
         city: getTextContent(document.querySelector(ElementSelector.LIEU)),
         departement: Number(getTextContent(document.querySelector(ElementSelector.DPT))),
-        date: getDateFromPattern(
-          getTextContent(document.querySelector(ElementSelector.DATE)) || '',
-          DatePattern.DDMMYYYY
-        ),
+        date: new Date((getTextContent(document.querySelector(ElementSelector.DATE)) ?? '').split("/").reverse().join("-")),
         organisateur: getTextContent(document.querySelector(ElementSelector.ORGANISATEUR)),
-        hour: getTextContent(document.querySelector(ElementSelector.HORAIRES)) || '',
+        hour: getTextContent(document.querySelector(ElementSelector.HORAIRES)) ?? '',
         website: getTextContent(document.querySelector(ElementSelector.LIEN)),
         place: getTextContent(document.querySelector(ElementSelector.RDV)),
         price: getTextContent(document.querySelector(ElementSelector.PRIX)),
