@@ -17,8 +17,8 @@ export enum ElementSelector {
   HORAIRES = '.row:nth-child(7) .vtt',      // "Horaires"
   LIEN = '.row:nth-child(8) .vtt a',        // "Site"
   RDV = '.row:nth-child(6) .vtt',           // "Lieu de R-d-V"
-  PRIX = '#printableArea .row:nth-child(10) .form-control',    // "Prix public"
-  CONTACT = '#printableArea .row:nth-child(14) .form-control', // "Contact"
-  DESCRIPTION = '#printableArea .row:nth-child(16) .form-control', // "Description"
+  PRIX = '.row:nth-child(10) .form-control',    // "Prix public"
+  CONTACT = '.row:nth-child(14) .form-control', // "Contact"
+  DESCRIPTION = '.row:nth-child(16) .form-control', // "Description"
   ANNULE = '#zone_texte_annule',
 }
