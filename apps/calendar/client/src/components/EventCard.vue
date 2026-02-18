@@ -76,7 +76,7 @@ export default defineComponent({
       active.value = !active.value;
     };
 
-    const isoStringDate = computed(() => getStringDate(props?.event?.date));
+    const isoStringDate = computed(() => new Date(props?.event?.date ?? '').toISOString());
 
     const date = computed(() => dateToText(props?.event?.date));
 
