@@ -45,14 +45,19 @@
 <script lang="ts">
 import { computed, ref, defineComponent } from 'vue';
 import type { PropType } from 'vue';
-import { getStringDate } from 'dates';
 import type { CalendarEvent } from 'calendar-shared/src/types';
 
-const dateToText = (date?: string = ''): string => {
+const dateToText = (value?: string | Date): string => {
+	let date = value;
+
   try {
-      return new Intl.DateTimeFormat("fr-FR", { dateStyle: "medium", }).format(new Date(date));
+	  if (typeof date === "string") {
+			date = new Date(date);
+		}
+
+    return new Intl.DateTimeFormat("fr-FR", { dateStyle: "medium", }).format(date);
   } catch {
-      return '';
+    return '';
   }
 };
 
@@ -73,7 +78,7 @@ export default defineComponent({
 
     const isoStringDate = computed(() => getStringDate(props?.event?.date));
 
-    const date = computed(() => dateToText(getStringDate(props?.event?.date)));
+    const date = computed(() => dateToText(props?.event?.date));
 
     return {
       active,
