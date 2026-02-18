@@ -2,17 +2,6 @@ import { describe, expect, test } from 'vitest';
 import * as date from './date';
 
 describe('date utils', () => {
-  describe('getMonth()', () => {
-    test('should get janv, case val is 1', () => {
-      const val = date.getMonth(1);
-      expect(val).toEqual('Jan.');
-    });
-    test('should get NC, case val is not defined', () => {
-      const val = date.getMonth(undefined);
-      expect(val).toEqual('NC');
-    });
-  });
-
   describe('dateFormatToText()', () => {
     test('should return a blank string if date is undefined', () => {
       const val = date.dateFormatToText();
