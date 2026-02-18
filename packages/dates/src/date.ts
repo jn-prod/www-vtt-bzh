@@ -28,7 +28,7 @@ export const dateFormatToText = (date: string | undefined = ''): string => {
   return `${day} ${month} ${year}`;
 };
 
-export const dateFormatToIsoString = (date: string): string => (date ? dateFormat(date).toISOString() : '');
+export const dateFormatToIsoString = (date: string): string => (date ? new Date(date.split("/").reverse().join("-")).toISOString() : '');
 
 export const getStringDate = (date: string | Date | undefined): string => {
   if (typeof date === 'string') return date;
