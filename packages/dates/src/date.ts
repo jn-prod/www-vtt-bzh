@@ -1,13 +1,9 @@
-export const dateFormatToText = (date: string | undefined = ''): string => {
-  if (!date.length) return date;
-
-  const dateToFormat = new Date(date);
-  const isInvalidDate = Number.isNaN(dateToFormat.getMonth());
-  if (isInvalidDate) return '';
-
-  return new Intl.DateTimeFormat("fr-FR", {
-    dateStyle: "medium",
-  }).format(dateToFormat);
+export const dateFormatToText = (date?: string = ''): string => {
+  try {
+      return new Intl.DateTimeFormat("fr-FR", { dateStyle: "medium", }).format(new Date(date));
+  } catch {
+      return '';
+  }
 };
 
 export const dateFormatToIsoString = (date: string): string => (date ? new Date(date.split("/").reverse().join("-")).toISOString() : '');
