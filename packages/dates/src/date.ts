@@ -1,8 +1,3 @@
-export const getPreviousDate = (): Date => {
-  const date = new Date();
-  return new Date(date.setDate(date.getDate() - 1));
-};
-
 export const dateFormat = (date: string): Date => {
   const day = Number(date.split('/')[0]);
   const month = Number(date.split('/')[1]) - 1;
