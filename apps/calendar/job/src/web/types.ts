@@ -9,7 +9,7 @@ export interface WebConfig {
 }
 
 export enum ElementSelector {
-  NOM = '.row:nth-child(4) .vtt',         // "Nom de la rando"
+  NOM = '.titre-principal',         // "Nom de la rando"
   LIEU = '.row:nth-child(3) .vtt',        // "Lieu"
   DPT = '.row:nth-child(2) .vtt',           // "Département"
   DATE = '.row:nth-child(1) .vtt',          // "Date"
