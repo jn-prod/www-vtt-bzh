@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "calendar-shared": "workspace:*",
+    "dates": "workspace:*",
     "dotenv": "^16.0.3",
     "http-client": "workspace:*",
     "repository": "workspace:*",
