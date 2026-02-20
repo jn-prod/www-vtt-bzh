@@ -2,9 +2,6 @@
   <section class="container-fluid">
     <!-- calendar component -->
     <div class="mt-5 mx-md-5">
-      <h1 id="calendar" class="mb-5 text-center">
-        Randonnées
-      </h1>
 
       <!-- search form component -->
       <search-form @submit-search-form="setSearchQuery" @cancel-search-form="cancelSearchQuery"></search-form>
