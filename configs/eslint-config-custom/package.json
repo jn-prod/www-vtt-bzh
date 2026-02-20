@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "./src/index.js",
   "dependencies": {
-    "eslint": "^8.49.0",
+    "eslint": "^10.0.0",
     "eslint-config-prettier": "latest"
   },
   "devDependencies": {
