@@ -1,9 +1,96 @@
 <!doctype html>
 <html lang="fr" ng-app="app">
-
-  <!-- Head
-  ================================================== -->
-  {% include /header/head.html %}
+  <head>
+    <!-- seo -->
+    {% if page.title %}
+      <title>{{ page.title }} | {{ site.title }}</title>
+      <meta property="og:title" content="{{ page.title }} | {{ site.title }}" /> 
+    {% else %}
+      <title>{{ site.title }}</title>
+      <meta property="og:title" content="{{ site.title }}" /> 
+    {% endif %}
+  
+    {% if page.description %}
+      <meta name="description" content="{{ page.description }}">
+    {% else %}
+      <meta name="description" content="{{ content | strip_html | truncatewords:19 }}">   
+    {% endif %}
+    
+    {% if page.keywords %}
+      <meta name="keywords" content="{{ page.keywords }}" />
+    {% else %}
+      <meta name="keywords" content="{{ site.keywords }}" />
+    {% endif %}
+  
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="google-site-verification" content="p6n7BrHhMIgg3KX7bCmj6fzgSvSRwlppzRWJY4-d9IY" />
+  
+    <meta name="robots" content="index, follow">
+    <meta name="referrer" content="always">
+    <meta name="theme-color" content="#000000">
+    {% if site.google_verification %}
+      <meta name="google-site-verification" content="{{ site.google_verification }}" />
+    {% endif %}
+    <link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.url }}">
+    <meta name="author" content="{{ site.data.authors.nicolas.display_name }}">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    
+    <!-- icon -->
+    <link rel="apple-touch-icon" href="{{ site.url }}/assets/images/logo.png">
+    <link rel="icon" href="{{ site.url }}/assets/images/favicon.ico">
+  
+    <!-- opengraph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="{{ site.url }}{{ page.url }}" />
+    {% if page.image %}
+      <meta property="og:image" content="{{ site.url }}/{{ page.image }}" />
+    {% else %}
+      <meta property="og:image" content="{{ site.url }}/{{ site.main_image }}" />
+    {% endif %}
+    {% if post.excerpt %}
+      <meta property="og:description" content="{{ post.excerpt | strip_html | truncatewords:30 }} | {{site.title}}" />
+    {% else %}
+      <meta property="og:description" content="{{ content | strip_html | truncatewords:19 }} | {{site.title}}" />
+    {% endif %} 
+    
+    <meta property="og:locale" content="{{ site.local }}" />
+    <meta property="og:site_name" content="{{ site.title }}" />
+  
+    <!-- twitter -->
+    <meta name="twitter:card" content="{{ site.url }}/{{ site.main_image }}" />
+    <meta name="twitter:site" content="@nicolasjouanno" />
+    <meta name="twitter:title" content="{{ site.title }}" />
+    <meta name="twitter:description" content="{{ site.description }}" />
+    <meta name="twitter:image" content="{{ site.url }}/{{ site.main_image }}" />  
+  
+    <!-- calendar app -->
+    <link rel="stylesheet" href="{{ site.url }}/assets/calendar/index.css">
+      
+    <!-- Schema.org -->
+    <script type="application/ld+json">
+      {
+        "@context":"http://schema.org",
+        "@type":"Organization",
+        "name":"VTT.bzh",
+        "address":
+          {
+            "@type":"PostalAddress",
+            "streetAddress":"rue nationale",
+            "addressLocality":"Pontivy",
+            "addressRegion":"Bretagne","postalCode":"56300"
+          },
+        "aggregateRating":
+          {
+            "@type":"AggregateRating",
+            "ratingValue": 4.533,
+            "ratingCount": 30,
+            "bestRating": 5,
+            "worstRating": 0
+          }
+      }
+    </script>
+  </head>
 
   <body>
     <!-- Google Tag Manager (noscript) -->
@@ -36,16 +123,8 @@
       </div>
     </header>
 
-    <main role="main">
-    
-      {% if page.url == "/calendrier.html" or page.url == "/calendar-v2.html" %}
-        {{ content }}
-      {% else %}
-        <div class="container mt-5">
-          {{ content }}
-        </div>
-      {% endif %}
-
+    <main role="main" class="container mt-5">
+      {{ content }}
     </main>
 
     <!-- Footer
