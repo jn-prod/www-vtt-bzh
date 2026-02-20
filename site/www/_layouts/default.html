@@ -114,7 +114,7 @@
               
             </a>
         
-            <a href="https://nicolasjouanno.com" class="btn btn-primary border-0 px-4 fw-bold rounded-pill">Me suivre</a>
+            <a href="{{ site.data.authors.nicolas.web }}" class="btn btn-primary border-0 px-4 fw-bold rounded-pill">Me suivre</a>
         
           </div>
         
@@ -129,7 +129,30 @@
 
     <!-- Footer
     ================================================== -->
-    {% include /footer/footer.html %}
+    <footer class="container text-center">
+  
+      {% if page.layout != "landing" and page.type != "guide" %}
+    
+        <!-- author -->
+        <div class="row bg-light shadow p-3">
+          <div class="col-md-2 my-auto">
+            <img src="{{ site.data.authors.nicolas.avatar }}" alt="{{ site.data.authors.nicolas.display_name }}" class="img-fluid">
+          </div>
+          <p class="col-md-10 my-auto text-center text-md-left">
+            Par {{ site.data.authors.nicolas.display_name }}, {{ site.data.authors.nicolas.bio }} sur <a href="{{ site.data.authors.nicolas.web }}" target="_blank">nicolasjouanno.com</a>. {{ site.data.authors.nicolas.location }}.
+          </p>
+          <p>
+            Vous pouvez suivre ces liens pour <a href="/calendrier/ajouter.html">ajouter un évènement</a> ou <a href="https://www.nicolasjouanno.com/contact.html">me contacter</a>.
+          </p>
+        </div>
+      {% endif %}
+    
+      <!-- signature -->
+        <p class="mt-5" itemscope itemtype="http://schema.org/Organization">
+           <a href="{{ site.url }}">{{ site.headline }} {{ site.time | date: "%Y" }}</a> &copy; <span itemprop="name"><a href="/about.html">{{ site.title }}</a></span>, 2013 - {{ site.time | date: "%Y" }} <a href="https://nicolasjouanno.com/">Nicolas Jouanno</a> • <a href="/terms/legals.html">Mentions légales</a>
+        </p>
+      </div>
+    </footer>
 
   </body>
   <script type="module" crossorigin src="/assets/calendar/index.js"></script>
