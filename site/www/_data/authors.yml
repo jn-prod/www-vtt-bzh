@@ -1,11 +1,11 @@
 nicolas:
     # global
     display_name     : "Nicolas JOUANNO DANIEL"
-    bio              : "Développeur frontend @MGDIS & sportif outdoor (ex-cycliste professionnel) - amateur de nature, de photographie et de vie simple en famille"
+    bio              : "ex-cycliste professionnel (5 Championnats de France), pratiquant VTT en Bretagne. Je partage mes réflexions sur le vélo et le sport outdoor"
     location         : "Pontivy, Bretagne"
     avatar           : "/assets/images/profile.jpeg"
     email            : "pro@nicolasjouanno.com"
-    web              : "https://nicolasjouanno.com"    
+    web              : "https://www.nicolasjouanno.com/results.html"    
     post_cta         : "Rejoins les 3 500 lecteurs de \"Volt!\", ma newsletter hebdomadaire, et découvre mes liens coups de coeur. Un mix de strategies, de feedbacks et d'outils qui t'aidera à développer ton produit !"
 
     # social
