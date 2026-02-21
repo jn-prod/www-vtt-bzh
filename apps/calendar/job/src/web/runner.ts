@@ -18,6 +18,7 @@ const endCron = (start: number): void => {
 export async function webRunner(db: SupabaseClient, config: Config): Promise<void> {
   const today = new Date();
   const start = today.getTime();
+  const errors = [];
   console.log('start cron ...');
 
   const cronClient = client(config.cronStartUri);
@@ -104,10 +105,12 @@ export async function webRunner(db: SupabaseClient, config: Config): Promise<voi
         }
       } else {
         if (config.locale) {
+          errors.push('update failed :' + url)
           console.error('update failed :', url);
         }
       }
     } catch (err) {
+      errors.push(err);
       console.log(err);
     }
   }
@@ -137,4 +140,9 @@ export async function webRunner(db: SupabaseClient, config: Config): Promise<voi
     }
   }
   endCron(start);
+
+  // break process if errors
+  if (errors.length) {
+    throw new Error("some events can't be processed");
+  }
 }
