@@ -13,6 +13,9 @@ const run = (): Promise<void | [void | void[], void]> =>
   Promise.all([formRunner(client, config), webRunner(client, config)])
     .catch((err) => {
       console.error('[job] run', err);
+
+      // break job when errors
+      throw new Error("Runner error")
     })
     .finally(() => {
       process.exit();
