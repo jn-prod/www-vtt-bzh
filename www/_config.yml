@@ -1,0 +1,64 @@
+title:  "vtt.bzh"
+headline: "Calendrier Rando VTT Bretagne"
+local: "fr_FR"
+description: "Calendrier des randonnées VTT de Bretagne | VTT.bzh. Morbihan, finistère, Ille et Vilaine, Cotes d'armor, Loire Atlantique, programmer des maintenant votre prochaine rando VTT du week-end."
+keywords: "randonnée, rando, randonnées, vtt, rando vtt, rando vtt bretagne"
+main_image: "assets/images/logo.png"
+url: "https://vtt.bzh"
+
+author:
+  display_name: "Nicolas JOUANNO DANIEL"
+  bio: "ex-cycliste professionnel (5 Championnats de France), pratiquant VTT en Bretagne. Je partage mes réflexions sur le vélo et le sport outdoor"
+  location: "Pontivy, Bretagne"
+  avatar: "https://www.nicolasjouanno.com/images/icons/avatar.svg"
+  web: "https://www.nicolasjouanno.com/results.html"
+
+# disqus
+comments:
+  disqus: 
+    shortname: 'nicolasjouanno-com'  
+    
+# Outputting
+permalink : /:title:output_ext
+paginate: 12
+paginate_path: /blog/page:num/
+
+# Plugins
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+  - jekyll-paginate
+  - jekyll-sitemap
+  - jekyll-redirect-from
+  # - jekyll-archives  
+  # - jekyll-minifier
+
+whitelist:
+  - jekyll-paginate
+
+exclude: [client]
+    
+# Archives
+# jekyll-archives:
+#   enabled:
+#    - categories
+#  layout: archive
+#  permalinks:
+#    category: '/:name/'
+category_archive:
+  type: liquid
+  path: /categories/
+tag_archive:
+  type: liquid
+  path: /tags/
+
+# Minification
+# jekyll-minifier:
+#   exclude: 'feed.xml'
+    
+# Other
+markdown: kramdown
+highlighter: rouge
+future: false
+# Server Config options
+livereload: false     # You no longer need to include --livereload

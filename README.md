@@ -1,87 +1,104 @@
-# vtt.bzh
+# vtt.bzh — Monorepo
 
-## What's inside?
+Site statique du calendrier des randonnées VTT de Bretagne.
 
-This Turborepo uses [pnpm](https://pnpm.io) as a packages manager. It includes the following packages/apps:
+- **URL** : https://vtt.bzh
+- **Repo** : https://github.com/jn-prod/www-vtt-bzh
 
-### Apps and Packages
+---
 
-- `docs`: a [Next.js](https://nextjs.org) app
-- `web`: another [Next.js](https://nextjs.org) app
-- `ui`: a stub React component library shared by both `web` and `docs` applications
-- `eslint-config-custom`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
-- `tsconfig`: `tsconfig.json`s used throughout the monorepo
+## Structure du monorepo
 
-Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
+```
+www-vtt-bzh/
+├── www/                    # Site Jekyll (Jekyll 4, SCSS BEM, Vanilla JS)
+├── packages/
+│   ├── calendar-job/       # Job TypeScript — génère _data/events.yaml depuis Supabase
+│   ├── http-client/        # Client HTTP partagé
+│   ├── repository/         # Couche d'accès aux données Supabase
+│   └── types/              # Types partagés entre packages
+├── configs/
+│   └── tsconfig/           # tsconfig.json de base (node, bundler)
+├── .github/workflows/      # CI GitHub Actions
+├── .eslintrc.js            # Config ESLint racine
+├── .prettierrc.js          # Config Prettier racine
+└── package.json            # Scripts racine, devDependencies partagées
+```
 
-### Utilities
+---
 
-This Turborepo has some additional tools already setup for you:
+## Packages
 
-- [TypeScript](https://www.typescriptlang.org/) for static type checking
-- [ESLint](https://eslint.org/) for code linting
-- [Prettier](https://prettier.io) for code formatting
+| Package | Description |
+|---|---|
+| `www` | Site Jekyll — layouts Liquid, SCSS BEM, JS ES modules |
+| `calendar-job` | Job ts-node — récupère les événements Supabase, écrit `_data/events.yaml` |
+| `http-client` | Wrapper fetch partagé entre les packages Node |
+| `repository` | Accès Supabase (events table) |
+| `types` | Interfaces et DTOs TypeScript partagés |
+| `tsconfig` | Configs TypeScript de base partagées |
 
-## Setup
+---
 
-This repository can be used by running `npx create-turbo@latest`, and selecting `pnpm` in the terminal prompt,
-or you can also download this folder like all the other examples with:
+## Prérequis
 
-```sh
-npx degit vercel/turborepo/examples/with-pnpm with-pnpm
-cd with-pnpm
+- Node.js 24.x
+- pnpm 10.x (`corepack enable`)
+- Ruby 4.0.2 (`rbenv` ou `.ruby-version`) — pour le site Jekyll
+
+---
+
+## Démarrage rapide
+
+```bash
+git clone https://github.com/jn-prod/www-vtt-bzh.git
+cd www-vtt-bzh
+corepack enable
 pnpm install
-git init . && git add . && git commit -m "Init"
 ```
 
-### Build
+Voir [GETTING-STARTED.md](./GETTING-STARTED.md) pour le détail des commandes de dev et de CI.
 
-To build all apps and packages, run the following command:
+---
 
-```
-cd my-turborepo
-pnpm run build
-```
+## Scripts racine
 
-### Develop
+| Commande | Description |
+|---|---|
+| `pnpm dev` | Lance le dev de tous les packages (Jekyll serve) |
+| `pnpm build` | Build de tous les packages + copie dans `dist/` |
+| `pnpm preview` | Build + serveur HTTP local sur `dist/` |
+| `pnpm test` | Tests de tous les packages |
+| `pnpm lint` | Lint de tous les packages |
+| `pnpm lint:fix` | Lint + auto-fix |
 
-To develop all apps and packages, run the following command:
+---
 
-```
-cd my-turborepo
-pnpm run dev
-```
+## CI/CD
 
-### Remote Caching
+Le déploiement est automatisé via **GitHub Actions** (`.github/workflows/github-pages.yml`) à chaque push sur `main` :
 
-Turborepo can use a technique known as [Remote Caching](https://turborepo.org/docs/core-concepts/remote-caching) to share cache artifacts across machines, enabling you to share build caches with your team and CI/CD pipelines.
+1. `pnpm install` — installation des dépendances Node et Ruby
+2. `calendar-job generate-events` — récupère les événements Supabase, génère `www/_data/events.yaml`
+3. `pnpm build` — build Jekyll → `www/_site/` → copie dans `dist/`
+4. `pnpm lint` — vérification ESLint/Prettier
+5. Deploy sur GitHub Pages via `peaceiris/actions-gh-pages`
 
-By default, Turborepo will cache locally. To enable Remote Caching you will need an account with Vercel. If you don't have an account you can [create one](https://vercel.com/signup), then enter the following commands:
+**Secrets GitHub Actions requis** : `SUPABASE_URL`, `SUPABASE_KEY`
 
-```
-cd my-turborepo
-npx turbo login
-```
+---
 
-This will authenticate the Turborepo CLI with your [Vercel account](https://vercel.com/docs/concepts/personal-accounts/overview).
+## Tooling
 
-Next, you can link your Turborepo to your Remote Cache by running the following command from the root of your turborepo:
+- **Gestionnaire de packages** : pnpm 10 (workspaces)
+- **Linter** : ESLint 8 + `@typescript-eslint` v7
+- **Formatter** : Prettier 3
+- **Git hooks** : Husky + lint-staged (lint au commit)
+- **TypeScript** : ts-node (packages Node uniquement — pas de bundler côté site)
 
-```
-npx turbo link
-```
+---
 
-## Useful Links
+## Documentation
 
-Learn more about the power of Turborepo:
-
-- [Pipelines](https://turborepo.org/docs/core-concepts/pipelines)
-- [Caching](https://turborepo.org/docs/core-concepts/caching)
-- [Remote Caching](https://turborepo.org/docs/core-concepts/remote-caching)
-- [Scoped Tasks](https://turborepo.org/docs/core-concepts/scopes)
-- [Configuration Options](https://turborepo.org/docs/reference/configuration)
-- [CLI Usage](https://turborepo.org/docs/reference/command-line-reference)
-
-## Gettting started
-
-- [documentation](./GETTING-STARTED.md)
+- [www/README.md](./www/README.md) — conventions Jekyll, BEM, JS, structure du site
+- [GETTING-STARTED.md](./GETTING-STARTED.md) — installation et commandes dev

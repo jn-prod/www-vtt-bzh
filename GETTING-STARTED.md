@@ -1,13 +1,25 @@
 # Getting started
 
-## Clone repo
-
 ## Installation
 
 ```sh
 git clone https://github.com/jn-prod/www-vtt-bzh.git
+cd www-vtt-bzh
 corepack enable
-pnpm i
+pnpm install
+```
+
+## Développement local
+
+```sh
+# Site Jekyll (live reload)
+pnpm dev
+
+# Générer les événements depuis Supabase (nécessite les vars d'env)
+SUPABASE_URL=... SUPABASE_KEY=... pnpm --filter=calendar-job run generate-events
+
+# Prévisualiser le build complet
+pnpm preview
 ```
 
 ## Tests
@@ -16,22 +28,16 @@ pnpm i
 pnpm test
 ```
 
-## Release
-
-### Create new changeset
+## Lint
 
 ```sh
-pnpm change
+pnpm lint
+pnpm lint:fix
 ```
 
-### Preview release
+## Build
 
 ```sh
-pnpm release:preview
-```
-
-### Release
-
-```sh
-pnpm release
+pnpm build
+# → site généré dans dist/
 ```

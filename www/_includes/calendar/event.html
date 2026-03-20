@@ -1,0 +1,41 @@
+{% assign event_id = include.event.date | slice: 0, 10 | append: "-" | append: include.event.name | slugify %}
+<details id="{{ event_id }}"
+         data-date="{{ include.event.date | slice: 0, 10 }}"
+         data-departement="{{ include.event.departement }}"
+         class="event">
+  <summary class="event__summary">
+    <h3 class="event__name">
+      {{ include.event.name }}
+      {% if include.event.canceled %}
+        <span class="badge badge--danger">Annulée</span>
+      {% endif %}
+    </h3>
+    <div class="event__meta">
+      <div class="event__meta-item">
+        <svg aria-hidden="true" width="1em" height="1em" focusable="false"><use href="#icon-calendar"/></svg>
+        <time class="event__date" itemprop="startDate" datetime="{{ include.event.date | slice: 0, 10 }}">
+          {{ include.event.dateFormatted }}
+        </time>
+      </div>
+      <div class="event__meta-item">
+        <svg aria-hidden="true" width="1em" height="1em" focusable="false"><use href="#icon-pin"/></svg>
+        <span class="event__location">{{ include.event.departement }} - {{ include.event.city }}</span>
+      </div>
+    </div>
+  </summary>
+  <div class="event__body">
+    {% if include.event.description and include.event.description != "~" %}
+      <p class="event__description">{{ include.event.description }}</p>
+    {% endif %}
+    <ul class="event__details">
+      <li class="event__detail">Organisateur : {{ include.event.organisateur | default: "NC" }}</li>
+      <li class="event__detail">Horaires : {{ include.event.hour | default: "NC" }}</li>
+      <li class="event__detail">Lieu de rendez-vous : {{ include.event.place | default: "NC" }}</li>
+      <li class="event__detail">Contact : {{ include.event.contact | default: "NC" }}</li>
+      <li class="event__detail">Prix : {{ include.event.price | default: "NC" }}</li>
+    </ul>
+    {% if include.event.departement %}
+      <span class="badge badge--secondary">Département : {{ include.event.departement }}</span>
+    {% endif %}
+  </div>
+</details>

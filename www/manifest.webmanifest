@@ -1,0 +1,27 @@
+---
+layout: null
+permalink: /manifest.webmanifest
+---
+{
+  "name": "{{ site.title }}",
+  "short_name": "{{ site.title }}",
+  "description": "{{ site.description }}",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#1C7D44",
+  "lang": "fr-FR",
+  "icons": [
+    {
+      "src": "{{ site.url }}/assets/images/logo-small.png",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "{{ site.url }}/assets/images/logo.png",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
