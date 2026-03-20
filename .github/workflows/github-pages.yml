@@ -40,7 +40,7 @@ jobs:
         run: pnpm install
       - name: Install ruby dependencies
         run: pnpm --filter=www install:jekyll
-      - name: Generate events YAML
+      - name: Generate events
         run: pnpm --filter=jobs run generate-events
         env:
           SUPABASE_URL: ${{ secrets.SUPABASE_URL }}

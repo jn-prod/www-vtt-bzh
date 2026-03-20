@@ -8,7 +8,7 @@
   "license": "ISC",
   "scripts": {
     "job": "ts-node ./src",
-    "generate-events": "ts-node ./src/scripts/generate-events-yaml.ts",
+    "generate-events": "ts-node ./src/scripts/generate-events.ts",
     "build": "tsc"
   },
   "dependencies": {
