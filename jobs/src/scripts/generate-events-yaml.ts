@@ -11,8 +11,10 @@ const db = createClient(
 
 const toISODate = (d: Date): string => d.toISOString().split('T')[0];
 
-const escapeYamlString = (value: string): string =>
-  `"${value.replace(/\\/g, '\\\\').replace(/"/g, '\\"')}"`;
+const escapeYamlString = (value: string): string => {
+  const cleaned = value.replace(/[\x00-\x08\x0B\x0C\x0E-\x1F]/g, '');
+  return `"${cleaned.replace(/\\/g, '\\\\').replace(/"/g, '\\"')}"`;
+};
 
 const toYamlValue = (value: unknown): string => {
   if (value === null || value === undefined) return '~';
