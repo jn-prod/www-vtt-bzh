@@ -1,8 +1,0 @@
-{
-  "extends": "tsconfig/bundler.json",
-  "include": ["vite.config.*", "vite-env.d.ts"],
-  "compilerOptions": {
-    "composite": true,
-    "types": ["node"]
-  }
-}

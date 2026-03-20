@@ -4,20 +4,28 @@ on:
   push:
     branches:
       - main
+  workflow_dispatch:
+  workflow_run:
+    workflows: ["Run vtt-bzh-calendar job"]
+    types:
+      - completed
+    branches:
+      - main
 
 jobs:
   deploy:
+    if: github.event_name == 'push' || github.event.workflow_run.conclusion == 'success'
     runs-on: ubuntu-24.04
     environment: github-pages
     strategy:
       matrix:
-        node-version: [22]
+        node-version: [24]
     steps:
       - uses: actions/checkout@v3
       - name: Use ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: '3.3.7'
+          ruby-version: '4.0.2'
           bundler-cache: true
       - name: Use pnpm
         uses: pnpm/action-setup@v2
@@ -30,22 +38,20 @@ jobs:
           cache: 'pnpm'
       - name: Install node dependencies
         run: pnpm install
-      - name: create env file
-        run: |
-          cd apps/calendar/client
-          touch .env
-          echo VITE_APP_SUPABASE_URL=${{secrets.SUPABASE_URL}} >> .env
-          echo VITE_APP_SUPABASE_KEY=${{secrets.SUPABASE_KEY}} >> .env
       - name: Install ruby dependencies
         run: pnpm --filter=www install:jekyll
+      - name: Generate events YAML
+        run: pnpm --filter=jobs run generate-events
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_KEY: ${{ secrets.SUPABASE_KEY }}
+          SUPABASE_TABLE: ${{ secrets.SUPABASE_TABLE }}
       - name: Build
         run: pnpm build
       - name: Lint
         run: pnpm lint
       #- name: Test
       #  run: pnpm test
-      - name: Deploy
-        run: pnpm build
       - name: Deploy GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:

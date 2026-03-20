@@ -1,4 +1,0 @@
-{
-  "extends": "tsconfig/bundler.json",
-  "include": ["src"]
-}

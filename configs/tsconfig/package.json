@@ -6,6 +6,6 @@
   ],
   "devDependencies": {
     "@tsconfig/node22": "^22",
-    "tsconfig-paths": "latest"
+    "tsconfig-paths": "^4.2.0"
   }
 }

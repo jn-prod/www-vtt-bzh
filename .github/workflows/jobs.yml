@@ -22,7 +22,7 @@ jobs:
     environment: cron
     strategy:
       matrix:
-        node-version: [22]
+        node-version: [24]
     steps:
       - name: Only on main
         run: echo "This step will be skipped on Monday and Wednesday"
@@ -39,21 +39,14 @@ jobs:
       - name: Install dependencies
         run: pnpm install
 
-      - name: create env file
-        run: |
-          cd apps/calendar/job
-          touch .env
-          echo CRON_START_URI=${{secrets.CRON_START_URI}} >> .env
-          echo WUFOO_USERNAME=${{secrets.WUFOO_USERNAME}} >> .env
-          echo WUFOO_PASSWORD=${{secrets.WUFOO_PASSWORD}} >> .env
-          echo WUFOO_DOMAIN=${{secrets.WUFOO_DOMAIN}} >> .env
-          echo WUFOO_FORM=${{secrets.WUFOO_FORM}} >> .env
-          echo SUPABASE_URL=${{secrets.SUPABASE_URL}} >> .env
-          echo SUPABASE_KEY=${{secrets.SUPABASE_KEY}} >> .env
-          echo SUPABASE_TABLE=${{secrets.SUPABASE_TABLE}} >> .env
-
-      - name: Build apps
-        run: pnpm --filter='./**/job' build
-
       - name: run job
         run: pnpm job
+        env:
+          CRON_START_URI: ${{ secrets.CRON_START_URI }}
+          WUFOO_USERNAME: ${{ secrets.WUFOO_USERNAME }}
+          WUFOO_PASSWORD: ${{ secrets.WUFOO_PASSWORD }}
+          WUFOO_DOMAIN: ${{ secrets.WUFOO_DOMAIN }}
+          WUFOO_FORM: ${{ secrets.WUFOO_FORM }}
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_KEY: ${{ secrets.SUPABASE_KEY }}
+          SUPABASE_TABLE: ${{ secrets.SUPABASE_TABLE }}

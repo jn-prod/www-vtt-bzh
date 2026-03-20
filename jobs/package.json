@@ -1,0 +1,24 @@
+{
+  "name": "jobs",
+  "version": "1.0.0",
+  "description": "",
+  "main": "./src/index.ts",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "scripts": {
+    "job": "ts-node ./src",
+    "generate-events": "ts-node ./src/scripts/generate-events-yaml.ts",
+    "build": "tsc"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.39.2",
+    "dotenv": "^16.0.3",
+    "linkedom": "^0.18.11"
+  },
+  "devDependencies": {
+    "ts-node": "^10.9.2",
+    "tsconfig": "workspace:*",
+    "typescript": "^5.3.3"
+  }
+}

@@ -5,7 +5,7 @@
   "version": "1.0.0",
   "engines": {
     "pnpm": "10.x",
-    "node": "22.x"
+    "node": "24.x"
   },
   "description": "",
   "repository": {
@@ -17,41 +17,30 @@
   },
   "homepage": "https://github.com/jn-prod/www-vtt-bzh#readme",
   "scripts": {
-    "postinstall": "pnpm manypkg check",
     "prepare": "husky",
     "dev": "pnpm -r dev",
     "build": "pnpm -r build && pnpm bundle-packages",
     "preview": "pnpm build && python3 -m http.server -d ./dist",
     "job": "pnpm -r job",
     "test": "pnpm -r test",
-    "change": "changeset",
-    "release": "changeset version",
-    "release:status": "changeset status",
     "lint": "pnpm -r lint",
     "lint:fix": "pnpm -r lint:fix",
-    "bundle-packages": "rm -rf ./dist && cp -R ./site/www/_site/ ./dist"
-  },
-  "manypkg": {
-    "ignoredRules": [
-      "INTERNAL_MISMATCH"
-    ]
+    "bundle-packages": "rm -rf ./dist && cp -R ./www/_site/ ./dist"
   },
   "lint-staged": {
-    "*.{js,ts,tsx,vue}": "eslint --fix --ignore-path .gitignore",
+    "*.{js,ts}": "eslint --fix --ignore-path .gitignore",
     "*.{json,yaml,yml,md,mdx}": "prettier --write"
   },
   "devDependencies": {
-    "@changesets/cli": "^2.27.9",
-    "@manypkg/cli": "^0.23.0",
+    "@typescript-eslint/eslint-plugin": "^7.0.0",
+    "@typescript-eslint/parser": "^7.0.0",
     "@types/node": "^22.9.0",
     "eslint": "^8.49.0",
-    "eslint-config-custom": "workspace:*",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-prettier": "^5.2.1",
     "husky": "^9.1.6",
     "lint-staged": "^15.2.10",
     "prettier": "^3.3.3",
-    "prettier-custom": "workspace:*",
     "ts-node": "^10.9.2"
   }
 }

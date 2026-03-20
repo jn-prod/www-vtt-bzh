@@ -1,0 +1,12 @@
+{
+  "name": "www",
+  "version": "1.0.0",
+  "description": "Breizh Mountain Bike Calendar",
+  "scripts": {
+    "install:jekyll": "bundle install",
+    "dev": "bundle exec jekyll serve --livereload",
+    "build": "jekyll build",
+    "prettier": "prettier --check **/*.{css,scss,html,mdx,json}",
+    "prettier:fix": "prettier --write **/*.{css,scss,html,mdx,json}"
+  }
+}
