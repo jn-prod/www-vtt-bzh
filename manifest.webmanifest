@@ -1,0 +1,23 @@
+{
+  "name": "vtt.bzh",
+  "short_name": "vtt.bzh",
+  "description": "Calendrier des randonnées VTT de Bretagne | VTT.bzh. Morbihan, finistère, Ille et Vilaine, Cotes d'armor, Loire Atlantique, programmer des maintenant votre prochaine rando VTT du week-end.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#1C7D44",
+  "lang": "fr-FR",
+  "icons": [
+    {
+      "src": "https://vtt.bzh/assets/images/logo-small.png",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "https://vtt.bzh/assets/images/logo.png",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
