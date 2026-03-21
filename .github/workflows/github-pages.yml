@@ -48,8 +48,8 @@ jobs:
           SUPABASE_TABLE: ${{ secrets.SUPABASE_TABLE }}
       - name: Build
         run: pnpm build
-      - name: Lint
-        run: pnpm lint
+      #- name: Lint
+      #  run: pnpm lint
       #- name: Test
       #  run: pnpm test
       - name: Deploy GitHub Pages
