@@ -24,7 +24,7 @@
     </div>
   </summary>
   <div class="event__body">
-    {% if include.event.description and include.event.description != "~" %}
+    {% if include.event.description %}
       <p class="event__description">{{ include.event.description }}</p>
     {% endif %}
     <ul class="event__details">
@@ -34,8 +34,5 @@
       <li class="event__detail">Contact : {{ include.event.contact | default: "NC" }}</li>
       <li class="event__detail">Prix : {{ include.event.price | default: "NC" }}</li>
     </ul>
-    {% if include.event.departement %}
-      <span class="badge badge--secondary">Département : {{ include.event.departement }}</span>
-    {% endif %}
   </div>
 </details>
