@@ -6,9 +6,6 @@
   <summary class="event__summary">
     <h3 class="event__name">
       {{ include.event.name }}
-      {% if include.event.canceled %}
-        <span class="badge badge--danger">Annulée</span>
-      {% endif %}
     </h3>
     <div class="event__meta">
       <div class="event__meta-item">
@@ -17,10 +14,13 @@
           {{ include.event.dateFormatted }}
         </time>
       </div>
-      <div class="event__meta-item">
+      <p class="event__meta-item">
         <svg aria-hidden="true" width="1em" height="1em" focusable="false"><use href="#icon-pin"/></svg>
         <span class="event__location">{{ include.event.departement }} - {{ include.event.city }}</span>
-      </div>
+        {% if include.event.canceled %}
+          <span class="badge badge--danger">Annulée</span>
+        {% endif %}
+      </p>
     </div>
   </summary>
   <div class="event__body">
