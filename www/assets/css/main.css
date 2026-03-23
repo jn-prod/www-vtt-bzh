@@ -313,12 +313,20 @@ button {
 
 .author-box {
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
   align-items: center;
   background: var(--b-color-grey-light);
   box-shadow: var(--b-shadow);
   padding: var(--b-size-16);
   margin-bottom: var(--b-size-16);
+}
+
+@media (width >= 768px) {
+  .author-box {
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: wrap;
+  }
 }
 
 .author-box__avatar {
