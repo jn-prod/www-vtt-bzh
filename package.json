@@ -5,8 +5,6 @@
   "scripts": {
     "install:jekyll": "bundle install",
     "dev": "bundle exec jekyll serve --livereload",
-    "build": "bundle exec jekyll build",
-    "prettier": "prettier --check **/*.{css,scss,html,mdx,json}",
-    "prettier:fix": "prettier --write **/*.{css,scss,html,mdx,json}"
+    "build": "bundle exec jekyll build"
   }
 }

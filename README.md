@@ -78,45 +78,45 @@ Tout le CSS est écrit en **BEM** (Block Element Modifier) avec **Flexbox natif*
 
 Le fichier est organisé en sections commentées dans cet ordre :
 
-| Section | Blocs |
-|---|---|
-| Variables | Custom properties globales (`:root`) |
-| Document | `html { font-size: 62.5% }`, `body { font-size: 1.6rem }` |
-| Reset | box-sizing, img, ul |
-| Base | `@font-face`, html/body, typographie, liens |
-| Layout | `.container`, `.site-header`, `.site-main`, `.site-footer` |
-| Nav | `.site-nav` |
-| Buttons | `.btn`, `.btn--primary/secondary/outline/light` |
-| Badge | `.badge`, `.badge--danger/secondary` |
-| Author | `.author-box` |
-| Event | `.event` (détails d'une rando) |
-| Search filter | `.search-filter` |
-| Message | `.message` |
+| Section       | Blocs                                                      |
+| ------------- | ---------------------------------------------------------- |
+| Variables     | Custom properties globales (`:root`)                       |
+| Document      | `html { font-size: 62.5% }`, `body { font-size: 1.6rem }`  |
+| Reset         | box-sizing, img, ul                                        |
+| Base          | `@font-face`, html/body, typographie, liens                |
+| Layout        | `.container`, `.site-header`, `.site-main`, `.site-footer` |
+| Nav           | `.site-nav`                                                |
+| Buttons       | `.btn`, `.btn--primary/secondary/outline/light`            |
+| Badge         | `.badge`, `.badge--danger/secondary`                       |
+| Author        | `.author-box`                                              |
+| Event         | `.event` (détails d'une rando)                             |
+| Search filter | `.search-filter`                                           |
+| Message       | `.message`                                                 |
 
 ### Ajouter un nouveau composant
 
 1. Ajouter une section commentée dans `assets/css/main.css`
-2. Utiliser les custom properties de `:root` (`--color-primary`, `--shadow`, etc.)
+2. Utiliser les custom properties de `:root` (`--b-color-primary`, `--b-shadow`, etc.)
 
 ### Variables disponibles
 
 ```css
---color-primary:    #1C7D44;
---color-secondary:  #166437;
---color-grey-light: #ecf0f1;
---color-grey-dark:  #333;
---color-white:      #fff;
---color-danger:     #dc3545;
---color-alert-bg:   #f8d7da;
---color-alert-text: #721c24;
---color-info-bg:    #cce5ff;
---color-info-text:  #004085;
---font-heading:     'Roboto Condensed', sans-serif;
---font-body:        'Lato', sans-serif;
---container-max:    114rem; /* 1140px */
---shadow:           0 0.2rem 0.4rem rgba(0,0,0,.075);
---border-color:     #dee2e6;
---border-radius:    0.4rem;
+--b-color-primary: #1c7d44;
+--b-color-secondary: #166437;
+--b-color-grey-light: #ecf0f1;
+--b-color-grey-dark: #333;
+--b-color-white: #fff;
+--b-color-danger: #dc3545;
+--b-color-alert-bg: #f8d7da;
+--b-color-alert-text: #721c24;
+--b-color-info-bg: #cce5ff;
+--b-color-info-text: #004085;
+--b-font-heading: "Roboto Condensed", sans-serif;
+--b-font-body: "Lato", sans-serif;
+--b-container-max: 114rem; /* 1140px */
+--b-shadow: 0 0.2rem 0.4rem rgba(0, 0, 0, 0.075);
+--b-border-color: #dee2e6;
+--b-border-radius: 0.4rem;
 ```
 
 ---
@@ -144,6 +144,7 @@ Le fichier est organisé en sections commentées dans cet ordre :
 Le fichier `_data/events.yaml` est **généré automatiquement** par `jobs/` lors du build CI. Il est présent dans le repo comme **données de test** pour le développement local.
 
 Format d'un événement :
+
 ```yaml
 - date: "2026-03-29"
   name: "Nom de la rando"
