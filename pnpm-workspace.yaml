@@ -1,4 +1,4 @@
 packages:
-  - "configs/*"
-  - "jobs"
+  - 'configs/*'
+  - 'packages/*'
   - 'www'

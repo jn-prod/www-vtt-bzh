@@ -1,0 +1,19 @@
+{
+  "name": "calendar",
+  "version": "1.0.0",
+  "main": "./src/index.ts",
+  "scripts": {
+    "build:events": "ts-node ./src/generate-events.ts",
+    "build": "tsc && pnpm build:events"
+  },
+  "dependencies": {
+    "dotenv": "^16.0.3",
+    "repository": "workspace:*",
+    "type": "workspace:*"
+  },
+  "devDependencies": {
+    "ts-node": "^10.9.2",
+    "tsconfig": "workspace:*",
+    "typescript": "^5.3.3"
+  }
+}

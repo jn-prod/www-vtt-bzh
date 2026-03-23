@@ -3,11 +3,12 @@ title: Mentions Legales
 layout: default
 permalink: "/terms/legals.html"
 ---
+
 # Mentions Legales
 
 ## I. PROPRIÉTÉ
 
-Le site vtt.bzh est dénommé ci-après sous le nom de domaine avec l’extension générique  vtt.tld
+Le site vtt.bzh est dénommé ci-après sous le nom de domaine avec l’extension générique vtt.tld
 vtt.tld est la propriété exclusive de la société JN Prod , domiciliée :
 Nicolas JOUANNO
 56300 Pontivy
@@ -56,7 +57,7 @@ Usage du site : pour nous aider à reconnaître votre navigateur comme celui d�
 Réseaux sociaux : pour vérifier si vous êtes connectés à des services tiers (Facebook, Twitter, Google+…) ;
 Ciblage : pour nous permettre de cibler (emailing, enrichissement de base) à postériori ou en temps réel l’internaute qui navigue sur notre Site ;
 Mesure d’audience : pour suivre les données statistiques de fréquentation du Site (soit l’utilisation faite du Site par les utilisateurs et pour améliorer les services du Site) et pour nous aider à mesurer et étudier l’efficacité de notre contenu interactif en ligne, de ses caractéristiques, publicités et autres communications.
- 
+
 Vos Choix Concernant les Cookies et Balises Web
 
 Vous avez le choix de configurer votre navigateur pour accepter tous les cookies, rejeter tous les cookies, vous informer quand un cookie est émis, sa durée de validité et son contenu, ainsi que vous permettre de refuser son enregistrement dans votre terminal, et supprimer vos cookies périodiquement.
@@ -65,7 +66,8 @@ Vous pouvez paramétrer votre navigateur Internet pour désactiver les cookies. 
 
 Comment configurer votre navigateur
 
-Firefox :
+### Firefox
+
 1. Ouvrez Firefox
 2. Appuyez sur la touche « Alt »
 3. Dans le menu en haut de la page cliquez sur « Outils » puis « Options »
@@ -73,19 +75,25 @@ Firefox :
 5. Dans le menu déroulant à droite de « Règles de conservation », cliquez sur « utiliser les paramètres personnalisés pour l’historique »
 6. Un peu plus bas, décochez « Accepter les cookies »
 7. Sauvegardez vos préférences en cliquant sur « OK »
-Internet Explorer :
+
+### Internet Explorer
+
 1. Ouvrez Internet Explorer
 2. Dans le menu « Outils », sélectionnez « Options Internet »
 3. Cliquez sur l’onglet « Confidentialité »
 4. Cliquez sur « Avancé » et décochez « Accepter »
 5. Sauvegardez vos préférences en cliquant sur « OK »
-Google Chrome :
+
+### Google Chrome
+
 1. Ouvrez Google Chrome
 2. Cliquez sur l’icône d’outils dans la barre de menu
 3. Sélectionnez « Options »
 4. Cliquez sur l’onglet « Options avancées »
 5. Dans le menu déroulant « Paramètres des cookies », sélectionnez « Bloquer tous les cookies »
-Safari :
+
+### Safari
+
 1. Ouvrez Safari
 2. Dans la barre de menu en haut, cliquez sur « Safari », puis « Préférences »
 3. Sélectionnez l’icône « Sécurité »

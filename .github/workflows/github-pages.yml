@@ -6,7 +6,7 @@ on:
       - main
   workflow_dispatch:
   workflow_run:
-    workflows: ["Run vtt-bzh-calendar job"]
+    workflows: ['Run vtt-bzh-calendar job']
     types:
       - completed
     branches:
@@ -40,14 +40,12 @@ jobs:
         run: pnpm install
       - name: Install ruby dependencies
         run: pnpm --filter=www install:jekyll
-      - name: Generate events
-        run: pnpm --filter=jobs run generate-events
+      - name: Build
+        run: pnpm build
         env:
           SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
           SUPABASE_KEY: ${{ secrets.SUPABASE_KEY }}
           SUPABASE_TABLE: ${{ secrets.SUPABASE_TABLE }}
-      - name: Build
-        run: pnpm build
       #- name: Lint
       #  run: pnpm lint
       #- name: Test
@@ -56,5 +54,5 @@ jobs:
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./dist
+          publish_dir: ./www/_site
           cname: www.vtt.bzh

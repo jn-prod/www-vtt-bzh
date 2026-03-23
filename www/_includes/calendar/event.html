@@ -1,38 +1,87 @@
-{% assign event_id = include.event.date | slice: 0, 10 | append: "-" | append: include.event.name | slugify %}
-<details id="{{ event_id }}"
-         data-date="{{ include.event.date | slice: 0, 10 }}"
-         data-departement="{{ include.event.departement }}"
-         class="event">
+{% assign event_id = include.event.date | slice: 0, 10 | append: "-" | append:
+include.event.name | slugify %}
+<details
+  id="{{ event_id }}"
+  data-date="{{ include.event.date | slice: 0, 10 }}"
+  data-departement="{{ include.event.departement }}"
+  class="event"
+  itemscope
+  itemtype="https://schema.org/SportsEvent"
+>
+  {% if include.event.canceled %}
+  <meta itemprop="eventStatus" content="https://schema.org/EventCancelled" />
+  {% else %}
+  <meta itemprop="eventStatus" content="https://schema.org/EventScheduled" />
+  {% endif %}
   <summary class="event__summary">
-    <h3 class="event__name">
+    <span class="event__name u-h3" itemprop="name">
       {{ include.event.name }}
-    </h3>
+    </span>
     <div class="event__meta">
       <div class="event__meta-item">
-        <svg aria-hidden="true" width="1em" height="1em" focusable="false"><use href="#icon-calendar"/></svg>
-        <time class="event__date" itemprop="startDate" datetime="{{ include.event.date | slice: 0, 10 }}">
+        <svg class="icon" aria-hidden="true" focusable="false">
+          <use href="#icon-calendar" />
+        </svg>
+        <time
+          class="event__date"
+          itemprop="startDate"
+          datetime="{{ include.event.date | slice: 0, 10 }}"
+        >
           {{ include.event.dateFormatted }}
         </time>
       </div>
       <p class="event__meta-item">
-        <svg aria-hidden="true" width="1em" height="1em" focusable="false"><use href="#icon-pin"/></svg>
-        <span class="event__location">{{ include.event.departement }} - {{ include.event.city }}</span>
+        <svg class="icon" aria-hidden="true" focusable="false">
+          <use href="#icon-pin" />
+        </svg>
+        <span
+          class="event__location"
+          itemprop="location"
+          itemscope
+          itemtype="https://schema.org/Place"
+        >
+          <span itemprop="name">{{ include.event.city }}</span>
+          <meta
+            itemprop="addressRegion"
+            content="{{ include.event.departement }}"
+          />
+          ({{ include.event.departement }})
+        </span>
         {% if include.event.canceled %}
-          <span class="badge badge--danger">Annulée</span>
+        <span class="badge badge--danger">Annulée</span>
         {% endif %}
       </p>
     </div>
   </summary>
   <div class="event__body">
     {% if include.event.description %}
-      <p class="event__description">{{ include.event.description }}</p>
+    <p class="event__description" itemprop="description">
+      {{ include.event.description }}
+    </p>
     {% endif %}
     <ul class="event__details">
-      <li class="event__detail">Organisateur : {{ include.event.organisateur | default: "NC" }}</li>
-      <li class="event__detail">Horaires : {{ include.event.hour | default: "NC" }}</li>
-      <li class="event__detail">Lieu de rendez-vous : {{ include.event.place | default: "NC" }}</li>
-      <li class="event__detail">Contact : {{ include.event.contact | default: "NC" }}</li>
-      <li class="event__detail">Prix : {{ include.event.price | default: "NC" }}</li>
+      <li class="event__detail">
+        <span class="u-font-weight-bold">Organisateur :</span>
+        <span itemprop="organizer"
+          >{{ include.event.organisateur | default: "NC" }}</span
+        >
+      </li>
+      <li class="event__detail">
+        <span class="u-font-weight-bold">Horaires :</span> {{ include.event.hour
+        | default: "NC" }}
+      </li>
+      <li class="event__detail">
+        <span class="u-font-weight-bold">Lieu de rendez-vous :</span> {{
+        include.event.place | default: "NC" }}
+      </li>
+      <li class="event__detail">
+        <span class="u-font-weight-bold">Contact :</span> {{
+        include.event.contact | default: "NC" }}
+      </li>
+      <li class="event__detail">
+        <span class="u-font-weight-bold">Prix :</span> {{ include.event.price |
+        default: "NC" }}
+      </li>
     </ul>
   </div>
 </details>

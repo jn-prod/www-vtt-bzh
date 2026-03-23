@@ -3,6 +3,7 @@ layout: default
 title: L'histoire de vtt.bzh
 permalink: "/about.html"
 ---
+
 # A propos de vtt.bzh
 
 Créé en 2013 sous le nom de "rando VTT Bretagne", le site et l’application font peaux neuves 2016 et deviennent [VTT.bzh]({{site.url}}).

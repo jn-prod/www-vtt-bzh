@@ -14,16 +14,33 @@ Ces fichiers contiennent les conventions de code, la structure des fichiers, et 
 
 ## 2. Stack et conventions clés
 
-- **Site** : Jekyll 4, SCSS BEM natif, Vanilla JS ES modules — pas de framework CSS, pas de bundler côté site
-- **Job** : TypeScript compilé par `ts-node` (`packages/calendar-job`) — seule partie compilée
-- **Monorepo** : pnpm workspaces, pas de Turborepo
-- **CSS** : convention BEM stricte (`.block__element--modifier`), Flexbox natif
+- **Site** : Jekyll 4, CSS natif BEM, Vanilla JS ES modules — pas de framework CSS, pas de bundler côté site
+- **Packages** : TypeScript exécuté par `ts-node` — `packages/form`, `packages/web`, `packages/calendar`
+- **Monorepo** : pnpm workspaces (`packages/*`, `configs/*`, `www`) — pas de Turborepo
+- **CSS** : convention BEM stricte (`.block__element--modifier`), Flexbox natif, tout dans `www/assets/css/main.css`
 - **HTML** : HTML sémantique, `<details>/<summary>` pour les accordéons — pas de JS pour le toggle
 - **JS** : ES modules natifs (`<script type="module">`), filtrage des événements par attribut `hidden`
 
-## 3. Ce qu'il ne faut pas faire
+---
+
+## 3. Linting et formatage
+
+Les trois outils de lint sont centralisés à la racine et s'exécutent via `pnpm lint` / `pnpm lint:fix`.
+
+| Outil      | Périmètre         | Config                  |
+| ---------- | ----------------- | ----------------------- |
+| ESLint 9   | `*.ts`, `*.js`    | `eslint.config.mjs`     |
+| Stylelint  | `*.css`           | `.stylelintrc.json`     |
+| Prettier   | tous les fichiers | `.prettierrc.js`        |
+
+Avant tout commit, lint-staged applique automatiquement les fixs via Husky.
+
+---
+
+## 4. Ce qu'il ne faut pas faire
 
 - Ne pas introduire de framework CSS (Bootstrap, Tailwind…)
 - Ne pas introduire de bundler côté site (Webpack, Vite…)
-- Ne pas utiliser de classes utilitaires inline — tout CSS passe par `_sass/`
+- Ne pas utiliser de classes utilitaires inline — tout CSS passe par `www/assets/css/main.css`
 - Ne pas publier de packages npm — ce projet est un site personnel, pas une librairie
+- Ne pas modifier `.eslintrc.js` — ce fichier n'existe plus, la config ESLint est dans `eslint.config.mjs`

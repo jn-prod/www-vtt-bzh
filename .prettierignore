@@ -1,2 +1,8 @@
 .esbuild
 dist
+**/dist
+out
+**/out
+www/_site
+www/manifest.webmanifest
+.obsidian

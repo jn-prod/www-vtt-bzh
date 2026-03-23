@@ -1,0 +1,13 @@
+{
+  "name": "type",
+  "version": "1.0.0",
+  "main": "./src/index.ts",
+  "scripts": {
+    "build": "tsc"
+  },
+  "devDependencies": {
+    "ts-node": "^10.9.2",
+    "tsconfig": "workspace:*",
+    "typescript": "^5.3.3"
+  }
+}

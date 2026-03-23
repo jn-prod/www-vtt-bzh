@@ -1,4 +1,4 @@
-title:  "vtt.bzh"
+title: "vtt.bzh"
 headline: "Calendrier Rando VTT Bretagne"
 local: "fr_FR"
 description: "Calendrier des randonnées VTT de Bretagne | VTT.bzh. Morbihan, finistère, Ille et Vilaine, Cotes d'armor, Loire Atlantique, programmer des maintenant votre prochaine rando VTT du week-end."
@@ -15,11 +15,11 @@ author:
 
 # disqus
 comments:
-  disqus: 
-    shortname: 'nicolasjouanno-com'  
-    
+  disqus:
+    shortname: "nicolasjouanno-com"
+
 # Outputting
-permalink : /:title:output_ext
+permalink: /:title:output_ext
 paginate: 12
 paginate_path: /blog/page:num/
 
@@ -30,14 +30,12 @@ plugins:
   - jekyll-paginate
   - jekyll-sitemap
   - jekyll-redirect-from
-  # - jekyll-archives  
-  # - jekyll-minifier
 
 whitelist:
   - jekyll-paginate
 
 exclude: [client]
-    
+
 # Archives
 # jekyll-archives:
 #   enabled:
@@ -55,10 +53,10 @@ tag_archive:
 # Minification
 # jekyll-minifier:
 #   exclude: 'feed.xml'
-    
+
 # Other
 markdown: kramdown
 highlighter: rouge
 future: false
 # Server Config options
-livereload: false     # You no longer need to include --livereload
+livereload: false # You no longer need to include --livereload

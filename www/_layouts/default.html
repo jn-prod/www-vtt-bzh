@@ -3,56 +3,69 @@
   <head>
     <!-- seo -->
     {% if page.title %}
-      <title>{{ page.title }} | {{ site.title }}</title>
-      <meta property="og:title" content="{{ page.title }} | {{ site.title }}" />
+    <title>{{ page.title }} | {{ site.title }}</title>
+    <meta property="og:title" content="{{ page.title }} | {{ site.title }}" />
     {% else %}
-      <title>{{ site.title }}</title>
-      <meta property="og:title" content="{{ site.title }}" />
-    {% endif %}
-
-    {% if page.description %}
-      <meta name="description" content="{{ page.description }}">
+    <title>{{ site.title }}</title>
+    <meta property="og:title" content="{{ site.title }}" />
+    {% endif %} {% if page.description %}
+    <meta name="description" content="{{ page.description }}" />
     {% else %}
-      <meta name="description" content="{{ content | strip_html | truncatewords:19 }}">
-    {% endif %}
-
-    {% if page.keywords %}
-      <meta name="keywords" content="{{ page.keywords }}" />
+    <meta
+      name="description"
+      content="{{ content | strip_html | truncatewords:19 }}"
+    />
+    {% endif %} {% if page.keywords %}
+    <meta name="keywords" content="{{ page.keywords }}" />
     {% else %}
-      <meta name="keywords" content="{{ site.keywords }}" />
+    <meta name="keywords" content="{{ site.keywords }}" />
     {% endif %}
 
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="google-site-verification" content="p6n7BrHhMIgg3KX7bCmj6fzgSvSRwlppzRWJY4-d9IY" />
+    <meta
+      name="google-site-verification"
+      content="p6n7BrHhMIgg3KX7bCmj6fzgSvSRwlppzRWJY4-d9IY"
+    />
 
-    <meta name="robots" content="index, follow">
-    <meta name="referrer" content="always">
-    <meta name="theme-color" content="#1C7D44">
+    <meta name="robots" content="index, follow" />
+    <meta name="referrer" content="always" />
+    <meta name="theme-color" content="#1C7D44" />
     {% if site.google_verification %}
-      <meta name="google-site-verification" content="{{ site.google_verification }}" />
+    <meta
+      name="google-site-verification"
+      content="{{ site.google_verification }}"
+    />
     {% endif %}
-    <link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.url }}">
-    <meta name="author" content="{{ site.author.display_name }}">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link
+      rel="canonical"
+      href="{{ page.url | replace:'index.html','' | prepend: site.url }}"
+    />
+    <meta name="author" content="{{ site.author.display_name }}" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
     <!-- icon -->
-    <link rel="apple-touch-icon" href="{{ site.url }}/assets/images/logo.png">
-    <link rel="icon" href="{{ site.url }}/assets/images/favicon.ico">
-    <link rel="manifest" href="/manifest.webmanifest">
+    <link rel="apple-touch-icon" href="{{ site.url }}/assets/images/logo.png" />
+    <link rel="icon" href="{{ site.url }}/assets/images/favicon.ico" />
+    <link rel="manifest" href="/manifest.webmanifest" />
 
     <!-- opengraph -->
     <meta property="og:type" content="website" />
     <meta property="og:url" content="{{ site.url }}{{ page.url }}" />
     {% if page.image %}
-      <meta property="og:image" content="{{ site.url }}/{{ page.image }}" />
+    <meta property="og:image" content="{{ site.url }}/{{ page.image }}" />
     {% else %}
-      <meta property="og:image" content="{{ site.url }}/{{ site.main_image }}" />
-    {% endif %}
-    {% if post.excerpt %}
-      <meta property="og:description" content="{{ post.excerpt | strip_html | truncatewords:30 }} | {{site.title}}" />
+    <meta property="og:image" content="{{ site.url }}/{{ site.main_image }}" />
+    {% endif %} {% if post.excerpt %}
+    <meta
+      property="og:description"
+      content="{{ post.excerpt | strip_html | truncatewords:30 }} | {{site.title}}"
+    />
     {% else %}
-      <meta property="og:description" content="{{ content | strip_html | truncatewords:19 }} | {{site.title}}" />
+    <meta
+      property="og:description"
+      content="{{ content | strip_html | truncatewords:19 }} | {{site.title}}"
+    />
     {% endif %}
 
     <meta property="og:locale" content="{{ site.local }}" />
@@ -66,51 +79,68 @@
     <meta name="twitter:image" content="{{ site.url }}/{{ site.main_image }}" />
 
     <!-- styles -->
-    <link rel="stylesheet" href="/assets/css/main.css">
+    <link rel="stylesheet" href="/assets/css/main.css" />
 
     <!-- Schema.org -->
     <script type="application/ld+json">
       {
-        "@context":"http://schema.org",
-        "@type":"Organization",
-        "name":"VTT.bzh",
-        "address":
-          {
-            "@type":"PostalAddress",
-            "streetAddress":"rue nationale",
-            "addressLocality":"Pontivy",
-            "addressRegion":"Bretagne","postalCode":"56300"
-          },
-        "aggregateRating":
-          {
-            "@type":"AggregateRating",
-            "ratingValue": 4.533,
-            "ratingCount": 30,
-            "bestRating": 5,
-            "worstRating": 0
-          }
+        "@context": "http://schema.org",
+        "@type": "Organization",
+        "name": "VTT.bzh",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "rue nationale",
+          "addressLocality": "Pontivy",
+          "addressRegion": "Bretagne",
+          "postalCode": "56300"
+        },
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": 4.533,
+          "ratingCount": 30,
+          "bestRating": 5,
+          "worstRating": 0
+        }
       }
     </script>
   </head>
 
   <body>
     <!-- SVG sprite -->
-    <svg style="display:none" xmlns="http://www.w3.org/2000/svg">
-      <symbol id="icon-calendar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-        <rect x="3" y="4" width="18" height="18" rx="2"/>
-        <line x1="16" y1="2" x2="16" y2="6"/>
-        <line x1="8" y1="2" x2="8" y2="6"/>
-        <line x1="3" y1="10" x2="21" y2="10"/>
+    <svg style="display: none" xmlns="http://www.w3.org/2000/svg">
+      <symbol
+        id="icon-calendar"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+      >
+        <rect x="3" y="4" width="18" height="18" rx="2" />
+        <line x1="16" y1="2" x2="16" y2="6" />
+        <line x1="8" y1="2" x2="8" y2="6" />
+        <line x1="3" y1="10" x2="21" y2="10" />
       </symbol>
-      <symbol id="icon-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
-        <circle cx="12" cy="10" r="3"/>
+      <symbol
+        id="icon-pin"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+      >
+        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+        <circle cx="12" cy="10" r="3" />
       </symbol>
     </svg>
 
     <!-- Google Tag Manager (noscript) -->
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-59S43HM"
-    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <noscript
+      ><iframe
+        src="https://www.googletagmanager.com/ns.html?id=GTM-59S43HM"
+        height="0"
+        width="0"
+        style="display: none; visibility: hidden"
+      ></iframe
+    ></noscript>
     <!-- End Google Tag Manager (noscript) -->
 
     <!-- Header -->
@@ -118,7 +148,11 @@
       <div class="container">
         <nav class="site-nav">
           <a href="{{ site.url }}" class="site-nav__brand">
-            <img src="{{ site.url }}/assets/images/logo.png" alt="{{ site.title }} - {{ site.headline }}" class="site-nav__logo">
+            <img
+              src="{{ site.url }}/assets/images/logo.png"
+              alt="{{ site.title }} - {{ site.headline }}"
+              class="site-nav__logo"
+            />
             <span class="site-nav__title">VTT.bzh</span>
           </a>
           <a href="{{ site.author.web }}" class="btn btn--primary">Me suivre</a>
@@ -126,37 +160,61 @@
       </div>
     </header>
 
-    <main class="site-main container">
-      {{ content }}
-    </main>
+    <main class="site-main container">{{ content }}</main>
 
     <!-- Footer -->
     <footer class="site-footer container">
-
       {% if page.layout != "landing" and page.type != "guide" %}
-        <div class="author-box">
-          <img src="{{ site.author.avatar }}" alt="{{ site.author.display_name }}" class="author-box__avatar">
-          <p class="author-box__bio">
-            Par {{ site.author.display_name }}, {{ site.author.bio }} sur <a href="{{ site.author.web }}" target="_blank">nicolasjouanno.com</a>. {{ site.author.location }}.
-          </p>
-          <p class="author-box__links">
-            Vous pouvez suivre ces liens pour <a href="/calendrier/ajouter.html">ajouter un évènement</a> ou <a href="https://www.nicolasjouanno.com/contact.html">me contacter</a>.
-          </p>
-        </div>
+      <div class="author-box">
+        <img
+          src="{{ site.author.avatar }}"
+          alt="{{ site.author.display_name }}"
+          class="author-box__avatar"
+        />
+        <p class="author-box__bio">
+          Par {{ site.author.display_name }}, {{ site.author.bio }} sur
+          <a href="{{ site.author.web }}" target="_blank">nicolasjouanno.com</a
+          >. {{ site.author.location }}.
+        </p>
+        <p class="author-box__links">
+          Vous pouvez suivre ces liens pour
+          <a href="/calendrier/ajouter.html">ajouter un évènement</a> ou
+          <a href="https://www.nicolasjouanno.com/contact.html">me contacter</a
+          >.
+        </p>
+      </div>
       {% endif %}
 
-      <p class="site-footer__signature" itemscope itemtype="http://schema.org/Organization">
-        <a href="{{ site.url }}">{{ site.headline }} {{ site.time | date: "%Y" }}</a> &copy; <span itemprop="name"><a href="/about.html">{{ site.title }}</a></span>, 2013 - {{ site.time | date: "%Y" }} <a href="https://nicolasjouanno.com/">Nicolas Jouanno</a> • <a href="/terms/legals.html">Mentions légales</a>
+      <p
+        class="site-footer__signature"
+        itemscope
+        itemtype="http://schema.org/Organization"
+      >
+        <a href="{{ site.url }}"
+          >{{ site.headline }} {{ site.time | date: "%Y" }}</a
+        >
+        &copy;
+        <span itemprop="name"><a href="/about.html">{{ site.title }}</a></span
+        >, 2013 - {{ site.time | date: "%Y" }}
+        <a href="https://nicolasjouanno.com/">Nicolas Jouanno</a> •
+        <a href="/terms/legals.html">Mentions légales</a>
       </p>
-
     </footer>
-
   </body>
   <script type="module" src="/assets/js/calendar.js"></script>
   <!-- Cloudflare Web Analytics -->
-  <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "9368ff319f1c4ab9a59f8077fee24625"}'></script>
+  <script
+    defer
+    src="https://static.cloudflareinsights.com/beacon.min.js"
+    data-cf-beacon='{"token": "9368ff319f1c4ab9a59f8077fee24625"}'
+  ></script>
   <!-- End Cloudflare Web Analytics -->
 
   <!-- disqus -->
-  <script id="dsq-count-scr" src="//{{site.comments.disqus.shortname}}.disqus.com/count.js" async defer></script>
+  <script
+    id="dsq-count-scr"
+    src="//{{site.comments.disqus.shortname}}.disqus.com/count.js"
+    async
+    defer
+  ></script>
 </html>

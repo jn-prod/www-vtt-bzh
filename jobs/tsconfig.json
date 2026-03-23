@@ -1,9 +1,0 @@
-{
-  "extends": "../configs/tsconfig/node.json",
-  "compilerOptions": {
-    "outDir": "./dist",
-    "rootDir": "./src",
-    "lib": ["ES2022", "DOM"]
-  },
-  "include": ["src"]
-}

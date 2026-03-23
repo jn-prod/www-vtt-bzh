@@ -1,0 +1,17 @@
+{
+  "name": "http-client",
+  "version": "1.0.0",
+  "main": "./src/index.ts",
+  "scripts": {
+    "build": "tsc"
+  },
+  "dependencies": {
+    "linkedom": "^0.18.11",
+    "type": "workspace:*"
+  },
+  "devDependencies": {
+    "ts-node": "^10.9.2",
+    "tsconfig": "workspace:*",
+    "typescript": "^5.3.3"
+  }
+}

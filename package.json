@@ -19,28 +19,39 @@
   "scripts": {
     "prepare": "husky",
     "dev": "pnpm -r dev",
-    "build": "pnpm -r build && pnpm bundle-packages",
-    "preview": "pnpm build && python3 -m http.server -d ./dist",
+    "build": "pnpm build:packages && pnpm copy:packages:calendar && pnpm build:www",
+    "build:preview": "pnpm build && python3 -m http.server -d ./www/_site",
+    "build:www": "pnpm --filter='www' build",
+    "build:packages": "pnpm --filter='./packages/*' -r build",
+    "copy:packages:calendar": "cp packages/calendar/out/events.json www/_data/events.json",
     "job": "pnpm -r job",
     "test": "pnpm -r test",
-    "lint": "pnpm -r lint",
-    "lint:fix": "pnpm -r lint:fix",
-    "bundle-packages": "rm -rf ./dist && cp -R ./www/_site/ ./dist"
+    "lint": "pnpm lint:eslint && pnpm lint:stylelint && pnpm lint:prettier",
+    "lint:fix": "pnpm lint:eslint:fix && pnpm lint:stylelint:fix && pnpm lint:prettier:fix",
+    "lint:eslint": "eslint . && stylelint 'www/assets/css/**/*.css'",
+    "lint:eslint:fix": "eslint . --fix && stylelint 'www/assets/css/**/*.css' --fix",
+    "lint:stylelint": "stylelint 'www/assets/css/**/*.css'",
+    "lint:stylelint:fix": "stylelint 'www/assets/css/**/*.css' --fix",
+    "lint:prettier": "prettier --check .",
+    "lint:prettier:fix": "prettier --write ."
   },
   "lint-staged": {
-    "*.{js,ts}": "eslint --fix --ignore-path .gitignore",
+    "*.{js,ts}": "eslint --fix",
+    "*.css": "stylelint --fix",
     "*.{json,yaml,yml,md,mdx}": "prettier --write"
   },
   "devDependencies": {
-    "@typescript-eslint/eslint-plugin": "^7.0.0",
-    "@typescript-eslint/parser": "^7.0.0",
     "@types/node": "^22.9.0",
-    "eslint": "^8.49.0",
+    "eslint": "^9.0.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-prettier": "^5.2.1",
+    "globals": "^16.0.0",
     "husky": "^9.1.6",
     "lint-staged": "^15.2.10",
-    "prettier": "^3.3.3",
+    "prettier": "^3.5.0",
+    "typescript-eslint": "^8.0.0",
+    "stylelint": "^16.0.0",
+    "stylelint-config-standard": "^37.0.0",
     "ts-node": "^10.9.2"
   }
 }
