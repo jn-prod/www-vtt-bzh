@@ -18,23 +18,21 @@ on:
 jobs:
   run:
     if: ${{ github.ref == 'refs/heads/main' }}
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-latest
     environment: cron
-    strategy:
-      matrix:
-        node-version: [24]
     steps:
-      - name: Only on main
-        run: echo "This step will be skipped on Monday and Wednesday"
-      - uses: actions/checkout@v3
-      - uses: pnpm/action-setup@v2
+      - uses: actions/checkout@v6
+
+      - uses: pnpm/action-setup@v6
+        name: Install
         with:
-          version: 10
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v3
+          cache: true
+
+      - name: Use Node.js
+        uses: actions/setup-node@v6
         with:
-          node-version: ${{ matrix.node-version }}
-          cache: 'pnpm'
+          node-version: '24.x'
+          cache: "pnpm"
 
       - name: Install dependencies
         run: pnpm install

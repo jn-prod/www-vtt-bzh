@@ -17,29 +17,33 @@ jobs:
     if: github.event_name == 'push' || github.event.workflow_run.conclusion == 'success'
     runs-on: ubuntu-24.04
     environment: github-pages
-    strategy:
-      matrix:
-        node-version: [24]
+
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v6
+
       - name: Use ruby
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: '4.0.2'
           bundler-cache: true
-      - name: Use pnpm
-        uses: pnpm/action-setup@v2
+
+      - uses: pnpm/action-setup@v6
+        name: Install
         with:
-          version: 10
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v3
+          cache: true
+
+      - name: Use Node.js
+        uses: actions/setup-node@v6
         with:
-          node-version: ${{ matrix.node-version }}
-          cache: 'pnpm'
-      - name: Install node dependencies
+          node-version: '24.x'
+          cache: "pnpm"
+
+      - name: Install dependencies
         run: pnpm install
+
       - name: Install ruby dependencies
         run: pnpm --filter=www install:jekyll
+
       - name: Build
         run: pnpm build
         env:
