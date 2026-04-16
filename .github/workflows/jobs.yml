@@ -37,6 +37,8 @@ jobs:
       - name: Install dependencies
         run: pnpm install
 
+      - run: curl -I ${{ secrets.CRON_START_URI }}/sorties/vtt/2026-avenir-29-22-56-0-0-0-0-0-1.html
+
       - name: run job
         run: pnpm job
         env:
