@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "./src/index.ts",
   "scripts": {
-    "job": "ts-node ./src",
+    "run": "ts-node ./src",
     "build": "tsc"
   },
   "dependencies": {
