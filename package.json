@@ -25,7 +25,6 @@
     "build:www": "pnpm --filter='www' build",
     "build:packages": "pnpm --filter='./packages/*' -r build",
     "copy:packages:calendar": "cp packages/calendar/out/events.json www/_data/events.json",
-    "job": "pnpm -r job",
     "test": "pnpm -r test",
     "lint": "pnpm lint:eslint && pnpm lint:stylelint && pnpm lint:prettier",
     "lint:fix": "pnpm lint:eslint:fix && pnpm lint:stylelint:fix && pnpm lint:prettier:fix",

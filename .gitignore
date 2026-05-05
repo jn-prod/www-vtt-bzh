@@ -45,3 +45,8 @@ _site
 .sass-cache
 .jekyll-metadata
 .DS_Store
+
+# Backups locaux (Wufoo, Supabase dumps)
+wufoo.json
+*.backup.json
+backups/

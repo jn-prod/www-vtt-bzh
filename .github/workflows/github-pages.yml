@@ -5,16 +5,9 @@ on:
     branches:
       - main
   workflow_dispatch:
-  workflow_run:
-    workflows: ['Run vtt-bzh-calendar job']
-    types:
-      - completed
-    branches:
-      - main
 
 jobs:
   deploy:
-    if: github.event_name == 'push' || github.event.workflow_run.conclusion == 'success'
     runs-on: ubuntu-24.04
     environment: github-pages
 

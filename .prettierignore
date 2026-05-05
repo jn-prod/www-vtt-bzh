@@ -6,3 +6,10 @@ out
 www/_site
 www/manifest.webmanifest
 .obsidian
+
+# Supabase migrations: SQL non géré par Prettier
+supabase/migrations/*.sql
+
+# Backups locaux générés (cf .gitignore)
+wufoo.json
+*.backup.json

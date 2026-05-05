@@ -1,0 +1,237 @@
+{%- comment -%} Formulaire de soumission d'une rando VTT. POST direct vers
+Supabase REST (clé anon publique, sécurité par RLS). Conforme RGPD : finalité
+explicite, consentement, lien mentions légales. Conforme RGAA : labels associés,
+champs requis annoncés, autocomplete, focus visible (CSS). {%- endcomment -%}
+
+<form
+  id="event-form"
+  class="event-form"
+  novalidate
+  aria-describedby="event-form-intro"
+>
+  <p id="event-form-intro" class="event-form__intro">
+    Publiez votre rando VTT en quelques secondes. Elle apparaîtra immédiatement
+    sur le calendrier après envoi.
+  </p>
+
+  <div class="event-form__grid">
+    <div class="event-form__field event-form__field--span-2">
+      <label class="event-form__label" for="event-form-name">
+        Nom de la randonnée <span aria-hidden="true">*</span>
+      </label>
+      <input
+        type="text"
+        id="event-form-name"
+        name="name"
+        class="event-form__input"
+        required
+        maxlength="120"
+        autocomplete="off"
+        aria-required="true"
+      />
+    </div>
+
+    <div class="event-form__field">
+      <label class="event-form__label" for="event-form-date">
+        Date <span aria-hidden="true">*</span>
+      </label>
+      <input
+        type="date"
+        id="event-form-date"
+        name="date"
+        class="event-form__input"
+        required
+        aria-required="true"
+      />
+    </div>
+
+    <div class="event-form__field">
+      <label class="event-form__label" for="event-form-hour">
+        Heure de départ <span aria-hidden="true">*</span>
+      </label>
+      <input
+        type="text"
+        id="event-form-hour"
+        name="hour"
+        class="event-form__input"
+        required
+        maxlength="40"
+        placeholder="ex. 8h30"
+        aria-required="true"
+      />
+    </div>
+
+    <div class="event-form__field">
+      <label class="event-form__label" for="event-form-city">
+        Ville <span aria-hidden="true">*</span>
+      </label>
+      <input
+        type="text"
+        id="event-form-city"
+        name="city"
+        class="event-form__input"
+        required
+        maxlength="80"
+        autocomplete="address-level2"
+        aria-required="true"
+      />
+    </div>
+
+    <div class="event-form__field">
+      <label class="event-form__label" for="event-form-departement">
+        Département <span aria-hidden="true">*</span>
+      </label>
+      <select
+        id="event-form-departement"
+        name="departement"
+        class="event-form__input"
+        required
+        aria-required="true"
+      >
+        <option value="">— choisir —</option>
+        <option value="22">22 — Côtes-d'Armor</option>
+        <option value="29">29 — Finistère</option>
+        <option value="35">35 — Ille-et-Vilaine</option>
+        <option value="44">44 — Loire-Atlantique</option>
+        <option value="56">56 — Morbihan</option>
+      </select>
+    </div>
+
+    <div class="event-form__field event-form__field--span-2">
+      <label class="event-form__label" for="event-form-place">
+        Lieu de rendez-vous
+      </label>
+      <input
+        type="text"
+        id="event-form-place"
+        name="place"
+        class="event-form__input"
+        maxlength="120"
+        autocomplete="off"
+      />
+    </div>
+
+    <div class="event-form__field">
+      <label class="event-form__label" for="event-form-organisateur">
+        Organisateur <span aria-hidden="true">*</span>
+      </label>
+      <input
+        type="text"
+        id="event-form-organisateur"
+        name="organisateur"
+        class="event-form__input"
+        required
+        maxlength="120"
+        autocomplete="organization"
+        aria-required="true"
+      />
+    </div>
+
+    <div class="event-form__field">
+      <label class="event-form__label" for="event-form-price">
+        Prix (texte libre)
+      </label>
+      <input
+        type="text"
+        id="event-form-price"
+        name="price"
+        class="event-form__input"
+        maxlength="40"
+        placeholder="ex. 5€"
+      />
+    </div>
+
+    <div class="event-form__field event-form__field--span-2">
+      <label class="event-form__label" for="event-form-website">
+        Lien (site, billetterie HelloAsso, page Facebook…)
+      </label>
+      <input
+        type="url"
+        id="event-form-website"
+        name="website"
+        class="event-form__input"
+        maxlength="200"
+        placeholder="https://"
+        autocomplete="url"
+      />
+    </div>
+
+    <div class="event-form__field event-form__field--span-2">
+      <label class="event-form__label" for="event-form-contact">
+        Contact public <span aria-hidden="true">*</span>
+      </label>
+      <input
+        type="text"
+        id="event-form-contact"
+        name="contact"
+        class="event-form__input"
+        required
+        maxlength="120"
+        placeholder="email ou téléphone visible publiquement"
+        aria-required="true"
+        aria-describedby="event-form-contact-help"
+      />
+      <small id="event-form-contact-help" class="event-form__help">
+        Ce contact sera publié sur la fiche de la rando.
+      </small>
+    </div>
+
+    <div class="event-form__field event-form__field--span-2">
+      <label class="event-form__label" for="event-form-description">
+        Description (parcours, distances, ravito…)
+      </label>
+      <textarea
+        id="event-form-description"
+        name="description"
+        class="event-form__input event-form__input--textarea"
+        rows="4"
+        maxlength="2000"
+      ></textarea>
+    </div>
+
+    {%- comment -%} Honeypot anti-bot : champ caché aux humains, rempli par les
+    bots. Si rempli côté soumission, le JS reject sans envoyer. aria-hidden +
+    tabindex=-1 + autocomplete=off pour ne pas piéger les vrais utilisateurs.
+    {%- endcomment -%}
+    <div class="event-form__honeypot" aria-hidden="true">
+      <label for="event-form-website-url">Ne pas remplir</label>
+      <input
+        type="text"
+        id="event-form-website-url"
+        name="website_url"
+        tabindex="-1"
+        autocomplete="off"
+      />
+    </div>
+
+    <div class="event-form__field event-form__field--span-2">
+      <label class="event-form__checkbox">
+        <input
+          type="checkbox"
+          id="event-form-consent"
+          name="consent"
+          required
+          aria-required="true"
+        />
+        <span>
+          J'accepte que ces informations soient publiées publiquement sur
+          <strong>vtt.bzh</strong> et indexées par les moteurs de recherche.
+          Voir les <a href="/terms/legals.html">mentions légales</a>.
+        </span>
+      </label>
+    </div>
+  </div>
+
+  <div class="event-form__actions">
+    <button type="submit" class="btn btn--primary event-form__submit">
+      Publier ma rando
+    </button>
+  </div>
+
+  <div
+    class="event-form__feedback"
+    id="event-form-feedback"
+    role="status"
+    aria-live="polite"
+  ></div>
+</form>
