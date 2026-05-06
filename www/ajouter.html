@@ -2,10 +2,19 @@
 permalink: "/calendrier/ajouter.html"
 layout: default
 title: Ajouter une randonnée VTT
-keywords: "rando,randonnée,rando vtt, rando vtt bretagne,VTT,calendrier,circuit,bretagne,cote d'armor,ille et vilaine,finistère,loire atlantique,morbihan,vélo,22,29,44,56,35"
+description: Publiez gratuitement votre randonnée VTT sur le calendrier vtt.bzh. Visible immédiatement après envoi.
+keywords: "rando,randonnée,rando vtt,rando vtt bretagne,VTT,calendrier,circuit,bretagne,cote d'armor,ille et vilaine,finistère,loire atlantique,morbihan,vélo,22,29,44,56,35"
 ---
 
-<div id="wufoo-q1llzwkr1sa7rtj">
-  Fill out my
-  <a href="https://vttbzh.wufoo.com/forms/q1llzwkr1sa7rtj">online form</a>.
-</div>
+<h1 class="u-h2">Ajouter une randonnée VTT</h1>
+
+{% include components/event-form.html %}
+
+<script>
+  window.__SUPABASE__ = {
+    url: "{{ site.supabase.url }}",
+    key: "{{ site.supabase.publishable_key }}",
+    table: "{{ site.supabase.table }}",
+  };
+</script>
+<script type="module" src="/assets/js/event-form.js"></script>

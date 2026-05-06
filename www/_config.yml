@@ -19,10 +19,11 @@ comments:
   disqus:
     shortname: "nicolasjouanno-com"
 
-# Supabase (clé anon publique par design — sécurité assurée par RLS)
+# Supabase (publishable key publique par design — sécurité assurée par RLS)
+# Format `sb_publishable_*` rotatable, best practice 2026 (vs ancien JWT eyJ... legacy).
 supabase:
   url: "https://lbqjpwsifmmzxafkbcvz.supabase.co"
-  anon_key: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImxicWpwd3NpZm1tenhhZmtiY3Z6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3MDA1Njg0NzIsImV4cCI6MjAxNjE0NDQ3Mn0.z48gPl9b6syq8NoulAs3WaPjTDQQJd6zKFscpmYYdwE"
+  publishable_key: "sb_publishable_RqhVTG3FPvkoqEenIXV3hA_NodabkPY"
   table: "events"
 
 # Outputting
