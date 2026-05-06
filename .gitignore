@@ -50,3 +50,7 @@ _site
 wufoo.json
 *.backup.json
 backups/
+
+# Supabase CLI runtime
+supabase/.temp/
+supabase/.branches/

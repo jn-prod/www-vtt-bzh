@@ -1,14 +1,14 @@
-// Edge Function : notif email modération à chaque nouvel event public-form/.
+// Edge Function : notif Telegram modération à chaque nouvel event public-form/.
 // Déploiement : supabase functions deploy notify-new-event --no-verify-jwt
-// Config : secrets RESEND_API_KEY, WEBHOOK_SECRET, MODERATOR_EMAIL.
+// Config : secrets TELEGRAM_BOT_TOKEN, TELEGRAM_CHAT_ID, WEBHOOK_SECRET.
 // Trigger : Supabase Database Webhook (Settings → Database Webhooks) sur INSERT public.events,
 // avec header personnalisé `x-webhook-secret: <WEBHOOK_SECRET>` et URL de cette function.
 //
-// Stack : Deno (runtime Edge Function), fetch natif. Pas de SDK Resend (un POST suffit).
-// RGPD : email envoyé uniquement au modérateur défini, contenu strictement lié à la finalité (modération).
+// Stack : Deno (runtime Edge Function), fetch natif. Pas de SDK Telegram (un POST suffit).
+// RGPD : message envoyé uniquement au chat Telegram du modérateur, contenu strictement lié à la finalité (modération).
 
-const RESEND_API = 'https://api.resend.com/emails';
-const FROM_DEFAULT = 'vtt.bzh <onboarding@resend.dev>';
+const TELEGRAM_API = (token: string) => `https://api.telegram.org/bot${token}/sendMessage`;
+const MAX_MESSAGE_LEN = 3500; // Telegram impose 4096, on garde une marge pour wrappers HTML.
 
 type SupabaseWebhookPayload = {
   type: 'INSERT' | 'UPDATE' | 'DELETE';
@@ -21,68 +21,62 @@ const escapeHtml = (str: unknown): string =>
   String(str ?? '')
     .replace(/&/g, '&amp;')
     .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;')
-    .replace(/"/g, '&quot;')
-    .replace(/'/g, '&#39;');
+    .replace(/>/g, '&gt;');
 
-const buildEmail = (record: Record<string, unknown>, supabaseUrl: string) => {
+const truncate = (str: string, max: number): string => (str.length <= max ? str : `${str.slice(0, max - 1)}…`);
+
+// Extrait le project ref depuis SUPABASE_URL (format `https://<ref>.supabase.co`).
+const extractProjectRef = (supabaseUrl: string): string => {
+  const match = supabaseUrl.match(/^https?:\/\/([a-z0-9]+)\.supabase\.co/i);
+  return match ? match[1] : '';
+};
+
+const buildModerationUrl = (projectRef: string, eventId: string): string => {
+  if (!projectRef || !eventId) return '';
+  // SQL editor avec UPDATE pré-rempli — 1 clic pour ouvrir, 1 clic pour exécuter (Cmd+Enter).
+  const sql = `update public.events set active = false where id = '${eventId}' returning id, name, active;`;
+  return `https://supabase.com/dashboard/project/${projectRef}/sql/new?content=${encodeURIComponent(sql)}`;
+};
+
+const buildRowUrl = (projectRef: string, eventId: string): string => {
+  if (!projectRef || !eventId) return '';
+  // Ouvre le table editor (l'humain peut filtrer sur l'id pour voir/modifier la ligne complète).
+  return `https://supabase.com/dashboard/project/${projectRef}/editor`;
+};
+
+const buildTelegramMessage = (record: Record<string, unknown>, supabaseUrl: string): string => {
   const id = String(record.id ?? '');
-  const name = escapeHtml(record.name);
-  const date = escapeHtml(record.date);
-  const hour = escapeHtml(record.hour);
-  const city = escapeHtml(record.city);
-  const dept = escapeHtml(record.departement);
-  const place = escapeHtml(record.place);
-  const orga = escapeHtml(record.organisateur);
-  const contact = escapeHtml(record.contact);
-  const website = escapeHtml(record.website);
-  const description = escapeHtml(record.description);
-  const origin = escapeHtml(record.origin);
+  const projectRef = extractProjectRef(supabaseUrl);
+  const moderationUrl = buildModerationUrl(projectRef, id);
+  const rowUrl = buildRowUrl(projectRef, id);
 
-  const dashboardUrl = supabaseUrl ? `${supabaseUrl.replace('.supabase.co', '.supabase.co/project/_/editor')}` : '';
-
-  const subject = `[vtt.bzh] Nouvelle rando publiée : ${record.name ?? 'sans titre'} (${record.date ?? '?'})`;
-
-  const html = `
-    <h2 style="font-family:sans-serif">Nouvelle rando publiée sur vtt.bzh</h2>
-    <p style="font-family:sans-serif;color:#666">Origin <code>${origin}</code> — id <code>${id}</code></p>
-    <table style="font-family:sans-serif;border-collapse:collapse">
-      <tr><td><b>Nom</b></td><td>${name}</td></tr>
-      <tr><td><b>Date</b></td><td>${date} — ${hour}</td></tr>
-      <tr><td><b>Ville</b></td><td>${city} (${dept})</td></tr>
-      <tr><td><b>Lieu RDV</b></td><td>${place}</td></tr>
-      <tr><td><b>Organisateur</b></td><td>${orga}</td></tr>
-      <tr><td><b>Contact</b></td><td>${contact}</td></tr>
-      <tr><td><b>Site</b></td><td>${website}</td></tr>
-      <tr><td><b>Description</b></td><td><pre style="white-space:pre-wrap">${description}</pre></td></tr>
-    </table>
-    <p style="font-family:sans-serif">
-      Pour modérer (passer <code>active=false</code>) :
-      <a href="${dashboardUrl}">ouvrir la table dans Supabase</a>
-    </p>
-  `.trim();
-
-  const text = [
-    `Nouvelle rando publiée sur vtt.bzh`,
+  const lines = [
+    `🆕 <b>Nouvelle rando publiée sur vtt.bzh</b>`,
     ``,
-    `Nom         : ${record.name ?? ''}`,
-    `Date / heure: ${record.date ?? ''} ${record.hour ?? ''}`,
-    `Ville       : ${record.city ?? ''} (${record.departement ?? ''})`,
-    `Lieu RDV    : ${record.place ?? ''}`,
-    `Organisateur: ${record.organisateur ?? ''}`,
-    `Contact     : ${record.contact ?? ''}`,
-    `Site        : ${record.website ?? ''}`,
-    ``,
-    `Description :`,
-    `${record.description ?? ''}`,
-    ``,
-    `Origin: ${record.origin ?? ''}`,
-    `Id    : ${id}`,
-    ``,
-    `Modérer : ${dashboardUrl}`,
-  ].join('\n');
+    `<b>${escapeHtml(record.name) || 'Sans titre'}</b>`,
+    `🗓 ${escapeHtml(record.date)} ${escapeHtml(record.hour)}`,
+    `📍 ${escapeHtml(record.city)} (${escapeHtml(record.departement)})`,
+  ];
 
-  return { subject, html, text };
+  if (record.place) lines.push(`👉 RDV : ${escapeHtml(record.place)}`);
+  if (record.organisateur) lines.push(`👥 Organisateur : ${escapeHtml(record.organisateur)}`);
+  if (record.contact) lines.push(`✉️ Contact : ${escapeHtml(record.contact)}`);
+  if (record.website) lines.push(`🔗 ${escapeHtml(record.website)}`);
+  if (record.price) lines.push(`💶 ${escapeHtml(record.price)}`);
+  if (record.description) {
+    lines.push(``, `<i>${escapeHtml(record.description)}</i>`);
+  }
+
+  lines.push(``, `<code>id ${id}</code>`, `<code>origin ${escapeHtml(record.origin)}</code>`);
+
+  if (moderationUrl) {
+    lines.push(``, `🛡 <a href="${moderationUrl}">Désactiver en 1 clic (SQL Editor)</a>`);
+  }
+  if (rowUrl) {
+    lines.push(`📋 <a href="${rowUrl}">Ouvrir la table events</a>`);
+  }
+
+  return truncate(lines.join('\n'), MAX_MESSAGE_LEN);
 };
 
 Deno.serve(async (req: Request): Promise<Response> => {
@@ -96,12 +90,11 @@ Deno.serve(async (req: Request): Promise<Response> => {
     return new Response('unauthorized', { status: 401 });
   }
 
-  const resendApiKey = Deno.env.get('RESEND_API_KEY');
-  const moderatorEmail = Deno.env.get('MODERATOR_EMAIL');
-  const fromAddress = Deno.env.get('NOTIFY_FROM') ?? FROM_DEFAULT;
+  const botToken = Deno.env.get('TELEGRAM_BOT_TOKEN');
+  const chatId = Deno.env.get('TELEGRAM_CHAT_ID');
   const supabaseUrl = Deno.env.get('SUPABASE_URL') ?? '';
-  if (!resendApiKey || !moderatorEmail) {
-    console.error('[notify-new-event] missing RESEND_API_KEY or MODERATOR_EMAIL');
+  if (!botToken || !chatId) {
+    console.error('[notify-new-event] missing TELEGRAM_BOT_TOKEN or TELEGRAM_CHAT_ID');
     return new Response('config missing', { status: 500 });
   }
 
@@ -122,26 +115,22 @@ Deno.serve(async (req: Request): Promise<Response> => {
     return new Response('ignored (non-public)', { status: 200 });
   }
 
-  const { subject, html, text } = buildEmail(payload.record, supabaseUrl);
+  const text = buildTelegramMessage(payload.record, supabaseUrl);
 
-  const sendRes = await fetch(RESEND_API, {
+  const sendRes = await fetch(TELEGRAM_API(botToken), {
     method: 'POST',
-    headers: {
-      Authorization: `Bearer ${resendApiKey}`,
-      'Content-Type': 'application/json',
-    },
+    headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
-      from: fromAddress,
-      to: [moderatorEmail],
-      subject,
-      html,
+      chat_id: chatId,
       text,
+      parse_mode: 'HTML',
+      disable_web_page_preview: true,
     }),
   });
 
   if (!sendRes.ok) {
     const detail = await sendRes.text();
-    console.error('[notify-new-event] Resend error', sendRes.status, detail);
+    console.error('[notify-new-event] Telegram error', sendRes.status, detail);
     return new Response('send failed', { status: 502 });
   }
 

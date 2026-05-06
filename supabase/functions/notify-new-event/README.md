@@ -1,6 +1,6 @@
 # notify-new-event
 
-Edge Function Supabase. À chaque INSERT dans `public.events` avec `origin LIKE 'public-form/%'`, envoie un email au modérateur via Resend.
+Edge Function Supabase. À chaque INSERT dans `public.events` avec `origin LIKE 'public-form/%'`, envoie un message Telegram au modérateur via le bot configuré.
 
 ## Architecture
 
@@ -12,37 +12,53 @@ Edge Function Supabase. À chaque INSERT dans `public.events` avec `origin LIKE 
                                                        │ POST + x-webhook-secret
                                                        ▼
                                           [Edge Function notify-new-event]
-                                                       │ POST /emails
+                                                       │ POST /sendMessage
                                                        ▼
-                                                  [Resend API]
+                                            [Telegram Bot API]
                                                        │
                                                        ▼
-                                       me@nicolasjouanno.com
+                                          chat Telegram du modérateur
 ```
 
-## Pré-requis (action humaine)
+## Pré-requis (action humaine, ~5 min)
 
-1. **Compte Resend** (gratuit, https://resend.com) → créer un projet → noter la **API Key**.
-2. **Vérifier domain** dans Resend (optionnel mais recommandé pour ne pas tomber en spam) ; sinon utiliser `onboarding@resend.dev` qui n'envoie qu'à l'adresse du compte Resend (= `me@nicolasjouanno.com` à condition que ce soit l'adresse du compte).
-3. **Supabase CLI** installé localement : `brew install supabase/tap/supabase` ou voir https://supabase.com/docs/guides/cli.
+1. **Créer un bot Telegram** :
+   - Sur Telegram, ouvrir `@BotFather`, envoyer `/newbot`.
+   - Choisir un nom (ex `vtt.bzh moderation`) et un username (ex `vttbzh_moderation_bot`).
+   - Copier le token retourné (format `1234567890:AAH…`) — c'est `TELEGRAM_BOT_TOKEN`.
+2. **Activer la conversation** :
+   - Cliquer le lien `t.me/<username>` retourné par BotFather.
+   - Envoyer `/start` au bot.
+3. **Récupérer le `TELEGRAM_CHAT_ID`** :
+   - Ouvrir `https://api.telegram.org/bot<TOKEN>/getUpdates` dans un navigateur.
+   - Récupérer `result[0].message.chat.id` (entier — positif pour DM, négatif pour group/channel).
+4. **Supabase CLI** installée (la procédure d'Étape 9 du plan l'installe localement via `pnpm add -D -w supabase`).
 
 ## Déploiement
 
 ```bash
 cd /root/www-vtt-bzh
-supabase login
-supabase link --project-ref lbqjpwsifmmzxafkbcvz
-supabase secrets set \
-  RESEND_API_KEY=re_xxx \
-  WEBHOOK_SECRET=$(openssl rand -hex 24) \
-  MODERATOR_EMAIL=me@nicolasjouanno.com \
-  NOTIFY_FROM='vtt.bzh <onboarding@resend.dev>'
-supabase functions deploy notify-new-event --no-verify-jwt
+# Auth non-interactive via PAT Supabase
+export SUPABASE_ACCESS_TOKEN=sbp_xxx
+export SUPABASE_PROJECT_REF=lbqjpwsifmmzxafkbcvz
+
+# Set secrets côté edge function
+pnpm exec supabase secrets set --project-ref ${SUPABASE_PROJECT_REF} \
+  TELEGRAM_BOT_TOKEN="${TELEGRAM_BOT_TOKEN}" \
+  TELEGRAM_CHAT_ID="${TELEGRAM_CHAT_ID}" \
+  WEBHOOK_SECRET="$(openssl rand -hex 24)"
+
+# Deploy
+pnpm exec supabase functions deploy notify-new-event \
+  --project-ref ${SUPABASE_PROJECT_REF} \
+  --no-verify-jwt
 ```
 
 > `--no-verify-jwt` est nécessaire car le webhook Supabase n'envoie pas de JWT. La sécurité est assurée par le header `x-webhook-secret` validé côté function.
 
-## Configuration du webhook (dashboard Supabase)
+## Configuration du webhook (dashboard Supabase ou Management API)
+
+Via dashboard :
 
 1. Dashboard → **Database** → **Webhooks** → **Create a new hook**.
 2. Name : `notify-new-event`.
@@ -74,20 +90,23 @@ curl -X POST "$SUPABASE_URL/rest/v1/events" \
   }'
 ```
 
-Un email doit arriver sur `MODERATOR_EMAIL` dans la minute. Logs côté `supabase functions logs notify-new-event`.
+Un message Telegram doit arriver sur le chat du bot dans la minute. Logs côté `pnpm exec supabase functions logs notify-new-event`.
 
-Cleanup :
-
-```bash
-curl -X DELETE "$SUPABASE_URL/rest/v1/events?origin=eq.public-form/test-notif" \
-  -H "apikey: $SUPABASE_KEY" \
-  -H "Authorization: Bearer $SUPABASE_KEY"
-```
-
-(Le DELETE anon est refusé par RLS — passer par le dashboard ou la `service_role` key.)
+Cleanup via dashboard Supabase (anon ne peut pas DELETE sous RLS).
 
 ## Comportement
 
-- INSERT autre que `events` ou `origin` non `public-form/%` → réponse 200 mais pas d'email (filtre côté function).
+- INSERT autre que `events` ou `origin` non `public-form/%` → réponse 200 mais pas de notif (filtre côté function).
 - Header `x-webhook-secret` invalide → 401.
-- Resend down → 502, le webhook Supabase peut être configuré pour retry.
+- Telegram down → 502, le webhook Supabase peut être configuré pour retry.
+
+## Format du message
+
+Message HTML court (truncaté à ~3500 caractères pour respecter la limite Telegram de 4096), avec :
+
+- Nom de la rando (en gras)
+- Date / heure / ville / département
+- Lieu RDV, organisateur, contact, lien, prix (si renseignés)
+- Description en italique
+- ID + origin en monospace
+- Lien vers le dashboard Supabase pour modération en 1 clic

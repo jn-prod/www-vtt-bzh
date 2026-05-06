@@ -7,10 +7,15 @@
 -- 1. Activer RLS
 alter table public.events enable row level security;
 
--- 2. Drop policies existantes (idempotence)
+-- 2. Drop policies existantes (idempotence) + drop des policies par défaut Supabase
+--    (les défauts "Enable read/insert/update access for all users" ont qual=true et bypass tout).
 drop policy if exists "events_anon_select" on public.events;
 drop policy if exists "events_anon_insert_public_form" on public.events;
 drop policy if exists "events_service_full" on public.events;
+drop policy if exists "Enable read access for all users" on public.events;
+drop policy if exists "Enable insert access for all users" on public.events;
+drop policy if exists "Enable update access for all users" on public.events;
+drop policy if exists "Enable delete access for all users" on public.events;
 
 -- 3. SELECT pour anon : uniquement les events actifs.
 --    Cohérent avec generate-events.ts:34 (filtre active=true au build).
