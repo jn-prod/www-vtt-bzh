@@ -1,18 +1,35 @@
 title: "vtt.bzh"
 headline: "Calendrier Rando VTT Bretagne"
+lang: "fr"
 local: "fr_FR"
 description: "Calendrier des randonnées VTT de Bretagne | VTT.bzh. Morbihan, finistère, Ille et Vilaine, Cotes d'armor, Loire Atlantique, programmer des maintenant votre prochaine rando VTT du week-end."
 keywords: "randonnée, rando, randonnées, vtt, rando vtt, rando vtt bretagne"
 main_image: "assets/images/logo.png"
+logo: "/assets/images/logo.png"
 url: "https://vtt.bzh"
+
+webmaster_verifications:
+  google: "p6n7BrHhMIgg3KX7bCmj6fzgSvSRwlppzRWJY4-d9IY"
+  bing:
+  yandex:
+  baidu:
+  facebook:
 
 author:
   display_name: "Nicolas JOUANNO DANIEL"
+  name: "Nicolas JOUANNO DANIEL"
   bio: "ex-cycliste professionnel (5 Championnats de France), pratiquant VTT en Bretagne. Je partage mes réflexions sur le vélo et le sport outdoor"
   location: "Pontivy, Bretagne"
+  country: "France"
   contact: "mailto:nicolas@vtt.bzh"
+  email: "nicolas@vtt.bzh"
+  handle: "@bynicolasjd"
   avatar: "https://www.nicolasjouanno.com/images/icons/avatar.svg"
   web: "https://www.nicolasjouanno.com/results.html"
+
+support:
+  label: "Soutenir sur Tipeee"
+  tipeee_url: "https://fr.tipeee.com/bynicolasjd?utm_source=vtt-bzh&utm_medium=site&utm_campaign=soutien"
 
 # Supabase (publishable key publique par design — sécurité assurée par RLS)
 # Format `sb_publishable_*` rotatable, best practice 2026 (vs ancien JWT eyJ... legacy).
