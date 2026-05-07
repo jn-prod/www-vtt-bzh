@@ -256,6 +256,8 @@ button {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: var(--b-size-12);
+  flex-wrap: wrap;
   padding: var(--b-size-16) 0;
 }
 
@@ -275,6 +277,13 @@ button {
   font-weight: bold;
   color: var(--b-color-grey-dark);
   margin-left: var(--b-size-8);
+}
+
+.site-nav__actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: var(--b-size-8);
 }
 
 /* ==========================================================================
