@@ -100,7 +100,7 @@ DEPENDENCIES
   logger
 
 RUBY VERSION
-   ruby 4.0.3p0
+  ruby 4.0.3p0
 
 BUNDLED WITH
-   2.6.3
+  4.0.6
