@@ -84,6 +84,9 @@
   </head>
 
   <body>
+    <!-- Skip link RGAA 12.6/12.7 — visible uniquement au focus clavier -->
+    <a class="site-skip-link" href="#main-content">Aller au contenu</a>
+
     <!-- SVG sprite -->
     <svg style="display: none" xmlns="http://www.w3.org/2000/svg">
       <symbol
@@ -110,17 +113,6 @@
       </symbol>
     </svg>
 
-    <!-- Google Tag Manager (noscript) -->
-    <noscript
-      ><iframe
-        src="https://www.googletagmanager.com/ns.html?id=GTM-59S43HM"
-        height="0"
-        width="0"
-        style="display: none; visibility: hidden"
-      ></iframe
-    ></noscript>
-    <!-- End Google Tag Manager (noscript) -->
-
     <!-- Header -->
     <header class="site-header">
       <div class="container">
@@ -138,7 +130,8 @@
       </div>
     </header>
 
-    <main class="site-main container"><h1 class="u-h2">Ajouter une randonnée VTT</h1>
+    <main id="main-content" class="site-main container" tabindex="-1">
+      <h1 class="u-h2">Ajouter une randonnée VTT</h1>
 
 <form
   id="event-form"
@@ -376,7 +369,8 @@
   };
 </script>
 <script type="module" src="/assets/js/event-form.js"></script>
-</main>
+
+    </main>
 
     <!-- Footer -->
     <footer class="site-footer container">
@@ -395,8 +389,7 @@
         <p class="author-box__links">
           Vous pouvez suivre ces liens pour
           <a href="/calendrier/ajouter.html">ajouter un évènement</a> ou
-          <a href="mailto:nicolas@vtt.bzh">me contacter</a
-          >.
+          <a href="mailto:nicolas@vtt.bzh">me contacter</a>.
         </p>
       </div>
       
@@ -425,12 +418,4 @@
     data-cf-beacon='{"token": "9368ff319f1c4ab9a59f8077fee24625"}'
   ></script>
   <!-- End Cloudflare Web Analytics -->
-
-  <!-- disqus -->
-  <script
-    id="dsq-count-scr"
-    src="//nicolasjouanno-com.disqus.com/count.js"
-    async
-    defer
-  ></script>
 </html>
