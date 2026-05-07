@@ -1,0 +1,58 @@
+name: Supabase backup (daily, encrypted artifact)
+
+# Cf SYSTEM.md §21. Le dump quotidien Supabase est chiffré symétriquement
+# (AES-256-CBC + PBKDF2) avant d'être uploadé comme artifact GitHub Actions
+# avec rétention 90 jours (free tier). La passphrase est stockée hors-repo,
+# en password manager humain + secret GH Actions BACKUPS_PASSPHRASE.
+
+on:
+  schedule:
+    # 03:00 UTC — hors heure de pointe site
+    - cron: '0 3 * * *'
+  workflow_dispatch:
+
+jobs:
+  dump:
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: read
+
+    steps:
+      - uses: actions/checkout@v6
+
+      - name: Use Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: '24.x'
+
+      - name: Run Supabase dump
+        env:
+          SUPABASE_ACCESS_TOKEN: ${{ secrets.SUPABASE_ACCESS_TOKEN }}
+          SUPABASE_PROJECT_REF: ${{ secrets.SUPABASE_PROJECT_REF }}
+          BACKUP_DIR: ${{ runner.temp }}/dump
+        run: node scripts/backup-supabase.mjs
+
+      - name: Encrypt dump files (AES-256-CBC + PBKDF2)
+        env:
+          BACKUPS_PASSPHRASE: ${{ secrets.BACKUPS_PASSPHRASE }}
+        run: |
+          set -euo pipefail
+          if [ -z "${BACKUPS_PASSPHRASE:-}" ]; then
+            echo "::error::BACKUPS_PASSPHRASE secret missing"
+            exit 1
+          fi
+          for f in "${RUNNER_TEMP}/dump"/*.json; do
+            openssl enc -aes-256-cbc -pbkdf2 -iter 200000 -salt \
+              -in "$f" -out "$f.enc" \
+              -pass env:BACKUPS_PASSPHRASE
+            rm "$f"
+          done
+          ls -la "${RUNNER_TEMP}/dump/"
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: vtt-bzh-supabase-backup-${{ github.run_id }}
+          path: ${{ runner.temp }}/dump/
+          retention-days: 90
+          if-no-files-found: error

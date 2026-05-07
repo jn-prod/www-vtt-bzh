@@ -1,0 +1,63 @@
+name: Purge old events (daily, retention 1y)
+
+# Cf SYSTEM.md §21 (rétention 30j min) + mentions légales §4.1
+# (events conservés tant que `date >= aujourd'hui` puis 5 ans d'archive).
+#
+# Supprime quotidiennement les events dont `date < CURRENT_DATE - INTERVAL '5 years'`.
+# Le workflow tourne après le workflow de backup (03:00 UTC) pour avoir un
+# safety net du jour avant la purge.
+
+on:
+  schedule:
+    # 04:00 UTC — 1h après le backup quotidien
+    - cron: '0 4 * * *'
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: 'Dry run (count only, no delete)'
+        type: boolean
+        default: false
+
+jobs:
+  purge:
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: read
+
+    steps:
+      - name: Count events to purge
+        env:
+          SUPABASE_ACCESS_TOKEN: ${{ secrets.SUPABASE_ACCESS_TOKEN }}
+          SUPABASE_PROJECT_REF: ${{ secrets.SUPABASE_PROJECT_REF }}
+        run: |
+          set -euo pipefail
+          BODY='{"query": "select count(*) as n, min(date) as oldest, max(date) as newest_to_purge from public.events where date < (current_date - interval '\''5 years'\'')::date;"}'
+          curl -fsS -X POST "https://api.supabase.com/v1/projects/${SUPABASE_PROJECT_REF}/database/query" \
+            -H "Authorization: Bearer ${SUPABASE_ACCESS_TOKEN}" \
+            -H "Content-Type: application/json" \
+            -d "$BODY" \
+            | tee count-result.json
+          N=$(jq -r '.[0].n' count-result.json)
+          echo "events_to_purge_count=$N" >> "$GITHUB_OUTPUT"
+          echo "[purge] $N events to purge (date < today - 1y)"
+
+      - name: Purge (DELETE)
+        if: ${{ github.event.inputs.dry_run != 'true' }}
+        env:
+          SUPABASE_ACCESS_TOKEN: ${{ secrets.SUPABASE_ACCESS_TOKEN }}
+          SUPABASE_PROJECT_REF: ${{ secrets.SUPABASE_PROJECT_REF }}
+        run: |
+          set -euo pipefail
+          BODY='{"query": "delete from public.events where date < (current_date - interval '\''5 years'\'')::date returning id, name, date;"}'
+          curl -fsS -X POST "https://api.supabase.com/v1/projects/${SUPABASE_PROJECT_REF}/database/query" \
+            -H "Authorization: Bearer ${SUPABASE_ACCESS_TOKEN}" \
+            -H "Content-Type: application/json" \
+            -d "$BODY" \
+            | tee purge-result.json
+          DELETED=$(jq 'length' purge-result.json)
+          echo "[purge] $DELETED events deleted"
+
+      - name: Dry-run notice
+        if: ${{ github.event.inputs.dry_run == 'true' }}
+        run: |
+          echo "[purge] DRY RUN — no rows deleted. Re-run with dry_run=false to apply."

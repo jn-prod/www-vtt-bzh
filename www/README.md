@@ -164,6 +164,4 @@ Format d'un événement :
 
 ## TODO (long terme)
 
-- [ ] **Commentaires** : évaluer remplacement de Disqus par [Giscus](https://giscus.app/) (GitHub Discussions, sans tracking, RGPD)
-- [ ] **Analytics** : évaluer suppression de Google Tag Manager si inutilisé (le beacon Cloudflare est déjà en place)
-- [ ] **Tests** : ajouter un smoke test vitest sur `jobs/` (generate-events-yaml)
+- [ ] **Tests** : ajouter un smoke test vitest sur `packages/calendar` (generate-events.ts)

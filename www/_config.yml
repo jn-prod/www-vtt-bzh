@@ -14,11 +14,6 @@ author:
   avatar: "https://www.nicolasjouanno.com/images/icons/avatar.svg"
   web: "https://www.nicolasjouanno.com/results.html"
 
-# disqus
-comments:
-  disqus:
-    shortname: "nicolasjouanno-com"
-
 # Supabase (publishable key publique par design — sécurité assurée par RLS)
 # Format `sb_publishable_*` rotatable, best practice 2026 (vs ancien JWT eyJ... legacy).
 supabase:
