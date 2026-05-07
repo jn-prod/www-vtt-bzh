@@ -4,9 +4,7 @@ import type { CalendarEvent } from './types';
 import { writeFileSync, mkdirSync } from 'fs';
 import { join, dirname } from 'path';
 
-// Préfère la nouvelle publishable key (rotatable). Fallback sur la clé legacy pendant la transition.
-const supabaseKey = (process.env.SUPABASE_PUBLISHABLE_KEY ?? process.env.SUPABASE_KEY) as string;
-const db = createClient(process.env.SUPABASE_URL as string, supabaseKey);
+const db = createClient(process.env.SUPABASE_URL as string, process.env.SUPABASE_PUBLISHABLE_KEY as string);
 
 const toISODate = (d: Date): string => d.toISOString().split('T')[0];
 

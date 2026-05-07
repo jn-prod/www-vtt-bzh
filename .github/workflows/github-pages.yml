@@ -41,9 +41,7 @@ jobs:
         run: pnpm build
         env:
           SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
-          # Préfère la nouvelle publishable key, fallback sur la legacy (transition).
           SUPABASE_PUBLISHABLE_KEY: ${{ secrets.SUPABASE_PUBLISHABLE_KEY }}
-          SUPABASE_KEY: ${{ secrets.SUPABASE_KEY }}
           SUPABASE_TABLE: ${{ secrets.SUPABASE_TABLE }}
       #- name: Lint
       #  run: pnpm lint
