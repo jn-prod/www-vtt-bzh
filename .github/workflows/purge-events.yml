@@ -39,7 +39,7 @@ jobs:
             | tee count-result.json
           N=$(jq -r '.[0].n' count-result.json)
           echo "events_to_purge_count=$N" >> "$GITHUB_OUTPUT"
-          echo "[purge] $N events to purge (date < today - 1y)"
+          echo "[purge] $N events to purge (date < today - 5y)"
 
       - name: Purge (DELETE)
         if: ${{ github.event.inputs.dry_run != 'true' }}

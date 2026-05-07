@@ -48,7 +48,9 @@ include.event.name | slugify %}
           ({{ include.event.departement }})
         </span>
         {% if include.event.canceled %}
-        <span class="badge badge--danger">Annulée</span>
+        <span class="badge badge--danger" role="status">
+          <span aria-hidden="true">⚠</span> Annulée
+        </span>
         {% endif %}
       </p>
     </div>
