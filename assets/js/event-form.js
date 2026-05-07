@@ -18,6 +18,38 @@ const onReady = (cb) =>
     ? document.addEventListener("DOMContentLoaded", cb, { once: true })
     : cb();
 
+// Messages de validation HTML5 en français — RGAA 11.11.
+const INVALID_MESSAGES_FR = {
+  valueMissing: "Veuillez remplir ce champ.",
+  typeMismatch: "Le format saisi n’est pas valide.",
+  patternMismatch: "Le format demandé n’est pas respecté.",
+  tooShort: "La saisie est trop courte.",
+  tooLong: "La saisie est trop longue.",
+  rangeUnderflow: "La valeur est trop petite.",
+  rangeOverflow: "La valeur est trop grande.",
+  stepMismatch: "La valeur ne respecte pas l’incrément attendu.",
+  badInput: "La saisie n’est pas valide.",
+};
+
+const setFrenchValidationMessage = (field) => {
+  field.setCustomValidity("");
+  if (field.validity.valid) return;
+  for (const key of Object.keys(INVALID_MESSAGES_FR)) {
+    if (field.validity[key]) {
+      field.setCustomValidity(INVALID_MESSAGES_FR[key]);
+      return;
+    }
+  }
+};
+
+const wireFrenchValidation = (form) => {
+  form.querySelectorAll("input, select, textarea").forEach((field) => {
+    field.addEventListener("invalid", () => setFrenchValidationMessage(field));
+    field.addEventListener("input", () => field.setCustomValidity(""));
+    field.addEventListener("change", () => field.setCustomValidity(""));
+  });
+};
+
 const setFeedback = (el, kind, message) => {
   el.textContent = message;
   el.className = `event-form__feedback event-form__feedback--${kind}`;
@@ -70,6 +102,8 @@ onReady(() => {
   const form = document.getElementById(FORM_ID);
   const feedback = document.getElementById(FEEDBACK_ID);
   if (!form || !feedback) return;
+
+  wireFrenchValidation(form);
 
   form.addEventListener("submit", async (event) => {
     event.preventDefault();
