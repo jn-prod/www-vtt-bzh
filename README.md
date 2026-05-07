@@ -55,7 +55,7 @@ www/
 │   ├── fonts/           # Roboto Condensed (.ttf)
 │   └── js/              # Scripts vanilla JS (ES modules)
 │       ├── calendar.js  # Filtrage et pagination des événements
-│       └── wufoo.js     # Formulaire d'ajout d'événement (chargé dynamiquement)
+│       └── event-form.js # Formulaire public d'ajout (POST direct Supabase REST)
 └── index.html           # Page principale — calendrier des randonnées
 ```
 
@@ -135,13 +135,13 @@ Le fichier est organisé en sections commentées dans cet ordre :
 - **ES modules natifs** (`<script type="module">`), pas de bundler.
 - Fichiers dans `assets/js/`, servis statiquement par Jekyll.
 - `calendar.js` : filtrage et pagination par manipulation de l'attribut `hidden` sur les éléments `<details>` du DOM pré-rendu Jekyll.
-- `wufoo.js` : chargé dynamiquement uniquement sur `calendar/ajouter.html` via `import('/assets/js/wufoo.js')`.
+- `event-form.js` : soumission du formulaire public sur `/calendrier/ajouter.html` ; POST direct vers Supabase REST avec la clé anon, RLS sécurise (origin contraint à `public-form/%`, UPDATE/DELETE refusés).
 
 ---
 
-## Données — `_data/events.yaml`
+## Données — `_data/events.json`
 
-Le fichier `_data/events.yaml` est **généré automatiquement** par `jobs/` lors du build CI. Il est présent dans le repo comme **données de test** pour le développement local.
+Le fichier `_data/events.json` est **généré automatiquement** au build CI par `packages/calendar/generate-events.ts` qui lit la table Supabase `events` (filtrée sur `active=true` et fenêtre [aujourd'hui, +1 an]). Il est présent dans le repo comme **données de test** pour le développement local.
 
 Format d'un événement :
 
