@@ -37,6 +37,7 @@ supabase:
   url: "https://lbqjpwsifmmzxafkbcvz.supabase.co"
   publishable_key: "sb_publishable_RqhVTG3FPvkoqEenIXV3hA_NodabkPY"
   table: "events"
+  support_events_table: "support_events"
 
 # Outputting
 permalink: /:title:output_ext

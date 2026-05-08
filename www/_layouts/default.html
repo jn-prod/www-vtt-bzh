@@ -11,7 +11,10 @@
 
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>{% if page.title %}{{ seo_title }} | {{ site.title }}{% else %}{{ site.title }}{% endif %}</title>
+    <title>
+      {% if page.title %}{{ seo_title }} | {{ site.title }}{% else %}{{
+      site.title }}{% endif %}
+    </title>
     <meta name="description" content="{{ seo_description | escape }}" />
     {% if page.keywords %}
     <meta name="keywords" content="{{ page.keywords | escape }}" />
@@ -154,17 +157,13 @@
           </a>
           <div class="site-nav__actions">
             <a
-              href="{{ site.author.web }}"
-              class="btn btn--outline"
-              target="_blank"
-              rel="noopener"
-              >Me suivre</a
-            >
-            <a
               href="{{ site.support.tipeee_url | escape }}"
               class="btn btn--primary"
               target="_blank"
               rel="noopener"
+              data-track="support-click"
+              data-support-provider="tipeee"
+              data-support-placement="header"
               >Soutenir</a
             >
           </div>
@@ -199,6 +198,9 @@
             href="{{ site.support.tipeee_url | escape }}"
             target="_blank"
             rel="noopener"
+            data-track="support-click"
+            data-support-provider="tipeee"
+            data-support-placement="author-footer"
             >soutenir le projet sur Tipeee</a
           >
           ou
@@ -224,6 +226,13 @@
     </footer>
   </body>
   <script type="module" src="/assets/js/calendar.js"></script>
+  <script
+    src="/assets/js/support-tracking.js"
+    defer
+    data-supabase-url="{{ site.supabase.url | escape }}"
+    data-supabase-key="{{ site.supabase.publishable_key | escape }}"
+    data-support-events-table="{{ site.supabase.support_events_table | escape }}"
+  ></script>
   <!-- Cloudflare Web Analytics -->
   <script
     defer

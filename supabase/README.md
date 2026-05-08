@@ -30,3 +30,9 @@ UPDATE/DELETE anon sont strictement refusés : un spammer ne peut qu'ajouter, ja
 ## Edge functions
 
 Voir `functions/` (T-016 à venir : notif email modération via Resend).
+
+## Tracking soutien
+
+Les clics vers Tipeee sont insérés côté navigateur dans `support_events` via REST Supabase avec la clé publishable et `fetch(..., { keepalive: true })`. Le payload est volontairement limité à `provider`, `placement`, `href` et `path`; aucune donnée personnelle, cookie, user-agent, referrer complet ou identifiant utilisateur n'est collecté par le script local.
+
+La table `support_events` a été configurée directement dans Supabase le 2026-05-08 via le PAC du projet, avec RLS `anon INSERT` uniquement et aucun accès public `SELECT`, `UPDATE` ou `DELETE`.
