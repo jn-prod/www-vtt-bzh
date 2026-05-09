@@ -1,6 +1,6 @@
 // Backup quotidien Supabase via Management API.
 // Dump JSON de toutes les tables publiques + schema (information_schema).
-// Output : ./backups/vtt-bzh-<ISO>/{events,subscribers,schema}.json + checksums.sha256
+// Output : ./backups/vtt-bzh-<ISO>/{events,schema}.json + checksums.sha256
 //
 // Local : node --env-file=.env scripts/backup-supabase.mjs
 // CI    : SUPABASE_ACCESS_TOKEN + SUPABASE_PROJECT_REF en env, output dans $GITHUB_WORKSPACE/backups/
