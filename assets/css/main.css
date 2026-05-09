@@ -485,9 +485,6 @@ button {
 .organizer-callout {
   padding: var(--b-size-16);
   margin: 0 0 var(--b-size-24);
-  border: var(--b-size-2) solid rgb(28 125 68 / 25%);
-  border-radius: var(--b-border-radius);
-  background: rgb(28 125 68 / 8%);
 }
 
 .organizer-callout__content {
