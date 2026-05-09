@@ -491,6 +491,10 @@ button {
   max-width: 72rem;
 }
 
+.organizer-callout__details {
+  margin-bottom: var(--b-size-8);
+}
+
 .organizer-callout__summary {
   cursor: pointer;
   font-weight: 700;
