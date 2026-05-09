@@ -483,12 +483,7 @@ button {
    ========================================================================== */
 
 .organizer-callout {
-  padding: var(--b-size-16);
   margin: 0 0 var(--b-size-24);
-}
-
-.organizer-callout__content {
-  max-width: 72rem;
 }
 
 .organizer-callout__details {
@@ -496,7 +491,6 @@ button {
 }
 
 .organizer-callout__summary {
-  cursor: pointer;
   font-weight: 700;
 }
 
