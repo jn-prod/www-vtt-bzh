@@ -479,6 +479,39 @@ button {
 }
 
 /* ==========================================================================
+   Organizer callout
+   ========================================================================== */
+
+.organizer-callout {
+  padding: var(--b-size-16);
+  margin: 0 0 var(--b-size-24);
+  border: var(--b-size-2) solid rgb(28 125 68 / 25%);
+  border-radius: var(--b-border-radius);
+  background: rgb(28 125 68 / 8%);
+}
+
+.organizer-callout__content {
+  max-width: 72rem;
+}
+
+.organizer-callout__title {
+  margin: 0 0 var(--b-size-8);
+  font-size: var(--b-size-32);
+}
+
+.organizer-callout__text {
+  margin: var(--b-size-8) 0 0;
+}
+
+.organizer-callout__list {
+  margin-top: var(--b-size-16);
+}
+
+.organizer-callout__list li {
+  margin-top: var(--b-size-8);
+}
+
+/* ==========================================================================
    Search filter
    ========================================================================== */
 
@@ -547,6 +580,11 @@ button {
 .message--loading {
   background: var(--b-color-info-bg);
   color: var(--b-color-info-text);
+}
+
+.message__aside {
+  display: block;
+  margin-top: var(--b-size-4);
 }
 
 /* ==========================================================================
