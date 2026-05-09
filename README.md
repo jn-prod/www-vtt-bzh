@@ -66,19 +66,19 @@ pnpm install
 
 ## Scripts racine
 
-| Commande              | Description                                                  |
-| --------------------- | ------------------------------------------------------------ |
-| `pnpm dev`            | Lance le dev de tous les packages (Jekyll serve)             |
-| `pnpm build`          | Build packages → copie `events.json` → build Jekyll          |
-| `pnpm build:preview`  | Build complet + serveur HTTP local sur `www/_site/`          |
-| `pnpm build:www`      | Build Jekyll uniquement                                      |
-| `pnpm build:packages` | Compile tous les packages TypeScript                         |
-| `pnpm test`           | Tests de tous les packages                                   |
-| `pnpm lint`           | ESLint + Stylelint + Prettier (vérification)                 |
-| `pnpm lint:fix`       | ESLint + Stylelint + Prettier (auto-fix)                     |
-| `pnpm lint:eslint`    | ESLint uniquement                                            |
-| `pnpm lint:stylelint` | Stylelint uniquement                                         |
-| `pnpm lint:prettier`  | Prettier uniquement                                          |
+| Commande              | Description                                         |
+| --------------------- | --------------------------------------------------- |
+| `pnpm dev`            | Lance le dev de tous les packages (Jekyll serve)    |
+| `pnpm build`          | Build packages → copie `events.json` → build Jekyll |
+| `pnpm build:preview`  | Build complet + serveur HTTP local sur `www/_site/` |
+| `pnpm build:www`      | Build Jekyll uniquement                             |
+| `pnpm build:packages` | Compile tous les packages TypeScript                |
+| `pnpm test`           | Tests de tous les packages                          |
+| `pnpm lint`           | ESLint + Stylelint + Prettier (vérification)        |
+| `pnpm lint:fix`       | ESLint + Stylelint + Prettier (auto-fix)            |
+| `pnpm lint:eslint`    | ESLint uniquement                                   |
+| `pnpm lint:stylelint` | Stylelint uniquement                                |
+| `pnpm lint:prettier`  | Prettier uniquement                                 |
 
 ---
 

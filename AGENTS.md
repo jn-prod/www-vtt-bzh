@@ -29,11 +29,11 @@ Ces fichiers contiennent les conventions de code, la structure des fichiers, et 
 
 Les trois outils de lint sont centralisés à la racine et s'exécutent via `pnpm lint` / `pnpm lint:fix`.
 
-| Outil      | Périmètre         | Config                  |
-| ---------- | ----------------- | ----------------------- |
-| ESLint 9   | `*.ts`, `*.js`    | `eslint.config.mjs`     |
-| Stylelint  | `*.css`           | `.stylelintrc.json`     |
-| Prettier   | tous les fichiers | `.prettierrc.js`        |
+| Outil     | Périmètre         | Config              |
+| --------- | ----------------- | ------------------- |
+| ESLint 9  | `*.ts`, `*.js`    | `eslint.config.mjs` |
+| Stylelint | `*.css`           | `.stylelintrc.json` |
+| Prettier  | tous les fichiers | `.prettierrc.js`    |
 
 Avant tout commit, lint-staged applique automatiquement les fixs via Husky.
 
