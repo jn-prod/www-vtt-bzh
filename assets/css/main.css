@@ -491,9 +491,9 @@ button {
   max-width: 72rem;
 }
 
-.organizer-callout__title {
-  margin: 0 0 var(--b-size-8);
-  font-size: var(--b-size-32);
+.organizer-callout__summary {
+  cursor: pointer;
+  font-weight: 700;
 }
 
 .organizer-callout__text {
