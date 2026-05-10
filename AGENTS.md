@@ -15,7 +15,7 @@ Ces fichiers contiennent les conventions de code, la structure des fichiers, et 
 ## 2. Stack et conventions clés
 
 - **Site** : Jekyll 4, CSS natif BEM, Vanilla JS ES modules — pas de framework CSS, pas de bundler côté site
-- **Packages** : TypeScript exécuté par `ts-node` — `packages/calendar`, `packages/repository`, `packages/http-client`, `packages/type`
+- **Packages** : TypeScript exécuté par `ts-node` — `packages/calendar`, `packages/repository`, `packages/type`
 - **Monorepo** : pnpm workspaces (`packages/*`, `configs/*`, `www`) — pas de Turborepo
 - **Données** : Supabase (table `events`, RLS strict). Les soumissions publiques passent par le formulaire `/calendrier/ajouter.html` qui POST direct vers Supabase REST.
 - **Modération** : a posteriori via Edge Function `supabase/functions/notify-new-event` (Resend), les events sont `active=true` par défaut et masquables via `active=false` dans le dashboard.

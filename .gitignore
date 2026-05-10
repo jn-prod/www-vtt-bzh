@@ -46,8 +46,7 @@ _site
 .jekyll-metadata
 .DS_Store
 
-# Backups locaux (Wufoo, Supabase dumps)
-wufoo.json
+# Backups locaux Supabase
 *.backup.json
 backups/
 

@@ -16,10 +16,10 @@ pnpm install
 pnpm dev
 
 # Générer les événements depuis Supabase (nécessite les vars d'env)
-SUPABASE_URL=... SUPABASE_KEY=... pnpm --filter=calendar-job run generate-events
+SUPABASE_URL=... SUPABASE_PUBLISHABLE_KEY=... SUPABASE_TABLE=events pnpm --filter=calendar build:events
 
 # Prévisualiser le build complet
-pnpm preview
+pnpm build:preview
 ```
 
 ## Tests
@@ -39,5 +39,5 @@ pnpm lint:fix
 
 ```sh
 pnpm build
-# → site généré dans dist/
+# → site généré dans www/_site/
 ```

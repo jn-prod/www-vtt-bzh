@@ -14,7 +14,6 @@ www-vtt-bzh/
 ├── www/                    # Site Jekyll (Jekyll 4, CSS natif BEM, Vanilla JS)
 ├── packages/
 │   ├── type/               # Types utilitaires partagés (Result, Maybe, error)
-│   ├── http-client/        # Client HTTP + linkedom
 │   ├── repository/         # Abstraction Supabase
 │   └── calendar/           # Types CalendarEvent + script generate-events → out/events.json
 ├── supabase/
@@ -34,14 +33,13 @@ www-vtt-bzh/
 
 ## Packages
 
-| Package       | Description                                                                          |
-| ------------- | ------------------------------------------------------------------------------------ |
-| `www`         | Site Jekyll — layouts Liquid, CSS BEM, JS ES modules                                 |
-| `type`        | Types utilitaires TypeScript : `Result<T,E>`, `Maybe<T>`, helpers d'erreur           |
-| `http-client` | Client HTTP basé sur `linkedom`, abstraction des requêtes                            |
-| `repository`  | Abstraction Supabase : `createClient`, `updateOrCreate`                              |
-| `calendar`    | Types `CalendarEvent` + script `generate-events` → `out/events.json` depuis Supabase |
-| `tsconfig`    | Configs TypeScript de base partagées                                                 |
+| Package      | Description                                                                          |
+| ------------ | ------------------------------------------------------------------------------------ |
+| `www`        | Site Jekyll — layouts Liquid, CSS BEM, JS ES modules                                 |
+| `type`       | Types utilitaires TypeScript : `Result<T,E>`, `Maybe<T>`, helpers d'erreur           |
+| `repository` | Abstraction Supabase : `createClient`, `updateOrCreate`                              |
+| `calendar`   | Types `CalendarEvent` + script `generate-events` → `out/events.json` depuis Supabase |
+| `tsconfig`   | Configs TypeScript de base partagées                                                 |
 
 ---
 

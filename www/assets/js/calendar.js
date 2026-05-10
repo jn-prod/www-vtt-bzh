@@ -93,9 +93,3 @@ loadMoreBtn?.addEventListener("click", () => {
   page++;
   applyPagination();
 });
-
-// ── Wufoo (page ajouter.html uniquement) ─────────────────────────────────────
-
-if (document.getElementById("wufoo-q1llzwkr1sa7rtj")) {
-  import("/assets/js/wufoo.js");
-}
