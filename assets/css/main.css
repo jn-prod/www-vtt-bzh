@@ -470,7 +470,13 @@ button {
 
 .calendar__title {
   text-align: center;
-  margin-bottom: 2rem;
+  margin-bottom: var(--b-size-8);
+}
+
+.calendar__intro {
+  max-width: 42rem;
+  margin: 0 auto var(--b-size-24);
+  text-align: center;
 }
 
 .calendar__load-more {
