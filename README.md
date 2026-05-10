@@ -12,7 +12,7 @@ Site statique du calendrier des randonnées VTT de Bretagne.
 
 - Ruby 4.0.2 (`rbenv` ou `.ruby-version`)
 - Bundler : `gem install bundler`
-- Les événements sont générés par `jobs/` → `_data/events.yaml`
+- Les événements sont générés par `packages/calendar` → `_data/events.json`
 
 ---
 
@@ -38,8 +38,8 @@ Le site est généré dans `_site/`.
 ```
 www/
 ├── _config.yml          # Config Jekyll (url, plugins, pagination…)
-├── _data/               # Données YAML injectées dans les templates
-│   ├── events.yaml      # Généré par packages/calendar-job (overridé au build CI)
+├── _data/               # Données injectées dans les templates
+│   ├── events.json      # Généré par packages/calendar (overridé au build CI)
 │   ├── authors.yml
 │   ├── home.yml
 │   └── guides.yml
