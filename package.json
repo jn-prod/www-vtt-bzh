@@ -33,7 +33,8 @@
     "lint:stylelint": "stylelint 'www/assets/css/**/*.css'",
     "lint:stylelint:fix": "stylelint 'www/assets/css/**/*.css' --fix",
     "lint:prettier": "prettier --check .",
-    "lint:prettier:fix": "prettier --write ."
+    "lint:prettier:fix": "prettier --write .",
+    "calendar:health": "node --env-file=.env scripts/calendar-health.mjs"
   },
   "lint-staged": {
     "*.{js,ts}": "eslint --fix",
