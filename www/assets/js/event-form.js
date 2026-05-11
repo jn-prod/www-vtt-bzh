@@ -34,6 +34,10 @@ const INVALID_MESSAGES_FR = {
 const setFrenchValidationMessage = (field) => {
   field.setCustomValidity("");
   if (field.validity.valid) return;
+  if (field.type === "checkbox" && field.validity.valueMissing) {
+    field.setCustomValidity("Veuillez cocher cette case.");
+    return;
+  }
   for (const key of Object.keys(INVALID_MESSAGES_FR)) {
     if (field.validity[key]) {
       field.setCustomValidity(INVALID_MESSAGES_FR[key]);

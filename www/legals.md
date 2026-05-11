@@ -7,7 +7,7 @@ description: "Mentions légales, politique de confidentialité et gestion des co
 
 # Mentions légales et politique de confidentialité
 
-_Dernière mise à jour : 2026-05-07_
+_Dernière mise à jour : 2026-05-11_
 
 ## 1. Éditeur du site
 
@@ -40,6 +40,7 @@ Les transferts hors Union européenne reposent sur les mécanismes prévus par l
 | ------------------------------------------------------------------------------------------- | --------------------------------------------------------------- | ----------------------------------------------- | ----------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- |
 | Nom de l'organisateur, contact (email/téléphone), description de la rando, date, lieu, prix | Formulaire `/calendrier/ajouter.html` rempli par l'organisateur | Publication publique du calendrier des randos   | Consentement explicite (case à cocher au moment de l'envoi) | Tant que la date de la rando est dans le futur, puis 5 ans d'archive après l'événement, puis suppression automatique |
 | Statistiques d'audience anonymisées (pages vues, navigateur, pays)                          | Cloudflare Web Analytics                                        | Comprendre l'audience pour améliorer le service | Intérêt légitime (anonymisé, sans cookie ni IP stockée)     | Durée fixée par Cloudflare (voir leur politique)                                                                     |
+| Clics sortants vers Tipeee (provider, placement, URL, chemin de page)                        | Script `support-tracking.js` côté client                        | Mesurer l'efficacité des CTAs de soutien        | Intérêt légitime (données anonymes, aucun identifiant utilisateur) | À définir — voir T-109                                                                                          |
 | Logs techniques                                                                             | GitHub Pages, Cloudflare, Supabase                              | Sécurité, intégrité, lutte contre le spam       | Intérêt légitime                                            | Durées fixées par chaque prestataire                                                                                 |
 
 ### 4.2 Destinataires
