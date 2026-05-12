@@ -137,7 +137,25 @@
     </header>
 
     <main id="main-content" class="site-main container" tabindex="-1">
-      <h1 class="u-h2">Publiez votre randonnée VTT gratuitement</h1>
+      <h1 class="u-h2">Publiez votre randonnée VTT en Bretagne — gratuit</h1>
+
+<section class="fomo">
+  <ul class="fomo__stats">
+    <li class="fomo__stat">
+      <span class="fomo__number">12&nbsp;000</span>
+      <span class="fomo__label">vététistes bretons/mois</span>
+    </li>
+    <li class="fomo__stat">
+      <span class="fomo__number">#1</span>
+      <span class="fomo__label">sur Google « rando VTT Bretagne »</span>
+    </li>
+    <li class="fomo__stat">
+      <span class="fomo__number">2&nbsp;min</span>
+      <span class="fomo__label">pour publier, en ligne le lendemain</span>
+    </li>
+  </ul>
+  <p class="fomo__tagline">Les randos publiées ici sont trouvées par les pratiquants directement sur Google — sans effort de votre part.</p>
+</section>
 
 <form
   id="event-form"
@@ -146,8 +164,8 @@
   aria-describedby="event-form-intro"
 >
   <p id="event-form-intro" class="event-form__intro">
-    Publiez votre rando VTT en quelques secondes. Elle apparaîtra immédiatement
-    sur le calendrier après envoi.
+    Publiez votre rando VTT en 2 minutes. Elle apparaîtra sur le calendrier le
+    lendemain.
   </p>
 
   <div class="event-form__grid">
@@ -264,6 +282,27 @@
     </div>
 
     <div class="event-form__field">
+      <label class="event-form__label" for="event-form-email">
+        Email de contact <span aria-hidden="true">*</span>
+      </label>
+      <input
+        type="email"
+        id="event-form-email"
+        name="email"
+        class="event-form__input"
+        required
+        maxlength="120"
+        autocomplete="email"
+        aria-required="true"
+        aria-describedby="event-form-email-help"
+      />
+      <small id="event-form-email-help" class="event-form__help">
+        Publié sur la fiche. Peut être utilisé pour vous contacter au sujet de
+        votre publication.
+      </small>
+    </div>
+
+    <div class="event-form__field">
       <label class="event-form__label" for="event-form-price">
         Prix (texte libre)
       </label>
@@ -292,24 +331,19 @@
       />
     </div>
 
-    <div class="event-form__field event-form__field--span-2">
-      <label class="event-form__label" for="event-form-contact">
-        Contact public <span aria-hidden="true">*</span>
+    <div class="event-form__field">
+      <label class="event-form__label" for="event-form-phone">
+        Téléphone de contact
       </label>
       <input
-        type="text"
-        id="event-form-contact"
-        name="contact"
+        type="tel"
+        id="event-form-phone"
+        name="phone"
         class="event-form__input"
-        required
-        maxlength="120"
-        placeholder="email ou téléphone visible publiquement"
-        aria-required="true"
-        aria-describedby="event-form-contact-help"
+        maxlength="30"
+        autocomplete="tel"
+        placeholder="ex. 06 12 34 56 78"
       />
-      <small id="event-form-contact-help" class="event-form__help">
-        Ce contact sera publié sur la fiche de la rando.
-      </small>
     </div>
 
     <div class="event-form__field event-form__field--span-2">
@@ -345,8 +379,10 @@
         />
         <span>
           J'accepte que ces informations soient publiées publiquement sur
-          <strong>vtt.bzh</strong> et indexées par les moteurs de recherche.
-          Voir les <a href="/terms/legals.html">mentions légales</a>.
+          <strong>vtt.bzh</strong> et indexées par les moteurs de recherche, et
+          que mes coordonnées puissent être utilisées pour me contacter au sujet
+          de ma publication. Voir les
+          <a href="/terms/legals.html">mentions légales</a>.
         </span>
       </label>
     </div>
@@ -364,6 +400,23 @@
     role="status"
     aria-live="polite"
   ></div>
+
+  <div id="event-form-share" class="event-form__share" hidden>
+    <p class="event-form__share-prompt">Partagez cette page avec les organisateurs de votre club :</p>
+    <div class="event-form__share-row">
+      <input
+        type="text"
+        class="event-form__input event-form__share-url"
+        id="event-form-share-url"
+        value="https://vtt.bzh/calendrier/ajouter.html"
+        readonly
+        aria-label="Lien à partager"
+      />
+      <button type="button" class="btn btn--secondary event-form__share-copy" id="event-form-share-copy">
+        Copier le lien
+      </button>
+    </div>
+  </div>
 </form>
 
 
@@ -415,6 +468,74 @@
     </div>
   </dl>
 </section>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "La publication est-elle gratuite ?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Oui, entièrement gratuite. vtt.bzh est un service indépendant tenu par un pratiquant, sans publicité ni abonnement."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Quand ma rando apparaît-elle sur le calendrier ?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Votre rando est enregistrée dès l'envoi et apparaît sur le calendrier le lendemain."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Puis-je corriger une information après l'envoi ?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Oui. Envoyez un email à nicolas@vtt.bzh avec le nom de la rando et la correction souhaitée."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Combien de personnes consultent le calendrier ?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Environ 12 000 visites par mois, principalement depuis Google."
+      }
+    }
+  ]
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Accueil",
+      "item": "https://vtt.bzh/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Calendrier VTT",
+      "item": "https://vtt.bzh/calendrier/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Publier une rando",
+      "item": "https://vtt.bzh/calendrier/ajouter.html"
+    }
+  ]
+}
+</script>
 
     </main>
 
