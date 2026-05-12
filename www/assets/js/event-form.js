@@ -8,7 +8,7 @@ const FEEDBACK_ID = "event-form-feedback";
 const HONEYPOT_FIELD = "website_url";
 
 const SUCCESS_MSG =
-  "Merci, votre rando est publiée. Elle apparaîtra sur le calendrier au prochain rafraîchissement.";
+  "Merci, votre rando est enregistrée. Elle apparaîtra sur le calendrier le lendemain.";
 const ERROR_MSG =
   "Désolé, l’envoi a échoué. Réessayez dans un instant ou contactez nicolas@vtt.bzh.";
 const HONEYPOT_MSG = "Envoi rejeté (anti-spam).";
@@ -75,7 +75,8 @@ const buildPayload = (formData) => {
     organisateur: get("organisateur"),
     price: get("price") || null,
     website: get("website") || null,
-    contact: get("contact"),
+    email: get("email"),
+    phone: get("phone") || null,
     description: get("description") || null,
     kind: "vtt",
     origin: `public-form/${crypto.randomUUID()}`,
@@ -109,6 +110,19 @@ onReady(() => {
 
   wireFrenchValidation(form);
 
+  const shareBtn = document.getElementById("event-form-share-copy");
+  const shareUrlInput = document.getElementById("event-form-share-url");
+  if (shareBtn && shareUrlInput) {
+    shareBtn.addEventListener("click", () => {
+      navigator.clipboard.writeText(shareUrlInput.value).then(() => {
+        shareBtn.textContent = "Copié !";
+        setTimeout(() => { shareBtn.textContent = "Copier le lien"; }, 2000);
+      }).catch(() => {
+        shareUrlInput.select();
+      });
+    });
+  }
+
   form.addEventListener("submit", async (event) => {
     event.preventDefault();
     feedback.textContent = "";
@@ -137,6 +151,8 @@ onReady(() => {
       await submit(buildPayload(formData));
       setFeedback(feedback, "success", SUCCESS_MSG);
       form.reset();
+      const shareEl = document.getElementById("event-form-share");
+      if (shareEl) shareEl.hidden = false;
     } catch (err) {
       console.error("[event-form] submit failed", err);
       setFeedback(feedback, "error", ERROR_MSG);

@@ -18,6 +18,8 @@ const main = async () => {
     'place',
     'name',
     'contact',
+    'email',
+    'phone',
     'price',
     'canceled',
     'departement',

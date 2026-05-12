@@ -77,8 +77,18 @@ include.event.name | slugify %}
         include.event.place | default: "NC" }}
       </li>
       <li class="event__detail">
-        <span class="u-font-weight-bold">Contact :</span> {{
-        include.event.contact | default: "NC" }}
+        <span class="u-font-weight-bold">Contact :</span>
+        {% if include.event.email %}
+        <a href="mailto:{{ include.event.email }}">{{ include.event.email }}</a>
+        {% if include.event.phone %} —
+        <a href="tel:{{ include.event.phone | remove: ' ' }}"
+          >{{ include.event.phone }}</a
+        >{% endif %} {% elsif include.event.phone %}
+        <a href="tel:{{ include.event.phone | remove: ' ' }}"
+          >{{ include.event.phone }}</a
+        >
+        {% elsif include.event.contact %} {{ include.event.contact }} {% else %}
+        NC {% endif %}
       </li>
       <li class="event__detail">
         <span class="u-font-weight-bold">Prix :</span> {{ include.event.price |

@@ -34,7 +34,9 @@
     "lint:stylelint:fix": "stylelint 'www/assets/css/**/*.css' --fix",
     "lint:prettier": "prettier --check .",
     "lint:prettier:fix": "prettier --write .",
-    "calendar:health": "node --env-file=.env scripts/calendar-health.mjs"
+    "calendar:health": "node --env-file=.env scripts/calendar-health.mjs",
+    "contact:migrate": "node --env-file=.env scripts/contact-migrate.mjs",
+    "kit:sync": "node --env-file=.env scripts/kit-sync.mjs"
   },
   "lint-staged": {
     "*.{js,ts}": "eslint --fix",

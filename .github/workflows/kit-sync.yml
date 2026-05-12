@@ -1,0 +1,34 @@
+name: Kit.com CRM sync (daily)
+
+# Synchronise les emails organisateurs vtt.bzh → Kit.com form "VTT.bzh organisateurs".
+# Flow : upsert subscriber (/v4/subscribers) → attach au form (/v4/forms/{id}/subscribers).
+# Idempotent : Kit.com déduplique par email ; le script SQL déduplique côté source.
+# Secrets requis : SUPABASE_ACCESS_TOKEN, SUPABASE_PROJECT_REF, KIT_API_KEY, KIT_FORM_ID.
+
+on:
+  schedule:
+    # 05:00 UTC — après backup (03h) et purge (04h)
+    - cron: '0 5 * * *'
+  workflow_dispatch:
+
+jobs:
+  sync:
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: read
+
+    steps:
+      - uses: actions/checkout@v6
+
+      - name: Use Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: '24.x'
+
+      - name: Sync organisateurs → Kit.com
+        env:
+          SUPABASE_ACCESS_TOKEN: ${{ secrets.SUPABASE_ACCESS_TOKEN }}
+          SUPABASE_PROJECT_REF: ${{ secrets.SUPABASE_PROJECT_REF }}
+          KIT_API_KEY: ${{ secrets.KIT_API_KEY }}
+          KIT_FORM_ID: ${{ secrets.KIT_FORM_ID }}
+        run: node scripts/kit-sync.mjs

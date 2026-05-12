@@ -6,7 +6,25 @@ description: Publiez gratuitement votre randonnée VTT en Bretagne. Formulaire e
 keywords: "rando,randonnée,rando vtt,rando vtt bretagne,VTT,calendrier,circuit,bretagne,cote d'armor,ille et vilaine,finistère,loire atlantique,morbihan,vélo,22,29,44,56,35"
 ---
 
-<h1 class="u-h2">Publiez votre randonnée VTT gratuitement</h1>
+<h1 class="u-h2">Publiez votre randonnée VTT en Bretagne — gratuit</h1>
+
+<section class="fomo">
+  <ul class="fomo__stats">
+    <li class="fomo__stat">
+      <span class="fomo__number">12&nbsp;000</span>
+      <span class="fomo__label">vététistes bretons/mois</span>
+    </li>
+    <li class="fomo__stat">
+      <span class="fomo__number">#1</span>
+      <span class="fomo__label">sur Google « rando VTT Bretagne »</span>
+    </li>
+    <li class="fomo__stat">
+      <span class="fomo__number">2&nbsp;min</span>
+      <span class="fomo__label">pour publier, en ligne le lendemain</span>
+    </li>
+  </ul>
+  <p class="fomo__tagline">Les randos publiées ici sont trouvées par les pratiquants directement sur Google — sans effort de votre part.</p>
+</section>
 
 {% include components/event-form.html %}
 
@@ -58,3 +76,71 @@ keywords: "rando,randonnée,rando vtt,rando vtt bretagne,VTT,calendrier,circuit,
     </div>
   </dl>
 </section>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "La publication est-elle gratuite ?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Oui, entièrement gratuite. vtt.bzh est un service indépendant tenu par un pratiquant, sans publicité ni abonnement."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Quand ma rando apparaît-elle sur le calendrier ?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Votre rando est enregistrée dès l'envoi et apparaît sur le calendrier le lendemain."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Puis-je corriger une information après l'envoi ?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Oui. Envoyez un email à nicolas@vtt.bzh avec le nom de la rando et la correction souhaitée."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Combien de personnes consultent le calendrier ?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Environ 12 000 visites par mois, principalement depuis Google."
+      }
+    }
+  ]
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Accueil",
+      "item": "{{ site.url }}/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Calendrier VTT",
+      "item": "{{ site.url }}/calendrier/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Publier une rando",
+      "item": "{{ site.url }}/calendrier/ajouter.html"
+    }
+  ]
+}
+</script>

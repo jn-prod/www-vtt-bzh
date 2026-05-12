@@ -15,6 +15,8 @@ export interface CalendarEvent {
   place?: string;
   price?: string;
   contact?: string;
+  email?: string;
+  phone?: string;
   description?: string;
   origin?: string;
   canceled?: boolean;

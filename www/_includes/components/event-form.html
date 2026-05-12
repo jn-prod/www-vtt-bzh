@@ -10,8 +10,8 @@ champs requis annoncés, autocomplete, focus visible (CSS). {%- endcomment -%}
   aria-describedby="event-form-intro"
 >
   <p id="event-form-intro" class="event-form__intro">
-    Publiez votre rando VTT en quelques secondes. Elle apparaîtra immédiatement
-    sur le calendrier après envoi.
+    Publiez votre rando VTT en 2 minutes. Elle apparaîtra sur le calendrier le
+    lendemain.
   </p>
 
   <div class="event-form__grid">
@@ -128,6 +128,27 @@ champs requis annoncés, autocomplete, focus visible (CSS). {%- endcomment -%}
     </div>
 
     <div class="event-form__field">
+      <label class="event-form__label" for="event-form-email">
+        Email de contact <span aria-hidden="true">*</span>
+      </label>
+      <input
+        type="email"
+        id="event-form-email"
+        name="email"
+        class="event-form__input"
+        required
+        maxlength="120"
+        autocomplete="email"
+        aria-required="true"
+        aria-describedby="event-form-email-help"
+      />
+      <small id="event-form-email-help" class="event-form__help">
+        Publié sur la fiche. Peut être utilisé pour vous contacter au sujet de
+        votre publication.
+      </small>
+    </div>
+
+    <div class="event-form__field">
       <label class="event-form__label" for="event-form-price">
         Prix (texte libre)
       </label>
@@ -156,24 +177,19 @@ champs requis annoncés, autocomplete, focus visible (CSS). {%- endcomment -%}
       />
     </div>
 
-    <div class="event-form__field event-form__field--span-2">
-      <label class="event-form__label" for="event-form-contact">
-        Contact public <span aria-hidden="true">*</span>
+    <div class="event-form__field">
+      <label class="event-form__label" for="event-form-phone">
+        Téléphone de contact
       </label>
       <input
-        type="text"
-        id="event-form-contact"
-        name="contact"
+        type="tel"
+        id="event-form-phone"
+        name="phone"
         class="event-form__input"
-        required
-        maxlength="120"
-        placeholder="email ou téléphone visible publiquement"
-        aria-required="true"
-        aria-describedby="event-form-contact-help"
+        maxlength="30"
+        autocomplete="tel"
+        placeholder="ex. 06 12 34 56 78"
       />
-      <small id="event-form-contact-help" class="event-form__help">
-        Ce contact sera publié sur la fiche de la rando.
-      </small>
     </div>
 
     <div class="event-form__field event-form__field--span-2">
@@ -215,8 +231,10 @@ champs requis annoncés, autocomplete, focus visible (CSS). {%- endcomment -%}
         />
         <span>
           J'accepte que ces informations soient publiées publiquement sur
-          <strong>vtt.bzh</strong> et indexées par les moteurs de recherche.
-          Voir les <a href="/terms/legals.html">mentions légales</a>.
+          <strong>vtt.bzh</strong> et indexées par les moteurs de recherche, et
+          que mes coordonnées puissent être utilisées pour me contacter au sujet
+          de ma publication. Voir les
+          <a href="/terms/legals.html">mentions légales</a>.
         </span>
       </label>
     </div>
@@ -234,4 +252,21 @@ champs requis annoncés, autocomplete, focus visible (CSS). {%- endcomment -%}
     role="status"
     aria-live="polite"
   ></div>
+
+  <div id="event-form-share" class="event-form__share" hidden>
+    <p class="event-form__share-prompt">Partagez cette page avec les organisateurs de votre club :</p>
+    <div class="event-form__share-row">
+      <input
+        type="text"
+        class="event-form__input event-form__share-url"
+        id="event-form-share-url"
+        value="https://vtt.bzh/calendrier/ajouter.html"
+        readonly
+        aria-label="Lien à partager"
+      />
+      <button type="button" class="btn btn--secondary event-form__share-copy" id="event-form-share-copy">
+        Copier le lien
+      </button>
+    </div>
+  </div>
 </form>

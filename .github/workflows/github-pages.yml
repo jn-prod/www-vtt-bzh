@@ -4,6 +4,9 @@ on:
   push:
     branches:
       - main
+  schedule:
+    # 05:30 UTC (07:30 CEST) — events submitted the day before appear in the morning
+    - cron: '30 5 * * *'
   workflow_dispatch:
 
 jobs:

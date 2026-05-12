@@ -705,6 +705,29 @@ button {
   color: var(--b-color-alert-text);
 }
 
+.event-form__share {
+  margin-top: var(--b-size-16);
+  padding: var(--b-size-16);
+  background: rgb(28 125 68 / 8%);
+  border-radius: var(--b-border-radius);
+}
+
+.event-form__share-prompt {
+  margin: 0 0 var(--b-size-12);
+  font-weight: 700;
+}
+
+.event-form__share-row {
+  display: flex;
+  gap: var(--b-size-8);
+  flex-wrap: wrap;
+}
+
+.event-form__share-url {
+  flex: 1;
+  min-width: 0;
+}
+
 @media (width <= 600px) {
   .event-form__grid {
     grid-template-columns: 1fr;
@@ -748,4 +771,43 @@ button {
 
 .faq__answer {
   margin: var(--b-size-8) 0 0;
+}
+
+/* ==========================================================================
+   FOMO / social proof — ajouter.html
+   ========================================================================== */
+
+.fomo {
+  margin: 0 0 var(--b-size-24);
+}
+
+.fomo__stats {
+  display: flex;
+  gap: var(--b-size-24);
+  list-style: none;
+  margin: 0 0 var(--b-size-16);
+  padding: 0;
+  flex-wrap: wrap;
+}
+
+.fomo__stat {
+  display: flex;
+  flex-direction: column;
+}
+
+.fomo__number {
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.fomo__label {
+  font-size: 0.875rem;
+  color: var(--b-color-grey-dark);
+  margin-top: var(--b-size-4);
+}
+
+.fomo__tagline {
+  margin: 0;
+  font-style: italic;
 }
