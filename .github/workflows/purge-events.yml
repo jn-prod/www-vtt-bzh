@@ -21,6 +21,7 @@ on:
 jobs:
   purge:
     runs-on: ubuntu-24.04
+    environment: cron
     permissions:
       contents: read
 
