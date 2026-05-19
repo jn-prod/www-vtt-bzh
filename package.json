@@ -61,6 +61,10 @@
   "pnpm": {
     "onlyBuiltDependencies": [
       "supabase"
-    ]
+    ],
+    "overrides": {
+      "brace-expansion@1": "^1.1.13",
+      "diff@4": "^4.0.4"
+    }
   }
 }

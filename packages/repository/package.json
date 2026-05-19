@@ -6,7 +6,7 @@
     "build": "tsc"
   },
   "dependencies": {
-    "@supabase/supabase-js": "^2.39.2",
+    "@supabase/supabase-js": "^2.106.0",
     "type": "workspace:*"
   },
   "devDependencies": {
