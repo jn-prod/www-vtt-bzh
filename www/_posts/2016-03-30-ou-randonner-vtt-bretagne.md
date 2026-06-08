@@ -1,3 +1,3 @@
 ---
-redirect_to: "https://nicolasjouanno.com/ou-randonner-vtt-bretagne.html"
+redirect_to: "https://www.nicolasjouanno.com/ou-randonner-vtt-bretagne.html"
 ---

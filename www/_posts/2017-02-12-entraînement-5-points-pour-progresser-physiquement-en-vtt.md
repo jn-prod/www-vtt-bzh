@@ -6,5 +6,5 @@ redirect_from:
   - "/entrainement-5-points-pour-progresser-physiquement-en-vtt"
   - "/entrainement-5-points-pour-progresser-physiquement-en-vtt/"
   - "/entrainement-5-points-pour-progresser-physiquement-en-vtt.html"
-redirect_to: "https://nicolasjouanno.com/entrainement-vtt.html"
+redirect_to: "https://www.nicolasjouanno.com/entrainement-vtt.html"
 ---
