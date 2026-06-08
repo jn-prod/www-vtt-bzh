@@ -1,19 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
-<loc>https://vtt.bzh/about.html</loc>
+<loc>https://www.vtt.bzh/about.html</loc>
 </url>
 <url>
-<loc>https://vtt.bzh/calendrier/ajouter.html</loc>
+<loc>https://www.vtt.bzh/calendrier/ajouter.html</loc>
 </url>
 <url>
-<loc>https://vtt.bzh/</loc>
+<loc>https://www.vtt.bzh/</loc>
 </url>
 <url>
-<loc>https://vtt.bzh/terms/legals.html</loc>
+<loc>https://www.vtt.bzh/terms/legals.html</loc>
 </url>
 <url>
-<loc>https://vtt.bzh/assets/pdf/vtt-bzh_guide-des-marques.pdf</loc>
-<lastmod>2026-06-08T11:55:53+00:00</lastmod>
+<loc>https://www.vtt.bzh/sponsoring.html</loc>
+</url>
+<url>
+<loc>https://www.vtt.bzh/assets/pdf/vtt-bzh_guide-des-marques.pdf</loc>
+<lastmod>2026-06-08T19:16:52+00:00</lastmod>
 </url>
 </urlset>
