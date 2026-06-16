@@ -101,3 +101,66 @@ description: "Toutes les randos VTT en Bretagne en 2026 : dates, départements, 
 <div class="calendar__load-more">
   <button id="load-more" class="btn btn--secondary" hidden>Voir +</button>
 </div>
+
+<section
+  class="latest-post"
+  id="latest-post"
+  aria-label="Dernier article du blog"
+  hidden
+>
+  <h2 class="latest-post__title">Le dernier article du blog</h2>
+  <a class="latest-post__card" id="latest-post-link" href="#" rel="noopener">
+    <span class="latest-post__kicker">nicolasjouanno.com</span>
+    <span class="latest-post__heading" id="latest-post-heading"></span>
+    <time class="latest-post__date" id="latest-post-date"></time>
+  </a>
+  <p class="latest-post__subscribe">
+    <a class="latest-post__subscribe-link" href="/go/newsletter/">
+      Être notifié des prochains articles &rarr;
+    </a>
+  </p>
+</section>
+
+<script>
+  (function () {
+    var FEED = "https://www.nicolasjouanno.com/feed.xml";
+    var UTM = "utm_source=vtt-bzh&utm_medium=site&utm_campaign=home-card";
+    fetch(FEED)
+      .then(function (r) {
+        return r.ok ? r.text() : Promise.reject(r.status);
+      })
+      .then(function (xml) {
+        var doc = new DOMParser().parseFromString(xml, "application/xml");
+        if (doc.querySelector("parsererror")) return;
+        var entry = doc.querySelector("entry, item");
+        if (!entry) return;
+        var titleEl = entry.querySelector("title");
+        var title = titleEl ? titleEl.textContent.trim() : "";
+        var linkEl = entry.querySelector("link");
+        var url = linkEl
+          ? (linkEl.getAttribute("href") || linkEl.textContent || "").trim()
+          : "";
+        if (!title || !url) return;
+        var dateEl = entry.querySelector("published, pubDate, updated");
+        var sep = url.indexOf("?") > -1 ? "&" : "?";
+        document.getElementById("latest-post-heading").textContent = title;
+        document.getElementById("latest-post-link").href = url + sep + UTM;
+        if (dateEl && dateEl.textContent) {
+          var d = new Date(dateEl.textContent.trim());
+          if (!isNaN(d.getTime())) {
+            var t = document.getElementById("latest-post-date");
+            t.dateTime = d.toISOString();
+            t.textContent = d.toLocaleDateString("fr-FR", {
+              year: "numeric",
+              month: "long",
+              day: "numeric",
+            });
+          }
+        }
+        document.getElementById("latest-post").hidden = false;
+      })
+      .catch(function () {
+        /* échec silencieux : la card reste masquée */
+      });
+  })();
+</script>

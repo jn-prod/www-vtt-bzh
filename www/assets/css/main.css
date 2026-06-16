@@ -811,3 +811,70 @@ button {
   margin: 0;
   font-style: italic;
 }
+
+/* Dernier article nj.com (home, after-calendar) */
+.latest-post {
+  margin: var(--b-size-32) 0 var(--b-size-24);
+}
+
+.latest-post__title {
+  font-family: var(--b-font-heading);
+  margin: 0 0 var(--b-size-12);
+}
+
+.latest-post__card {
+  display: block;
+  padding: var(--b-size-16) var(--b-size-24);
+  border: 1px solid var(--b-border-color);
+  border-radius: var(--b-border-radius);
+  box-shadow: var(--b-shadow);
+  background: var(--b-color-white);
+  color: var(--b-color-grey-dark);
+  text-decoration: none;
+  transition:
+    box-shadow 0.15s ease,
+    transform 0.15s ease;
+}
+
+.latest-post__card:hover,
+.latest-post__card:focus-visible {
+  box-shadow: 0 var(--b-size-4) var(--b-size-12) rgb(0 0 0 / 12%);
+  transform: translateY(calc(-1 * var(--b-size-2)));
+}
+
+.latest-post__kicker {
+  display: block;
+  font-size: var(--b-size-12);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 700;
+  color: var(--b-color-primary);
+}
+
+.latest-post__heading {
+  display: block;
+  font-family: var(--b-font-heading);
+  font-size: var(--b-size-24);
+  margin: var(--b-size-4) 0;
+}
+
+.latest-post__date {
+  display: block;
+  font-size: var(--b-size-12);
+  color: #6c757d;
+}
+
+.latest-post__subscribe {
+  margin: var(--b-size-12) 0 0;
+}
+
+.latest-post__subscribe-link {
+  font-weight: 700;
+  color: var(--b-color-primary);
+  text-decoration: none;
+}
+
+.latest-post__subscribe-link:hover,
+.latest-post__subscribe-link:focus-visible {
+  text-decoration: underline;
+}
