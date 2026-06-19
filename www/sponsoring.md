@@ -25,8 +25,6 @@ Si vous êtes **magasin de vélo, marque, station VTT ou acteur du tourisme outd
 
 Pas de bannières ni de régie : **un seul partenaire**, associé durablement au calendrier (« calendrier soutenu par… »). Visibilité ciblée, image locale et conviviale préservée. Format et contreparties définis ensemble.
 
-📄 [Guide des marques (PDF)]({{ site.url }}/assets/pdf/vtt-bzh_guide-des-marques.pdf)
-
 ## Qui est derrière vtt.bzh
 
 [Nicolas Jouanno]({{ site.author.web }}) — **ex-cycliste professionnel (5 fois aux Championnats de France)** et ancien **gérant de magasin de vélo**, basé à Pontivy. Un interlocuteur qui connaît le terrain *et* votre métier.
