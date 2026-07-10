@@ -5,7 +5,7 @@
     "./bundler.json"
   ],
   "devDependencies": {
-    "@tsconfig/node22": "^22",
+    "@tsconfig/node24": "^24.0.0",
     "tsconfig-paths": "^4.2.0"
   }
 }
