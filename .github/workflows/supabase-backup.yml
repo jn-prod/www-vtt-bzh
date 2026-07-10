@@ -51,7 +51,7 @@ jobs:
           ls -la "${RUNNER_TEMP}/dump/"
 
       - name: Upload artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: vtt-bzh-supabase-backup-${{ github.run_id }}
           path: ${{ runner.temp }}/dump/
