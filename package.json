@@ -44,7 +44,7 @@
     "*.{json,yaml,yml,md,mdx}": "prettier --write"
   },
   "devDependencies": {
-    "@types/node": "^22.9.0",
+    "@types/node": "^24.0.0",
     "eslint": "^10.0.0",
     "eslint-config-prettier": "^10.0.0",
     "eslint-plugin-prettier": "^5.2.1",
