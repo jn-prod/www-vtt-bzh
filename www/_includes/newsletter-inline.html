@@ -1,4 +1,11 @@
 <!-- Bloc newsletter inline : capture email owned.
+     Promesse volontairement UTILITAIRE (« le calendrier, chaque mois »), pas
+     éditoriale (« suis mes articles ») : les visiteurs de la home viennent pour
+     le calendrier, pas pour l'auteur — leur bouton « follow » est une alerte,
+     pas un abonnement à quelqu'un. La v1 (Sendinblue, 2018-2024) promettait déjà
+     exactement ça et avait capté 1 000-2 000 inscrits ; elle est morte de n'avoir
+     rien eu à vendre au bout, pas d'un défaut de capture. Ne pas rediluer cette
+     promesse dans un « et mes articles ».
      Formulaire HTML natif qui POST directement vers Kit (form dédié 0f9b5b248a,
      endpoint 9677378). Volontairement SANS le script d'embed Kit : celui-ci
      charge Google reCAPTCHA + écrit un identifiant persistant (localStorage
@@ -13,11 +20,11 @@
   aria-labelledby="newsletter-title"
 >
   <h2 class="newsletter-inline__title" id="newsletter-title">
-    Suis les randos bretonnes
+    Ne rate plus une rando
   </h2>
   <p class="newsletter-inline__text">
-    Reçois les nouvelles randos par mail — et mes mots de vététiste quand j'en
-    ai. Pas de spam, désabonnement en un clic.
+    Chaque mois, le calendrier des nouvelles randos VTT de Bretagne dans ta
+    boîte mail. Rien d'autre, désabonnement en un clic.
   </p>
   <form
     class="newsletter-inline__form"

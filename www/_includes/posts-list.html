@@ -34,13 +34,28 @@ if site.data.posts and site.data.posts.size > 0 %}
       />
       <div class="post-card__body">
         <p class="post-card__meta">
-          <span class="post-card__author">Nicolas Jouanno</span>
+          {% comment %} Prénom seul : `site.author.name` porte le nom légal
+          complet en capitales (« Nicolas JOUANNO DANIEL »), illisible dans une
+          carte. On garde le premier mot — le pseudo juste après fait
+          l'identité. {% endcomment %}
+          <span class="post-card__author">
+            {{- site.author.name | split: " " | first -}}
+          </span>
           <span class="post-card__handle">{{ site.author.handle }}</span>
-          {% if post.date_label %}
+          {% if post.date %}
           <span class="post-card__sep" aria-hidden="true">·</span>
-          <time class="post-card__date" datetime="{{ post.date }}"
-            >{{ post.date_label }}</time
-          >
+          {% comment %} Âge relatif façon X, calculé À CHAQUE BUILD (et non figé
+          dans posts.json, qui est commité) : le site se reconstruit tous les
+          jours à 05:30 UTC, l'écart est donc d'un jour au maximum. « 3j » ne
+          veut rien dire à l'oreille → la date complète est donnée en texte
+          masqué pour les lecteurs d'écran. {% endcomment %} {% assign now_s =
+          "now" | date: "%s" | plus: 0 %} {% assign post_s = post.date | date:
+          "%s" | plus: 0 %} {% assign days = now_s | minus: post_s | divided_by:
+          86400 %}
+          <time class="post-card__date" datetime="{{ post.date }}">
+            {% if days < 1 %}auj.{% else %}{{ days }}j{% endif %}
+            <span class="u-sr-only">— publié le {{ post.date_label }}</span>
+          </time>
           {% endif %}
         </p>
 
@@ -75,9 +90,12 @@ if site.data.posts and site.data.posts.size > 0 %}
     </li>
     {% endfor %}
   </ul>
+  <!-- Ce lien réutilise .post-card__more, et NON .profile-header__link : ce
+       dernier porte `white-space: nowrap` (justifié pour les liens courts de la
+       bio, côte à côte) — ici il faisait déborder la page de 17 px sur mobile. -->
   <p class="posts__more">
     <a
-      class="profile-header__link"
+      class="post-card__more"
       href="{{ site.author.web }}"
       target="_blank"
       rel="noopener"
