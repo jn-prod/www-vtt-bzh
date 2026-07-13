@@ -7,7 +7,7 @@ description: "Mentions légales, politique de confidentialité et gestion des co
 
 # Mentions légales et politique de confidentialité
 
-_Dernière mise à jour : 2026-05-11_
+_Dernière mise à jour : 2026-07-13_
 
 ## 1. Éditeur du site
 
@@ -36,17 +36,20 @@ Les transferts hors Union européenne reposent sur les mécanismes prévus par l
 
 ### 4.1 Quelles données sont collectées et pourquoi
 
-| Donnée                                                                                      | Source                                                          | Finalité                                        | Base légale                                                 | Durée de conservation                                                                                                |
-| ------------------------------------------------------------------------------------------- | --------------------------------------------------------------- | ----------------------------------------------- | ----------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- |
-| Nom de l'organisateur, contact (email/téléphone), description de la rando, date, lieu, prix | Formulaire `/calendrier/ajouter.html` rempli par l'organisateur | Publication publique du calendrier des randos   | Consentement explicite (case à cocher au moment de l'envoi) | Tant que la date de la rando est dans le futur, puis 5 ans d'archive après l'événement, puis suppression automatique |
-| Statistiques d'audience anonymisées (pages vues, navigateur, pays)                          | Cloudflare Web Analytics                                        | Comprendre l'audience pour améliorer le service | Intérêt légitime (anonymisé, sans cookie ni IP stockée)     | Durée fixée par Cloudflare (voir leur politique)                                                                     |
-| Clics sortants vers Tipeee (provider, placement, URL, chemin de page)                        | Script `support-tracking.js` côté client                        | Mesurer l'efficacité des CTAs de soutien        | Intérêt légitime (données anonymes, aucun identifiant utilisateur) | À définir — voir T-109                                                                                          |
-| Logs techniques                                                                             | GitHub Pages, Cloudflare, Supabase                              | Sécurité, intégrité, lutte contre le spam       | Intérêt légitime                                            | Durées fixées par chaque prestataire                                                                                 |
+| Donnée                                                                                      | Source                                                          | Finalité                                              | Base légale                                                                                 | Durée de conservation                                                                                                |
+| ------------------------------------------------------------------------------------------- | --------------------------------------------------------------- | ----------------------------------------------------- | ------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- |
+| Nom de l'organisateur, contact (email/téléphone), description de la rando, date, lieu, prix | Formulaire `/calendrier/ajouter.html` rempli par l'organisateur | Publication publique du calendrier des randos         | Consentement explicite (case à cocher au moment de l'envoi)                                 | Tant que la date de la rando est dans le futur, puis 5 ans d'archive après l'événement, puis suppression automatique |
+| Statistiques d'audience anonymisées (pages vues, navigateur, pays)                          | Cloudflare Web Analytics                                        | Comprendre l'audience pour améliorer le service       | Intérêt légitime (anonymisé, sans cookie ni IP stockée)                                     | Durée fixée par Cloudflare (voir leur politique)                                                                     |
+| Adresse email (et prénom si vous le renseignez)                                             | Formulaire d'abonnement « Suis les randos bretonnes » (Kit)     | Vous envoyer les nouvelles randos et mes publications | Consentement explicite (inscription volontaire, désabonnement en un clic dans chaque email) | Jusqu'à votre désabonnement, puis suppression                                                                        |
+| Logs techniques                                                                             | GitHub Pages, Cloudflare, Supabase                              | Sécurité, intégrité, lutte contre le spam             | Intérêt légitime                                                                            | Durées fixées par chaque prestataire                                                                                 |
 
 ### 4.2 Destinataires
 
-- Le **public** (les informations soumises via le formulaire sont destinées à être publiées sur le site).
-- L'**éditeur du site**, à des fins de modération, via une notification Telegram interne. Aucun autre destinataire n'a accès aux données.
+- Le **public** (les informations soumises via le formulaire du calendrier sont destinées à être publiées sur le site).
+- L'**éditeur du site**, à des fins de modération, via une notification Telegram interne.
+- **Kit** (ConvertKit, LLC — États-Unis), sous-traitant qui héberge la liste d'abonnés et achemine les emails, **uniquement si vous vous inscrivez à la newsletter**. Transfert hors UE encadré par les clauses contractuelles types. Vous pouvez vous désabonner à tout moment via le lien présent dans chaque email.
+
+Aucun autre destinataire n'a accès aux données.
 
 ### 4.3 Vos droits
 
@@ -75,6 +78,8 @@ En cas de désaccord persistant sur le traitement de vos données, vous pouvez i
 `vtt.bzh` ne dépose **aucun cookie** sur votre terminal et n'utilise aucun traceur publicitaire.
 
 Le seul outil de mesure d'audience embarqué est **Cloudflare Web Analytics**, qui est explicitement conçu pour ne pas déposer de cookie ni stocker votre adresse IP. Les statistiques générées sont strictement anonymisées et agrégées (pages vues, navigateurs, pays). Selon la doctrine CNIL, ces outils privacy-first n'imposent pas de bandeau de consentement.
+
+Le **formulaire d'abonnement** est un formulaire HTML simple : il **ne charge aucun script tiers** et ne dépose ni cookie ni identifiant sur votre terminal. Votre adresse email n'est transmise à Kit qu'au moment précis où vous cliquez sur « S'abonner ». (Le script d'intégration fourni par Kit — qui aurait chargé Google reCAPTCHA et écrit un identifiant persistant — a été délibérément écarté pour cette raison.)
 
 Si votre navigateur signale un cookie déposé par `vtt.bzh`, c'est probablement un cookie technique de votre fournisseur de réseau ou un cookie tiers déposé par un site externe vers lequel vous avez cliqué (HelloAsso, sites de clubs, etc.) — l'éditeur n'en est pas responsable.
 

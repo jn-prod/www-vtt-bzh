@@ -1,0 +1,41 @@
+<!-- Bloc newsletter inline : capture email owned.
+     Formulaire HTML natif qui POST directement vers Kit (form dédié 0f9b5b248a,
+     endpoint 9677378). Volontairement SANS le script d'embed Kit : celui-ci
+     charge Google reCAPTCHA + écrit un identifiant persistant (localStorage
+     "ckid") + POST un "formvisit" au chargement — ce qui rendrait faux le
+     « aucun cookie ni traceur » de /terms/legals.html sur 98 % du trafic.
+     Ici : zéro script tiers, zéro cookie, zéro traceur.
+     Anti-spam = double opt-in Kit (l'inscription n'est effective qu'après
+     confirmation par email). -->
+<section
+  class="newsletter-inline"
+  id="newsletter"
+  aria-labelledby="newsletter-title"
+>
+  <h2 class="newsletter-inline__title" id="newsletter-title">
+    Suis les randos bretonnes
+  </h2>
+  <p class="newsletter-inline__text">
+    Reçois les nouvelles randos par mail — et mes mots de vététiste quand j'en
+    ai. Pas de spam, désabonnement en un clic.
+  </p>
+  <form
+    class="newsletter-inline__form"
+    action="https://app.kit.com/forms/9677378/subscriptions"
+    method="post"
+  >
+    <label class="u-sr-only" for="newsletter-email">
+      Votre adresse email
+    </label>
+    <input
+      class="newsletter-inline__input"
+      id="newsletter-email"
+      type="email"
+      name="email_address"
+      placeholder="votre@email.fr"
+      autocomplete="email"
+      required
+    />
+    <button type="submit" class="btn btn--primary">S'abonner</button>
+  </form>
+</section>

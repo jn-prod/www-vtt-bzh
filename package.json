@@ -20,7 +20,8 @@
   "scripts": {
     "prepare": "husky",
     "dev": "pnpm -r dev",
-    "build": "pnpm build:packages && pnpm copy:packages:calendar && pnpm build:www",
+    "build": "pnpm build:packages && pnpm copy:packages:calendar && pnpm fetch:posts && pnpm build:www",
+    "fetch:posts": "node scripts/fetch-posts.mjs",
     "build:preview": "pnpm build && python3 -m http.server -d ./www/_site",
     "build:www": "pnpm --filter='www' build",
     "build:packages": "pnpm --filter='./packages/*' -r build",

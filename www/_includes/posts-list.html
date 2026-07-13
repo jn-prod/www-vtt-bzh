@@ -1,0 +1,90 @@
+<!-- Derniers articles nicolasjouanno.com — façon posts d'un profil social.
+     Les données viennent de _data/posts.json, généré AU BUILD par
+     scripts/fetch-posts.mjs (pas de fetch côté client : pas de CORS, pas
+     d'échec silencieux, contenu indexable). Rafraîchi par le rebuild
+     quotidien (cron github-pages 05:30 UTC).
+     L'avatar ici est le VISAGE de Nicolas (≠ logo vtt.bzh de la bande profil) :
+     c'est lui qui signe ces articles, pas le calendrier.
+
+     Proportions calquées sur X : auteur, pseudo, date, titre et chapô sont
+     TOUS à la taille du corps de texte. Seuls la graisse et la couleur
+     hiérarchisent — rien n'écrase le reste, la liste reste dense et lisible.
+
+     Titre en <strong> (pas de hN) : ces cartes ne sont pas des sections de la
+     page, elles ne doivent pas polluer le plan de titres du calendrier.
+
+     Deux liens par carte pointent vers le même article (le titre + « Lire la
+     suite »). « Lire la suite », hors contexte, ne dit pas où il mène :
+     aria-describedby le rattache au titre, donc un lecteur d'écran annonce
+     « Lire la suite, lien, <titre de l'article> » (WCAG 2.4.4). -->
+{% assign author_photo = site.author.photo | default: site.author.avatar %} {%
+if site.data.posts and site.data.posts.size > 0 %}
+<section class="posts" id="articles" aria-labelledby="posts-title">
+  <h2 class="posts__title" id="posts-title">Derniers articles</h2>
+  <ul class="posts__list">
+    {% for post in site.data.posts %}
+    <li class="post-card">
+      <img
+        class="post-card__avatar"
+        src="{{ author_photo }}"
+        alt=""
+        width="40"
+        height="40"
+        loading="lazy"
+      />
+      <div class="post-card__body">
+        <p class="post-card__meta">
+          <span class="post-card__author">Nicolas Jouanno</span>
+          <span class="post-card__handle">{{ site.author.handle }}</span>
+          {% if post.date_label %}
+          <span class="post-card__sep" aria-hidden="true">·</span>
+          <time class="post-card__date" datetime="{{ post.date }}"
+            >{{ post.date_label }}</time
+          >
+          {% endif %}
+        </p>
+
+        <strong class="post-card__title">
+          <a
+            class="post-card__link"
+            href="{{ post.url }}"
+            target="_blank"
+            rel="noopener"
+          >
+            <span id="post-title-{{ forloop.index }}">{{ post.title }}</span>
+            <span class="u-sr-only"> (nouvelle fenêtre)</span>
+          </a>
+        </strong>
+
+        {% if post.excerpt %}
+        <p class="post-card__excerpt">{{ post.excerpt }}</p>
+        {% endif %}
+
+        <p class="post-card__actions">
+          <a
+            class="post-card__more"
+            href="{{ post.url }}"
+            target="_blank"
+            rel="noopener"
+            aria-describedby="post-title-{{ forloop.index }}"
+          >
+            Lire la suite<span class="u-sr-only"> (nouvelle fenêtre)</span>
+          </a>
+        </p>
+      </div>
+    </li>
+    {% endfor %}
+  </ul>
+  <p class="posts__more">
+    <a
+      class="profile-header__link"
+      href="{{ site.author.web }}"
+      target="_blank"
+      rel="noopener"
+      >&rarr; Tous les articles sur nicolasjouanno.com<span class="u-sr-only">
+        (nouvelle fenêtre)</span
+      ></a
+    >
+  </p>
+</section>
+{% endif %}

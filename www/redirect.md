@@ -998,6 +998,14 @@ redirect_from:
   - "/guides/"
   - "/guides/marques.html"
   - "/calendrier.html"
+  # Pages retirées le 2026-07-13 (recentrage sur la conversion : le calendrier + l'abonnement)
+  # - about.html : contenu périmé (promettait médiathèque GPS, vidéos quotidiennes, blog — inexistants)
+  # - sponsoring.html : 0 visite/30 j ; offre partenaire abandonnée
+  - "/about.html"
+  - "/sponsoring.html"
+  # Legacy repris de sponsoring.md (supprimé) — ne pas perdre ces redirects
+  - "/advertize/terms.html"
+  - "/advertize/"
 redirect_to: /
 sitemap: false
 ---

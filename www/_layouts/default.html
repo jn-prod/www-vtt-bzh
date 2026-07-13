@@ -143,27 +143,14 @@
       </symbol>
     </svg>
 
-    <!-- Header -->
+    <!-- Header sticky, fin — façon barre de profil social : titre + action -->
     <header class="site-header">
       <div class="container">
         <nav class="site-nav">
-          <a href="{{ site.url }}" class="site-nav__brand">
-            <img
-              src="{{ site.url }}/assets/images/logo.png"
-              alt="{{ site.title }} - {{ site.headline }}"
-              class="site-nav__logo"
-            />
-            <span class="site-nav__title">VTT.bzh</span>
-          </a>
-          <div class="site-nav__actions">
-            <a
-              href="{{ site.author.web | escape }}"
-              class="btn btn--primary"
-              target="_blank"
-              rel="noopener"
-              >Me suivre</a
-            >
-          </div>
+          <a href="{{ site.url }}" class="site-nav__title">vtt.bzh</a>
+          <a href="{{ site.url }}/#newsletter" class="btn btn--primary btn--sm"
+            >Suivre</a
+          >
         </nav>
       </div>
     </header>
@@ -174,41 +161,6 @@
 
     <!-- Footer -->
     <footer class="site-footer container">
-      {% if page.layout != "landing" and page.type != "guide" %}
-      <div class="author-box">
-        <img
-          src="{{ site.author.avatar }}"
-          alt="{{ site.author.display_name }}"
-          class="author-box__avatar"
-        />
-        <p class="author-box__bio">
-          Par {{ site.author.display_name }}, {{ site.author.bio }} sur
-          <a href="{{ site.author.web }}" target="_blank" rel="noopener"
-            >nicolasjouanno.com</a
-          >. {{ site.author.location }}. Je maintiens vtt.bzh bénévolement
-          depuis 2013.
-        </p>
-        <p class="author-box__links">
-          Vous pouvez
-          <a href="/calendrier/ajouter.html">ajouter un évènement</a>,
-          <a
-            href="{{ site.support.tipeee_url | escape }}"
-            target="_blank"
-            rel="noopener"
-            data-track="support-click"
-            data-support-provider="tipeee"
-            data-support-placement="author-footer"
-            >soutenir le projet sur Tipeee</a
-          >,
-          <a href="/sponsoring.html" data-track="sponsoring-click"
-            >devenir partenaire</a
-          >
-          ou
-          <a href="{{ site.author.contact }}">me contacter</a>.
-        </p>
-      </div>
-      {% endif %}
-
       <p
         class="site-footer__signature"
         itemscope
@@ -218,21 +170,17 @@
           >{{ site.headline }} {{ site.time | date: "%Y" }}</a
         >
         &copy;
-        <span itemprop="name"><a href="/about.html">{{ site.title }}</a></span
+        <span itemprop="name"
+          ><a href="{{ site.url }}">{{ site.title }}</a></span
         >, 2013 - {{ site.time | date: "%Y" }}
         <a href="/go/home/">Nicolas Jouanno</a> •
+        <a href="/calendrier/ajouter.html">Ajouter une rando</a> •
+        <a href="{{ site.author.contact }}">Me contacter</a> •
         <a href="/terms/legals.html">Mentions légales</a>
       </p>
     </footer>
   </body>
   <script type="module" src="/assets/js/calendar.js"></script>
-  <script
-    src="/assets/js/support-tracking.js"
-    defer
-    data-supabase-url="{{ site.supabase.url | escape }}"
-    data-supabase-key="{{ site.supabase.publishable_key | escape }}"
-    data-support-events-table="{{ site.supabase.support_events_table | escape }}"
-  ></script>
   <!-- Cloudflare Web Analytics -->
   <script
     defer

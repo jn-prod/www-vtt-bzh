@@ -2,6 +2,7 @@
 layout: default
 title: Calendrier rando VTT Bretagne 2026
 description: "Toutes les randos VTT en Bretagne en 2026 : dates, départements, lieux et clubs organisateurs. Ajout gratuit."
+hide_author_box: true
 ---
 
 <h1 class="calendar__title">Calendrier rando VTT Bretagne 2026</h1>
@@ -9,6 +10,107 @@ description: "Toutes les randos VTT en Bretagne en 2026 : dates, départements, 
   Toutes les randos VTT de Bretagne, en un coup d'œil. Par date et par
   département.
 </p>
+
+{% include profile-header.html %}
+
+<!-- Barre sticky (sous le header) — façon barre d'onglets d'un profil social :
+     navigation à gauche, utilitaire à droite. Le filtre y est logé en menu
+     déroulant : il ne coûte aucune hauteur supplémentaire et reste joignable
+     à n'importe quelle profondeur de scroll dans la liste des randos. -->
+<div class="tabs" id="tabs">
+  <nav class="tabs__nav" aria-label="Sections de la page">
+    <a class="tabs__tab is-active" href="#events">Randos</a>
+    <a class="tabs__tab" href="#articles">Articles</a>
+  </nav>
+
+  <details class="search-filter" id="filter-details">
+    <summary class="btn btn--light btn--sm search-filter__toggle">
+      Filtrer
+    </summary>
+    <form id="search-form" class="search-filter__form">
+      <div class="search-filter__field">
+        <label class="search-filter__label" for="start-date">Debut</label>
+        <input
+          id="start-date"
+          type="date"
+          name="start-date"
+          class="search-filter__input"
+        />
+      </div>
+      <div class="search-filter__field">
+        <label class="search-filter__label" for="end-date">Fin</label>
+        <input
+          id="end-date"
+          type="date"
+          name="end-date"
+          class="search-filter__input"
+        />
+      </div>
+      <div class="search-filter__field">
+        <label class="search-filter__label" for="departement">
+          Département
+        </label>
+        <select
+          id="departement"
+          name="departement"
+          class="search-filter__select"
+        >
+          <option value="22">Côtes d'Armor</option>
+          <option value="29">Finistère</option>
+          <option value="35">Ille et Vilaine</option>
+          <option value="44">Loire Atlantique</option>
+          <option value="56">Morbihan</option>
+          <option value="all" selected>Tous les départements</option>
+        </select>
+      </div>
+      <div class="search-filter__actions">
+        <button
+          id="search-button"
+          type="submit"
+          class="btn btn--secondary btn--sm"
+        >
+          Rechercher
+        </button>
+        <button
+          id="reset-button"
+          type="button"
+          class="btn btn--outline btn--sm"
+        >
+          Réinitialiser
+        </button>
+      </div>
+    </form>
+  </details>
+</div>
+
+<section id="events" aria-label="Calendrier des randos">
+  {% if site.data.events.size > 0 %}
+  <p id="msg-results" class="message" aria-live="polite">
+    <span id="results-count">{{ site.data.events.size }}</span> randonnées à
+    découvrir.
+    <span class="message__aside">
+      Organisateur ? <a href="/calendrier/ajouter.html">Ajoutez votre rando</a>.
+    </span>
+  </p>
+  {% else %}
+  <p id="msg-no-results" class="message message--no-results" aria-live="polite">
+    Aucun résultat pour cette recherche, choisissez une autre date de début et
+    de fin.
+  </p>
+  {% endif %}
+
+  <ul id="events-list">
+    {% for event in site.data.events %}
+    <li>{% include calendar/event.html event=event %}</li>
+    {% endfor %}
+  </ul>
+
+  <div class="calendar__load-more">
+    <button id="load-more" class="btn btn--secondary" hidden>Voir +</button>
+  </div>
+</section>
+
+{% include newsletter-inline.html %}
 
 <section
   class="organizer-callout"
@@ -34,133 +136,38 @@ description: "Toutes les randos VTT en Bretagne en 2026 : dates, départements, 
   </ul>
 </section>
 
-<details class="search-filter" id="filter-details">
-  <summary class="btn btn--light search-filter__toggle">Filtrer</summary>
-  <form id="search-form" class="search-filter__form">
-    <div class="search-filter__field">
-      <label class="search-filter__label" for="start-date">Debut</label>
-      <input
-        id="start-date"
-        type="date"
-        name="start-date"
-        class="search-filter__input"
-      />
-    </div>
-    <div class="search-filter__field">
-      <label class="search-filter__label" for="end-date">Fin</label>
-      <input
-        id="end-date"
-        type="date"
-        name="end-date"
-        class="search-filter__input"
-      />
-    </div>
-    <div class="search-filter__field">
-      <label class="search-filter__label" for="departement">Département</label>
-      <select id="departement" name="departement" class="search-filter__select">
-        <option value="22">Côtes d'Armor</option>
-        <option value="29">Finistère</option>
-        <option value="35">Ille et Vilaine</option>
-        <option value="44">Loire Atlantique</option>
-        <option value="56">Morbihan</option>
-        <option value="all" selected>Tous les départements</option>
-      </select>
-    </div>
-    <div class="search-filter__actions">
-      <button id="search-button" type="submit" class="btn btn--secondary">
-        Rechercher
-      </button>
-      <button id="reset-button" type="button" class="btn btn--outline">
-        Réinitialiser
-      </button>
-    </div>
-  </form>
-</details>
-
-{% if site.data.events.size > 0 %}
-<p id="msg-results" class="message" aria-live="polite">
-  <span id="results-count">{{ site.data.events.size }}</span> randonnées à
-  découvrir.
-  <span class="message__aside">
-    Organisateur ? <a href="/calendrier/ajouter.html">Ajoutez votre rando</a>.
-  </span>
-</p>
-{% else %}
-<p id="msg-no-results" class="message message--no-results" aria-live="polite">
-  Aucun résultat pour cette recherche, choisissez une autre date de début et de
-  fin.
-</p>
-{% endif %}
-
-<ul id="events-list">
-  {% for event in site.data.events %}
-  <li>{% include calendar/event.html event=event %}</li>
-  {% endfor %}
-</ul>
-
-<div class="calendar__load-more">
-  <button id="load-more" class="btn btn--secondary" hidden>Voir +</button>
-</div>
-
-<section
-  class="latest-post"
-  id="latest-post"
-  aria-label="Dernier article du blog"
-  hidden
->
-  <h2 class="latest-post__title">Le dernier article du blog</h2>
-  <a class="latest-post__card" id="latest-post-link" href="#" rel="noopener">
-    <span class="latest-post__kicker">nicolasjouanno.com</span>
-    <span class="latest-post__heading" id="latest-post-heading"></span>
-    <time class="latest-post__date" id="latest-post-date"></time>
-  </a>
-  <p class="latest-post__subscribe">
-    <a class="latest-post__subscribe-link" href="/go/newsletter/">
-      Être notifié des prochains articles &rarr;
-    </a>
-  </p>
-</section>
+{% include posts-list.html %}
 
 <script>
+  // Onglets : souligne celui dont la section est à l'écran (scroll-spy).
+  // Maison, sans dépendance ni traceur. Dégradation propre : sans JS, les
+  // onglets restent de simples ancres fonctionnelles.
   (function () {
-    var FEED = "https://www.nicolasjouanno.com/feed.xml";
-    var UTM = "utm_source=vtt-bzh&utm_medium=site&utm_campaign=home-card";
-    fetch(FEED)
-      .then(function (r) {
-        return r.ok ? r.text() : Promise.reject(r.status);
-      })
-      .then(function (xml) {
-        var doc = new DOMParser().parseFromString(xml, "application/xml");
-        if (doc.querySelector("parsererror")) return;
-        var entry = doc.querySelector("entry, item");
-        if (!entry) return;
-        var titleEl = entry.querySelector("title");
-        var title = titleEl ? titleEl.textContent.trim() : "";
-        var linkEl = entry.querySelector("link");
-        var url = linkEl
-          ? (linkEl.getAttribute("href") || linkEl.textContent || "").trim()
-          : "";
-        if (!title || !url) return;
-        var dateEl = entry.querySelector("published, pubDate, updated");
-        var sep = url.indexOf("?") > -1 ? "&" : "?";
-        document.getElementById("latest-post-heading").textContent = title;
-        document.getElementById("latest-post-link").href = url + sep + UTM;
-        if (dateEl && dateEl.textContent) {
-          var d = new Date(dateEl.textContent.trim());
-          if (!isNaN(d.getTime())) {
-            var t = document.getElementById("latest-post-date");
-            t.dateTime = d.toISOString();
-            t.textContent = d.toLocaleDateString("fr-FR", {
-              year: "numeric",
-              month: "long",
-              day: "numeric",
-            });
-          }
-        }
-        document.getElementById("latest-post").hidden = false;
-      })
-      .catch(function () {
-        /* échec silencieux : la card reste masquée */
-      });
+    var tabs = document.querySelectorAll(".tabs__tab");
+    if (!tabs.length || !("IntersectionObserver" in window)) return;
+
+    var byId = {};
+    tabs.forEach(function (tab) {
+      byId[tab.getAttribute("href").slice(1)] = tab;
+    });
+
+    var observer = new IntersectionObserver(
+      function (entries) {
+        entries.forEach(function (entry) {
+          if (!entry.isIntersecting) return;
+          tabs.forEach(function (t) {
+            t.classList.remove("is-active");
+          });
+          var active = byId[entry.target.id];
+          if (active) active.classList.add("is-active");
+        });
+      },
+      { rootMargin: "-30% 0px -60% 0px" },
+    );
+
+    Object.keys(byId).forEach(function (id) {
+      var section = document.getElementById(id);
+      if (section) observer.observe(section);
+    });
   })();
 </script>

@@ -23,8 +23,12 @@ author:
   country: "France"
   contact: "mailto:nicolas@vtt.bzh"
   email: "nicolas@vtt.bzh"
-  handle: "@bynicolasjd"
+  handle: "@byNicolasJD"
   avatar: "https://www.nicolasjouanno.com/images/icons/avatar.svg"
+  # Portrait réel, servi par nj.com (source unique : packages/images/src/nicolas-jouanno.jpg).
+  # Utilisé sur les cartes d'articles (_includes/posts-list.html) : l'avatar signe l'auteur,
+  # pas le calendrier. Si la clé disparaît, on retombe sur `avatar` (SVG générique).
+  photo: "https://www.nicolasjouanno.com/images/nicolas-jouanno.webp"
   web: "https://www.nicolasjouanno.com/results.html?utm_source=vtt-bzh&utm_medium=site&utm_campaign=author"
 
 support:

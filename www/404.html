@@ -1,14 +1,21 @@
 ---
 layout: default
+title: Page introuvable
+sitemap: false
 ---
 
-<div class="container">
-  <h1>404</h1>
+<h1 class="calendar__title">Cette page n'existe plus</h1>
+<p class="calendar__intro">
+  Le lien que vous avez suivi est mort, ou la page a été retirée. Le calendrier,
+  lui, est toujours là.
+</p>
 
-  <h2>Cette page n'existe plus :(</h2>
-  <p>
-    Vous pouvez trouver votre randonnée sur le
-    <a href="/calendrier.html">calendrier</a> ou parcourir le
-    <a href="/blog/">blog</a>
-  </p>
-</div>
+<p>
+  <a class="btn btn--primary" href="{{ site.url }}">Voir le calendrier</a>
+</p>
+
+<p>
+  Vous cherchiez à publier une rando ?
+  <a href="/calendrier/ajouter.html">C'est par ici</a>. Un souci, une question ?
+  <a href="{{ site.author.contact }}">Écrivez-moi</a>.
+</p>
