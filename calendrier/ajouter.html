@@ -49,8 +49,8 @@
     <!-- twitter -->
     <meta name="twitter:card" content="summary_large_image" />
     
-    <meta name="twitter:site" content="@bynicolasjd" />
-    <meta name="twitter:creator" content="@bynicolasjd" />
+    <meta name="twitter:site" content="@byNicolasJD" />
+    <meta name="twitter:creator" content="@byNicolasJD" />
     
     <meta name="twitter:title" content="Publier une randonnée VTT en Bretagne" />
     <meta name="twitter:description" content="Publiez gratuitement votre randonnée VTT en Bretagne. Formulaire en 2 minutes, visible sur le calendrier dès le lendemain." />
@@ -108,27 +108,14 @@
       </symbol>
     </svg>
 
-    <!-- Header -->
+    <!-- Header sticky, fin — façon barre de profil social : titre + action -->
     <header class="site-header">
       <div class="container">
         <nav class="site-nav">
-          <a href="https://www.vtt.bzh" class="site-nav__brand">
-            <img
-              src="https://www.vtt.bzh/assets/images/logo.png"
-              alt="vtt.bzh - Calendrier Rando VTT Bretagne"
-              class="site-nav__logo"
-            />
-            <span class="site-nav__title">VTT.bzh</span>
-          </a>
-          <div class="site-nav__actions">
-            <a
-              href="https://www.nicolasjouanno.com/results.html?utm_source=vtt-bzh&amp;utm_medium=site&amp;utm_campaign=author"
-              class="btn btn--primary"
-              target="_blank"
-              rel="noopener"
-              >Me suivre</a
-            >
-          </div>
+          <a href="https://www.vtt.bzh" class="site-nav__title">vtt.bzh</a>
+          <a href="https://www.vtt.bzh/#newsletter" class="btn btn--primary btn--sm"
+            >S'abonner</a
+          >
         </nav>
       </div>
     </header>
@@ -538,41 +525,6 @@
 
     <!-- Footer -->
     <footer class="site-footer container">
-      
-      <div class="author-box">
-        <img
-          src="https://www.nicolasjouanno.com/images/icons/avatar.svg"
-          alt="Nicolas JOUANNO DANIEL"
-          class="author-box__avatar"
-        />
-        <p class="author-box__bio">
-          Par Nicolas JOUANNO DANIEL, ex-cycliste professionnel (5 Championnats de France), pratiquant VTT en Bretagne. Je partage mes réflexions sur le vélo et le sport outdoor sur
-          <a href="https://www.nicolasjouanno.com/results.html?utm_source=vtt-bzh&utm_medium=site&utm_campaign=author" target="_blank" rel="noopener"
-            >nicolasjouanno.com</a
-          >. Pontivy, Bretagne. Je maintiens vtt.bzh bénévolement
-          depuis 2013.
-        </p>
-        <p class="author-box__links">
-          Vous pouvez
-          <a href="/calendrier/ajouter.html">ajouter un évènement</a>,
-          <a
-            href="https://fr.tipeee.com/bynicolasjd?utm_source=vtt-bzh&amp;utm_medium=site&amp;utm_campaign=soutien"
-            target="_blank"
-            rel="noopener"
-            data-track="support-click"
-            data-support-provider="tipeee"
-            data-support-placement="author-footer"
-            >soutenir le projet sur Tipeee</a
-          >,
-          <a href="/sponsoring.html" data-track="sponsoring-click"
-            >devenir partenaire</a
-          >
-          ou
-          <a href="mailto:nicolas@vtt.bzh">me contacter</a>.
-        </p>
-      </div>
-      
-
       <p
         class="site-footer__signature"
         itemscope
@@ -582,21 +534,17 @@
           >Calendrier Rando VTT Bretagne 2026</a
         >
         &copy;
-        <span itemprop="name"><a href="/about.html">vtt.bzh</a></span
+        <span itemprop="name"
+          ><a href="https://www.vtt.bzh">vtt.bzh</a></span
         >, 2013 - 2026
         <a href="/go/home/">Nicolas Jouanno</a> •
+        <a href="/calendrier/ajouter.html">Ajouter une rando</a> •
+        <a href="mailto:nicolas@vtt.bzh">Me contacter</a> •
         <a href="/terms/legals.html">Mentions légales</a>
       </p>
     </footer>
   </body>
   <script type="module" src="/assets/js/calendar.js"></script>
-  <script
-    src="/assets/js/support-tracking.js"
-    defer
-    data-supabase-url="https://lbqjpwsifmmzxafkbcvz.supabase.co"
-    data-supabase-key="sb_publishable_RqhVTG3FPvkoqEenIXV3hA_NodabkPY"
-    data-support-events-table="support_events"
-  ></script>
   <!-- Cloudflare Web Analytics -->
   <script
     defer

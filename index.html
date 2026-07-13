@@ -49,8 +49,8 @@
     <!-- twitter -->
     <meta name="twitter:card" content="summary_large_image" />
     
-    <meta name="twitter:site" content="@bynicolasjd" />
-    <meta name="twitter:creator" content="@bynicolasjd" />
+    <meta name="twitter:site" content="@byNicolasJD" />
+    <meta name="twitter:creator" content="@byNicolasJD" />
     
     <meta name="twitter:title" content="Calendrier rando VTT Bretagne 2026" />
     <meta name="twitter:description" content="Toutes les randos VTT en Bretagne en 2026 : dates, départements, lieux et clubs organisateurs. Ajout gratuit." />
@@ -108,27 +108,14 @@
       </symbol>
     </svg>
 
-    <!-- Header -->
+    <!-- Header sticky, fin — façon barre de profil social : titre + action -->
     <header class="site-header">
       <div class="container">
         <nav class="site-nav">
-          <a href="https://www.vtt.bzh" class="site-nav__brand">
-            <img
-              src="https://www.vtt.bzh/assets/images/logo.png"
-              alt="vtt.bzh - Calendrier Rando VTT Bretagne"
-              class="site-nav__logo"
-            />
-            <span class="site-nav__title">VTT.bzh</span>
-          </a>
-          <div class="site-nav__actions">
-            <a
-              href="https://www.nicolasjouanno.com/results.html?utm_source=vtt-bzh&amp;utm_medium=site&amp;utm_campaign=author"
-              class="btn btn--primary"
-              target="_blank"
-              rel="noopener"
-              >Me suivre</a
-            >
-          </div>
+          <a href="https://www.vtt.bzh" class="site-nav__title">vtt.bzh</a>
+          <a href="https://www.vtt.bzh/#newsletter" class="btn btn--primary btn--sm"
+            >S'abonner</a
+          >
         </nav>
       </div>
     </header>
@@ -140,86 +127,169 @@
   département.
 </p>
 
-<section
-  class="organizer-callout"
-  aria-label="Information pour les organisateurs"
->
-  <details class="organizer-callout__details">
-    <summary class="organizer-callout__summary">
-      Organisateur ? Publiez votre rando sur le calendrier
-    </summary>
-    <p class="organizer-callout__text">
-      Le calendrier est alimenté par les clubs et organisateurs bretons. Publiez
-      votre rando gratuitement — visible par les vététistes qui cherchent où
-      rouler ce week-end.
-    </p>
-  </details>
-  <a class="btn btn--outline" href="/calendrier/ajouter.html">
-    Publier ma rando
-  </a>
-  <ul class="organizer-callout__list">
-    <li>12 000 vététistes bretons consultent le calendrier chaque mois.</li>
-    <li>Publication gratuite, votre rando en ligne en 2 minutes.</li>
-    <li>Touchez les vététistes au-delà de votre cercle Facebook et club.</li>
-  </ul>
+<!-- Bande profil (façon page sociale) : cover + identité + preuve + CTA.
+     L'avatar est le LOGO vtt.bzh : le compte, c'est le projet (pattern « marque »
+     type Silicon Carne), pas la personne. Le visage de Nicolas signe les articles
+     (cf. _includes/posts-list.html).
+     Le cover est au-dessus de la ligne de flottaison → chargé en priorité, jamais
+     en lazy, dimensions figées pour éviter le layout shift. -->
+<section class="profile-header" aria-label="À propos de vtt.bzh">
+  <picture>
+    <source
+      type="image/webp"
+      srcset="
+        https://www.vtt.bzh/assets/images/banner-800.webp   800w,
+        https://www.vtt.bzh/assets/images/banner-1600.webp 1600w
+      "
+      sizes="100vw"
+    />
+    <img
+      class="profile-header__cover"
+      src="https://www.vtt.bzh/assets/images/banner-1600.jpg"
+      srcset="
+        https://www.vtt.bzh/assets/images/banner-800.jpg   800w,
+        https://www.vtt.bzh/assets/images/banner-1600.jpg 1600w
+      "
+      sizes="100vw"
+      alt="Nicolas Jouanno en VTT de descente sur un sentier de montagne"
+      width="1600"
+      height="533"
+      fetchpriority="high"
+    />
+  </picture>
+
+  <div class="profile-header__inner">
+    <img
+      class="profile-header__avatar"
+      src="https://www.vtt.bzh/assets/images/logo.png"
+      alt="Logo vtt.bzh"
+      width="96"
+      height="96"
+    />
+    <div class="profile-header__body">
+      <p class="profile-header__name">vtt.bzh</p>
+      <p class="profile-header__bio">
+        Le calendrier des randos VTT de Bretagne. Tenu bénévolement depuis 2013
+        par <strong>Nicolas Jouanno</strong>, ex-cycliste pro (5 championnats de
+        France), pour que les vététistes bretons sachent où rouler.
+      </p>
+      <p class="profile-header__links">
+        <a
+          class="profile-header__link"
+          href="https://www.nicolasjouanno.com/results.html?utm_source=vtt-bzh&utm_medium=site&utm_campaign=author"
+          target="_blank"
+          rel="noopener"
+          >&rarr; nicolasjouanno.com</a
+        >
+        <a class="profile-header__link" href="mailto:nicolas@vtt.bzh"
+          >&rarr; Me contacter</a
+        >
+      </p>
+      <!-- Stats : depuis 2013 (config) · 12 000 vues/mois (chiffre publié) ·
+           ~450 randos/an (moyenne dédupliquée Supabase 2023-2025 : 485/450/415) -->
+      <ul class="profile-header__stats" aria-label="En chiffres">
+        <li class="profile-header__stat">
+          <strong>2013</strong><span>depuis</span>
+        </li>
+        <li class="profile-header__stat">
+          <strong>12 000</strong><span>vues/mois</span>
+        </li>
+        <li class="profile-header__stat">
+          <strong>~450</strong><span>randos/an</span>
+        </li>
+      </ul>
+      <a class="btn btn--primary profile-header__cta" href="#newsletter"
+        >S'abonner</a
+      >
+    </div>
+  </div>
 </section>
 
-<details class="search-filter" id="filter-details">
-  <summary class="btn btn--light search-filter__toggle">Filtrer</summary>
-  <form id="search-form" class="search-filter__form">
-    <div class="search-filter__field">
-      <label class="search-filter__label" for="start-date">Debut</label>
-      <input
-        id="start-date"
-        type="date"
-        name="start-date"
-        class="search-filter__input"
-      />
-    </div>
-    <div class="search-filter__field">
-      <label class="search-filter__label" for="end-date">Fin</label>
-      <input
-        id="end-date"
-        type="date"
-        name="end-date"
-        class="search-filter__input"
-      />
-    </div>
-    <div class="search-filter__field">
-      <label class="search-filter__label" for="departement">Département</label>
-      <select id="departement" name="departement" class="search-filter__select">
-        <option value="22">Côtes d'Armor</option>
-        <option value="29">Finistère</option>
-        <option value="35">Ille et Vilaine</option>
-        <option value="44">Loire Atlantique</option>
-        <option value="56">Morbihan</option>
-        <option value="all" selected>Tous les départements</option>
-      </select>
-    </div>
-    <div class="search-filter__actions">
-      <button id="search-button" type="submit" class="btn btn--secondary">
-        Rechercher
-      </button>
-      <button id="reset-button" type="button" class="btn btn--outline">
-        Réinitialiser
-      </button>
-    </div>
-  </form>
-</details>
 
+<!-- Barre sticky (sous le header) — façon barre d'onglets d'un profil social :
+     navigation à gauche, utilitaire à droite. Le filtre y est logé en menu
+     déroulant : il ne coûte aucune hauteur supplémentaire et reste joignable
+     à n'importe quelle profondeur de scroll dans la liste des randos. -->
+<div class="tabs" id="tabs">
+  <nav class="tabs__nav" aria-label="Sections de la page">
+    <a class="tabs__tab is-active" href="#events">Randos</a>
+    <a class="tabs__tab" href="#articles">Articles</a>
+  </nav>
 
-<p id="msg-results" class="message" aria-live="polite">
-  <span id="results-count">83</span> randonnées à
-  découvrir.
-  <span class="message__aside">
-    Organisateur ? <a href="/calendrier/ajouter.html">Ajoutez votre rando</a>.
-  </span>
-</p>
+  <details class="search-filter" id="filter-details">
+    <summary class="btn btn--light btn--sm search-filter__toggle">
+      Filtrer
+    </summary>
+    <form id="search-form" class="search-filter__form">
+      <div class="search-filter__field">
+        <label class="search-filter__label" for="start-date">Debut</label>
+        <input
+          id="start-date"
+          type="date"
+          name="start-date"
+          class="search-filter__input"
+        />
+      </div>
+      <div class="search-filter__field">
+        <label class="search-filter__label" for="end-date">Fin</label>
+        <input
+          id="end-date"
+          type="date"
+          name="end-date"
+          class="search-filter__input"
+        />
+      </div>
+      <div class="search-filter__field">
+        <label class="search-filter__label" for="departement">
+          Département
+        </label>
+        <select
+          id="departement"
+          name="departement"
+          class="search-filter__select"
+        >
+          <option value="22">Côtes d'Armor</option>
+          <option value="29">Finistère</option>
+          <option value="35">Ille et Vilaine</option>
+          <option value="44">Loire Atlantique</option>
+          <option value="56">Morbihan</option>
+          <option value="all" selected>Tous les départements</option>
+        </select>
+      </div>
+      <div class="search-filter__actions">
+        <button
+          id="search-button"
+          type="submit"
+          class="btn btn--secondary btn--sm"
+        >
+          Rechercher
+        </button>
+        <button
+          id="reset-button"
+          type="button"
+          class="btn btn--outline btn--sm"
+        >
+          Réinitialiser
+        </button>
+      </div>
+    </form>
+  </details>
+</div>
 
-
-<ul id="events-list">
+<section id="events" aria-label="Calendrier des randos">
   
-  <li>
+  <p id="msg-results" class="message" aria-live="polite">
+    <span id="results-count">83</span> randonnées à
+    découvrir.
+    <span class="message__aside">
+      Organisateur ? <a href="/calendrier/ajouter.html">Ajoutez votre rando</a>.
+    </span>
+  </p>
+  
+
+  <ul id="events-list">
+    
+    <li>
 <details
   id="2026-07-19-les-rives-de-la-vilaine"
   data-date="2026-07-19"
@@ -304,8 +374,8 @@
   </div>
 </details>
 </li>
-  
-  <li>
+    
+    <li>
 <details
   id="2026-07-19-pedalez-marchez-contre-le-cancer-2026"
   data-date="2026-07-19"
@@ -391,8 +461,8 @@ Les parcours, kilométrages et horaires seront mis à disposition très prochain
   </div>
 </details>
 </li>
-  
-  <li>
+    
+    <li>
 <details
   id="2026-07-19-les-rives-de-la-vilaine-2026"
   data-date="2026-07-19"
@@ -484,8 +554,8 @@ Les parcours, kilométrages et horaires seront mis à disposition très prochain
   </div>
 </details>
 </li>
-  
-  <li>
+    
+    <li>
 <details
   id="2026-07-19-randos-des-diables"
   data-date="2026-07-19"
@@ -571,8 +641,8 @@ Départ du terrain municipal, rue du Cosquer à l'Enfer de 8h à 10h.
   </div>
 </details>
 </li>
-  
-  <li>
+    
+    <li>
 <details
   id="2026-07-19-rando-des-d"
   data-date="2026-07-19"
@@ -659,8 +729,8 @@ Organisation : Comité des fêtes de l'Enfer
   </div>
 </details>
 </li>
-  
-  <li>
+    
+    <li>
 <details
   id="2026-07-25-gravel-de-lanvaux"
   data-date="2026-07-25"
@@ -749,8 +819,8 @@ Deux parcours marche ou trail
   </div>
 </details>
 </li>
-  
-  <li>
+    
+    <li>
 <details
   id="2026-07-25-rando-raid-des-3-ports-2026"
   data-date="2026-07-25"
@@ -835,8 +905,8 @@ Inscription possible via HelloAsso : https://www.helloasso.com/associations/aven
   </div>
 </details>
 </li>
-  
-  <li>
+    
+    <li>
 <details
   id="2026-07-26-rando-raid-des-3-ports-2026"
   data-date="2026-07-26"
@@ -923,8 +993,8 @@ Inscription possible via HelloAsso : https://www.helloasso.com/associations/aven
   </div>
 </details>
 </li>
-  
-  <li>
+    
+    <li>
 <details
   id="2026-08-02-rando-vtt-du-comité-des-fêtes-plenee-jugon"
   data-date="2026-08-02"
@@ -1009,8 +1079,8 @@ Inscription possible via HelloAsso : https://www.helloasso.com/associations/aven
   </div>
 </details>
 </li>
-  
-  <li>
+    
+    <li>
 <details
   id="2026-08-02-balade-vtt-gravel"
   data-date="2026-08-02"
@@ -1099,8 +1169,8 @@ Confirmer votre inscription par sms au 0651674029
   </div>
 </details>
 </li>
-  
-  <li>
+    
+    <li>
 <details
   id="2026-08-02-rando-vtt-pédestre"
   data-date="2026-08-02"
@@ -1189,8 +1259,8 @@ Alors n'hésitez pas et venez faire un tour !
   </div>
 </details>
 </li>
-  
-  <li>
+    
+    <li>
 <details
   id="2026-08-06-5-ème-rando-du-pays-de-muzillac"
   data-date="2026-08-06"
@@ -1284,8 +1354,8 @@ A très bientôt
   </div>
 </details>
 </li>
-  
-  <li>
+    
+    <li>
 <details
   id="2026-08-15-raid-vtt-15-août-penguily-2026"
   data-date="2026-08-15"
@@ -1367,8 +1437,8 @@ A très bientôt
   </div>
 </details>
 </li>
-  
-  <li>
+    
+    <li>
 <details
   id="2026-08-15-randos-vtt-pédestres-15-août-penguily-2026"
   data-date="2026-08-15"
@@ -1450,8 +1520,8 @@ A très bientôt
   </div>
 </details>
 </li>
-  
-  <li>
+    
+    <li>
 <details
   id="2026-08-23-randonnée-des-bruyères-2026"
   data-date="2026-08-23"
@@ -1540,8 +1610,8 @@ Boisson et casse croûte à l'arrivée.
   </div>
 </details>
 </li>
-  
-  <li>
+    
+    <li>
 <details
   id="2026-08-29-maxi-gouët-vtt-gravel-pédestre-trail-le-plouf-trail-2026"
   data-date="2026-08-29"
@@ -1625,8 +1695,8 @@ Boisson et casse croûte à l'arrivée.
   </div>
 </details>
 </li>
-  
-  <li>
+    
+    <li>
 <details
   id="2026-08-29-theil-en-selle-2026"
   data-date="2026-08-29"
@@ -1711,8 +1781,8 @@ Enfant moins de 12 ans 5 
   </div>
 </details>
 </li>
-  
-  <li>
+    
+    <li>
 <details
   id="2026-08-30-rando-u-tour-de-la-presquile-de-crozon-2026"
   data-date="2026-08-30"
@@ -1798,8 +1868,8 @@ Enfant moins de 12 ans 5 
   </div>
 </details>
 </li>
-  
-  <li>
+    
+    <li>
 <details
   id="2026-08-30-la-ronde-des-trainards-2026"
   data-date="2026-08-30"
@@ -1885,8 +1955,8 @@ Cyclo : de 60 a 90 kms a définir
   </div>
 </details>
 </li>
-  
-  <li>
+    
+    <li>
 <details
   id="2026-08-30-rando-vélo-sport-vitalien-cyclo-vtt-et-marche-2026"
   data-date="2026-08-30"
@@ -1970,8 +2040,8 @@ Cyclo : de 60 a 90 kms a définir
   </div>
 </details>
 </li>
-  
-  <li>
+    
+    <li>
 <details
   id="2026-08-30-la-staobinaise-2026"
   data-date="2026-08-30"
@@ -2056,8 +2126,8 @@ Plus d'informations à venir prochainement, cependant comme nos derniers éditio
   </div>
 </details>
 </li>
-  
-  <li>
+    
+    <li>
 <details
   id="2026-08-30-maxi-gouët-vtt-gravel-pédestre-2026"
   data-date="2026-08-30"
@@ -2141,8 +2211,8 @@ Plus d'informations à venir prochainement, cependant comme nos derniers éditio
   </div>
 </details>
 </li>
-  
-  <li>
+    
+    <li>
 <details
   id="2026-08-30-theil-en-selle-2026"
   data-date="2026-08-30"
@@ -2227,8 +2297,8 @@ Enfant moins de 12 ans 5 
   </div>
 </details>
 </li>
-  
-  <li>
+    
+    <li>
 <details
   id="2026-08-30-la-staobinaise"
   data-date="2026-08-30"
@@ -2312,8 +2382,8 @@ Enfant moins de 12 ans 5 
   </div>
 </details>
 </li>
-  
-  <li>
+    
+    <li>
 <details
   id="2026-08-30-2026"
   data-date="2026-08-30"
@@ -2407,8 +2477,8 @@ Casse-croûte et boisson offerte pour chaque participant
   </div>
 </details>
 </li>
-  
-  <li>
+    
+    <li>
 <details
   id="2026-09-05-journée-de-la-randonnée-2026"
   data-date="2026-09-05"
@@ -2496,8 +2566,8 @@ Inscription sur place
   </div>
 </details>
 </li>
-  
-  <li>
+    
+    <li>
 <details
   id="2026-09-05-rando-des-pins-2026"
   data-date="2026-09-05"
@@ -2585,8 +2655,8 @@ Cyclo : 60 et 85 km
   </div>
 </details>
 </li>
-  
-  <li>
+    
+    <li>
 <details
   id="2026-09-05-terre-mer-2026"
   data-date="2026-09-05"
@@ -2667,8 +2737,8 @@ PEDESTRE 5 €
   </div>
 </details>
 </li>
-  
-  <li>
+    
+    <li>
 <details
   id="2026-09-05-randonee-de-l-ectlamballaise-2026"
   data-date="2026-09-05"
@@ -2753,8 +2823,8 @@ PEDESTRE 5 €
   </div>
 </details>
 </li>
-  
-  <li>
+    
+    <li>
 <details
   id="2026-09-05-la-plescopaise-2026"
   data-date="2026-09-05"
@@ -2855,8 +2925,8 @@ Frais de participation :
   </div>
 </details>
 </li>
-  
-  <li>
+    
+    <li>
 <details
   id="2026-09-06-la-bodilisienne-2026"
   data-date="2026-09-06"
@@ -2953,8 +3023,8 @@ Facebook bodilis vtt aventure
   </div>
 </details>
 </li>
-  
-  <li>
+    
+    <li>
 <details
   id="2026-09-06-rando-terre-et-mer-2026"
   data-date="2026-09-06"
@@ -3043,8 +3113,8 @@ Ouvert aux traileurs
   </div>
 </details>
 </li>
-  
-  <li>
+    
+    <li>
 <details
   id="2026-09-11-tour-des-chouans-2026"
   data-date="2026-09-11"
@@ -3132,8 +3202,8 @@ Ouvert aux traileurs
   </div>
 </details>
 </li>
-  
-  <li>
+    
+    <li>
 <details
   id="2026-09-11-rando-des-fées-2026"
   data-date="2026-09-11"
@@ -3221,8 +3291,8 @@ ravitaillement Cyclos, VTT, Gravel
   </div>
 </details>
 </li>
-  
-  <li>
+    
+    <li>
 <details
   id="2026-09-11-les-randoloises-2026"
   data-date="2026-09-11"
@@ -3308,8 +3378,8 @@ Nocturne Course à pied environ 15KM
   </div>
 </details>
 </li>
-  
-  <li>
+    
+    <li>
 <details
   id="2026-09-11-la-cordemaisiennne-2026"
   data-date="2026-09-11"
@@ -3394,8 +3464,8 @@ Défi VTT(nocturne + raid): 12
   </div>
 </details>
 </li>
-  
-  <li>
+    
+    <li>
 <details
   id="2026-09-12-rando-des-fées-2026"
   data-date="2026-09-12"
@@ -3483,8 +3553,8 @@ ravitaillement Cyclos, VTT, Gravel
   </div>
 </details>
 </li>
-  
-  <li>
+    
+    <li>
 <details
   id="2026-09-12-la-pertraise-2026"
   data-date="2026-09-12"
@@ -3563,8 +3633,8 @@ ravitaillement Cyclos, VTT, Gravel
   </div>
 </details>
 </li>
-  
-  <li>
+    
+    <li>
 <details
   id="2026-09-12-rando-vtt-et-pédestres-pleucadeuc-2026"
   data-date="2026-09-12"
@@ -3650,8 +3720,8 @@ Pédestres 7 - 11 - 15 - 19
   </div>
 </details>
 </li>
-  
-  <li>
+    
+    <li>
 <details
   id="2026-09-12-défi-michel-davy-2026"
   data-date="2026-09-12"
@@ -3734,8 +3804,8 @@ Pédestres 7 - 11 - 15 - 19
   </div>
 </details>
 </li>
-  
-  <li>
+    
+    <li>
 <details
   id="2026-09-12-randonnée-cordemaisienne-2026"
   data-date="2026-09-12"
@@ -3827,8 +3897,8 @@ défi VTT(nocturne + raid)  12
   </div>
 </details>
 </li>
-  
-  <li>
+    
+    <li>
 <details
   id="2026-09-12-tour-des-chouans-2026"
   data-date="2026-09-12"
@@ -3915,8 +3985,8 @@ défi VTT(nocturne + raid)  12
   </div>
 </details>
 </li>
-  
-  <li>
+    
+    <li>
 <details
   id="2026-09-12-les-randoloises-2026"
   data-date="2026-09-12"
@@ -4006,8 +4076,8 @@ COURSE A PIED ET PEDESTRE
   </div>
 </details>
 </li>
-  
-  <li>
+    
+    <li>
 <details
   id="2026-09-13-défi-michel-davy"
   data-date="2026-09-13"
@@ -4088,8 +4158,8 @@ Randonnées Marche de 8 et 12km organisées par la Marche Hénonnaise pour 3 eur
   </div>
 </details>
 </li>
-  
-  <li>
+    
+    <li>
 <details
   id="2026-09-18-semi-nocturne-entre-marais-et-vignoble-2026"
   data-date="2026-09-18"
@@ -4180,8 +4250,8 @@ Repas chaud à l arrivée
   </div>
 </details>
 </li>
-  
-  <li>
+    
+    <li>
 <details
   id="2026-09-19-entre-marais-et-vignoble-la-28ème-2026"
   data-date="2026-09-19"
@@ -4271,8 +4341,8 @@ Nos circuits traverseront le marais et le vignoble pour vous conduire jusqu'aux 
   </div>
 </details>
 </li>
-  
-  <li>
+    
+    <li>
 <details
   id="2026-09-19-rando-des-beiles-2026"
   data-date="2026-09-19"
@@ -4367,8 +4437,8 @@ Gravel : 6 
   </div>
 </details>
 </li>
-  
-  <li>
+    
+    <li>
 <details
   id="2026-09-19-rando-la-plerinaise-2026"
   data-date="2026-09-19"
@@ -4452,8 +4522,8 @@ Gravel : 6 
   </div>
 </details>
 </li>
-  
-  <li>
+    
+    <li>
 <details
   id="2026-09-19-la-lampaulaise-2026"
   data-date="2026-09-19"
@@ -4538,8 +4608,8 @@ Les distances des différentes catégories ultérieurement
   </div>
 </details>
 </li>
-  
-  <li>
+    
+    <li>
 <details
   id="2026-09-20-les-sentiers-du-don-26ème-édition-2026"
   data-date="2026-09-20"
@@ -4623,8 +4693,8 @@ Les distances des différentes catégories ultérieurement
   </div>
 </details>
 </li>
-  
-  <li>
+    
+    <li>
 <details
   id="2026-09-20-rando-du-petit-bois-2026"
   data-date="2026-09-20"
@@ -4711,8 +4781,8 @@ Et rando pédestre , également circuit gravel.
   </div>
 </details>
 </li>
-  
-  <li>
+    
+    <li>
 <details
   id="2026-09-20-la-baie-et-rance"
   data-date="2026-09-20"
@@ -4796,8 +4866,8 @@ au choix : 45 et 60 km, avec ravitaillements tous les 15 km environ.
   </div>
 </details>
 </li>
-  
-  <li>
+    
+    <li>
 <details
   id="2026-09-25-randonnée-nocturne-val-d-ille-à-melesse-2026"
   data-date="2026-09-25"
@@ -4883,8 +4953,8 @@ Rando familiale 15 km - Inscriptions 16:00 à 16:30 - Gouter et Boisson offerte 
   </div>
 </details>
 </li>
-  
-  <li>
+    
+    <li>
 <details
   id="2026-09-25-la-castelgermanaise-2026"
   data-date="2026-09-25"
@@ -4971,8 +5041,8 @@ Randonnée le samedi de 13h30 à 19h00          le dimanche de 07h00 à 13h30
   </div>
 </details>
 </li>
-  
-  <li>
+    
+    <li>
 <details
   id="2026-09-25-la-mevennaise-2026"
   data-date="2026-09-25"
@@ -5057,8 +5127,8 @@ Randonnée le samedi de 13h30 à 19h00          le dimanche de 07h00 à 13h30
   </div>
 </details>
 </li>
-  
-  <li>
+    
+    <li>
 <details
   id="2026-09-26-rando-des-grées-2026"
   data-date="2026-09-26"
@@ -5148,8 +5218,8 @@ Randonnée le samedi de 13h30 à 19h00          le dimanche de 07h00 à 13h30
   </div>
 </details>
 </li>
-  
-  <li>
+    
+    <li>
 <details
   id="2026-09-26-randonnee-du-chapelain-2026"
   data-date="2026-09-26"
@@ -5242,8 +5312,8 @@ Lavage des vélos à disposition.
   </div>
 </details>
 </li>
-  
-  <li>
+    
+    <li>
 <details
   id="2026-09-26-la-mevennaise-2026"
   data-date="2026-09-26"
@@ -5328,8 +5398,8 @@ Lavage des vélos à disposition.
   </div>
 </details>
 </li>
-  
-  <li>
+    
+    <li>
 <details
   id="2026-10-03-tous-pour-la-vie-2026"
   data-date="2026-10-03"
@@ -5417,8 +5487,8 @@ Randonnées au profit du Centre Eugène Marquis et de l'Institut Curie pour la r
   </div>
 </details>
 </li>
-  
-  <li>
+    
+    <li>
 <details
   id="2026-10-04-tous-pour-la-vie-2026"
   data-date="2026-10-04"
@@ -5506,8 +5576,8 @@ Randonnées au profit du Centre Eugène Marquis et de l'Institut Curie pour la r
   </div>
 </details>
 </li>
-  
-  <li>
+    
+    <li>
 <details
   id="2026-10-04-la-tredionnaise-vtt-2026"
   data-date="2026-10-04"
@@ -5614,8 +5684,8 @@ Nouveauté 2026 : un circuit Gravel
   </div>
 </details>
 </li>
-  
-  <li>
+    
+    <li>
 <details
   id="2026-10-04-ronde-du-phacochére-2026"
   data-date="2026-10-04"
@@ -5701,8 +5771,8 @@ Marche 9 à 10 km,
   </div>
 </details>
 </li>
-  
-  <li>
+    
+    <li>
 <details
   id="2026-10-04-rando-vtt-gravel-marche-landehen-2026"
   data-date="2026-10-04"
@@ -5788,8 +5858,8 @@ CIRCUITS PEDESTRES : 8 - 14 km
   </div>
 </details>
 </li>
-  
-  <li>
+    
+    <li>
 <details
   id="2026-10-04-36e-randonnée-de-la-vallée-du-boël-2026"
   data-date="2026-10-04"
@@ -5873,8 +5943,8 @@ CIRCUITS PEDESTRES : 8 - 14 km
   </div>
 </details>
 </li>
-  
-  <li>
+    
+    <li>
 <details
   id="2026-10-10-randonnée-vtt-pedestre"
   data-date="2026-10-10"
@@ -5956,8 +6026,8 @@ CIRCUITS PEDESTRES : 8 - 14 km
   </div>
 </details>
 </li>
-  
-  <li>
+    
+    <li>
 <details
   id="2026-10-10-randonnée-vtt-pédestre-2026"
   data-date="2026-10-10"
@@ -6036,8 +6106,8 @@ CIRCUITS PEDESTRES : 8 - 14 km
   </div>
 </details>
 </li>
-  
-  <li>
+    
+    <li>
 <details
   id="2026-10-11-kewenn-vtt"
   data-date="2026-10-11"
@@ -6132,8 +6202,8 @@ Parking centre Leclerc
   </div>
 </details>
 </li>
-  
-  <li>
+    
+    <li>
 <details
   id="2026-10-11-moulins-et-marais-2026"
   data-date="2026-10-11"
@@ -6221,8 +6291,8 @@ TARIF INSCRIPTION MARCHE 6 
   </div>
 </details>
 </li>
-  
-  <li>
+    
+    <li>
 <details
   id="2026-10-11-randonnée-des-chataignes-2026"
   data-date="2026-10-11"
@@ -6307,8 +6377,8 @@ TARIF INSCRIPTION MARCHE 6 
   </div>
 </details>
 </li>
-  
-  <li>
+    
+    <li>
 <details
   id="2026-10-11-randodes-deux-clochers-2026"
   data-date="2026-10-11"
@@ -6396,8 +6466,8 @@ Gravel en cours de création
   </div>
 </details>
 </li>
-  
-  <li>
+    
+    <li>
 <details
   id="2026-10-11-la-rochespoir-2026"
   data-date="2026-10-11"
@@ -6481,8 +6551,8 @@ Gravel en cours de création
   </div>
 </details>
 </li>
-  
-  <li>
+    
+    <li>
 <details
   id="2026-10-18-la-lou-anne-2026"
   data-date="2026-10-18"
@@ -6569,8 +6639,8 @@ rando kids encadrée pour les plus jeunes
   </div>
 </details>
 </li>
-  
-  <li>
+    
+    <li>
 <details
   id="2026-10-18-la-visnonia-26ème-édition-2026"
   data-date="2026-10-18"
@@ -6668,8 +6738,8 @@ MARCHES : 5
   </div>
 </details>
 </li>
-  
-  <li>
+    
+    <li>
 <details
   id="2026-10-18-guip-ride-2026"
   data-date="2026-10-18"
@@ -6753,8 +6823,8 @@ MARCHES : 5
   </div>
 </details>
 </li>
-  
-  <li>
+    
+    <li>
 <details
   id="2026-11-08-14ème-rando-de-l-aff-en-broceliande-2026"
   data-date="2026-11-08"
@@ -6838,8 +6908,8 @@ MARCHES : 5
   </div>
 </details>
 </li>
-  
-  <li>
+    
+    <li>
 <details
   id="2026-11-08-la-plouz-argoat-vtt-et-gravel-2026"
   data-date="2026-11-08"
@@ -6921,8 +6991,8 @@ MARCHES : 5
   </div>
 </details>
 </li>
-  
-  <li>
+    
+    <li>
 <details
   id="2026-11-08-15ème-rando-des-lutins-2026"
   data-date="2026-11-08"
@@ -7010,8 +7080,8 @@ De nombreux lots au tirage au sort
   </div>
 </details>
 </li>
-  
-  <li>
+    
+    <li>
 <details
   id="2026-11-15-randonnée-des-vallées-2026"
   data-date="2026-11-15"
@@ -7099,8 +7169,8 @@ Circuits gravel 60km & 80km
   </div>
 </details>
 </li>
-  
-  <li>
+    
+    <li>
 <details
   id="2026-11-15-la-scorff-vtt-2026"
   data-date="2026-11-15"
@@ -7186,8 +7256,8 @@ Circuits gravel 60km & 80km
   </div>
 </details>
 </li>
-  
-  <li>
+    
+    <li>
 <details
   id="2026-11-22-randonnée-des-chocards-2026"
   data-date="2026-11-22"
@@ -7271,8 +7341,8 @@ Circuits gravel 60km & 80km
   </div>
 </details>
 </li>
-  
-  <li>
+    
+    <li>
 <details
   id="2026-12-04-rando-pédestre-et-cyclos-vtt-de-st-nicolas-de-redon"
   data-date="2026-12-04"
@@ -7369,8 +7439,8 @@ Pour les moins de 12 ans : 2 euros.
   </div>
 </details>
 </li>
-  
-  <li>
+    
+    <li>
 <details
   id="2026-12-04-38ème-randonnée-du-gesvres"
   data-date="2026-12-04"
@@ -7460,8 +7530,8 @@ Inscription en ligne sur Helloasso ou sur place le jour de la Rando. Privilégie
   </div>
 </details>
 </li>
-  
-  <li>
+    
+    <li>
 <details
   id="2027-05-02-rando-de-l-oyon-2027"
   data-date="2027-05-02"
@@ -7545,73 +7615,324 @@ Inscription en ligne sur Helloasso ou sur place le jour de la Rando. Privilégie
   </div>
 </details>
 </li>
-  
-</ul>
+    
+  </ul>
 
-<div class="calendar__load-more">
-  <button id="load-more" class="btn btn--secondary" hidden>Voir +</button>
-</div>
+  <div class="calendar__load-more">
+    <button id="load-more" class="btn btn--secondary" hidden>Voir +</button>
+  </div>
+</section>
+
+<!-- Bloc newsletter inline : capture email owned.
+     Promesse volontairement UTILITAIRE (« le calendrier, chaque mois »), pas
+     éditoriale (« suis mes articles ») : les visiteurs de la home viennent pour
+     le calendrier, pas pour l'auteur — leur bouton « follow » est une alerte,
+     pas un abonnement à quelqu'un. La v1 (Sendinblue, 2018-2024) promettait déjà
+     exactement ça et avait capté 1 000-2 000 inscrits ; elle est morte de n'avoir
+     rien eu à vendre au bout, pas d'un défaut de capture. Ne pas rediluer cette
+     promesse dans un « et mes articles ».
+     Formulaire HTML natif qui POST directement vers Kit (form dédié 0f9b5b248a,
+     endpoint 9677378). Volontairement SANS le script d'embed Kit : celui-ci
+     charge Google reCAPTCHA + écrit un identifiant persistant (localStorage
+     "ckid") + POST un "formvisit" au chargement — ce qui rendrait faux le
+     « aucun cookie ni traceur » de /terms/legals.html sur 98 % du trafic.
+     Ici : zéro script tiers, zéro cookie, zéro traceur.
+     Anti-spam = double opt-in Kit (l'inscription n'est effective qu'après
+     confirmation par email). -->
+<section
+  class="newsletter-inline"
+  id="newsletter"
+  aria-labelledby="newsletter-title"
+>
+  <h2 class="newsletter-inline__title" id="newsletter-title">
+    Ne rate plus une rando
+  </h2>
+  <p class="newsletter-inline__text">
+    Chaque mois, le calendrier des nouvelles randos VTT de Bretagne dans ta
+    boîte mail. Rien d'autre, désabonnement en un clic.
+  </p>
+  <form
+    class="newsletter-inline__form"
+    action="https://app.kit.com/forms/9677378/subscriptions"
+    method="post"
+  >
+    <label class="u-sr-only" for="newsletter-email">
+      Votre adresse email
+    </label>
+    <input
+      class="newsletter-inline__input"
+      id="newsletter-email"
+      type="email"
+      name="email_address"
+      placeholder="votre@email.fr"
+      autocomplete="email"
+      required
+    />
+    <button type="submit" class="btn btn--primary">S'abonner</button>
+  </form>
+</section>
+
 
 <section
-  class="latest-post"
-  id="latest-post"
-  aria-label="Dernier article du blog"
-  hidden
+  class="organizer-callout"
+  aria-label="Information pour les organisateurs"
 >
-  <h2 class="latest-post__title">Le dernier article du blog</h2>
-  <a class="latest-post__card" id="latest-post-link" href="#" rel="noopener">
-    <span class="latest-post__kicker">nicolasjouanno.com</span>
-    <span class="latest-post__heading" id="latest-post-heading"></span>
-    <time class="latest-post__date" id="latest-post-date"></time>
+  <details class="organizer-callout__details">
+    <summary class="organizer-callout__summary">
+      Organisateur ? Publiez votre rando sur le calendrier
+    </summary>
+    <p class="organizer-callout__text">
+      Le calendrier est alimenté par les clubs et organisateurs bretons. Publiez
+      votre rando gratuitement — visible par les vététistes qui cherchent où
+      rouler ce week-end.
+    </p>
+  </details>
+  <a class="btn btn--outline" href="/calendrier/ajouter.html">
+    Publier ma rando
   </a>
-  <p class="latest-post__subscribe">
-    <a class="latest-post__subscribe-link" href="/go/newsletter/">
-      Être notifié des prochains articles &rarr;
-    </a>
+  <ul class="organizer-callout__list">
+    <li>12 000 vététistes bretons consultent le calendrier chaque mois.</li>
+    <li>Publication gratuite, votre rando en ligne en 2 minutes.</li>
+    <li>Touchez les vététistes au-delà de votre cercle Facebook et club.</li>
+  </ul>
+</section>
+
+<!-- Derniers articles nicolasjouanno.com — façon posts d'un profil social.
+     Les données viennent de _data/posts.json, généré AU BUILD par
+     scripts/fetch-posts.mjs (pas de fetch côté client : pas de CORS, pas
+     d'échec silencieux, contenu indexable). Rafraîchi par le rebuild
+     quotidien (cron github-pages 05:30 UTC).
+     L'avatar ici est le VISAGE de Nicolas (≠ logo vtt.bzh de la bande profil) :
+     c'est lui qui signe ces articles, pas le calendrier.
+
+     Proportions calquées sur X : auteur, pseudo, date, titre et chapô sont
+     TOUS à la taille du corps de texte. Seuls la graisse et la couleur
+     hiérarchisent — rien n'écrase le reste, la liste reste dense et lisible.
+
+     Titre en <strong> (pas de hN) : ces cartes ne sont pas des sections de la
+     page, elles ne doivent pas polluer le plan de titres du calendrier.
+
+     Deux liens par carte pointent vers le même article (le titre + « Lire la
+     suite »). « Lire la suite », hors contexte, ne dit pas où il mène :
+     aria-describedby le rattache au titre, donc un lecteur d'écran annonce
+     « Lire la suite, lien, <titre de l'article> » (WCAG 2.4.4). -->
+ 
+<section class="posts" id="articles" aria-labelledby="posts-title">
+  <h2 class="posts__title" id="posts-title">Derniers articles</h2>
+  <ul class="posts__list">
+    
+    <li class="post-card">
+      <img
+        class="post-card__avatar"
+        src="https://www.nicolasjouanno.com/images/nicolas-jouanno.webp"
+        alt=""
+        width="40"
+        height="40"
+        loading="lazy"
+      />
+      <div class="post-card__body">
+        <p class="post-card__meta">
+          
+          <span class="post-card__author">Nicolas</span>
+          <span class="post-card__handle">@byNicolasJD</span>
+          
+          <span class="post-card__sep" aria-hidden="true">·</span>
+             
+          <time class="post-card__date" datetime="2026-07-10">
+            3j
+            <span class="u-sr-only">— publié le 10 juillet 2026</span>
+          </time>
+          
+        </p>
+
+        <strong class="post-card__title">
+          <a
+            class="post-card__link"
+            href="https://www.nicolasjouanno.com/jai-tue-mon-saas-reconstruit-en-agent-ia.html?utm_source=vtt-bzh&utm_medium=site&utm_campaign=home-card"
+            target="_blank"
+            rel="noopener"
+          >
+            <span id="post-title-1">J'ai tué mon SaaS. Je l'ai reconstruit comme agent IA.</span>
+            <span class="u-sr-only"> (nouvelle fenêtre)</span>
+          </a>
+        </strong>
+
+        
+        <p class="post-card__excerpt">On commence à appeler ça le SaaSpocalypse.</p>
+        
+
+        <p class="post-card__actions">
+          <a
+            class="post-card__more"
+            href="https://www.nicolasjouanno.com/jai-tue-mon-saas-reconstruit-en-agent-ia.html?utm_source=vtt-bzh&utm_medium=site&utm_campaign=home-card"
+            target="_blank"
+            rel="noopener"
+            aria-describedby="post-title-1"
+          >
+            Lire la suite<span class="u-sr-only"> (nouvelle fenêtre)</span>
+          </a>
+        </p>
+      </div>
+    </li>
+    
+    <li class="post-card">
+      <img
+        class="post-card__avatar"
+        src="https://www.nicolasjouanno.com/images/nicolas-jouanno.webp"
+        alt=""
+        width="40"
+        height="40"
+        loading="lazy"
+      />
+      <div class="post-card__body">
+        <p class="post-card__meta">
+          
+          <span class="post-card__author">Nicolas</span>
+          <span class="post-card__handle">@byNicolasJD</span>
+          
+          <span class="post-card__sep" aria-hidden="true">·</span>
+             
+          <time class="post-card__date" datetime="2026-06-16">
+            27j
+            <span class="u-sr-only">— publié le 16 juin 2026</span>
+          </time>
+          
+        </p>
+
+        <strong class="post-card__title">
+          <a
+            class="post-card__link"
+            href="https://www.nicolasjouanno.com/premier-10km-champion-vs-plaisir.html?utm_source=vtt-bzh&utm_medium=site&utm_campaign=home-card"
+            target="_blank"
+            rel="noopener"
+          >
+            <span id="post-title-2">Premier 10 km : la méthode d'un champion, le contre-pied d'un coureur par plaisir</span>
+            <span class="u-sr-only"> (nouvelle fenêtre)</span>
+          </a>
+        </strong>
+
+        
+        <p class="post-card__excerpt">On me demande parfois comment « se mettre à la course » et boucler un premier 10 km. J’ai deux aveux et une bonne nouvelle. Aveu n°1 : je n’ai jamais…</p>
+        
+
+        <p class="post-card__actions">
+          <a
+            class="post-card__more"
+            href="https://www.nicolasjouanno.com/premier-10km-champion-vs-plaisir.html?utm_source=vtt-bzh&utm_medium=site&utm_campaign=home-card"
+            target="_blank"
+            rel="noopener"
+            aria-describedby="post-title-2"
+          >
+            Lire la suite<span class="u-sr-only"> (nouvelle fenêtre)</span>
+          </a>
+        </p>
+      </div>
+    </li>
+    
+    <li class="post-card">
+      <img
+        class="post-card__avatar"
+        src="https://www.nicolasjouanno.com/images/nicolas-jouanno.webp"
+        alt=""
+        width="40"
+        height="40"
+        loading="lazy"
+      />
+      <div class="post-card__body">
+        <p class="post-card__meta">
+          
+          <span class="post-card__author">Nicolas</span>
+          <span class="post-card__handle">@byNicolasJD</span>
+          
+          <span class="post-card__sep" aria-hidden="true">·</span>
+             
+          <time class="post-card__date" datetime="2026-06-09">
+            34j
+            <span class="u-sr-only">— publié le 9 juin 2026</span>
+          </time>
+          
+        </p>
+
+        <strong class="post-card__title">
+          <a
+            class="post-card__link"
+            href="https://www.nicolasjouanno.com/sans-gluten-sport-endurance-velo-coeliaque.html?utm_source=vtt-bzh&utm_medium=site&utm_campaign=home-card"
+            target="_blank"
+            rel="noopener"
+          >
+            <span id="post-title-3">Sans gluten et sport d'endurance : ce que le vélo pro et la maladie cœliaque m'ont appris</span>
+            <span class="u-sr-only"> (nouvelle fenêtre)</span>
+          </a>
+        </strong>
+
+        
+        <p class="post-card__excerpt">J’ai vécu deux rapports très différents à l’assiette. Pendant mes années de cycliste professionnel, tout tournait autour du carburant : combien de…</p>
+        
+
+        <p class="post-card__actions">
+          <a
+            class="post-card__more"
+            href="https://www.nicolasjouanno.com/sans-gluten-sport-endurance-velo-coeliaque.html?utm_source=vtt-bzh&utm_medium=site&utm_campaign=home-card"
+            target="_blank"
+            rel="noopener"
+            aria-describedby="post-title-3"
+          >
+            Lire la suite<span class="u-sr-only"> (nouvelle fenêtre)</span>
+          </a>
+        </p>
+      </div>
+    </li>
+    
+  </ul>
+  <!-- Ce lien réutilise .post-card__more, et NON .profile-header__link : ce
+       dernier porte `white-space: nowrap` (justifié pour les liens courts de la
+       bio, côte à côte) — ici il faisait déborder la page de 17 px sur mobile. -->
+  <p class="posts__more">
+    <a
+      class="post-card__more"
+      href="https://www.nicolasjouanno.com/results.html?utm_source=vtt-bzh&utm_medium=site&utm_campaign=author"
+      target="_blank"
+      rel="noopener"
+      >&rarr; Tous les articles sur nicolasjouanno.com<span class="u-sr-only">
+        (nouvelle fenêtre)</span
+      ></a
+    >
   </p>
 </section>
 
+
+
 <script>
+  // Onglets : souligne celui dont la section est à l'écran (scroll-spy).
+  // Maison, sans dépendance ni traceur. Dégradation propre : sans JS, les
+  // onglets restent de simples ancres fonctionnelles.
   (function () {
-    var FEED = "https://www.nicolasjouanno.com/feed.xml";
-    var UTM = "utm_source=vtt-bzh&utm_medium=site&utm_campaign=home-card";
-    fetch(FEED)
-      .then(function (r) {
-        return r.ok ? r.text() : Promise.reject(r.status);
-      })
-      .then(function (xml) {
-        var doc = new DOMParser().parseFromString(xml, "application/xml");
-        if (doc.querySelector("parsererror")) return;
-        var entry = doc.querySelector("entry, item");
-        if (!entry) return;
-        var titleEl = entry.querySelector("title");
-        var title = titleEl ? titleEl.textContent.trim() : "";
-        var linkEl = entry.querySelector("link");
-        var url = linkEl
-          ? (linkEl.getAttribute("href") || linkEl.textContent || "").trim()
-          : "";
-        if (!title || !url) return;
-        var dateEl = entry.querySelector("published, pubDate, updated");
-        var sep = url.indexOf("?") > -1 ? "&" : "?";
-        document.getElementById("latest-post-heading").textContent = title;
-        document.getElementById("latest-post-link").href = url + sep + UTM;
-        if (dateEl && dateEl.textContent) {
-          var d = new Date(dateEl.textContent.trim());
-          if (!isNaN(d.getTime())) {
-            var t = document.getElementById("latest-post-date");
-            t.dateTime = d.toISOString();
-            t.textContent = d.toLocaleDateString("fr-FR", {
-              year: "numeric",
-              month: "long",
-              day: "numeric",
-            });
-          }
-        }
-        document.getElementById("latest-post").hidden = false;
-      })
-      .catch(function () {
-        /* échec silencieux : la card reste masquée */
-      });
+    var tabs = document.querySelectorAll(".tabs__tab");
+    if (!tabs.length || !("IntersectionObserver" in window)) return;
+
+    var byId = {};
+    tabs.forEach(function (tab) {
+      byId[tab.getAttribute("href").slice(1)] = tab;
+    });
+
+    var observer = new IntersectionObserver(
+      function (entries) {
+        entries.forEach(function (entry) {
+          if (!entry.isIntersecting) return;
+          tabs.forEach(function (t) {
+            t.classList.remove("is-active");
+          });
+          var active = byId[entry.target.id];
+          if (active) active.classList.add("is-active");
+        });
+      },
+      { rootMargin: "-30% 0px -60% 0px" },
+    );
+
+    Object.keys(byId).forEach(function (id) {
+      var section = document.getElementById(id);
+      if (section) observer.observe(section);
+    });
   })();
 </script>
 
@@ -7619,41 +7940,6 @@ Inscription en ligne sur Helloasso ou sur place le jour de la Rando. Privilégie
 
     <!-- Footer -->
     <footer class="site-footer container">
-      
-      <div class="author-box">
-        <img
-          src="https://www.nicolasjouanno.com/images/icons/avatar.svg"
-          alt="Nicolas JOUANNO DANIEL"
-          class="author-box__avatar"
-        />
-        <p class="author-box__bio">
-          Par Nicolas JOUANNO DANIEL, ex-cycliste professionnel (5 Championnats de France), pratiquant VTT en Bretagne. Je partage mes réflexions sur le vélo et le sport outdoor sur
-          <a href="https://www.nicolasjouanno.com/results.html?utm_source=vtt-bzh&utm_medium=site&utm_campaign=author" target="_blank" rel="noopener"
-            >nicolasjouanno.com</a
-          >. Pontivy, Bretagne. Je maintiens vtt.bzh bénévolement
-          depuis 2013.
-        </p>
-        <p class="author-box__links">
-          Vous pouvez
-          <a href="/calendrier/ajouter.html">ajouter un évènement</a>,
-          <a
-            href="https://fr.tipeee.com/bynicolasjd?utm_source=vtt-bzh&amp;utm_medium=site&amp;utm_campaign=soutien"
-            target="_blank"
-            rel="noopener"
-            data-track="support-click"
-            data-support-provider="tipeee"
-            data-support-placement="author-footer"
-            >soutenir le projet sur Tipeee</a
-          >,
-          <a href="/sponsoring.html" data-track="sponsoring-click"
-            >devenir partenaire</a
-          >
-          ou
-          <a href="mailto:nicolas@vtt.bzh">me contacter</a>.
-        </p>
-      </div>
-      
-
       <p
         class="site-footer__signature"
         itemscope
@@ -7663,21 +7949,17 @@ Inscription en ligne sur Helloasso ou sur place le jour de la Rando. Privilégie
           >Calendrier Rando VTT Bretagne 2026</a
         >
         &copy;
-        <span itemprop="name"><a href="/about.html">vtt.bzh</a></span
+        <span itemprop="name"
+          ><a href="https://www.vtt.bzh">vtt.bzh</a></span
         >, 2013 - 2026
         <a href="/go/home/">Nicolas Jouanno</a> •
+        <a href="/calendrier/ajouter.html">Ajouter une rando</a> •
+        <a href="mailto:nicolas@vtt.bzh">Me contacter</a> •
         <a href="/terms/legals.html">Mentions légales</a>
       </p>
     </footer>
   </body>
   <script type="module" src="/assets/js/calendar.js"></script>
-  <script
-    src="/assets/js/support-tracking.js"
-    defer
-    data-supabase-url="https://lbqjpwsifmmzxafkbcvz.supabase.co"
-    data-supabase-key="sb_publishable_RqhVTG3FPvkoqEenIXV3hA_NodabkPY"
-    data-support-events-table="support_events"
-  ></script>
   <!-- Cloudflare Web Analytics -->
   <script
     defer

@@ -49,8 +49,8 @@
     <!-- twitter -->
     <meta name="twitter:card" content="summary_large_image" />
     
-    <meta name="twitter:site" content="@bynicolasjd" />
-    <meta name="twitter:creator" content="@bynicolasjd" />
+    <meta name="twitter:site" content="@byNicolasJD" />
+    <meta name="twitter:creator" content="@byNicolasJD" />
     
     <meta name="twitter:title" content="Mentions légales et politique de confidentialité" />
     <meta name="twitter:description" content="Mentions légales, politique de confidentialité et gestion des cookies pour vtt.bzh." />
@@ -108,27 +108,14 @@
       </symbol>
     </svg>
 
-    <!-- Header -->
+    <!-- Header sticky, fin — façon barre de profil social : titre + action -->
     <header class="site-header">
       <div class="container">
         <nav class="site-nav">
-          <a href="https://www.vtt.bzh" class="site-nav__brand">
-            <img
-              src="https://www.vtt.bzh/assets/images/logo.png"
-              alt="vtt.bzh - Calendrier Rando VTT Bretagne"
-              class="site-nav__logo"
-            />
-            <span class="site-nav__title">VTT.bzh</span>
-          </a>
-          <div class="site-nav__actions">
-            <a
-              href="https://www.nicolasjouanno.com/results.html?utm_source=vtt-bzh&amp;utm_medium=site&amp;utm_campaign=author"
-              class="btn btn--primary"
-              target="_blank"
-              rel="noopener"
-              >Me suivre</a
-            >
-          </div>
+          <a href="https://www.vtt.bzh" class="site-nav__title">vtt.bzh</a>
+          <a href="https://www.vtt.bzh/#newsletter" class="btn btn--primary btn--sm"
+            >S'abonner</a
+          >
         </nav>
       </div>
     </header>
@@ -136,7 +123,7 @@
     <main id="main-content" class="site-main container" tabindex="-1">
       <h1 id="mentions-légales-et-politique-de-confidentialité">Mentions légales et politique de confidentialité</h1>
 
-<p><em>Dernière mise à jour : 2026-05-11</em></p>
+<p><em>Dernière mise à jour : 2026-07-13</em></p>
 
 <h2 id="1-éditeur-du-site">1. Éditeur du site</h2>
 
@@ -195,11 +182,11 @@
       <td>Durée fixée par Cloudflare (voir leur politique)</td>
     </tr>
     <tr>
-      <td>Clics sortants vers Tipeee (provider, placement, URL, chemin de page)</td>
-      <td>Script <code class="language-plaintext highlighter-rouge">support-tracking.js</code> côté client</td>
-      <td>Mesurer l’efficacité des CTAs de soutien</td>
-      <td>Intérêt légitime (données anonymes, aucun identifiant utilisateur)</td>
-      <td>À définir — voir T-109</td>
+      <td>Adresse email (et prénom si vous le renseignez)</td>
+      <td>Formulaire d’abonnement « Suis les randos bretonnes » (Kit)</td>
+      <td>Vous envoyer les nouvelles randos et mes publications</td>
+      <td>Consentement explicite (inscription volontaire, désabonnement en un clic dans chaque email)</td>
+      <td>Jusqu’à votre désabonnement, puis suppression</td>
     </tr>
     <tr>
       <td>Logs techniques</td>
@@ -214,9 +201,12 @@
 <h3 id="42-destinataires">4.2 Destinataires</h3>
 
 <ul>
-  <li>Le <strong>public</strong> (les informations soumises via le formulaire sont destinées à être publiées sur le site).</li>
-  <li>L’<strong>éditeur du site</strong>, à des fins de modération, via une notification Telegram interne. Aucun autre destinataire n’a accès aux données.</li>
+  <li>Le <strong>public</strong> (les informations soumises via le formulaire du calendrier sont destinées à être publiées sur le site).</li>
+  <li>L’<strong>éditeur du site</strong>, à des fins de modération, via une notification Telegram interne.</li>
+  <li><strong>Kit</strong> (ConvertKit, LLC — États-Unis), sous-traitant qui héberge la liste d’abonnés et achemine les emails, <strong>uniquement si vous vous inscrivez à la newsletter</strong>. Transfert hors UE encadré par les clauses contractuelles types. Vous pouvez vous désabonner à tout moment via le lien présent dans chaque email.</li>
 </ul>
+
+<p>Aucun autre destinataire n’a accès aux données.</p>
 
 <h3 id="43-vos-droits">4.3 Vos droits</h3>
 
@@ -250,6 +240,8 @@
 
 <p>Le seul outil de mesure d’audience embarqué est <strong>Cloudflare Web Analytics</strong>, qui est explicitement conçu pour ne pas déposer de cookie ni stocker votre adresse IP. Les statistiques générées sont strictement anonymisées et agrégées (pages vues, navigateurs, pays). Selon la doctrine CNIL, ces outils privacy-first n’imposent pas de bandeau de consentement.</p>
 
+<p>Le <strong>formulaire d’abonnement</strong> est un formulaire HTML simple : il <strong>ne charge aucun script tiers</strong> et ne dépose ni cookie ni identifiant sur votre terminal. Votre adresse email n’est transmise à Kit qu’au moment précis où vous cliquez sur « S’abonner ». (Le script d’intégration fourni par Kit — qui aurait chargé Google reCAPTCHA et écrit un identifiant persistant — a été délibérément écarté pour cette raison.)</p>
+
 <p>Si votre navigateur signale un cookie déposé par <code class="language-plaintext highlighter-rouge">vtt.bzh</code>, c’est probablement un cookie technique de votre fournisseur de réseau ou un cookie tiers déposé par un site externe vers lequel vous avez cliqué (HelloAsso, sites de clubs, etc.) — l’éditeur n’en est pas responsable.</p>
 
 <h2 id="6-propriété-intellectuelle">6. Propriété intellectuelle</h2>
@@ -274,41 +266,6 @@
 
     <!-- Footer -->
     <footer class="site-footer container">
-      
-      <div class="author-box">
-        <img
-          src="https://www.nicolasjouanno.com/images/icons/avatar.svg"
-          alt="Nicolas JOUANNO DANIEL"
-          class="author-box__avatar"
-        />
-        <p class="author-box__bio">
-          Par Nicolas JOUANNO DANIEL, ex-cycliste professionnel (5 Championnats de France), pratiquant VTT en Bretagne. Je partage mes réflexions sur le vélo et le sport outdoor sur
-          <a href="https://www.nicolasjouanno.com/results.html?utm_source=vtt-bzh&utm_medium=site&utm_campaign=author" target="_blank" rel="noopener"
-            >nicolasjouanno.com</a
-          >. Pontivy, Bretagne. Je maintiens vtt.bzh bénévolement
-          depuis 2013.
-        </p>
-        <p class="author-box__links">
-          Vous pouvez
-          <a href="/calendrier/ajouter.html">ajouter un évènement</a>,
-          <a
-            href="https://fr.tipeee.com/bynicolasjd?utm_source=vtt-bzh&amp;utm_medium=site&amp;utm_campaign=soutien"
-            target="_blank"
-            rel="noopener"
-            data-track="support-click"
-            data-support-provider="tipeee"
-            data-support-placement="author-footer"
-            >soutenir le projet sur Tipeee</a
-          >,
-          <a href="/sponsoring.html" data-track="sponsoring-click"
-            >devenir partenaire</a
-          >
-          ou
-          <a href="mailto:nicolas@vtt.bzh">me contacter</a>.
-        </p>
-      </div>
-      
-
       <p
         class="site-footer__signature"
         itemscope
@@ -318,21 +275,17 @@
           >Calendrier Rando VTT Bretagne 2026</a
         >
         &copy;
-        <span itemprop="name"><a href="/about.html">vtt.bzh</a></span
+        <span itemprop="name"
+          ><a href="https://www.vtt.bzh">vtt.bzh</a></span
         >, 2013 - 2026
         <a href="/go/home/">Nicolas Jouanno</a> •
+        <a href="/calendrier/ajouter.html">Ajouter une rando</a> •
+        <a href="mailto:nicolas@vtt.bzh">Me contacter</a> •
         <a href="/terms/legals.html">Mentions légales</a>
       </p>
     </footer>
   </body>
   <script type="module" src="/assets/js/calendar.js"></script>
-  <script
-    src="/assets/js/support-tracking.js"
-    defer
-    data-supabase-url="https://lbqjpwsifmmzxafkbcvz.supabase.co"
-    data-supabase-key="sb_publishable_RqhVTG3FPvkoqEenIXV3hA_NodabkPY"
-    data-support-events-table="support_events"
-  ></script>
   <!-- Cloudflare Web Analytics -->
   <script
     defer

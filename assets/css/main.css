@@ -28,6 +28,8 @@
   --b-size-50: 5rem; /*  50px */
   --b-size-64: 6.4rem; /*  64px */
   --b-container-max: 114rem;
+  --b-header-h: 4.8rem; /* hauteur du header sticky — offset des onglets/ancres */
+  --b-tabs-h: 4.4rem; /* hauteur de la barre d'onglets sticky */
   --b-shadow: 0 var(--b-size-2) var(--b-size-4) rgb(0 0 0 / 7.5%);
   --b-border-color: #dee2e6;
   --b-border-radius: var(--b-size-4);
@@ -44,7 +46,9 @@
  */
 
 html {
+  height: 100%;
   font-size: 62.5%;
+  background-color: var(--b-color-white);
 }
 
 /* ==========================================================================
@@ -92,13 +96,13 @@ img {
   font-display: swap;
 }
 
-html,
+/* min-height sur <body>, surtout pas height : `height: 100%` bornait sa boîte à
+   un écran de haut alors que le contenu déborde bien au-delà. Or un élément
+   `position: sticky` ne colle que tant que SON PARENT est à l'écran — le header
+   sticky décrochait donc après ~1 écran de scroll. */
 body {
-  height: 100%;
+  min-height: 100%;
   background-color: var(--b-color-white);
-}
-
-body {
   font-size: 1.6rem;
   color: var(--b-color-grey-dark);
   font-family: var(--b-font-body);
@@ -231,12 +235,18 @@ button {
   padding: 0 var(--b-size-16);
 }
 
+/* Header sticky et fin (façon barre de profil social).
+   --b-header-h sert d'offset au sticky des onglets et aux ancres. */
 .site-header {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background: var(--b-color-white);
   box-shadow: var(--b-shadow);
 }
 
 .site-main {
-  margin-top: var(--b-size-32);
+  margin-top: var(--b-size-24);
 }
 
 .site-footer {
@@ -257,33 +267,21 @@ button {
   align-items: center;
   justify-content: space-between;
   gap: var(--b-size-12);
-  flex-wrap: wrap;
-  padding: var(--b-size-16) 0;
-}
-
-.site-nav__brand {
-  display: flex;
-  align-items: center;
-  text-decoration: none;
-  color: inherit;
-}
-
-.site-nav__logo {
-  max-height: var(--b-size-50);
+  min-height: var(--b-header-h);
 }
 
 .site-nav__title {
+  font-family: var(--b-font-heading);
   font-size: var(--b-size-24);
-  font-weight: bold;
+  font-weight: 700;
+  line-height: 1;
   color: var(--b-color-grey-dark);
-  margin-left: var(--b-size-8);
+  text-decoration: none;
 }
 
-.site-nav__actions {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: flex-end;
-  gap: var(--b-size-8);
+.site-nav__title:hover,
+.site-nav__title:focus-visible {
+  color: var(--b-color-primary);
 }
 
 /* ==========================================================================
@@ -342,6 +340,12 @@ button {
   border-color: transparent;
 }
 
+/* Compact — pour le header sticky */
+.btn--sm {
+  padding: var(--b-size-4) var(--b-size-16);
+  font-size: var(--b-size-16);
+}
+
 /* ==========================================================================
    Badge
    ========================================================================== */
@@ -362,54 +366,6 @@ button {
 .badge--secondary {
   background: var(--b-color-secondary);
   color: var(--b-color-white);
-}
-
-/* ==========================================================================
-   Author
-   ========================================================================== */
-
-.author-box {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background: var(--b-color-grey-light);
-  box-shadow: var(--b-shadow);
-  padding: var(--b-size-16);
-  margin-bottom: var(--b-size-16);
-}
-
-@media (width >= 768px) {
-  .author-box {
-    flex-flow: row wrap;
-    align-items: center;
-  }
-}
-
-.author-box__avatar {
-  max-width: 10rem;
-}
-
-@media (width >= 768px) {
-  .author-box__avatar {
-    max-width: 15rem;
-  }
-}
-
-.author-box__bio {
-  flex: 1;
-  padding: var(--b-size-8) var(--b-size-16);
-  text-align: center;
-}
-
-@media (width >= 768px) {
-  .author-box__bio {
-    text-align: left;
-  }
-}
-
-.author-box__links {
-  width: 100%;
-  padding: 0 var(--b-size-16);
 }
 
 /* ==========================================================================
@@ -516,10 +472,9 @@ button {
    Search filter
    ========================================================================== */
 
-.search-filter {
-  margin: var(--b-size-8) 0;
-}
-
+/* Le filtre est logé dans la barre sticky (.tabs) : bouton compact à droite,
+   formulaire en panneau déroulant. Coût en hauteur = 0, et il reste joignable
+   quelle que soit la profondeur de scroll dans la liste des randos. */
 .search-filter__toggle {
   list-style: none;
   cursor: pointer;
@@ -529,8 +484,24 @@ button {
   display: none;
 }
 
+/* Le panneau se cale sur .tabs (déjà `position: sticky`, donc bloc conteneur),
+   et non sur le <details> : il occupe ainsi toute la largeur de la barre sur
+   mobile — sinon les `input[type=date]`, qui ont sous WebKit/iOS une largeur
+   intrinsèque minimale et refusent de rétrécir, débordent du panneau.
+   Sur desktop, max-width + margin-left auto le ramènent à droite, compact. */
 .search-filter__form {
-  padding: var(--b-size-8) 0;
+  position: absolute;
+  top: calc(100% + var(--b-size-8));
+  right: 0;
+  left: 0;
+  z-index: 30;
+  max-width: 36rem;
+  margin-left: auto;
+  padding: var(--b-size-16);
+  border: 1px solid var(--b-border-color);
+  border-radius: var(--b-border-radius);
+  background: var(--b-color-white);
+  box-shadow: var(--b-shadow);
 }
 
 .search-filter__field {
@@ -542,10 +513,14 @@ button {
   margin-bottom: var(--b-size-4);
 }
 
+/* min-width: 0 — sans quoi la largeur intrinsèque des champs date sous WebKit
+   l'emporte sur width: 100% et fait déborder le panneau. */
 .search-filter__input,
 .search-filter__select {
   display: block;
   width: 100%;
+  min-width: 0;
+  max-width: 100%;
   padding: var(--b-size-8) var(--b-size-12);
   border: 1px solid var(--b-border-color);
   border-radius: var(--b-border-radius);
@@ -812,69 +787,355 @@ button {
   font-style: italic;
 }
 
-/* Dernier article nj.com (home, after-calendar) */
-.latest-post {
+/* ==========================================================================
+   Onglets sticky (Randos / Articles) — façon barre d'onglets de profil social
+   ========================================================================== */
+
+.tabs {
+  position: sticky;
+  top: var(--b-header-h);
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--b-size-16);
+  min-height: var(--b-tabs-h);
+  margin: var(--b-size-16) 0;
+  border-bottom: 1px solid var(--b-border-color);
+  background: var(--b-color-white);
+}
+
+/* Étiré sur toute la hauteur : le soulignement de l'onglet actif vient
+   s'aligner sur la bordure basse de la barre. */
+.tabs__nav {
+  display: flex;
+  align-self: stretch;
+  gap: var(--b-size-24);
+}
+
+.tabs__tab {
+  display: flex;
+  align-items: center;
+  padding: 0 var(--b-size-4);
+  border-bottom: var(--b-size-2) solid transparent;
+  font-family: var(--b-font-heading);
+  font-weight: 700;
+  color: #6c757d;
+  text-decoration: none;
+}
+
+.tabs__tab:hover,
+.tabs__tab:focus-visible {
+  color: var(--b-color-grey-dark);
+}
+
+.tabs__tab.is-active {
+  color: var(--b-color-primary);
+  border-bottom-color: var(--b-color-primary);
+}
+
+/* Les ancres ne doivent pas glisser sous les barres collantes */
+#events,
+#articles,
+.newsletter-inline {
+  scroll-margin-top: calc(
+    var(--b-header-h) + var(--b-tabs-h) + var(--b-size-8)
+  );
+}
+
+/* ==========================================================================
+   Cartes d'articles nj.com — façon post d'un profil social
+   ========================================================================== */
+
+.posts {
   margin: var(--b-size-32) 0 var(--b-size-24);
 }
 
-.latest-post__title {
+.posts__title {
   font-family: var(--b-font-heading);
   margin: 0 0 var(--b-size-12);
 }
 
-.latest-post__card {
-  display: block;
-  padding: var(--b-size-16) var(--b-size-24);
-  border: 1px solid var(--b-border-color);
-  border-radius: var(--b-border-radius);
-  box-shadow: var(--b-shadow);
-  background: var(--b-color-white);
+.posts__list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.posts__more {
+  margin: var(--b-size-16) 0 0;
+}
+
+/* Proportions calquées sur X : méta, titre et chapô sont TOUS à la taille du
+   corps de texte (1.6rem). Seules la graisse et la couleur hiérarchisent — un
+   titre deux fois plus gros écraserait la carte et casserait la densité du fil. */
+.post-card {
+  display: flex;
+  gap: var(--b-size-12);
+  padding: var(--b-size-16) 0;
+  border-bottom: 1px solid var(--b-border-color);
   color: var(--b-color-grey-dark);
-  text-decoration: none;
-  transition:
-    box-shadow 0.15s ease,
-    transform 0.15s ease;
+  font-size: var(--b-size-16);
+  line-height: 1.4;
 }
 
-.latest-post__card:hover,
-.latest-post__card:focus-visible {
-  box-shadow: 0 var(--b-size-4) var(--b-size-12) rgb(0 0 0 / 12%);
-  transform: translateY(calc(-1 * var(--b-size-2)));
+.post-card__avatar {
+  flex-shrink: 0;
+  width: var(--b-size-40);
+  height: var(--b-size-40);
+  border-radius: 50%;
+  object-fit: cover;
+  background: var(--b-color-grey-light);
 }
 
-.latest-post__kicker {
-  display: block;
-  font-size: var(--b-size-12);
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
+.post-card__body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--b-size-4);
+  min-width: 0;
+}
+
+.post-card__meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: var(--b-size-4);
+  margin: 0;
+}
+
+.post-card__author {
   font-weight: 700;
+}
+
+.post-card__handle,
+.post-card__sep,
+.post-card__date {
+  color: #6c757d;
+  font-weight: 400;
+}
+
+/* <strong> passé en bloc : c'est le titre de la carte, pas un hN (il ne doit
+   pas entrer dans le plan de titres de la page). */
+.post-card__title {
+  display: block;
+  font-weight: 700;
+}
+
+.post-card__link {
+  color: inherit;
+  text-decoration: none;
+}
+
+.post-card__link:hover,
+.post-card__link:focus-visible {
   color: var(--b-color-primary);
+  text-decoration: underline;
 }
 
-.latest-post__heading {
-  display: block;
-  font-family: var(--b-font-heading);
-  font-size: var(--b-size-24);
-  margin: var(--b-size-4) 0;
-}
-
-.latest-post__date {
-  display: block;
-  font-size: var(--b-size-12);
+.post-card__excerpt {
+  margin: 0;
   color: #6c757d;
 }
 
-.latest-post__subscribe {
-  margin: var(--b-size-12) 0 0;
+.post-card__actions {
+  margin: var(--b-size-4) 0 0;
 }
 
-.latest-post__subscribe-link {
+.post-card__more {
+  color: var(--b-color-primary);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.post-card__more:hover,
+.post-card__more:focus-visible {
+  text-decoration: underline;
+}
+
+/* ==========================================================================
+   Profile header (home — bande profil façon page sociale)
+   ========================================================================== */
+
+.profile-header {
+  background: var(--b-color-grey-light);
+  box-shadow: var(--b-shadow);
+  border-radius: var(--b-border-radius);
+  overflow: hidden;
+  margin: var(--b-size-16) 0 var(--b-size-24);
+}
+
+/* Cover : bandeau 3:1 façon banner de profil X */
+.profile-header__cover {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 3 / 1;
+  object-fit: cover;
+}
+
+.profile-header__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--b-size-12);
+  text-align: center;
+  padding: 0 var(--b-size-16) var(--b-size-16);
+}
+
+@media (width >= 768px) {
+  .profile-header__inner {
+    flex-direction: row;
+    align-items: flex-start;
+    text-align: left;
+    gap: var(--b-size-24);
+    padding: 0 var(--b-size-24) var(--b-size-24);
+  }
+}
+
+/* L'avatar chevauche le bas du cover (pattern X/IG) */
+.profile-header__avatar {
+  width: 8rem;
+  height: 8rem;
+  margin-top: -4rem;
+  border: var(--b-size-4) solid var(--b-color-grey-light);
+  border-radius: 50%;
+  object-fit: contain;
+  background: var(--b-color-white);
+  flex-shrink: 0;
+}
+
+.profile-header__body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--b-size-8);
+  align-items: center;
+  min-width: 0;
+}
+
+@media (width >= 768px) {
+  .profile-header__body {
+    align-items: flex-start;
+    padding-top: var(--b-size-12);
+  }
+}
+
+.profile-header__name {
+  margin: 0;
+  font-family: var(--b-font-heading);
+  font-size: var(--b-size-24);
+  font-weight: 700;
+}
+
+.profile-header__bio {
+  margin: 0;
+}
+
+.profile-header__links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--b-size-16);
+  margin: 0;
+}
+
+@media (width >= 768px) {
+  .profile-header__links {
+    justify-content: flex-start;
+  }
+}
+
+.profile-header__link {
+  white-space: nowrap;
   font-weight: 700;
   color: var(--b-color-primary);
   text-decoration: none;
 }
 
-.latest-post__subscribe-link:hover,
-.latest-post__subscribe-link:focus-visible {
+.profile-header__link:hover,
+.profile-header__link:focus-visible {
   text-decoration: underline;
+}
+
+.profile-header__stats {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--b-size-24);
+  margin: var(--b-size-4) 0;
+  padding: 0;
+  list-style: none;
+}
+
+.profile-header__stat {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.15;
+}
+
+.profile-header__stat strong {
+  font-family: var(--b-font-heading);
+  font-size: var(--b-size-24);
+  color: var(--b-color-primary);
+}
+
+.profile-header__stat span {
+  font-size: var(--b-size-12);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: #6c757d;
+}
+
+.profile-header__cta {
+  margin-top: var(--b-size-4);
+}
+
+/* ==========================================================================
+   Newsletter inline (home — capture email owned)
+   ========================================================================== */
+
+.newsletter-inline {
+  scroll-margin-top: var(--b-size-16);
+  background: var(--b-color-grey-light);
+  border-radius: var(--b-border-radius);
+  box-shadow: var(--b-shadow);
+  padding: var(--b-size-24);
+  margin: var(--b-size-32) 0 var(--b-size-24);
+  text-align: center;
+}
+
+.newsletter-inline__title {
+  font-family: var(--b-font-heading);
+  margin: 0 0 var(--b-size-8);
+}
+
+.newsletter-inline__text {
+  margin: 0 auto var(--b-size-16);
+  max-width: 52rem;
+}
+
+.newsletter-inline__form {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--b-size-8);
+  max-width: 52rem;
+  margin: 0 auto;
+}
+
+.newsletter-inline__input {
+  flex: 1 1 24rem;
+  min-width: 0;
+  padding: var(--b-size-8) var(--b-size-16);
+  border: 1px solid var(--b-border-color);
+  border-radius: 50px;
+  font-size: var(--b-size-16);
+  font-family: inherit;
+  background: var(--b-color-white);
+  color: var(--b-color-grey-dark);
+}
+
+.newsletter-inline__input:focus-visible {
+  outline: var(--b-size-2) solid var(--b-color-primary);
+  outline-offset: var(--b-size-2);
 }
