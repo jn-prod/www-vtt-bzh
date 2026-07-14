@@ -25,6 +25,8 @@
 
 import { readFileSync } from 'node:fs';
 
+import { kit, sleep, assurerTag, taguer, abonnesDuForm, alerterSiPlafondProche } from './kit-api.mjs';
+
 const { SUPABASE_ACCESS_TOKEN, SUPABASE_PROJECT_REF, KIT_API_KEY } = process.env;
 
 const FORM_ID = process.env.KIT_VISITEURS_FORM_ID ?? '9677378'; // « VTT.bzh visiteurs form »
@@ -47,8 +49,7 @@ if (!KIT_API_KEY && !SANS_ECRITURE) {
   process.exit(1);
 }
 
-const KIT_HEADERS = { 'X-Kit-Api-Key': KIT_API_KEY, 'Content-Type': 'application/json' };
-const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+// --- Données -----------------------------------------------------------------
 
 const runQuery = async (query) => {
   const res = await fetch(`https://api.supabase.com/v1/projects/${SUPABASE_PROJECT_REF}/database/query`, {
@@ -62,18 +63,6 @@ const runQuery = async (query) => {
   if (!res.ok) throw new Error(`Supabase API ${res.status}: ${await res.text()}`);
   return res.json();
 };
-
-const kit = async (path, init = {}) => {
-  const res = await fetch(`https://api.kit.com/v4${path}`, { headers: KIT_HEADERS, ...init });
-  const data = await res.json().catch(() => ({}));
-  if (!res.ok) {
-    const msg = (data.errors ?? []).join(', ') || JSON.stringify(data).slice(0, 200);
-    throw new Error(`Kit ${init.method ?? 'GET'} ${path} → ${res.status}: ${msg}`);
-  }
-  return data;
-};
-
-// --- Données -----------------------------------------------------------------
 
 /**
  * Deux listes, deux promesses distinctes :
@@ -286,32 +275,18 @@ ${SUGGESTION}
 
 // --- Kit ---------------------------------------------------------------------
 
-/** Le tag est le seul moyen de ne PAS écrire aux organisateurs et aux lecteurs nj.com. */
-const assurerTag = async () => {
-  const { tags = [] } = await kit('/tags');
-  const existant = tags.find((t) => t.name === TAG_NAME);
-  if (existant) return existant.id;
-  const { tag } = await kit('/tags', { method: 'POST', body: JSON.stringify({ name: TAG_NAME }) });
-  console.log(`[kit-newsletter] tag « ${TAG_NAME} » créé (id ${tag.id})`);
-  return tag.id;
-};
-
-/** Idempotent : Kit ignore un tag déjà posé. Pagination — la liste va grossir. */
+/**
+ * Tague les inscrits du form visiteurs. Idempotent (Kit ignore un tag déjà posé).
+ * Sans ce tag, `subscriber_filter` n'a rien à cibler et l'agenda partirait aussi aux
+ * organisateurs et aux lecteurs nj.com — cf. scripts/kit-api.mjs.
+ */
 const taguerInscrits = async (tagId) => {
-  let after = null;
-  let total = 0;
-  do {
-    const q = new URLSearchParams({ per_page: '500', ...(after ? { after } : {}) });
-    const page = await kit(`/forms/${FORM_ID}/subscribers?${q}`);
-    for (const s of page.subscribers ?? []) {
-      const id = s.subscriber?.id ?? s.id;
-      await kit(`/tags/${tagId}/subscribers/${id}`, { method: 'POST' });
-      total += 1;
-      await sleep(120); // ~500 req/min — sous la limite Kit
-    }
-    after = page.pagination?.has_next_page ? page.pagination.end_cursor : null;
-  } while (after);
-  return total;
+  const ids = await abonnesDuForm(FORM_ID);
+  for (const id of ids) {
+    await taguer(tagId, id);
+    await sleep(120); // ~500 req/min — sous la limite Kit
+  }
+  return ids.length;
 };
 
 /** Un doublon est pire qu'un oubli : on vérifie qu'aucun envoi du mois n'existe déjà. */
@@ -362,7 +337,11 @@ const main = async () => {
     return;
   }
 
-  const tagId = await assurerTag();
+  // Le plafond gratuit (1 000) se compte PAR COMPTE : les ~500 organisateurs en occupent
+  // déjà la moitié. On veut le savoir avant la facture, pas après (`D-2026-07-13-001`).
+  await alerterSiPlafondProche();
+
+  const tagId = await assurerTag(TAG_NAME);
   const nb = await taguerInscrits(tagId);
   console.log(`[kit-newsletter] ${nb} inscrit(s) tagué(s) « ${TAG_NAME} »`);
 
