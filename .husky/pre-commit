@@ -1,21 +1,23 @@
 #!/bin/sh
-# Fenêtre protégée — SYSTEM.md §22
-# Bloque les commits Lun-Ven 08:00-12:30 et 14:00-20:00 (Europe/Paris)
-# Bypass fondateur : git commit --no-verify (+ consigner dans daily log)
 
-PARIS_HOUR=$(TZ=Europe/Paris date +%H%M)
-PARIS_DOW=$(TZ=Europe/Paris date +%u)
-
-if [ "$PARIS_DOW" -le 5 ]; then
-  if { [ "$PARIS_HOUR" -ge 800 ] && [ "$PARIS_HOUR" -lt 1230 ]; } || \
-     { [ "$PARIS_HOUR" -ge 1400 ] && [ "$PARIS_HOUR" -lt 2000 ]; }; then
+# --- Fenetre protegee (SYSTEM.md 22) - SOURCE UNIQUE (corp-ai) ---
+# La regle vivait recopiee dans chaque repo, et les copies avaient DIVERGE (corp-ai
+# bloquait jusqu'a 13:00, vtt.bzh jusqu'a 12:30 - D-2026-06-30-001 dit 13:00).
+# Elle connait desormais les JOURS FERIES (D-2026-07-14-001) : la regle protege d'une
+# surveillance PROFESSIONNELLE, or un jour ferie le fondateur est off. Un garde-fou qui
+# crie a tort apprend a etre ignore - et c'est ainsi qu'on prend l'habitude du
+# --no-verify, qui desarme AUSSI la privacy, l'hygiene et les harnais.
+# corp-ai injoignable => on REFUSE (fail-closed). Bypass fondateur : --no-verify.
+FENETRE="${CORP_AI_GATE_DIR:-$HOME/corp-ai/tools/scripts}/fenetre-protegee.sh"
+if [ -x "$FENETRE" ]; then
+  if "$FENETRE"; then
     echo ""
-    echo "Commit bloqué — fenêtre protégée Europe/Paris (SYSTEM.md §22)"
-    echo "Heure Paris : $(TZ=Europe/Paris date '+%H:%M %Z')"
-    echo "Prochaine plage safe : soir >=20:00, matin 06:00-07:59, déjeuner 12:30-13:59, week-end"
-    echo ""
+    echo "Commit bloque - fenetre protegee (SYSTEM.md 22)"
     echo "Bypass fondateur (avec mention du risque) : git commit --no-verify"
     echo ""
     exit 1
   fi
+else
+  echo "Commit refuse : $FENETRE introuvable (fail-closed)."
+  exit 1
 fi
