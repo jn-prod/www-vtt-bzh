@@ -98,19 +98,13 @@ const utilisable = (champ, v) => {
   return true;
 };
 
-/** Deux `contact` dont l'un contient l'autre (« 06… » ⊂ « mail/ 06… ») : garder le long. */
-const fusionnerContacts = (valeurs) => {
-  const uniques = [...new Set(valeurs.map((v) => String(v ?? '').trim()).filter(Boolean))];
-  return uniques.filter((a) => !uniques.some((b) => b !== a && b.includes(a))).join(' · ');
-};
-
 const commune = (s) =>
   plat(s)
     .replace(/\b\d{5}\b/g, '')
     .replace(/[^a-z]/g, '');
 
 // Les champs qu'on fusionne. `name`/`city`/`date` sont traités à part.
-const CHAMPS = ['place', 'hour', 'price', 'organisateur', 'website', 'contact', 'email', 'phone', 'description'];
+const CHAMPS = ['place', 'hour', 'price', 'organisateur', 'website', 'email', 'phone', 'description'];
 
 // --- Détection ---------------------------------------------------------------
 
@@ -205,12 +199,6 @@ const main = async () => {
       const source = perdants.find((p) => utilisable(c, p[c]));
       if (source) fusion[c] = String(source[c]).replace(/\s+/g, ' ').trim();
     }
-    // Le téléphone est la seule info qu'on refuse de perdre par écrasement : si les deux
-    // fiches portent un `contact` DIFFÉRENT (souvent un email d'un côté, un numéro de
-    // l'autre), on garde les deux plutôt que d'en sacrifier un.
-    const contact = fusionnerContacts(g.map((e) => e.contact));
-    if (contact && contact !== String(garde.contact ?? '').trim()) fusion.contact = contact;
-
     const champs = Object.entries(fusion).filter(([, v]) => v !== null && v !== undefined);
 
     console.log(`\n── ${garde.date} · ${garde.city}`);

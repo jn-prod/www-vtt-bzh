@@ -15,7 +15,6 @@ export class CreateEventDto {
     public readonly website?: string,
     public readonly place?: string,
     public readonly price?: string,
-    public readonly contact?: string,
     public readonly email?: string,
     public readonly phone?: string,
     public readonly description?: string,

@@ -17,7 +17,6 @@ const main = async () => {
     'date',
     'place',
     'name',
-    'contact',
     'email',
     'phone',
     'price',

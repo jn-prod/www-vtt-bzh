@@ -87,7 +87,7 @@ include.event.name | slugify %}
         <a href="tel:{{ include.event.phone | remove: ' ' }}"
           >{{ include.event.phone }}</a
         >
-        {% elsif include.event.contact %} {{ include.event.contact }} {% else %}
+        {% else %}
         NC {% endif %}
       </li>
       <li class="event__detail">
