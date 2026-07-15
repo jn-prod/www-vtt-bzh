@@ -83,6 +83,24 @@ const buildPayload = (formData) => {
   };
 };
 
+// Opt-in newsletter séparé et FACULTATIF. Si l'organisateur a coché la case, on
+// l'inscrit au même formulaire Kit public que la home (endpoint public, aucune clé
+// secrète côté client ; double opt-in Kit → l'inscription n'est effective qu'après
+// confirmation par email, ce qui vaut preuve de consentement). Fire-and-forget :
+// la publication de la rando ne dépend jamais de cet appel.
+const NEWSLETTER_ENDPOINT = "https://app.kit.com/forms/9677378/subscriptions";
+
+const subscribeNewsletter = (email) => {
+  if (!email) return;
+  fetch(NEWSLETTER_ENDPOINT, {
+    method: "POST",
+    mode: "no-cors",
+    headers: { "Content-Type": "application/x-www-form-urlencoded" },
+    body: new URLSearchParams({ email_address: email }).toString(),
+    keepalive: true,
+  }).catch(() => {});
+};
+
 const submit = async (payload) => {
   if (!SUPABASE.url || !SUPABASE.key || !SUPABASE.table) {
     throw new Error("Supabase config missing");
@@ -149,6 +167,9 @@ onReady(() => {
 
     try {
       await submit(buildPayload(formData));
+      if (formData.get("newsletter")) {
+        subscribeNewsletter((formData.get("email") || "").toString().trim());
+      }
       setFeedback(feedback, "success", SUCCESS_MSG);
       form.reset();
       const shareEl = document.getElementById("event-form-share");
