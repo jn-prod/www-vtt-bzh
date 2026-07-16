@@ -8,8 +8,8 @@
 //
 // LES TAGS NE SONT PAS DÉCORATIFS. Un broadcast Kit exige un `subscriber_filter`, et
 // celui-ci ne cible QUE par `segment` ou `tag` — jamais par formulaire. Sans tag, on ne
-// peut écrire à personne sans écrire à TOUT LE MONDE (organisateurs + visiteurs vtt.bzh
-// + lecteurs nj.com mélangés). Le tag est donc la condition d'existence d'un envoi ciblé.
+// peut écrire à personne sans écrire à TOUT LE MONDE (visiteurs vtt.bzh + lecteurs
+// nj.com mélangés). Le tag est donc la condition d'existence d'un envoi ciblé.
 
 const KEY = process.env.KIT_API_KEY;
 const HEADERS = { 'X-Kit-Api-Key': KEY, 'Content-Type': 'application/json' };
@@ -76,9 +76,9 @@ export const abonnesDuForm = async (formId) => {
 /**
  * Nombre d'abonnés ACTIFS sur tout le compte.
  *
- * Le plafond du plan gratuit (1 000) se compte **par compte**, pas par liste — et les
- * ~500 organisateurs le remplissent déjà à moitié. Sans ce garde-fou, on découvrirait le
- * dépassement sur la facture. Voir `D-2026-07-13-001` (signal d'alerte).
+ * Le plafond du plan gratuit (1 000) se compte **par compte**, pas par liste. Les ~500
+ * organisateurs qui le remplissaient à moitié ont été retirés (`D-2026-07-16-001`) ; le
+ * garde-fou reste utile quand l'audience opt-in grandit. Voir `D-2026-07-13-001`.
  */
 export const abonnesActifs = async () => {
   let after = null;

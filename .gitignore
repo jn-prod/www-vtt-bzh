@@ -53,3 +53,6 @@ backups/
 # Supabase CLI runtime
 supabase/.temp/
 supabase/.branches/
+
+# Artefact de build calendrier (régénéré en CI via copy:packages:calendar ; ne pas versionner)
+www/_data/events.json

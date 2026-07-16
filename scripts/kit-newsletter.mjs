@@ -19,8 +19,8 @@
 //
 // POURQUOI LE TAG. `subscriber_filter` est OBLIGATOIRE sur un broadcast, et Kit ne
 // sait cibler que par `segment` ou `tag` — PAS par formulaire. Sans lui, le mail
-// partirait à TOUT le compte : les organisateurs (form 9433681) et les abonnés
-// nj.com inclus. On tague donc les inscrits du form visiteurs, et on filtre dessus.
+// partirait à TOUT le compte : les abonnés nj.com et tout autre inscrit du compte
+// inclus. On tague donc les inscrits du form visiteurs, et on filtre dessus.
 // Le tag est créé et posé PAR L'API : rien à faire à la main dans Kit.
 
 import { readFileSync } from 'node:fs';
@@ -278,7 +278,7 @@ ${SUGGESTION}
 /**
  * Tague les inscrits du form visiteurs. Idempotent (Kit ignore un tag déjà posé).
  * Sans ce tag, `subscriber_filter` n'a rien à cibler et l'agenda partirait aussi aux
- * organisateurs et aux lecteurs nj.com — cf. scripts/kit-api.mjs.
+ * lecteurs nj.com (et à tout autre abonné du compte) — cf. scripts/kit-api.mjs.
  */
 const taguerInscrits = async (tagId) => {
   const ids = await abonnesDuForm(FORM_ID);
@@ -337,8 +337,9 @@ const main = async () => {
     return;
   }
 
-  // Le plafond gratuit (1 000) se compte PAR COMPTE : les ~500 organisateurs en occupent
-  // déjà la moitié. On veut le savoir avant la facture, pas après (`D-2026-07-13-001`).
+  // Le plafond gratuit (1 000) se compte PAR COMPTE. Les ~500 organisateurs qui
+  // l'occupaient à moitié ont été retirés (`D-2026-07-16-001`) ; le garde-fou reste
+  // utile à mesure que l'audience opt-in grandit (`D-2026-07-13-001`).
   await alerterSiPlafondProche();
 
   const tagId = await assurerTag(TAG_NAME);
