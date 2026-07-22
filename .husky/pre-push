@@ -1,7 +1,19 @@
 #!/usr/bin/env sh
-# pre-push — délègue à la gate transverse corp-ai (D-2026-06-09-001) si accessible.
-# Bypass assumé : git push --no-verify
-GATE="${CORP_AI_GATE:-$HOME/corp-ai/tools/scripts/pre-push-gate.sh}"
-if [ -x "$GATE" ]; then exec "$GATE"; else
-  echo "⚠️ gate corp-ai introuvable ($GATE) — règles non appliquées (push autorisé)."
+# pre-push — délègue à la gate transverse du harnais (D-2026-06-09-001).
+# Fichier IDENTIQUE dans tous les repos consommateurs (vtt.bzh, nj.com, feezify, harness).
+#
+# FAIL-CLOSED depuis le 2026-07-22. Avant, un harnais introuvable laissait passer le push
+# avec un simple avertissement : un chemin cassé désarmait donc EN SILENCE la fenêtre §22
+# ET le controle PII — au moment précis où on ne s'y attend pas (harnais déplacé, machine
+# neuve, clone frais). Un garde-fou qui s'éteint sans bruit n'est pas un garde-fou.
+#
+# Bypass fondateur assumé : git push --no-verify
+GATE="${HARNESS_GATE:-$HOME/harness/tools/scripts/pre-push-gate.sh}"
+if [ -x "$GATE" ]; then
+  exec "$GATE"
 fi
+echo ""
+echo "Push refuse : harnais introuvable ($GATE)."
+echo "Regler HARNESS_GATE vers le repo harness, ou bypass fondateur : git push --no-verify"
+echo ""
+exit 1
