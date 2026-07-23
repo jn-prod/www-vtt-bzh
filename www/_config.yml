@@ -29,7 +29,8 @@ author:
   # Utilisé sur les cartes d'articles (_includes/posts-list.html) : l'avatar signe l'auteur,
   # pas le calendrier. Si la clé disparaît, on retombe sur `avatar` (SVG générique).
   photo: "https://www.nicolasjouanno.com/images/nicolas-jouanno.webp"
-  web: "https://www.nicolasjouanno.com/results.html?utm_source=vtt-bzh&utm_medium=site&utm_campaign=author"
+  profile_url: "https://www.nicolasjouanno.com/me/results.html?utm_source=vtt-bzh&utm_medium=site&utm_campaign=author"
+  media_url: "https://www.nicolasjouanno.com/vtt/?utm_source=vtt-bzh&utm_medium=site&utm_campaign=media-vtt"
 
 support:
   label: "Soutenir sur Tipeee"
