@@ -46,3 +46,11 @@ Avant tout commit, lint-staged applique automatiquement les fixs via Husky.
 - Ne pas utiliser de classes utilitaires inline — tout CSS passe par `www/assets/css/main.css`
 - Ne pas publier de packages npm — ce projet est un site personnel, pas une librairie
 - Ne pas modifier `.eslintrc.js` — ce fichier n'existe plus, la config ESLint est dans `eslint.config.mjs`
+
+## Gouvernance studio
+
+Ce repo appartient au studio de Nicolas Jouanno. La gouvernance transverse — voix, conventions,
+règles d'activité (§22), tâches — vit dans un espace de connaissance externe, **hors de ce dépôt**.
+Point d'entrée : lis la valeur de `STUDIO_ENTRYPOINT_URL` dans le fichier `.env` (non versionné)
+et récupère le document qu'elle référence. Sans cet accès, signale-le au fondateur plutôt que
+d'improviser une doctrine locale.
