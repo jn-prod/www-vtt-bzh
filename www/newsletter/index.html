@@ -1,0 +1,48 @@
+---
+layout: default
+title: Archives de la newsletter VTT Bretagne
+description: "Les éditions publiques de l'agenda mensuel des randonnées VTT en Bretagne."
+permalink: /newsletter/
+---
+
+<section class="newsletter-archive" aria-labelledby="newsletter-archive-title">
+  <header class="newsletter-archive__header">
+    <p class="newsletter-archive__eyebrow">Agenda mensuel</p>
+    <h1 class="newsletter-archive__title" id="newsletter-archive-title">
+      Archives de la newsletter
+    </h1>
+    <p class="newsletter-archive__description">
+      Chaque édition rassemble les randos VTT à venir en Bretagne. Elle reste
+      accessible ici après son envoi.
+    </p>
+  </header>
+
+  <ol class="newsletter-archive__list">
+    {% assign edition_count = 0 %} {% for post in site.posts %} {% if
+    post.newsletter_id %} {% assign edition_count = edition_count | plus: 1 %}
+    <li class="newsletter-archive__item">
+      <a class="newsletter-archive__link" href="{{ post.url }}">
+        <strong>{{ post.title }}</strong>
+        {% if post.description %}
+        <span>{{ post.description }}</span>
+        {% endif %}
+        <time datetime="{{ post.date | date_to_xmlschema }}">
+          {{ post.date | date: "%d/%m/%Y" }}
+        </time>
+      </a>
+    </li>
+    {% endif %} {% endfor %}
+  </ol>
+
+  {% if edition_count == 0 %}
+  <p class="newsletter-archive__empty">
+    La prochaine édition sera publiée ici.
+  </p>
+  {% endif %}
+
+  <p class="newsletter-archive__action">
+    <a class="btn btn--primary" href="/newsletter.html"
+      >Recevoir le prochain agenda</a
+    >
+  </p>
+</section>

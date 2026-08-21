@@ -1,0 +1,108 @@
+name: Deliver newsletter draft
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, closed]
+
+permissions:
+  contents: read
+  pull-requests: read
+
+concurrency:
+  group: deliver-vtt-newsletter-draft
+  cancel-in-progress: false
+
+jobs:
+  validate:
+    if: >-
+      (github.event.action != 'closed' || github.event.pull_request.merged == true) &&
+      startsWith(github.event.pull_request.head.ref, 'newsletter/')
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    outputs:
+      period: ${{ steps.edition.outputs.period }}
+
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          ref: ${{ github.event.pull_request.merge_commit_sha || github.event.pull_request.head.sha }}
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v6
+        with:
+          node-version: '24.x'
+
+      - name: Test newsletter delivery contract
+        run: node --test tests/deliver-newsletter-draft.test.mjs
+
+      - name: Resolve and validate newsletter edition
+        id: edition
+        env:
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+          SOURCE_SHA: ${{ github.event.pull_request.merge_commit_sha || github.event.pull_request.head.sha }}
+        run: |
+          changed_files="$(git diff --name-only "$BASE_SHA" "$SOURCE_SHA")"
+          periods="$(printf '%s\n' "$changed_files" | sed -n -E 's#^www/(_data|_includes)/newsletters/([0-9]{4}-[0-9]{2})\.(json|html)$#\2#p' | sort -u)"
+          count="$(printf '%s\n' "$periods" | sed '/^$/d' | wc -l | tr -d ' ')"
+          if [ "$count" -ne 1 ]; then
+            echo "The PR must change data or content for exactly one newsletter period."
+            exit 1
+          fi
+          period="$(printf '%s\n' "$periods" | sed '/^$/d')"
+          test -f "www/_data/newsletters/$period.json"
+          test -f "www/_includes/newsletters/$period.html"
+          post_files="$(grep -rl --include='*.md' "newsletter_id: vtt-bzh-$period" www/_posts || true)"
+          post_count="$(printf '%s\n' "$post_files" | sed '/^$/d' | wc -l | tr -d ' ')"
+          if [ "$post_count" -ne 1 ]; then
+            echo "The newsletter edition must have exactly one public Jekyll post."
+            exit 1
+          fi
+          post_file="$post_files"
+          grep -Eq '^layout: newsletter-edition[[:space:]]*$' "$post_file"
+          grep -Eq "^permalink: ['\"]?/newsletter/$period/['\"]?[[:space:]]*$" "$post_file"
+          grep -Fqx "{% include newsletters/$period.html %}" "$post_file"
+          node scripts/deliver-newsletter-draft.mjs --period="$period" --validate
+          echo "period=$period" >> "$GITHUB_OUTPUT"
+
+  deliver:
+    needs: validate
+    if: >-
+      github.event.pull_request.merged == true &&
+      github.event.pull_request.base.ref == 'main' &&
+      startsWith(github.event.pull_request.head.ref, 'newsletter/')
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    environment: newsletter
+    permissions:
+      contents: write
+    env:
+      KIT_API_KEY: ${{ secrets.KIT_API_KEY }}
+
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          ref: ${{ github.event.pull_request.merge_commit_sha }}
+          fetch-depth: 0
+
+      - name: Create or update the Kit draft
+        env:
+          SOURCE_COMMIT: ${{ github.event.pull_request.merge_commit_sha }}
+        run: >-
+          node scripts/deliver-newsletter-draft.mjs
+          --period="${{ needs.validate.outputs.period }}"
+          --source-commit="$SOURCE_COMMIT"
+
+      - name: Persist delivery receipt
+        run: |
+          period="${{ needs.validate.outputs.period }}"
+          receipt="www/_data/newsletters/$period.delivery.json"
+          if [ -z "$(git status --porcelain -- "$receipt")" ]; then
+            echo 'Delivery receipt is already current.'
+            exit 0
+          fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -- "$receipt"
+          git commit -m "data(newsletter): record Kit draft"
+          git pull --rebase origin main
+          git push origin HEAD:main
