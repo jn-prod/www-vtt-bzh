@@ -1,0 +1,11 @@
+{
+  "schema_version": 1,
+  "newsletter_id": "vtt-bzh-2026-07",
+  "kit_broadcast_id": 25135712,
+  "delivered_at": "2026-07-24T21:30:00Z",
+  "source": {
+    "content_sha256": "b2ca19fa8dfa19329efba42e65d32c18ea98440a8b23b73c53fb6e6848cca19e",
+    "data_sha256": "13fcaaf715a1563683b1bdf92311a7adf2c60cc9fd0456869bb169cb912a52bc",
+    "source_commit": "legacy-kit-25135712"
+  }
+}

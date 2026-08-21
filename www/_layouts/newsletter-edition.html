@@ -1,0 +1,29 @@
+---
+layout: default
+---
+
+<article class="newsletter-edition">
+  <header class="newsletter-edition__header">
+    <p class="newsletter-edition__eyebrow">Agenda mensuel</p>
+    <h1 class="newsletter-edition__title">{{ page.title }}</h1>
+    {% if page.description %}
+    <p class="newsletter-edition__description">{{ page.description }}</p>
+    {% endif %} {% if page.date %}
+    <p class="newsletter-edition__meta">
+      <time datetime="{{ page.date | date_to_xmlschema }}">
+        Publié le {{ page.date | date: "%d/%m/%Y" }}
+      </time>
+    </p>
+    {% endif %}
+  </header>
+
+  <div class="newsletter-edition__content">{{ content }}</div>
+
+  <footer class="newsletter-edition__footer">
+    <p>
+      Reçois le prochain agenda par email, au maximum une fois par mois en
+      saison.
+    </p>
+    <a class="btn btn--primary" href="/newsletter.html">S'abonner</a>
+  </footer>
+</article>
