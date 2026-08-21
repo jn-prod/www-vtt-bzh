@@ -1246,3 +1246,45 @@ button {
 .newsletter-archive__action {
   margin-top: var(--b-size-24);
 }
+
+.newsletter-message__title {
+  margin: var(--b-size-24) 0 var(--b-size-12);
+  font-size: var(--b-size-20);
+}
+
+.newsletter-message__list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.newsletter-message__item {
+  margin-bottom: var(--b-size-12);
+}
+
+.newsletter-message__new {
+  margin-left: var(--b-size-4);
+  color: var(--b-color-primary);
+  font-size: var(--b-size-14);
+  font-weight: 700;
+}
+
+.newsletter-message__details,
+.newsletter-message__signature {
+  color: #6c757d;
+}
+
+.newsletter-message__calendar-link {
+  margin-top: var(--b-size-24);
+}
+
+.newsletter-message__suggestion {
+  margin: var(--b-size-24) 0;
+  padding: var(--b-size-16);
+  border-radius: var(--b-border-radius);
+  background: #f6f8f7;
+}
+
+.newsletter-message__signature {
+  font-size: var(--b-size-14);
+}

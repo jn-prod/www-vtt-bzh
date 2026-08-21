@@ -97,5 +97,8 @@ test('validates the public edition files and rejects personal data', async () =>
     JSON.stringify({ schema_version: 1, ...edition.data, email: 'person@example.com' })
   );
   await assert.rejects(loadEdition('2026-09', root), /forbidden key email/);
+  await writeFile(path.join(dataDirectory, '2026-09.json'), JSON.stringify({ schema_version: 1, ...edition.data }));
+  await writeFile(path.join(contentDirectory, '2026-09.html'), '<p style="color: red">Bonjour</p>');
+  await assert.rejects(loadEdition('2026-09', root), /must not contain inline styles/);
   await rm(root, { recursive: true, force: true });
 });

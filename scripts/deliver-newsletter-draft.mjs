@@ -153,6 +153,9 @@ function validateEdition({ period, content, data }) {
   if (!content.trim() || /<script\b/i.test(content)) {
     throw new Error('Newsletter fragment must contain HTML without scripts.');
   }
+  if (/\sstyle\s*=/i.test(content)) {
+    throw new Error('Newsletter fragment must not contain inline styles.');
+  }
   if (EMAIL_PATTERN.test(content)) throw new Error('Newsletter fragment must not contain email addresses.');
   if (!data || typeof data !== 'object' || Array.isArray(data)) throw new Error('Newsletter data must be an object.');
   if (data.schema_version !== 1) throw new Error('Newsletter data schema_version must be 1.');
