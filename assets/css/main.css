@@ -14,7 +14,8 @@
   --b-color-info-bg: #cce5ff;
   --b-color-info-text: #004085;
   --b-font-heading: "Roboto Condensed", sans-serif;
-  --b-font-body: "Lato", sans-serif;
+  --b-font-body:
+    system-ui, -apple-system, blinkmacsystemfont, "Segoe UI", sans-serif;
 
   /* Spacing & sizing tokens (1rem = 10px) */
   --b-size-2: 0.2rem; /*   2px */
@@ -78,21 +79,17 @@ img {
 
 @font-face {
   font-family: "Roboto Condensed";
-  src: url("/assets/fonts/RobotoCondensed-Regular.ttf");
+  font-style: normal;
+  font-weight: 400;
+  src: url("/assets/fonts/roboto-condensed-latin.woff2") format("woff2");
   font-display: swap;
 }
 
 @font-face {
   font-family: "Roboto Condensed";
-  font-weight: 600;
-  src: url("/assets/fonts/RobotoCondensed-Light.ttf");
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "Roboto Condensed";
-  font-weight: 800;
-  src: url("/assets/fonts/RobotoCondensed-Bold.ttf");
+  font-style: normal;
+  font-weight: 700;
+  src: url("/assets/fonts/roboto-condensed-latin.woff2") format("woff2");
   font-display: swap;
 }
 
@@ -106,7 +103,7 @@ body {
   font-size: 1.6rem;
   color: var(--b-color-grey-dark);
   font-family: var(--b-font-body);
-  font-weight: 300;
+  font-weight: 400;
   letter-spacing: normal;
 }
 
@@ -215,7 +212,7 @@ button {
   padding: 0;
   margin: -1px;
   overflow: hidden;
-  clip: rect(0, 0, 0, 0);
+  clip-path: inset(50%);
   white-space: nowrap;
   border: 0;
 }
@@ -373,6 +370,8 @@ button {
    ========================================================================== */
 
 .event {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 8rem;
   border: 1px solid var(--b-border-color);
   border-radius: var(--b-border-radius);
   box-shadow: var(--b-shadow);
@@ -385,6 +384,7 @@ button {
 }
 
 .event__name {
+  display: block;
   text-transform: uppercase;
   margin: 0;
   flex: 1;
@@ -420,6 +420,10 @@ button {
   margin: var(--b-size-4) var(--b-size-8);
 }
 
+.event__action {
+  margin: var(--b-size-16) var(--b-size-8) 0;
+}
+
 /* ==========================================================================
    Calendar
    ========================================================================== */
@@ -438,6 +442,14 @@ button {
 .calendar__load-more {
   text-align: center;
   margin-top: 1rem;
+}
+
+.calendar-pagination {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: var(--b-size-12);
+  margin: var(--b-size-24) 0;
 }
 
 /* ==========================================================================
@@ -771,13 +783,13 @@ button {
 }
 
 .fomo__number {
-  font-size: 1.5rem;
+  font-size: 1.8rem;
   font-weight: 700;
   line-height: 1;
 }
 
 .fomo__label {
-  font-size: 0.875rem;
+  font-size: 1.4rem;
   color: var(--b-color-grey-dark);
   margin-top: var(--b-size-4);
 }
@@ -1083,7 +1095,7 @@ button {
   font-size: var(--b-size-12);
   text-transform: uppercase;
   letter-spacing: 0.03em;
-  color: #6c757d;
+  color: #5a6268;
 }
 
 /* ==========================================================================

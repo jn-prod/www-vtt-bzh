@@ -1,24 +1,14 @@
-// event-form.js — soumission du formulaire d'ajout de rando vers Supabase REST.
-// Stack : ES module natif (pas de bundler), fetch natif, crypto.randomUUID natif.
-// Sécurité : clé anon publique par design ; RLS Supabase impose origin=public-form/% et refuse UPDATE/DELETE.
-
-const SUPABASE = window.__SUPABASE__ || {};
+const CONFIG = window.__EVENT_SUBMISSION__ || {};
 const FORM_ID = "event-form";
 const FEEDBACK_ID = "event-form-feedback";
 const HONEYPOT_FIELD = "website_url";
+const NEWSLETTER_ENDPOINT = "https://app.kit.com/forms/9677378/subscriptions";
 
-const SUCCESS_MSG =
-  "Merci, votre rando est enregistrée. Elle apparaîtra sur le calendrier le lendemain.";
-const ERROR_MSG =
-  "Désolé, l’envoi a échoué. Réessayez dans un instant ou contactez nicolas@vtt.bzh.";
-const HONEYPOT_MSG = "Envoi rejeté (anti-spam).";
+const SUCCESS_MESSAGE =
+  "Merci, votre rando est enregistrée. Après validation automatique, elle sera publiée au prochain rafraîchissement quotidien.";
+const ERROR_MESSAGE =
+  "Désolé, l’envoi a échoué. Vos informations sont conservées : réessayez ou contactez nicolas@vtt.bzh.";
 
-const onReady = (cb) =>
-  document.readyState === "loading"
-    ? document.addEventListener("DOMContentLoaded", cb, { once: true })
-    : cb();
-
-// Messages de validation HTML5 en français — RGAA 11.11.
 const INVALID_MESSAGES_FR = {
   valueMissing: "Veuillez remplir ce champ.",
   typeMismatch: "Le format saisi n’est pas valide.",
@@ -29,6 +19,21 @@ const INVALID_MESSAGES_FR = {
   rangeOverflow: "La valeur est trop grande.",
   stepMismatch: "La valeur ne respecte pas l’incrément attendu.",
   badInput: "La saisie n’est pas valide.",
+};
+
+const dateToISO = (date) =>
+  new Date(date.getTime() - date.getTimezoneOffset() * 60_000)
+    .toISOString()
+    .split("T")[0];
+
+const configureDateRange = (form) => {
+  const field = form.elements.namedItem("date");
+  if (!(field instanceof HTMLInputElement)) return;
+  const today = new Date();
+  const maximum = new Date(today);
+  maximum.setDate(maximum.getDate() + 365);
+  field.min = dateToISO(today);
+  field.max = dateToISO(maximum);
 };
 
 const setFrenchValidationMessage = (field) => {
@@ -54,41 +59,33 @@ const wireFrenchValidation = (form) => {
   });
 };
 
-const setFeedback = (el, kind, message) => {
-  el.textContent = message;
-  el.className = `event-form__feedback event-form__feedback--${kind}`;
+const setFeedback = (element, kind, message) => {
+  element.textContent = message;
+  element.className = `event-form__feedback event-form__feedback--${kind}`;
 };
 
 const buildPayload = (formData) => {
-  const get = (k) => {
-    const v = formData.get(k);
-    return typeof v === "string" ? v.trim() : "";
+  const get = (key) => {
+    const value = formData.get(key);
+    return typeof value === "string" ? value.trim() : "";
   };
-  const departementRaw = get("departement");
   return {
     name: get("name"),
     date: get("date"),
     hour: get("hour"),
     city: get("city"),
-    departement: departementRaw ? Number(departementRaw) : null,
-    place: get("place") || null,
+    departement: Number(get("departement")),
+    place: get("place"),
     organisateur: get("organisateur"),
-    price: get("price") || null,
-    website: get("website") || null,
+    price: get("price"),
+    website: get("website"),
     email: get("email"),
-    phone: get("phone") || null,
-    description: get("description") || null,
-    kind: "vtt",
-    origin: `public-form/${crypto.randomUUID()}`,
+    phone: get("phone"),
+    description: get("description"),
+    consent: formData.get("consent") === "on",
+    website_url: get(HONEYPOT_FIELD),
   };
 };
-
-// Opt-in newsletter séparé et FACULTATIF. Si l'organisateur a coché la case, on
-// l'inscrit au même formulaire Kit public que la home (endpoint public, aucune clé
-// secrète côté client ; double opt-in Kit → l'inscription n'est effective qu'après
-// confirmation par email, ce qui vaut preuve de consentement). Fire-and-forget :
-// la publication de la rando ne dépend jamais de cet appel.
-const NEWSLETTER_ENDPOINT = "https://app.kit.com/forms/9677378/subscriptions";
 
 const subscribeNewsletter = (email) => {
   if (!email) return;
@@ -102,86 +99,110 @@ const subscribeNewsletter = (email) => {
 };
 
 const submit = async (payload) => {
-  if (!SUPABASE.url || !SUPABASE.key || !SUPABASE.table) {
-    throw new Error("Supabase config missing");
-  }
-  const res = await fetch(`${SUPABASE.url}/rest/v1/${SUPABASE.table}`, {
+  if (!CONFIG.endpoint) throw new Error("submission endpoint missing");
+  const response = await fetch(CONFIG.endpoint, {
     method: "POST",
-    headers: {
-      apikey: SUPABASE.key,
-      Authorization: `Bearer ${SUPABASE.key}`,
-      "Content-Type": "application/json",
-      Prefer: "return=minimal",
-    },
+    headers: { "Content-Type": "application/json" },
     body: JSON.stringify(payload),
   });
-  if (!res.ok) {
-    const detail = await res.text();
-    throw new Error(`Supabase ${res.status} — ${detail.slice(0, 200)}`);
+  const body = await response.json().catch(() => ({}));
+  if (!response.ok) {
+    const error = new Error(`submission failed with ${response.status}`);
+    error.fields = body.fields;
+    error.status = response.status;
+    throw error;
   }
 };
 
-onReady(() => {
-  const form = document.getElementById(FORM_ID);
-  const feedback = document.getElementById(FEEDBACK_ID);
-  if (!form || !feedback) return;
-
-  wireFrenchValidation(form);
-
-  const shareBtn = document.getElementById("event-form-share-copy");
-  const shareUrlInput = document.getElementById("event-form-share-url");
-  if (shareBtn && shareUrlInput) {
-    shareBtn.addEventListener("click", () => {
-      navigator.clipboard.writeText(shareUrlInput.value).then(() => {
-        shareBtn.textContent = "Copié !";
-        setTimeout(() => { shareBtn.textContent = "Copier le lien"; }, 2000);
-      }).catch(() => {
-        shareUrlInput.select();
-      });
-    });
+const showServerErrors = (form, fields) => {
+  if (!fields || typeof fields !== "object") return false;
+  let first;
+  for (const [name, message] of Object.entries(fields)) {
+    const field = form.elements.namedItem(name);
+    if (
+      !(field instanceof HTMLElement) ||
+      typeof field.setCustomValidity !== "function"
+    )
+      continue;
+    field.setCustomValidity(String(message));
+    first ||= field;
   }
+  first?.reportValidity();
+  first?.focus();
+  return Boolean(first);
+};
+
+const wireShare = () => {
+  const button = document.getElementById("event-form-share-copy");
+  const input = document.getElementById("event-form-share-url");
+  if (
+    !(button instanceof HTMLButtonElement) ||
+    !(input instanceof HTMLInputElement)
+  )
+    return;
+  button.addEventListener("click", async () => {
+    try {
+      await navigator.clipboard.writeText(input.value);
+      button.textContent = "Copié !";
+      window.setTimeout(() => {
+        button.textContent = "Copier le lien";
+      }, 2000);
+    } catch {
+      input.select();
+      input.focus();
+    }
+  });
+};
+
+const form = document.getElementById(FORM_ID);
+const feedback = document.getElementById(FEEDBACK_ID);
+
+if (form instanceof HTMLFormElement && feedback instanceof HTMLElement) {
+  wireFrenchValidation(form);
+  configureDateRange(form);
+  wireShare();
 
   form.addEventListener("submit", async (event) => {
     event.preventDefault();
     feedback.textContent = "";
-
     if (!form.checkValidity()) {
       form.reportValidity();
       return;
     }
 
     const formData = new FormData(form);
-
-    if ((formData.get(HONEYPOT_FIELD) || "").toString().length > 0) {
-      setFeedback(feedback, "error", HONEYPOT_MSG);
-      return;
-    }
-
-    const submitBtn = form.querySelector('button[type="submit"]');
-    const previousLabel = submitBtn?.textContent;
-    if (submitBtn) {
-      submitBtn.disabled = true;
-      submitBtn.textContent = "Envoi en cours…";
+    const submitButton = form.querySelector('button[type="submit"]');
+    const previousLabel = submitButton?.textContent;
+    if (submitButton) {
+      submitButton.disabled = true;
+      submitButton.textContent = "Envoi en cours…";
     }
     setFeedback(feedback, "pending", "Envoi en cours…");
 
     try {
       await submit(buildPayload(formData));
-      if (formData.get("newsletter")) {
-        subscribeNewsletter((formData.get("email") || "").toString().trim());
-      }
-      setFeedback(feedback, "success", SUCCESS_MSG);
+      if (formData.get("newsletter"))
+        subscribeNewsletter(String(formData.get("email") ?? "").trim());
+      setFeedback(feedback, "success", SUCCESS_MESSAGE);
       form.reset();
-      const shareEl = document.getElementById("event-form-share");
-      if (shareEl) shareEl.hidden = false;
-    } catch (err) {
-      console.error("[event-form] submit failed", err);
-      setFeedback(feedback, "error", ERROR_MSG);
+      configureDateRange(form);
+      const share = document.getElementById("event-form-share");
+      if (share) share.hidden = false;
+    } catch (error) {
+      console.error("[event-form] submit failed", error);
+      const hasFieldError = showServerErrors(form, error.fields);
+      setFeedback(
+        feedback,
+        "error",
+        hasFieldError
+          ? "Corrigez les champs indiqués puis renvoyez le formulaire."
+          : ERROR_MESSAGE,
+      );
     } finally {
-      if (submitBtn) {
-        submitBtn.disabled = false;
-        if (previousLabel) submitBtn.textContent = previousLabel;
+      if (submitButton) {
+        submitButton.disabled = false;
+        if (previousLabel) submitButton.textContent = previousLabel;
       }
     }
   });
-});
+}

@@ -52,10 +52,10 @@ www/
 ├── _posts/              # Articles de blog (Markdown)
 ├── assets/
 │   ├── css/main.css     # CSS natif — toutes les sections BEM en un fichier
-│   ├── fonts/           # Roboto Condensed (.ttf)
+│   ├── fonts/           # Roboto Condensed latin optimisé (.woff2)
 │   └── js/              # Scripts vanilla JS (ES modules)
-│       ├── calendar.js  # Filtrage et pagination des événements
-│       └── event-form.js # Formulaire public d'ajout (POST direct Supabase REST)
+│       ├── calendar.js  # Filtrage et chargement progressif des événements
+│       └── event-form.js # Formulaire public vers l'Edge Function contrôlée
 └── index.html           # Page principale — calendrier des randonnées
 ```
 
@@ -134,14 +134,16 @@ Le fichier est organisé en sections commentées dans cet ordre :
 
 - **ES modules natifs** (`<script type="module">`), pas de bundler.
 - Fichiers dans `assets/js/`, servis statiquement par Jekyll.
-- `calendar.js` : filtrage et pagination par manipulation de l'attribut `hidden` sur les éléments `<details>` du DOM pré-rendu Jekyll.
-- `event-form.js` : soumission du formulaire public sur `/calendrier/ajouter.html` ; POST direct vers Supabase REST avec la clé anon, RLS sécurise (origin contraint à `public-form/%`, UPDATE/DELETE refusés).
+- `calendar.js` : charge le JSON local, filtre les événements et en affiche 20 par lot ; les pages statiques `/calendrier/page/N/` restent utilisables sans JavaScript.
+- `event-form.js` : soumet le formulaire public à l'Edge Function `submit-event`. Le navigateur ne peut fixer aucun champ système et conserve les données saisies en cas d'échec.
 
 ---
 
 ## Données — `_data/events.json`
 
-Le fichier `_data/events.json` est **généré automatiquement** au build CI par `packages/calendar/generate-events.ts` qui lit la table Supabase `events` (filtrée sur `active=true` et fenêtre [aujourd'hui, +1 an]). Il est présent dans le repo comme **données de test** pour le développement local.
+Le fichier `_data/events.json` est **généré automatiquement** au build CI par `packages/calendar/generate-events.ts`, qui lit la table Supabase `events`, normalise les données publiques, écarte les doublons certains et contrôle les chutes anormales. Jekyll produit aussi `/calendrier/events.json` et des pages statiques de 20 événements.
+
+Le premier déploiement de ce format s'appuie sur `packages/calendar/baseline/events-count.json`, capturé depuis la home de production. Dès que `/calendrier/events.json` existe en production, cette source dynamique devient prioritaire. En CI, l'absence des deux baselines ou une baisse supérieure à 50 % bloque le déploiement.
 
 Format d'un événement :
 
@@ -159,9 +161,3 @@ Format d'un événement :
   description: "Description optionnelle"
   dateFormatted: "29 mars 2026"
 ```
-
----
-
-## TODO (long terme)
-
-- [ ] **Tests** : ajouter un smoke test vitest sur `packages/calendar` (generate-events.ts)
