@@ -11,9 +11,10 @@
      charge Google reCAPTCHA + écrit un identifiant persistant (localStorage
      "ckid") + POST un "formvisit" au chargement — ce qui rendrait faux le
      « aucun cookie ni traceur » de /terms/legals.html sur 98 % du trafic.
-     Ici : zéro script tiers, zéro cookie, zéro traceur.
+     Ici : zéro script Kit, cookie Kit ou identifiant persistant avant l'envoi.
      Anti-spam = double opt-in Kit (l'inscription n'est effective qu'après
-     confirmation par email). -->
+     confirmation par email). Le site conserve par ailleurs sa mesure d'audience
+     Cloudflare sans cookie, décrite dans les mentions légales. -->
 <section
   class="newsletter-inline"
   id="newsletter"
@@ -23,8 +24,8 @@
     Ne rate plus une rando
   </h2>
   <p class="newsletter-inline__text">
-    Chaque mois, le calendrier des nouvelles randos VTT de Bretagne dans ta
-    boîte mail. Rien d'autre, désabonnement en un clic.
+    En saison, au maximum un email par mois avec les randos à venir en Bretagne.
+    Aucun email vide, désabonnement en un clic.
   </p>
   <form
     class="newsletter-inline__form"

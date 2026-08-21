@@ -5,7 +5,10 @@ out
 **/out
 www/_site
 www/manifest.webmanifest
+www/calendrier/events.json
 .obsidian
+playwright-report
+test-results
 
 # Supabase migrations: SQL non géré par Prettier
 supabase/migrations/*.sql

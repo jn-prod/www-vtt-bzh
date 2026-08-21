@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "main": "./src/index.ts",
   "scripts": {
-    "build": "tsc"
+    "build": "tsc",
+    "test": "node --test --require ts-node/register src/repository.test.ts"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.106.0",

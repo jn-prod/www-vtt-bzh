@@ -18,11 +18,11 @@ www-vtt-bzh/
 │   └── calendar/           # Types CalendarEvent + script generate-events → out/events.json
 ├── supabase/
 │   ├── migrations/         # Migrations SQL (RLS, schéma)
-│   └── functions/          # Edge Functions (notif email modération)
+│   └── functions/          # Edge Functions (soumission contrôlée, notif modération)
 ├── scripts/                # Scripts utilitaires Node (backup, ad-hoc)
 ├── configs/
 │   └── tsconfig/           # tsconfig.json de base partagé (node)
-├── .github/workflows/      # CI GitHub Actions (build & deploy uniquement)
+├── .github/workflows/      # CI GitHub Actions (contrôles, build et déploiement)
 ├── eslint.config.mjs       # Config ESLint racine (flat config)
 ├── .stylelintrc.json       # Config Stylelint racine
 ├── .prettierrc.js          # Config Prettier racine
@@ -72,6 +72,11 @@ pnpm install
 | `pnpm build:www`      | Build Jekyll uniquement                             |
 | `pnpm build:packages` | Compile tous les packages TypeScript                |
 | `pnpm test`           | Tests de tous les packages                          |
+| `pnpm test:e2e`       | Parcours Playwright et contrôles Axe                |
+| `pnpm validate:html`  | Validation du HTML généré                           |
+| `pnpm validate:site`  | Liens, assets et invariants métier du site généré   |
+| `pnpm minify:site`    | Minification conservative du HTML généré            |
+| `pnpm check`          | Chaîne locale complète, hors installation           |
 | `pnpm lint`           | ESLint + Stylelint + Prettier (vérification)        |
 | `pnpm lint:fix`       | ESLint + Stylelint + Prettier (auto-fix)            |
 | `pnpm lint:eslint`    | ESLint uniquement                                   |
@@ -82,32 +87,34 @@ pnpm install
 
 ## CI/CD
 
-Un seul workflow GitHub Actions : build & deploy.
+Le workflow de publication conserve la production précédente dès qu'un contrôle échoue.
 
 ### `github-pages.yml` — Déploiement (push `main` ou manuel)
 
-1. `pnpm install` + `bundle install` (Node + Ruby)
-2. `pnpm --filter=calendar run generate-events` — Supabase → `packages/calendar/out/events.json`
-3. `pnpm build` — compile packages → copie `events.json` → Jekyll → `www/_site/`
-4. Deploy sur GitHub Pages (`peaceiris/actions-gh-pages`, CNAME `www.vtt.bzh`)
+1. Installation verrouillée des dépendances Node et Ruby
+2. Lint et tests unitaires
+3. Build : Supabase → normalisation → `events.json` → Jekyll
+4. Validation HTML, liens, assets et invariants métier
+5. Parcours Playwright et contrôles Axe
+6. Déploiement GitHub Pages (`peaceiris/actions-gh-pages`, CNAME `www.vtt.bzh`)
 
-L'alimentation des événements ne dépend plus d'un cron ni d'un scraper : les organisateurs publient directement via le formulaire `/calendrier/ajouter.html` qui POST vers Supabase (RLS).
+Les organisateurs soumettent une randonnée via `/calendrier/ajouter.html`. L'Edge Function `submit-event` valide le payload, fixe les champs système et applique la limitation de débit avant l'insertion Supabase. La publication statique est reconstruite quotidiennement et après chaque push sur `main`.
 
 ### Secrets GitHub Actions requis
 
-| Secret           | Environment    | Description                    |
-| ---------------- | -------------- | ------------------------------ |
-| `SUPABASE_URL`   | `github-pages` | URL du projet Supabase         |
-| `SUPABASE_KEY`   | `github-pages` | Clé anon Supabase              |
-| `SUPABASE_TABLE` | `github-pages` | Nom de la table des événements |
+| Secret                     | Environment    | Description                      |
+| -------------------------- | -------------- | -------------------------------- |
+| `SUPABASE_URL`             | `github-pages` | URL du projet Supabase           |
+| `SUPABASE_PUBLISHABLE_KEY` | `github-pages` | Clé publique utilisée en lecture |
+| `SUPABASE_TABLE`           | `github-pages` | Nom de la table des événements   |
 
 ---
 
 ## Tooling
 
 - **Gestionnaire de packages** : pnpm 10 (workspaces)
-- **Linter JS/TS** : ESLint 9 (flat config) + `typescript-eslint` v8
-- **Linter CSS** : Stylelint 16 + `stylelint-config-standard`
+- **Linter JS/TS** : ESLint 10 (flat config) + `typescript-eslint` v8
+- **Linter CSS** : Stylelint 17 + `stylelint-config-standard`
 - **Formatter** : Prettier 3
 - **Git hooks** : Husky + lint-staged (lint au commit)
 - **TypeScript** : ts-node (packages uniquement — pas de bundler côté site)

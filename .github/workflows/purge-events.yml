@@ -1,9 +1,9 @@
 name: Purge old events (daily, retention 1y)
 
-# Cf SYSTEM.md §21 (rétention 30j min) + mentions légales §4.1
-# (events conservés tant que `date >= aujourd'hui` puis 5 ans d'archive).
+# Conforme à la durée publique des mentions légales §4.1 : les événements sont
+# conservés jusqu'à un an après leur date, puis supprimés.
 #
-# Supprime quotidiennement les events dont `date < CURRENT_DATE - INTERVAL '5 years'`.
+# Supprime quotidiennement les events dont `date < CURRENT_DATE - INTERVAL '1 year'`.
 # Le workflow tourne après le workflow de backup (03:00 UTC) pour avoir un
 # safety net du jour avant la purge.
 
@@ -32,7 +32,7 @@ jobs:
           SUPABASE_PROJECT_REF: ${{ secrets.SUPABASE_PROJECT_REF }}
         run: |
           set -euo pipefail
-          BODY='{"query": "select count(*) as n, min(date) as oldest, max(date) as newest_to_purge from public.events where date < (current_date - interval '\''5 years'\'')::date;"}'
+          BODY='{"query": "select count(*) as n, min(date) as oldest, max(date) as newest_to_purge from public.events where date < (current_date - interval '\''1 year'\'')::date;"}'
           curl -fsS -X POST "https://api.supabase.com/v1/projects/${SUPABASE_PROJECT_REF}/database/query" \
             -H "Authorization: Bearer ${SUPABASE_ACCESS_TOKEN}" \
             -H "Content-Type: application/json" \
@@ -40,7 +40,7 @@ jobs:
             | tee count-result.json
           N=$(jq -r '.[0].n' count-result.json)
           echo "events_to_purge_count=$N" >> "$GITHUB_OUTPUT"
-          echo "[purge] $N events to purge (date < today - 5y)"
+          echo "[purge] $N events to purge (date < today - 1y)"
 
       - name: Purge (DELETE)
         if: ${{ github.event.inputs.dry_run != 'true' }}
@@ -49,13 +49,13 @@ jobs:
           SUPABASE_PROJECT_REF: ${{ secrets.SUPABASE_PROJECT_REF }}
         run: |
           set -euo pipefail
-          BODY='{"query": "delete from public.events where date < (current_date - interval '\''5 years'\'')::date returning id, name, date;"}'
+          BODY='{"query": "with deleted as (delete from public.events where date < (current_date - interval '\''1 year'\'')::date returning 1) select count(*)::int as deleted from deleted;"}'
           curl -fsS -X POST "https://api.supabase.com/v1/projects/${SUPABASE_PROJECT_REF}/database/query" \
             -H "Authorization: Bearer ${SUPABASE_ACCESS_TOKEN}" \
             -H "Content-Type: application/json" \
             -d "$BODY" \
             | tee purge-result.json
-          DELETED=$(jq 'length' purge-result.json)
+          DELETED=$(jq -r '.[0].deleted' purge-result.json)
           echo "[purge] $DELETED events deleted"
 
       - name: Dry-run notice

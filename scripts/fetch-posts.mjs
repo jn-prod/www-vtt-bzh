@@ -61,7 +61,10 @@ function pickLink(block) {
 function pickExcerpt(block) {
   let text = pick(block, 'description') || pick(block, 'summary');
   if (!text) return '';
-  text = text.split(/Initialement publié sur/i)[0].replace(/\s+/g, ' ').trim();
+  text = text
+    .split(/Initialement publié sur/i)[0]
+    .replace(/\s+/g, ' ')
+    .trim();
   if (text.length <= EXCERPT_MAX) return text;
   const cut = text.slice(0, EXCERPT_MAX);
   const lastSpace = cut.lastIndexOf(' ');

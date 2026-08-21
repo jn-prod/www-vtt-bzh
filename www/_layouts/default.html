@@ -22,8 +22,11 @@
     <meta name="keywords" content="{{ site.keywords | escape }}" />
     {% endif %}
     <meta name="generator" content="Jekyll v{{ jekyll.version }}" />
-    <meta name="robots" content="index, follow" />
-    <meta name="referrer" content="always" />
+    <meta
+      name="robots"
+      content="{{ page.robots | default: 'index, follow' }}"
+    />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
     <meta name="theme-color" content="#1C7D44" />
 
     <!-- Webmaster verifications -->
@@ -59,7 +62,10 @@
     />
     {% endif %}
 
-    <link rel="canonical" href="{{ page.url | replace:'index.html','' | absolute_url }}" />
+    <link
+      rel="canonical"
+      href="{{ page.url | replace:'index.html','' | absolute_url }}"
+    />
     <meta name="author" content="{{ seo_author }}" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
@@ -91,6 +97,13 @@
 
     <!-- styles -->
     <link rel="stylesheet" href="/assets/css/main.css" />
+    <link
+      rel="preload"
+      href="/assets/fonts/roboto-condensed-latin.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
 
     <!-- Schema.org -->
     <script type="application/ld+json">
@@ -143,7 +156,7 @@
     <!-- Header sticky, fin — façon barre de profil social : titre + action -->
     <header class="site-header">
       <div class="container">
-        <nav class="site-nav">
+        <nav class="site-nav" aria-label="Navigation principale">
           <a href="{{ site.url }}" class="site-nav__title">vtt.bzh</a>
           <a href="{{ site.url }}/#newsletter" class="btn btn--primary btn--sm"
             >S'abonner</a
@@ -177,13 +190,38 @@
         <a href="/terms/legals.html">Mentions légales</a>
       </p>
     </footer>
+
+    {% if page.calendar_script %}
+    <script type="module" src="/assets/js/calendar.js"></script>
+    {% endif %} {% if page.event_form_script %}
+    <script>
+      window.__EVENT_SUBMISSION__ = {
+        endpoint: {{ site.supabase.submit_event_url | jsonify }},
+      };
+    </script>
+    <script type="module" src="/assets/js/event-form.js"></script>
+    {% endif %}
+    <script type="application/json" id="cloudflare-web-analytics">
+      { "token": "9368ff319f1c4ab9a59f8077fee24625" }
+    </script>
+    <script>
+      (() => {
+        let loaded = false;
+        const loadAnalytics = () => {
+          if (loaded) return;
+          loaded = true;
+          const script = document.createElement("script");
+          script.defer = true;
+          script.src = "https://static.cloudflareinsights.com/beacon.min.js";
+          script.dataset.cfBeacon = document.getElementById(
+            "cloudflare-web-analytics",
+          ).textContent;
+          document.body.append(script);
+        };
+        window.addEventListener("pointerdown", loadAnalytics, { once: true });
+        window.addEventListener("keydown", loadAnalytics, { once: true });
+        window.setTimeout(loadAnalytics, 8000);
+      })();
+    </script>
   </body>
-  <script type="module" src="/assets/js/calendar.js"></script>
-  <!-- Cloudflare Web Analytics -->
-  <script
-    defer
-    src="https://static.cloudflareinsights.com/beacon.min.js"
-    data-cf-beacon='{"token": "9368ff319f1c4ab9a59f8077fee24625"}'
-  ></script>
-  <!-- End Cloudflare Web Analytics -->
 </html>

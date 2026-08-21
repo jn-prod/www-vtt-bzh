@@ -1,0 +1,6 @@
+---
+layout: null
+permalink: /calendrier/events.json
+sitemap: false
+---
+{{ site.data.events | jsonify }}

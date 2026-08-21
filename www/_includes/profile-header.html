@@ -2,40 +2,42 @@
      L'avatar est le LOGO vtt.bzh : le compte, c'est le projet (pattern « marque »
      type Silicon Carne), pas la personne. Le visage de Nicolas signe les articles
      (cf. _includes/posts-list.html).
-     Le cover est au-dessus de la ligne de flottaison → chargé en priorité, jamais
+     Le cover est au-dessus de la ligne de flottaison : chargé en priorité, jamais
      en lazy, dimensions figées pour éviter le layout shift. -->
 <section class="profile-header" aria-label="À propos de vtt.bzh">
   <picture>
     <source
       type="image/webp"
       srcset="
-        {{ site.url }}/assets/images/banner-800.webp   800w,
-        {{ site.url }}/assets/images/banner-1600.webp 1600w
+        /assets/images/banner-800.webp   800w,
+        /assets/images/banner-1600.webp 1600w
       "
       sizes="100vw"
     />
     <img
       class="profile-header__cover"
-      src="{{ site.url }}/assets/images/banner-1600.jpg"
+      src="/assets/images/banner-1600.jpg"
       srcset="
-        {{ site.url }}/assets/images/banner-800.jpg   800w,
-        {{ site.url }}/assets/images/banner-1600.jpg 1600w
+        /assets/images/banner-800.jpg   800w,
+        /assets/images/banner-1600.jpg 1600w
       "
       sizes="100vw"
       alt="Nicolas Jouanno en VTT de descente sur un sentier de montagne"
       width="1600"
       height="533"
       fetchpriority="high"
+      decoding="async"
     />
   </picture>
 
   <div class="profile-header__inner">
     <img
       class="profile-header__avatar"
-      src="{{ site.url }}/assets/images/logo.png"
+      src="/assets/images/logo.png"
       alt="Logo vtt.bzh"
       width="96"
       height="96"
+      decoding="async"
     />
     <div class="profile-header__body">
       <p class="profile-header__name">vtt.bzh</p>
@@ -63,14 +65,12 @@
           >&rarr; Me contacter</a
         >
       </p>
-      <!-- Stats : depuis 2013 (config) · 12 000 vues/mois (chiffre publié) ·
-           ~450 randos/an (moyenne dédupliquée Supabase 2023-2025 : 485/450/415) -->
       <ul class="profile-header__stats" aria-label="En chiffres">
         <li class="profile-header__stat">
           <strong>2013</strong><span>depuis</span>
         </li>
         <li class="profile-header__stat">
-          <strong>12 000</strong><span>vues/mois</span>
+          <strong>Jusqu'à 12 000</strong><span>visiteurs/mois</span>
         </li>
         <li class="profile-header__stat">
           <strong>~450</strong><span>randos/an</span>

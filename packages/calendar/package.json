@@ -4,7 +4,8 @@
   "main": "./src/index.ts",
   "scripts": {
     "build:events": "ts-node ./src/generate-events.ts",
-    "build": "tsc && pnpm build:events"
+    "build": "tsc && pnpm build:events",
+    "test": "node --test --require ts-node/register 'src/*.test.ts'"
   },
   "dependencies": {
     "dotenv": "^16.0.3",

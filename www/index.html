@@ -1,11 +1,12 @@
 ---
 layout: default
-title: Calendrier rando VTT Bretagne 2026
-description: "Toutes les randos VTT en Bretagne en 2026 : dates, départements, lieux et clubs organisateurs. Ajout gratuit."
+title: Calendrier rando VTT Bretagne
+description: "Toutes les randos VTT à venir en Bretagne : dates, départements, lieux, clubs et liens d'inscription. Ajout gratuit."
 hide_author_box: true
+calendar_script: true
 ---
 
-<h1 class="calendar__title">Calendrier rando VTT Bretagne 2026</h1>
+<h1 class="calendar__title">Calendrier rando VTT Bretagne</h1>
 <p class="calendar__intro">
   Toutes les randos VTT de Bretagne, en un coup d'œil. Par date et par
   département.
@@ -29,7 +30,7 @@ hide_author_box: true
     </summary>
     <form id="search-form" class="search-filter__form">
       <div class="search-filter__field">
-        <label class="search-filter__label" for="start-date">Debut</label>
+        <label class="search-filter__label" for="start-date">Début</label>
         <input
           id="start-date"
           type="date"
@@ -86,8 +87,8 @@ hide_author_box: true
 <section id="events" aria-label="Calendrier des randos">
   {% if site.data.events.size > 0 %}
   <p id="msg-results" class="message" aria-live="polite">
-    <span id="results-count">{{ site.data.events.size }}</span> randonnées à
-    découvrir.
+    <span id="results-count">{{ site.data.events.size }}</span>
+    <span id="results-label">randonnées à découvrir.</span>
     <span class="message__aside">
       Organisateur ? <a href="/calendrier/ajouter.html">Ajoutez votre rando</a>.
     </span>
@@ -99,15 +100,26 @@ hide_author_box: true
   </p>
   {% endif %}
 
-  <ul id="events-list">
-    {% for event in site.data.events %}
+  <ul id="events-list" class="events-list">
+    {% for event in site.data.events limit: 20 %}
     <li>{% include calendar/event.html event=event %}</li>
     {% endfor %}
   </ul>
 
   <div class="calendar__load-more">
-    <button id="load-more" class="btn btn--secondary" hidden>Voir +</button>
+    <button id="load-more" type="button" class="btn btn--secondary" hidden>
+      Voir +
+    </button>
   </div>
+  {% if site.data.events.size > 20 %}
+  <nav
+    id="calendar-pagination"
+    class="calendar-pagination"
+    aria-label="Pages du calendrier"
+  >
+    <a class="btn btn--primary" href="/calendrier/page/2/"> Page suivante </a>
+  </nav>
+  {% endif %}
 </section>
 
 {% include newsletter-inline.html %}
@@ -130,44 +142,10 @@ hide_author_box: true
     Publier ma rando
   </a>
   <ul class="organizer-callout__list">
-    <li>12 000 vététistes bretons consultent le calendrier chaque mois.</li>
-    <li>Publication gratuite, votre rando en ligne en 2 minutes.</li>
+    <li>Jusqu'à 12 000 visiteurs par mois.</li>
+    <li>Publication gratuite au prochain rafraîchissement quotidien.</li>
     <li>Touchez les vététistes au-delà de votre cercle Facebook et club.</li>
   </ul>
 </section>
 
 {% include posts-list.html %}
-
-<script>
-  // Onglets : souligne celui dont la section est à l'écran (scroll-spy).
-  // Maison, sans dépendance ni traceur. Dégradation propre : sans JS, les
-  // onglets restent de simples ancres fonctionnelles.
-  (function () {
-    var tabs = document.querySelectorAll(".tabs__tab");
-    if (!tabs.length || !("IntersectionObserver" in window)) return;
-
-    var byId = {};
-    tabs.forEach(function (tab) {
-      byId[tab.getAttribute("href").slice(1)] = tab;
-    });
-
-    var observer = new IntersectionObserver(
-      function (entries) {
-        entries.forEach(function (entry) {
-          if (!entry.isIntersecting) return;
-          tabs.forEach(function (t) {
-            t.classList.remove("is-active");
-          });
-          var active = byId[entry.target.id];
-          if (active) active.classList.add("is-active");
-        });
-      },
-      { rootMargin: "-30% 0px -60% 0px" },
-    );
-
-    Object.keys(byId).forEach(function (id) {
-      var section = document.getElementById(id);
-      if (section) observer.observe(section);
-    });
-  })();
-</script>

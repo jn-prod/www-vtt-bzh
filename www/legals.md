@@ -7,9 +7,9 @@ description: "Mentions légales, politique de confidentialité et gestion des co
 
 # Mentions légales et politique de confidentialité
 
-_Dernière mise à jour : 2026-07-13_
+_Dernière mise à jour : 2026-08-19_
 
-## 1. Éditeur du site
+## 1. Éditeur du site {#section-editeur}
 
 - **Site** : <https://www.vtt.bzh>
 - **Responsable de publication** : Nicolas Jouanno
@@ -17,7 +17,7 @@ _Dernière mise à jour : 2026-07-13_
 - **Localité** : 56300 Pontivy, France
 - **Contact éditeur et responsable des données** : <nicolas@vtt.bzh>
 
-## 2. Hébergement et infrastructure
+## 2. Hébergement et infrastructure {#section-hebergement}
 
 Le site est généré à partir de fichiers statiques et servi via une infrastructure cloud répartie :
 
@@ -28,22 +28,23 @@ Le site est généré à partir de fichiers statiques et servi via une infrastru
 
 Les transferts hors Union européenne reposent sur les mécanismes prévus par le RGPD (clauses contractuelles types, Data Privacy Framework).
 
-## 3. Objet du service
+## 3. Objet du service {#section-objet}
 
 `vtt.bzh` est un calendrier en ligne des randonnées VTT en Bretagne, alimenté par les organisateurs eux-mêmes via un formulaire public. Les informations publiées sont fournies à titre indicatif. La pratique du VTT est une activité à risque ; il appartient à chaque pratiquant d'apprécier sa capacité et la conformité de son équipement, et d'évaluer les conditions sur place. La responsabilité de l'éditeur ne peut être recherchée pour des dommages liés à l'utilisation des informations publiées.
 
-## 4. Données personnelles (RGPD)
+## 4. Données personnelles (RGPD) {#section-donnees-personnelles}
 
-### 4.1 Quelles données sont collectées et pourquoi
+### 4.1 Quelles données sont collectées et pourquoi {#section-donnees-collectees}
 
-| Donnée                                                                                      | Source                                                          | Finalité                                              | Base légale                                                                                 | Durée de conservation                                                                                                |
-| ------------------------------------------------------------------------------------------- | --------------------------------------------------------------- | ----------------------------------------------------- | ------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- |
-| Nom de l'organisateur, contact (email/téléphone), description de la rando, date, lieu, prix | Formulaire `/calendrier/ajouter.html` rempli par l'organisateur | Publication publique du calendrier des randos         | Consentement explicite (case à cocher au moment de l'envoi)                                 | Tant que la date de la rando est dans le futur, puis 5 ans d'archive après l'événement, puis suppression automatique |
-| Statistiques d'audience anonymisées (pages vues, navigateur, pays)                          | Cloudflare Web Analytics                                        | Comprendre l'audience pour améliorer le service       | Intérêt légitime (anonymisé, sans cookie ni IP stockée)                                     | Durée fixée par Cloudflare (voir leur politique)                                                                     |
-| Adresse email (et prénom si vous le renseignez)                                             | Formulaire d'abonnement « Suis les randos bretonnes » (Kit)     | Vous envoyer les nouvelles randos et mes publications | Consentement explicite (inscription volontaire, désabonnement en un clic dans chaque email) | Jusqu'à votre désabonnement, puis suppression                                                                        |
-| Logs techniques                                                                             | GitHub Pages, Cloudflare, Supabase                              | Sécurité, intégrité, lutte contre le spam             | Intérêt légitime                                                                            | Durées fixées par chaque prestataire                                                                                 |
+| Donnée                                                                                                     | Source                                                          | Finalité                                                            | Base légale                                                                                     | Durée de conservation                                                       |
+| ---------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------- | ------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------- |
+| Nom de l'organisateur, contact (email/téléphone), description de la rando, date, lieu, prix et site fourni | Formulaire `/calendrier/ajouter.html` rempli par l'organisateur | Publication publique du calendrier des randos                       | Consentement explicite (case à cocher au moment de l'envoi)                                     | Jusqu'à un an après la date de la rando, puis suppression automatique       |
+| Jeton technique pseudonymisé à sens unique, dérivé temporairement de l'adresse réseau                      | Fonction de soumission Supabase                                 | Limiter les envois automatisés et protéger le formulaire            | Intérêt légitime (sécurité du service)                                                          | Environ 24 heures ; purge automatique exécutée chaque minute                |
+| Statistiques d'audience agrégées (pages vues, navigateur, pays, performances)                              | Cloudflare Web Analytics                                        | Comprendre l'usage et les performances du service                   | Intérêt légitime ; aucun cookie, stockage local ou suivi individuel par le module Web Analytics | Données brutes du beacon conservées 7 jours, puis agrégées par Cloudflare   |
+| Adresse email                                                                                              | Formulaire d'abonnement à l'agenda (Kit)                        | Envoyer, en saison, au maximum un agenda mensuel des randos à venir | Consentement explicite et double confirmation, désabonnement dans chaque email                  | Jusqu'au désabonnement, puis suppression selon les délais techniques de Kit |
+| Logs techniques                                                                                            | GitHub Pages, Cloudflare, Supabase                              | Sécurité, intégrité et diagnostic                                   | Intérêt légitime                                                                                | Durées fixées par chaque prestataire                                        |
 
-### 4.2 Destinataires
+### 4.2 Destinataires {#section-destinataires}
 
 - Le **public** (les informations soumises via le formulaire du calendrier sont destinées à être publiées sur le site).
 - L'**éditeur du site**, à des fins de modération, via une notification Telegram interne.
@@ -51,7 +52,7 @@ Les transferts hors Union européenne reposent sur les mécanismes prévus par l
 
 Aucun autre destinataire n'a accès aux données.
 
-### 4.3 Vos droits
+### 4.3 Vos droits {#section-droits}
 
 Conformément au Règlement Général sur la Protection des Données (RGPD) et à la loi Informatique et Libertés, vous disposez des droits suivants sur vos données personnelles :
 
@@ -67,36 +68,36 @@ Pour exercer ces droits, écrivez à <nicolas@vtt.bzh> en précisant votre deman
 
 En cas de désaccord persistant sur le traitement de vos données, vous pouvez introduire une réclamation auprès de la **CNIL** : <https://www.cnil.fr/fr/plaintes>.
 
-### 4.4 Sécurité
+### 4.4 Sécurité {#section-securite}
 
 - Les données sont stockées sur Supabase en région européenne (`eu-west-1`).
-- Les écritures publiques (via le formulaire) sont contraintes par des règles d'accès au niveau de la base (Row Level Security) interdisant toute modification ou suppression depuis le client.
+- Le navigateur transmet le formulaire à une fonction Supabase qui valide les champs et fixe les attributs système. La base refuse l'insertion directe, la modification et la suppression publiques.
 - Les fichiers de sauvegarde quotidiens sont chiffrés (AES-256) avant tout stockage.
 
-## 5. Cookies et traceurs
+## 5. Cookies et traceurs {#section-cookies}
 
 `vtt.bzh` ne dépose **aucun cookie** sur votre terminal et n'utilise aucun traceur publicitaire.
 
-Le seul outil de mesure d'audience embarqué est **Cloudflare Web Analytics**, qui est explicitement conçu pour ne pas déposer de cookie ni stocker votre adresse IP. Les statistiques générées sont strictement anonymisées et agrégées (pages vues, navigateurs, pays). Selon la doctrine CNIL, ces outils privacy-first n'imposent pas de bandeau de consentement.
+Le seul outil de mesure d'audience embarqué est **Cloudflare Web Analytics**. D'après sa documentation, son beacon n'utilise ni cookie, ni `localStorage`, ni empreinte permettant de suivre une personne dans le temps. Il produit des mesures agrégées de fréquentation et de performance pour ce site uniquement.
 
 Le **formulaire d'abonnement** est un formulaire HTML simple : il **ne charge aucun script tiers** et ne dépose ni cookie ni identifiant sur votre terminal. Votre adresse email n'est transmise à Kit qu'au moment précis où vous cliquez sur « S'abonner ». (Le script d'intégration fourni par Kit — qui aurait chargé Google reCAPTCHA et écrit un identifiant persistant — a été délibérément écarté pour cette raison.)
 
 Si votre navigateur signale un cookie déposé par `vtt.bzh`, c'est probablement un cookie technique de votre fournisseur de réseau ou un cookie tiers déposé par un site externe vers lequel vous avez cliqué (HelloAsso, sites de clubs, etc.) — l'éditeur n'en est pas responsable.
 
-## 6. Propriété intellectuelle
+## 6. Propriété intellectuelle {#section-propriete-intellectuelle}
 
 Le contenu publié par l'éditeur (textes, images originales, logos) est protégé par le droit d'auteur. Toute reproduction totale ou partielle sans autorisation préalable est interdite (articles L335-2 et suivants du Code de la propriété intellectuelle).
 
 Les contenus soumis par les organisateurs via le formulaire restent la propriété de leurs auteurs ; en publiant via vtt.bzh, l'organisateur accorde à l'éditeur une licence non exclusive de reproduction et de représentation aux seules fins de publication sur le calendrier.
 
-## 7. Liens hypertextes
+## 7. Liens hypertextes {#section-liens}
 
 `vtt.bzh` peut contenir des liens vers des sites tiers (HelloAsso, sites de clubs, etc.). L'éditeur n'exerce aucun contrôle sur ces sites et décline toute responsabilité quant à leur contenu. La création de liens vers `vtt.bzh` est libre dès lors qu'elle ne porte pas atteinte à la réputation ou à l'intégrité du site.
 
-## 8. Loi applicable et juridiction
+## 8. Loi applicable et juridiction {#section-loi-applicable}
 
 Les présentes mentions sont régies par le droit français. En cas de litige et à défaut de résolution amiable, les tribunaux français seront seuls compétents.
 
-## 9. Mises à jour
+## 9. Mises à jour {#section-mises-a-jour}
 
 Cette page peut être mise à jour. La date en tête de page indique la dernière révision. Les changements substantiels sont annoncés via la newsletter (si vous êtes inscrit) ou par un avis temporaire sur le site.

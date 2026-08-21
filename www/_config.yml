@@ -43,6 +43,7 @@ supabase:
   publishable_key: "sb_publishable_RqhVTG3FPvkoqEenIXV3hA_NodabkPY"
   table: "events"
   support_events_table: "support_events"
+  submit_event_url: "https://lbqjpwsifmmzxafkbcvz.supabase.co/functions/v1/submit-event"
 
 # Outputting
 permalink: /:title:output_ext

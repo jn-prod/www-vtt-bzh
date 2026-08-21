@@ -23,10 +23,15 @@
     "build": "pnpm build:packages && pnpm copy:packages:calendar && pnpm fetch:posts && pnpm build:www",
     "fetch:posts": "node scripts/fetch-posts.mjs",
     "build:preview": "pnpm build && python3 -m http.server -d ./www/_site",
-    "build:www": "pnpm --filter='www' build",
+    "build:www": "pnpm --filter='www' build && pnpm minify:site",
     "build:packages": "pnpm --filter='./packages/*' -r build",
     "copy:packages:calendar": "cp packages/calendar/out/events.json www/_data/events.json",
-    "test": "pnpm -r test",
+    "test": "pnpm -r test && node --test 'supabase/functions/submit-event/*.test.ts' 'tests/*.test.mjs'",
+    "test:e2e": "playwright test",
+    "validate:html": "html-validate -c .htmlvalidate.cjs 'www/_site/**/*.html'",
+    "validate:site": "node scripts/validate-site.mjs",
+    "minify:site": "node scripts/minify-site.mjs",
+    "check": "pnpm lint && pnpm test && pnpm build && pnpm validate:html && pnpm validate:site && pnpm test:e2e",
     "lint": "pnpm lint:eslint && pnpm lint:stylelint && pnpm lint:prettier",
     "lint:fix": "pnpm lint:eslint:fix && pnpm lint:stylelint:fix && pnpm lint:prettier:fix",
     "lint:eslint": "eslint . && stylelint 'www/assets/css/**/*.css'",
@@ -43,16 +48,21 @@
     "*.{json,yaml,yml,md,mdx}": "prettier --write"
   },
   "devDependencies": {
+    "@axe-core/playwright": "4.13.0",
+    "@playwright/test": "1.62.1",
     "@types/node": "^24.0.0",
     "eslint": "^10.0.0",
     "eslint-config-prettier": "^10.0.0",
     "eslint-plugin-prettier": "^5.2.1",
     "globals": "^17.0.0",
+    "html-minifier-terser": "7.2.0",
+    "html-validate": "11.8.0",
     "husky": "^9.1.6",
     "lint-staged": "^17.0.0",
+    "parse5": "8.0.1",
     "prettier": "^3.5.0",
     "stylelint": "^17.0.0",
-    "stylelint-config-standard": "^37.0.0",
+    "stylelint-config-standard": "^40.0.0",
     "supabase": "^2.98.2",
     "ts-node": "^10.9.2",
     "typescript-eslint": "^8.0.0"
@@ -62,8 +72,13 @@
       "supabase"
     ],
     "overrides": {
-      "brace-expansion@1": "^5.0.0",
-      "diff@4": "^9.0.0"
+      "brace-expansion@1": "5.0.9",
+      "brace-expansion@>=4.0.0 <5.0.9": "5.0.9",
+      "diff@4": "^9.0.0",
+      "fast-uri@>=3.0.0 <3.1.5": "3.1.5",
+      "js-yaml@>=4.0.0 <4.3.1": "4.3.1",
+      "nanoid@<3.3.18": "3.3.18",
+      "postcss@<8.5.23": "8.5.23"
     }
   }
 }

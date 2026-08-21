@@ -1,0 +1,33 @@
+---
+layout: default
+---
+
+<h1 class="calendar__title">
+  Calendrier rando VTT Bretagne — page {{ page.page_number }}
+</h1>
+<p class="calendar__intro">
+  Randonnées à venir, classées par date. Page {{ page.page_number }} sur {{
+  page.total_pages }}.
+</p>
+
+<ul class="events-list">
+  {% for event in page.events %}
+  <li>{% include calendar/event.html event=event %}</li>
+  {% endfor %}
+</ul>
+
+<nav class="calendar-pagination" aria-label="Pages du calendrier">
+  {% assign previous_number = page.page_number | minus: 1 %} {% if
+  previous_number == 1 %}
+  <a class="btn btn--outline" href="/">Page précédente</a>
+  {% else %}
+  <a class="btn btn--outline" href="/calendrier/page/{{ previous_number }}/">
+    Page précédente
+  </a>
+  {% endif %} {% if page.page_number < page.total_pages %} {% assign next_number
+  = page.page_number | plus: 1 %}
+  <a class="btn btn--primary" href="/calendrier/page/{{ next_number }}/">
+    Page suivante
+  </a>
+  {% endif %}
+</nav>

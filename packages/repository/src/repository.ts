@@ -23,7 +23,10 @@ export const find = async <T>(
     if (options && options.order) {
       query.order(options.order.column, { ascending: options.order.ascending });
     }
-    return (await query).data as T[];
+    const { data, error } = await query;
+    if (error) throw error;
+    if (!Array.isArray(data)) throw new DbClientError('database returned no collection');
+    return data as T[];
   });
 };
 
@@ -57,7 +60,10 @@ export const create = async <CreateDto, T>(
   if (!isSupabaseClient(db)) return Err(new DbClientError());
 
   return encaseResult(async () => {
-    const { data, error } = await db.from(collection).insert(resource as never).select();
+    const { data, error } = await db
+      .from(collection)
+      .insert(resource as never)
+      .select();
     if (error) console.error(`[repository] create`, error);
     if (data && data?.length > 0) return data[0] as T;
     else return null;

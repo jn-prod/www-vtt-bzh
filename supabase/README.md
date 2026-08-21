@@ -2,34 +2,42 @@
 
 Configuration Supabase pour vtt.bzh.
 
-## Migrations
+## Changements de schéma
 
-Le dossier `migrations/` versionne les changements de schéma et de policies à appliquer via le dashboard Supabase (SQL Editor) avec la clé `service_role`.
+Le dossier `migrations/` contient l'historique déjà public. Les nouveaux changements distants sont appliqués via le dashboard ou le PAC du studio, puis consignés dans le journal quotidien ; aucun secret ni nouveau fichier SQL de production n'est ajouté ici par défaut.
 
-| Fichier                   | Contexte                                                                                                                                                    | À appliquer manuellement             |
-| ------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------ |
-| `20260505_rls_events.sql` | RLS sur `events` (anon : SELECT actifs + INSERT contraint à `public-form/%`, UPDATE/DELETE refusés). Cohérent avec D-2026-05-05-002 (stabilisation-source). | ✅ avant T-015 (formulaire Supabase) |
+| Fichier                   | Contexte                                                                                                                                                                | À appliquer manuellement |
+| ------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------ |
+| `20260505_rls_events.sql` | Ancienne politique de soumission directe, conservée comme historique. Elle est remplacée en production par `submit-event` et l'absence d'`INSERT` anonyme sur `events`. | Historique               |
 
 ## Stratégie de modération
 
 **A posteriori, par email** :
 
-- Les inserts via le formulaire public sont `active=true` par défaut → visibilité immédiate.
+- `submit-event` valide la requête, limite le débit et fixe les champs système avant insertion.
+- Les événements valides sont `active=true` par défaut, puis apparaissent lors du build quotidien suivant.
 - Une notif email part à chaque insert (T-016) → modérateur reçoit le contenu.
 - Si non conforme : modérateur passe `active=false` via dashboard Supabase → l'event disparaît instantanément du site (filtré par RLS et par `generate-events.ts`).
 
-UPDATE/DELETE anon sont strictement refusés : un spammer ne peut qu'ajouter, jamais altérer/effacer les events validés.
+`INSERT`, `UPDATE` et `DELETE` anonymes sont refusés sur `events`. Seule l'Edge Function écrit avec sa clé serveur.
 
-## Application d'une migration
+## Vérification d'un changement distant
 
 1. Ouvrir https://supabase.com/dashboard → projet vtt.bzh.
-2. SQL Editor → New query.
-3. Coller le contenu de la migration → Run.
-4. Vérifier dans Authentication → Policies que les policies attendues sont présentes.
+2. Vérifier le schéma et les politiques RLS dans Database.
+3. Vérifier la version et les secrets de l'Edge Function sans exposer leur valeur.
+4. Tester CORS, validation, limitation de débit et absence d'écriture anonyme directe.
 
 ## Edge functions
 
-Voir `functions/` (T-016 à venir : notif email modération via Resend).
+- `submit-event` : endpoint public contrôlé, validation stricte, limitation de débit persistante et insertion serveur.
+- `notify-new-event` : notification de modération déclenchée après insertion.
+
+`submit-event` utilise la clé secrète moderne nommée `submit_event`, fournie automatiquement dans `SUPABASE_SECRET_KEYS`. La table `event_submission_attempts` stocke uniquement une empreinte HMAC pendant environ 24 heures, avec RLS active et aucun droit `anon` ou `authenticated`. Une tâche `pg_cron` exécutée chaque minute supprime les lignes de plus de 24 heures ; la fonction conserve aussi une purge opportuniste. Le seuil est de 5 tentatives par fenêtre glissante de 15 minutes et par empreinte.
+
+Le formulaire accepte JSON avec JavaScript et `application/x-www-form-urlencoded` sans JavaScript. Une soumission HTML valide reçoit une redirection `303` vers la confirmation locale ; l'adresse email n'est jamais placée dans l'URL.
+
+Le 2026-08-19, les fonctions trigger ont été durcies : aucun `EXECUTE` pour `anon` ou `authenticated`, et `update_updated_at_column` utilise un `search_path` fixé. Les advisors ne remontent plus d'exposition publique de fonction `SECURITY DEFINER`.
 
 ## Tracking soutien
 

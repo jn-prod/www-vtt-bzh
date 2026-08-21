@@ -114,7 +114,9 @@ const lines = [
 if (status === 'RISK') {
   lines.push('- RISK : aucune rando active dans les 30 prochains jours, ou trou > 30 jours. Action immédiate requise.');
 } else if (status === 'WATCH') {
-  lines.push('- WATCH : couverture présente mais public_form_90d = 0 ou départements < 3. Surveiller activation organisateurs.');
+  lines.push(
+    '- WATCH : couverture présente mais public_form_90d = 0 ou départements < 3. Surveiller activation organisateurs.'
+  );
 } else {
   lines.push('- OK : calendrier vivant, contributions organisateurs actives, couverture régionale suffisante.');
 }

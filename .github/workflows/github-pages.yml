@@ -5,7 +5,7 @@ on:
     branches:
       - main
   schedule:
-    # 05:30 UTC (07:30 CEST) — events submitted the day before appear in the morning
+    # 05:30 UTC (06:30 CET / 07:30 CEST) — publication quotidienne du calendrier
     - cron: '30 5 * * *'
   workflow_dispatch:
 
@@ -35,10 +35,16 @@ jobs:
           cache: 'pnpm'
 
       - name: Install dependencies
-        run: pnpm install
+        run: pnpm install --frozen-lockfile
 
       - name: Install ruby dependencies
         run: pnpm --filter=www install:jekyll
+
+      - name: Lint
+        run: pnpm lint
+
+      - name: Test
+        run: pnpm test
 
       - name: Build
         run: pnpm build
@@ -46,10 +52,16 @@ jobs:
           SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
           SUPABASE_PUBLISHABLE_KEY: ${{ secrets.SUPABASE_PUBLISHABLE_KEY }}
           SUPABASE_TABLE: ${{ secrets.SUPABASE_TABLE }}
-      #- name: Lint
-      #  run: pnpm lint
-      #- name: Test
-      #  run: pnpm test
+
+      - name: Validate generated site
+        run: pnpm validate:html && pnpm validate:site
+
+      - name: Install Playwright browser
+        run: pnpm exec playwright install --with-deps chromium
+
+      - name: Test browser journeys
+        run: pnpm test:e2e
+
       - name: Deploy GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
         with:

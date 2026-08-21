@@ -1,36 +1,29 @@
-{% assign event_id = include.event.date | slice: 0, 10 | append: "-" | append:
-include.event.name | slugify %}
 <details
-  id="{{ event_id }}"
-  data-date="{{ include.event.date | slice: 0, 10 }}"
-  data-departement="{{ include.event.departement }}"
+  id="{{ include.event.id | escape }}"
+  data-date="{{ include.event.date | escape }}"
+  data-departement="{{ include.event.departement | escape }}"
   class="event"
   itemscope
   itemtype="https://schema.org/SportsEvent"
 >
-  {% if include.event.canceled %}
-  <meta itemprop="eventStatus" content="https://schema.org/EventCancelled" />
-  {% else %}
-  <meta itemprop="eventStatus" content="https://schema.org/EventScheduled" />
-  {% endif %}
   <summary class="event__summary">
     <span class="event__name u-h3" itemprop="name">
-      {{ include.event.name }}
+      {{ include.event.name | escape }}
     </span>
-    <div class="event__meta">
-      <div class="event__meta-item">
+    <span class="event__meta">
+      <span class="event__meta-item">
         <svg class="icon" aria-hidden="true" focusable="false">
           <use href="#icon-calendar" />
         </svg>
         <time
           class="event__date"
           itemprop="startDate"
-          datetime="{{ include.event.date | slice: 0, 10 }}"
+          datetime="{{ include.event.date | escape }}"
         >
-          {{ include.event.dateFormatted }}
+          {{ include.event.dateFormatted | escape }}
         </time>
-      </div>
-      <p class="event__meta-item">
+      </span>
+      <span class="event__meta-item">
         <svg class="icon" aria-hidden="true" focusable="false">
           <use href="#icon-pin" />
         </svg>
@@ -40,60 +33,77 @@ include.event.name | slugify %}
           itemscope
           itemtype="https://schema.org/Place"
         >
-          <span itemprop="name">{{ include.event.city }}</span>
+          <span itemprop="name">{{ include.event.city | escape }}</span>
           <meta
             itemprop="addressRegion"
-            content="{{ include.event.departement }}"
+            content="{{ include.event.departement | escape }}"
           />
-          ({{ include.event.departement }})
+          ({{ include.event.departement | escape }})
         </span>
         {% if include.event.canceled %}
-        <span class="badge badge--danger" role="status">
-          <span aria-hidden="true">⚠</span> Annulée
-        </span>
+        <span class="badge badge--danger" role="status">Annulée</span>
         {% endif %}
-      </p>
-    </div>
+      </span>
+    </span>
   </summary>
+  {% if include.event.canceled %}
+  <meta itemprop="eventStatus" content="https://schema.org/EventCancelled" />
+  {% else %}
+  <meta itemprop="eventStatus" content="https://schema.org/EventScheduled" />
+  {% endif %}
   <div class="event__body">
     {% if include.event.description %}
     <p class="event__description" itemprop="description">
-      {{ include.event.description }}
+      {{ include.event.description | escape }}
     </p>
     {% endif %}
     <ul class="event__details">
       <li class="event__detail">
         <span class="u-font-weight-bold">Organisateur :</span>
-        <span itemprop="organizer"
-          >{{ include.event.organisateur | default: "NC" }}</span
-        >
+        <span itemprop="organizer">
+          {{ include.event.organisateur | default: "Non renseigné" | escape }}
+        </span>
       </li>
       <li class="event__detail">
-        <span class="u-font-weight-bold">Horaires :</span> {{ include.event.hour
-        | default: "NC" }}
+        <span class="u-font-weight-bold">Horaires :</span>
+        {{ include.event.hour | default: "Non renseigné" | escape }}
       </li>
       <li class="event__detail">
-        <span class="u-font-weight-bold">Lieu de rendez-vous :</span> {{
-        include.event.place | default: "NC" }}
+        <span class="u-font-weight-bold">Lieu de rendez-vous :</span>
+        {{ include.event.place | default: "Non renseigné" | escape }}
       </li>
       <li class="event__detail">
         <span class="u-font-weight-bold">Contact :</span>
         {% if include.event.email %}
-        <a href="mailto:{{ include.event.email }}">{{ include.event.email }}</a>
+        <a href="mailto:{{ include.event.email | escape }}">
+          {{ include.event.email | escape }}
+        </a>
         {% if include.event.phone %} —
-        <a href="tel:{{ include.event.phone | remove: ' ' }}"
-          >{{ include.event.phone }}</a
-        >{% endif %} {% elsif include.event.phone %}
-        <a href="tel:{{ include.event.phone | remove: ' ' }}"
-          >{{ include.event.phone }}</a
-        >
-        {% else %}
-        NC {% endif %}
+        <a href="tel:{{ include.event.phone | remove: ' ' | escape }}">
+          {{ include.event.phone | escape }}
+        </a>
+        {% endif %} {% elsif include.event.phone %}
+        <a href="tel:{{ include.event.phone | remove: ' ' | escape }}">
+          {{ include.event.phone | escape }}
+        </a>
+        {% else %} Non renseigné {% endif %}
       </li>
       <li class="event__detail">
-        <span class="u-font-weight-bold">Prix :</span> {{ include.event.price |
-        default: "NC" }}
+        <span class="u-font-weight-bold">Prix :</span>
+        {{ include.event.price | default: "Non renseigné" | escape }}
       </li>
     </ul>
+    {% if include.event.website and include.event.canceled != true %}
+    <p class="event__action">
+      <a
+        class="btn btn--primary"
+        href="{{ include.event.website | escape }}"
+        rel="noopener noreferrer nofollow ugc"
+        target="_blank"
+      >
+        Informations et inscription
+      </a>
+    </p>
+    {% endif %}
   </div>
 </details>

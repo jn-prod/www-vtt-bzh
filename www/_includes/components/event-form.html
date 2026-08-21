@@ -1,17 +1,16 @@
-{%- comment -%} Formulaire de soumission d'une rando VTT. POST direct vers
-Supabase REST (clé anon publique, sécurité par RLS). Conforme RGPD : finalité
-explicite, consentement, lien mentions légales. Conforme RGAA : labels associés,
-champs requis annoncés, autocomplete, focus visible (CSS). {%- endcomment -%}
+{%- comment -%} Formulaire public. La soumission passe par une fonction edge qui
+valide le contrat et fixe les champs système avant insertion. {%- endcomment -%}
 
 <form
   id="event-form"
   class="event-form"
-  novalidate
+  action="{{ site.supabase.submit_event_url }}"
+  method="post"
   aria-describedby="event-form-intro"
 >
   <p id="event-form-intro" class="event-form__intro">
-    Publiez votre rando VTT en 2 minutes. Elle apparaîtra sur le calendrier le
-    lendemain.
+    Publiez votre rando VTT en 2 minutes. Après validation automatique, elle
+    sera publiée au prochain rafraîchissement quotidien du calendrier.
   </p>
 
   <div class="event-form__grid">
@@ -99,15 +98,17 @@ champs requis annoncés, autocomplete, focus visible (CSS). {%- endcomment -%}
 
     <div class="event-form__field event-form__field--span-2">
       <label class="event-form__label" for="event-form-place">
-        Lieu de rendez-vous
+        Lieu de rendez-vous <span aria-hidden="true">*</span>
       </label>
       <input
         type="text"
         id="event-form-place"
         name="place"
         class="event-form__input"
+        required
         maxlength="120"
         autocomplete="off"
+        aria-required="true"
       />
     </div>
 
@@ -241,15 +242,10 @@ champs requis annoncés, autocomplete, focus visible (CSS). {%- endcomment -%}
 
     <div class="event-form__field event-form__field--span-2">
       <label class="event-form__checkbox">
-        <input
-          type="checkbox"
-          id="event-form-newsletter"
-          name="newsletter"
-        />
+        <input type="checkbox" id="event-form-newsletter" name="newsletter" />
         <span>
-          Je souhaite aussi recevoir la <strong>newsletter mensuelle</strong> :
-          le calendrier des nouvelles randos VTT de Bretagne, une fois par mois.
-          Désabonnement en un clic.
+          Je souhaite aussi recevoir l'agenda par email. En saison, au maximum
+          un email par mois avec les randos à venir. Désabonnement en un clic.
         </span>
       </label>
     </div>
@@ -269,17 +265,23 @@ champs requis annoncés, autocomplete, focus visible (CSS). {%- endcomment -%}
   ></div>
 
   <div id="event-form-share" class="event-form__share" hidden>
-    <p class="event-form__share-prompt">Partagez cette page avec les organisateurs de votre club :</p>
+    <p class="event-form__share-prompt">
+      Partagez le formulaire avec les organisateurs de votre club :
+    </p>
     <div class="event-form__share-row">
       <input
         type="text"
         class="event-form__input event-form__share-url"
         id="event-form-share-url"
-        value="https://vtt.bzh/calendrier/ajouter.html"
+        value="https://www.vtt.bzh/calendrier/ajouter.html"
         readonly
         aria-label="Lien à partager"
       />
-      <button type="button" class="btn btn--secondary event-form__share-copy" id="event-form-share-copy">
+      <button
+        type="button"
+        class="btn btn--secondary event-form__share-copy"
+        id="event-form-share-copy"
+      >
         Copier le lien
       </button>
     </div>

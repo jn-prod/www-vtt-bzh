@@ -1,7 +1,7 @@
-// Newsletter mensuelle vtt.bzh → Kit.com. OUTIL, pas automate.
+// Newsletter saisonnière vtt.bzh → Kit.com. OUTIL, pas automate.
 //
-// Tient l'engagement pris sur la home : « Chaque mois, le calendrier des nouvelles
-// randos VTT de Bretagne dans ta boîte mail. » (_includes/newsletter-inline.html)
+// Tient l'engagement pris sur la home : au maximum un email par mois en saison,
+// uniquement lorsqu'il y a des randonnées à annoncer.
 //
 // PAS DE CRON, ET C'EST VOULU (décision fondateur, 2026-07-14). Ce script ne fait
 // JAMAIS partir un mail : il pose un BROUILLON dans Kit. La rédaction et l'envoi sont
@@ -26,6 +26,7 @@
 import { readFileSync } from 'node:fs';
 
 import { kit, sleep, assurerTag, taguer, abonnesDuForm, alerterSiPlafondProche } from './kit-api.mjs';
+import { duplicateKey, normalizeEvents } from '../packages/calendar/src/normalize-events.ts';
 
 const { SUPABASE_ACCESS_TOKEN, SUPABASE_PROJECT_REF, KIT_API_KEY } = process.env;
 
@@ -99,10 +100,8 @@ const chargerRandos = async () => {
 // noms avec des retours à la ligne collés dedans, des heures en `08:00:00` à côté de
 // `7h30`, des « 5 EUROS » et des villes préfixées du code postal.
 //
-// Le site absorbe ce bruit — une ligne bancale se noie dans 450 autres. Un mail, non :
-// il arrive signé, dans une boîte de réception, et un doublon y donne l'impression que
-// l'expéditeur ne connaît pas son propre calendrier. On nettoie donc ICI, en défense —
-// même si la source est réparée un jour, l'email ne doit jamais pouvoir régresser.
+// Le site et l'email passent par la même normalisation déterministe. Les retouches de
+// présentation propres à l'email sont appliquées seulement après cette étape commune.
 
 const propre = (s) =>
   String(s ?? '')
@@ -117,70 +116,16 @@ const ville = (s) => {
   return v.replace(/\p{L}+/gu, (m) => m[0].toUpperCase() + m.slice(1).toLowerCase());
 };
 
-/** « 08:00:00 » → « 8h00 ». Les saisies libres (« 7h30 /13h30 ») sont gardées telles quelles. */
-const heure = (s) => {
-  const v = propre(s);
-  const m = v.match(/^(\d{1,2}):(\d{2})(?::\d{2})?$/);
-  return m ? `${Number(m[1])}h${m[2]}` : v;
-};
-
-/** « 5 EUROS » → « 5 € ». */
-const prix = (s) =>
-  propre(s)
-    .replace(/\s*(euros?|EUROS?)\s*$/i, ' €')
-    .replace(/\s+€/, ' €');
-
-const plat = (s) =>
-  String(s ?? '')
-    .normalize('NFD')
-    .replace(/\p{Diacritic}/gu, '')
-    .toLowerCase();
-
-/**
- * Clé de doublon : jour + commune + NOM. Le nom est dans la clé, et c'est le point
- * important.
- *
- * Une clé jour+commune seule paraît plus efficace — elle attrape plus de doublons.
- * Elle est en fait dangereuse : le 15 août à Penguily, le comité des fêtes organise
- * UN RAID (départ 7h45) *et* DES RANDOS VTT/pédestres (départ 8h). Deux events réels,
- * deux fiches sources distinctes. Une clé jour+commune les fusionne et fait DISPARAÎTRE
- * un event du mail. Un agenda qui invente est moins grave qu'un agenda qui efface.
- *
- * Ici on ne dédoublonne donc que ce qui est certain : même jour, même commune, même nom
- * (aux accents, à la casse et à l'année parasite près — « la Staobinaise 2026 » et
- * « La staobinaise » sont la même). Les doublons de SAISIE (« Rando des D » vs « Randos
- * des Diables ») ne sont pas du ressort de ce script : ils se corrigent à la source,
- * sinon le site les affiche aussi.
- */
-const cleDoublon = (e) => `${e.date}|${plat(ville(e.city))}|${plat(nom(e.name))}`;
-
-/** « les rives de la vilaine 2026 » → « les rives de la vilaine ». L'année est déjà
- *  dans la date : la répéter dans le titre est un artefact de saisie. */
-const nom = (s) => propre(s).replace(/\s+(19|20)\d{2}$/, '');
-
-/**
- * Score de départage entre deux doublons. Le NOM pèse le plus lourd, et volontairement :
- * la base contient des saisies tronquées (« Rando des D » pour « Randos des Diables »).
- * Un score qui ne compterait que les champs remplis choisirait le tronqué s'il a un prix
- * — c'est le piège dans lequel la 1ʳᵉ version est tombée. Le nom le plus long gagne.
- */
-const richesse = (e) => nom(e.name).length * 10 + [e.hour, e.price, e.organisateur].filter((v) => propre(v)).length;
+const cleDoublon = (event) => duplicateKey(event);
 
 const nettoyer = (events) => {
-  const parCle = new Map();
-  for (const e of events) {
-    const k = cleDoublon(e);
-    const garde = parCle.get(k);
-    if (!garde || richesse(e) > richesse(garde)) parCle.set(k, e);
-  }
-  const retires = events.length - parCle.size;
-  if (retires > 0) console.log(`[kit-newsletter] ${retires} doublon(s) écarté(s) du mail`);
-  return [...parCle.values()].map((e) => ({
+  const { events: normalized, health } = normalizeEvents(events);
+  if (health.invalid > 0) console.log(`[kit-newsletter] ${health.invalid} événement(s) invalide(s) écarté(s)`);
+  if (health.duplicates > 0) console.log(`[kit-newsletter] ${health.duplicates} doublon(s) écarté(s) du mail`);
+  if (health.repaired > 0) console.log(`[kit-newsletter] ${health.repaired} encodage(s) réparé(s)`);
+  return normalized.map((e) => ({
     ...e,
-    name: nom(e.name),
     city: ville(e.city),
-    hour: heure(e.hour),
-    price: prix(e.price),
   }));
 };
 
@@ -256,7 +201,7 @@ const construireEmail = ({ nouvelles, agenda }) => {
   const content = `<p>Salut,</p>
 <p>Voici les randos VTT de Bretagne du mois. Bonne route.</p>
 ${bloc(`${liste.length} rando${s(liste.length)} dans les 5 prochaines semaines`, liste)}
-${bloc(`Nouveau${s(plusLoin.length)} plus loin dans la saison`, plusLoin)}
+${bloc('Nouveautés plus loin dans la saison', plusLoin)}
 <p style="margin-top:24px;">
   <a href="https://www.vtt.bzh/">Voir tout le calendrier sur vtt.bzh</a>
 </p>
