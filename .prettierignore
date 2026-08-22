@@ -10,6 +10,9 @@ www/calendrier/events.json
 playwright-report
 test-results
 
+# Fichier généré par pnpm et mis à jour par Renovate
+pnpm-lock.yaml
+
 # Supabase migrations: SQL non géré par Prettier
 supabase/migrations/*.sql
 
