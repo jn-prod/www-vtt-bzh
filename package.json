@@ -26,7 +26,7 @@
     "build:www": "pnpm --filter='www' build && pnpm minify:site",
     "build:packages": "pnpm --filter='./packages/*' -r build",
     "copy:packages:calendar": "cp packages/calendar/out/events.json www/_data/events.json",
-    "test": "pnpm -r test && node --test 'supabase/functions/submit-event/*.test.ts' 'tests/*.test.mjs'",
+    "test": "pnpm -r test && node --test 'supabase/functions/submit-event/*.test.ts' 'supabase/functions/calendar-supply/*.test.ts' 'tests/*.test.mjs'",
     "test:e2e": "playwright test",
     "validate:html": "html-validate -c .htmlvalidate.cjs 'www/_site/**/*.html'",
     "validate:site": "node scripts/validate-site.mjs",
