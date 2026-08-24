@@ -37,7 +37,10 @@ const authorized = async (request: Request, expected: string): Promise<boolean> 
 };
 
 const json = (body: unknown, status = 200): Response =>
-  Response.json(body, { status, headers: { 'Cache-Control': 'no-store', 'Content-Type': 'application/json; charset=utf-8' } });
+  Response.json(body, {
+    status,
+    headers: { 'Cache-Control': 'no-store', 'Content-Type': 'application/json; charset=utf-8' },
+  });
 
 const readAllEvents = async (admin: ReturnType<typeof createClient>): Promise<EventRecord[]> => {
   const rows: EventRecord[] = [];
