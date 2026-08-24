@@ -36,7 +36,9 @@ export const buildCalendarSupplyMetrics = (records: EventRecord[], now = new Dat
   const createdSince = (days: number) => new Date(now.getTime() - days * DAY_MS).toISOString();
   const created = (days: number) => records.filter((record) => record.created_at >= createdSince(days));
   const futureActive = (days: number) =>
-    records.filter((record) => record.active && !record.canceled && record.date >= today && record.date <= daysFromToday(days));
+    records.filter(
+      (record) => record.active && !record.canceled && record.date >= today && record.date <= daysFromToday(days)
+    );
   const canceledUpcoming = (days: number) =>
     records.filter((record) => record.canceled && record.date >= today && record.date <= daysFromToday(days));
   const publicSubmissions = records
@@ -57,8 +59,8 @@ export const buildCalendarSupplyMetrics = (records: EventRecord[], now = new Dat
           const bucket = originBucket(record.origin);
           counts[bucket] = (counts[bucket] ?? 0) + 1;
           return counts;
-        }, {}),
-      ).sort(([a], [b]) => a.localeCompare(b)),
+        }, {})
+      ).sort(([a], [b]) => a.localeCompare(b))
     ),
   };
 };
