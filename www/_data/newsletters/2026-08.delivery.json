@@ -2,10 +2,10 @@
   "schema_version": 1,
   "newsletter_id": "vtt-bzh-2026-08",
   "kit_broadcast_id": 25648335,
-  "delivered_at": "2026-08-28T11:21:40.626Z",
+  "delivered_at": "2026-08-28T11:28:32.244Z",
   "source": {
-    "content_sha256": "6a165ac0a6779679d2bb67248017065f06fb86e5446542dd282fea8a56b9825a",
+    "content_sha256": "a8968328e3cc44221ece9e39924bc4413ac6a11c655f0895ed5ece502103fb27",
     "data_sha256": "752c7b341b9ecc99d0b133a59c39000d7a877890f18a79b691594cf99000183e",
-    "source_commit": "fa66dcd17b9ecb664ef6bed02fa1a00117506719"
+    "source_commit": "6c04acba078c0116ab29b20859b141c7fb431276"
   }
 }
