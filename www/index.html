@@ -12,16 +12,12 @@ calendar_script: true
   département.
 </p>
 
-{% include profile-header.html %}
-
-<!-- Barre sticky (sous le header) — façon barre d'onglets d'un profil social :
-     navigation à gauche, utilitaire à droite. Le filtre y est logé en menu
+<!-- Barre sticky : le filtre y est logé en menu
      déroulant : il ne coûte aucune hauteur supplémentaire et reste joignable
      à n'importe quelle profondeur de scroll dans la liste des randos. -->
 <div class="tabs" id="tabs">
   <nav class="tabs__nav" aria-label="Sections de la page">
     <a class="tabs__tab is-active" href="#events">Randos</a>
-    <a class="tabs__tab" href="#articles">Articles</a>
   </nav>
 
   <details class="search-filter" id="filter-details">
@@ -148,4 +144,10 @@ calendar_script: true
   </ul>
 </section>
 
-{% include posts-list.html %}
+<aside class="project-signature" aria-label="Qui tient ce calendrier ?">
+  <p class="project-signature__text">
+    <strong>vtt.bzh</strong> est un outil indépendant tenu depuis 2013 par
+    <a href="{{ site.author.profile_url }}">Nicolas Jouanno</a> et alimenté avec
+    les clubs et organisateurs bretons.
+  </p>
+</aside>

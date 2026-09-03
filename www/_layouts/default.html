@@ -153,13 +153,13 @@
       </symbol>
     </svg>
 
-    <!-- Header sticky, fin — façon barre de profil social : titre + action -->
+    <!-- Header sticky : identité du service + action utile -->
     <header class="site-header">
       <div class="container">
         <nav class="site-nav" aria-label="Navigation principale">
           <a href="{{ site.url }}" class="site-nav__title">vtt.bzh</a>
           <a href="{{ site.url }}/#newsletter" class="btn btn--primary btn--sm"
-            >S'abonner</a
+            >Recevoir l'agenda</a
           >
         </nav>
       </div>
@@ -183,8 +183,8 @@
         <span itemprop="name"
           ><a href="{{ site.url }}">{{ site.title }}</a></span
         >, 2013 - {{ site.time | date: "%Y" }}
-        <a href="/go/home/">Nicolas Jouanno</a> •
-        <a href="/newsletter.html">Newsletter</a> •
+        <a href="{{ site.author.profile_url }}">Nicolas Jouanno</a> •
+        <a href="/newsletter.html">Agenda email</a> •
         <a href="/calendrier/ajouter.html">Ajouter une rando</a> •
         <a href="{{ site.author.contact }}">Me contacter</a> •
         <a href="/terms/legals.html">Mentions légales</a>
