@@ -340,6 +340,12 @@ button {
   color: var(--b-color-grey-dark);
 }
 
+.btn--small {
+  min-height: 3.6rem;
+  padding: var(--b-size-4) var(--b-size-16);
+  font-size: 1.4rem;
+}
+
 /* ==========================================================================
    Badge
    ========================================================================== */
@@ -376,12 +382,40 @@ button {
 }
 
 .event__summary {
+  display: flex;
+  align-items: baseline;
+  gap: var(--b-size-8);
   padding: var(--b-size-12);
   cursor: pointer;
+  list-style: none;
+}
+
+.event__summary::-webkit-details-marker {
+  display: none;
+}
+
+.event__summary::before {
+  content: "›";
+  flex: 0 0 auto;
+  font-family: var(--b-font-heading);
+  font-size: 1.17em;
+  font-weight: 700;
+  line-height: 1;
+  transform-origin: center;
+  transition: transform 150ms ease;
+}
+
+.event[open] > .event__summary::before {
+  transform: rotate(90deg);
+}
+
+.event__summary-content {
+  flex: 1;
+  min-width: 0;
 }
 
 .event__name {
-  display: inline;
+  display: block;
   text-transform: uppercase;
   margin: 0;
 }
