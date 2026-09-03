@@ -7,42 +7,44 @@
   itemtype="https://schema.org/SportsEvent"
 >
   <summary class="event__summary">
-    <span class="event__name u-h3" itemprop="name">
-      {{ include.event.name | escape }}
-    </span>
-    <span class="event__meta">
-      <span class="event__meta-item">
-        <svg class="icon" aria-hidden="true" focusable="false">
-          <use href="#icon-calendar" />
-        </svg>
-        <time
-          class="event__date"
-          itemprop="startDate"
-          datetime="{{ include.event.date | escape }}"
-        >
-          {{ include.event.dateFormatted | escape }}
-        </time>
+    <span class="event__summary-content">
+      <span class="event__name u-h3" itemprop="name">
+        {{ include.event.name | escape }}
       </span>
-      <span class="event__meta-item">
-        <svg class="icon" aria-hidden="true" focusable="false">
-          <use href="#icon-pin" />
-        </svg>
-        <span
-          class="event__location"
-          itemprop="location"
-          itemscope
-          itemtype="https://schema.org/Place"
-        >
-          <span itemprop="name">{{ include.event.city | escape }}</span>
-          <meta
-            itemprop="addressRegion"
-            content="{{ include.event.departement | escape }}"
-          />
-          ({{ include.event.departement | escape }})
+      <span class="event__meta">
+        <span class="event__meta-item">
+          <svg class="icon" aria-hidden="true" focusable="false">
+            <use href="#icon-calendar" />
+          </svg>
+          <time
+            class="event__date"
+            itemprop="startDate"
+            datetime="{{ include.event.date | escape }}"
+          >
+            {{ include.event.dateFormatted | escape }}
+          </time>
         </span>
-        {% if include.event.canceled %}
-        <span class="badge badge--danger" role="status">Annulée</span>
-        {% endif %}
+        <span class="event__meta-item">
+          <svg class="icon" aria-hidden="true" focusable="false">
+            <use href="#icon-pin" />
+          </svg>
+          <span
+            class="event__location"
+            itemprop="location"
+            itemscope
+            itemtype="https://schema.org/Place"
+          >
+            <span itemprop="name">{{ include.event.city | escape }}</span>
+            <meta
+              itemprop="addressRegion"
+              content="{{ include.event.departement | escape }}"
+            />
+            ({{ include.event.departement | escape }})
+          </span>
+          {% if include.event.canceled %}
+          <span class="badge badge--danger" role="status">Annulée</span>
+          {% endif %}
+        </span>
       </span>
     </span>
   </summary>
