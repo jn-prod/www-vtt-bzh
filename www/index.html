@@ -21,9 +21,7 @@ calendar_script: true
   </nav>
 
   <details class="search-filter" id="filter-details">
-    <summary class="btn btn--light btn--sm search-filter__toggle">
-      Filtrer
-    </summary>
+    <summary class="btn btn--light search-filter__toggle">Filtrer</summary>
     <form id="search-form" class="search-filter__form">
       <div class="search-filter__field">
         <label class="search-filter__label" for="start-date">Début</label>
@@ -61,18 +59,10 @@ calendar_script: true
         </select>
       </div>
       <div class="search-filter__actions">
-        <button
-          id="search-button"
-          type="submit"
-          class="btn btn--secondary btn--sm"
-        >
+        <button id="search-button" type="submit" class="btn btn--primary">
           Rechercher
         </button>
-        <button
-          id="reset-button"
-          type="button"
-          class="btn btn--outline btn--sm"
-        >
+        <button id="reset-button" type="button" class="btn btn--outline">
           Réinitialiser
         </button>
       </div>
@@ -103,7 +93,7 @@ calendar_script: true
   </ul>
 
   <div class="calendar__load-more">
-    <button id="load-more" type="button" class="btn btn--secondary" hidden>
+    <button id="load-more" type="button" class="btn btn--primary" hidden>
       Voir +
     </button>
   </div>
