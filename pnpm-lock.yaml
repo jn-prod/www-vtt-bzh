@@ -42,8 +42,8 @@ importers:
         specifier: 7.2.0
         version: 7.2.0
       html-validate:
-        specifier: 11.13.0
-        version: 11.13.0
+        specifier: 11.14.0
+        version: 11.14.0
       husky:
         specifier: ^9.1.6
         version: 9.1.7
@@ -841,16 +841,16 @@ packages:
     resolution: {integrity: sha512-n6l5uca7/y5joxZ3LUePhzmBFUJ+U2YWzhMa8XUTecSeSlQiZdF5XAd/Q3/WUl0VsXgUwWi8I7CNIwdI5WN1SQ==}
     engines: {node: '>=20.10'}
 
-  html-validate@11.13.0:
-    resolution: {integrity: sha512-+D/OzRlO1500q7N5Zq6TElX/HUmclqpKVh4B8z3ko1121I09i2fOrdiuYnufBOAFw85ex5cprn2fOZpzA41Utg==}
+  html-validate@11.14.0:
+    resolution: {integrity: sha512-QxZyjwlnrQYHhwtJUr79WIaJa7JWkjFXXu3yfzbdIsamdBK5X3TLYLkeqckW43Ws+4HuiH0fR5G9feIDL33FlA==}
     engines: {node: ^22.22.0 || >= 24.8.0}
     hasBin: true
     peerDependencies:
       '@jest/globals': ^29.0.3 || ^30.0.0
-      '@vitest/expect': ^3.2.0 || ^4.0.1
+      '@vitest/expect': ^3.2.0 || ^4.0.1 || ^5.0.0
       jest: ^29.0.3 || ^30.0.0
       jest-snapshot: ^29.0.3 || ^30.0.0
-      vitest: ^3.2.0 || ^4.0.1
+      vitest: ^3.2.0 || ^4.0.1 || ^5.0.0
     peerDependenciesMeta:
       '@jest/globals':
         optional: true
@@ -2032,7 +2032,7 @@ snapshots:
 
   html-tags@5.1.0: {}
 
-  html-validate@11.13.0:
+  html-validate@11.14.0:
     dependencies:
       '@html-validate/stylish': 6.0.0
       '@sidvind/better-ajv-errors': 7.0.0(ajv@8.20.0)
