@@ -86,7 +86,7 @@ Le fichier est organisé en sections commentées dans cet ordre :
 | Base          | `@font-face`, html/body, typographie, liens                |
 | Layout        | `.container`, `.site-header`, `.site-main`, `.site-footer` |
 | Nav           | `.site-nav`                                                |
-| Buttons       | `.btn`, `.btn--primary/outline/light`, `.btn--small`       |
+| Buttons       | `.btn`, `.btn--primary/secondary/outline/light`            |
 | Badge         | `.badge`, `.badge--danger/secondary`                       |
 | Author        | `.author-box`                                              |
 | Event         | `.event` (détails d'une rando)                             |
@@ -112,19 +112,12 @@ Le fichier est organisé en sections commentées dans cet ordre :
 --b-color-info-bg: #cce5ff;
 --b-color-info-text: #004085;
 --b-font-heading: "Roboto Condensed", sans-serif;
---b-font-body:
-  system-ui, -apple-system, blinkmacsystemfont, "Segoe UI", sans-serif;
+--b-font-body: "Lato", sans-serif;
 --b-container-max: 114rem; /* 1140px */
---b-control-height: 4.4rem; /* hauteur minimale commune des boutons */
 --b-shadow: 0 0.2rem 0.4rem rgba(0, 0, 0, 0.075);
 --b-border-color: #dee2e6;
 --b-border-radius: 0.4rem;
 ```
-
-Tous les boutons utilisent la même police et une graisse de `700`. La taille standard conserve une
-hauteur minimale de `4.4rem` et un texte de `1.6rem`. `.btn--small` est réservé aux commandes
-utilitaires des barres sticky. Seule `.btn--primary` est remplie en vert ; `.btn--outline` et
-`.btn--light` servent aux actions secondaires. Ne pas créer d'autre variante de taille locale.
 
 ---
 
