@@ -17,9 +17,36 @@ layout: default
     {% endif %}
   </header>
 
+  {% assign now_timestamp = site.time | date: "%s" | plus: 0 %} {% assign
+  period_end_timestamp = page.period_end | date: "%s" | plus: 0 %} {% if
+  page.period_end and period_end_timestamp < now_timestamp %}
+  <aside class="newsletter-edition__notice" role="note">
+    Cette édition est archivée : les événements et les informations qu’elle
+    contient correspondent à la période de publication.
+  </aside>
+  {% endif %}
+
   <div class="newsletter-edition__content">{{ content }}</div>
 
+  {% assign newsletter_posts = site.posts | where_exp: "edition",
+  "edition.newsletter_id and edition.sent == true" %} {% assign older_edition =
+  nil %} {% assign newer_edition = nil %} {% assign current_found = false %} {%
+  for edition in newsletter_posts %} {% if edition.url == page.url %} {% assign
+  current_found = true %} {% elsif current_found and older_edition == nil %} {%
+  assign older_edition = edition %} {% elsif current_found == false %} {% assign
+  newer_edition = edition %} {% endif %} {% endfor %}
+
   <footer class="newsletter-edition__footer">
+    <nav aria-label="Navigation entre les éditions">
+      <ul class="newsletter-edition__navigation">
+        {% if older_edition %}
+        <li><a href="{{ older_edition.url }}">Édition précédente</a></li>
+        {% endif %} {% if newer_edition %}
+        <li><a href="{{ newer_edition.url }}">Édition suivante</a></li>
+        {% endif %}
+        <li><a href="/">Calendrier actuel</a></li>
+      </ul>
+    </nav>
     <p>
       Reçois le prochain agenda par email, au maximum une fois par mois en
       saison.

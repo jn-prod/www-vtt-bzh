@@ -64,24 +64,25 @@ pnpm install
 
 ## Scripts racine
 
-| Commande              | Description                                         |
-| --------------------- | --------------------------------------------------- |
-| `pnpm dev`            | Lance le dev de tous les packages (Jekyll serve)    |
-| `pnpm build`          | Build packages → copie `events.json` → build Jekyll |
-| `pnpm build:preview`  | Build complet + serveur HTTP local sur `www/_site/` |
-| `pnpm build:www`      | Build Jekyll uniquement                             |
-| `pnpm build:packages` | Compile tous les packages TypeScript                |
-| `pnpm test`           | Tests de tous les packages                          |
-| `pnpm test:e2e`       | Parcours Playwright et contrôles Axe                |
-| `pnpm validate:html`  | Validation du HTML généré                           |
-| `pnpm validate:site`  | Liens, assets et invariants métier du site généré   |
-| `pnpm minify:site`    | Minification conservative du HTML généré            |
-| `pnpm check`          | Chaîne locale complète, hors installation           |
-| `pnpm lint`           | ESLint + Stylelint + Prettier (vérification)        |
-| `pnpm lint:fix`       | ESLint + Stylelint + Prettier (auto-fix)            |
-| `pnpm lint:eslint`    | ESLint uniquement                                   |
-| `pnpm lint:stylelint` | Stylelint uniquement                                |
-| `pnpm lint:prettier`  | Prettier uniquement                                 |
+| Commande              | Description                                                          |
+| --------------------- | -------------------------------------------------------------------- |
+| `pnpm dev`            | Lance le dev de tous les packages (Jekyll serve)                     |
+| `pnpm build`          | Build packages → copie `events.json` → build Jekyll                  |
+| `pnpm build:preview`  | Build complet + serveur HTTP local sur `www/_site/`                  |
+| `pnpm build:www`      | Build Jekyll uniquement                                              |
+| `pnpm build:packages` | Compile tous les packages TypeScript                                 |
+| `pnpm newsletter:new` | Génère une édition Markdown depuis Supabase et le template versionné |
+| `pnpm test`           | Tests de tous les packages                                           |
+| `pnpm test:e2e`       | Parcours Playwright et contrôles Axe                                 |
+| `pnpm validate:html`  | Validation du HTML généré                                            |
+| `pnpm validate:site`  | Liens, assets et invariants métier du site généré                    |
+| `pnpm minify:site`    | Minification conservative du HTML généré                             |
+| `pnpm check`          | Chaîne locale complète, hors installation                            |
+| `pnpm lint`           | ESLint + Stylelint + Prettier (vérification)                         |
+| `pnpm lint:fix`       | ESLint + Stylelint + Prettier (auto-fix)                             |
+| `pnpm lint:eslint`    | ESLint uniquement                                                    |
+| `pnpm lint:stylelint` | Stylelint uniquement                                                 |
+| `pnpm lint:prettier`  | Prettier uniquement                                                  |
 
 ---
 
@@ -99,6 +100,12 @@ Le workflow de publication conserve la production précédente dès qu'un contr�
 6. Déploiement GitHub Pages (`peaceiris/actions-gh-pages`, CNAME `www.vtt.bzh`)
 
 Les organisateurs soumettent une randonnée via `/calendrier/ajouter.html`. L'Edge Function `submit-event` valide le payload, fixe les champs système et applique la limitation de débit avant l'insertion Supabase. La publication statique est reconstruite quotidiennement et après chaque push sur `main`.
+
+### `generate-newsletter.yml` — Brouillon mensuel manuel
+
+L'action manuelle calcule toujours le mois suivant en heure de Paris, exécute le générateur déterministe et pousse le brouillon sur la branche stable `newsletter/YYYY-MM`. Il n'y a aucune période à saisir. La première exécution du mois ouvre une PR pour M+1 ; chaque relance pendant ce même mois ajoute un commit sur la même branche et met donc à jour la PR ouverte. Le champ `generated_at` garantit une nouvelle version même lorsque les événements n'ont pas changé.
+
+Une relance régénère entièrement le brouillon depuis Supabase et le template. Elle n'écrase jamais une édition marquée `sent: true` ou déjà finalisée : dans ce cas, l'action réussit sans modifier le contenu et inscrit le contrôle dans son résumé.
 
 ### Secrets GitHub Actions requis
 

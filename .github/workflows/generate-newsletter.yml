@@ -1,0 +1,120 @@
+name: Generate newsletter draft
+
+on:
+  workflow_dispatch:
+
+concurrency:
+  group: newsletter-next-month
+  cancel-in-progress: false
+
+jobs:
+  generate:
+    runs-on: ubuntu-24.04
+    environment: github-pages
+    permissions:
+      contents: write
+      pull-requests: write
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+
+      - name: Resolve next month
+        id: period
+        run: |
+          current_month="$(TZ=Europe/Paris date +%Y-%m-01)"
+          period="$(TZ=Europe/Paris date -d "$current_month +1 month" +%Y-%m)"
+          echo "PERIOD=$period" >> "$GITHUB_ENV"
+          echo "BRANCH=newsletter/$period" >> "$GITHUB_ENV"
+          echo "period=$period" >> "$GITHUB_OUTPUT"
+          echo "### Préparation de l’édition $period" >> "$GITHUB_STEP_SUMMARY"
+          echo "La période est calculée automatiquement à M+1 en heure de Paris." >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Protect finalized edition
+        id: finalized
+        run: |
+          finalized=false
+          for file in www/_posts/*.md; do
+            if grep -Fqx "newsletter_id: vtt-bzh-$PERIOD" "$file"; then
+              if ! grep -Fqx 'sent: false' "$file" || ! grep -Fqx 'published: false' "$file"; then
+                finalized=true
+                echo "### Édition $PERIOD déjà finalisée" >> "$GITHUB_STEP_SUMMARY"
+                echo "Aucun contenu n’a été écrasé. Cette exécution constitue la nouvelle trace du contrôle." >> "$GITHUB_STEP_SUMMARY"
+                break
+              fi
+            fi
+          done
+          echo "finalized=$finalized" >> "$GITHUB_OUTPUT"
+
+      - name: Reuse monthly branch
+        if: steps.finalized.outputs.finalized != 'true'
+        run: |
+          if git ls-remote --exit-code --heads origin "$BRANCH" >/dev/null 2>&1; then
+            git fetch origin "$BRANCH"
+            git switch -C "$BRANCH" "origin/$BRANCH"
+          else
+            git switch -c "$BRANCH"
+          fi
+
+      - name: Install pnpm
+        if: steps.finalized.outputs.finalized != 'true'
+        uses: pnpm/action-setup@v6
+        with:
+          cache: true
+
+      - name: Use Node.js
+        if: steps.finalized.outputs.finalized != 'true'
+        uses: actions/setup-node@v6
+        with:
+          node-version: '24.x'
+          cache: 'pnpm'
+
+      - name: Install dependencies
+        if: steps.finalized.outputs.finalized != 'true'
+        run: pnpm install --frozen-lockfile
+
+      - name: Generate or refresh draft
+        if: steps.finalized.outputs.finalized != 'true'
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_PUBLISHABLE_KEY: ${{ secrets.SUPABASE_PUBLISHABLE_KEY }}
+          SUPABASE_TABLE: ${{ secrets.SUPABASE_TABLE }}
+        run: pnpm newsletter:new -- --period="$PERIOD" --update
+
+      - name: Commit and push monthly draft
+        if: steps.finalized.outputs.finalized != 'true'
+        id: commit
+        run: |
+          git add -- www/_posts
+          if git diff --cached --quiet; then
+            echo 'changed=false' >> "$GITHUB_OUTPUT"
+            echo "### Brouillon $PERIOD inchangé" >> "$GITHUB_STEP_SUMMARY"
+            echo "Le contrôle a réussi, mais aucun contenu publiable n’a été modifié." >> "$GITHUB_STEP_SUMMARY"
+            exit 0
+          fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git commit -m "content(newsletter): refresh $PERIOD"
+          git push --set-upstream origin "$BRANCH"
+          echo 'changed=true' >> "$GITHUB_OUTPUT"
+
+      - name: Create or report pull request
+        if: steps.finalized.outputs.finalized != 'true' && steps.commit.outputs.changed == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          pr_url="$(gh pr list --base main --head "$BRANCH" --state open --json url --jq '.[0].url')"
+          if [ -n "$pr_url" ]; then
+            echo "### PR mise à jour" >> "$GITHUB_STEP_SUMMARY"
+            echo "$pr_url" >> "$GITHUB_STEP_SUMMARY"
+            exit 0
+          fi
+          if pr_url="$(gh pr create --base main --head "$BRANCH" --title "Newsletter vtt.bzh — $PERIOD" --body "Brouillon généré sans IA depuis Supabase et le template versionné. À relire avant tout envoi et toute publication.")"; then
+            echo "### PR créée" >> "$GITHUB_STEP_SUMMARY"
+            echo "$pr_url" >> "$GITHUB_STEP_SUMMARY"
+          else
+            compare_url="https://github.com/$GITHUB_REPOSITORY/compare/main...$BRANCH?expand=1"
+            echo "::warning::La branche a été mise à jour, mais GitHub n’a pas autorisé la création automatique de la PR."
+            echo "### Branche mise à jour — PR à ouvrir" >> "$GITHUB_STEP_SUMMARY"
+            echo "$compare_url" >> "$GITHUB_STEP_SUMMARY"
+          fi

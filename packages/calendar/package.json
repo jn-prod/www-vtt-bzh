@@ -4,6 +4,7 @@
   "main": "./src/index.ts",
   "scripts": {
     "build:events": "ts-node ./src/generate-events.ts",
+    "newsletter:new": "ts-node ./src/generate-newsletter.ts",
     "build": "tsc && pnpm build:events",
     "test": "node --test --require ts-node/register 'src/*.test.ts'"
   },

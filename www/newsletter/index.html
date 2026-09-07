@@ -19,7 +19,8 @@ permalink: /newsletter/
 
   <ol class="newsletter-archive__list">
     {% assign edition_count = 0 %} {% for post in site.posts %} {% if
-    post.newsletter_id %} {% assign edition_count = edition_count | plus: 1 %}
+    post.newsletter_id and post.sent == true %} {% assign edition_count =
+    edition_count | plus: 1 %}
     <li class="newsletter-archive__item">
       <a class="newsletter-archive__link" href="{{ post.url }}">
         <strong>{{ post.title }}</strong>

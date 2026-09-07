@@ -10,7 +10,7 @@ Site statique du calendrier des randonnées VTT de Bretagne.
 
 ## Prérequis
 
-- Ruby 4.0.2 (`rbenv` ou `.ruby-version`)
+- Ruby 4.0.6 (`rbenv` ou `.ruby-version`)
 - Bundler : `gem install bundler`
 - Les événements sont générés par `packages/calendar` → `_data/events.json`
 
