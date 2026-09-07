@@ -1002,10 +1002,27 @@ button {
   margin-top: var(--b-size-24);
 }
 
+.newsletter-edition__notice {
+  margin-top: var(--b-size-24);
+  padding: var(--b-size-16);
+  color: var(--b-color-grey-dark);
+  background: var(--b-color-grey-light);
+  border: 1px solid var(--b-border-color);
+  border-radius: var(--b-border-radius);
+}
+
 .newsletter-edition__footer {
   margin-top: var(--b-size-32);
   padding-top: var(--b-size-24);
   border-top: 1px solid var(--b-border-color);
+}
+
+.newsletter-edition__navigation {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--b-size-16);
+  padding: 0;
+  list-style: none;
 }
 
 .newsletter-archive__list {
