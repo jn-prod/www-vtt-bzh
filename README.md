@@ -15,7 +15,7 @@ www-vtt-bzh/
 ├── packages/
 │   ├── type/               # Types utilitaires partagés (Result, Maybe, error)
 │   ├── repository/         # Abstraction Supabase
-│   └── calendar/           # Types CalendarEvent + script generate-events → out/events.json
+│   └── calendar/           # Types CalendarEvent + script generate-events → artefact privé
 ├── supabase/
 │   ├── migrations/         # Migrations SQL (RLS, schéma)
 │   └── functions/          # Edge Functions (soumission contrôlée, notif modération)
@@ -33,13 +33,13 @@ www-vtt-bzh/
 
 ## Packages
 
-| Package      | Description                                                                          |
-| ------------ | ------------------------------------------------------------------------------------ |
-| `www`        | Site Jekyll — layouts Liquid, CSS BEM, JS ES modules                                 |
-| `type`       | Types utilitaires TypeScript : `Result<T,E>`, `Maybe<T>`, helpers d'erreur           |
-| `repository` | Abstraction Supabase : `createClient`, `updateOrCreate`                              |
-| `calendar`   | Types `CalendarEvent` + script `generate-events` → `out/events.json` depuis Supabase |
-| `tsconfig`   | Configs TypeScript de base partagées                                                 |
+| Package      | Description                                                                                |
+| ------------ | ------------------------------------------------------------------------------------------ |
+| `www`        | Site Jekyll — layouts Liquid, CSS BEM, JS ES modules                                       |
+| `type`       | Types utilitaires TypeScript : `Result<T,E>`, `Maybe<T>`, helpers d'erreur                 |
+| `repository` | Abstraction Supabase : `createClient`, `updateOrCreate`                                    |
+| `calendar`   | Types `CalendarEvent` + script `generate-events` → artefact de build privé depuis Supabase |
+| `tsconfig`   | Configs TypeScript de base partagées                                                       |
 
 ---
 
@@ -64,25 +64,25 @@ pnpm install
 
 ## Scripts racine
 
-| Commande              | Description                                                          |
-| --------------------- | -------------------------------------------------------------------- |
-| `pnpm dev`            | Lance le dev de tous les packages (Jekyll serve)                     |
-| `pnpm build`          | Build packages → copie `events.json` → build Jekyll                  |
-| `pnpm build:preview`  | Build complet + serveur HTTP local sur `www/_site/`                  |
-| `pnpm build:www`      | Build Jekyll uniquement                                              |
-| `pnpm build:packages` | Compile tous les packages TypeScript                                 |
-| `pnpm newsletter:new` | Génère une édition Markdown depuis Supabase et le template versionné |
-| `pnpm test`           | Tests de tous les packages                                           |
-| `pnpm test:e2e`       | Parcours Playwright et contrôles Axe                                 |
-| `pnpm validate:html`  | Validation du HTML généré                                            |
-| `pnpm validate:site`  | Liens, assets et invariants métier du site généré                    |
-| `pnpm minify:site`    | Minification conservative du HTML généré                             |
-| `pnpm check`          | Chaîne locale complète, hors installation                            |
-| `pnpm lint`           | ESLint + Stylelint + Prettier (vérification)                         |
-| `pnpm lint:fix`       | ESLint + Stylelint + Prettier (auto-fix)                             |
-| `pnpm lint:eslint`    | ESLint uniquement                                                    |
-| `pnpm lint:stylelint` | Stylelint uniquement                                                 |
-| `pnpm lint:prettier`  | Prettier uniquement                                                  |
+| Commande              | Description                                                           |
+| --------------------- | --------------------------------------------------------------------- |
+| `pnpm dev`            | Lance le dev de tous les packages (Jekyll serve)                      |
+| `pnpm build`          | Build packages → copie l’artefact privé des événements → build Jekyll |
+| `pnpm build:preview`  | Build complet + serveur HTTP local sur `www/_site/`                   |
+| `pnpm build:www`      | Build Jekyll uniquement                                               |
+| `pnpm build:packages` | Compile tous les packages TypeScript                                  |
+| `pnpm newsletter:new` | Génère une édition Markdown depuis Supabase et le template versionné  |
+| `pnpm test`           | Tests de tous les packages                                            |
+| `pnpm test:e2e`       | Parcours Playwright et contrôles Axe                                  |
+| `pnpm validate:html`  | Validation du HTML généré                                             |
+| `pnpm validate:site`  | Liens, assets et invariants métier du site généré                     |
+| `pnpm minify:site`    | Minification conservative du HTML généré                              |
+| `pnpm check`          | Chaîne locale complète, hors installation                             |
+| `pnpm lint`           | ESLint + Stylelint + Prettier (vérification)                          |
+| `pnpm lint:fix`       | ESLint + Stylelint + Prettier (auto-fix)                              |
+| `pnpm lint:eslint`    | ESLint uniquement                                                     |
+| `pnpm lint:stylelint` | Stylelint uniquement                                                  |
+| `pnpm lint:prettier`  | Prettier uniquement                                                   |
 
 ---
 
@@ -94,7 +94,7 @@ Le workflow de publication conserve la production précédente dès qu'un contr�
 
 1. Installation verrouillée des dépendances Node et Ruby
 2. Lint et tests unitaires
-3. Build : Supabase → normalisation → `events.json` → Jekyll
+3. Build : Supabase → normalisation → artefact non versionné → Jekyll
 4. Validation HTML, liens, assets et invariants métier
 5. Parcours Playwright et contrôles Axe
 6. Déploiement GitHub Pages (`peaceiris/actions-gh-pages`, CNAME `www.vtt.bzh`)

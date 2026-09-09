@@ -12,7 +12,7 @@ Site statique du calendrier des randonnées VTT de Bretagne.
 
 - Ruby 4.0.6 (`rbenv` ou `.ruby-version`)
 - Bundler : `gem install bundler`
-- Les événements sont générés par `packages/calendar` → `_data/events.json`
+- Les événements sont générés au build par `packages/calendar` dans `_data/events.json` ; ce fichier est privé, ignoré par Git et absent d’un clone neuf.
 
 ---
 
@@ -37,18 +37,14 @@ Le site est généré dans `_site/`.
 
 ```
 www/
-├── _config.yml          # Config Jekyll (url, plugins, pagination…)
+├── _config.yml          # Config Jekyll (url, plugins)
 ├── _data/               # Données injectées dans les templates
-│   ├── events.json      # Généré par packages/calendar (overridé au build CI)
-│   ├── authors.yml
-│   ├── home.yml
-│   └── guides.yml
-├── _layouts/            # Layouts Liquid (default, post, archive, landing)
+│   └── events.json      # Artefact local/CI, ignoré par Git
+├── _layouts/            # Layouts Liquid (default, calendar-page, newsletter-edition, redirect)
 ├── _includes/           # Composants réutilisables
-│   ├── boxes/           # Cartes (post, guide, card-home, ads)
 │   ├── calendar/        # event.html — rendu d'un événement VTT
-│   ├── components/      # Boutons, éléments UI atomiques
-│   └── plugins/         # commentaires, pagination, share
+│   ├── components/      # Formulaire d’ajout d’une rando
+│   └── newsletters/     # Contenu des éditions effectivement publiées
 ├── _posts/              # Articles de blog (Markdown)
 ├── assets/
 │   ├── css/main.css     # CSS natif — toutes les sections BEM en un fichier
@@ -88,9 +84,10 @@ Le fichier est organisé en sections commentées dans cet ordre :
 | Nav           | `.site-nav`                                                |
 | Buttons       | `.btn`, `.btn--primary/outline/light`, `.btn--small`       |
 | Badge         | `.badge`, `.badge--danger/secondary`                       |
-| Author        | `.author-box`                                              |
 | Event         | `.event` (détails d'une rando)                             |
 | Search filter | `.search-filter`                                           |
+| Newsletter    | `.newsletter-inline`, `.newsletter-message`                |
+| Signature     | `.project-signature`                                       |
 | Message       | `.message`                                                 |
 
 ### Ajouter un nouveau composant
@@ -146,9 +143,9 @@ utilitaires des barres sticky. Seule `.btn--primary` est remplie en vert ; `.btn
 
 ---
 
-## Données — `_data/events.json`
+## Données — `_data/events.json` (artefact privé)
 
-Le fichier `_data/events.json` est **généré automatiquement** au build CI par `packages/calendar/generate-events.ts`, qui lit la table Supabase `events`, normalise les données publiques, écarte les doublons certains et contrôle les chutes anormales. Jekyll produit aussi `/calendrier/events.json` et des pages statiques de 20 événements.
+Le fichier `_data/events.json` est **généré automatiquement** au build CI par `packages/calendar/generate-events.ts`, qui lit la table Supabase `events`, normalise les données publiques, écarte les doublons certains et contrôle les chutes anormales. Il est ignoré par Git : le dépôt ne contient ni l’agenda courant ni d’échantillon d’événements. Jekyll produit ensuite `/calendrier/events.json` et des pages statiques de 20 événements.
 
 Le premier déploiement de ce format s'appuie sur `packages/calendar/baseline/events-count.json`, capturé depuis la home de production. Dès que `/calendrier/events.json` existe en production, cette source dynamique devient prioritaire. En CI, l'absence des deux baselines ou une baisse supérieure à 50 % bloque le déploiement.
 
