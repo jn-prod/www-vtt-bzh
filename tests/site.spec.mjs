@@ -1,8 +1,5 @@
 import AxeBuilder from '@axe-core/playwright';
 import { expect, test } from '@playwright/test';
-import { readFileSync } from 'node:fs';
-
-const generatedEvents = JSON.parse(readFileSync('www/_site/calendrier/events.json', 'utf8'));
 
 const pages = ['/', '/newsletter.html', '/merci.html', '/calendrier/ajouter.html'];
 const viewports = [
@@ -64,16 +61,32 @@ test('le calendrier charge les événements suivants sans gonfler le HTML initia
 
 test('les filtres couvrent aussi les événements au-delà du HTML initial', async ({ page }) => {
   const departement = '35';
-  const expected = generatedEvents.filter((event) => String(event.departement) === departement).length;
-  expect(expected).toBeGreaterThan(20);
+  const date = new Date();
+  date.setDate(date.getDate() + 30);
+  const events = Array.from({ length: 21 }, (_, index) => ({
+    id: `event-35-${index + 1}`,
+    date: date.toISOString().slice(0, 10),
+    dateFormatted: '20 sept. 2026',
+    name: `Rando Ille-et-Vilaine ${index + 1}`,
+    city: 'Rennes',
+    departement: Number(departement),
+    canceled: false,
+  }));
+  await page.route('**/calendrier/events.json', (route) =>
+    route.fulfill({
+      status: 200,
+      contentType: 'application/json',
+      body: JSON.stringify(events),
+    })
+  );
   await page.goto('/');
   await page.locator('#filter-details > summary').click();
   await page.locator('#departement').selectOption(departement);
   await page.getByRole('button', { name: 'Rechercher' }).click();
-  await expect(page.locator('#results-count')).toHaveText(String(expected));
+  await expect(page.locator('#results-count')).toHaveText(String(events.length));
   await expect(page.locator('#events-list .event')).toHaveCount(20);
   await page.locator('#load-more').click();
-  await expect(page.locator('#events-list .event')).toHaveCount(expected);
+  await expect(page.locator('#events-list .event')).toHaveCount(events.length);
 });
 
 test('le rendu JavaScript neutralise les données événement hostiles', async ({ page }) => {
