@@ -107,6 +107,8 @@ L'action manuelle calcule toujours le mois suivant en heure de Paris, exécute l
 
 Une relance régénère entièrement le brouillon depuis Supabase et le template. Elle n'écrase jamais une édition marquée `sent: true` ou déjà finalisée : dans ce cas, l'action réussit sans modifier le contenu et inscrit le contrôle dans son résumé.
 
+Après relecture, l'envoi reste manuel dans Kit : cibler le formulaire **« VTT.bzh visiteurs »** (`9677378`), qui matérialise le consentement à l'agenda. Le tag historique `agenda-mensuel` ne doit pas servir seul de cible. Après un test puis l'envoi réel, marquer l'édition `sent: true` et `published: true` avant de la fusionner : l'archive ne devient publique qu'à ce moment-là.
+
 ### Secrets GitHub Actions requis
 
 | Secret                     | Environment    | Description                      |

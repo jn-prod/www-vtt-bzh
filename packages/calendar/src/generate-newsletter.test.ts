@@ -37,6 +37,14 @@ test('produit un seul Markdown non publié, prêt à relire', () => {
   assert.match(markdown, /permalink: \/newsletter\/2026-09\//u);
   assert.match(markdown, /sent: false\npublished: false/u);
   assert.match(markdown, /Rando des bois — nouveau/u);
+  assert.match(markdown, /Fais circuler l'agenda/u);
+  assert.match(markdown, /transfère-le à ton club/u);
+  assert.match(markdown, /Tu as reçu cet email par transfert/u);
+  assert.match(markdown, /soutenir vtt\.bzh/u);
+  assert.match(markdown, /utm_source=vtt-bzh/u);
+  assert.match(markdown, /Continuer dehors/u);
+  assert.match(markdown, /newsletter outdoor/u);
+  assert.doesNotMatch(markdown, /retour du terrain|défi sportif/u);
   assert.doesNotMatch(markdown, /person@example\.com|0600000000|Club privé/u);
   assert.doesNotMatch(markdown, /<li|<p|style=/u);
 });

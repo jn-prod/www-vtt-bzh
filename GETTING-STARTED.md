@@ -34,6 +34,8 @@ et ses sections `@@IF_SECTION@@` / `@@END_SECTION@@`, puis refuse tout résultat
 
 La commande accepte `--update` pour régénérer le brouillon existant du même mois sans créer un second fichier. L'action GitHub **Generate newsletter draft** ne demande aucune période : elle prépare toujours M+1, calculé en heure de Paris. Elle conserve la branche `newsletter/YYYY-MM`, ajoute un nouveau commit et met à jour la PR ouverte. Une édition finalisée reste intacte.
 
+Après la relecture, copier le Markdown dans Kit et cibler le formulaire **« VTT.bzh visiteurs »** (`9677378`) — pas seulement le tag historique `agenda-mensuel`. Faire un envoi de test, puis l'envoi réel. Ne passer `sent` et `published` à `true` qu'après cet envoi : cette dernière étape publie l'archive sur vtt.bzh.
+
 ## Tests
 
 ```sh
