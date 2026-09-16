@@ -6,6 +6,10 @@ const NEWSLETTER_ENDPOINT = "https://app.kit.com/forms/9677378/subscriptions";
 
 const SUCCESS_MESSAGE =
   "Merci, votre rando est enregistrée. Après validation automatique, elle sera publiée au prochain rafraîchissement quotidien.";
+const SUCCESS_WITH_NEWSLETTER_MESSAGE =
+  "Merci, votre rando est enregistrée. Après validation automatique, elle sera publiée au prochain rafraîchissement quotidien. Votre demande d’inscription à Rando Bretagne a aussi été envoyée : confirmez l’e-mail reçu pour l’activer.";
+const SUCCESS_WITHOUT_NEWSLETTER_MESSAGE =
+  "Merci, votre rando est enregistrée. Après validation automatique, elle sera publiée au prochain rafraîchissement quotidien. Votre inscription à Rando Bretagne n’a pas pu être demandée ; vous pouvez réessayer depuis la page newsletter.";
 const ERROR_MESSAGE =
   "Désolé, l’envoi a échoué. Vos informations sont conservées : réessayez ou contactez nicolas@vtt.bzh.";
 
@@ -87,15 +91,20 @@ const buildPayload = (formData) => {
   };
 };
 
-const subscribeNewsletter = (email) => {
-  if (!email) return;
-  fetch(NEWSLETTER_ENDPOINT, {
-    method: "POST",
-    mode: "no-cors",
-    headers: { "Content-Type": "application/x-www-form-urlencoded" },
-    body: new URLSearchParams({ email_address: email }).toString(),
-    keepalive: true,
-  }).catch(() => {});
+const subscribeNewsletter = async (email) => {
+  if (!email) return false;
+  try {
+    await fetch(NEWSLETTER_ENDPOINT, {
+      method: "POST",
+      mode: "no-cors",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: new URLSearchParams({ email_address: email }).toString(),
+      keepalive: true,
+    });
+    return true;
+  } catch {
+    return false;
+  }
 };
 
 const submit = async (payload) => {
@@ -181,9 +190,19 @@ if (form instanceof HTMLFormElement && feedback instanceof HTMLElement) {
 
     try {
       await submit(buildPayload(formData));
-      if (formData.get("newsletter"))
-        subscribeNewsletter(String(formData.get("email") ?? "").trim());
-      setFeedback(feedback, "success", SUCCESS_MESSAGE);
+      const newsletterRequested = formData.get("newsletter") === "on";
+      const newsletterRequestSent = newsletterRequested
+        ? await subscribeNewsletter(String(formData.get("email") ?? "").trim())
+        : false;
+      setFeedback(
+        feedback,
+        "success",
+        newsletterRequested
+          ? newsletterRequestSent
+            ? SUCCESS_WITH_NEWSLETTER_MESSAGE
+            : SUCCESS_WITHOUT_NEWSLETTER_MESSAGE
+          : SUCCESS_MESSAGE,
+      );
       form.reset();
       configureDateRange(form);
       const share = document.getElementById("event-form-share");
