@@ -1,7 +1,7 @@
 import AxeBuilder from '@axe-core/playwright';
 import { expect, test } from '@playwright/test';
 
-const pages = ['/', '/newsletter.html', '/merci.html', '/calendrier/ajouter.html'];
+const pages = ['/', '/calendrier/ajouter.html'];
 const viewports = [
   { width: 390, height: 844 },
   { width: 768, height: 1024 },
@@ -53,6 +53,7 @@ for (const viewport of viewports) {
 test('le calendrier charge les événements suivants sans gonfler le HTML initial', async ({ page }) => {
   await page.goto('/');
   await expect(page.locator('#events-list .event')).toHaveCount(20);
+  await expect(page.locator('#events-list .newsletter-prompt')).toHaveCount(1);
   const total = Number(await page.locator('#results-count').textContent());
   expect(total).toBeGreaterThan(20);
   await page.locator('#load-more').click();
@@ -85,8 +86,48 @@ test('les filtres couvrent aussi les événements au-delà du HTML initial', asy
   await page.getByRole('button', { name: 'Rechercher' }).click();
   await expect(page.locator('#results-count')).toHaveText(String(events.length));
   await expect(page.locator('#events-list .event')).toHaveCount(20);
+  await expect(page.locator('#events-list .newsletter-prompt')).toHaveCount(1);
   await page.locator('#load-more').click();
   await expect(page.locator('#events-list .event')).toHaveCount(events.length);
+});
+
+test('le CTA sticky conduit à une inscription lisible sous les barres collantes', async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto('/');
+  await page.locator('.site-header').getByRole('link', { name: 'Recevoir la sélection du mois' }).click();
+  await expect(page).toHaveURL(/#newsletter$/u);
+  const position = await page.locator('#newsletter-title').evaluate((element) => {
+    const tabs = document.getElementById('tabs');
+    const header = document.querySelector('.site-header');
+    return {
+      titleTop: element.getBoundingClientRect().top,
+      minimum: Math.max(header?.getBoundingClientRect().bottom ?? 0, tabs?.getBoundingClientRect().bottom ?? 0),
+    };
+  });
+  expect(position.titleTop).toBeGreaterThan(position.minimum);
+});
+
+test('une recherche sans résultat conserve une issue vers la sélection mensuelle', async ({ page }) => {
+  const events = [
+    {
+      id: 'event-35',
+      date: '2026-10-20',
+      dateFormatted: '20 oct. 2026',
+      name: 'Rando Ille-et-Vilaine',
+      city: 'Rennes',
+      departement: 35,
+      canceled: false,
+    },
+  ];
+  await page.route('**/calendrier/events.json', (route) =>
+    route.fulfill({ status: 200, contentType: 'application/json', body: JSON.stringify(events) })
+  );
+  await page.goto('/');
+  await page.locator('#filter-details > summary').click();
+  await page.locator('#departement').selectOption('22');
+  await page.getByRole('button', { name: 'Rechercher' }).click();
+  await expect(page.locator('#msg-no-results-dynamic')).toBeVisible();
+  await expect(page.locator('#msg-no-results-dynamic')).toContainText('recevez la sélection du mois');
 });
 
 test('le rendu JavaScript neutralise les données événement hostiles', async ({ page }) => {
@@ -188,6 +229,24 @@ test('une soumission réussie remet le formulaire à zéro et propose le partage
   expect(payload).not.toHaveProperty('canceled');
 });
 
+test('une inscription newsletter demandée par un organisateur est envoyée à Kit', async ({ page }) => {
+  let kitRequest;
+  await page.route('**/functions/v1/submit-event', (route) =>
+    route.fulfill({ status: 201, contentType: 'application/json', body: '{"ok":true,"id":"test"}' })
+  );
+  await page.route('**/forms/9677378/subscriptions', async (route) => {
+    kitRequest = route.request();
+    await route.fulfill({ status: 202, body: '' });
+  });
+  await page.goto('/calendrier/ajouter.html');
+  await fillRequiredEventForm(page);
+  await page.locator('#event-form-newsletter').check();
+  await page.getByRole('button', { name: 'Publier ma rando' }).click();
+  await expect(page.locator('#event-form-feedback')).toContainText('demande d’inscription à Rando Bretagne');
+  expect(kitRequest?.method()).toBe('POST');
+  expect(kitRequest?.postData()).toContain('email_address=club%40example.org');
+});
+
 test('le partage sélectionne le lien si Clipboard API est refusée', async ({ page }) => {
   await page.addInitScript(() => {
     Object.defineProperty(navigator, 'clipboard', {
@@ -217,8 +276,26 @@ test('Kit ne reçoit aucune requête avant une inscription explicite', async ({ 
   page.on('request', (request) => {
     if (/kit\.com|convertkit\.com/u.test(request.url())) kitRequests.push(request.url());
   });
-  await page.goto('/newsletter.html');
+  await page.goto('/');
   await page.waitForTimeout(300);
   expect(kitRequests).toEqual([]);
   await expect(page.locator('form[action*="app.kit.com"]')).toHaveCount(1);
+});
+
+test('les anciennes entrées newsletter renvoient vers la destination canonique', async ({ request }) => {
+  const checks = [
+    ['/newsletter.html', 'https://www.nicolasjouanno.com/newsletter/?utm_source=vtt-bzh'],
+    ['/newsletter/', 'https://www.nicolasjouanno.com/newsletter/?utm_source=vtt-bzh'],
+    ['/merci.html', 'https://www.nicolasjouanno.com/newsletter/merci/'],
+    ['/newsletter/2026-07/', 'https://www.nicolasjouanno.com/newsletter/2026-07/'],
+    ['/newsletter/2026-08/', 'https://www.nicolasjouanno.com/newsletter/2026-08/'],
+  ];
+
+  for (const [path, canonical] of checks) {
+    const response = await request.get(path);
+    const html = await response.text();
+    expect(response.ok(), path).toBeTruthy();
+    expect(html, path).toContain(`<link rel="canonical" href="${canonical}`);
+    expect(html, path).toContain(`content="0; url=${canonical}`);
+  }
 });

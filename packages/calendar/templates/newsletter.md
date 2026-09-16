@@ -1,21 +1,17 @@
 ---
-layout: newsletter-edition
-title: @@TITLE@@
-description: @@DESCRIPTION@@
-date: @@GENERATED_AT@@
+source_id: vtt-bzh-@@PERIOD@@
 generated_at: @@GENERATED_AT_ISO@@
-newsletter_id: vtt-bzh-@@PERIOD@@
-permalink: /newsletter/@@PERIOD@@/
-period_end: @@PERIOD_END@@
-sent: false
-published: false
+period: @@PERIOD@@
+source: calendrier-vtt-bzh
 ---
 
-Salut,
+# Matière calendrier VTT — @@TITLE@@
 
-Voici les randos VTT de Bretagne du mois. Bonne route.
+Brief factuel préparé depuis Supabase. Il alimente la section « L’agenda VTT » et la sélection de la prochaine édition Rando Bretagne sur nicolasjouanno.com. Il n’est ni une newsletter prête à envoyer, ni un contenu à publier tel quel.
 
-## @@AGENDA_COUNT@@ @@AGENDA_LABEL@@ dans les cinq prochaines semaines
+## Agenda des cinq prochaines semaines
+
+@@AGENDA_COUNT@@ @@AGENDA_LABEL@@ à venir, dont @@NEW_COUNT@@ @@NEW_LABEL@@.
 
 @@AGENDA_LINES@@
 @@IF_HAS_LATER@@
@@ -25,18 +21,6 @@ Voici les randos VTT de Bretagne du mois. Bonne route.
 @@LATER_LINES@@
 @@END_HAS_LATER@@
 
-[Ouvrir le calendrier complet](https://www.vtt.bzh/?utm_source=vtt-bzh&utm_medium=email&utm_campaign=agenda-@@PERIOD@@&utm_content=calendrier)
+[Ouvrir le calendrier complet](https://www.vtt.bzh/?utm_source=vtt-bzh&utm_medium=editorial&utm_campaign=rando-bretagne&utm_content=calendrier)
 
-Une rando manque à l'appel ? [Ajoute-la au calendrier](https://www.vtt.bzh/calendrier/ajouter.html?utm_source=vtt-bzh&utm_medium=email&utm_campaign=agenda-@@PERIOD@@&utm_content=ajouter-rando). C'est ce qui permet aux autres de la trouver.
-
-## Fais circuler l'agenda
-
-Si cet agenda t'aide à choisir où rouler, transfère-le à ton club et aux potes qui cherchent une rando. C'est le geste le plus simple — et le plus utile — pour soutenir vtt.bzh et faire connaître le calendrier à d'autres vététistes.
-
-**Tu as reçu cet email par transfert ?** [Inscris-toi pour recevoir le prochain agenda](https://www.vtt.bzh/newsletter.html?utm_source=vtt-bzh&utm_medium=email&utm_campaign=agenda-@@PERIOD@@&utm_content=partage).
-
-## Continuer dehors
-
-J'écris aussi une lettre outdoor personnelle, chaque semaine : sentiers, voyages en famille et vie dehors. [Découvrir la newsletter outdoor](https://www.nicolasjouanno.com/newsletter/?utm_source=vtt-bzh&utm_medium=email&utm_campaign=agenda-@@PERIOD@@&utm_content=newsletter-outdoor).
-
-Nicolas — vtt.bzh
+Une date manque ou doit être corrigée ? [Ajoute-la au calendrier](https://www.vtt.bzh/calendrier/ajouter.html?utm_source=vtt-bzh&utm_medium=editorial&utm_campaign=rando-bretagne&utm_content=ajouter-rando).

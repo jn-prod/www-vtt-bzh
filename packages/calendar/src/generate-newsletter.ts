@@ -41,12 +41,6 @@ const monthLabel = (period: string): string =>
     new Date(`${period}-15T12:00:00Z`)
   );
 
-const nextMonth = (period: string): string => {
-  const date = new Date(`${period}-15T12:00:00Z`);
-  date.setUTCMonth(date.getUTCMonth() + 1, 1);
-  return date.toISOString().slice(0, 10);
-};
-
 const escapeMarkdown = (value: unknown): string =>
   String(value ?? '')
     .replace(/\s+/gu, ' ')
@@ -92,16 +86,14 @@ export const renderTemplate = (
   return rendered.endsWith('\n') ? rendered : `${rendered}\n`;
 };
 
-const validateDraftContract = (markdown: string, period: string): void => {
+const validateBriefContract = (markdown: string, period: string): void => {
   const requiredLines = [
-    'layout: newsletter-edition',
-    `newsletter_id: vtt-bzh-${period}`,
-    `permalink: /newsletter/${period}/`,
-    'sent: false',
-    'published: false',
+    `source_id: vtt-bzh-${period}`,
+    'source: calendrier-vtt-bzh',
+    '## Agenda des cinq prochaines semaines',
   ];
   for (const line of requiredLines) {
-    if (!markdown.split('\n').includes(line)) throw new Error(`Contrat absent du template rendu : ${line}.`);
+    if (!markdown.includes(line)) throw new Error(`Contrat absent du brief rendu : ${line}.`);
   }
 };
 
@@ -128,27 +120,24 @@ export const renderNewsletter = ({
   const later = newEvents.filter((event) => !agendaKeys.has(duplicateKey(event)));
   const newCount = agenda.filter((event) => newKeys.has(duplicateKey(event))).length + later.length;
   const label = monthLabel(period);
-  const description = `${agenda.length} ${plural(agenda.length, 'rando')} à venir dans les cinq prochaines semaines${
-    newCount ? `, dont ${newCount} ${plural(newCount, 'nouvelle')}` : ''
-  }.`;
   const agendaLines = agenda.map((event) => eventLine(event, newKeys.has(duplicateKey(event)))).join('\n');
   const markdown = renderTemplate(
     template,
     {
-      TITLE: JSON.stringify(`Randos VTT Bretagne — ${label}`),
-      DESCRIPTION: JSON.stringify(description),
+      TITLE: label,
       GENERATED_AT: generatedAt,
       GENERATED_AT_ISO: generatedAtIso,
       PERIOD: period,
-      PERIOD_END: nextMonth(period),
       AGENDA_COUNT: String(agenda.length),
       AGENDA_LABEL: plural(agenda.length, 'rando'),
+      NEW_COUNT: String(newCount),
+      NEW_LABEL: plural(newCount, 'nouvelle rando', 'nouvelles randos'),
       AGENDA_LINES: agendaLines,
       LATER_LINES: later.map((event) => eventLine(event, true)).join('\n'),
     },
     { HAS_LATER: later.length > 0 }
   );
-  validateDraftContract(markdown, period);
+  validateBriefContract(markdown, period);
   return markdown;
 };
 
@@ -217,7 +206,7 @@ const parseArgs = (): Record<string, string | true> =>
   );
 
 export type NewsletterDraftResult = {
-  status: 'created' | 'updated' | 'finalized';
+  status: 'created' | 'updated';
   path: string;
 };
 
@@ -235,24 +224,21 @@ export const saveNewsletterDraft = ({
   update: boolean;
 }): NewsletterDraftResult => {
   mkdirSync(postsDirectory, { recursive: true });
-  const newsletterId = `newsletter_id: vtt-bzh-${period}`;
+  const sourceId = `source_id: vtt-bzh-${period}`;
   const duplicate = readdirSync(postsDirectory).find((name) => {
     const path = join(postsDirectory, name);
-    return name.endsWith('.md') && readFileSync(path, 'utf8').split('\n').includes(newsletterId);
+    return name.endsWith('.md') && readFileSync(path, 'utf8').split('\n').includes(sourceId);
   });
 
   if (duplicate) {
     const output = join(postsDirectory, duplicate);
-    const existing = readFileSync(output, 'utf8');
-    const isDraft = existing.split('\n').includes('sent: false') && existing.split('\n').includes('published: false');
-    if (!isDraft) return { status: 'finalized', path: output };
     if (!update)
       throw new Error(`L’édition ${period} existe déjà dans ${duplicate}. Utiliser --update pour la régénérer.`);
     writeFileSync(output, markdown, 'utf8');
     return { status: 'updated', path: output };
   }
 
-  const filename = `${generatedAt}-agenda-vtt-bretagne-${period}.md`;
+  const filename = `${generatedAt}-rando-bretagne-source-${period}.md`;
   const output = join(postsDirectory, filename);
   if (existsSync(output)) throw new Error(`${filename} existe déjà.`);
   writeFileSync(output, markdown, { encoding: 'utf8', flag: 'wx' });
@@ -277,19 +263,15 @@ const main = async (): Promise<void> => {
   }
 
   const result = saveNewsletterDraft({
-    postsDirectory: join(PROJECT_ROOT, 'www', '_posts'),
+    postsDirectory: join(PROJECT_ROOT, 'newsletter-drafts'),
     period,
     generatedAt,
     markdown,
     update: args.update === true,
   });
-  if (result.status === 'finalized') {
-    console.log(`[newsletter] édition ${period} déjà finalisée : ${result.path}. Aucun contenu écrasé.`);
-    return;
-  }
-  console.log(`[newsletter] brouillon ${result.status === 'created' ? 'créé' : 'mis à jour'} : ${result.path}`);
+  console.log(`[newsletter] brief ${result.status === 'created' ? 'créé' : 'mis à jour'} : ${result.path}`);
   console.log(
-    '[newsletter] relire, copier dans Kit, envoyer, puis passer sent et published à true avant publication Git.'
+    '[newsletter] sélectionner et contextualiser cette matière dans le Markdown Rando Bretagne de nicolasjouanno.com, puis relire avant tout envoi manuel dans Kit.'
   );
 };
 

@@ -10,6 +10,8 @@ const loadMoreButton = document.getElementById("load-more");
 const pagination = document.getElementById("calendar-pagination");
 const resultsCount = document.getElementById("results-count");
 const resultsLabel = document.getElementById("results-label");
+const resultsMessage = document.getElementById("msg-results");
+const noResultsMessage = document.getElementById("msg-no-results-dynamic");
 
 const dateToISO = (date) =>
   new Date(date.getTime() - date.getTimezoneOffset() * 60_000)
@@ -141,6 +143,24 @@ const createEvent = (event) => {
   return item;
 };
 
+const createNewsletterPrompt = () => {
+  const item = document.createElement("li");
+  item.className = "newsletter-prompt";
+
+  const text = document.createElement("p");
+  text.className = "newsletter-prompt__text";
+  text.textContent =
+    "Vous avez trouvé où rouler ? Recevez chaque mois les sorties à retenir et les nouvelles des chemins bretons.";
+
+  const link = document.createElement("a");
+  link.className = "btn btn--outline btn--small";
+  link.href = "#newsletter";
+  link.textContent = "Recevoir la sélection du mois";
+
+  item.append(text, link);
+  return item;
+};
+
 const initTabs = () => {
   const tabs = [...document.querySelectorAll(".tabs__tab")];
   if (!tabs.length || !("IntersectionObserver" in window)) return;
@@ -202,8 +222,12 @@ const initCalendar = () => {
   const render = (events) => {
     const filtered = filteredEvents(events);
     const visible = filtered.slice(0, page * PAGE_SIZE);
-    eventsList.replaceChildren(...visible.map(createEvent));
+    const items = visible.map(createEvent);
+    if (items.length > 5) items.splice(5, 0, createNewsletterPrompt());
+    eventsList.replaceChildren(...items);
     if (resultsCount) resultsCount.textContent = String(filtered.length);
+    if (resultsMessage) resultsMessage.hidden = filtered.length === 0;
+    if (noResultsMessage) noResultsMessage.hidden = filtered.length > 0;
     if (resultsLabel)
       resultsLabel.textContent =
         filtered.length > 1

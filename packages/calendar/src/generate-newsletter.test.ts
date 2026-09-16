@@ -26,7 +26,7 @@ const event = {
   created_at: '2026-09-01T08:00:00Z',
 };
 
-test('produit un seul Markdown non publié, prêt à relire', () => {
+test('produit un brief factuel, prêt à alimenter l’édition éditoriale', () => {
   const normalized = normalizeNewsletterEvents({ agenda: [event], newEvents: [event] });
   const markdown = renderNewsletter({
     period: '2026-09',
@@ -34,17 +34,12 @@ test('produit un seul Markdown non publié, prêt à relire', () => {
     ...normalized,
   });
 
-  assert.match(markdown, /permalink: \/newsletter\/2026-09\//u);
-  assert.match(markdown, /sent: false\npublished: false/u);
+  assert.match(markdown, /source_id: vtt-bzh-2026-09/u);
+  assert.match(markdown, /source: calendrier-vtt-bzh/u);
+  assert.match(markdown, /Matière calendrier VTT/u);
   assert.match(markdown, /Rando des bois — nouveau/u);
-  assert.match(markdown, /Fais circuler l'agenda/u);
-  assert.match(markdown, /transfère-le à ton club/u);
-  assert.match(markdown, /Tu as reçu cet email par transfert/u);
-  assert.match(markdown, /soutenir vtt\.bzh/u);
   assert.match(markdown, /utm_source=vtt-bzh/u);
-  assert.match(markdown, /Continuer dehors/u);
-  assert.match(markdown, /newsletter outdoor/u);
-  assert.doesNotMatch(markdown, /retour du terrain|défi sportif/u);
+  assert.doesNotMatch(markdown, /sent: false|published: false|newsletter_id:/u);
   assert.doesNotMatch(markdown, /person@example\.com|0600000000|Club privé/u);
   assert.doesNotMatch(markdown, /<li|<p|style=/u);
 });
@@ -62,13 +57,11 @@ test('le template porte la structure sans IA', () => {
     period: '2026-09',
     generatedAt: '2026-09-07',
     template: `---
-layout: newsletter-edition
-newsletter_id: vtt-bzh-@@PERIOD@@
-permalink: /newsletter/@@PERIOD@@/
-sent: false
-published: false
+source_id: vtt-bzh-@@PERIOD@@
+source: calendrier-vtt-bzh
 ---
 Édition @@PERIOD@@
+## Agenda des cinq prochaines semaines
 @@AGENDA_LINES@@
 @@IF_HAS_LATER@@Plus tard
 @@LATER_LINES@@@@END_HAS_LATER@@`,
@@ -91,14 +84,14 @@ test('met à jour le même brouillon sans créer un second fichier', () => {
       postsDirectory: root,
       period: '2026-09',
       generatedAt: '2026-09-01',
-      markdown: 'newsletter_id: vtt-bzh-2026-09\nsent: false\npublished: false\ngenerated_at: 1\n',
+      markdown: 'source_id: vtt-bzh-2026-09\ngenerated_at: 1\n',
       update: false,
     });
     const second = saveNewsletterDraft({
       postsDirectory: root,
       period: '2026-09',
       generatedAt: '2026-09-02',
-      markdown: 'newsletter_id: vtt-bzh-2026-09\nsent: false\npublished: false\ngenerated_at: 2\n',
+      markdown: 'source_id: vtt-bzh-2026-09\ngenerated_at: 2\n',
       update: true,
     });
 
@@ -111,22 +104,22 @@ test('met à jour le même brouillon sans créer un second fichier', () => {
   }
 });
 
-test('n’écrase jamais une édition finalisée', () => {
-  const root = mkdtempSync(join(tmpdir(), 'newsletter-finalized-'));
+test('refuse un brief existant sans demande de mise à jour', () => {
+  const root = mkdtempSync(join(tmpdir(), 'newsletter-existing-'));
   try {
-    const path = join(root, '2026-09-01-agenda.md');
-    const finalized = 'newsletter_id: vtt-bzh-2026-09\nsent: true\npublished: true\n';
-    writeFileSync(path, finalized, 'utf8');
-    const result = saveNewsletterDraft({
-      postsDirectory: root,
-      period: '2026-09',
-      generatedAt: '2026-09-02',
-      markdown: 'newsletter_id: vtt-bzh-2026-09\nsent: false\npublished: false\n',
-      update: true,
-    });
-
-    assert.equal(result.status, 'finalized');
-    assert.equal(readFileSync(path, 'utf8'), finalized);
+    const path = join(root, '2026-09-01-rando-bretagne-source.md');
+    writeFileSync(path, 'source_id: vtt-bzh-2026-09\ngenerated_at: 1\n', 'utf8');
+    assert.throws(
+      () =>
+        saveNewsletterDraft({
+          postsDirectory: root,
+          period: '2026-09',
+          generatedAt: '2026-09-02',
+          markdown: 'source_id: vtt-bzh-2026-09\ngenerated_at: 2\n',
+          update: false,
+        }),
+      /Utiliser --update/u
+    );
   } finally {
     rmSync(root, { recursive: true, force: true });
   }

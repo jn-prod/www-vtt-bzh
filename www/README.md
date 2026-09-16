@@ -40,11 +40,10 @@ www/
 ├── _config.yml          # Config Jekyll (url, plugins)
 ├── _data/               # Données injectées dans les templates
 │   └── events.json      # Artefact local/CI, ignoré par Git
-├── _layouts/            # Layouts Liquid (default, calendar-page, newsletter-edition, redirect)
+├── _layouts/            # Layouts Liquid (default, calendar-page, redirect)
 ├── _includes/           # Composants réutilisables
 │   ├── calendar/        # event.html — rendu d'un événement VTT
 │   ├── components/      # Formulaire d’ajout d’une rando
-│   └── newsletters/     # Contenu des éditions effectivement publiées
 ├── _posts/              # Articles de blog (Markdown)
 ├── assets/
 │   ├── css/main.css     # CSS natif — toutes les sections BEM en un fichier
@@ -86,7 +85,7 @@ Le fichier est organisé en sections commentées dans cet ordre :
 | Badge         | `.badge`, `.badge--danger/secondary`                       |
 | Event         | `.event` (détails d'une rando)                             |
 | Search filter | `.search-filter`                                           |
-| Newsletter    | `.newsletter-inline`, `.newsletter-message`                |
+| Newsletter    | `.newsletter-inline`                                       |
 | Signature     | `.project-signature`                                       |
 | Message       | `.message`                                                 |
 

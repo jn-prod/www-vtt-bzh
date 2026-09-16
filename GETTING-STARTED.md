@@ -18,7 +18,7 @@ pnpm dev
 # Générer les événements depuis Supabase (nécessite les vars d'env)
 SUPABASE_URL=... SUPABASE_PUBLISHABLE_KEY=... SUPABASE_TABLE=events pnpm --filter=calendar build:events
 
-# Générer un brouillon de newsletter depuis Supabase et le template Markdown
+# Générer une matière calendrier depuis Supabase et le template Markdown
 pnpm newsletter:new -- --period=2026-09
 
 # Utiliser ponctuellement un autre template
@@ -29,12 +29,12 @@ pnpm build:preview
 ```
 
 Le template par défaut est `packages/calendar/templates/newsletter.md`. Le script remplace ses marqueurs `@@VARIABLE@@`
-et ses sections `@@IF_SECTION@@` / `@@END_SECTION@@`, puis refuse tout résultat qui ne conserve pas les verrous
-`sent: false` et `published: false`.
+et ses sections `@@IF_SECTION@@` / `@@END_SECTION@@`. Il produit un brief factuel non publiable qui respecte le contrat
+`source_id` / `source` et ne contient aucune donnée personnelle des organisateurs.
 
-La commande accepte `--update` pour régénérer le brouillon existant du même mois sans créer un second fichier. L'action GitHub **Generate newsletter draft** ne demande aucune période : elle prépare toujours M+1, calculé en heure de Paris. Elle conserve la branche `newsletter/YYYY-MM`, ajoute un nouveau commit et met à jour la PR ouverte. Une édition finalisée reste intacte.
+La commande accepte `--update` pour régénérer le même brief local sans créer un second fichier. L'action GitHub **Generate Rando Bretagne source brief** ne demande aucune période : elle prépare toujours M+1, calculé en heure de Paris, et publie uniquement un artefact disponible sept jours. Elle ne crée ni branche, ni PR, ni contenu public.
 
-Après la relecture, copier le Markdown dans Kit et cibler le formulaire **« VTT.bzh visiteurs »** (`9677378`) — pas seulement le tag historique `agenda-mensuel`. Faire un envoi de test, puis l'envoi réel. Ne passer `sent` et `published` à `true` qu'après cet envoi : cette dernière étape publie l'archive sur vtt.bzh.
+À partir de ce brief, composer l'édition Rando Bretagne dans `www-nicolasjouanno-com`, où l'archive est publiée. Après relecture, l'envoi reste manuel dans Kit : cibler les consentements des formulaires **VTT.bzh visiteurs** (`9677378`) et **Rando Bretagne sur nicolasjouanno.com** (`9378910`), sans utiliser seul le tag historique `agenda-mensuel`.
 
 ## Tests
 

@@ -70,10 +70,7 @@
     <!-- opengraph -->
     <meta property="og:title" content="{{ seo_title | escape }}" />
     <meta property="og:description" content="{{ seo_description | escape }}" />
-    <meta
-      property="og:type"
-      content="{% if page.layout == 'newsletter-edition' %}article{% else %}website{% endif %}"
-    />
+    <meta property="og:type" content="website" />
     <meta property="og:url" content="{{ page.url | absolute_url }}" />
     <meta property="og:image" content="{{ seo_image | absolute_url }}" />
     <meta property="og:image:alt" content="{{ seo_image_alt | escape }}" />
@@ -153,7 +150,7 @@
           <a
             href="{{ site.url }}/#newsletter"
             class="btn btn--primary btn--small"
-            >Recevoir l'agenda</a
+            >Recevoir la sélection du mois</a
           >
         </nav>
       </div>
@@ -169,8 +166,11 @@
         &copy; <a href="{{ site.url }}">{{ site.title }}</a>, 2013 - {{
         site.time | date: "%Y" }}
         <a href="{{ site.author.profile_url }}">Nicolas Jouanno</a> •
-        <a href="/newsletter.html">Agenda email</a> •
-        <a href="/calendrier/ajouter.html">Ajouter une rando</a> •
+        <a
+          href="https://www.nicolasjouanno.com/newsletter/?utm_source=vtt-bzh&utm_medium=site&utm_campaign=rando-bretagne&utm_content=footer"
+          >Rando Bretagne</a
+        >
+        • <a href="/calendrier/ajouter.html">Ajouter une rando</a> •
         <a href="{{ site.author.contact }}">Me contacter</a> •
         <a href="/terms/legals.html">Mentions légales</a>
       </p>
