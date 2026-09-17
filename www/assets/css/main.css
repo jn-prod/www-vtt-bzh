@@ -478,8 +478,8 @@ button {
    ========================================================================== */
 
 .organizer-callout {
-  margin: var(--b-size-32) 0 var(--b-size-24);
-  padding-top: var(--b-size-24);
+  margin: var(--b-size-50) 0 var(--b-size-24);
+  padding-top: var(--b-size-32);
   border-top: 1px solid var(--b-border-color);
 }
 
