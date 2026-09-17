@@ -150,12 +150,12 @@ const createNewsletterPrompt = () => {
   const text = document.createElement("p");
   text.className = "newsletter-prompt__text";
   text.textContent =
-    "Vous avez trouvé où rouler ? Recevez chaque mois les sorties à retenir et les nouvelles des chemins bretons.";
+    "Vous préparez vos prochaines sorties ? Recevez chaque mois les randos à retenir et les nouvelles des chemins bretons.";
 
   const link = document.createElement("a");
   link.className = "btn btn--outline btn--small";
   link.href = "#newsletter";
-  link.textContent = "Recevoir la sélection du mois";
+  link.textContent = "Recevoir l’agenda";
 
   item.append(text, link);
   return item;

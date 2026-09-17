@@ -85,7 +85,7 @@ web_site_schema: true
   {% else %}
   <p id="msg-no-results" class="message message--no-results" aria-live="polite">
     Aucun résultat pour cette recherche. Choisissez une autre date ou un autre
-    département, ou <a href="#newsletter">recevez la sélection du mois</a>.
+    département, ou <a href="#newsletter">recevez l’agenda</a>.
   </p>
   {% endif %}
 
@@ -96,7 +96,7 @@ web_site_schema: true
     hidden
   >
     Aucun résultat pour cette recherche. Choisissez une autre date ou un autre
-    département, ou <a href="#newsletter">recevez la sélection du mois</a>.
+    département, ou <a href="#newsletter">recevez l’agenda</a>.
   </p>
 
   <ul id="events-list" class="events-list">
@@ -105,11 +105,11 @@ web_site_schema: true
     {% if forloop.index == 5 %}
     <li class="newsletter-prompt">
       <p class="newsletter-prompt__text">
-        Vous avez trouvé où rouler ? Recevez chaque mois les sorties à retenir
-        et les nouvelles des chemins bretons.
+        Vous préparez vos prochaines sorties ? Recevez chaque mois les randos à
+        retenir et les nouvelles des chemins bretons.
       </p>
       <a class="btn btn--outline btn--small" href="#newsletter">
-        Recevoir la sélection du mois
+        Recevoir l’agenda
       </a>
     </li>
     {% endif %} {% endfor %}

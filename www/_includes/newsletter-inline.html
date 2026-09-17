@@ -1,29 +1,14 @@
-<!-- Bloc agenda email inline : capture email owned.
-     Le calendrier reste la porte d'entrée utile ; la newsletter mensuelle
-     Rando Bretagne ajoute une sélection, du contexte et la parole du terrain.
-     Les éditions et la promesse éditoriale vivent sur nicolasjouanno.com,
-     sans retirer à vtt.bzh son rôle de calendrier et de collecte.
-     Formulaire HTML natif qui POST directement vers Kit (form dédié 0f9b5b248a,
-     endpoint 9677378). Volontairement SANS le script d'embed Kit : celui-ci
-     charge Google reCAPTCHA + écrit un identifiant persistant (localStorage
-     "ckid") + POST un "formvisit" au chargement — ce qui rendrait faux le
-     « aucun cookie ni traceur » de /terms/legals.html sur 98 % du trafic.
-     Ici : zéro script Kit, cookie Kit ou identifiant persistant avant l'envoi.
-     Anti-spam = double opt-in Kit (l'inscription n'est effective qu'après
-     confirmation par email). Le site conserve par ailleurs sa mesure d'audience
-     Cloudflare sans cookie, décrite dans les mentions légales. -->
 <section
   class="newsletter-inline"
   id="newsletter"
   aria-labelledby="newsletter-title"
 >
   <h2 class="newsletter-inline__title" id="newsletter-title">
-    Rando Bretagne, chaque mois
+    L’agenda VTT par e-mail
   </h2>
   <p class="newsletter-inline__text">
-    Le calendrier complet reste ici. Une fois par mois, je sélectionne les
-    randos à retenir et je partage les nouvelles utiles des chemins bretons,
-    avec les clubs et les pratiquants.
+    Chaque mois, les randos à retenir en Bretagne, avec un coin à découvrir et
+    les nouvelles des chemins.
   </p>
   <form
     class="newsletter-inline__form"
@@ -40,19 +25,15 @@
       autocomplete="email"
       required
     />
-    <button type="submit" class="btn btn--primary">
-      Recevoir la prochaine édition
-    </button>
+    <button type="submit" class="btn btn--primary">Recevoir l’agenda</button>
   </form>
   <p class="newsletter-inline__note">
-    Une fois par mois. Confirmez votre adresse par e-mail pour activer l’envoi.
-    Vos données sont traitées par Nicolas Jouanno via Kit.
-    <a href="/terms/legals.html">En savoir plus</a>. Désabonnement en un clic.
+    Une fois par mois. Désabonnement en un clic.
   </p>
   <p class="newsletter-inline__archives">
     <a
       href="https://www.nicolasjouanno.com/newsletter/?utm_source=vtt-bzh&utm_medium=site&utm_campaign=rando-bretagne&utm_content=archives"
-      >Voir les précédents agendas</a
+      >Voir les éditions précédentes</a
     >
   </p>
 </section>

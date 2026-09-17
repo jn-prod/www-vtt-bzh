@@ -80,7 +80,7 @@ En cas de désaccord persistant sur le traitement de vos données, vous pouvez i
 
 Le seul outil de mesure d'audience embarqué est **Cloudflare Web Analytics**. D'après sa documentation, son beacon n'utilise ni cookie, ni `localStorage`, ni empreinte permettant de suivre une personne dans le temps. Il produit des mesures agrégées de fréquentation et de performance pour ce site uniquement.
 
-Le **formulaire d'abonnement** est un formulaire HTML simple : il **ne charge aucun script tiers** et ne dépose ni cookie ni identifiant sur votre terminal. Votre adresse email n'est transmise à Kit qu'au moment précis où vous cliquez sur « Recevoir la prochaine édition ». (Le script d'intégration fourni par Kit — qui aurait chargé Google reCAPTCHA et écrit un identifiant persistant — a été délibérément écarté pour cette raison.)
+Le **formulaire d'abonnement** est un formulaire HTML simple : il **ne charge aucun script tiers** et ne dépose ni cookie ni identifiant sur votre terminal. Votre adresse email n'est transmise à Kit qu'au moment précis où vous cliquez sur « Recevoir l’agenda ». (Le script d'intégration fourni par Kit — qui aurait chargé Google reCAPTCHA et écrit un identifiant persistant — a été délibérément écarté pour cette raison.)
 
 Si votre navigateur signale un cookie déposé par `vtt.bzh`, c'est probablement un cookie technique de votre fournisseur de réseau ou un cookie tiers déposé par un site externe vers lequel vous avez cliqué (HelloAsso, sites de clubs, etc.) — l'éditeur n'en est pas responsable.
 
