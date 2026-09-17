@@ -91,10 +91,10 @@ test('les filtres couvrent aussi les événements au-delà du HTML initial', asy
   await expect(page.locator('#events-list .event')).toHaveCount(events.length);
 });
 
-test('le CTA sticky conduit à une inscription lisible sous les barres collantes', async ({ page }) => {
+test('le CTA sticky conduit à l’agenda lisible sous les barres collantes', async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 });
   await page.goto('/');
-  await page.locator('.site-header').getByRole('link', { name: 'Recevoir la sélection du mois' }).click();
+  await page.locator('.site-header').getByRole('link', { name: "Recevoir l'agenda" }).click();
   await expect(page).toHaveURL(/#newsletter$/u);
   const position = await page.locator('#newsletter-title').evaluate((element) => {
     const tabs = document.getElementById('tabs');
@@ -107,7 +107,7 @@ test('le CTA sticky conduit à une inscription lisible sous les barres collantes
   expect(position.titleTop).toBeGreaterThan(position.minimum);
 });
 
-test('une recherche sans résultat conserve une issue vers la sélection mensuelle', async ({ page }) => {
+test('une recherche sans résultat conserve une issue vers l’agenda', async ({ page }) => {
   const events = [
     {
       id: 'event-35',
@@ -127,7 +127,7 @@ test('une recherche sans résultat conserve une issue vers la sélection mensuel
   await page.locator('#departement').selectOption('22');
   await page.getByRole('button', { name: 'Rechercher' }).click();
   await expect(page.locator('#msg-no-results-dynamic')).toBeVisible();
-  await expect(page.locator('#msg-no-results-dynamic')).toContainText('recevez la sélection du mois');
+  await expect(page.locator('#msg-no-results-dynamic')).toContainText('recevez l’agenda');
 });
 
 test('le rendu JavaScript neutralise les données événement hostiles', async ({ page }) => {
