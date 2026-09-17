@@ -30,7 +30,7 @@
   --b-size-64: 6.4rem; /*  64px */
   --b-container-max: 114rem;
   --b-control-height: 4.4rem;
-  --b-header-h: 4.8rem; /* hauteur du header sticky — offset des onglets/ancres */
+  --b-header-h: 4.8rem; /* hauteur du header */
   --b-tabs-h: 4.4rem; /* hauteur de la barre d'onglets sticky */
   --b-shadow: 0 var(--b-size-2) var(--b-size-4) rgb(0 0 0 / 7.5%);
   --b-border-color: #dee2e6;
@@ -94,10 +94,7 @@ img {
   font-display: swap;
 }
 
-/* min-height sur <body>, surtout pas height : `height: 100%` bornait sa boîte à
-   un écran de haut alors que le contenu déborde bien au-delà. Or un élément
-   `position: sticky` ne colle que tant que SON PARENT est à l'écran — le header
-   sticky décrochait donc après ~1 écran de scroll. */
+/* min-height sur <body>, surtout pas height : le contenu peut dépasser l'écran. */
 body {
   min-height: 100%;
   background-color: var(--b-color-white);
@@ -233,12 +230,7 @@ button {
   padding: 0 var(--b-size-16);
 }
 
-/* Header sticky et fin (façon barre de profil social).
-   --b-header-h sert d'offset au sticky des onglets et aux ancres. */
 .site-header {
-  position: sticky;
-  top: 0;
-  z-index: 20;
   background: var(--b-color-white);
   box-shadow: var(--b-shadow);
 }
@@ -263,8 +255,7 @@ button {
 .site-nav {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: var(--b-size-12);
+  justify-content: center;
   min-height: var(--b-header-h);
 }
 
@@ -835,7 +826,7 @@ button {
 
 .tabs {
   position: sticky;
-  top: var(--b-header-h);
+  top: 0;
   z-index: 10;
   display: flex;
   align-items: center;
@@ -877,11 +868,8 @@ button {
 }
 
 /* Les ancres ne doivent pas glisser sous les barres collantes */
-#events,
-.newsletter-inline {
-  scroll-margin-top: calc(
-    var(--b-header-h) + var(--b-tabs-h) + var(--b-size-8)
-  );
+#events {
+  scroll-margin-top: calc(var(--b-tabs-h) + 9rem);
 }
 
 /* ==========================================================================
@@ -889,14 +877,54 @@ button {
    ========================================================================== */
 
 .project-signature {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--b-size-16);
   margin: var(--b-size-24) 0 0;
-  padding-top: var(--b-size-16);
+  padding-top: var(--b-size-24);
   border-top: 1px solid var(--b-border-color);
   color: #5a6268;
+  text-align: center;
+}
+
+.project-signature__portrait {
+  flex: 0 0 auto;
+  width: 9.6rem;
+  height: 9.6rem;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.project-signature__body {
+  max-width: 64rem;
+}
+
+.project-signature__title {
+  margin: 0 0 var(--b-size-8);
+  color: var(--b-color-grey-dark);
 }
 
 .project-signature__text {
   margin: 0;
+}
+
+.project-signature__text + .project-signature__text {
+  margin-top: var(--b-size-8);
+}
+
+.project-signature__link {
+  margin: var(--b-size-12) 0 0;
+}
+
+@media (width > 600px) {
+  .project-signature {
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: var(--b-size-24);
+    text-align: left;
+  }
 }
 
 /* ==========================================================================
@@ -904,6 +932,7 @@ button {
    ========================================================================== */
 
 .newsletter-inline {
+  scroll-margin-top: var(--b-size-8);
   background: var(--b-color-grey-light);
   border-radius: var(--b-border-radius);
   box-shadow: var(--b-shadow);
@@ -955,6 +984,38 @@ button {
 .newsletter-prompt__text {
   max-width: 52rem;
   margin: 0 auto var(--b-size-12);
+}
+
+.newsletter-prompt--sticky {
+  position: sticky;
+  top: var(--b-tabs-h);
+  z-index: 9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--b-size-12);
+  box-shadow: var(--b-shadow);
+}
+
+.newsletter-prompt--sticky .newsletter-prompt__text {
+  margin: 0;
+}
+
+@media (width <= 600px) {
+  .newsletter-prompt--sticky {
+    gap: var(--b-size-8);
+    padding: var(--b-size-8) var(--b-size-12);
+  }
+
+  .newsletter-prompt--sticky .newsletter-prompt__text {
+    font-size: 1.4rem;
+    text-align: left;
+  }
+
+  .newsletter-prompt--sticky .btn {
+    flex: 0 0 auto;
+    padding-inline: var(--b-size-12);
+  }
 }
 
 .newsletter-inline__input {
