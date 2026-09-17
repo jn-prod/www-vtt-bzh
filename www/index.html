@@ -13,6 +13,8 @@ web_site_schema: true
   département.
 </p>
 
+{% include newsletter-inline.html %}
+
 <!-- Barre sticky : le filtre y est logé en menu
      déroulant : il ne coûte aucune hauteur supplémentaire et reste joignable
      à n'importe quelle profondeur de scroll dans la liste des randos. -->
@@ -102,16 +104,7 @@ web_site_schema: true
   <ul id="events-list" class="events-list">
     {% for event in site.data.events limit: 20 %}
     <li>{% include calendar/event.html event=event %}</li>
-    {% if forloop.index == 5 %}
-    <li class="newsletter-prompt">
-      <p class="newsletter-prompt__text">
-        Vous préparez vos prochaines sorties ? Recevez chaque mois les randos à
-        retenir et les nouvelles des chemins bretons.
-      </p>
-      <a class="btn btn--outline btn--small" href="#newsletter">
-        Recevoir l’agenda
-      </a>
-    </li>
+    {% if forloop.index == 5 %} {% include newsletter-prompt.html sticky=true %}
     {% endif %} {% endfor %}
   </ul>
 
@@ -130,8 +123,6 @@ web_site_schema: true
   </nav>
   {% endif %}
 </section>
-
-{% include newsletter-inline.html %}
 
 <section
   class="organizer-callout"
@@ -157,10 +148,28 @@ web_site_schema: true
   </ul>
 </section>
 
-<aside class="project-signature" aria-label="Qui tient ce calendrier ?">
-  <p class="project-signature__text">
-    <strong>vtt.bzh</strong> est un outil indépendant tenu depuis 2013 par
-    <a href="{{ site.author.profile_url }}">Nicolas Jouanno</a> et alimenté avec
-    les clubs et organisateurs bretons.
-  </p>
+<aside class="project-signature" aria-labelledby="project-signature-title">
+  <img
+    class="project-signature__portrait"
+    src="{{ site.author.avatar_url }}"
+    alt="Portrait de Nicolas Jouanno"
+    width="128"
+    height="128"
+    loading="lazy"
+    decoding="async"
+  />
+  <div class="project-signature__body">
+    <h2 class="project-signature__title" id="project-signature-title">
+      Qui tient vtt.bzh ?
+    </h2>
+    <p class="project-signature__text">
+      Je suis Nicolas Jouanno, ancien cycliste professionnel chez Bretagne
+      Schuller. Après la route, je suis revenu au VTT et j’ai créé
+      <strong>vtt.bzh</strong> en 2013 pour répondre à une question simple : où
+      rouler dimanche ?
+    </p>
+    <p class="project-signature__link">
+      <a href="{{ site.author.profile_url }}">Découvrir mon parcours</a>
+    </p>
+  </div>
 </aside>

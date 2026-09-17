@@ -53,7 +53,7 @@ for (const viewport of viewports) {
 test('le calendrier charge les événements suivants sans gonfler le HTML initial', async ({ page }) => {
   await page.goto('/');
   await expect(page.locator('#events-list .event')).toHaveCount(20);
-  await expect(page.locator('#events-list .newsletter-prompt')).toHaveCount(1);
+  await expect(page.locator('#events-list .newsletter-prompt--sticky')).toHaveCount(1);
   const total = Number(await page.locator('#results-count').textContent());
   expect(total).toBeGreaterThan(20);
   await page.locator('#load-more').click();
@@ -86,25 +86,24 @@ test('les filtres couvrent aussi les événements au-delà du HTML initial', asy
   await page.getByRole('button', { name: 'Rechercher' }).click();
   await expect(page.locator('#results-count')).toHaveText(String(events.length));
   await expect(page.locator('#events-list .event')).toHaveCount(20);
-  await expect(page.locator('#events-list .newsletter-prompt')).toHaveCount(1);
+  await expect(page.locator('#events-list .newsletter-prompt--sticky')).toHaveCount(1);
   await page.locator('#load-more').click();
   await expect(page.locator('#events-list .event')).toHaveCount(events.length);
 });
 
-test('le CTA sticky conduit à l’agenda lisible sous les barres collantes', async ({ page }) => {
+test('le header reste simple et le rappel sticky conduit à l’agenda', async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 });
   await page.goto('/');
-  await page.locator('.site-header').getByRole('link', { name: "Recevoir l'agenda" }).click();
+  const header = page.locator('.site-header');
+  await expect(header.getByRole('link')).toHaveCount(1);
+  await expect(header.getByRole('link', { name: 'vtt.bzh' })).toBeVisible();
+  await expect(header).toHaveCSS('position', 'static');
+  await expect(page.locator('.site-nav')).toHaveCSS('justify-content', 'center');
+
+  const prompt = page.locator('.newsletter-prompt--sticky');
+  await expect(prompt).toHaveCSS('position', 'sticky');
+  await prompt.getByRole('link', { name: 'Recevoir l’agenda' }).click();
   await expect(page).toHaveURL(/#newsletter$/u);
-  const position = await page.locator('#newsletter-title').evaluate((element) => {
-    const tabs = document.getElementById('tabs');
-    const header = document.querySelector('.site-header');
-    return {
-      titleTop: element.getBoundingClientRect().top,
-      minimum: Math.max(header?.getBoundingClientRect().bottom ?? 0, tabs?.getBoundingClientRect().bottom ?? 0),
-    };
-  });
-  expect(position.titleTop).toBeGreaterThan(position.minimum);
 });
 
 test('une recherche sans résultat conserve une issue vers l’agenda', async ({ page }) => {
@@ -128,6 +127,14 @@ test('une recherche sans résultat conserve une issue vers l’agenda', async ({
   await page.getByRole('button', { name: 'Rechercher' }).click();
   await expect(page.locator('#msg-no-results-dynamic')).toBeVisible();
   await expect(page.locator('#msg-no-results-dynamic')).toContainText('recevez l’agenda');
+});
+
+test('un seul rappel sticky suit la cinquième rando', async ({ page }) => {
+  await page.goto('/');
+  const prompt = page.locator('#events-list > li:nth-child(6).newsletter-prompt--sticky');
+  await expect(page.locator('.newsletter-prompt')).toHaveCount(1);
+  await expect(prompt).toContainText('Les randos à retenir, chaque mois.');
+  await expect(prompt.getByRole('link', { name: 'Recevoir l’agenda' })).toHaveAttribute('href', '#newsletter');
 });
 
 test('le rendu JavaScript neutralise les données événement hostiles', async ({ page }) => {
@@ -286,7 +293,7 @@ test('les anciennes entrées newsletter renvoient vers la destination canonique'
   const checks = [
     ['/newsletter.html', 'https://www.nicolasjouanno.com/newsletter/?utm_source=vtt-bzh'],
     ['/newsletter/', 'https://www.nicolasjouanno.com/newsletter/?utm_source=vtt-bzh'],
-    ['/merci.html', 'https://www.nicolasjouanno.com/newsletter/merci/'],
+    ['/merci.html', 'https://www.nicolasjouanno.com/newsletter/merci/?utm_source=vtt-bzh'],
     ['/newsletter/2026-07/', 'https://www.nicolasjouanno.com/newsletter/2026-07/'],
     ['/newsletter/2026-08/', 'https://www.nicolasjouanno.com/newsletter/2026-08/'],
   ];

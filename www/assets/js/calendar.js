@@ -12,6 +12,9 @@ const resultsCount = document.getElementById("results-count");
 const resultsLabel = document.getElementById("results-label");
 const resultsMessage = document.getElementById("msg-results");
 const noResultsMessage = document.getElementById("msg-no-results-dynamic");
+const newsletterPromptTemplate = document
+  .querySelector('[data-newsletter-prompt="true"]')
+  ?.cloneNode(true);
 
 const dateToISO = (date) =>
   new Date(date.getTime() - date.getTimezoneOffset() * 60_000)
@@ -144,21 +147,10 @@ const createEvent = (event) => {
 };
 
 const createNewsletterPrompt = () => {
-  const item = document.createElement("li");
-  item.className = "newsletter-prompt";
-
-  const text = document.createElement("p");
-  text.className = "newsletter-prompt__text";
-  text.textContent =
-    "Vous préparez vos prochaines sorties ? Recevez chaque mois les randos à retenir et les nouvelles des chemins bretons.";
-
-  const link = document.createElement("a");
-  link.className = "btn btn--outline btn--small";
-  link.href = "#newsletter";
-  link.textContent = "Recevoir l’agenda";
-
-  item.append(text, link);
-  return item;
+  const prompt = newsletterPromptTemplate?.cloneNode(true);
+  if (!prompt) return null;
+  prompt.removeAttribute("data-newsletter-prompt");
+  return prompt;
 };
 
 const initTabs = () => {
@@ -223,7 +215,10 @@ const initCalendar = () => {
     const filtered = filteredEvents(events);
     const visible = filtered.slice(0, page * PAGE_SIZE);
     const items = visible.map(createEvent);
-    if (items.length > 5) items.splice(5, 0, createNewsletterPrompt());
+    if (items.length > 5) {
+      const prompt = createNewsletterPrompt();
+      if (prompt) items.splice(5, 0, prompt);
+    }
     eventsList.replaceChildren(...items);
     if (resultsCount) resultsCount.textContent = String(filtered.length);
     if (resultsMessage) resultsMessage.hidden = filtered.length === 0;
