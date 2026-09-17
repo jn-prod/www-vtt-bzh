@@ -478,7 +478,7 @@ button {
    ========================================================================== */
 
 .organizer-callout {
-  margin: 0 0 var(--b-size-24);
+  margin: var(--b-size-40) 0 var(--b-size-24);
 }
 
 .organizer-callout__details {
