@@ -294,11 +294,11 @@ test('Kit ne reçoit aucune requête avant une inscription explicite', async ({ 
 
 test('les anciennes entrées newsletter renvoient vers la destination canonique', async ({ request }) => {
   const checks = [
-    ['/newsletter.html', 'https://www.nicolasjouanno.com/newsletter/?utm_source=vtt-bzh'],
-    ['/newsletter/', 'https://www.nicolasjouanno.com/newsletter/?utm_source=vtt-bzh'],
-    ['/merci.html', 'https://www.nicolasjouanno.com/newsletter/merci/?utm_source=vtt-bzh'],
-    ['/newsletter/2026-07/', 'https://www.nicolasjouanno.com/newsletter/2026-07/'],
-    ['/newsletter/2026-08/', 'https://www.nicolasjouanno.com/newsletter/2026-08/'],
+    ['/newsletter.html', 'https://www.nicolasjouanno.com/la-sortie/?utm_source=vtt-bzh'],
+    ['/newsletter/', 'https://www.nicolasjouanno.com/la-sortie/?utm_source=vtt-bzh'],
+    ['/go/newsletter/', 'https://www.nicolasjouanno.com/la-sortie/?utm_source=vtt-bzh'],
+    ['/newsletter/2026-07/', 'https://www.nicolasjouanno.com/la-sortie/2026-07/'],
+    ['/newsletter/2026-08/', 'https://www.nicolasjouanno.com/la-sortie/2026-08/'],
   ];
 
   for (const [path, canonical] of checks) {

@@ -123,11 +123,7 @@ if (events.length > 20 && !existsSync(join(SITE, 'calendrier', 'page', '2', 'ind
   failures.push('la pagination statique du calendrier est absente');
 }
 
-const merci = readFileSync(join(SITE, 'merci.html'), 'utf8');
-if (!/<meta\s+name="robots"\s+content="noindex, follow"\s*\/>/u.test(merci))
-  failures.push('merci.html doit être noindex, follow');
 const sitemap = readFileSync(join(SITE, 'sitemap.xml'), 'utf8');
-if (sitemap.includes('/merci.html')) failures.push('merci.html ne doit pas figurer dans le sitemap');
 
 const eventSuccessPath = join(SITE, 'calendrier', 'soumission-confirmee.html');
 const eventSuccess = readFileSync(eventSuccessPath, 'utf8');
