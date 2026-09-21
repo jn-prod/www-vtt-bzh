@@ -48,6 +48,9 @@ _site
 .jekyll-metadata
 .DS_Store
 
+# Brouillons locaux de la newsletter
+_drafts/
+
 # Backups locaux Supabase
 *.backup.json
 backups/
@@ -58,6 +61,3 @@ supabase/.branches/
 
 # Artefact de build calendrier (régénéré en CI via copy:packages:calendar ; ne pas versionner)
 www/_data/events.json
-
-# Matière éditoriale locale issue du calendrier, à transférer manuellement vers nj.com
-newsletter-drafts/

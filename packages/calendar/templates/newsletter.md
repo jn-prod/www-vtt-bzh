@@ -1,25 +1,30 @@
 ---
-source_id: vtt-bzh-@@PERIOD@@
+source_id: vtt-bzh-@@START@@_@@END@@
 generated_at: @@GENERATED_AT_ISO@@
-period: @@PERIOD@@
+start: @@START@@
+end: @@END@@
 source: calendrier-vtt-bzh
 ---
 
 # Matière calendrier VTT — @@TITLE@@
 
-Brief factuel préparé depuis Supabase. Il alimente la section « L’agenda VTT » et la sélection de la prochaine édition de La Sortie sur nicolasjouanno.com. Il n’est ni une newsletter prête à envoyer, ni un contenu à publier tel quel.
+Matière factuelle préparée depuis Supabase pour La Sortie. Elle aide à choisir et contextualiser les randonnées ; elle n’est ni une newsletter prête à envoyer, ni un contenu à publier tel quel.
 
-## Agenda des cinq prochaines semaines
+## En chiffres
 
-@@AGENDA_COUNT@@ @@AGENDA_LABEL@@ à venir, dont @@NEW_COUNT@@ @@NEW_LABEL@@.
+- **@@AGENDA_COUNT@@ @@AGENDA_LABEL@@** dans cette fenêtre.
+- **Par département :** @@DEPARTMENT_COUNTS@@.
+- **@@NEW_COUNT@@ @@NEW_LABEL@@** ajoutées au calendrier ces 35 derniers jours.
 
-@@AGENDA_LINES@@
-@@IF_HAS_LATER@@
+## Agenda par week-end
 
-## Nouveautés plus loin dans la saison
+@@AGENDA_GROUPS@@
+@@IF_HAS_NEW_EVENTS@@
 
-@@LATER_LINES@@
-@@END_HAS_LATER@@
+## Nouveautés récentes
+
+@@NEW_EVENT_LINES@@
+@@END_HAS_NEW_EVENTS@@
 
 [Ouvrir le calendrier complet](https://www.vtt.bzh/?utm_source=vtt-bzh&utm_medium=editorial&utm_campaign=rando-bretagne&utm_content=calendrier)
 

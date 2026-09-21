@@ -71,7 +71,7 @@ pnpm install
 | `pnpm build:preview`  | Build complet + serveur HTTP local sur `www/_site/`                   |
 | `pnpm build:www`      | Build Jekyll uniquement                                               |
 | `pnpm build:packages` | Compile tous les packages TypeScript                                  |
-| `pnpm newsletter:new` | Génère une matière calendrier Markdown pour La Sortie depuis Supabase |
+| `pnpm newsletter:new` | Génère un brouillon Markdown pour La Sortie depuis Supabase           |
 | `pnpm test`           | Tests de tous les packages                                            |
 | `pnpm test:e2e`       | Parcours Playwright et contrôles Axe                                  |
 | `pnpm validate:html`  | Validation du HTML généré                                             |
@@ -101,11 +101,9 @@ Le workflow de publication conserve la production précédente dès qu'un contr�
 
 Les organisateurs soumettent une randonnée via `/calendrier/ajouter.html`. L'Edge Function `submit-event` valide le payload, fixe les champs système et applique la limitation de débit avant l'insertion Supabase. La publication statique est reconstruite quotidiennement et après chaque push sur `main`.
 
-### `generate-newsletter.yml` — Matière mensuelle manuelle
+### Matière de newsletter locale
 
-L'action manuelle calcule toujours le mois suivant en heure de Paris et génère un brief factuel depuis Supabase. Il contient les cinq prochaines semaines de calendrier VTT, sans créer de branche, de PR, de commit ni de contenu public. Une relance produit simplement un nouvel artefact temporaire : l'action reste utile même si le mois a déjà été préparé.
-
-Télécharger l'artefact puis sélectionner et contextualiser cette matière dans l'édition mensuelle de **La Sortie**, publiée de façon canonique sur [nicolasjouanno.com/la-sortie/](https://www.nicolasjouanno.com/la-sortie/). L'archive, l'édito et l'appel aux retours vivent sur ce site ; vtt.bzh conserve le calendrier, les données et l'entrée d'acquisition.
+Lancer `pnpm --silent newsletter:new -- --start=YYYY-MM-DD --end=YYYY-MM-DD` depuis un environnement qui possède les variables Supabase. La commande écrit la matière dans le dossier `_drafts/` local à vtt.bzh, ou dans `NEWSLETTER_DRAFTS_DIR` si cette variable est définie. Elle est regroupée par week-end et résume les volumes, départements et ajouts récents : sélectionner et contextualiser ensuite cette matière dans l'édition mensuelle de **La Sortie**, publiée de façon canonique sur [nicolasjouanno.com/la-sortie/](https://www.nicolasjouanno.com/la-sortie/). L'archive, l'édito et l'appel aux retours vivent sur ce site ; vtt.bzh conserve le calendrier, les données et l'entrée d'acquisition.
 
 Après relecture, l'envoi reste manuel dans Kit. La cible doit réunir les consentements issus des formulaires **VTT.bzh visiteurs** (`9677378`) et **La Sortie sur nicolasjouanno.com** (`9378910`) ; le tag historique `agenda-mensuel` ne doit pas servir seul de cible. Ne modifier ni abonnements ni consentements depuis ce dépôt.
 

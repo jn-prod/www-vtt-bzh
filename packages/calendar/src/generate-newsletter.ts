@@ -7,10 +7,10 @@ import { createClient } from 'repository';
 import { duplicateKey, normalizeEvents, type PublicCalendarEvent, type RawCalendarEvent } from './normalize-events';
 
 const MAX_EVENTS = 200;
-const HORIZON_DAYS = 35;
 const NEW_EVENT_DAYS = 35;
 const PROJECT_ROOT = join(__dirname, '..', '..', '..');
 export const DEFAULT_NEWSLETTER_TEMPLATE = join(__dirname, '..', 'templates', 'newsletter.md');
+export const DEFAULT_NEWSLETTER_DRAFTS_DIR = join(PROJECT_ROOT, '_drafts');
 
 type NewsletterSourceEvent = RawCalendarEvent & {
   active?: boolean;
@@ -30,16 +30,11 @@ export const parisDate = (date: Date): string =>
     day: '2-digit',
   }).format(date);
 
-export const addDays = (isoDate: string, days: number): string => {
-  const date = new Date(`${isoDate}T12:00:00Z`);
-  date.setUTCDate(date.getUTCDate() + days);
-  return date.toISOString().slice(0, 10);
+const isValidIsoDate = (value: string): boolean => {
+  if (!/^\d{4}-\d{2}-\d{2}$/u.test(value)) return false;
+  const date = new Date(`${value}T12:00:00Z`);
+  return !Number.isNaN(date.getTime()) && date.toISOString().slice(0, 10) === value;
 };
-
-const monthLabel = (period: string): string =>
-  new Intl.DateTimeFormat('fr-FR', { month: 'long', year: 'numeric', timeZone: 'Europe/Paris' }).format(
-    new Date(`${period}-15T12:00:00Z`)
-  );
 
 const escapeMarkdown = (value: unknown): string =>
   String(value ?? '')
@@ -55,14 +50,86 @@ const longDate = (isoDate: string): string =>
     timeZone: 'Europe/Paris',
   }).format(new Date(`${isoDate}T12:00:00Z`));
 
+const shortDate = (isoDate: string): string =>
+  new Intl.DateTimeFormat('fr-FR', {
+    day: 'numeric',
+    month: 'long',
+    year: 'numeric',
+    timeZone: 'Europe/Paris',
+  }).format(new Date(`${isoDate}T12:00:00Z`));
+
+const shortDay = (isoDate: string): string =>
+  new Intl.DateTimeFormat('fr-FR', {
+    weekday: 'short',
+    day: 'numeric',
+    timeZone: 'Europe/Paris',
+  }).format(new Date(`${isoDate}T12:00:00Z`));
+
+const monthYear = (isoDate: string): string =>
+  new Intl.DateTimeFormat('fr-FR', {
+    month: 'long',
+    year: 'numeric',
+    timeZone: 'Europe/Paris',
+  }).format(new Date(`${isoDate}T12:00:00Z`));
+
 const plural = (count: number, singular: string, pluralForm = `${singular}s`): string =>
   count > 1 ? pluralForm : singular;
 
-const eventLine = (event: PublicCalendarEvent, isNew: boolean): string => {
-  const title = `${longDate(event.date)} — ${escapeMarkdown(event.name)}${isNew ? ' — nouveau' : ''}`;
+const eventLine = (event: PublicCalendarEvent): string => {
+  const title = escapeMarkdown(event.name);
   const location = `${escapeMarkdown(event.city)} (${event.departement})`;
-  const details = [event.hour, event.price].filter(Boolean).map(escapeMarkdown).join(' · ');
-  return `- **${title}**  \n  ${location}${details ? ` · ${details}` : ''}`;
+  return `- **${title}** — ${shortDay(event.date)} · ${location}`;
+};
+
+const eventLineWithDate = (event: PublicCalendarEvent): string =>
+  `- **${escapeMarkdown(event.name)}** — ${longDate(event.date)} · ${escapeMarkdown(event.city)} (${event.departement})`;
+
+type AgendaGroup = {
+  key: string;
+  label: string;
+  events: PublicCalendarEvent[];
+};
+
+const weekendKey = (isoDate: string): string => {
+  const date = new Date(`${isoDate}T12:00:00Z`);
+  if (date.getUTCDay() === 0) date.setUTCDate(date.getUTCDate() - 1);
+  return date.toISOString().slice(0, 10);
+};
+
+const groupAgenda = (agenda: PublicCalendarEvent[]): AgendaGroup[] => {
+  const groups = new Map<string, PublicCalendarEvent[]>();
+  for (const event of agenda) {
+    const key = [0, 6].includes(new Date(`${event.date}T12:00:00Z`).getUTCDay()) ? weekendKey(event.date) : event.date;
+    const events = groups.get(key) ?? [];
+    events.push(event);
+    groups.set(key, events);
+  }
+
+  return [...groups.entries()]
+    .sort(([left], [right]) => left.localeCompare(right))
+    .map(([key, events]) => {
+      const dates = [...new Set(events.map((event) => event.date))].sort();
+      const lastDate = dates[dates.length - 1];
+      const isWeekend = new Date(`${key}T12:00:00Z`).getUTCDay() === 6;
+      const sameMonth = key.slice(0, 7) === lastDate.slice(0, 7);
+      const label = isWeekend
+        ? lastDate === key
+          ? `Week-end du ${shortDate(key)}`
+          : sameMonth
+            ? `Week-end des ${new Date(`${key}T12:00:00Z`).getUTCDate()} et ${new Date(`${lastDate}T12:00:00Z`).getUTCDate()} ${monthYear(key)}`
+            : `Week-end du ${shortDate(key)} au ${shortDate(lastDate)}`
+        : `Le ${longDate(key)}`;
+      return { key, label, events };
+    });
+};
+
+const departmentCounts = (events: PublicCalendarEvent[]): string => {
+  const counts = new Map<number, number>();
+  for (const event of events) counts.set(event.departement, (counts.get(event.departement) ?? 0) + 1);
+  return [...counts.entries()]
+    .sort(([left], [right]) => left - right)
+    .map(([departement, count]) => `**${departement}** : ${count}`)
+    .join(' · ');
 };
 
 export const renderTemplate = (
@@ -86,58 +153,58 @@ export const renderTemplate = (
   return rendered.endsWith('\n') ? rendered : `${rendered}\n`;
 };
 
-const validateBriefContract = (markdown: string, period: string): void => {
-  const requiredLines = [
-    `source_id: vtt-bzh-${period}`,
-    'source: calendrier-vtt-bzh',
-    '## Agenda des cinq prochaines semaines',
-  ];
+const validateBriefContract = (markdown: string, start: string, end: string): void => {
+  const requiredLines = [`source_id: vtt-bzh-${start}_${end}`, 'source: calendrier-vtt-bzh', '## Agenda par week-end'];
   for (const line of requiredLines) {
     if (!markdown.includes(line)) throw new Error(`Contrat absent du brief rendu : ${line}.`);
   }
 };
 
 export const renderNewsletter = ({
-  period,
+  start,
+  end,
   generatedAt,
   generatedAtIso = `${generatedAt}T12:00:00.000Z`,
   agenda,
   newEvents,
   template = readFileSync(DEFAULT_NEWSLETTER_TEMPLATE, 'utf8'),
 }: {
-  period: string;
+  start: string;
+  end: string;
   generatedAt: string;
   generatedAtIso?: string;
   agenda: PublicCalendarEvent[];
   newEvents: PublicCalendarEvent[];
   template?: string;
 }): string => {
-  if (!/^\d{4}-(0[1-9]|1[0-2])$/u.test(period)) throw new Error('La période doit être au format YYYY-MM.');
-  if (agenda.length === 0) throw new Error('Aucune rando dans les cinq prochaines semaines : édition non créée.');
+  if (!isValidIsoDate(start) || !isValidIsoDate(end)) throw new Error('Les dates doivent être au format YYYY-MM-DD.');
+  if (start > end) throw new Error('La date de début doit précéder la date de fin.');
+  if (agenda.length === 0) throw new Error('Aucune rando dans la fenêtre demandée : édition non créée.');
 
   const agendaKeys = new Set(agenda.map(duplicateKey));
-  const newKeys = new Set(newEvents.map(duplicateKey));
-  const later = newEvents.filter((event) => !agendaKeys.has(duplicateKey(event)));
-  const newCount = agenda.filter((event) => newKeys.has(duplicateKey(event))).length + later.length;
-  const label = monthLabel(period);
-  const agendaLines = agenda.map((event) => eventLine(event, newKeys.has(duplicateKey(event)))).join('\n');
+  const newAgenda = newEvents.filter((event) => agendaKeys.has(duplicateKey(event)));
+  const agendaGroups = groupAgenda(agenda)
+    .map((group) => `### ${group.label}\n\n${group.events.map(eventLine).join('\n')}`)
+    .join('\n\n');
   const markdown = renderTemplate(
     template,
     {
-      TITLE: label,
+      TITLE: `du ${shortDate(start)} au ${shortDate(end)}`,
       GENERATED_AT: generatedAt,
       GENERATED_AT_ISO: generatedAtIso,
-      PERIOD: period,
+      START: start,
+      END: end,
       AGENDA_COUNT: String(agenda.length),
       AGENDA_LABEL: plural(agenda.length, 'rando'),
-      NEW_COUNT: String(newCount),
-      NEW_LABEL: plural(newCount, 'nouvelle rando', 'nouvelles randos'),
-      AGENDA_LINES: agendaLines,
-      LATER_LINES: later.map((event) => eventLine(event, true)).join('\n'),
+      DEPARTMENT_COUNTS: departmentCounts(agenda),
+      NEW_COUNT: String(newAgenda.length),
+      NEW_LABEL: plural(newAgenda.length, 'nouvelle rando', 'nouvelles randos'),
+      AGENDA_GROUPS: agendaGroups,
+      NEW_EVENT_LINES: newAgenda.map(eventLineWithDate).join('\n'),
     },
-    { HAS_LATER: later.length > 0 }
+    { HAS_NEW_EVENTS: newAgenda.length > 0 }
   );
-  validateBriefContract(markdown, period);
+  validateBriefContract(markdown, start, end);
   return markdown;
 };
 
@@ -152,7 +219,15 @@ export const normalizeNewsletterEvents = ({
   newEvents: normalizeEvents(newEvents).events,
 });
 
-const loadNewsletterEvents = async (today: string): Promise<NewsletterEvents> => {
+const loadNewsletterEvents = async ({
+  start,
+  end,
+  generatedAt,
+}: {
+  start: string;
+  end: string;
+  generatedAt: string;
+}): Promise<NewsletterEvents> => {
   const url = process.env.SUPABASE_URL;
   const key = process.env.SUPABASE_PUBLISHABLE_KEY ?? process.env.SUPABASE_KEY;
   const table = process.env.SUPABASE_TABLE;
@@ -162,7 +237,7 @@ const loadNewsletterEvents = async (today: string): Promise<NewsletterEvents> =>
 
   const db = createClient(url, key);
   const projection = 'date,name,city,departement,hour,price,canceled,active,created_at';
-  const lastNewEventDate = new Date(`${today}T12:00:00Z`);
+  const lastNewEventDate = new Date(`${generatedAt}T12:00:00Z`);
   lastNewEventDate.setUTCDate(lastNewEventDate.getUTCDate() - NEW_EVENT_DAYS);
 
   const agendaQuery = db
@@ -170,8 +245,8 @@ const loadNewsletterEvents = async (today: string): Promise<NewsletterEvents> =>
     .select(projection)
     .eq('active', true)
     .or('canceled.is.false,canceled.is.null')
-    .gte('date', today)
-    .lt('date', addDays(today, HORIZON_DAYS))
+    .gte('date', start)
+    .lte('date', end)
     .order('date', { ascending: true })
     .limit(MAX_EVENTS);
   const newEventsQuery = db
@@ -179,8 +254,8 @@ const loadNewsletterEvents = async (today: string): Promise<NewsletterEvents> =>
     .select(projection)
     .eq('active', true)
     .or('canceled.is.false,canceled.is.null')
-    .gte('date', today)
-    .lt('date', addDays(today, 365))
+    .gte('date', start)
+    .lte('date', end)
     .gte('created_at', lastNewEventDate.toISOString())
     .order('date', { ascending: true })
     .limit(MAX_EVENTS);
@@ -211,35 +286,37 @@ export type NewsletterDraftResult = {
 };
 
 export const saveNewsletterDraft = ({
-  postsDirectory,
-  period,
-  generatedAt,
+  draftsDirectory,
+  start,
+  end,
   markdown,
   update,
 }: {
-  postsDirectory: string;
-  period: string;
-  generatedAt: string;
+  draftsDirectory: string;
+  start: string;
+  end: string;
   markdown: string;
   update: boolean;
 }): NewsletterDraftResult => {
-  mkdirSync(postsDirectory, { recursive: true });
-  const sourceId = `source_id: vtt-bzh-${period}`;
-  const duplicate = readdirSync(postsDirectory).find((name) => {
-    const path = join(postsDirectory, name);
+  mkdirSync(draftsDirectory, { recursive: true });
+  const sourceId = `source_id: vtt-bzh-${start}_${end}`;
+  const duplicate = readdirSync(draftsDirectory).find((name) => {
+    const path = join(draftsDirectory, name);
     return name.endsWith('.md') && readFileSync(path, 'utf8').split('\n').includes(sourceId);
   });
 
   if (duplicate) {
-    const output = join(postsDirectory, duplicate);
+    const output = join(draftsDirectory, duplicate);
     if (!update)
-      throw new Error(`L’édition ${period} existe déjà dans ${duplicate}. Utiliser --update pour la régénérer.`);
+      throw new Error(
+        `La fenêtre ${start} → ${end} existe déjà dans ${duplicate}. Utiliser --update pour la régénérer.`
+      );
     writeFileSync(output, markdown, 'utf8');
     return { status: 'updated', path: output };
   }
 
-  const filename = `${generatedAt}-rando-bretagne-source-${period}.md`;
-  const output = join(postsDirectory, filename);
+  const filename = `${start}_${end}-la-sortie.md`;
+  const output = join(draftsDirectory, filename);
   if (existsSync(output)) throw new Error(`${filename} existe déjà.`);
   writeFileSync(output, markdown, { encoding: 'utf8', flag: 'wx' });
   return { status: 'created', path: output };
@@ -247,15 +324,26 @@ export const saveNewsletterDraft = ({
 
 const main = async (): Promise<void> => {
   const args = parseArgs();
-  const now = typeof args.date === 'string' ? new Date(`${args.date}T12:00:00Z`) : new Date();
-  if (Number.isNaN(now.getTime())) throw new Error('La date doit être au format YYYY-MM-DD.');
+  const start = typeof args.start === 'string' ? args.start : '';
+  const end = typeof args.end === 'string' ? args.end : '';
+  if (!start || !end) throw new Error('Les paramètres --start=YYYY-MM-DD et --end=YYYY-MM-DD sont requis.');
+  if (!isValidIsoDate(start) || !isValidIsoDate(end)) throw new Error('Les dates doivent être au format YYYY-MM-DD.');
+  if (start > end) throw new Error('La date de début doit précéder la date de fin.');
+
+  const now = new Date();
   const generatedAt = parisDate(now);
-  const period = typeof args.period === 'string' ? args.period : generatedAt.slice(0, 7);
-  const events = await loadNewsletterEvents(generatedAt);
+  const events = await loadNewsletterEvents({ start, end, generatedAt });
   const requestedTemplate = typeof args.template === 'string' ? args.template : DEFAULT_NEWSLETTER_TEMPLATE;
   const templatePath = isAbsolute(requestedTemplate) ? requestedTemplate : join(PROJECT_ROOT, requestedTemplate);
   const template = readFileSync(templatePath, 'utf8');
-  const markdown = renderNewsletter({ period, generatedAt, generatedAtIso: now.toISOString(), template, ...events });
+  const markdown = renderNewsletter({
+    start,
+    end,
+    generatedAt,
+    generatedAtIso: now.toISOString(),
+    template,
+    ...events,
+  });
 
   if (args.stdout === true) {
     process.stdout.write(markdown);
@@ -263,9 +351,9 @@ const main = async (): Promise<void> => {
   }
 
   const result = saveNewsletterDraft({
-    postsDirectory: join(PROJECT_ROOT, 'newsletter-drafts'),
-    period,
-    generatedAt,
+    draftsDirectory: process.env.NEWSLETTER_DRAFTS_DIR ?? DEFAULT_NEWSLETTER_DRAFTS_DIR,
+    start,
+    end,
     markdown,
     update: args.update === true,
   });

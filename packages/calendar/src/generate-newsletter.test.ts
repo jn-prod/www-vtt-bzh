@@ -29,15 +29,19 @@ const event = {
 test('produit un brief factuel, prêt à alimenter l’édition éditoriale', () => {
   const normalized = normalizeNewsletterEvents({ agenda: [event], newEvents: [event] });
   const markdown = renderNewsletter({
-    period: '2026-09',
+    start: '2026-09-01',
+    end: '2026-09-30',
     generatedAt: '2026-09-07',
     ...normalized,
   });
 
-  assert.match(markdown, /source_id: vtt-bzh-2026-09/u);
+  assert.match(markdown, /source_id: vtt-bzh-2026-09-01_2026-09-30/u);
   assert.match(markdown, /source: calendrier-vtt-bzh/u);
   assert.match(markdown, /Matière calendrier VTT/u);
-  assert.match(markdown, /Rando des bois — nouveau/u);
+  assert.match(markdown, /## Agenda par week-end/u);
+  assert.match(markdown, /## Nouveautés récentes/u);
+  assert.match(markdown, /\*\*56\*\* : 1/u);
+  assert.match(markdown, /Rando des bois/u);
   assert.match(markdown, /utm_source=vtt-bzh/u);
   assert.doesNotMatch(markdown, /sent: false|published: false|newsletter_id:/u);
   assert.doesNotMatch(markdown, /person@example\.com|0600000000|Club privé/u);
@@ -46,31 +50,52 @@ test('produit un brief factuel, prêt à alimenter l’édition éditoriale', ()
 
 test('refuse une édition vide', () => {
   assert.throws(
-    () => renderNewsletter({ period: '2026-09', generatedAt: '2026-09-07', agenda: [], newEvents: [] }),
+    () =>
+      renderNewsletter({
+        start: '2026-09-01',
+        end: '2026-09-30',
+        generatedAt: '2026-09-07',
+        agenda: [],
+        newEvents: [],
+      }),
     /Aucune rando/u
+  );
+});
+
+test('refuse une fenêtre dont les dates sont invalides ou inversées', () => {
+  const normalized = normalizeNewsletterEvents({ agenda: [event], newEvents: [] });
+
+  assert.throws(
+    () => renderNewsletter({ start: '2026-02-30', end: '2026-03-01', generatedAt: '2026-09-07', ...normalized }),
+    /YYYY-MM-DD/u
+  );
+  assert.throws(
+    () => renderNewsletter({ start: '2026-10-02', end: '2026-10-01', generatedAt: '2026-09-07', ...normalized }),
+    /précéder/u
   );
 });
 
 test('le template porte la structure sans IA', () => {
   const normalized = normalizeNewsletterEvents({ agenda: [event], newEvents: [event] });
   const markdown = renderNewsletter({
-    period: '2026-09',
+    start: '2026-09-01',
+    end: '2026-09-30',
     generatedAt: '2026-09-07',
     template: `---
-source_id: vtt-bzh-@@PERIOD@@
+source_id: vtt-bzh-@@START@@_@@END@@
 source: calendrier-vtt-bzh
 ---
-Édition @@PERIOD@@
-## Agenda des cinq prochaines semaines
-@@AGENDA_LINES@@
-@@IF_HAS_LATER@@Plus tard
-@@LATER_LINES@@@@END_HAS_LATER@@`,
+Édition @@START@@ à @@END@@
+## Agenda par week-end
+@@AGENDA_GROUPS@@
+@@IF_HAS_NEW_EVENTS@@Nouveautés
+@@NEW_EVENT_LINES@@@@END_HAS_NEW_EVENTS@@`,
     ...normalized,
   });
 
-  assert.match(markdown, /Édition 2026-09/u);
-  assert.match(markdown, /Rando des bois — nouveau/u);
-  assert.doesNotMatch(markdown, /Plus tard/u);
+  assert.match(markdown, /Édition 2026-09-01 à 2026-09-30/u);
+  assert.match(markdown, /Rando des bois/u);
+  assert.match(markdown, /Nouveautés/u);
 });
 
 test('refuse un template avec une variable inconnue', () => {
@@ -81,17 +106,17 @@ test('met à jour le même brouillon sans créer un second fichier', () => {
   const root = mkdtempSync(join(tmpdir(), 'newsletter-draft-'));
   try {
     const first = saveNewsletterDraft({
-      postsDirectory: root,
-      period: '2026-09',
-      generatedAt: '2026-09-01',
-      markdown: 'source_id: vtt-bzh-2026-09\ngenerated_at: 1\n',
+      draftsDirectory: root,
+      start: '2026-09-01',
+      end: '2026-09-30',
+      markdown: 'source_id: vtt-bzh-2026-09-01_2026-09-30\ngenerated_at: 1\n',
       update: false,
     });
     const second = saveNewsletterDraft({
-      postsDirectory: root,
-      period: '2026-09',
-      generatedAt: '2026-09-02',
-      markdown: 'source_id: vtt-bzh-2026-09\ngenerated_at: 2\n',
+      draftsDirectory: root,
+      start: '2026-09-01',
+      end: '2026-09-30',
+      markdown: 'source_id: vtt-bzh-2026-09-01_2026-09-30\ngenerated_at: 2\n',
       update: true,
     });
 
@@ -107,15 +132,15 @@ test('met à jour le même brouillon sans créer un second fichier', () => {
 test('refuse un brief existant sans demande de mise à jour', () => {
   const root = mkdtempSync(join(tmpdir(), 'newsletter-existing-'));
   try {
-    const path = join(root, '2026-09-01-rando-bretagne-source.md');
-    writeFileSync(path, 'source_id: vtt-bzh-2026-09\ngenerated_at: 1\n', 'utf8');
+    const path = join(root, '2026-09-01_2026-09-30-la-sortie.md');
+    writeFileSync(path, 'source_id: vtt-bzh-2026-09-01_2026-09-30\ngenerated_at: 1\n', 'utf8');
     assert.throws(
       () =>
         saveNewsletterDraft({
-          postsDirectory: root,
-          period: '2026-09',
-          generatedAt: '2026-09-02',
-          markdown: 'source_id: vtt-bzh-2026-09\ngenerated_at: 2\n',
+          draftsDirectory: root,
+          start: '2026-09-01',
+          end: '2026-09-30',
+          markdown: 'source_id: vtt-bzh-2026-09-01_2026-09-30\ngenerated_at: 2\n',
           update: false,
         }),
       /Utiliser --update/u
