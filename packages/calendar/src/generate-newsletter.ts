@@ -271,7 +271,7 @@ const main = async (): Promise<void> => {
   });
   console.log(`[newsletter] brief ${result.status === 'created' ? 'créé' : 'mis à jour'} : ${result.path}`);
   console.log(
-    '[newsletter] sélectionner et contextualiser cette matière dans le Markdown Rando Bretagne de nicolasjouanno.com, puis relire avant tout envoi manuel dans Kit.'
+    '[newsletter] sélectionner et contextualiser cette matière dans le Markdown La Sortie de nicolasjouanno.com, puis relire avant tout envoi manuel dans Kit.'
   );
 };
 

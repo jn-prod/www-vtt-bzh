@@ -133,14 +133,17 @@ test('un seul rappel sticky suit la cinquième rando', async ({ page }) => {
   await page.goto('/');
   const prompt = page.locator('#events-list > li:nth-child(6).newsletter-prompt--sticky');
   await expect(page.locator('.newsletter-prompt')).toHaveCount(1);
-  await expect(prompt).toContainText('Les randos à retenir, chaque mois.');
+  await expect(prompt).toContainText('La Sortie Rando Bretagne, chaque mois.');
   await expect(prompt.getByRole('link', { name: 'Recevoir l’agenda' })).toHaveAttribute('href', '#newsletter');
 });
 
 test('le rendu JavaScript neutralise les données événement hostiles', async ({ page }) => {
+  const date = new Date();
+  date.setDate(date.getDate() + 30);
+  const eventDate = date.toISOString().slice(0, 10);
   const safeEvent = (index) => ({
     id: `event-safe-${index}`,
-    date: '2026-09-20',
+    date: eventDate,
     dateFormatted: '20 sept. 2026',
     name: `Rando ${index}`,
     city: 'Pontivy',
@@ -249,7 +252,7 @@ test('une inscription newsletter demandée par un organisateur est envoyée à K
   await fillRequiredEventForm(page);
   await page.locator('#event-form-newsletter').check();
   await page.getByRole('button', { name: 'Publier ma rando' }).click();
-  await expect(page.locator('#event-form-feedback')).toContainText('demande d’inscription à Rando Bretagne');
+  await expect(page.locator('#event-form-feedback')).toContainText('demande d’inscription');
   expect(kitRequest?.method()).toBe('POST');
   expect(kitRequest?.postData()).toContain('email_address=club%40example.org');
 });

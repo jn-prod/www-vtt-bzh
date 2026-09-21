@@ -7,7 +7,7 @@ source: calendrier-vtt-bzh
 
 # Matière calendrier VTT — @@TITLE@@
 
-Brief factuel préparé depuis Supabase. Il alimente la section « L’agenda VTT » et la sélection de la prochaine édition Rando Bretagne sur nicolasjouanno.com. Il n’est ni une newsletter prête à envoyer, ni un contenu à publier tel quel.
+Brief factuel préparé depuis Supabase. Il alimente la section « L’agenda VTT » et la sélection de la prochaine édition de La Sortie sur nicolasjouanno.com. Il n’est ni une newsletter prête à envoyer, ni un contenu à publier tel quel.
 
 ## Agenda des cinq prochaines semaines
 

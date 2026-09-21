@@ -32,9 +32,9 @@ Le template par défaut est `packages/calendar/templates/newsletter.md`. Le scri
 et ses sections `@@IF_SECTION@@` / `@@END_SECTION@@`. Il produit un brief factuel non publiable qui respecte le contrat
 `source_id` / `source` et ne contient aucune donnée personnelle des organisateurs.
 
-La commande accepte `--update` pour régénérer le même brief local sans créer un second fichier. L'action GitHub **Generate Rando Bretagne source brief** ne demande aucune période : elle prépare toujours M+1, calculé en heure de Paris, et publie uniquement un artefact disponible sept jours. Elle ne crée ni branche, ni PR, ni contenu public.
+La commande accepte `--update` pour régénérer le même brief local sans créer un second fichier. L'action GitHub **Generate La Sortie source brief** ne demande aucune période : elle prépare toujours M+1, calculé en heure de Paris, et publie uniquement un artefact disponible sept jours. Elle ne crée ni branche, ni PR, ni contenu public.
 
-À partir de ce brief, composer l'édition Rando Bretagne dans `www-nicolasjouanno-com`, où l'archive est publiée. Après relecture, l'envoi reste manuel dans Kit : cibler les consentements des formulaires **VTT.bzh visiteurs** (`9677378`) et **Rando Bretagne sur nicolasjouanno.com** (`9378910`), sans utiliser seul le tag historique `agenda-mensuel`.
+À partir de ce brief, composer l'édition de La Sortie dans `www-nicolasjouanno-com`, où l'archive est publiée. Après relecture, l'envoi reste manuel dans Kit : cibler les consentements des formulaires **VTT.bzh visiteurs** (`9677378`) et **La Sortie sur nicolasjouanno.com** (`9378910`), sans utiliser seul le tag historique `agenda-mensuel`.
 
 ## Tests
 

@@ -64,25 +64,25 @@ pnpm install
 
 ## Scripts racine
 
-| Commande              | Description                                                                |
-| --------------------- | -------------------------------------------------------------------------- |
-| `pnpm dev`            | Lance le dev de tous les packages (Jekyll serve)                           |
-| `pnpm build`          | Build packages → copie l’artefact privé des événements → build Jekyll      |
-| `pnpm build:preview`  | Build complet + serveur HTTP local sur `www/_site/`                        |
-| `pnpm build:www`      | Build Jekyll uniquement                                                    |
-| `pnpm build:packages` | Compile tous les packages TypeScript                                       |
-| `pnpm newsletter:new` | Génère une matière calendrier Markdown pour Rando Bretagne depuis Supabase |
-| `pnpm test`           | Tests de tous les packages                                                 |
-| `pnpm test:e2e`       | Parcours Playwright et contrôles Axe                                       |
-| `pnpm validate:html`  | Validation du HTML généré                                                  |
-| `pnpm validate:site`  | Liens, assets et invariants métier du site généré                          |
-| `pnpm minify:site`    | Minification conservative du HTML généré                                   |
-| `pnpm check`          | Chaîne locale complète, hors installation                                  |
-| `pnpm lint`           | ESLint + Stylelint + Prettier (vérification)                               |
-| `pnpm lint:fix`       | ESLint + Stylelint + Prettier (auto-fix)                                   |
-| `pnpm lint:eslint`    | ESLint uniquement                                                          |
-| `pnpm lint:stylelint` | Stylelint uniquement                                                       |
-| `pnpm lint:prettier`  | Prettier uniquement                                                        |
+| Commande              | Description                                                           |
+| --------------------- | --------------------------------------------------------------------- |
+| `pnpm dev`            | Lance le dev de tous les packages (Jekyll serve)                      |
+| `pnpm build`          | Build packages → copie l’artefact privé des événements → build Jekyll |
+| `pnpm build:preview`  | Build complet + serveur HTTP local sur `www/_site/`                   |
+| `pnpm build:www`      | Build Jekyll uniquement                                               |
+| `pnpm build:packages` | Compile tous les packages TypeScript                                  |
+| `pnpm newsletter:new` | Génère une matière calendrier Markdown pour La Sortie depuis Supabase |
+| `pnpm test`           | Tests de tous les packages                                            |
+| `pnpm test:e2e`       | Parcours Playwright et contrôles Axe                                  |
+| `pnpm validate:html`  | Validation du HTML généré                                             |
+| `pnpm validate:site`  | Liens, assets et invariants métier du site généré                     |
+| `pnpm minify:site`    | Minification conservative du HTML généré                              |
+| `pnpm check`          | Chaîne locale complète, hors installation                             |
+| `pnpm lint`           | ESLint + Stylelint + Prettier (vérification)                          |
+| `pnpm lint:fix`       | ESLint + Stylelint + Prettier (auto-fix)                              |
+| `pnpm lint:eslint`    | ESLint uniquement                                                     |
+| `pnpm lint:stylelint` | Stylelint uniquement                                                  |
+| `pnpm lint:prettier`  | Prettier uniquement                                                   |
 
 ---
 
@@ -105,9 +105,9 @@ Les organisateurs soumettent une randonnée via `/calendrier/ajouter.html`. L'Ed
 
 L'action manuelle calcule toujours le mois suivant en heure de Paris et génère un brief factuel depuis Supabase. Il contient les cinq prochaines semaines de calendrier VTT, sans créer de branche, de PR, de commit ni de contenu public. Une relance produit simplement un nouvel artefact temporaire : l'action reste utile même si le mois a déjà été préparé.
 
-Télécharger l'artefact puis sélectionner et contextualiser cette matière dans l'édition mensuelle **Rando Bretagne**, publiée de façon canonique sur [nicolasjouanno.com/newsletter/](https://www.nicolasjouanno.com/newsletter/). L'archive, l'édito et l'appel aux retours vivent sur ce site ; vtt.bzh conserve le calendrier, les données et l'entrée d'acquisition.
+Télécharger l'artefact puis sélectionner et contextualiser cette matière dans l'édition mensuelle de **La Sortie**, publiée de façon canonique sur [nicolasjouanno.com/newsletter/](https://www.nicolasjouanno.com/newsletter/). L'archive, l'édito et l'appel aux retours vivent sur ce site ; vtt.bzh conserve le calendrier, les données et l'entrée d'acquisition.
 
-Après relecture, l'envoi reste manuel dans Kit. La cible doit réunir les consentements issus des formulaires **VTT.bzh visiteurs** (`9677378`) et **Rando Bretagne sur nicolasjouanno.com** (`9378910`) ; le tag historique `agenda-mensuel` ne doit pas servir seul de cible. Ne modifier ni abonnements ni consentements depuis ce dépôt.
+Après relecture, l'envoi reste manuel dans Kit. La cible doit réunir les consentements issus des formulaires **VTT.bzh visiteurs** (`9677378`) et **La Sortie sur nicolasjouanno.com** (`9378910`) ; le tag historique `agenda-mensuel` ne doit pas servir seul de cible. Ne modifier ni abonnements ni consentements depuis ce dépôt.
 
 ### Secrets GitHub Actions requis
 

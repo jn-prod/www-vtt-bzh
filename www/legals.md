@@ -7,7 +7,7 @@ description: "Mentions légales, politique de confidentialité et gestion des co
 
 # Mentions légales et politique de confidentialité
 
-_Dernière mise à jour : 2026-08-19_
+_Dernière mise à jour : 2026-09-18_
 
 ## 1. Éditeur du site {#section-editeur}
 
@@ -41,7 +41,7 @@ Les transferts hors Union européenne reposent sur les mécanismes prévus par l
 | Nom de l'organisateur, contact (email/téléphone), description de la rando, date, lieu, prix et site fourni | Formulaire `/calendrier/ajouter.html` rempli par l'organisateur | Publication publique du calendrier des randos                                                          | Consentement explicite (case à cocher au moment de l'envoi)                                     | Jusqu'à un an après la date de la rando, puis suppression automatique       |
 | Jeton technique pseudonymisé à sens unique, dérivé temporairement de l'adresse réseau                      | Fonction de soumission Supabase                                 | Limiter les envois automatisés et protéger le formulaire                                               | Intérêt légitime (sécurité du service)                                                          | Environ 24 heures ; purge automatique exécutée chaque minute                |
 | Statistiques d'audience agrégées (pages vues, navigateur, pays, performances)                              | Cloudflare Web Analytics                                        | Comprendre l'usage et les performances du service                                                      | Intérêt légitime ; aucun cookie, stockage local ou suivi individuel par le module Web Analytics | Données brutes du beacon conservées 7 jours, puis agrégées par Cloudflare   |
-| Adresse email                                                                                              | Formulaire d'abonnement Rando Bretagne (Kit)                    | Envoyer au maximum une édition mensuelle : sélection de randonnées, agenda VTT et nouvelles du terrain | Consentement explicite et double confirmation, désabonnement dans chaque email                  | Jusqu'au désabonnement, puis suppression selon les délais techniques de Kit |
+| Adresse email                                                                                              | Formulaire d'abonnement La Sortie Rando Bretagne (Kit)          | Envoyer au maximum une édition mensuelle : sélection de randonnées, agenda VTT et nouvelles du terrain | Consentement explicite et double confirmation, désabonnement dans chaque email                  | Jusqu'au désabonnement, puis suppression selon les délais techniques de Kit |
 | Logs techniques                                                                                            | GitHub Pages, Cloudflare, Supabase                              | Sécurité, intégrité et diagnostic                                                                      | Intérêt légitime                                                                                | Durées fixées par chaque prestataire                                        |
 
 ### 4.2 Destinataires {#section-destinataires}
