@@ -7,9 +7,9 @@ const NEWSLETTER_ENDPOINT = "https://app.kit.com/forms/9677378/subscriptions";
 const SUCCESS_MESSAGE =
   "Merci, votre rando est enregistrée. Après validation automatique, elle sera publiée au prochain rafraîchissement quotidien.";
 const SUCCESS_WITH_NEWSLETTER_MESSAGE =
-  "Merci, votre rando est enregistrée. Après validation automatique, elle sera publiée au prochain rafraîchissement quotidien. Votre demande d’inscription à Rando Bretagne a aussi été envoyée : confirmez l’e-mail reçu pour l’activer.";
+  "Merci, votre rando est enregistrée. Après validation automatique, elle sera publiée au prochain rafraîchissement quotidien. Votre demande d’inscription à La Sortie Rando Bretagne a aussi été envoyée : confirmez l’e-mail reçu pour l’activer.";
 const SUCCESS_WITHOUT_NEWSLETTER_MESSAGE =
-  "Merci, votre rando est enregistrée. Après validation automatique, elle sera publiée au prochain rafraîchissement quotidien. Votre inscription à Rando Bretagne n’a pas pu être demandée ; vous pouvez réessayer depuis la page newsletter.";
+  "Merci, votre rando est enregistrée. Après validation automatique, elle sera publiée au prochain rafraîchissement quotidien. Votre inscription à La Sortie Rando Bretagne n’a pas pu être demandée ; vous pouvez réessayer depuis la page newsletter.";
 const ERROR_MESSAGE =
   "Désolé, l’envoi a échoué. Vos informations sont conservées : réessayez ou contactez nicolas@vtt.bzh.";
 
