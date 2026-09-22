@@ -1,16 +1,16 @@
-import 'dotenv/config';
-
 import { existsSync, mkdirSync, readdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { isAbsolute, join } from 'node:path';
 
+import { config as loadEnv } from 'dotenv';
 import { createClient } from 'repository';
 import { duplicateKey, normalizeEvents, type PublicCalendarEvent, type RawCalendarEvent } from './normalize-events';
 
 const MAX_EVENTS = 200;
 const NEW_EVENT_DAYS = 35;
 const PROJECT_ROOT = join(__dirname, '..', '..', '..');
+loadEnv({ path: join(PROJECT_ROOT, '.env') });
 export const DEFAULT_NEWSLETTER_TEMPLATE = join(__dirname, '..', 'templates', 'newsletter.md');
-export const DEFAULT_NEWSLETTER_DRAFTS_DIR = join(PROJECT_ROOT, '_drafts');
+export const DEFAULT_NEWSLETTER_DRAFTS_DIR = join(PROJECT_ROOT, 'www', '_drafts');
 
 type NewsletterSourceEvent = RawCalendarEvent & {
   active?: boolean;

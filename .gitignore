@@ -48,9 +48,6 @@ _site
 .jekyll-metadata
 .DS_Store
 
-# Brouillons locaux de la newsletter
-_drafts/
-
 # Backups locaux Supabase
 *.backup.json
 backups/
