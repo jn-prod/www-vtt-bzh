@@ -181,10 +181,15 @@ test('la pagination reste utilisable sans JavaScript', async ({ browser }) => {
   const context = await browser.newContext({ javaScriptEnabled: false });
   const page = await context.newPage();
   await page.goto('/');
+  await expect(page.locator('#results-count')).toHaveText('41');
   await expect(page.locator('#events-list .event')).toHaveCount(20);
   await page.getByRole('link', { name: 'Page suivante' }).click();
   await expect(page).toHaveURL(/\/calendrier\/page\/2\/$/u);
   await expect(page.locator('.events-list .event')).toHaveCount(20);
+  await page.getByRole('link', { name: 'Page suivante' }).click();
+  await expect(page).toHaveURL(/\/calendrier\/page\/3\/$/u);
+  await expect(page.locator('.events-list .event')).toHaveCount(1);
+  await expect(page.getByRole('link', { name: 'Page suivante' })).toHaveCount(0);
   await context.close();
 });
 

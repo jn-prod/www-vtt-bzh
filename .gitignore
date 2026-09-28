@@ -45,6 +45,7 @@ yarn-error.log*
 
 # jekyll
 _site
+www/_site-e2e
 .sass-cache
 .jekyll-metadata
 .DS_Store

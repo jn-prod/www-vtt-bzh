@@ -3,6 +3,7 @@
 .DS_Store
 .sass-cache
 _site
+_site-e2e
 .sass-cache
 .jekyll-metadata
 

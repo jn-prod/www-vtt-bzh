@@ -69,6 +69,7 @@ pnpm install
 | `pnpm dev`            | Lance le dev de tous les packages (Jekyll serve)                      |
 | `pnpm build`          | Build packages → copie l’artefact privé des événements → build Jekyll |
 | `pnpm build:preview`  | Build complet + serveur HTTP local sur `www/_site/`                   |
+| `pnpm build:e2e`      | Build Jekyll isolé avec 41 événements fictifs pour les E2E            |
 | `pnpm build:www`      | Build Jekyll uniquement                                               |
 | `pnpm build:packages` | Compile tous les packages TypeScript                                  |
 | `pnpm newsletter:new` | Génère un brouillon Markdown pour La Sortie depuis Supabase           |
@@ -89,6 +90,10 @@ pnpm install
 ## CI/CD
 
 Le workflow de publication conserve la production précédente dès qu'un contrôle échoue.
+
+Les parcours E2E ne lisent pas Supabase : `pnpm test:e2e` construit `www/_site-e2e/` avec 41
+événements fictifs, puis restaure l’artefact réel. Le build, les validations et le déploiement
+continuent donc de vérifier le calendrier réellement publié.
 
 ### `github-pages.yml` — Déploiement (push `main` ou manuel)
 
