@@ -6,6 +6,7 @@ la Bretagne." %} {% assign issue_url = issue.url | default:
 %}
 
 <article class="latest-issue" aria-labelledby="latest-issue-title">
+  <p class="latest-issue__label">Dernière édition</p>
   {% if issue.image_url %}
   <img
     class="latest-issue__image"
@@ -15,7 +16,6 @@ la Bretagne." %} {% assign issue_url = issue.url | default:
   />
   {% endif %}
   <div class="latest-issue__body">
-    <p class="latest-issue__label">Dernière édition</p>
     <h3 class="latest-issue__title" id="latest-issue-title">
       {{ issue_title | escape }}
     </h3>
@@ -23,6 +23,11 @@ la Bretagne." %} {% assign issue_url = issue.url | default:
     <p class="latest-issue__action">
       <a class="btn btn--outline" href="{{ issue_url | escape }}"
         >Lire l’édition</a
+      >
+      <a
+        class="latest-issue__archive"
+        href="https://www.nicolasjouanno.com/la-sortie/?utm_source=vtt-bzh&amp;utm_medium=site&amp;utm_campaign=rando-bretagne&amp;utm_content=latest-issue-archives"
+        >Lire les archives</a
       >
     </p>
   </div>
