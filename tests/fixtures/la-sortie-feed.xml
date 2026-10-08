@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:media="http://search.yahoo.com/mrss/">
+  <channel>
+    <item>
+      <title>La Sortie #2 — chemins &amp; forêt</title>
+      <description><![CDATA[
+        <a href="https://www.nicolasjouanno.com/la-sortie/2026-11/"><img src="cover.webp" alt=""/></a>
+        <p>Trois idées pour sortir en Bretagne.</p>
+        <p><em>Initialement publié sur nicolasjouanno.com.</em></p>
+      ]]></description>
+      <link>https://www.nicolasjouanno.com/la-sortie/2026-11/</link>
+      <pubDate>Sat, 31 Oct 2026 08:00:00 +0000</pubDate>
+      <media:content url="https://www.nicolasjouanno.com/images/posts/foret.webp" type="image/webp" medium="image">
+        <media:description type="plain">Un chemin dans la forêt</media:description>
+      </media:content>
+    </item>
+  </channel>
+</rss>

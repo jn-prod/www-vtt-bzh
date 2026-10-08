@@ -64,26 +64,27 @@ pnpm install
 
 ## Scripts racine
 
-| Commande              | Description                                                           |
-| --------------------- | --------------------------------------------------------------------- |
-| `pnpm dev`            | Lance le dev de tous les packages (Jekyll serve)                      |
-| `pnpm build`          | Build packages → copie l’artefact privé des événements → build Jekyll |
-| `pnpm build:preview`  | Build complet + serveur HTTP local sur `www/_site/`                   |
-| `pnpm build:e2e`      | Build Jekyll isolé avec 41 événements fictifs pour les E2E            |
-| `pnpm build:www`      | Build Jekyll uniquement                                               |
-| `pnpm build:packages` | Compile tous les packages TypeScript                                  |
-| `pnpm newsletter:new` | Génère un brouillon Markdown pour La Sortie depuis Supabase           |
-| `pnpm test`           | Tests de tous les packages                                            |
-| `pnpm test:e2e`       | Parcours Playwright et contrôles Axe                                  |
-| `pnpm validate:html`  | Validation du HTML généré                                             |
-| `pnpm validate:site`  | Liens, assets et invariants métier du site généré                     |
-| `pnpm minify:site`    | Minification conservative du HTML généré                              |
-| `pnpm check`          | Chaîne locale complète, hors installation                             |
-| `pnpm lint`           | ESLint + Stylelint + Prettier (vérification)                          |
-| `pnpm lint:fix`       | ESLint + Stylelint + Prettier (auto-fix)                              |
-| `pnpm lint:eslint`    | ESLint uniquement                                                     |
-| `pnpm lint:stylelint` | Stylelint uniquement                                                  |
-| `pnpm lint:prettier`  | Prettier uniquement                                                   |
+| Commande               | Description                                                          |
+| ---------------------- | -------------------------------------------------------------------- |
+| `pnpm dev`             | Lance le dev de tous les packages (Jekyll serve)                     |
+| `pnpm build`           | Build packages → événements + dernière édition de La Sortie → Jekyll |
+| `pnpm build:preview`   | Build complet + serveur HTTP local sur `www/_site/`                  |
+| `pnpm build:e2e`       | Build Jekyll isolé avec 41 événements fictifs pour les E2E           |
+| `pnpm build:www`       | Build Jekyll uniquement                                              |
+| `pnpm build:packages`  | Compile tous les packages TypeScript                                 |
+| `pnpm build:la-sortie` | Extrait la dernière édition du flux RSS pour Jekyll                  |
+| `pnpm newsletter:new`  | Génère un brouillon Markdown pour La Sortie depuis Supabase          |
+| `pnpm test`            | Tests de tous les packages                                           |
+| `pnpm test:e2e`        | Parcours Playwright et contrôles Axe                                 |
+| `pnpm validate:html`   | Validation du HTML généré                                            |
+| `pnpm validate:site`   | Liens, assets et invariants métier du site généré                    |
+| `pnpm minify:site`     | Minification conservative du HTML généré                             |
+| `pnpm check`           | Chaîne locale complète, hors installation                            |
+| `pnpm lint`            | ESLint + Stylelint + Prettier (vérification)                         |
+| `pnpm lint:fix`        | ESLint + Stylelint + Prettier (auto-fix)                             |
+| `pnpm lint:eslint`     | ESLint uniquement                                                    |
+| `pnpm lint:stylelint`  | Stylelint uniquement                                                 |
+| `pnpm lint:prettier`   | Prettier uniquement                                                  |
 
 ---
 
@@ -111,6 +112,14 @@ Les organisateurs soumettent une randonnée via `/calendrier/ajouter.html`. L'Ed
 Lancer `pnpm --silent newsletter:new -- --start=YYYY-MM-DD --end=YYYY-MM-DD` depuis un environnement qui possède les variables Supabase. La commande écrit la matière dans le dossier Jekyll `www/_drafts/` de vtt.bzh, ou dans `NEWSLETTER_DRAFTS_DIR` si cette variable est définie. Elle est regroupée par week-end et résume les volumes, départements et ajouts récents : sélectionner et contextualiser ensuite cette matière dans l'édition mensuelle de **La Sortie**, publiée de façon canonique sur [nicolasjouanno.com/la-sortie/](https://www.nicolasjouanno.com/la-sortie/). L'archive, l'édito et l'appel aux retours vivent sur ce site ; vtt.bzh conserve le calendrier, les données et l'entrée d'acquisition.
 
 Après relecture, l'envoi reste manuel dans Kit. La cible doit réunir les consentements issus des formulaires **VTT.bzh visiteurs** (`9677378`) et **La Sortie sur nicolasjouanno.com** (`9378910`) ; le tag historique `agenda-mensuel` ne doit pas servir seul de cible. Ne modifier ni abonnements ni consentements depuis ce dépôt.
+
+### Carte de la dernière édition
+
+Le build lit le premier élément du flux public `https://www.nicolasjouanno.com/la-sortie/feed.xml`
+et génère l’artefact ignoré `www/_data/newsletters/latest.json`. Jekyll l’intègre ensuite
+statiquement dans le bloc d’inscription de la home : aucun contenu n’est chargé dans le navigateur.
+Si le flux est indisponible ou invalide, le script produit une carte générique vers l’archive et ne
+bloque pas la publication du calendrier. Les tests utilisent une fixture locale, jamais le réseau.
 
 ### Secrets GitHub Actions requis
 

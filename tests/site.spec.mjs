@@ -106,6 +106,21 @@ test('le header reste simple et le rappel sticky conduit à l’agenda', async (
   await expect(page).toHaveURL(/#newsletter$/u);
 });
 
+test('la dernière édition est rendue statiquement sans JavaScript', async ({ browser }) => {
+  const context = await browser.newContext({ javaScriptEnabled: false });
+  const page = await context.newPage();
+  await page.goto('/');
+
+  const issue = page.locator('.latest-issue');
+  await expect(issue).toBeVisible();
+  await expect(issue.getByText('Dernière édition')).toBeVisible();
+  await expect(issue.getByRole('link', { name: 'Lire l’édition' })).toHaveAttribute(
+    'href',
+    /utm_content=latest-issue/u
+  );
+  await context.close();
+});
+
 test('une recherche sans résultat conserve une issue vers l’agenda', async ({ page }) => {
   const events = [
     {

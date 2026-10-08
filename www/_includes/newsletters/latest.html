@@ -1,0 +1,29 @@
+{% assign issue = site.data.newsletters.latest %} {% assign issue_title =
+issue.title | default: "La Sortie" %} {% assign issue_description =
+issue.description | default: "Des chemins, des voix et des idées pour découvrir
+la Bretagne." %} {% assign issue_url = issue.url | default:
+"https://www.nicolasjouanno.com/la-sortie/?utm_source=vtt-bzh&utm_medium=site&utm_campaign=rando-bretagne&utm_content=latest-issue"
+%}
+
+<article class="latest-issue" aria-labelledby="latest-issue-title">
+  {% if issue.image_url %}
+  <img
+    class="latest-issue__image"
+    src="{{ issue.image_url | escape }}"
+    alt="{{ issue.image_alt | default: issue_title | escape }}"
+    loading="lazy"
+  />
+  {% endif %}
+  <div class="latest-issue__body">
+    <p class="latest-issue__label">Dernière édition</p>
+    <h3 class="latest-issue__title" id="latest-issue-title">
+      {{ issue_title | escape }}
+    </h3>
+    <p class="latest-issue__text">{{ issue_description | escape }}</p>
+    <p class="latest-issue__action">
+      <a class="btn btn--outline" href="{{ issue_url | escape }}"
+        >Lire l’édition</a
+      >
+    </p>
+  </div>
+</article>

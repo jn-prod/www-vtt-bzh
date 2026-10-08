@@ -60,3 +60,6 @@ supabase/.branches/
 
 # Artefact de build calendrier (régénéré en CI via copy:packages:calendar ; ne pas versionner)
 www/_data/events.json
+
+# Dernière édition de La Sortie (extraite du RSS au build)
+www/_data/newsletters/latest.json
