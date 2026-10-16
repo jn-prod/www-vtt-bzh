@@ -49,8 +49,12 @@ Avant tout commit, lint-staged applique automatiquement les fixs via Husky.
 
 ## Gouvernance studio
 
-Ce repo appartient au studio de Nicolas Jouanno. La gouvernance transverse — voix, conventions,
-règles d'activité (§22), tâches — vit dans un espace de connaissance externe, **hors de ce dépôt**.
-Point d'entrée : lis la valeur de `STUDIO_ENTRYPOINT_URL` dans le fichier `.env` (non versionné)
-et récupère le document qu'elle référence. Sans cet accès, signale-le au fondateur plutôt que
-d'improviser une doctrine locale.
+Ce repo appartient au studio de Nicolas Jouanno. La gouvernance transverse — doctrine, décisions,
+projets, tâches, mémoire et analytics — vit dans le dépôt privé `corp-ai`, hors de ce dépôt public.
+
+Dans l'espace de travail local standard, le point d'entrée unique est
+`../corp-ai/studio/README.md`. Lire ensuite uniquement les notes auxquelles cette page renvoie pour
+la tâche en cours ; en cas de conflit, `../corp-ai/studio/DOCTRINE-LOCALE.md` prévaut.
+
+Notion n'est pas une dépendance opérationnelle. Si le dépôt `corp-ai` n'est pas accessible,
+signaler l'absence de contexte au fondateur plutôt que d'improviser une doctrine locale.

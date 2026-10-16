@@ -14,14 +14,10 @@ permalink: /manifest.webmanifest
   "lang": "fr-FR",
   "icons": [
     {
-      "src": "{{ site.url }}/assets/images/logo-small.png",
-      "type": "image/png",
-      "purpose": "any maskable"
-    },
-    {
-      "src": "{{ site.url }}/assets/images/logo.png",
-      "type": "image/png",
-      "purpose": "any maskable"
+      "src": "{{ site.url }}/assets/images/logo-mark.svg",
+      "type": "image/svg+xml",
+      "sizes": "any",
+      "purpose": "any"
     }
   ]
 }
