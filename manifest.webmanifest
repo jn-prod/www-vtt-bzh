@@ -10,14 +10,10 @@
   "lang": "fr-FR",
   "icons": [
     {
-      "src": "https://www.vtt.bzh/assets/images/logo-small.png",
-      "type": "image/png",
-      "purpose": "any maskable"
-    },
-    {
-      "src": "https://www.vtt.bzh/assets/images/logo.png",
-      "type": "image/png",
-      "purpose": "any maskable"
+      "src": "https://www.vtt.bzh/assets/images/logo-mark.svg",
+      "type": "image/svg+xml",
+      "sizes": "any",
+      "purpose": "any"
     }
   ]
 }
