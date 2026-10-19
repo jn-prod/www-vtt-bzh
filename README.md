@@ -137,7 +137,7 @@ utilitaires des barres sticky. Seule `.btn--primary` est remplie en vert ; `.btn
 
 - **ES modules natifs** (`<script type="module">`), pas de bundler.
 - Fichiers dans `assets/js/`, servis statiquement par Jekyll.
-- `calendar.js` : charge le JSON local, filtre les événements et en affiche 20 par lot ; les pages statiques `/calendrier/page/N/` restent utilisables sans JavaScript.
+- `calendar.js` : transforme progressivement la liste statique en planning hebdomadaire, avec douze semaines glissantes, filtre par département et groupe « Plus tard » pour les semaines déjà alimentées au-delà de cet horizon. La semaine et le département restent partageables dans l’URL. Les pages statiques `/calendrier/page/N/` restent utilisables sans JavaScript.
 - `event-form.js` : soumet le formulaire public à l'Edge Function `submit-event`. Le navigateur ne peut fixer aucun champ système et conserve les données saisies en cas d'échec.
 
 ---
