@@ -29,24 +29,6 @@ web_site_schema: true
     </summary>
     <form id="search-form" class="search-filter__form">
       <div class="search-filter__field">
-        <label class="search-filter__label" for="start-date">Début</label>
-        <input
-          id="start-date"
-          type="date"
-          name="start-date"
-          class="search-filter__input"
-        />
-      </div>
-      <div class="search-filter__field">
-        <label class="search-filter__label" for="end-date">Fin</label>
-        <input
-          id="end-date"
-          type="date"
-          name="end-date"
-          class="search-filter__input"
-        />
-      </div>
-      <div class="search-filter__field">
         <label class="search-filter__label" for="departement">
           Département
         </label>
@@ -76,43 +58,64 @@ web_site_schema: true
 </div>
 
 <section id="events" aria-label="Calendrier des randos">
+  <nav
+    id="calendar-week-navigation"
+    class="calendar-week-navigation"
+    aria-label="Semaines du calendrier"
+    hidden
+  >
+    <button
+      id="previous-week"
+      type="button"
+      class="btn btn--light btn--small calendar-week-navigation__button"
+      aria-label="Semaine précédente"
+    >
+      ←
+    </button>
+    <label class="u-sr-only" for="week-select">Semaine affichée</label>
+    <select
+      id="week-select"
+      class="calendar-week-navigation__select"
+      name="week"
+    ></select>
+    <button
+      id="next-week"
+      type="button"
+      class="btn btn--light btn--small calendar-week-navigation__button"
+      aria-label="Semaine suivante"
+    >
+      →
+    </button>
+  </nav>
+
   {% if site.data.events.size > 0 %}
-  <p id="msg-results" class="message" aria-live="polite">
+  <p id="msg-results" class="u-sr-only" aria-live="polite">
     <span id="results-count">{{ site.data.events.size }}</span>
     <span id="results-label">randonnées à découvrir.</span>
-    <span class="message__aside">
-      Organisateur ? <a href="/calendrier/ajouter.html">Ajoutez votre rando</a>.
-    </span>
   </p>
   {% else %}
   <p id="msg-no-results" class="message message--no-results" aria-live="polite">
-    Aucun résultat pour cette recherche. Choisissez une autre date ou un autre
-    département, ou <a href="#newsletter">recevez l’agenda</a>.
+    Aucune randonnée annoncée. <a href="#newsletter">Recevez La Sortie</a> ou
+    <a href="/calendrier/ajouter.html">ajoutez votre rando</a>.
   </p>
   {% endif %}
 
-  <p
-    id="msg-no-results-dynamic"
-    class="message message--no-results"
-    aria-live="polite"
-    hidden
-  >
-    Aucun résultat pour cette recherche. Choisissez une autre date ou un autre
-    département, ou <a href="#newsletter">recevez l’agenda</a>.
-  </p>
-
-  <ul id="events-list" class="events-list">
-    {% for event in site.data.events limit: 20 %}
-    <li>{% include calendar/event.html event=event %}</li>
-    {% if forloop.index == 5 %} {% include newsletter-prompt.html sticky=true %}
-    {% endif %} {% endfor %}
-  </ul>
-
-  <div class="calendar__load-more">
-    <button id="load-more" type="button" class="btn btn--primary" hidden>
-      Voir +
-    </button>
+  <div id="calendar-content" aria-live="polite">
+    <ul id="events-list" class="events-list">
+      {% for event in site.data.events limit: 20 %}
+      <li>{% include calendar/event.html event=event %}</li>
+      {% if forloop.index == 5 %} {% include newsletter-prompt.html sticky=true
+      %} {% endif %} {% endfor %}
+    </ul>
+    {% include calendar/organizer-callout.html %}
   </div>
+
+  <template id="newsletter-prompt-template">
+    {% include newsletter-prompt.html sticky=true %}
+  </template>
+  <template id="organizer-callout-template">
+    {% include calendar/organizer-callout.html %}
+  </template>
   {% if site.data.events.size > 20 %}
   <nav
     id="calendar-pagination"
@@ -122,30 +125,6 @@ web_site_schema: true
     <a class="btn btn--primary" href="/calendrier/page/2/"> Page suivante </a>
   </nav>
   {% endif %}
-</section>
-
-<section
-  class="organizer-callout"
-  aria-label="Information pour les organisateurs"
->
-  <details class="organizer-callout__details">
-    <summary class="organizer-callout__summary">
-      Organisateur ? Publiez votre rando sur le calendrier
-    </summary>
-    <p class="organizer-callout__text">
-      Le calendrier est alimenté par les clubs et organisateurs bretons. Publiez
-      votre rando gratuitement — visible par les vététistes qui cherchent où
-      rouler ce week-end.
-    </p>
-  </details>
-  <a class="btn btn--outline" href="/calendrier/ajouter.html">
-    Publier ma rando
-  </a>
-  <ul class="organizer-callout__list">
-    <li>Jusqu'à 12 000 visiteurs par mois.</li>
-    <li>Publication gratuite au prochain rafraîchissement quotidien.</li>
-    <li>Touchez les vététistes au-delà de votre cercle Facebook et club.</li>
-  </ul>
 </section>
 
 <aside class="project-signature" aria-labelledby="project-signature-title">

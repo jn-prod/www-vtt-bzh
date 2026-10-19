@@ -9,6 +9,20 @@ const viewports = [
   { width: 1440, height: 900 },
 ];
 
+const isoDateAfter = (days) => {
+  const date = new Date();
+  date.setUTCHours(12, 0, 0, 0);
+  date.setUTCDate(date.getUTCDate() + days);
+  return date.toISOString().slice(0, 10);
+};
+
+const weekStart = (date) => {
+  const value = new Date(`${date}T12:00:00Z`);
+  const day = value.getUTCDay() || 7;
+  value.setUTCDate(value.getUTCDate() - day + 1);
+  return value.toISOString().slice(0, 10);
+};
+
 test.beforeEach(async ({ page }) => {
   await page.route('https://static.cloudflareinsights.com/**', (route) => route.abort());
 });
@@ -50,23 +64,27 @@ for (const viewport of viewports) {
   });
 }
 
-test('le calendrier charge les événements suivants sans gonfler le HTML initial', async ({ page }) => {
-  await page.goto('/');
-  await expect(page.locator('#events-list .event')).toHaveCount(20);
-  await expect(page.locator('#events-list .newsletter-prompt--sticky')).toHaveCount(1);
-  const total = Number(await page.locator('#results-count').textContent());
-  expect(total).toBeGreaterThan(20);
-  await page.locator('#load-more').click();
-  await expect(page.locator('#events-list .event')).toHaveCount(Math.min(40, total));
+test('le calendrier affiche un planning de douze semaines partageable', async ({ page }) => {
+  const firstEventWeek = weekStart(isoDateAfter(1));
+  await page.goto(`/?week=${firstEventWeek}`);
+  await expect(page.locator('#calendar-week-navigation')).toBeVisible();
+  await expect(page.locator('#week-select optgroup[label="Prochaines semaines"] option')).toHaveCount(12);
+  await expect(page.locator('#calendar-content .event').first()).toBeVisible();
+  const eventCount = await page.locator('#calendar-content .event').count();
+  await expect(page.locator('#calendar-content .event__summary > .event__summary-content')).toHaveCount(eventCount);
+
+  const initialWeek = await page.locator('#week-select').inputValue();
+  await page.locator('#next-week').click();
+  await expect(page.locator('#week-select')).not.toHaveValue(initialWeek);
+  await expect(page).toHaveURL(/week=\d{4}-\d{2}-\d{2}/u);
 });
 
 test('les filtres couvrent aussi les événements au-delà du HTML initial', async ({ page }) => {
   const departement = '35';
-  const date = new Date();
-  date.setDate(date.getDate() + 30);
+  const date = isoDateAfter(30);
   const events = Array.from({ length: 21 }, (_, index) => ({
     id: `event-35-${index + 1}`,
-    date: date.toISOString().slice(0, 10),
+    date,
     dateFormatted: '20 sept. 2026',
     name: `Rando Ille-et-Vilaine ${index + 1}`,
     city: 'Rennes',
@@ -80,20 +98,45 @@ test('les filtres couvrent aussi les événements au-delà du HTML initial', asy
       body: JSON.stringify(events),
     })
   );
-  await page.goto('/');
+  await page.goto(`/?week=${weekStart(date)}`);
   await page.locator('#filter-details > summary').click();
   await page.locator('#departement').selectOption(departement);
   await page.getByRole('button', { name: 'Rechercher' }).click();
   await expect(page.locator('#results-count')).toHaveText(String(events.length));
-  await expect(page.locator('#events-list .event')).toHaveCount(20);
-  await expect(page.locator('#events-list .newsletter-prompt--sticky')).toHaveCount(1);
-  await page.locator('#load-more').click();
-  await expect(page.locator('#events-list .event')).toHaveCount(events.length);
+  await expect(page.locator('#calendar-content .event')).toHaveCount(events.length);
+  await expect(page.locator('#calendar-content .newsletter-prompt--sticky')).toHaveCount(1);
+  await expect(page).toHaveURL(/departement=35/u);
+});
+
+test('les semaines lointaines alimentées restent accessibles séparément', async ({ page }) => {
+  const date = isoDateAfter(100);
+  await page.route('**/calendrier/events.json', (route) =>
+    route.fulfill({
+      status: 200,
+      contentType: 'application/json',
+      body: JSON.stringify([
+        {
+          id: 'event-distant',
+          date,
+          dateFormatted: '27 janv. 2027',
+          name: 'Rando lointaine',
+          city: 'Rennes',
+          departement: 35,
+          canceled: false,
+        },
+      ]),
+    })
+  );
+  await page.goto('/');
+  await expect(page.locator('#week-select optgroup[label="Prochaines semaines"] option')).toHaveCount(12);
+  await expect(page.locator('#week-select optgroup[label="Plus tard"] option')).toHaveCount(1);
+  await page.locator('#week-select').selectOption(weekStart(date));
+  await expect(page.getByText('Rando lointaine', { exact: true })).toBeVisible();
 });
 
 test('le header reste simple et le rappel sticky conduit à l’agenda', async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 });
-  await page.goto('/');
+  await page.goto(`/?week=${weekStart(isoDateAfter(8))}`);
   const header = page.locator('.site-header');
   await expect(header.getByRole('link')).toHaveCount(1);
   await expect(header.getByRole('link', { name: 'vtt.bzh' })).toBeVisible();
@@ -122,10 +165,11 @@ test('la dernière édition est rendue statiquement sans JavaScript', async ({ b
 });
 
 test('une recherche sans résultat conserve une issue vers l’agenda', async ({ page }) => {
+  const date = isoDateAfter(1);
   const events = [
     {
       id: 'event-35',
-      date: '2026-10-20',
+      date,
       dateFormatted: '20 oct. 2026',
       name: 'Rando Ille-et-Vilaine',
       city: 'Rennes',
@@ -136,26 +180,33 @@ test('une recherche sans résultat conserve une issue vers l’agenda', async ({
   await page.route('**/calendrier/events.json', (route) =>
     route.fulfill({ status: 200, contentType: 'application/json', body: JSON.stringify(events) })
   );
-  await page.goto('/');
+  await page.goto(`/?week=${weekStart(date)}`);
   await page.locator('#filter-details > summary').click();
   await page.locator('#departement').selectOption('22');
   await page.getByRole('button', { name: 'Rechercher' }).click();
-  await expect(page.locator('#msg-no-results-dynamic')).toBeVisible();
-  await expect(page.locator('#msg-no-results-dynamic')).toContainText('recevez l’agenda');
+  const emptyWeek = page.locator('.calendar-empty');
+  await expect(emptyWeek).toContainText('Aucune rando annoncée dans les Côtes-d’Armor cette semaine');
+  await expect(emptyWeek).toContainText(
+    'Chaque mois, La Sortie partage une photo, un vécu et ce qui mérite l’attention dehors'
+  );
+  await expect(emptyWeek.getByRole('link', { name: 'Recevoir La Sortie' })).toHaveAttribute('href', '#newsletter');
+  await expect(page.locator('#calendar-content .organizer-callout')).toHaveCount(1);
+  await expect(page.locator('#calendar-content').getByRole('link', { name: 'Publier ma rando' })).toHaveAttribute(
+    'href',
+    '/calendrier/ajouter.html'
+  );
 });
 
 test('un seul rappel sticky suit la cinquième rando', async ({ page }) => {
-  await page.goto('/');
-  const prompt = page.locator('#events-list > li:nth-child(6).newsletter-prompt--sticky');
+  await page.goto(`/?week=${weekStart(isoDateAfter(8))}`);
+  const prompt = page.locator('#calendar-content .newsletter-prompt--sticky');
   await expect(page.locator('.newsletter-prompt')).toHaveCount(1);
   await expect(prompt).toContainText('La Sortie Rando Bretagne, chaque mois.');
   await expect(prompt.getByRole('link', { name: 'Recevoir l’agenda' })).toHaveAttribute('href', '#newsletter');
 });
 
 test('le rendu JavaScript neutralise les données événement hostiles', async ({ page }) => {
-  const date = new Date();
-  date.setDate(date.getDate() + 30);
-  const eventDate = date.toISOString().slice(0, 10);
+  const eventDate = isoDateAfter(30);
   const safeEvent = (index) => ({
     id: `event-safe-${index}`,
     date: eventDate,
@@ -182,14 +233,13 @@ test('le rendu JavaScript neutralise les données événement hostiles', async (
       body: JSON.stringify([...Array.from({ length: 20 }, (_, index) => safeEvent(index + 1)), hostile]),
     })
   );
-  await page.goto('/');
-  await page.locator('#load-more').click();
-  await expect(page.locator('#events-list .event')).toHaveCount(21);
+  await page.goto(`/?week=${weekStart(eventDate)}`);
+  await expect(page.locator('#calendar-content .event')).toHaveCount(21);
   await expect(page.getByText('<img src=x onerror=alert(1)>', { exact: true })).toBeVisible();
-  await expect(page.locator('#events-list script')).toHaveCount(0);
-  await expect(page.locator('#events-list [onerror], #events-list [onfocus], #events-list [onmouseover]')).toHaveCount(
-    0
-  );
+  await expect(page.locator('#calendar-content script')).toHaveCount(0);
+  await expect(
+    page.locator('#calendar-content [onerror], #calendar-content [onfocus], #calendar-content [onmouseover]')
+  ).toHaveCount(0);
 });
 
 test('la pagination reste utilisable sans JavaScript', async ({ browser }) => {
