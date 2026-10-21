@@ -3,7 +3,7 @@
    ========================================================================== */
 
 :root {
-  --b-color-primary: #1c7d44;
+  --b-color-brand: #1c7d44;
   --b-color-secondary: #166437;
   --b-color-grey-light: #ecf0f1;
   --b-color-grey-dark: #333;
@@ -172,7 +172,7 @@ h6 {
 a,
 a:focus,
 a:hover {
-  color: var(--b-color-primary);
+  color: var(--b-color-brand);
 }
 
 button {
@@ -189,7 +189,7 @@ button {
 
 /* Focus visible global — RGAA 10.7 */
 *:focus-visible {
-  outline: var(--b-size-2) solid var(--b-color-primary);
+  outline: var(--b-size-2) solid var(--b-color-brand);
   outline-offset: var(--b-size-2);
 }
 
@@ -200,7 +200,7 @@ button {
   left: var(--b-size-8);
   z-index: 1000;
   padding: var(--b-size-8) var(--b-size-16);
-  background: var(--b-color-primary);
+  background: var(--b-color-brand);
   color: var(--b-color-white);
   text-decoration: none;
   font-weight: bold;
@@ -284,7 +284,7 @@ button {
 
 .site-nav__title:hover,
 .site-nav__title:focus-visible {
-  color: var(--b-color-primary);
+  color: var(--b-color-brand);
 }
 
 /* ==========================================================================
@@ -308,14 +308,14 @@ button {
   text-align: center;
 }
 
-.btn--primary {
-  background: var(--b-color-primary);
+.btn--brand {
+  background: var(--b-color-brand);
   color: var(--b-color-white);
-  border-color: var(--b-color-primary);
+  border-color: var(--b-color-brand);
 }
 
-.btn--primary:hover,
-.btn--primary:focus-visible {
+.btn--brand:hover,
+.btn--brand:focus-visible {
   background: var(--b-color-secondary);
   border-color: var(--b-color-secondary);
   color: var(--b-color-white);
@@ -783,7 +783,7 @@ button {
 
 .event-form__input:focus {
   outline: none;
-  border-color: var(--b-color-primary);
+  border-color: var(--b-color-brand);
   box-shadow: 0 0 0 var(--b-size-2) rgb(28 125 68 / 25%);
 }
 
@@ -1003,8 +1003,8 @@ button {
 }
 
 .tabs__tab.is-active {
-  color: var(--b-color-primary);
-  border-bottom-color: var(--b-color-primary);
+  color: var(--b-color-brand);
+  border-bottom-color: var(--b-color-brand);
 }
 
 /* Les ancres ne doivent pas glisser sous les barres collantes */
@@ -1238,6 +1238,6 @@ button {
 }
 
 .newsletter-inline__input:focus-visible {
-  outline: var(--b-size-2) solid var(--b-color-primary);
+  outline: var(--b-size-2) solid var(--b-color-brand);
   outline-offset: var(--b-size-2);
 }

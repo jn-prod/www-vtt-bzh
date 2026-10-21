@@ -192,7 +192,7 @@ const createEvent = (event) => {
     const action = document.createElement("p");
     action.className = "event__action";
     const link = document.createElement("a");
-    link.className = "btn btn--primary";
+    link.className = "btn btn--brand";
     link.href = website;
     link.target = "_blank";
     link.rel = "noopener noreferrer nofollow ugc";
@@ -294,7 +294,7 @@ const createEmptyWeek = (week, departement) => {
   const actions = document.createElement("div");
   actions.className = "calendar-empty__actions";
   const newsletter = document.createElement("a");
-  newsletter.className = "btn btn--primary";
+  newsletter.className = "btn btn--brand";
   newsletter.href = "#newsletter";
   newsletter.textContent = "Recevoir La Sortie";
   actions.append(newsletter);
