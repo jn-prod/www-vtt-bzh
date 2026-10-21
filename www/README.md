@@ -81,7 +81,7 @@ Le fichier est organisé en sections commentées dans cet ordre :
 | Base          | `@font-face`, html/body, typographie, liens                |
 | Layout        | `.container`, `.site-header`, `.site-main`, `.site-footer` |
 | Nav           | `.site-nav`                                                |
-| Buttons       | `.btn`, `.btn--primary/outline/light`, `.btn--small`       |
+| Buttons       | `.btn`, `.btn--brand/outline/light`, `.btn--small`         |
 | Badge         | `.badge`, `.badge--danger/secondary`                       |
 | Event         | `.event` (détails d'une rando)                             |
 | Search filter | `.search-filter`                                           |
@@ -92,12 +92,12 @@ Le fichier est organisé en sections commentées dans cet ordre :
 ### Ajouter un nouveau composant
 
 1. Ajouter une section commentée dans `assets/css/main.css`
-2. Utiliser les custom properties de `:root` (`--b-color-primary`, `--b-shadow`, etc.)
+2. Utiliser les custom properties de `:root` (`--b-color-brand`, `--b-shadow`, etc.)
 
 ### Variables disponibles
 
 ```css
---b-color-primary: #1c7d44;
+--b-color-brand: #1c7d44;
 --b-color-secondary: #166437;
 --b-color-grey-light: #ecf0f1;
 --b-color-grey-dark: #333;
@@ -119,7 +119,7 @@ Le fichier est organisé en sections commentées dans cet ordre :
 
 Tous les boutons utilisent la même police et une graisse de `700`. La taille standard conserve une
 hauteur minimale de `4.4rem` et un texte de `1.6rem`. `.btn--small` est réservé aux commandes
-utilitaires des barres sticky. Seule `.btn--primary` est remplie en vert ; `.btn--outline` et
+utilitaires des barres sticky. Seule `.btn--brand` est remplie en vert ; `.btn--outline` et
 `.btn--light` servent aux actions secondaires. Ne pas créer d'autre variante de taille locale.
 
 ---
