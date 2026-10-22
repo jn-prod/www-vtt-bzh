@@ -82,7 +82,7 @@ Le fichier est organisé en sections commentées dans cet ordre :
 | Layout        | `.container`, `.site-header`, `.site-main`, `.site-footer` |
 | Nav           | `.site-nav`                                                |
 | Buttons       | `.btn`, `.btn--brand/outline/light`, `.btn--small`         |
-| Badge         | `.badge`, `.badge--danger/secondary`                       |
+| Badge         | `.badge`, `.badge--alert`                                  |
 | Event         | `.event` (détails d'une rando)                             |
 | Search filter | `.search-filter`                                           |
 | Newsletter    | `.newsletter-inline`, `.latest-issue`                      |
@@ -98,24 +98,34 @@ Le fichier est organisé en sections commentées dans cet ordre :
 
 ```css
 --b-color-brand: #1c7d44;
---b-color-secondary: #166437;
---b-color-grey-light: #ecf0f1;
---b-color-grey-dark: #333;
---b-color-white: #fff;
---b-color-danger: #dc3545;
---b-color-alert-bg: #f8d7da;
---b-color-alert-text: #721c24;
---b-color-info-bg: #cce5ff;
---b-color-info-text: #004085;
+--b-color-neutral-0: #fff;
+--b-color-neutral-10: #f5f5f5;
+--b-color-neutral-20: #ecf0f1;
+--b-color-neutral-30: #dee2e6;
+--b-color-neutral-40: #d6d8d9;
+--b-color-neutral-50: #adb5bd;
+--b-color-neutral-60: #676b70;
+--b-color-neutral-70: #495057;
+--b-color-neutral-80: #343a40;
+--b-color-neutral-90: #212529;
+--b-color-neutral-100: #000;
+--b-color-border: var(--b-color-neutral-30);
+--b-color-semantic-alert-0 à --b-color-semantic-alert-100;
+--b-color-semantic-info-0 à --b-color-semantic-info-100;
+--b-color-semantic-{alert|info}-{background-muted|background-emphasis|border|foreground};
 --b-font-heading: "Roboto Condensed", sans-serif;
 --b-font-body:
   system-ui, -apple-system, blinkmacsystemfont, "Segoe UI", sans-serif;
 --b-container-max: 114rem; /* 1140px */
 --b-control-height: 4.4rem; /* hauteur minimale commune des boutons */
 --b-shadow: 0 0.2rem 0.4rem rgba(0, 0, 0, 0.075);
---b-border-color: #dee2e6;
 --b-border-radius: 0.4rem;
 ```
+
+Les palettes `--b-color-neutral-*` et `--b-color-semantic-*`, leurs aliases d'usage et `--b-color-border`
+appartiennent au Core partagé. Les composants utilisent les aliases sémantiques
+(`background-muted`, `background-emphasis`, `border`, `foreground`) plutôt que les niveaux numériques. Seule
+`--b-color-brand` reste une couleur propre à vtt.bzh.
 
 Tous les boutons utilisent la même police et une graisse de `700`. La taille standard conserve une
 hauteur minimale de `4.4rem` et un texte de `1.6rem`. `.btn--small` est réservé aux commandes
