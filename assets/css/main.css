@@ -116,22 +116,25 @@
   --b-font-body:
     system-ui, -apple-system, blinkmacsystemfont, "Segoe UI", sans-serif;
 
-  /* Spacing & sizing tokens (1rem = 10px) */
-  --b-size-2: 0.2rem; /*   2px */
+  /* Shared spacing grid with nicolasjouanno.com (1rem = 10px) */
+  --b-size-1: 0.1rem; /*   1px */
   --b-size-4: 0.4rem; /*   4px */
   --b-size-8: 0.8rem; /*   8px */
-  --b-size-12: 1.2rem; /*  12px */
   --b-size-16: 1.6rem; /*  16px */
-  --b-size-24: 2.4rem; /*  24px */
   --b-size-32: 3.2rem; /*  32px */
-  --b-size-40: 4rem; /*  40px */
-  --b-size-50: 5rem; /*  50px */
   --b-size-64: 6.4rem; /*  64px */
+  --b-size-128: 12.8rem; /* 128px */
+
+  /* Non-spacing dimensions */
+  --b-line-width-strong: 0.2rem;
+  --b-font-size-caption: 1.2rem;
+  --b-font-size-small: 1.4rem;
+  --b-font-size-large: 2.4rem;
   --b-container-max: 114rem;
   --b-control-height: 4.4rem;
   --b-header-h: 4.8rem; /* hauteur du header */
   --b-tabs-h: 4.4rem; /* hauteur de la barre d'onglets sticky */
-  --b-shadow: 0 var(--b-size-2) var(--b-size-4)
+  --b-shadow: 0 var(--b-line-width-strong) var(--b-size-4)
     color-mix(in srgb, var(--b-color-neutral-100), transparent 92.5%);
   --b-border-radius: var(--b-size-4);
 }
@@ -288,14 +291,14 @@ button {
 
 /* Focus visible global — RGAA 10.7 */
 *:focus-visible {
-  outline: var(--b-size-2) solid var(--b-color-brand);
-  outline-offset: var(--b-size-2);
+  outline: var(--b-line-width-strong) solid var(--b-color-brand);
+  outline-offset: var(--b-line-width-strong);
 }
 
 /* Skip link — RGAA 12.6/12.7 (caché jusqu'au focus clavier) */
 .site-skip-link {
   position: absolute;
-  top: calc(var(--b-size-50) * -1);
+  top: calc(var(--b-header-h) * -1);
   left: var(--b-size-8);
   z-index: 1000;
   padding: var(--b-size-8) var(--b-size-16);
@@ -346,11 +349,11 @@ button {
 }
 
 .site-main {
-  margin-top: var(--b-size-24);
+  margin-top: var(--b-size-32);
 }
 
 .site-footer {
-  padding: var(--b-size-24) 0;
+  padding: var(--b-size-32) 0;
   text-align: center;
 }
 
@@ -374,7 +377,7 @@ button {
   align-items: center;
   gap: var(--b-size-4);
   font-family: var(--b-font-heading);
-  font-size: var(--b-size-24);
+  font-size: var(--b-font-size-large);
   font-weight: 700;
   line-height: 1;
   color: var(--b-color-neutral-80);
@@ -394,17 +397,20 @@ button {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-height: var(--b-control-height);
-  padding: var(--b-size-8) var(--b-size-24);
-  border-radius: 50px;
-  border: var(--b-size-2) solid transparent;
+  width: fit-content;
+  padding: var(--b-size-8) var(--b-size-16);
+  border: var(--b-size-1) solid transparent;
+  border-radius: var(--b-size-32);
   cursor: pointer;
   font-family: var(--b-font-body);
-  font-size: var(--b-size-16);
+  font-size: 1.5rem;
   font-weight: 700;
-  line-height: 1.25;
   text-decoration: none;
   text-align: center;
+}
+
+.btn:hover {
+  text-decoration: underline;
 }
 
 .btn--brand {
@@ -415,10 +421,8 @@ button {
 
 .btn--brand:hover,
 .btn--brand:focus-visible {
-  background: var(--b-color-brand);
-  border-color: var(--b-color-brand);
+  border-color: var(--b-color-border);
   color: var(--b-color-neutral-0);
-  filter: brightness(0.85);
 }
 
 .btn--outline {
@@ -429,12 +433,12 @@ button {
 
 .btn--outline:hover,
 .btn--outline:focus-visible {
-  background: var(--b-color-neutral-20);
-  color: var(--b-color-neutral-80);
+  background: var(--b-color-neutral-80);
+  color: var(--b-color-neutral-0);
 }
 
 .btn--light {
-  background: var(--b-color-neutral-20);
+  background: var(--b-color-neutral-0);
   color: var(--b-color-neutral-80);
   border-color: transparent;
 }
@@ -448,7 +452,12 @@ button {
 .btn--small {
   min-height: 3.6rem;
   padding: var(--b-size-4) var(--b-size-16);
-  font-size: 1.4rem;
+  font-size: var(--b-font-size-small);
+}
+
+.btn[disabled] {
+  opacity: 0.8;
+  cursor: not-allowed;
 }
 
 /* ==========================================================================
@@ -459,7 +468,7 @@ button {
   display: inline-block;
   padding: var(--b-size-4) var(--b-size-8);
   border-radius: 50px;
-  font-size: var(--b-size-12);
+  font-size: var(--b-font-size-caption);
   font-weight: bold;
 }
 
@@ -478,14 +487,14 @@ button {
   border: 1px solid var(--b-color-border);
   border-radius: var(--b-border-radius);
   box-shadow: var(--b-shadow);
-  margin: var(--b-size-12) 0;
+  margin: var(--b-size-16) 0;
 }
 
 .event__summary {
   display: flex;
   align-items: baseline;
   gap: var(--b-size-8);
-  padding: var(--b-size-12);
+  padding: var(--b-size-16);
   cursor: pointer;
   list-style: none;
 }
@@ -524,7 +533,7 @@ button {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: var(--b-size-12);
+  gap: var(--b-size-16);
   margin-top: var(--b-size-8);
 }
 
@@ -565,7 +574,7 @@ button {
 
 .calendar__intro {
   max-width: 42rem;
-  margin: 0 auto var(--b-size-24);
+  margin: 0 auto var(--b-size-32);
   text-align: center;
 }
 
@@ -573,8 +582,8 @@ button {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  gap: var(--b-size-12);
-  margin: var(--b-size-24) 0;
+  gap: var(--b-size-16);
+  margin: var(--b-size-32) 0;
 }
 
 .calendar-week-navigation {
@@ -583,13 +592,13 @@ button {
   align-items: stretch;
   gap: var(--b-size-8);
   max-width: 64rem;
-  margin: var(--b-size-24) auto;
+  margin: var(--b-size-32) auto;
 }
 
 .calendar-week-navigation__button {
   min-width: var(--b-control-height);
-  padding-inline: var(--b-size-12);
-  font-size: var(--b-size-24);
+  padding-inline: var(--b-size-16);
+  font-size: var(--b-font-size-large);
 }
 
 .calendar-week-navigation__button:disabled {
@@ -600,7 +609,7 @@ button {
 .calendar-week-navigation__select {
   width: 100%;
   min-width: 0;
-  padding: var(--b-size-8) var(--b-size-12);
+  padding: var(--b-size-8) var(--b-size-16);
   border: 1px solid var(--b-color-border);
   border-radius: var(--b-border-radius);
   background: var(--b-color-neutral-0);
@@ -636,13 +645,13 @@ button {
 
 .calendar-day__weekday {
   font-family: var(--b-font-body);
-  font-size: var(--b-size-12);
+  font-size: var(--b-font-size-caption);
   font-weight: 600;
   text-transform: uppercase;
 }
 
 .calendar-day__number {
-  font-size: var(--b-size-24);
+  font-size: var(--b-font-size-large);
   line-height: 1.2;
 }
 
@@ -658,8 +667,8 @@ button {
 
 .calendar-empty {
   max-width: 64rem;
-  margin: var(--b-size-24) auto;
-  padding: var(--b-size-24);
+  margin: var(--b-size-32) auto;
+  padding: var(--b-size-32);
   border: 1px solid var(--b-color-border);
   border-radius: var(--b-border-radius);
   background: var(--b-color-neutral-20);
@@ -714,7 +723,7 @@ button {
    ========================================================================== */
 
 .organizer-callout {
-  margin: var(--b-size-8) 0 var(--b-size-24);
+  margin: var(--b-size-8) 0 var(--b-size-32);
   padding: var(--b-size-16);
   border: 1px solid var(--b-color-border);
   border-radius: var(--b-border-radius);
@@ -794,7 +803,7 @@ button {
   width: 100%;
   min-width: 0;
   max-width: 100%;
-  padding: var(--b-size-8) var(--b-size-12);
+  padding: var(--b-size-8) var(--b-size-16);
   border: 1px solid var(--b-color-border);
   border-radius: var(--b-border-radius);
   font-size: var(--b-size-16);
@@ -815,7 +824,7 @@ button {
    ========================================================================== */
 
 .message {
-  padding: var(--b-size-12) var(--b-size-16);
+  padding: var(--b-size-16) var(--b-size-16);
   border-radius: var(--b-border-radius);
   margin: var(--b-size-8) 0;
   background: var(--b-color-neutral-20);
@@ -841,7 +850,7 @@ button {
 }
 
 .event-form__intro {
-  margin: 0 0 var(--b-size-24);
+  margin: 0 0 var(--b-size-32);
   color: var(--b-color-neutral-80);
 }
 
@@ -869,8 +878,8 @@ button {
 .event-form__input {
   font-family: inherit;
   font-size: 1.6rem;
-  padding: var(--b-size-8) var(--b-size-12);
-  border: var(--b-size-2) solid var(--b-color-border);
+  padding: var(--b-size-8) var(--b-size-16);
+  border: var(--b-line-width-strong) solid var(--b-color-border);
   border-radius: var(--b-border-radius);
   background: var(--b-color-neutral-0);
   color: var(--b-color-neutral-80);
@@ -879,7 +888,7 @@ button {
 .event-form__input:focus {
   outline: none;
   border-color: var(--b-color-brand);
-  box-shadow: 0 0 0 var(--b-size-2)
+  box-shadow: 0 0 0 var(--b-line-width-strong)
     color-mix(in srgb, var(--b-color-brand), transparent 75%);
 }
 
@@ -913,7 +922,7 @@ button {
 }
 
 .event-form__actions {
-  margin-top: var(--b-size-24);
+  margin-top: var(--b-size-32);
   display: flex;
   justify-content: flex-end;
 }
@@ -925,9 +934,9 @@ button {
 
 .event-form__feedback {
   margin-top: var(--b-size-16);
-  padding: var(--b-size-12) var(--b-size-16);
+  padding: var(--b-size-16) var(--b-size-16);
   border-radius: var(--b-border-radius);
-  min-height: var(--b-size-24);
+  min-height: var(--b-size-32);
 }
 
 .event-form__feedback:empty {
@@ -957,7 +966,7 @@ button {
 }
 
 .event-form__share-prompt {
-  margin: 0 0 var(--b-size-12);
+  margin: 0 0 var(--b-size-16);
   font-weight: 700;
 }
 
@@ -987,7 +996,7 @@ button {
    ========================================================================== */
 
 .faq {
-  margin-top: var(--b-size-40);
+  margin-top: var(--b-size-32);
 }
 
 .faq__title {
@@ -1022,12 +1031,12 @@ button {
    ========================================================================== */
 
 .fomo {
-  margin: 0 0 var(--b-size-24);
+  margin: 0 0 var(--b-size-32);
 }
 
 .fomo__stats {
   display: flex;
-  gap: var(--b-size-24);
+  gap: var(--b-size-32);
   list-style: none;
   margin: 0 0 var(--b-size-16);
   padding: 0;
@@ -1079,14 +1088,14 @@ button {
 .tabs__nav {
   display: flex;
   align-self: stretch;
-  gap: var(--b-size-24);
+  gap: var(--b-size-32);
 }
 
 .tabs__tab {
   display: flex;
   align-items: center;
   padding: 0 var(--b-size-4);
-  border-bottom: var(--b-size-2) solid transparent;
+  border-bottom: var(--b-line-width-strong) solid transparent;
   font-family: var(--b-font-heading);
   font-weight: 700;
   color: var(--b-color-neutral-60);
@@ -1117,8 +1126,8 @@ button {
   flex-direction: column;
   align-items: center;
   gap: var(--b-size-16);
-  margin: var(--b-size-24) 0 0;
-  padding-top: var(--b-size-24);
+  margin: var(--b-size-32) 0 0;
+  padding-top: var(--b-size-32);
   border-top: 1px solid var(--b-color-border);
   color: var(--b-color-neutral-60);
   text-align: center;
@@ -1150,7 +1159,7 @@ button {
 }
 
 .project-signature__link {
-  margin: var(--b-size-12) 0 0;
+  margin: var(--b-size-16) 0 0;
 }
 
 @media (width > 600px) {
@@ -1158,7 +1167,7 @@ button {
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    gap: var(--b-size-24);
+    gap: var(--b-size-32);
     text-align: left;
   }
 }
@@ -1172,8 +1181,8 @@ button {
   background: var(--b-color-neutral-20);
   border-radius: var(--b-border-radius);
   box-shadow: var(--b-shadow);
-  padding: var(--b-size-24);
-  margin: var(--b-size-32) 0 var(--b-size-24);
+  padding: var(--b-size-32);
+  margin: var(--b-size-32) 0 var(--b-size-32);
   text-align: center;
 }
 
@@ -1198,9 +1207,9 @@ button {
 
 .newsletter-inline__note {
   max-width: 52rem;
-  margin: var(--b-size-12) auto 0;
+  margin: var(--b-size-16) auto 0;
   color: var(--b-color-neutral-80);
-  font-size: var(--b-size-14);
+  font-size: var(--b-font-size-small);
 }
 
 .latest-issue {
@@ -1210,9 +1219,9 @@ button {
     "image body" 1fr
     / 24rem minmax(0, 1fr);
   align-items: center;
-  gap: var(--b-size-4) var(--b-size-24);
-  margin-top: var(--b-size-24);
-  padding-top: var(--b-size-24);
+  gap: var(--b-size-4) var(--b-size-32);
+  margin-top: var(--b-size-32);
+  padding-top: var(--b-size-32);
   border-top: 1px solid var(--b-color-border);
   text-align: left;
 }
@@ -1236,7 +1245,7 @@ button {
   align-self: end;
   margin: 0;
   color: var(--b-color-brand);
-  font-size: var(--b-size-14);
+  font-size: var(--b-font-size-small);
   font-weight: 700;
 }
 
@@ -1245,14 +1254,14 @@ button {
 }
 
 .latest-issue__text {
-  margin: 0 0 var(--b-size-12);
+  margin: 0 0 var(--b-size-16);
 }
 
 .latest-issue__action {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: var(--b-size-12);
+  gap: var(--b-size-16);
   margin: 0;
 }
 
@@ -1267,7 +1276,7 @@ button {
       "image" auto
       "body" auto
       / minmax(0, 1fr);
-    gap: var(--b-size-12);
+    gap: var(--b-size-16);
   }
 
   .latest-issue__image {
@@ -1286,7 +1295,7 @@ button {
 
 .newsletter-prompt__text {
   max-width: 52rem;
-  margin: 0 auto var(--b-size-12);
+  margin: 0 auto var(--b-size-16);
 }
 
 .newsletter-prompt--sticky {
@@ -1296,7 +1305,7 @@ button {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: var(--b-size-12);
+  gap: var(--b-size-16);
   box-shadow: var(--b-shadow);
 }
 
@@ -1307,7 +1316,7 @@ button {
 @media (width <= 600px) {
   .newsletter-prompt--sticky {
     gap: var(--b-size-8);
-    padding: var(--b-size-8) var(--b-size-12);
+    padding: var(--b-size-8) var(--b-size-16);
   }
 
   .newsletter-prompt--sticky .newsletter-prompt__text {
@@ -1317,7 +1326,7 @@ button {
 
   .newsletter-prompt--sticky .btn {
     flex: 0 0 auto;
-    padding-inline: var(--b-size-12);
+    padding-inline: var(--b-size-16);
   }
 }
 
@@ -1334,6 +1343,6 @@ button {
 }
 
 .newsletter-inline__input:focus-visible {
-  outline: var(--b-size-2) solid var(--b-color-brand);
-  outline-offset: var(--b-size-2);
+  outline: var(--b-line-width-strong) solid var(--b-color-brand);
+  outline-offset: var(--b-line-width-strong);
 }
