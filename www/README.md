@@ -127,10 +127,11 @@ appartiennent au Core partagé. Les composants utilisent les aliases sémantique
 (`background-muted`, `background-emphasis`, `border`, `foreground`) plutôt que les niveaux numériques. Seule
 `--b-color-brand` reste une couleur propre à vtt.bzh.
 
-Tous les boutons utilisent la même police et une graisse de `700`. La taille standard conserve une
-hauteur minimale de `4.4rem` et un texte de `1.6rem`. `.btn--small` est réservé aux commandes
-utilitaires des barres sticky. Seule `.btn--brand` est remplie en vert ; `.btn--outline` et
-`.btn--light` servent aux actions secondaires. Ne pas créer d'autre variante de taille locale.
+Le bouton standard reprend le contrat de `nicolasjouanno.com` : padding `8 × 16`, bordure `1 px`,
+rayon `32 px`, texte `15 px` en graisse `700`. `.btn--small` reste l'unique adaptation propre à
+vtt.bzh et demeure réservée aux commandes utilitaires des barres sticky. Seule `.btn--brand` est
+remplie avec la couleur de marque ; `.btn--outline` et `.btn--light` servent aux actions secondaires.
+Ne pas créer d'autre variante de taille locale.
 
 ---
 
