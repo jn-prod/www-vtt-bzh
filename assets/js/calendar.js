@@ -165,7 +165,7 @@ const createEvent = (event) => {
   const location = addText(meta, "", "event__meta-item");
   addIcon(location, "pin");
   addText(location, `${event.city} (${event.departement})`, "event__location");
-  if (event.canceled) addText(location, "Annulée", "badge badge--danger");
+  if (event.canceled) addText(location, "Annulée", "badge badge--alert");
   summary.append(summaryContent);
   details.append(summary);
 
