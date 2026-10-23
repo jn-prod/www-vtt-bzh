@@ -226,7 +226,7 @@ const createPlanning = (events, week) => {
   const planning = document.createElement("div");
   planning.className = "calendar-planning";
   const title = document.createElement("h2");
-  title.className = "u-sr-only";
+  title.className = "u-visually-hidden";
   title.textContent = `Randonnées de la semaine du ${formatWeek(week)}`;
   planning.append(title);
 
@@ -324,8 +324,8 @@ const initTabs = () => {
     (entries) => {
       for (const entry of entries) {
         if (!entry.isIntersecting) continue;
-        tabs.forEach((tab) => tab.classList.remove("is-active"));
-        byId[entry.target.id]?.classList.add("is-active");
+        tabs.forEach((tab) => tab.removeAttribute("aria-current"));
+        byId[entry.target.id]?.setAttribute("aria-current", "true");
       }
     },
     { rootMargin: "-30% 0px -60% 0px" },

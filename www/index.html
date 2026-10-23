@@ -20,7 +20,7 @@ web_site_schema: true
      à n'importe quelle profondeur de scroll dans la liste des randos. -->
 <div class="tabs" id="tabs">
   <nav class="tabs__nav" aria-label="Sections de la page">
-    <a class="tabs__tab is-active" href="#events">Randos</a>
+    <a class="tabs__tab" href="#events" aria-current="true">Randos</a>
   </nav>
 
   <details class="search-filter disclosure" id="filter-details">
@@ -74,7 +74,7 @@ web_site_schema: true
     >
       Précédente
     </button>
-    <label class="u-sr-only" for="week-select">Semaine affichée</label>
+    <label class="u-visually-hidden" for="week-select">Semaine affichée</label>
     <select
       id="week-select"
       class="calendar-week-navigation__select control"
@@ -90,7 +90,7 @@ web_site_schema: true
   </nav>
 
   {% if site.data.events.size > 0 %}
-  <p id="msg-results" class="u-sr-only" aria-live="polite">
+  <p id="msg-results" class="u-visually-hidden" aria-live="polite">
     <span id="results-count">{{ site.data.events.size }}</span>
     <span id="results-label">randonnées à découvrir.</span>
   </p>
