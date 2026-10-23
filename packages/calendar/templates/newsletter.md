@@ -26,6 +26,6 @@ Matière factuelle préparée depuis Supabase pour La Sortie. Elle aide à chois
 @@NEW_EVENT_LINES@@
 @@END_HAS_NEW_EVENTS@@
 
-[Ouvrir le calendrier complet](https://www.vtt.bzh/?utm_source=vtt-bzh&utm_medium=editorial&utm_campaign=rando-bretagne&utm_content=calendrier)
+[Ouvrir le calendrier complet](https://www.vtt.bzh/?utm_source=vtt-bzh&utm_medium=editorial&utm_campaign=la-sortie&utm_content=calendrier)
 
-Une date manque ou doit être corrigée ? [Ajoute-la au calendrier](https://www.vtt.bzh/calendrier/ajouter.html?utm_source=vtt-bzh&utm_medium=editorial&utm_campaign=rando-bretagne&utm_content=ajouter-rando).
+Une date manque ou doit être corrigée ? [Ajoute-la au calendrier](https://www.vtt.bzh/calendrier/ajouter.html?utm_source=vtt-bzh&utm_medium=editorial&utm_campaign=la-sortie&utm_content=ajouter-rando).

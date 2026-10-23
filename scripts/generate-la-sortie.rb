@@ -17,7 +17,7 @@ module LaSortieFeed
   TRACKING = {
     "utm_source" => "vtt-bzh",
     "utm_medium" => "site",
-    "utm_campaign" => "rando-bretagne",
+    "utm_campaign" => "la-sortie",
     "utm_content" => "latest-issue"
   }.freeze
   FALLBACK = {
