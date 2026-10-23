@@ -73,21 +73,19 @@ Tout le CSS est écrit en **BEM** (Block Element Modifier) avec **Flexbox natif*
 
 Le fichier est organisé en sections commentées dans cet ordre :
 
-| Section       | Blocs                                                      |
-| ------------- | ---------------------------------------------------------- |
-| Variables     | Custom properties globales (`:root`)                       |
-| Document      | `html { font-size: 62.5% }`, `body { font-size: 1.6rem }`  |
-| Reset         | box-sizing, img, ul                                        |
-| Base          | `@font-face`, html/body, typographie, liens                |
-| Layout        | `.container`, `.site-header`, `.site-main`, `.site-footer` |
-| Nav           | `.site-nav`                                                |
-| Buttons       | `.btn`, `.btn--brand/outline/light`, `.btn--small`         |
-| Badge         | `.badge`, `.badge--alert`                                  |
-| Event         | `.event` (détails d'une rando)                             |
-| Search filter | `.search-filter`                                           |
-| Newsletter    | `.newsletter-inline`, `.latest-issue`                      |
-| Signature     | `.project-signature`                                       |
-| Message       | `.message`                                                 |
+| Section     | Blocs                                                                           |
+| ----------- | ------------------------------------------------------------------------------- |
+| Variables   | Custom properties globales (`:root`)                                            |
+| Document    | `html { font-size: 62.5% }`, `body { font-size: 1.6rem }`                       |
+| Reset       | box-sizing, img, ul                                                             |
+| Base        | `@font-face`, html/body, typographie, liens                                     |
+| Primitives  | `.icon`, `.avatar`, `.meta`, `.btn`, `.control`, `.field`, `.card`, `.badge`    |
+| Layout      | `.container`, `.site-header`, `.site-main`, `.site-footer`                      |
+| Navigation  | `.site-nav`, `.tabs`, `.calendar-week-navigation`                               |
+| Contenu     | `.publication-card`, `.stat`, `.message`, `.disclosure`                         |
+| Calendrier  | `.event`, `.calendar`, `.calendar-day`, `.calendar-empty`, `.organizer-callout` |
+| Formulaires | `.search-filter`, `.event-form`, `.newsletter-inline`                           |
+| Éditorial   | `.newsletter-prompt`, `.project-signature`, `.faq`, `.fomo`                     |
 
 ### Ajouter un nouveau composant
 
@@ -117,7 +115,10 @@ Le fichier est organisé en sections commentées dans cet ordre :
 --b-font-body:
   system-ui, -apple-system, blinkmacsystemfont, "Segoe UI", sans-serif;
 --b-container-max: 114rem; /* 1140px */
---b-control-height: 4.4rem; /* hauteur minimale commune des boutons */
+--b-control-height: 4.4rem;
+--b-control-radius: var(--b-size-32);
+--b-control-font-size: 1.5rem;
+--b-disabled-opacity: 0.8;
 --b-shadow: 0 0.2rem 0.4rem rgba(0, 0, 0, 0.075);
 --b-border-radius: 0.4rem;
 ```
@@ -130,8 +131,38 @@ appartiennent au Core partagé. Les composants utilisent les aliases sémantique
 Le bouton standard reprend le contrat de `nicolasjouanno.com` : padding `8 × 16`, bordure `1 px`,
 rayon `32 px`, texte `15 px` en graisse `700`. `.btn--small` reste l'unique adaptation propre à
 vtt.bzh et demeure réservée aux commandes utilitaires des barres sticky. Seule `.btn--brand` est
-remplie avec la couleur de marque ; `.btn--outline` et `.btn--light` servent aux actions secondaires.
+remplie avec la couleur de marque ; `.btn--dark-outline` et `.btn--light` servent aux actions secondaires.
 Ne pas créer d'autre variante de taille locale.
+
+Les contrôles `.control` reprennent la règle de `nicolasjouanno.com` : hauteur minimale de `44 px`,
+padding `8 × 16 px`, bordure `1 px`, rayon `32 px`, corps `15 px` et état désactivé à `0.8`. Les champs du
+calendrier, des filtres, des formulaires et de la newsletter composent cette primitive au lieu de
+redéfinir leur géométrie. `.field` porte uniquement l’empilement, le label et l’aide. Le focus
+visible global utilise la marque avec un trait de `2 px`.
+
+Le composant `.card` reprend le contrat de `nicolasjouanno.com`. Toute surface
+avec un fond, une bordure, un rayon et un padding compose un skin et une taille :
+
+- skins : `.card--flat`, `.card--neutral`, `.card--brand`, `.card--info`,
+  `.card--alert` ;
+- bordure renforcée facultative : `.card--outline` ;
+- tailles : `.card--small` (`8 px / 4 px`), `.card--medium`
+  (`16 px / 8 px`) et `.card--large` (`32 px / 16 px`) ;
+- le premier nombre désigne le padding, le second le rayon.
+
+Les variantes `info` et `alert` définissent ensemble le fond, la couleur du
+texte et la bordure depuis les aliases sémantiques. Un composant métier, comme
+`.event` ou `.newsletter-inline`, ne redéfinit pas ce skin.
+
+Les autres primitives suivent également le contrat de `nicolasjouanno.com` :
+
+- `.icon` mesure `1em`, hérite de `currentColor` et reste décorative avec `aria-hidden` ;
+- `.avatar` porte les tailles `small`, `medium`, `large` et `xlarge` ;
+- `.meta` porte le texte secondaire en `neutral-60` ;
+- `.tabs` porte l’état actif par un soulignement de marque sur une cible minimale de `44 px` ;
+- `.disclosure` gouverne les marqueurs de `<details>/<summary>` ;
+- `.publication-card` structure une couverture, un repère, un titre, un résumé et ses actions ;
+- `.stat` structure les KPI sans leur donner une apparence métier.
 
 ---
 

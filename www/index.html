@@ -23,19 +23,22 @@ web_site_schema: true
     <a class="tabs__tab is-active" href="#events">Randos</a>
   </nav>
 
-  <details class="search-filter" id="filter-details">
-    <summary class="btn btn--light btn--small search-filter__toggle">
+  <details class="search-filter disclosure" id="filter-details">
+    <summary
+      class="disclosure__summary btn btn--light btn--small search-filter__toggle"
+    >
       Filtrer
     </summary>
-    <form id="search-form" class="search-filter__form">
-      <div class="search-filter__field">
-        <label class="search-filter__label" for="departement">
-          Département
-        </label>
+    <form
+      id="search-form"
+      class="search-filter__form card card--flat card--medium"
+    >
+      <div class="search-filter__field field">
+        <label class="field__label" for="departement"> Département </label>
         <select
           id="departement"
           name="departement"
-          class="search-filter__select"
+          class="search-filter__select control"
         >
           <option value="22">Côtes d'Armor</option>
           <option value="29">Finistère</option>
@@ -49,7 +52,7 @@ web_site_schema: true
         <button id="search-button" type="submit" class="btn btn--brand">
           Rechercher
         </button>
-        <button id="reset-button" type="button" class="btn btn--outline">
+        <button id="reset-button" type="button" class="btn btn--dark-outline">
           Réinitialiser
         </button>
       </div>
@@ -68,23 +71,21 @@ web_site_schema: true
       id="previous-week"
       type="button"
       class="btn btn--light btn--small calendar-week-navigation__button"
-      aria-label="Semaine précédente"
     >
-      ←
+      Précédente
     </button>
     <label class="u-sr-only" for="week-select">Semaine affichée</label>
     <select
       id="week-select"
-      class="calendar-week-navigation__select"
+      class="calendar-week-navigation__select control"
       name="week"
     ></select>
     <button
       id="next-week"
       type="button"
       class="btn btn--light btn--small calendar-week-navigation__button"
-      aria-label="Semaine suivante"
     >
-      →
+      Suivante
     </button>
   </nav>
 
@@ -94,7 +95,11 @@ web_site_schema: true
     <span id="results-label">randonnées à découvrir.</span>
   </p>
   {% else %}
-  <p id="msg-no-results" class="message message--no-results" aria-live="polite">
+  <p
+    id="msg-no-results"
+    class="message card card--alert card--medium"
+    aria-live="polite"
+  >
     Aucune randonnée annoncée. <a href="#newsletter">Recevez La Sortie</a> ou
     <a href="/calendrier/ajouter.html">ajoutez votre rando</a>.
   </p>
@@ -129,7 +134,7 @@ web_site_schema: true
 
 <aside class="project-signature" aria-labelledby="project-signature-title">
   <img
-    class="project-signature__portrait"
+    class="project-signature__portrait avatar avatar--medium"
     src="{{ site.author.avatar_url }}"
     alt="Portrait de Nicolas Jouanno"
     width="128"

@@ -154,7 +154,7 @@ test('la dernière édition est rendue statiquement sans JavaScript', async ({ b
   const page = await context.newPage();
   await page.goto('/');
 
-  const issue = page.locator('.latest-issue');
+  const issue = page.locator('.publication-card');
   await expect(issue).toBeVisible();
   await expect(issue.getByText('Dernière édition')).toBeVisible();
   await expect(issue.getByRole('link', { name: 'Lire l’édition' })).toHaveAttribute(

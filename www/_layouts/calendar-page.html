@@ -19,9 +19,12 @@ layout: default
 <nav class="calendar-pagination" aria-label="Pages du calendrier">
   {% assign previous_number = page.page_number | minus: 1 %} {% if
   previous_number == 1 %}
-  <a class="btn btn--outline" href="/">Page précédente</a>
+  <a class="btn btn--dark-outline" href="/">Page précédente</a>
   {% else %}
-  <a class="btn btn--outline" href="/calendrier/page/{{ previous_number }}/">
+  <a
+    class="btn btn--dark-outline"
+    href="/calendrier/page/{{ previous_number }}/"
+  >
     Page précédente
   </a>
   {% endif %} {% if page.page_number < page.total_pages %} {% assign next_number

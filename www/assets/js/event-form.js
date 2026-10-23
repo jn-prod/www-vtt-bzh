@@ -65,7 +65,12 @@ const wireFrenchValidation = (form) => {
 
 const setFeedback = (element, kind, message) => {
   element.textContent = message;
-  element.className = `event-form__feedback event-form__feedback--${kind}`;
+  const variant = {
+    pending: "card--info",
+    success: "card--brand",
+    error: "card--alert",
+  }[kind];
+  element.className = `event-form__feedback card card--medium ${variant}`;
 };
 
 const buildPayload = (formData) => {

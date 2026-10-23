@@ -14,15 +14,15 @@ valide le contrat et fixe les champs système avant insertion. {%- endcomment -%
   </p>
 
   <div class="event-form__grid">
-    <div class="event-form__field event-form__field--span-2">
-      <label class="event-form__label" for="event-form-name">
+    <div class="event-form__field event-form__field--span-2 field">
+      <label class="field__label" for="event-form-name">
         Nom de la randonnée <span aria-hidden="true">*</span>
       </label>
       <input
         type="text"
         id="event-form-name"
         name="name"
-        class="event-form__input"
+        class="event-form__input control"
         required
         maxlength="120"
         autocomplete="off"
@@ -30,29 +30,29 @@ valide le contrat et fixe les champs système avant insertion. {%- endcomment -%
       />
     </div>
 
-    <div class="event-form__field">
-      <label class="event-form__label" for="event-form-date">
+    <div class="event-form__field field">
+      <label class="field__label" for="event-form-date">
         Date <span aria-hidden="true">*</span>
       </label>
       <input
         type="date"
         id="event-form-date"
         name="date"
-        class="event-form__input"
+        class="event-form__input control"
         required
         aria-required="true"
       />
     </div>
 
-    <div class="event-form__field">
-      <label class="event-form__label" for="event-form-hour">
+    <div class="event-form__field field">
+      <label class="field__label" for="event-form-hour">
         Heure de départ <span aria-hidden="true">*</span>
       </label>
       <input
         type="text"
         id="event-form-hour"
         name="hour"
-        class="event-form__input"
+        class="event-form__input control"
         required
         maxlength="40"
         placeholder="ex. 8h30"
@@ -60,15 +60,15 @@ valide le contrat et fixe les champs système avant insertion. {%- endcomment -%
       />
     </div>
 
-    <div class="event-form__field">
-      <label class="event-form__label" for="event-form-city">
+    <div class="event-form__field field">
+      <label class="field__label" for="event-form-city">
         Ville <span aria-hidden="true">*</span>
       </label>
       <input
         type="text"
         id="event-form-city"
         name="city"
-        class="event-form__input"
+        class="event-form__input control"
         required
         maxlength="80"
         autocomplete="address-level2"
@@ -76,14 +76,14 @@ valide le contrat et fixe les champs système avant insertion. {%- endcomment -%
       />
     </div>
 
-    <div class="event-form__field">
-      <label class="event-form__label" for="event-form-departement">
+    <div class="event-form__field field">
+      <label class="field__label" for="event-form-departement">
         Département <span aria-hidden="true">*</span>
       </label>
       <select
         id="event-form-departement"
         name="departement"
-        class="event-form__input"
+        class="event-form__input control"
         required
         aria-required="true"
       >
@@ -96,15 +96,15 @@ valide le contrat et fixe les champs système avant insertion. {%- endcomment -%
       </select>
     </div>
 
-    <div class="event-form__field event-form__field--span-2">
-      <label class="event-form__label" for="event-form-place">
+    <div class="event-form__field event-form__field--span-2 field">
+      <label class="field__label" for="event-form-place">
         Lieu de rendez-vous <span aria-hidden="true">*</span>
       </label>
       <input
         type="text"
         id="event-form-place"
         name="place"
-        class="event-form__input"
+        class="event-form__input control"
         required
         maxlength="120"
         autocomplete="off"
@@ -112,15 +112,15 @@ valide le contrat et fixe les champs système avant insertion. {%- endcomment -%
       />
     </div>
 
-    <div class="event-form__field">
-      <label class="event-form__label" for="event-form-organisateur">
+    <div class="event-form__field field">
+      <label class="field__label" for="event-form-organisateur">
         Organisateur <span aria-hidden="true">*</span>
       </label>
       <input
         type="text"
         id="event-form-organisateur"
         name="organisateur"
-        class="event-form__input"
+        class="event-form__input control"
         required
         maxlength="120"
         autocomplete="organization"
@@ -128,79 +128,79 @@ valide le contrat et fixe les champs système avant insertion. {%- endcomment -%
       />
     </div>
 
-    <div class="event-form__field">
-      <label class="event-form__label" for="event-form-email">
+    <div class="event-form__field field">
+      <label class="field__label" for="event-form-email">
         Email de contact <span aria-hidden="true">*</span>
       </label>
       <input
         type="email"
         id="event-form-email"
         name="email"
-        class="event-form__input"
+        class="event-form__input control"
         required
         maxlength="120"
         autocomplete="email"
         aria-required="true"
         aria-describedby="event-form-email-help"
       />
-      <small id="event-form-email-help" class="event-form__help">
+      <small id="event-form-email-help" class="field__help meta">
         Publié sur la fiche. Peut être utilisé pour vous contacter au sujet de
         votre publication.
       </small>
     </div>
 
-    <div class="event-form__field">
-      <label class="event-form__label" for="event-form-price">
+    <div class="event-form__field field">
+      <label class="field__label" for="event-form-price">
         Prix (texte libre)
       </label>
       <input
         type="text"
         id="event-form-price"
         name="price"
-        class="event-form__input"
+        class="event-form__input control"
         maxlength="40"
         placeholder="ex. 5€"
       />
     </div>
 
-    <div class="event-form__field event-form__field--span-2">
-      <label class="event-form__label" for="event-form-website">
+    <div class="event-form__field event-form__field--span-2 field">
+      <label class="field__label" for="event-form-website">
         Lien (site, billetterie HelloAsso, page Facebook…)
       </label>
       <input
         type="url"
         id="event-form-website"
         name="website"
-        class="event-form__input"
+        class="event-form__input control"
         maxlength="200"
         placeholder="https://"
         autocomplete="url"
       />
     </div>
 
-    <div class="event-form__field">
-      <label class="event-form__label" for="event-form-phone">
+    <div class="event-form__field field">
+      <label class="field__label" for="event-form-phone">
         Téléphone de contact
       </label>
       <input
         type="tel"
         id="event-form-phone"
         name="phone"
-        class="event-form__input"
+        class="event-form__input control"
         maxlength="30"
         autocomplete="tel"
         placeholder="ex. 06 12 34 56 78"
       />
     </div>
 
-    <div class="event-form__field event-form__field--span-2">
-      <label class="event-form__label" for="event-form-description">
+    <div class="event-form__field event-form__field--span-2 field">
+      <label class="field__label" for="event-form-description">
         Description (parcours, distances, ravito…)
       </label>
       <textarea
         id="event-form-description"
         name="description"
-        class="event-form__input event-form__input--textarea"
+        class="event-form__input event-form__input--textarea control"
         rows="4"
         maxlength="2000"
       ></textarea>
@@ -221,7 +221,7 @@ valide le contrat et fixe les champs système avant insertion. {%- endcomment -%
       />
     </div>
 
-    <div class="event-form__field event-form__field--span-2">
+    <div class="event-form__field event-form__field--span-2 field">
       <label class="event-form__checkbox">
         <input
           type="checkbox"
@@ -240,7 +240,7 @@ valide le contrat et fixe les champs système avant insertion. {%- endcomment -%
       </label>
     </div>
 
-    <div class="event-form__field event-form__field--span-2">
+    <div class="event-form__field event-form__field--span-2 field">
       <label class="event-form__checkbox">
         <input type="checkbox" id="event-form-newsletter" name="newsletter" />
         <span>
@@ -259,20 +259,24 @@ valide le contrat et fixe les champs système avant insertion. {%- endcomment -%
   </div>
 
   <div
-    class="event-form__feedback"
+    class="event-form__feedback card card--medium"
     id="event-form-feedback"
     role="status"
     aria-live="polite"
   ></div>
 
-  <div id="event-form-share" class="event-form__share" hidden>
+  <div
+    id="event-form-share"
+    class="event-form__share card card--neutral card--medium"
+    hidden
+  >
     <p class="event-form__share-prompt">
       Partagez le formulaire avec les organisateurs de votre club :
     </p>
     <div class="event-form__share-row">
       <input
         type="text"
-        class="event-form__input event-form__share-url"
+        class="event-form__input event-form__share-url control"
         id="event-form-share-url"
         value="https://www.vtt.bzh/calendrier/ajouter.html"
         readonly

@@ -3,5 +3,9 @@
   <svg viewBox="0 0 259 359" focusable="false">
     <use href="/assets/images/logo-mark.svg#vtt-bzh"></use>
   </svg>
+  {% else %}
+  <svg focusable="false">
+    <use href="#icon-{{ include.name | escape }}"></use>
+  </svg>
   {% endif %}
 </span>

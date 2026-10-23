@@ -2,20 +2,22 @@
   id="{{ include.event.id | escape }}"
   data-date="{{ include.event.date | escape }}"
   data-departement="{{ include.event.departement | escape }}"
-  class="event"
+  class="event disclosure card card--medium{% if include.event.canceled %} card--alert{% else %} card--flat{% endif %}"
   itemscope
   itemtype="https://schema.org/SportsEvent"
 >
-  <summary class="event__summary">
+  <summary
+    class="event__summary disclosure__summary disclosure__summary--indicator"
+  >
     <span class="event__summary-content">
       <span class="event__name u-h3" itemprop="name">
         {{ include.event.name | escape }}
       </span>
       <span class="event__meta">
         <span class="event__meta-item">
-          <svg class="icon" aria-hidden="true" focusable="false">
-            <use href="#icon-calendar" />
-          </svg>
+          <span class="icon icon--calendar" aria-hidden="true">
+            <svg focusable="false"><use href="#icon-calendar" /></svg>
+          </span>
           <time
             class="event__date"
             itemprop="startDate"
@@ -25,9 +27,9 @@
           </time>
         </span>
         <span class="event__meta-item">
-          <svg class="icon" aria-hidden="true" focusable="false">
-            <use href="#icon-pin" />
-          </svg>
+          <span class="icon icon--pin" aria-hidden="true">
+            <svg focusable="false"><use href="#icon-pin" /></svg>
+          </span>
           <span
             class="event__location"
             itemprop="location"

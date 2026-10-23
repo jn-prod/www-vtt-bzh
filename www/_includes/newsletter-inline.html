@@ -1,5 +1,5 @@
 <section
-  class="newsletter-inline"
+  class="newsletter-inline card card--neutral card--large"
   id="newsletter"
   aria-labelledby="newsletter-title"
 >
@@ -17,7 +17,7 @@
   >
     <label class="u-sr-only" for="newsletter-email">Votre adresse e-mail</label>
     <input
-      class="newsletter-inline__input"
+      class="newsletter-inline__input control"
       id="newsletter-email"
       type="email"
       name="email_address"
@@ -27,7 +27,7 @@
     />
     <button type="submit" class="btn btn--brand">Recevoir l’agenda</button>
   </form>
-  <p class="newsletter-inline__note">
+  <p class="newsletter-inline__note meta">
     Une fois par mois. Désabonnement en un clic.
   </p>
   {% include newsletters/latest.html %}
