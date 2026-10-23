@@ -105,7 +105,10 @@
     {% endif %}
 
     <!-- styles -->
-    <link rel="stylesheet" href="/assets/css/main.css" />
+    <link
+      rel="stylesheet"
+      href="/assets/css/main.css?v={{ site.time | date: '%s' }}"
+    />
     <link
       rel="preload"
       href="/assets/fonts/roboto-condensed-latin.woff2"
@@ -182,14 +185,20 @@
     </footer>
 
     {% if page.calendar_script %}
-    <script type="module" src="/assets/js/calendar.js"></script>
+    <script
+      type="module"
+      src="/assets/js/calendar.js?v={{ site.time | date: '%s' }}"
+    ></script>
     {% endif %} {% if page.event_form_script %}
     <script>
       window.__EVENT_SUBMISSION__ = {
         endpoint: {{ site.supabase.submit_event_url | jsonify }},
       };
     </script>
-    <script type="module" src="/assets/js/event-form.js"></script>
+    <script
+      type="module"
+      src="/assets/js/event-form.js?v={{ site.time | date: '%s' }}"
+    ></script>
     {% endif %}
     <script type="application/json" id="cloudflare-web-analytics">
       { "token": "9368ff319f1c4ab9a59f8077fee24625" }
