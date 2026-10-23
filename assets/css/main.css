@@ -384,7 +384,6 @@ button {
 
 .site-header {
   background: var(--b-color-neutral-0);
-  box-shadow: var(--b-shadow);
 }
 
 .site-main {
