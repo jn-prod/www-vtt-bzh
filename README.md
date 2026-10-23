@@ -92,9 +92,9 @@ pnpm install
 
 Le workflow de publication conserve la production précédente dès qu'un contrôle échoue.
 
-Les parcours E2E ne lisent pas Supabase : `pnpm test:e2e` construit `www/_site-e2e/` avec 41
-événements fictifs, puis restaure l’artefact réel. Le build, les validations et le déploiement
-continuent donc de vérifier le calendrier réellement publié.
+Les parcours Playwright et contrôles Axe ne tournent pas en CI : ils se lancent en local avec
+`pnpm test:e2e` (ou `pnpm check`) avant de pousser. Ils ne lisent pas Supabase : la commande construit
+`www/_site-e2e/` avec 41 événements fictifs, puis restaure l’artefact réel.
 
 ### `github-pages.yml` — Déploiement (push `main` ou manuel)
 
@@ -102,8 +102,7 @@ continuent donc de vérifier le calendrier réellement publié.
 2. Lint et tests unitaires
 3. Build : Supabase → normalisation → artefact non versionné → Jekyll
 4. Validation HTML, liens, assets et invariants métier
-5. Parcours Playwright et contrôles Axe
-6. Déploiement GitHub Pages (`peaceiris/actions-gh-pages`, CNAME `www.vtt.bzh`)
+5. Déploiement GitHub Pages (`peaceiris/actions-gh-pages`, CNAME `www.vtt.bzh`)
 
 Les organisateurs soumettent une randonnée via `/calendrier/ajouter.html`. L'Edge Function `submit-event` valide le payload, fixe les champs système et applique la limitation de débit avant l'insertion Supabase. La publication statique est reconstruite quotidiennement et après chaque push sur `main`.
 

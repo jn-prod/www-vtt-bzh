@@ -56,27 +56,6 @@ jobs:
       - name: Validate generated site
         run: pnpm validate:html && pnpm validate:site
 
-      # Les parcours navigateur ne valident que le code : la publication
-      # quotidienne (schedule) ne change que les données et s'en dispense.
-      - name: Cache Playwright browser
-        if: github.event_name != 'schedule'
-        uses: actions/cache@v6
-        with:
-          path: ~/.cache/ms-playwright
-          key: playwright-${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml') }}
-
-      # L'image ubuntu-24.04 embarque déjà les bibliothèques système de
-      # Chromium : pas de --with-deps (apt), seulement le shell headless.
-      - name: Install Playwright browser
-        if: github.event_name != 'schedule'
-        timeout-minutes: 3
-        run: pnpm exec playwright install --only-shell chromium
-
-      - name: Test browser journeys
-        if: github.event_name != 'schedule'
-        timeout-minutes: 5
-        run: pnpm test:e2e
-
       - name: Deploy GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
         with:
