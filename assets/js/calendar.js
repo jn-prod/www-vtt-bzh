@@ -95,14 +95,16 @@ const addText = (parent, text, className) => {
 };
 
 const addIcon = (parent, name) => {
+  const wrapper = document.createElement("span");
+  wrapper.className = `icon icon--${name}`;
+  wrapper.setAttribute("aria-hidden", "true");
   const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
-  svg.classList.add("icon");
-  svg.setAttribute("aria-hidden", "true");
   svg.setAttribute("focusable", "false");
   const use = document.createElementNS("http://www.w3.org/2000/svg", "use");
   use.setAttribute("href", `#icon-${name}`);
   svg.append(use);
-  parent.append(svg);
+  wrapper.append(svg);
+  parent.append(wrapper);
 };
 
 const safeWebsite = (value) => {
@@ -151,12 +153,15 @@ const createEvent = (event) => {
   const item = document.createElement("li");
   const details = document.createElement("details");
   details.id = event.id;
-  details.className = "event";
+  details.className = `event disclosure card card--medium ${
+    event.canceled ? "card--alert" : "card--flat"
+  }`;
   details.dataset.date = event.date;
   details.dataset.departement = String(event.departement);
 
   const summary = document.createElement("summary");
-  summary.className = "event__summary";
+  summary.className =
+    "event__summary disclosure__summary disclosure__summary--indicator";
   const summaryContent = document.createElement("span");
   summaryContent.className = "event__summary-content";
   addText(summaryContent, event.name, "event__name u-h3");
@@ -271,7 +276,7 @@ const createPlanning = (events, week) => {
 
 const createEmptyWeek = (week, departement) => {
   const section = document.createElement("section");
-  section.className = "calendar-empty";
+  section.className = "calendar-empty card card--neutral card--medium";
   const title = document.createElement("h2");
   title.className = "calendar-empty__title";
   const location = DEPARTEMENTS[departement];
