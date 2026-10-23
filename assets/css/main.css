@@ -135,8 +135,21 @@
   --b-control-radius: 3.2rem;
   --b-control-font-size: 1.5rem;
   --b-disabled-opacity: 0.8;
+  --b-z-sticky: 10;
+  --b-z-overlay: 30;
+  --b-z-skip-link: 1000;
+  --b-duration-fast: 150ms;
+  --b-duration-base: 300ms;
+
+  /* Largeurs de lecture propres à vtt.bzh */
+  --b-width-narrow: 36rem;
+  --b-width-intro: 42rem;
+  --b-width-text: 52rem;
+  --b-width-content: 64rem;
+  --b-width-form: 72rem;
   --b-header-h: 4.8rem; /* hauteur du header */
   --b-tabs-h: 4.4rem; /* hauteur de la barre d'onglets sticky */
+  --b-sticky-prompt-h: 9rem; /* hauteur réservée à la barre d'inscription sticky */
   --b-shadow: 0 var(--b-line-width-strong) var(--b-size-4)
     color-mix(in srgb, var(--b-color-neutral-100), transparent 92.5%);
   --b-border-radius: var(--b-size-4);
@@ -307,7 +320,7 @@ h6 {
 
 .meta {
   color: var(--b-color-neutral-60);
-  font-size: 1.4rem;
+  font-size: var(--b-font-size-small);
 }
 
 a,
@@ -329,7 +342,8 @@ button {
    ========================================================================== */
 
 /* Focus visible global — RGAA 10.7 */
-*:focus-visible {
+*:focus-visible,
+.u-visually-hidden:focus-visible + label {
   outline: var(--b-line-width-strong) solid var(--b-color-brand);
   outline-offset: var(--b-line-width-strong);
 }
@@ -339,14 +353,14 @@ button {
   position: absolute;
   top: calc(var(--b-header-h) * -1);
   left: var(--b-size-8);
-  z-index: 1000;
+  z-index: var(--b-z-skip-link);
   padding: var(--b-size-8) var(--b-size-16);
   background: var(--b-color-brand);
   color: var(--b-color-neutral-0);
   text-decoration: none;
   font-weight: bold;
   border-radius: var(--b-border-radius);
-  transition: top 0.15s ease-out;
+  transition: top var(--b-duration-fast) ease-out;
 }
 
 .site-skip-link:focus {
@@ -355,7 +369,7 @@ button {
 }
 
 /* Screen-reader only utility */
-.u-sr-only {
+.u-visually-hidden {
   position: absolute;
   width: 1px;
   height: 1px;
@@ -524,7 +538,7 @@ button {
 }
 
 .btn--small {
-  min-height: 3.6rem;
+  min-height: var(--b-control-height);
   padding: var(--b-size-4) var(--b-size-16);
   font-size: var(--b-font-size-small);
 }
@@ -565,6 +579,12 @@ button {
 .field__label {
   color: var(--b-color-neutral-80);
   font-weight: 700;
+}
+
+.field__help {
+  margin: 0;
+  color: var(--b-color-neutral-60);
+  font-size: var(--b-font-size-small);
 }
 
 /* ==========================================================================
@@ -680,7 +700,7 @@ button {
   font-weight: 700;
   line-height: 1;
   transform-origin: center;
-  transition: transform 150ms ease;
+  transition: transform var(--b-duration-fast) ease;
   content: "›";
 }
 
@@ -759,7 +779,7 @@ button {
 }
 
 .calendar__intro {
-  max-width: 42rem;
+  max-width: var(--b-width-intro);
   margin: 0 auto var(--b-size-32);
   text-align: center;
 }
@@ -773,11 +793,10 @@ button {
 }
 
 .calendar-week-navigation {
-  display: grid;
-  grid-template-columns: auto minmax(0, 1fr) auto;
+  display: flex;
   align-items: stretch;
   gap: var(--b-size-8);
-  max-width: 64rem;
+  max-width: var(--b-width-content);
   margin: var(--b-size-32) auto;
 }
 
@@ -787,7 +806,8 @@ button {
 }
 
 .calendar-week-navigation__select {
-  width: 100%;
+  flex: 1 1 auto;
+  min-width: 0;
   font-weight: 700;
   text-align: center;
 }
@@ -799,12 +819,14 @@ button {
 }
 
 .calendar-day {
-  display: grid;
-  grid-template-columns: 7.2rem minmax(0, 1fr);
+  --calendar-day-date-width: 7.2rem;
+
+  display: flex;
   gap: var(--b-size-8);
 }
 
 .calendar-day__date {
+  flex: 0 0 var(--calendar-day-date-width);
   margin: var(--b-size-8) 0 0;
   color: var(--b-color-neutral-80);
   text-align: center;
@@ -828,7 +850,9 @@ button {
 }
 
 .calendar-day__events {
-  display: grid;
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
   gap: var(--b-size-8);
   min-width: 0;
 }
@@ -838,7 +862,7 @@ button {
 }
 
 .calendar-empty {
-  max-width: 64rem;
+  max-width: var(--b-width-content);
   margin: var(--b-size-32) auto;
   text-align: center;
 }
@@ -872,13 +896,12 @@ button {
   }
 
   .calendar-week-navigation__select {
-    font-size: 1.4rem;
+    font-size: var(--b-font-size-small);
     text-align: left;
   }
 
   .calendar-day {
-    grid-template-columns: 4.8rem minmax(0, 1fr);
-    gap: var(--b-size-8);
+    --calendar-day-date-width: 4.8rem;
   }
 }
 
@@ -931,8 +954,8 @@ button {
   top: calc(100% + var(--b-size-8));
   right: 0;
   left: 0;
-  z-index: 30;
-  max-width: 36rem;
+  z-index: var(--b-z-overlay);
+  max-width: var(--b-width-narrow);
   margin-left: auto;
 }
 
@@ -967,7 +990,7 @@ button {
    ========================================================================== */
 
 .event-form {
-  max-width: 72rem;
+  max-width: var(--b-width-form);
   margin: 0 auto;
 }
 
@@ -977,13 +1000,18 @@ button {
 }
 
 .event-form__grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  display: flex;
+  flex-wrap: wrap;
   gap: var(--b-size-16);
 }
 
+.event-form__field {
+  flex: 1 1 calc((100% - var(--b-size-16)) / 2);
+  min-width: 0;
+}
+
 .event-form__field--span-2 {
-  grid-column: 1 / -1;
+  flex-basis: 100%;
 }
 
 .event-form__input {
@@ -1050,12 +1078,8 @@ button {
 }
 
 @media (width <= 600px) {
-  .event-form__grid {
-    grid-template-columns: 1fr;
-  }
-
-  .event-form__field--span-2 {
-    grid-column: auto;
+  .event-form__field {
+    flex-basis: 100%;
   }
 }
 
@@ -1077,12 +1101,12 @@ button {
 }
 
 .faq__item {
-  border-top: 1px solid var(--b-color-neutral-20);
+  border-top: var(--b-size-1) solid var(--b-color-border);
   padding: var(--b-size-16) 0;
 }
 
 .faq__item:last-child {
-  border-bottom: 1px solid var(--b-color-neutral-20);
+  border-bottom: var(--b-size-1) solid var(--b-color-border);
 }
 
 .faq__question {
@@ -1106,13 +1130,16 @@ button {
   margin: 0 0 var(--b-size-16);
 }
 
+.stat {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
 .stat--bar {
   display: flex;
   flex-wrap: wrap;
   gap: var(--b-size-32);
-  margin: 0;
-  padding: 0;
-  list-style: none;
 }
 
 .stat--bar .stat__item {
@@ -1127,12 +1154,12 @@ button {
 }
 
 .stat--bar .stat__value {
-  font-size: 1.8rem;
+  font-size: var(--b-font-size-large);
   line-height: 1;
 }
 
 .stat--bar .stat__label {
-  margin-top: var(--b-size-4);
+  margin-bottom: var(--b-size-4);
 }
 
 .fomo__tagline {
@@ -1147,14 +1174,14 @@ button {
 .tabs {
   position: sticky;
   top: 0;
-  z-index: 10;
+  z-index: var(--b-z-sticky);
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: var(--b-size-16);
   min-height: var(--b-tabs-h);
   margin: var(--b-size-16) 0;
-  border-bottom: 1px solid var(--b-color-border);
+  border-bottom: var(--b-size-1) solid var(--b-color-border);
   background: var(--b-color-neutral-0);
 }
 
@@ -1195,17 +1222,17 @@ button {
   color: var(--b-color-neutral-80);
 }
 
-.tabs__tab.is-active {
+.tabs__tab[aria-current] {
   color: var(--b-color-brand);
 }
 
-.tabs__tab.is-active::after {
+.tabs__tab[aria-current]::after {
   background: currentcolor;
 }
 
 /* Les ancres ne doivent pas glisser sous les barres collantes */
 #events {
-  scroll-margin-top: calc(var(--b-tabs-h) + 9rem);
+  scroll-margin-top: calc(var(--b-tabs-h) + var(--b-sticky-prompt-h));
 }
 
 /* ==========================================================================
@@ -1219,7 +1246,7 @@ button {
   gap: var(--b-size-16);
   margin: var(--b-size-32) 0 0;
   padding-top: var(--b-size-32);
-  border-top: 1px solid var(--b-color-border);
+  border-top: var(--b-size-1) solid var(--b-color-border);
   color: var(--b-color-neutral-60);
   text-align: center;
 }
@@ -1229,7 +1256,7 @@ button {
 }
 
 .project-signature__body {
-  max-width: 64rem;
+  max-width: var(--b-width-content);
 }
 
 .project-signature__title {
@@ -1276,7 +1303,7 @@ button {
 
 .newsletter-inline__text {
   margin: 0 auto var(--b-size-16);
-  max-width: 52rem;
+  max-width: var(--b-width-text);
 }
 
 .newsletter-inline__form {
@@ -1284,46 +1311,46 @@ button {
   flex-wrap: wrap;
   justify-content: center;
   gap: var(--b-size-8);
-  max-width: 52rem;
+  max-width: var(--b-width-text);
   margin: 0 auto;
 }
 
 .newsletter-inline__note {
-  max-width: 52rem;
+  max-width: var(--b-width-text);
   margin: var(--b-size-16) auto 0;
 }
 
 .publication-card {
-  display: grid;
-  grid-template:
-    "image label" auto
-    "image body" 1fr
-    / 24rem minmax(0, 1fr);
+  display: flex;
   align-items: center;
-  gap: var(--b-size-4) var(--b-size-32);
+  gap: var(--b-size-32);
   margin-top: var(--b-size-32);
   padding-top: var(--b-size-32);
-  border-top: 1px solid var(--b-color-border);
+  border-top: var(--b-size-1) solid var(--b-color-border);
   text-align: left;
 }
 
 .publication-card__image {
-  grid-area: image;
-  width: 100%;
+  flex: 0 0 24rem;
+  width: 24rem;
   aspect-ratio: 3 / 2;
   border-radius: var(--card-radius, var(--b-size-16));
   object-fit: cover;
 }
 
-.publication-card__body {
-  grid-area: body;
+.publication-card__content {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  gap: var(--b-size-4);
   min-width: 0;
-  align-self: start;
+}
+
+.publication-card__body {
+  min-width: 0;
 }
 
 .publication-card__label {
-  grid-area: label;
-  align-self: end;
   margin: 0;
   color: var(--b-color-brand);
   font-size: var(--b-font-size-small);
@@ -1352,15 +1379,23 @@ button {
 
 @media (width <= 600px) {
   .publication-card {
-    grid-template:
-      "label" auto
-      "image" auto
-      "body" auto
-      / minmax(0, 1fr);
+    flex-direction: column;
+    align-items: stretch;
     gap: var(--b-size-16);
   }
 
+  /* Sur mobile, le libellé repasse au-dessus de l'image. */
+  .publication-card__content {
+    display: contents;
+  }
+
+  .publication-card__label {
+    order: -1;
+  }
+
   .publication-card__image {
+    flex-basis: auto;
+    width: 100%;
     aspect-ratio: 3 / 2;
   }
 }
@@ -1371,14 +1406,14 @@ button {
 }
 
 .newsletter-prompt__text {
-  max-width: 52rem;
+  max-width: var(--b-width-text);
   margin: 0 auto var(--b-size-16);
 }
 
 .newsletter-prompt--sticky {
   position: sticky;
   top: var(--b-tabs-h);
-  z-index: 9;
+  z-index: calc(var(--b-z-sticky) - 1);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1396,7 +1431,7 @@ button {
   }
 
   .newsletter-prompt--sticky .newsletter-prompt__text {
-    font-size: 1.4rem;
+    font-size: var(--b-font-size-small);
     text-align: left;
   }
 
