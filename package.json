@@ -3,7 +3,7 @@
   "author": "Nicolas Jouanno",
   "license": "MIT",
   "version": "1.0.0",
-  "packageManager": "pnpm@10.34.5",
+  "packageManager": "pnpm@10.34.9",
   "engines": {
     "pnpm": "10.x",
     "node": "24.x"
@@ -50,37 +50,39 @@
     "*.{json,yaml,yml,md,mdx}": "prettier --write"
   },
   "devDependencies": {
-    "@axe-core/playwright": "4.13.0",
-    "@playwright/test": "1.63.0",
-    "@types/node": "^24.0.0",
-    "eslint": "^10.0.0",
-    "eslint-config-prettier": "^10.0.0",
-    "eslint-plugin-prettier": "^5.2.1",
-    "globals": "^17.0.0",
+    "@axe-core/playwright": "4.14.0",
+    "@playwright/test": "1.64.1",
+    "@types/node": "^24.13.3",
+    "eslint": "^10.13.0",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-prettier": "^5.5.7",
+    "globals": "^17.13.0",
     "html-minifier-terser": "7.2.0",
-    "html-validate": "11.14.0",
-    "husky": "^9.1.6",
-    "lint-staged": "^17.0.0",
+    "html-validate": "11.17.0",
+    "husky": "^9.1.7",
+    "lint-staged": "^17.6.0",
     "parse5": "8.0.1",
-    "prettier": "^3.5.0",
-    "stylelint": "^17.0.0",
+    "prettier": "^3.9.10",
+    "stylelint": "^17.16.0",
     "stylelint-config-standard": "^40.0.0",
-    "supabase": "^2.98.2",
+    "supabase": "^2.122.0",
     "ts-node": "^10.9.2",
-    "typescript-eslint": "^8.0.0"
+    "typescript": "^5.9.3",
+    "typescript-eslint": "^8.72.1"
   },
   "pnpm": {
     "onlyBuiltDependencies": [
       "supabase"
     ],
     "overrides": {
-      "brace-expansion@1": "5.0.9",
-      "brace-expansion@>=4.0.0 <5.0.9": "5.0.9",
+      "brace-expansion@1": "5.0.12",
+      "brace-expansion@>=4.0.0 <5.0.12": "5.0.12",
       "diff@4": "^9.0.0",
-      "fast-uri@>=3.0.0 <3.1.5": "3.1.7",
+      "fast-uri@>=3.0.0 <3.1.9": "3.1.9",
       "js-yaml@>=4.0.0 <4.3.1": "4.3.2",
       "nanoid@<3.3.18": "3.3.18",
-      "postcss@<8.5.23": "8.5.28"
+      "postcss@<8.5.23": "8.5.32",
+      "source-map-js@<1.2.2": "1.2.2"
     }
   }
 }
