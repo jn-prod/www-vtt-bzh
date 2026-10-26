@@ -53,8 +53,9 @@ Ce repo appartient au studio de Nicolas Jouanno. La gouvernance transverse — d
 projets, tâches, mémoire et analytics — vit dans le dépôt privé `corp-ai`, hors de ce dépôt public.
 
 Dans l'espace de travail local standard, le point d'entrée unique est
-`../corp-ai/studio/README.md`. Lire ensuite uniquement les notes auxquelles cette page renvoie pour
-la tâche en cours ; en cas de conflit, `../corp-ai/studio/DOCTRINE-LOCALE.md` prévaut.
+`../corp-ai/AGENTS.md`. Lire ensuite uniquement les fichiers de `../corp-ai/memoire/` auxquels
+cette page renvoie pour la tâche en cours ; en cas de conflit, `../corp-ai/memoire/regles.md`
+prévaut.
 
 Notion n'est pas une dépendance opérationnelle. Si le dépôt `corp-ai` n'est pas accessible,
 signaler l'absence de contexte au fondateur plutôt que d'improviser une doctrine locale.
