@@ -137,7 +137,7 @@ bloque pas la publication du calendrier. Les tests utilisent une fixture locale,
 - **Linter JS/TS** : ESLint 10 (flat config) + `typescript-eslint` v8
 - **Linter CSS** : Stylelint 17 + `stylelint-config-standard`
 - **Formatter** : Prettier 3
-- **Git hooks** : Husky + lint-staged (lint au commit)
+- **Git hooks** : Husky (fenêtre protégée au commit, confidentialité au push)
 - **TypeScript** : ts-node (packages uniquement — pas de bundler côté site)
 
 ---

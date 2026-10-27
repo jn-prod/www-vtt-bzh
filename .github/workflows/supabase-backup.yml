@@ -1,6 +1,6 @@
 name: Supabase backup (daily, encrypted artifact)
 
-# Cf SYSTEM.md §21. Le dump quotidien Supabase est chiffré symétriquement
+# Le dump quotidien Supabase est chiffré symétriquement
 # (AES-256-CBC + PBKDF2) avant d'être uploadé comme artifact GitHub Actions
 # avec rétention 90 jours (free tier). La passphrase est stockée hors-repo,
 # en password manager humain + secret GH Actions BACKUPS_PASSPHRASE.

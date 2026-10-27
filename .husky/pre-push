@@ -1,5 +1,5 @@
 #!/bin/sh
-# 1) Fenetre protegee §22 (corp-ai/hooks/fenetre-protegee.sh).
+# 1) Fenetre protegee (corp-ai/hooks/fenetre-protegee.sh).
 # 2) Confidentialite AVANT que le contenu devienne public sur GitHub : la CI refait le meme
 #    controle, mais apres le push. Denylist : ~/corp-ai/.privacy-denylist.
 # Bypass fondateur : git push --no-verify
@@ -9,7 +9,7 @@ if [ ! -f "$FENETRE" ]; then
   exit 1
 fi
 if bash "$FENETRE"; then
-  echo "Push refuse - fenetre protegee (§22). Bypass fondateur : git push --no-verify"
+  echo "Push refuse - fenetre protegee. Bypass fondateur : git push --no-verify"
   exit 1
 fi
 node scripts/privacy-scan.mjs || { echo "Push refuse (confidentialite)."; exit 1; }

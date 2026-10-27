@@ -35,7 +35,7 @@ Les trois outils de lint sont centralisés à la racine et s'exécutent via `pnp
 | Stylelint | `*.css`           | `.stylelintrc.json` |
 | Prettier  | tous les fichiers | `.prettierrc.js`    |
 
-Avant tout commit, lint-staged applique automatiquement les fixs via Husky.
+La CI lance `pnpm lint` avant chaque déploiement : un échec bloque la mise en ligne.
 
 ---
 

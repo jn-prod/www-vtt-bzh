@@ -4,7 +4,7 @@ Configuration Supabase pour vtt.bzh.
 
 ## Changements de schéma
 
-Le dossier `migrations/` contient l'historique déjà public. Les nouveaux changements distants sont appliqués via le dashboard ou le PAC du studio, puis consignés dans le journal quotidien ; aucun secret ni nouveau fichier SQL de production n'est ajouté ici par défaut.
+Le dossier `migrations/` contient l'historique déjà public. Les nouveaux changements distants sont appliqués via le dashboard Supabase ; aucun secret ni nouveau fichier SQL de production n'est ajouté ici par défaut.
 
 | Fichier                   | Contexte                                                                                                                                                                | À appliquer manuellement |
 | ------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------ |

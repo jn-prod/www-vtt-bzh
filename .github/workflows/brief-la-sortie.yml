@@ -1,0 +1,97 @@
+name: Brief La Sortie
+
+# Matière calendrier d'une édition, sans VPS : depuis l'onglet Actions (ou l'app GitHub),
+# choisir la fenêtre. Le workflow lance `pnpm newsletter:new`, vérifie la confidentialité
+# puis commite le brief dans www/_drafts (non publié).
+on:
+  workflow_dispatch:
+    inputs:
+      debut:
+        description: 'Premier jour AAAA-MM-JJ (inclus)'
+        required: true
+        type: string
+      fin:
+        description: 'Dernier jour AAAA-MM-JJ (inclus)'
+        required: true
+        type: string
+      regenerer:
+        description: 'Réécrire le brief s’il existe déjà'
+        type: boolean
+        default: false
+      fenetre_assumee:
+        description: 'Commiter pendant la fenêtre protégée (férié, congé : équivaut à --no-verify)'
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+
+concurrency:
+  group: brief-la-sortie
+  cancel-in-progress: false
+
+jobs:
+  brief:
+    runs-on: ubuntu-24.04
+    environment: github-pages
+    steps:
+      # Même règle que le hook local, sans les fériés ni les congés (corp-ai est privé) :
+      # en semaine de 08:00 à 13:00 et de 14:00 à 20:00, heure de Paris.
+      - name: Fenêtre protégée
+        if: ${{ !inputs.fenetre_assumee }}
+        run: |
+          day=$(TZ=Europe/Paris date +%u)
+          now=$((10#$(TZ=Europe/Paris date +%H%M)))
+          if [ "$day" -le 5 ] && { { [ "$now" -ge 800 ] && [ "$now" -lt 1300 ]; } || { [ "$now" -ge 1400 ] && [ "$now" -lt 2000 ]; }; }; then
+            echo "::error::Fenêtre protégée. Relancer après 20:00, ou cocher la case si c'est un férié ou un congé."
+            exit 1
+          fi
+
+      - uses: actions/checkout@v7
+
+      - uses: pnpm/action-setup@v6
+        name: Install
+        with:
+          cache: true
+
+      - name: Use Node.js
+        uses: actions/setup-node@v7
+        with:
+          node-version: '24.x'
+          cache: 'pnpm'
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Brief
+        env:
+          DEBUT: ${{ inputs.debut }}
+          FIN: ${{ inputs.fin }}
+          REGENERER: ${{ inputs.regenerer }}
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_PUBLISHABLE_KEY: ${{ secrets.SUPABASE_PUBLISHABLE_KEY }}
+          SUPABASE_TABLE: ${{ secrets.SUPABASE_TABLE }}
+        run: |
+          set -- "--start=$DEBUT" "--end=$FIN"
+          [ "$REGENERER" = "true" ] && set -- "$@" --update
+          pnpm newsletter:new -- "$@"
+
+      - name: Privacy
+        run: pnpm check:privacy
+        env:
+          PRIVACY_DENYLIST: ${{ secrets.PRIVACY_DENYLIST }}
+
+      - name: Commit
+        env:
+          DEBUT: ${{ inputs.debut }}
+          FIN: ${{ inputs.fin }}
+        run: |
+          if [ -z "$(git status --porcelain -- www/_drafts)" ]; then
+            echo 'Brief inchangé, rien à commiter.'
+            exit 0
+          fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -- www/_drafts
+          git commit -m "draft(la-sortie): brief calendrier du ${DEBUT} au ${FIN}"
+          git push origin HEAD:main
