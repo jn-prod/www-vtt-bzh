@@ -1,25 +1,16 @@
 #!/bin/sh
-
-# --- Fenetre protegee (SYSTEM §22) - SOURCE UNIQUE (repo harness) ---
-# La regle vivait recopiee dans chaque repo, et les copies avaient DIVERGE (le studio
-# bloquait jusqu'a 13:00, vtt.bzh jusqu'a 12:30 - D-2026-06-30-001 dit 13:00).
-# Elle connait desormais les JOURS FERIES (D-2026-07-14-001) : la regle protege d'une
-# surveillance PROFESSIONNELLE, or un jour ferie le fondateur est off. Un garde-fou qui
-# crie a tort apprend a etre ignore - et c'est ainsi qu'on prend l'habitude du
-# --no-verify, qui desarme AUSSI la privacy, l'hygiene et les harnais.
-# Harnais injoignable => on REFUSE (fail-closed). Bypass fondateur : --no-verify.
-# Le harnais vit dans le repo `harness` depuis le 2026-07-22 (avant : corp-ai).
-FENETRE="${HARNESS_GATE_DIR:-$HOME/harness/tools/scripts}/fenetre-protegee.sh"
-if [ -x "$FENETRE" ]; then
-  if "$FENETRE"; then
-    echo ""
-    echo "Commit bloque - fenetre protegee (SYSTEM §22)"
-    echo "Bypass fondateur (avec mention du risque) : git commit --no-verify"
-    echo ""
-    exit 1
-  fi
-else
-  echo "Commit refuse : $FENETRE introuvable (fail-closed)."
-  echo "Regler HARNESS_GATE_DIR vers le repo harness, ou bypass : git commit --no-verify"
+# Fenetre protegee §22 : source unique dans corp-ai (hooks/fenetre-protegee.sh).
+# corp-ai introuvable => commit refuse (fail-closed). Bypass fondateur : git commit --no-verify
+FENETRE="${ALFRED_HOOKS:-$HOME/corp-ai/hooks}/fenetre-protegee.sh"
+if [ ! -f "$FENETRE" ]; then
+  echo "Commit refuse : $FENETRE introuvable. Cloner corp-ai dans ~/corp-ai ou regler ALFRED_HOOKS."
   exit 1
 fi
+if bash "$FENETRE"; then
+  echo ""
+  echo "Commit bloque - fenetre protegee (§22)"
+  echo "Bypass fondateur (avec mention du risque) : git commit --no-verify"
+  echo ""
+  exit 1
+fi
+exit 0

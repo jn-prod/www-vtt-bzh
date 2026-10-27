@@ -40,6 +40,11 @@ jobs:
       - name: Install ruby dependencies
         run: pnpm --filter=www install:jekyll
 
+      - name: Privacy
+        run: pnpm check:privacy
+        env:
+          PRIVACY_DENYLIST: ${{ secrets.PRIVACY_DENYLIST }}
+
       - name: Lint
         run: pnpm lint
 

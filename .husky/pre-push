@@ -1,19 +1,15 @@
-#!/usr/bin/env sh
-# pre-push — délègue à la gate transverse du harnais (D-2026-06-09-001).
-# Fichier IDENTIQUE dans tous les repos consommateurs (vtt.bzh, nj.com, feezify, harness).
-#
-# FAIL-CLOSED depuis le 2026-07-22. Avant, un harnais introuvable laissait passer le push
-# avec un simple avertissement : un chemin cassé désarmait donc EN SILENCE la fenêtre §22
-# ET le controle PII — au moment précis où on ne s'y attend pas (harnais déplacé, machine
-# neuve, clone frais). Un garde-fou qui s'éteint sans bruit n'est pas un garde-fou.
-#
-# Bypass fondateur assumé : git push --no-verify
-GATE="${HARNESS_GATE:-$HOME/harness/tools/scripts/pre-push-gate.sh}"
-if [ -x "$GATE" ]; then
-  exec "$GATE"
+#!/bin/sh
+# 1) Fenetre protegee §22 (corp-ai/hooks/fenetre-protegee.sh).
+# 2) Confidentialite AVANT que le contenu devienne public sur GitHub : la CI refait le meme
+#    controle, mais apres le push. Denylist : ~/corp-ai/.privacy-denylist.
+# Bypass fondateur : git push --no-verify
+FENETRE="${ALFRED_HOOKS:-$HOME/corp-ai/hooks}/fenetre-protegee.sh"
+if [ ! -f "$FENETRE" ]; then
+  echo "Push refuse : $FENETRE introuvable. Cloner corp-ai dans ~/corp-ai ou regler ALFRED_HOOKS."
+  exit 1
 fi
-echo ""
-echo "Push refuse : harnais introuvable ($GATE)."
-echo "Regler HARNESS_GATE vers le repo harness, ou bypass fondateur : git push --no-verify"
-echo ""
-exit 1
+if bash "$FENETRE"; then
+  echo "Push refuse - fenetre protegee (§22). Bypass fondateur : git push --no-verify"
+  exit 1
+fi
+node scripts/privacy-scan.mjs || { echo "Push refuse (confidentialite)."; exit 1; }

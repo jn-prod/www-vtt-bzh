@@ -78,6 +78,7 @@ pnpm install
 | `pnpm test:e2e`        | Parcours Playwright et contrôles Axe                                 |
 | `pnpm validate:html`   | Validation du HTML généré                                            |
 | `pnpm validate:site`   | Liens, assets et invariants métier du site généré                    |
+| `pnpm check:privacy`   | Denylist et données personnelles (secret `PRIVACY_DENYLIST` en CI)   |
 | `pnpm minify:site`     | Minification conservative du HTML généré                             |
 | `pnpm check`           | Chaîne locale complète, hors installation                            |
 | `pnpm lint`            | ESLint + Stylelint + Prettier (vérification)                         |
