@@ -47,14 +47,12 @@ Avant tout commit, lint-staged applique automatiquement les fixs via Husky.
 - Ne pas publier de packages npm — ce projet est un site personnel, pas une librairie
 - Ne pas modifier `.eslintrc.js` — ce fichier n'existe plus, la config ESLint est dans `eslint.config.mjs`
 
-## Gouvernance studio
+## Gouvernance
 
-Ce repo appartient au studio de Nicolas Jouanno. La gouvernance transverse — doctrine, décisions,
-projets, tâches, mémoire et analytics — vit dans le dépôt privé `corp-ai`, hors de ce dépôt public.
+Ce repo appartient à Nicolas Jouanno ; son agent s'appelle Alfred. La gouvernance transverse
+(profil, mémoire, état des projets et règles) vit dans le dépôt privé `corp-ai`, hors de ce
+dépôt public.
 
-Dans l'espace de travail local standard, lire `../corp-ai/AGENTS.md` : il porte le profil
-du fondateur, la mémoire (faits actuels et état des projets) et les règles transverses. En cas
-de conflit, ses règles prévalent.
-
-Notion n'est pas une dépendance opérationnelle. Si le dépôt `corp-ai` n'est pas accessible,
-signaler l'absence de contexte au fondateur plutôt que d'improviser une doctrine locale.
+Dans l'espace de travail local standard, lire `../corp-ai/AGENTS.md`. En cas de conflit, ses
+règles prévalent. Si `corp-ai` n'est pas accessible, signaler l'absence de contexte à Nicolas
+plutôt que d'improviser une doctrine locale.
