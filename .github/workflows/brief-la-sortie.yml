@@ -1,18 +1,23 @@
 name: Brief La Sortie
 
-# Matière calendrier d'une édition, sans VPS : depuis l'onglet Actions (ou l'app GitHub),
-# choisir la fenêtre. Le workflow lance `pnpm newsletter:new`, vérifie la confidentialité
-# puis commite le brief dans www/_drafts (non publié).
+# Matière calendrier d'une édition, sans VPS. Seul le 15 de chaque mois, pour l'édition du
+# mois suivant (du 1er au 1er + 35 jours, programme La Sortie de corp-ai/AGENTS.md), ou
+# depuis l'onglet Actions (ou l'app GitHub) avec une autre fenêtre. Le workflow lance
+# `pnpm newsletter:new`, vérifie la confidentialité puis commite le brief dans www/_drafts
+# (non publié).
 on:
+  schedule:
+    # 19:15 UTC : hors fenêtre protégée en heure d'hiver comme d'été.
+    - cron: '15 19 15 * *'
   workflow_dispatch:
     inputs:
       debut:
-        description: 'Premier jour AAAA-MM-JJ (inclus)'
-        required: true
+        description: 'Premier jour AAAA-MM-JJ (inclus). Vide : 1er du mois suivant'
+        required: false
         type: string
       fin:
-        description: 'Dernier jour AAAA-MM-JJ (inclus)'
-        required: true
+        description: 'Dernier jour AAAA-MM-JJ (inclus). Vide : début + 35 jours'
+        required: false
         type: string
       regenerer:
         description: 'Réécrire le brief s’il existe déjà'
@@ -74,15 +79,32 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
-      - name: Brief
+      - name: Période
+        id: periode
         env:
           DEBUT: ${{ inputs.debut }}
           FIN: ${{ inputs.fin }}
+        run: |
+          debut=${DEBUT:-$(TZ=Europe/Paris date -d "$(TZ=Europe/Paris date +%Y-%m-01) +1 month" +%F)}
+          fin=${FIN:-$(date -d "$debut +35 days" +%F)}
+          echo "debut=$debut" >> "$GITHUB_OUTPUT"
+          echo "fin=$fin" >> "$GITHUB_OUTPUT"
+          echo "Fenêtre : $debut → $fin"
+
+      - name: Brief
+        env:
+          DEBUT: ${{ steps.periode.outputs.debut }}
+          FIN: ${{ steps.periode.outputs.fin }}
           REGENERER: ${{ inputs.regenerer }}
+          PROGRAMME: ${{ github.event_name == 'schedule' }}
           SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
           SUPABASE_PUBLISHABLE_KEY: ${{ secrets.SUPABASE_PUBLISHABLE_KEY }}
           SUPABASE_TABLE: ${{ secrets.SUPABASE_TABLE }}
         run: |
+          if [ "$PROGRAMME" = "true" ] && ls www/_drafts/"${DEBUT}"_*-la-sortie.md >/dev/null 2>&1; then
+            echo "Brief déjà généré pour le mois de ${DEBUT} : rien à faire."
+            exit 0
+          fi
           set -- "--start=$DEBUT" "--end=$FIN"
           [ "$REGENERER" = "true" ] && set -- "$@" --update
           pnpm newsletter:new -- "$@"
@@ -94,8 +116,8 @@ jobs:
 
       - name: Commit
         env:
-          DEBUT: ${{ inputs.debut }}
-          FIN: ${{ inputs.fin }}
+          DEBUT: ${{ steps.periode.outputs.debut }}
+          FIN: ${{ steps.periode.outputs.fin }}
         run: |
           if [ -z "$(git status --porcelain -- www/_drafts)" ]; then
             echo 'Brief inchangé, rien à commiter.'

@@ -5,9 +5,10 @@ publie pas tant qu'ils restent dans `_drafts/`.
 
 ## Générer un brief
 
-Sans VPS : onglet Actions → « Brief La Sortie » (`.github/workflows/brief-la-sortie.yml`),
-avec le premier et le dernier jour de la fenêtre. Le workflow génère le brief, contrôle
-la confidentialité et le commite ici.
+Le workflow « Brief La Sortie » (`.github/workflows/brief-la-sortie.yml`) tourne seul le
+15 de chaque mois pour l'édition du mois suivant : du 1er au 1er + 35 jours. À la main :
+onglet Actions, dates vides pour cette même fenêtre, ou une autre fenêtre. Il génère le
+brief, contrôle la confidentialité et le commite ici.
 
 En local, à la racine de vtt.bzh :
 
