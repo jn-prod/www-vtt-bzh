@@ -40,7 +40,7 @@ jobs:
   # de Paris) au lieu d'échouer : on peut le lancer à toute heure, depuis le téléphone.
   creneau:
     if: ${{ !inputs.maintenant }}
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-26.04
     timeout-minutes: 360
     steps:
       - uses: actions/checkout@v7
@@ -54,7 +54,7 @@ jobs:
   brief:
     needs: creneau
     if: ${{ !failure() && !cancelled() }}
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-26.04
     timeout-minutes: 360
     environment: github-pages
     steps:
