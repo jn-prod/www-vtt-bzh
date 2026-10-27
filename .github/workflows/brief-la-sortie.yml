@@ -18,8 +18,8 @@ on:
         description: 'Réécrire le brief s’il existe déjà'
         type: boolean
         default: false
-      fenetre_assumee:
-        description: 'Commiter pendant la fenêtre protégée (férié, congé : équivaut à --no-verify)'
+      maintenant:
+        description: 'Commiter sans attendre la fin de la fenêtre protégée (férié, congé : équivaut à --no-verify)'
         type: boolean
         default: false
 
@@ -31,23 +31,34 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  brief:
+  # Pendant la fenêtre protégée, le brief attend le prochain créneau (13:00 ou 20:00, heure
+  # de Paris) au lieu d'échouer : on peut le lancer à toute heure, depuis le téléphone.
+  creneau:
+    if: ${{ !inputs.maintenant }}
     runs-on: ubuntu-24.04
+    timeout-minutes: 360
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          sparse-checkout: scripts/attendre-creneau.sh
+          sparse-checkout-cone-mode: false
+
+      - name: Attendre le prochain créneau
+        run: bash scripts/attendre-creneau.sh
+
+  brief:
+    needs: creneau
+    if: ${{ !failure() && !cancelled() }}
+    runs-on: ubuntu-24.04
+    timeout-minutes: 360
     environment: github-pages
     steps:
-      # Même règle que le hook local, sans les fériés ni les congés (corp-ai est privé) :
-      # en semaine de 08:00 à 13:00 et de 14:00 à 20:00, heure de Paris.
-      - name: Fenêtre protégée
-        if: ${{ !inputs.fenetre_assumee }}
-        run: |
-          day=$(TZ=Europe/Paris date +%u)
-          now=$((10#$(TZ=Europe/Paris date +%H%M)))
-          if [ "$day" -le 5 ] && { { [ "$now" -ge 800 ] && [ "$now" -lt 1300 ]; } || { [ "$now" -ge 1400 ] && [ "$now" -lt 2000 ]; }; }; then
-            echo "::error::Fenêtre protégée. Relancer après 20:00, ou cocher la case si c'est un férié ou un congé."
-            exit 1
-          fi
-
       - uses: actions/checkout@v7
+
+      # Reliquat : une attente est plafonnée à 350 min, sous la limite de 6 h d'un job.
+      - name: Attendre le prochain créneau
+        if: ${{ !inputs.maintenant }}
+        run: bash scripts/attendre-creneau.sh
 
       - uses: pnpm/action-setup@v6
         name: Install
