@@ -186,9 +186,9 @@ Les autres primitives suivent également le contrat de `nicolasjouanno.com` :
 
 ## Données — `_data/events.json` (artefact privé)
 
-Le fichier `_data/events.json` est **généré automatiquement** au build CI par `packages/calendar/generate-events.ts`, qui lit la table Supabase `events`, normalise les données publiques, écarte les doublons certains et contrôle les chutes anormales. Il est ignoré par Git : le dépôt ne contient ni l’agenda courant ni d’échantillon d’événements. Jekyll produit ensuite `/calendrier/events.json` et des pages statiques de 20 événements.
+Le fichier `_data/events.json` est **généré automatiquement** au build CI par `packages/calendar/generate-events.ts`, qui lit la table Supabase `events`, normalise les données publiques, écarte les doublons certains et vérifie que la lecture est complète. Il est ignoré par Git : le dépôt ne contient ni l’agenda courant ni d’échantillon d’événements. Jekyll produit ensuite `/calendrier/events.json` et des pages statiques de 20 événements.
 
-Le premier déploiement de ce format s'appuie sur `packages/calendar/baseline/events-count.json`, capturé depuis la home de production. Dès que `/calendrier/events.json` existe en production, cette source dynamique devient prioritaire. En CI, l'absence des deux baselines ou une baisse supérieure à 50 % bloque le déploiement.
+Le nombre de randos varie avec la saison : le contrôle ne compare donc pas le calendrier à une valeur de référence. Il bloque le déploiement si aucun événement n'est publiable, si le nombre de lignes lues diffère d'un comptage Supabase indépendant (mêmes filtres), ou si la normalisation écarte plus de la moitié des lignes lues.
 
 ## Données — `_data/newsletters/latest.json` (artefact public)
 

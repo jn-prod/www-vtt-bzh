@@ -1,8 +1,8 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
-import { find } from './repository';
+import { count, find } from './repository';
 
-const client = (result: { data: unknown; error: unknown }) => {
+const client = (result: { data?: unknown; count?: unknown; error: unknown }) => {
   const query = {
     select: () => query,
     filter: () => query,
@@ -25,5 +25,16 @@ test('reste fail-closed sur une erreur Supabase', async () => {
 
 test('reste fail-closed si Supabase ne renvoie pas une collection', async () => {
   const result = await find(client({ data: null, error: null }) as never, 'events');
+  assert.equal(result.ok, false);
+});
+
+test('compte les lignes quand Supabase fournit un total', async () => {
+  const result = await count(client({ count: 12, error: null }) as never, 'events');
+  assert.equal(result.ok, true);
+  if (result.ok) assert.equal(result.value, 12);
+});
+
+test('reste fail-closed si Supabase ne renvoie pas de total', async () => {
+  const result = await count(client({ count: null, error: null }) as never, 'events');
   assert.equal(result.ok, false);
 });

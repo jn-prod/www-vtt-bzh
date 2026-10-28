@@ -30,6 +30,24 @@ export const find = async <T>(
   });
 };
 
+export const count = async (
+  db: DatabaseClient,
+  collection: ServiceName,
+  filter: Filter[] = []
+): Promise<Result<number>> => {
+  if (!isSupabaseClient(db)) return Err(new DbClientError());
+  return encaseResult<number>(async () => {
+    const query = db.from(collection).select('*', { count: 'exact', head: true });
+    filter.forEach((entrie) => {
+      query.filter(entrie.column, entrie.operator, entrie.value);
+    });
+    const { count: total, error } = await query;
+    if (error) throw error;
+    if (!Number.isInteger(total)) throw new DbClientError('database returned no count');
+    return total as number;
+  });
+};
+
 export const findOne = async <T>(
   db: DatabaseClient,
   collection: ServiceName,

@@ -1,8 +1,8 @@
 import 'dotenv/config';
-import { createClient, find } from 'repository';
+import { count, createClient, find } from 'repository';
 import { normalizeEvents, type RawCalendarEvent } from './normalize-events';
 import { evaluateBuildGuard } from './build-guard';
-import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'fs';
+import { mkdirSync, writeFileSync } from 'fs';
 import { join, dirname } from 'path';
 
 const db = createClient(process.env.SUPABASE_URL as string, process.env.SUPABASE_PUBLISHABLE_KEY as string);
@@ -43,62 +43,41 @@ const main = async () => {
     'origin',
   ].join(',');
 
-  const res = await find<RawCalendarEvent>(
-    db,
-    process.env.SUPABASE_TABLE as string,
-    [
-      { column: 'active', operator: 'eq', value: true },
-      { column: 'date', operator: 'gte', value: today },
-      { column: 'date', operator: 'lte', value: horizon },
-    ],
-    projection,
-    { order: { column: 'date', ascending: true } }
-  );
+  const table = process.env.SUPABASE_TABLE as string;
+  const filters = [
+    { column: 'active', operator: 'eq', value: true },
+    { column: 'date', operator: 'gte', value: today },
+    { column: 'date', operator: 'lte', value: horizon },
+  ];
 
+  const res = await find<RawCalendarEvent>(db, table, filters, projection, {
+    order: { column: 'date', ascending: true },
+  });
   if (!res.ok) {
     console.error('[generate-events-json] fetch failed', res.error);
     process.exit(1);
   }
 
+  const total = await count(db, table, filters);
+  if (!total.ok) {
+    console.error('[generate-events-json] count failed', total.error);
+    process.exit(1);
+  }
+
   const rawEvents = res.value ?? [];
   const { events, health, duplicateGroups } = normalizeEvents(rawEvents);
-  let previousCount: number | undefined;
-  try {
-    const previous = await fetch('https://www.vtt.bzh/calendrier/events.json', {
-      signal: AbortSignal.timeout(5000),
-    });
-    if (previous.ok) {
-      const previousEvents: unknown = await previous.json();
-      if (Array.isArray(previousEvents)) previousCount = previousEvents.length;
-    }
-  } catch {
-    console.warn('[generate-events-json] baseline production indisponible');
-  }
 
-  if (previousCount === undefined) {
-    const bootstrapPath = join(__dirname, '..', 'baseline', 'events-count.json');
-    if (existsSync(bootstrapPath)) {
-      try {
-        const bootstrap = JSON.parse(readFileSync(bootstrapPath, 'utf8')) as { count?: unknown };
-        if (Number.isInteger(bootstrap.count) && Number(bootstrap.count) > 0) {
-          previousCount = Number(bootstrap.count);
-          console.warn(`[generate-events-json] baseline d'amorçage utilisée : ${previousCount} événements`);
-        }
-      } catch {
-        console.error('[generate-events-json] baseline d’amorçage illisible');
-      }
-    }
-  }
-
-  const guard = evaluateBuildGuard(events.length, previousCount, process.env.CI === 'true');
+  const guard = evaluateBuildGuard(events.length, rawEvents.length, total.value);
   if (!guard.ok) {
     if (guard.reason === 'empty_calendar') {
       console.error('[generate-events-json] aucun événement publiable : build interrompu');
-    } else if (guard.reason === 'missing_production_baseline') {
-      console.error('[generate-events-json] baseline production obligatoire en CI : build interrompu');
+    } else if (guard.reason === 'source_mismatch') {
+      console.error(
+        `[generate-events-json] lecture incomplète : ${rawEvents.length} lignes lues contre ${total.value} dans Supabase`
+      );
     } else {
       console.error(
-        `[generate-events-json] baisse anormale : ${events.length} événements contre ${previousCount} en production`
+        `[generate-events-json] normalisation anormale : ${events.length} événements publiés sur ${rawEvents.length} lus`
       );
     }
     process.exit(1);
