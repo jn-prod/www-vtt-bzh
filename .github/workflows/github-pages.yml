@@ -61,9 +61,13 @@ jobs:
       - name: Validate generated site
         run: pnpm validate:html && pnpm validate:site
 
+      # force_orphan : gh-pages ne garde que le build courant. Chaque build contient les
+      # contacts des organisateurs ; un historique les conserverait au-delà de la purge
+      # à un an des mentions légales (§4.1).
       - name: Deploy GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./www/_site
           cname: www.vtt.bzh
+          force_orphan: true
