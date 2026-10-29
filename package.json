@@ -6,7 +6,7 @@
   "packageManager": "pnpm@10.34.9",
   "engines": {
     "pnpm": "10.x",
-    "node": "24.x"
+    "node": "26.x"
   },
   "description": "",
   "repository": {
@@ -48,7 +48,7 @@
   "devDependencies": {
     "@axe-core/playwright": "4.14.0",
     "@playwright/test": "1.64.1",
-    "@types/node": "^24.13.3",
+    "@types/node": "^26.0.0",
     "eslint": "^10.13.0",
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-prettier": "^5.5.7",
